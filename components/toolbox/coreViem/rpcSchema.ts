@@ -1,6 +1,6 @@
 export type CoreWalletRpcSchema = [
     {
-        Method: 'avalanche_getAccountPubKey',
+        Method: 'lux_getAccountPubKey',
         Parameters: []
         ReturnType: { xp: string, evm: string }
     },
@@ -35,7 +35,7 @@ export type CoreWalletRpcSchema = [
                 IsCancun: boolean;
                 IsVerkle: boolean;
             };
-            avalancheRules: {
+            luxRules: {
                 IsSubnetEVM: boolean;
                 IsDurango: boolean;
                 IsEtna: boolean;
@@ -52,7 +52,7 @@ export type CoreWalletRpcSchema = [
         }
     },
     {
-        Method: 'avalanche_sendTransaction',
+        Method: 'lux_sendTransaction',
         Parameters: {
             transactionHex: string,
             chainAlias: "X" | "P" | "C",

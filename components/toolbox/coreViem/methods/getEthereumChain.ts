@@ -1,9 +1,9 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 import type { CoreWalletRpcSchema } from "../rpcSchema";
 
 export type GetEthereumChainResponse = Extract<CoreWalletRpcSchema[number], { Method: 'wallet_getEthereumChain' }>['ReturnType'];
 
-export async function getEthereumChain(client: AvalancheWalletClient): Promise<GetEthereumChainResponse> {
+export async function getEthereumChain(client: LuxWalletClient): Promise<GetEthereumChainResponse> {
     const chain = await client.request<
         Extract<CoreWalletRpcSchema[number], { Method: 'wallet_getEthereumChain' }>
     >({

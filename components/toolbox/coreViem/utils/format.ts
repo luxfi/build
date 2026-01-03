@@ -1,14 +1,14 @@
 /**
- * Formats a numerical AVAX balance (in nAVAX) to a human-readable string with AVAX denomination
- * @param balance - The balance in nAVAX (nano AVAX, 1 AVAX = 10^9 nAVAX)
- * @returns Formatted balance string with AVAX denomination
+ * Formats a numerical LUX balance (in nLUX) to a human-readable string with LUX denomination
+ * @param balance - The balance in nLUX (nano LUX, 1 LUX = 10^9 nLUX)
+ * @returns Formatted balance string with LUX denomination
  */
-export function formatAvaxBalance(balance: number | bigint): string {
+export function formatLuxBalance(balance: number | bigint): string {
     const balanceNum = typeof balance === 'bigint' ? Number(balance) : balance;
     return (
         (balanceNum / 1_000_000_000).toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-        }) + " AVAX"
+        }) + " LUX"
     );
 } 

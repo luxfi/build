@@ -1,5 +1,5 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
-import { getTx } from "@avalanche-sdk/client/methods/pChain";
+import type { LuxWalletClient } from "@luxfi/cloud";
+import { getTx } from "@luxfi/cloud/methods/pChain";
 
 export type ExtractChainInfoParams = {
     txId: string;
@@ -13,7 +13,7 @@ export type ExtractChainInfoResponse = {
 }
 
 //TODO: rename
-export async function extractChainInfo(client: AvalancheWalletClient, { txId }: ExtractChainInfoParams): Promise<ExtractChainInfoResponse> {
+export async function extractChainInfo(client: LuxWalletClient, { txId }: ExtractChainInfoParams): Promise<ExtractChainInfoResponse> {
     // Use SDK's getTx method to fetch the transaction
     const txData = await getTx(client.pChainClient, {
         txID: txId,

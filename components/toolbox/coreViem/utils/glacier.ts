@@ -1,9 +1,9 @@
 //FIXME: Sooner or later we should use the SDK
 
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
-import { networkIDs } from "@avalabs/avalanchejs";
+import { networkIDs } from "luxfi";
 
-const endpoint = "https://glacier-api.avax.network"
+const endpoint = "https://glacier-api.lux.network"
 
 
 interface BlockchainInfo {
@@ -20,8 +20,8 @@ type Network = "testnet" | "mainnet";
 
 export async function getBlockchainInfo(blockchainId: string, signal?: AbortSignal): Promise<BlockchainInfo & { isTestnet: boolean }> {
     // Get current network from wallet store
-    const { avalancheNetworkID } = useWalletStore.getState();
-    const currentNetwork = avalancheNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
+    const { luxNetworkID } = useWalletStore.getState();
+    const currentNetwork = luxNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
     const otherNetwork = currentNetwork === "mainnet" ? "testnet" : "mainnet";
 
     try {
@@ -92,8 +92,8 @@ interface SubnetInfo {
 
 export async function getSubnetInfo(subnetId: string, signal?: AbortSignal): Promise<SubnetInfo & { isTestnet: boolean }> {
     // Get current network from wallet store
-    const { avalancheNetworkID } = useWalletStore.getState();
-    const currentNetwork = avalancheNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
+    const { luxNetworkID } = useWalletStore.getState();
+    const currentNetwork = luxNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
     const otherNetwork = currentNetwork === "mainnet" ? "testnet" : "mainnet";
 
     try {
@@ -134,7 +134,7 @@ export async function getSubnetInfoForNetwork(network: Network, subnetId: string
     return data;
 }
 
-// Interfaces for P-Chain Balance
+// Interfaces for Platform-Chain Balance
 interface AssetBalance {
     assetId: string;
     name: string;
@@ -160,7 +160,7 @@ interface Balances {
 
 interface PChainChainInfo {
     chainName: string;
-    network: string; // e.g., "fuji", "mainnet"
+    network: string; // e.g., "testnet", "mainnet"
 }
 
 interface PChainBalanceResponse {
@@ -169,7 +169,7 @@ interface PChainBalanceResponse {
 }
 
 export async function getPChainBalance(network: Network, address: string): Promise<PChainBalanceResponse> {
-    const networkPath = network === "testnet" ? "fuji" : network;
+    const networkPath = network === "testnet" ? "testnet" : network;
     const url = `${endpoint}/v1/networks/${networkPath}/blockchains/p-chain/balances?addresses=${address}`;
 
     const response = await fetch(url, {
@@ -183,7 +183,7 @@ export async function getPChainBalance(network: Network, address: string): Promi
     });
 
     if (!response.ok) {
-        throw new Error(`Failed to fetch P-Chain balance for ${address} on ${networkPath} (${network}): ${response.status} ${response.statusText}`);
+        throw new Error(`Failed to fetch Platform-Chain balance for ${address} on ${networkPath} (${network}): ${response.status} ${response.statusText}`);
     }
 
     const data: PChainBalanceResponse = await response.json();
@@ -223,7 +223,7 @@ interface ChainDetails {
 }
 
 export async function getChainDetails(chainId: string): Promise<ChainDetails> {
-    const endpoint = "https://glacier-api.avax.network"//override for dev
+    const endpoint = "https://glacier-api.lux.network"//override for dev
     const url = `${endpoint}/v1/chains/${chainId}`;
 
     const response = await fetch(url, {
@@ -290,7 +290,7 @@ interface GetNativeTokenBalanceResponse {
 }
 
 export async function getNativeTokenBalance(chainId: string | number, address: string): Promise<NativeTokenBalance> {
-    const glacierProdEndpoint = "https://glacier-api.avax.network"; // Using production endpoint
+    const glacierProdEndpoint = "https://glacier-api.lux.network"; // Using production endpoint
     const url = `${glacierProdEndpoint}/v1/chains/${chainId}/addresses/${address}/balances:getNative`;
 
     const response = await fetch(url, {

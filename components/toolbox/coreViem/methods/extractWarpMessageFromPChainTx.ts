@@ -1,8 +1,8 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
-import { getTx, PChainTransactionType } from "@avalanche-sdk/client/methods/pChain";
+import type { LuxWalletClient } from "@luxfi/cloud";
+import { getTx, PChainTransactionType } from "@luxfi/cloud/methods/pChain";
 import { packL1ConversionMessage, PackL1ConversionMessageArgs } from "../utils/convertWarp";
 import { isTestnet } from "./isTestnet";
-import { networkIDs, utils } from "@avalabs/avalanchejs";
+import { networkIDs, utils } from "luxfi";
 
 interface AddressObject {
     threshold: number;
@@ -95,7 +95,7 @@ export type ExtractWarpMessageFromTxResponse = {
     justification: string;
     subnetId: string;
     signingSubnetId: string;
-    networkId: typeof networkIDs.FujiID | typeof networkIDs.MainnetID;
+    networkId: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID;
     validators: Validator[];
     chainId: string;
     managerAddress: string;
@@ -105,13 +105,13 @@ export type ExtractWarpMessageFromTxResponse = {
 // if you have better idea to get the subnetId from a blockchainId, please go ahead and change it
 /**
  * Fetches blockchain information from Glacier API
- * @param network "fuji" or "mainnet"
+ * @param network "testnet" or "mainnet"
  * @param blockchainId The blockchain ID to query
  * @returns The subnet ID associated with the blockchain
  */
-async function getSubnetIdFromChainId(network: "fuji" | "mainnet", blockchainId: string): Promise<string> {
+async function getSubnetIdFromChainId(network: "testnet" | "mainnet", blockchainId: string): Promise<string> {
     try {
-        const response = await fetch(`https://glacier-api.avax.network/v1/networks/${network}/blockchains/${blockchainId}`, {
+        const response = await fetch(`https://glacier-api.lux.network/v1/networks/${network}/blockchains/${blockchainId}`, {
             method: 'GET',
             headers: {
                 'accept': 'application/json'
@@ -136,9 +136,9 @@ async function getSubnetIdFromChainId(network: "fuji" | "mainnet", blockchainId:
 }
 
 //TODO: rename
-export async function extractWarpMessageFromPChainTx(client: AvalancheWalletClient, { txId }: ExtractWarpMessageFromTxParams): Promise<ExtractWarpMessageFromTxResponse> {
+export async function extractWarpMessageFromPChainTx(client: LuxWalletClient, { txId }: ExtractWarpMessageFromTxParams): Promise<ExtractWarpMessageFromTxResponse> {
     const isTestnetMode = await isTestnet(client);
-    const networkId = isTestnetMode ? networkIDs.FujiID : networkIDs.MainnetID;
+    const networkId = isTestnetMode ? networkIDs.TestnetID : networkIDs.MainnetID;
 
     // Use SDK's getTx method to fetch the transaction
     const txData = await getTx(client.pChainClient, {
@@ -169,7 +169,7 @@ export async function extractWarpMessageFromPChainTx(client: AvalancheWalletClie
     };
 
     const [message, justification] = packL1ConversionMessage(conversionArgs, networkId, data.tx.unsignedTx.blockchainID);
-    const network = networkId === networkIDs.FujiID ? "fuji" : "mainnet";
+    const network = networkId === networkIDs.TestnetID ? "testnet" : "mainnet";
     const signingSubnetId = await getSubnetIdFromChainId(network, data.tx.unsignedTx.chainID);
     return {
         message: utils.bufferToHex(message),

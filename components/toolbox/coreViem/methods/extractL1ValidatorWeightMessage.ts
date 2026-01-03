@@ -1,7 +1,7 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
-import { getTx } from "@avalanche-sdk/client/methods/pChain";
+import type { LuxWalletClient } from "@luxfi/cloud";
+import { getTx } from "@luxfi/cloud/methods/pChain";
 import { isTestnet } from "./isTestnet";
-import { networkIDs, utils } from "@avalabs/avalanchejs";
+import { networkIDs, utils } from "luxfi";
 import { 
   unpackL1ValidatorWeightPayload,
   extractPayloadFromWarpMessage,
@@ -17,21 +17,21 @@ export type ExtractL1ValidatorWeightMessageResponse = {
   validationID: string;
   nonce: bigint;
   weight: bigint;
-  networkId: typeof networkIDs.FujiID | typeof networkIDs.MainnetID;
+  networkId: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID;
 }
 
 /**
- * Extracts L1ValidatorWeightMessage from a P-Chain SetL1ValidatorWeightTx
- * @param client - The Avalanche wallet client
+ * Extracts L1ValidatorWeightMessage from a Platform-Chain SetL1ValidatorWeightTx
+ * @param client - The Lux wallet client
  * @param params - Parameters containing the transaction ID
  * @returns The extracted weight message data
  */
 export async function extractL1ValidatorWeightMessage(
-  client: AvalancheWalletClient,
+  client: LuxWalletClient,
   { txId }: ExtractL1ValidatorWeightMessageParams
 ): Promise<ExtractL1ValidatorWeightMessageResponse> {
   const isTestnetMode = await isTestnet(client);
-  const networkId = isTestnetMode ? networkIDs.FujiID : networkIDs.MainnetID;
+  const networkId = isTestnetMode ? networkIDs.TestnetID : networkIDs.MainnetID;
 
   // Use SDK's getTx method to fetch the transaction
   const txData = await getTx(client.pChainClient, {

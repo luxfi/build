@@ -8,9 +8,9 @@ import { BaseConsoleToolProps, ConsoleToolMetadata, withConsoleToolMetadata } fr
 import { useWalletStore } from '@/components/toolbox/stores/walletStore'
 import { Success } from '@/components/toolbox/components/Success'
 import { useWallet } from '@/components/toolbox/hooks/useWallet'
-import { prepareAddPermissionlessValidatorTxn } from '@avalanche-sdk/client/methods/wallet/pChain'
-import { sendXPTransaction } from '@avalanche-sdk/client/methods/wallet'
-import { networkIDs } from '@avalabs/avalanchejs'
+import { prepareAddPermissionlessValidatorTxn } from '@luxfi/cloud/methods/wallet/pChain'
+import { sendXPTransaction } from '@luxfi/cloud/methods/wallet'
+import { networkIDs } from 'luxfi'
 import { AddValidatorControls } from '@/components/toolbox/components/ValidatorListInput/AddValidatorControls'
 import type { ConvertToL1Validator } from '@/components/toolbox/components/ValidatorListInput'
 import { Steps, Step } from 'fumadocs-ui/components/steps'
@@ -20,8 +20,8 @@ import { Alert } from '@/components/toolbox/components/Alert';
 
 // Network-specific constants
 const NETWORK_CONFIG = {
-  fuji: {
-    minStakeAvax: 1,
+  testnet: {
+    minStakeLux: 1,
     minEndSeconds: 24 * 60 * 60, // 24 hours
     defaultDays: 1,
     presets: [
@@ -31,7 +31,7 @@ const NETWORK_CONFIG = {
     ]
   },
   mainnet: {
-    minStakeAvax: 2000,
+    minStakeLux: 2000,
     minEndSeconds: 14 * 24 * 60 * 60, // 14 days
     defaultDays: 14,
     presets: [
@@ -48,7 +48,7 @@ const BUFFER_MINUTES = 5
 
 const metadata: ConsoleToolMetadata = {
   title: "Stake on Primary Network",
-  description: "Stake AVAX as a validator on Avalanche's Primary Network to secure the network and earn rewards",
+  description: "Stake LUX as a validator on Lux's Primary Network to secure the network and earn rewards",
   toolRequirements: [
     WalletRequirementsConfigKey.PChainBalance
   ],
@@ -56,11 +56,11 @@ const metadata: ConsoleToolMetadata = {
 }
 
 function Stake({ onSuccess }: BaseConsoleToolProps) {
-  const { pChainAddress, isTestnet, avalancheNetworkID } = useWalletStore()
-  const { avalancheWalletClient } = useWallet();
+  const { pChainAddress, isTestnet, luxNetworkID } = useWalletStore()
+  const { luxWalletClient } = useWallet();
 
   const [validator, setValidator] = useState<ConvertToL1Validator | null>(null)
-  const [stakeInAvax, setStakeInAvax] = useState<string>("")
+  const [stakeInLux, setStakeInLux] = useState<string>("")
   const [endTime, setEndTime] = useState<string>("")
   const [delegatorRewardPercentage, setDelegatorRewardPercentage] = useState<string>(DEFAULT_DELEGATOR_REWARD_PERCENTAGE)
 
@@ -71,14 +71,14 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
   const { notify } = useConsoleNotifications();
 
   // Determine network configuration
-  const onFuji = isTestnet === true || avalancheNetworkID === networkIDs.FujiID
-  const config = onFuji ? NETWORK_CONFIG.fuji : NETWORK_CONFIG.mainnet
-  const networkName = onFuji ? 'Fuji' : 'Mainnet'
+  const onTestnet = isTestnet === true || luxNetworkID === networkIDs.TestnetID
+  const config = onTestnet ? NETWORK_CONFIG.testnet : NETWORK_CONFIG.mainnet
+  const networkName = onTestnet ? 'Testnet' : 'Mainnet'
 
 
   // Initialize defaults
-  if (!stakeInAvax) {
-    setStakeInAvax(String(config.minStakeAvax))
+  if (!stakeInLux) {
+    setStakeInLux(String(config.minStakeLux))
   }
 
   if (!endTime) {
@@ -103,7 +103,7 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
 
   const validateForm = (): string | null => {
     if (!pChainAddress) {
-      return 'Connect Core Wallet to get your P-Chain address'
+      return 'Connect Core Wallet to get your Platform-Chain address'
     }
 
     if (!validator) {
@@ -122,9 +122,9 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
       return 'Invalid BLS Signature format'
     }
 
-    const stakeNum = Number(stakeInAvax)
-    if (!Number.isFinite(stakeNum) || stakeNum < config.minStakeAvax) {
-      return `Minimum stake is ${config.minStakeAvax.toLocaleString()} AVAX on ${networkName}`
+    const stakeNum = Number(stakeInLux)
+    if (!Number.isFinite(stakeNum) || stakeNum < config.minStakeLux) {
+      return `Minimum stake is ${config.minStakeLux.toLocaleString()} LUX on ${networkName}`
     }
 
     if (!endTime) {
@@ -136,7 +136,7 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
     const duration = endUnix - nowUnix
 
     if (duration < config.minEndSeconds) {
-      const minDuration = onFuji ? '24 hours' : '2 weeks'
+      const minDuration = onTestnet ? '24 hours' : '2 weeks'
       return `End time must be at least ${minDuration} from now (${networkName})`
     }
 
@@ -162,8 +162,8 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
       return
     }
 
-    if (!avalancheWalletClient) {
-      setError("Avalanche client not found")
+    if (!luxWalletClient) {
+      setError("Lux client not found")
       return
     }
 
@@ -171,9 +171,9 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
       setIsSubmitting(true)
 
       const endUnix = Math.floor(new Date(endTime).getTime() / 1000)
-      const { tx } = await prepareAddPermissionlessValidatorTxn(avalancheWalletClient.pChain, {
+      const { tx } = await prepareAddPermissionlessValidatorTxn(luxWalletClient.pChain, {
         nodeId: validator!.nodeID,
-        stakeInAvax: Number(stakeInAvax),
+        stakeInLux: Number(stakeInLux),
         end: endUnix,
         rewardAddresses: [pChainAddress!],
         delegatorRewardAddresses: [pChainAddress!],
@@ -184,7 +184,7 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
         signature: validator!.nodePOP.proofOfPossession,
       })
 
-      const stakePromise = sendXPTransaction(avalancheWalletClient.pChain, {
+      const stakePromise = sendXPTransaction(luxWalletClient.pChain, {
         tx: tx,
         chainAlias: 'P',
       }).then(result => result.txHash);
@@ -223,7 +223,7 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
               />
               <Alert variant="info" className="mt-4">
                   <strong>Note:</strong> This step queries your <code>info.getNodeID</code> endpoint at <code>127.0.0.1:9650</code>.
-                  Make sure you have an AvalancheGo node running locally before proceeding.
+                  Make sure you have an LuxGo node running locally before proceeding.
                   <br />
                   If your node runs on a remote server, replace <code>127.0.0.1</code> with your node’s public IP in the command.
               </Alert>
@@ -255,14 +255,14 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Stake Amount"
-                  value={stakeInAvax}
-                  onChange={setStakeInAvax}
+                  value={stakeInLux}
+                  onChange={setStakeInLux}
                   type="number"
                   step="0.001"
-                  min={config.minStakeAvax}
-                  unit="AVAX"
-                  helperText={`Minimum: ${config.minStakeAvax.toLocaleString()} AVAX (${networkName})`}
-                  error={error && Number(stakeInAvax) < config.minStakeAvax ? `Minimum stake is ${config.minStakeAvax} AVAX` : null}
+                  min={config.minStakeLux}
+                  unit="LUX"
+                  helperText={`Minimum: ${config.minStakeLux.toLocaleString()} LUX (${networkName})`}
+                  error={error && Number(stakeInLux) < config.minStakeLux ? `Minimum stake is ${config.minStakeLux} LUX` : null}
                 />
 
                 <Input
@@ -303,11 +303,11 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
                 value={endTime}
                 onChange={setEndTime}
                 type="datetime-local"
-                helperText={`Min: ${onFuji ? '24 hours' : '2 weeks'} • Max: 1 year`}
+                helperText={`Min: ${onTestnet ? '24 hours' : '2 weeks'} • Max: 1 year`}
                 error={(() => {
                   if (!endTime || !error) return null
                   const d = Math.floor(new Date(endTime).getTime() / 1000) - Math.floor(Date.now() / 1000)
-                  if (d < config.minEndSeconds) return `Must be at least ${onFuji ? '24 hours' : '2 weeks'} from now`
+                  if (d < config.minEndSeconds) return `Must be at least ${onTestnet ? '24 hours' : '2 weeks'} from now`
                   if (d > MAX_END_SECONDS) return 'Must be within 1 year'
                   return null
                 })()}

@@ -1,11 +1,11 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 
 export type CreateSubnetParams = {
     subnetOwners: string[];
 }
 
-export async function createSubnet(client: AvalancheWalletClient, params: CreateSubnetParams): Promise<string> {
-    // Prepare the transaction using Avalanche SDK
+export async function createSubnet(client: LuxWalletClient, params: CreateSubnetParams): Promise<string> {
+    // Prepare the transaction using Lux SDK
     const txnRequest = await client.pChain.prepareCreateSubnetTxn({
         subnetOwners: {
             addresses: params.subnetOwners,
@@ -13,7 +13,7 @@ export async function createSubnet(client: AvalancheWalletClient, params: Create
         },
     });
 
-    // Send the transaction using Avalanche SDK's sendXPTransaction
+    // Send the transaction using Lux SDK's sendXPTransaction
     const result = await client.sendXPTransaction(txnRequest);
 
     return result.txHash;

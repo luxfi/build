@@ -1,6 +1,6 @@
-import { createAvalancheWalletClient } from '@avalanche-sdk/client'
-import { avalanche, avalancheFuji } from '@avalanche-sdk/client/chains'
-import type { AvalancheWalletClient } from '@avalanche-sdk/client'
+import { createLuxWalletClient } from '@luxfi/cloud'
+import { lux, luxTestnet } from '@luxfi/cloud/chains'
+import type { LuxWalletClient } from '@luxfi/cloud'
 import { addChain, CoreWalletAddChainParameters } from './overrides/addChain'
 import { isTestnet } from './methods/isTestnet'
 import { getPChainAddress } from './methods/getPChainAddress'
@@ -22,12 +22,12 @@ import { extractRegisterL1ValidatorMessage, ExtractRegisterL1ValidatorMessagePar
 import { ExtractWarpMessageFromTxResponse } from './methods/extractWarpMessageFromPChainTx'
 import { ExtractChainInfoResponse } from './methods/extractChainInfo'
 
-// Re-export custom Avalanche EVM RPC methods that should be called on publicClient
+// Re-export custom Lux EVM RPC methods that should be called on publicClient
 export { getActiveRulesAt } from './methods/getActiveRulesAt'
 export type { GetActiveRulesAtResponse } from './methods/getActiveRulesAt'
 
-// Type for the Avalanche wallet client with custom methods at root level
-export type CoreWalletClientType = Omit<AvalancheWalletClient, 'addChain'> & {
+// Type for the Lux wallet client with custom methods at root level
+export type CoreWalletClientType = Omit<LuxWalletClient, 'addChain'> & {
     // Overridden methods at root level
     addChain: (args: CoreWalletAddChainParameters) => Promise<void>;
     // Custom methods at root level
@@ -57,22 +57,22 @@ export async function createCoreWalletClient(_account: `0x${string}`): Promise<C
         return null; // Return null for SSR
     }
 
-    // Check if window.avalanche exists and is an object
-    if (!window.avalanche || typeof window.avalanche !== 'object') {
+    // Check if window.lux exists and is an object
+    if (!window.lux || typeof window.lux !== 'object') {
         return null; // Return null if Core wallet is not found
     }
 
     // Get the Ethereum chain info to determine if we're on a testnet
-    const chain = await window.avalanche.request<GetEthereumChainResponse>({
+    const chain = await window.lux.request<GetEthereumChainResponse>({
         method: 'wallet_getEthereumChain',
     });
 
-    // Create the Avalanche SDK wallet client
-    const baseClient = createAvalancheWalletClient({
-        chain: chain.isTestnet ? avalancheFuji : avalanche,
+    // Create the Lux SDK wallet client
+    const baseClient = createLuxWalletClient({
+        chain: chain.isTestnet ? luxTestnet : lux,
         transport: {
             type: 'custom',
-            provider: window.avalanche,
+            provider: window.lux,
         },
         account: _account
     });

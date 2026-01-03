@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { newAddressedCall, marshalSubnetToL1ConversionData, PackL1ConversionMessageArgs, packL1ConversionMessage, subnetToL1ConversionID, newUnsignedMessage, newSubnetToL1Conversion, compareNodeIDs } from './convertWarp';
-import { utils } from '@avalabs/avalanchejs';
+import { utils } from 'luxfi';
 const { hexToBuffer, bufferToHex } = utils;
 
 const node1Validator = {
@@ -62,7 +62,7 @@ describe('L1 Conversion Tests', () => {
     });
 
     it('should pack L1 conversion message', () => {
-        const expectedMessage = "0x000000000005" + //fuji ID
+        const expectedMessage = "0x000000000005" + //testnet ID
             "0000000000000000000000000000000000000000000000000000000000000000" + //platform chain id
             "00000034" + // ?
             "0000000000010000000000000026000000000000ae4984e3c1f0b73c2e160b899295e4a2d44b2229f23bdb7b8eccbbbcb0ba7d93" //subnetConversionAddressedCall

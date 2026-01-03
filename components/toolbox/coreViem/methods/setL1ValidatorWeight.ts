@@ -1,29 +1,29 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 
 /**
- * Parameters for setting the L1 validator weight on the P-Chain.
+ * Parameters for setting the L1 validator weight on the Platform-Chain.
  * This is used for both changing weight and removing (setting weight to 0 implicitly).
  */
 export type SetL1ValidatorWeightParams = {
-    /** The signed Warp message from the C-Chain as a hex string (with or without "0x" prefix). */
+    /** The signed Warp message from the LUExchange-Chain as a hex string (with or without "0x" prefix). */
     signedWarpMessage: string;
 }
 
 /**
- * Sends a transaction to the P-Chain to set the weight of an L1 validator.
+ * Sends a transaction to the Platform-Chain to set the weight of an L1 validator.
  * This is used by both ChangeWeight and RemoveValidator components.
  *
- * @param client The Avalanche WalletClient instance.
+ * @param client The Lux WalletClient instance.
  * @param params The parameters required for the transaction.
- * @returns A promise that resolves to the P-Chain transaction ID.
+ * @returns A promise that resolves to the Platform-Chain transaction ID.
  */
-export async function setL1ValidatorWeight(client: AvalancheWalletClient, params: SetL1ValidatorWeightParams): Promise<string> {
+export async function setL1ValidatorWeight(client: LuxWalletClient, params: SetL1ValidatorWeightParams): Promise<string> {
     const { signedWarpMessage } = params;
 
     // Ensure signedWarpMessage has '0x' prefix for SDK
     const message = signedWarpMessage.startsWith('0x') ? signedWarpMessage : `0x${signedWarpMessage}`;
 
-    // Prepare the transaction using Avalanche SDK
+    // Prepare the transaction using Lux SDK
     const txnRequest = await client.pChain.prepareSetL1ValidatorWeightTxn({
         message,
     });

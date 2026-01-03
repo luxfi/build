@@ -4,8 +4,8 @@ import type { AddChainOptions, AddChainResult } from '@/types/wallet';
 import { useModalTrigger } from './useModal';
 import { toast } from '@/lib/toast';
 import { useMemo } from 'react';
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche, avalancheFuji } from "@avalanche-sdk/client/chains";
+import { createLuxWalletClient } from "@luxfi/cloud";
+import { lux, luxTestnet } from "@luxfi/cloud/chains";
 
 export function useWallet() {
     const walletStore = useWalletStore();
@@ -15,16 +15,16 @@ export function useWallet() {
     const isTestnet = useWalletStore((s) => s.isTestnet);
     const walletEVMAddress = useWalletStore((s) => s.walletEVMAddress);
 
-    // Create avalanche wallet client based on network and wallet connection
-    const avalancheWalletClient = useMemo(() => {
-        if (typeof window === 'undefined' || !window?.avalanche || !walletEVMAddress || isTestnet === undefined) {
+    // Create lux wallet client based on network and wallet connection
+    const luxWalletClient = useMemo(() => {
+        if (typeof window === 'undefined' || !window?.lux || !walletEVMAddress || isTestnet === undefined) {
             return null;
         }
-        return createAvalancheWalletClient({
-            chain: isTestnet ? avalancheFuji : avalanche,
+        return createLuxWalletClient({
+            chain: isTestnet ? luxTestnet : lux,
             transport: {
                 type: "custom",
-                provider: window.avalanche!,
+                provider: window.lux!,
             },
             account: walletEVMAddress as `0x${string}`
         });
@@ -56,6 +56,6 @@ export function useWallet() {
         switchChain,
         // Clients exported for convenience and standardization
         client: walletStore.coreWalletClient,
-        avalancheWalletClient,
+        luxWalletClient,
     };
 }

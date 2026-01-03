@@ -1,21 +1,21 @@
-import { networkIDs } from "@avalabs/avalanchejs";
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import { networkIDs } from "luxfi";
+import type { LuxWalletClient } from "@luxfi/cloud";
 import {
     utils,
     secp256k1,
-} from "@avalabs/avalanchejs";
+} from "luxfi";
 import { Buffer as BufferPolyfill } from "buffer";
 import { isTestnet } from "./isTestnet";
 import { secp256k1 as nobleSecp256k1 } from '@noble/curves/secp256k1.js';
 import type { CoreWalletRpcSchema } from "../rpcSchema";
 
-export async function getPChainAddress(client: AvalancheWalletClient) {
-    const networkID = (await isTestnet(client)) ? networkIDs.FujiID : networkIDs.MainnetID
+export async function getPChainAddress(client: LuxWalletClient) {
+    const networkID = (await isTestnet(client)) ? networkIDs.TestnetID : networkIDs.MainnetID
 
     const pubkeys = await client.request<
-        Extract<CoreWalletRpcSchema[number], { Method: 'avalanche_getAccountPubKey' }>
+        Extract<CoreWalletRpcSchema[number], { Method: 'lux_getAccountPubKey' }>
     >({
-        method: "avalanche_getAccountPubKey",
+        method: "lux_getAccountPubKey",
         params: []
     });
 
@@ -40,13 +40,13 @@ function getPChainAddressFromPublicKey(xpPubKey: string, networkID: number) {
     const point = nobleSecp256k1.Point.fromHex(pubKeyHex);
     const compressedBytes = point.toBytes(true); // true = compressed format
 
-    // Convert to Buffer for avalanchejs compatibility
+    // Convert to Buffer for luxjs compatibility
     const pubComp = BufferPolyfill.from(compressedBytes);
 
-    // Use avalanchejs to convert to address
+    // Use luxjs to convert to address
     const address = secp256k1.publicKeyBytesToAddress(pubComp);
 
-    // Format as P-Chain address
+    // Format as Platform-Chain address
     return utils.format("P", networkIDs.getHRP(networkID), address);
 }
 

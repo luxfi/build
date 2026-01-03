@@ -1,14 +1,14 @@
 import { useWalletStore } from '@/components/toolbox/stores/walletStore';
 import { toast } from 'sonner';
 import { useConsoleLog } from './use-console-log';
-import { PChainClient, createPChainClient } from '@avalanche-sdk/client';
-import { avalanche, avalancheFuji } from '@avalanche-sdk/client/chains';
+import { PChainClient, createPChainClient } from '@luxfi/cloud';
+import { lux, luxTestnet } from '@luxfi/cloud/chains';
 import { usePathname } from 'next/navigation';
 import { showCustomErrorToast } from '@/components/ui/custom-error-toast';
 import posthog from 'posthog-js';
 
 const getPChainTxExplorerURL = (txID: string, isTestnet: boolean) => {
-    return `https://${isTestnet ? "subnets-test" : "subnets"}.avax.network/p-chain/tx/${txID}`;
+    return `https://${isTestnet ? "subnets-test" : "subnets"}.lux.network/p-chain/tx/${txID}`;
 };
 
 export type PChainAction = 'createSubnet' | 'createChain' | 'convertToL1' | 'addPermissionlessValidator' | 'registerL1Validator' | 'setL1ValidatorWeight';
@@ -78,7 +78,7 @@ const usePChainNotifications = () => {
     const { addLog } = useConsoleLog(false); // Don't auto-fetch logs
     const pathname = usePathname();
 
-    const client: PChainClient = createPChainClient({ chain: isTestnet ? avalancheFuji : avalanche, transport: { type: 'http' } });
+    const client: PChainClient = createPChainClient({ chain: isTestnet ? luxTestnet : lux, transport: { type: 'http' } });
 
     const notifyPChain = (action: PChainAction, promise: Promise<string>) => {
         const config = configs[action];

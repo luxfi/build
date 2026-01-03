@@ -1,16 +1,16 @@
-import { networkIDs } from "@avalabs/avalanchejs";
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import { networkIDs } from "luxfi";
+import type { LuxWalletClient } from "@luxfi/cloud";
 import { isTestnet } from "./isTestnet";
-import { publicKeyToXPAddress } from '@avalanche-sdk/client/accounts'
+import { publicKeyToXPAddress } from '@luxfi/cloud/accounts'
 import type { CoreWalletRpcSchema } from "../rpcSchema";
 
-export async function getCorethAddress(client: AvalancheWalletClient) {
-    const networkID = (await isTestnet(client)) ? networkIDs.FujiID : networkIDs.MainnetID;
+export async function getCorethAddress(client: LuxWalletClient) {
+    const networkID = (await isTestnet(client)) ? networkIDs.TestnetID : networkIDs.MainnetID;
     const hrp = networkIDs.getHRP(networkID);
     const pubkeys = await client.request<
-        Extract<CoreWalletRpcSchema[number], { Method: 'avalanche_getAccountPubKey' }>
+        Extract<CoreWalletRpcSchema[number], { Method: 'lux_getAccountPubKey' }>
     >({
-        method: "avalanche_getAccountPubKey",
+        method: "lux_getAccountPubKey",
         params: []
     });
     return `C-${publicKeyToXPAddress(pubkeys.evm, hrp)}`;

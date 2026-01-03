@@ -1,4 +1,4 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 
 export type ConvertToL1Params = {
     managerAddress: string;
@@ -25,7 +25,7 @@ type ConvertToL1PChainOwner = {
     threshold: number;
 }
 
-export async function convertToL1(client: AvalancheWalletClient, params: ConvertToL1Params): Promise<string> {
+export async function convertToL1(client: LuxWalletClient, params: ConvertToL1Params): Promise<string> {
     // Convert validators from our format to SDK format
     const sdkValidators = params.validators.map(validator => ({
         nodeId: validator.nodeID,
@@ -34,8 +34,8 @@ export async function convertToL1(client: AvalancheWalletClient, params: Convert
             proofOfPossession: validator.nodePOP.proofOfPossession,
         },
         weight: validator.validatorWeight,
-        // SDK expects initialBalanceInAvax (number in AVAX), we have validatorBalance (bigint in nanoAVAX)
-        initialBalanceInAvax: Number(validator.validatorBalance) / 1e9,
+        // SDK expects initialBalanceInLux (number in LUX), we have validatorBalance (bigint in nanoLUX)
+        initialBalanceInLux: Number(validator.validatorBalance) / 1e9,
         remainingBalanceOwner: {
             addresses: validator.remainingBalanceOwner.addresses,
             threshold: validator.remainingBalanceOwner.threshold,
@@ -46,7 +46,7 @@ export async function convertToL1(client: AvalancheWalletClient, params: Convert
         },
     }));
 
-    // Prepare the transaction using Avalanche SDK
+    // Prepare the transaction using Lux SDK
     const txnRequest = await client.pChain.prepareConvertSubnetToL1Txn({
         subnetId: params.subnetId,
         blockchainId: params.chainId,

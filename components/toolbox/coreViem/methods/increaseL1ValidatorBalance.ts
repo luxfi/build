@@ -1,18 +1,18 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 
 export type IncreaseL1ValidatorBalanceParams = {
     validationId: string;
-    balanceInAvax: number;
+    balanceInLux: number;
 }
 
 export async function increaseL1ValidatorBalance(
-    client: AvalancheWalletClient, 
+    client: LuxWalletClient, 
     params: IncreaseL1ValidatorBalanceParams
 ): Promise<string> {
-    // Prepare the transaction using Avalanche SDK
+    // Prepare the transaction using Lux SDK
     const txnRequest = await client.pChain.prepareIncreaseL1ValidatorBalanceTxn({
         validationId: params.validationId,
-        balanceInAvax: params.balanceInAvax,
+        balanceInLux: params.balanceInLux,
     });
 
     // Send the transaction

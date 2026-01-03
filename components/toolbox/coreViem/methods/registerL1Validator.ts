@@ -1,26 +1,26 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 
 /**
- * Parameters for registering an L1 validator on the P-Chain.
+ * Parameters for registering an L1 validator on the Platform-Chain.
  */
 export type RegisterL1ValidatorParams = {
-    /** The initial balance for the validator in AVAX (e.g., "0.1"). */
+    /** The initial balance for the validator in LUX (e.g., "0.1"). */
     balance: string;
     /** The BLS Proof of Possession as a hex string (e.g., "0x..."). */
     blsProofOfPossession: string;
-    /** The signed Warp message from the C-Chain as a hex string (with or without "0x" prefix). */
+    /** The signed Warp message from the LUExchange-Chain as a hex string (with or without "0x" prefix). */
     signedWarpMessage: string;
 }
 
 /**
- * Sends a transaction to the P-Chain to register a new L1 validator.
+ * Sends a transaction to the Platform-Chain to register a new L1 validator.
  * This corresponds to the `registerOnPChain` step in the AddValidator component.
  *
- * @param client The Avalanche WalletClient instance.
+ * @param client The Lux WalletClient instance.
  * @param params The parameters required for the registration transaction.
- * @returns A promise that resolves to the P-Chain transaction ID.
+ * @returns A promise that resolves to the Platform-Chain transaction ID.
  */
-export async function registerL1Validator(client: AvalancheWalletClient, params: RegisterL1ValidatorParams): Promise<string> {
+export async function registerL1Validator(client: LuxWalletClient, params: RegisterL1ValidatorParams): Promise<string> {
     const { balance, blsProofOfPossession, signedWarpMessage } = params;
 
     // Ensure BLS Proof of Possession has '0x' prefix for SDK
@@ -29,9 +29,9 @@ export async function registerL1Validator(client: AvalancheWalletClient, params:
     // Ensure signedWarpMessage has '0x' prefix for SDK
     const message = signedWarpMessage.startsWith('0x') ? signedWarpMessage : `0x${signedWarpMessage}`;
 
-    // Prepare the transaction using Avalanche SDK
+    // Prepare the transaction using Lux SDK
     const txnRequest = await client.pChain.prepareRegisterL1ValidatorTxn({
-        initialBalanceInAvax: Number(balance),
+        initialBalanceInLux: Number(balance),
         blsSignature,
         message,
     });

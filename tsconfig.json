@@ -33,6 +33,24 @@
       ],
       "@console-header/*": [
         "components/toolbox/components/console-header/*"
+      ],
+      "@luxfi/cloud": [
+        "./lib/lux-wallet/index.ts"
+      ],
+      "@luxfi/cloud/chains": [
+        "./lib/lux-wallet/chains.ts"
+      ],
+      "@luxfi/cloud/accounts": [
+        "./lib/lux-wallet/accounts.ts"
+      ],
+      "@luxfi/cloud/methods/pChain": [
+        "./lib/lux-wallet/methods/pChain.ts"
+      ],
+      "@luxfi/cloud/methods/wallet": [
+        "./lib/lux-wallet/methods/wallet.ts"
+      ],
+      "@luxfi/cloud/methods/wallet/pChain": [
+        "./lib/lux-wallet/methods/wallet/pChain.ts"
       ]
     },
     "plugins": [

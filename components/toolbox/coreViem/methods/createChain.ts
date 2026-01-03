@@ -1,4 +1,4 @@
-import type { AvalancheWalletClient } from "@avalanche-sdk/client";
+import type { LuxWalletClient } from "@luxfi/cloud";
 import { getChains } from "../utils/glacier";
 
 export type CreateChainParams = {
@@ -10,11 +10,11 @@ export type CreateChainParams = {
     genesisData: string;
 }
 
-export async function createChain(client: AvalancheWalletClient, params: CreateChainParams): Promise<string> {
+export async function createChain(client: LuxWalletClient, params: CreateChainParams): Promise<string> {
     // Parse genesis data from string to object
     const genesisDataObject = JSON.parse(params.genesisData);
 
-    // Prepare the transaction using Avalanche SDK
+    // Prepare the transaction using Lux SDK
     const txnRequest = await client.pChain.prepareCreateChainTxn({
         chainName: params.chainName,
         subnetAuth: params.subnetAuth,

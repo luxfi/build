@@ -39,7 +39,7 @@ export async function getActiveRulesAt(
                     IsCancun: false,
                     IsVerkle: false,
                 },
-                avalancheRules: {
+                luxRules: {
                     IsSubnetEVM: false,
                     IsDurango: false,
                     IsEtna: false,

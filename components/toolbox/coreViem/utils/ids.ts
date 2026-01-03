@@ -1,8 +1,8 @@
 import { fromBytes } from "viem";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 
 /**
- * Parses an Avalanche NodeID string to its hex representation without the prefix and checksum
+ * Parses an Lux NodeID string to its hex representation without the prefix and checksum
  * @param nodeID The NodeID string (e.g. "NodeID-...")
  * @returns The hex string representation without the prefix and checksum
  */
