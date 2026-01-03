@@ -1,9 +1,9 @@
 {
-  "title": "Avalanche L1s",
+  "title": "Lux L1s",
   "defaultOpen": true,
   "pages": [
     "subnet-evm",
-    "avalanche-l1-configs"
+    "lux-l1-configs"
   ]
 }
 

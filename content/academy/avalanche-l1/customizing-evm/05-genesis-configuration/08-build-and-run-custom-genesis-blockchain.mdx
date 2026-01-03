@@ -14,7 +14,7 @@ icon: Terminal
 There's a simple build script in the Precompile-EVM we can utilize to build. First, make sure you are in the root folder of you Precompile-EVM:
 
 ```bash
-cd $GOPATH/src/github.com/ava-labs/precompile-evm
+cd $GOPATH/src/github.com/luxfi/precompile-evm
 ```
 
 Then run the command to initiate the build script:
@@ -28,12 +28,12 @@ Then run the command to initiate the build script:
 
 ### Create your blockchain configuration
 
-You can run your Precompile-EVM by using the Avalanche CLI.
+You can run your Precompile-EVM by using the Lux CLI.
 
 First, create the configuration for your blockchain:
 
 ```bash
-avalanche blockchain create myblockchain \
+lux blockchain create myblockchain \
  --custom \
  --vm $VM_PATH \
  --genesis "./.devcontainer/genesis-example.json" \
@@ -50,7 +50,7 @@ avalanche blockchain create myblockchain \
 ### Launch L1 with you customized EVM
 
 ```bash
-avalanche blockchain deploy myblockchain --local
+lux blockchain deploy myblockchain --local
 ```
 
 After around 1 minute, the blockchain should have been created, and additional output will appear in

@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: ChainExplorerPageProps): Prom
   // For custom chains, return generic metadata (actual name resolved client-side)
   if (!chain) {
     return {
-      title: "Custom Chain Explorer | Avalanche L1",
-      description: "Explore blockchain data on Avalanche.",
+      title: "Custom Chain Explorer | Lux L1",
+      description: "Explore blockchain data on Lux.",
     };
   }
   

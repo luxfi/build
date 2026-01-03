@@ -5,7 +5,7 @@ description: Complete reference for Admin, Info, Health, Index, and ProposerVM A
 
 ## Overview
 
-The Avalanche Client SDK provides access to node-level API methods through specialized API clients. These include administrative operations, informational queries, health monitoring, indexed blockchain data access, and ProposerVM operations.
+The Lux Client SDK provides access to node-level API methods through specialized API clients. These include administrative operations, informational queries, health monitoring, indexed blockchain data access, and ProposerVM operations.
 
 ## Admin API Client
 
@@ -44,11 +44,11 @@ interface AliasParameters {
 **Example:**
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -60,7 +60,7 @@ await client.admin.alias({
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/admin-rpc#adminalias)
+- [API Reference](https://build.lux.network/docs/rpcs/other/admin-rpc#adminalias)
 
 ---
 
@@ -103,7 +103,7 @@ await client.admin.aliasChain({
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/admin-rpc#adminaliaschain)
+- [API Reference](https://build.lux.network/docs/rpcs/other/admin-rpc#adminaliaschain)
 
 ---
 
@@ -145,7 +145,7 @@ console.log("Chain aliases:", aliases);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/admin-rpc#admingetchainaliases)
+- [API Reference](https://build.lux.network/docs/rpcs/other/admin-rpc#admingetchainaliases)
 
 ---
 
@@ -193,7 +193,7 @@ interface GetNetworkIDReturnType {
 
 | Property    | Type     | Description                                    |
 | ----------- | -------- | ---------------------------------------------- |
-| `networkID` | `string` | Network ID (1 for Mainnet, 5 for Fuji testnet) |
+| `networkID` | `string` | Network ID (1 for Mainnet, 5 for Testnet testnet) |
 
 **Example:**
 
@@ -203,13 +203,13 @@ const result = await client.info.getNetworkID();
 if (result.networkID === "1") {
   console.log("Connected to Mainnet");
 } else if (result.networkID === "5") {
-  console.log("Connected to Fuji testnet");
+  console.log("Connected to Testnet testnet");
 }
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetnetworkid)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetnetworkid)
 
 ---
 
@@ -237,7 +237,7 @@ interface GetNetworkNameReturnType {
 
 | Property      | Type     | Description                            |
 | ------------- | -------- | -------------------------------------- |
-| `networkName` | `string` | Network name (e.g., "mainnet", "fuji") |
+| `networkName` | `string` | Network name (e.g., "mainnet", "testnet") |
 
 **Example:**
 
@@ -248,7 +248,7 @@ console.log("Network:", result.networkName);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetnetworkname)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetnetworkname)
 
 ---
 
@@ -280,7 +280,7 @@ interface GetNodeVersionReturnType {
 
 | Property             | Type                  | Description                            |
 | -------------------- | --------------------- | -------------------------------------- |
-| `version`            | `string`              | Node version (e.g., "avalanche/1.9.4") |
+| `version`            | `string`              | Node version (e.g., "lux/1.9.4") |
 | `databaseVersion`    | `string`              | Database version                       |
 | `gitCommit`          | `string`              | Git commit hash                        |
 | `vmVersions`         | `Map<string, string>` | Map of VM IDs to their versions        |
@@ -297,7 +297,7 @@ console.log("VM versions:", Object.fromEntries(version.vmVersions));
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetnodeversion)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetnodeversion)
 
 ---
 
@@ -343,7 +343,7 @@ console.log("BLS Public Key:", nodeID.nodePOP.publicKey);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetnodeid)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetnodeid)
 
 ---
 
@@ -382,7 +382,7 @@ console.log("Node IP:", result.ip);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetnodeip)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetnodeip)
 
 ---
 
@@ -428,12 +428,12 @@ interface GetBlockchainIDReturnType {
 
 ```typescript
 const result = await client.info.getBlockchainID({ alias: "X" });
-console.log("X-Chain ID:", result.blockchainID);
+console.log("Exchange-Chain ID:", result.blockchainID);
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetblockchainid)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetblockchainid)
 
 ---
 
@@ -489,7 +489,7 @@ console.log("Create asset fee:", fees.createAssetTxFee);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogettxfee)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogettxfee)
 
 ---
 
@@ -530,7 +530,7 @@ console.log("Supported VMs:", vms.vms);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infogetvms)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infogetvms)
 
 ---
 
@@ -578,15 +578,15 @@ interface IsBootstrappedReturnType {
 const result = await client.info.isBootstrapped({ chain: "X" });
 
 if (result.isBootstrapped) {
-  console.log("X-Chain is bootstrapped");
+  console.log("Exchange-Chain is bootstrapped");
 } else {
-  console.log("X-Chain is still bootstrapping");
+  console.log("Exchange-Chain is still bootstrapping");
 }
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infoisbootstrapped)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infoisbootstrapped)
 
 ---
 
@@ -660,7 +660,7 @@ console.log("Peer details:", peers.peers);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infopeers)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infopeers)
 
 ---
 
@@ -702,7 +702,7 @@ console.log("Weighted average percentage:", uptime.weightedAveragePercentage);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infouptime)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infouptime)
 
 ---
 
@@ -748,14 +748,14 @@ interface UpgradesReturnType {
 | `apricotPhase2Time`            | `string`  | Timestamp of Apricot Phase 2 upgrade       |
 | `apricotPhase3Time`            | `string`  | Timestamp of Apricot Phase 3 upgrade       |
 | `apricotPhase4Time`            | `string`  | Timestamp of Apricot Phase 4 upgrade       |
-| `apricotPhase4MinPChainHeight` | `number`  | Minimum P-Chain height for Apricot Phase 4 |
+| `apricotPhase4MinPChainHeight` | `number`  | Minimum Platform-Chain height for Apricot Phase 4 |
 | `apricotPhase5Time`            | `string`  | Timestamp of Apricot Phase 5 upgrade       |
 | `apricotPhasePre6Time`         | `string`  | Timestamp of Apricot Phase Pre-6 upgrade   |
 | `apricotPhase6Time`            | `string`  | Timestamp of Apricot Phase 6 upgrade       |
 | `apricotPhasePost6Time`        | `string`  | Timestamp of Apricot Phase Post-6 upgrade  |
 | `banffTime`                    | `string`  | Timestamp of Banff upgrade                 |
 | `cortinaTime`                  | `string`  | Timestamp of Cortina upgrade               |
-| `cortinaXChainStopVertexID`    | `string`  | X-Chain stop vertex ID for Cortina upgrade |
+| `cortinaXChainStopVertexID`    | `string`  | Exchange-Chain stop vertex ID for Cortina upgrade |
 | `durangoTime`                  | `string`  | Timestamp of Durango upgrade               |
 | `etnaTime`                     | `string`  | Timestamp of Etna upgrade                  |
 | `fortunaTime`                  | `string?` | Timestamp of Fortuna upgrade (optional)    |
@@ -770,13 +770,13 @@ console.log("Banff upgrade:", upgrades.banffTime);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infoupgrades)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infoupgrades)
 
 ---
 
 ### acps
 
-Get peer preferences for Avalanche Community Proposals.
+Get peer preferences for Lux Community Proposals.
 
 **Function Signature:**
 
@@ -828,7 +828,7 @@ console.log("ACP preferences:", acps.acps);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/info-rpc#infoacps)
+- [API Reference](https://build.lux.network/docs/rpcs/other/info-rpc#infoacps)
 
 ---
 
@@ -941,12 +941,12 @@ const healthStatus = await client.health.health({
 });
 
 console.log("Node healthy:", healthStatus.healthy);
-console.log("C-Chain health:", healthStatus.checks.C);
+console.log("LUExchange-Chain health:", healthStatus.checks.C);
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/health-rpc#healthhealth)
+- [API Reference](https://build.lux.network/docs/rpcs/other/health-rpc#healthhealth)
 
 ---
 
@@ -990,7 +990,7 @@ if (livenessStatus.healthy) {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/health-rpc#healthliveness)
+- [API Reference](https://build.lux.network/docs/rpcs/other/health-rpc#healthliveness)
 
 ---
 
@@ -1056,7 +1056,7 @@ if (readinessStatus.healthy) {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/health-rpc#healthreadiness)
+- [API Reference](https://build.lux.network/docs/rpcs/other/health-rpc#healthreadiness)
 
 ---
 
@@ -1066,10 +1066,10 @@ Provides indexed blockchain data queries for fast container lookups.
 
 **Access:**
 
-- `client.indexBlock.pChain` - P-Chain block index
-- `client.indexBlock.cChain` - C-Chain block index
-- `client.indexBlock.xChain` - X-Chain block index
-- `client.indexTx.xChain` - X-Chain transaction index
+- `client.indexBlock.pChain` - Platform-Chain block index
+- `client.indexBlock.cChain` - LUExchange-Chain block index
+- `client.indexBlock.xChain` - Exchange-Chain block index
+- `client.indexTx.xChain` - Exchange-Chain transaction index
 
 ### getContainerByIndex
 
@@ -1133,7 +1133,7 @@ console.log("Container bytes:", container.bytes);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/index-rpc#indexgetcontainerbyindex)
+- [API Reference](https://build.lux.network/docs/rpcs/other/index-rpc#indexgetcontainerbyindex)
 
 ---
 
@@ -1198,7 +1198,7 @@ console.log("Container index:", container.index);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/index-rpc#indexgetcontainerbyid)
+- [API Reference](https://build.lux.network/docs/rpcs/other/index-rpc#indexgetcontainerbyid)
 
 ---
 
@@ -1274,7 +1274,7 @@ console.log("Containers:", range.containers.length);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/index-rpc#indexgetcontainerrange)
+- [API Reference](https://build.lux.network/docs/rpcs/other/index-rpc#indexgetcontainerrange)
 
 ---
 
@@ -1329,7 +1329,7 @@ console.log("Container index:", result.index);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/index-rpc#indexgetindex)
+- [API Reference](https://build.lux.network/docs/rpcs/other/index-rpc#indexgetindex)
 
 ---
 
@@ -1392,7 +1392,7 @@ console.log("Last accepted index:", lastAccepted.index);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/index-rpc#indexgetlastaccepted)
+- [API Reference](https://build.lux.network/docs/rpcs/other/index-rpc#indexgetlastaccepted)
 
 ---
 
@@ -1453,7 +1453,7 @@ if (result.isAccepted) {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/other/index-rpc#indexisaccepted)
+- [API Reference](https://build.lux.network/docs/rpcs/other/index-rpc#indexisaccepted)
 
 ---
 
@@ -1463,9 +1463,9 @@ Provides ProposerVM operations for each chain. ProposerVM is responsible for pro
 
 **Access:**
 
-- `client.proposerVM.pChain` - P-Chain ProposerVM
-- `client.proposerVM.xChain` - X-Chain ProposerVM
-- `client.proposerVM.cChain` - C-Chain ProposerVM
+- `client.proposerVM.pChain` - Platform-Chain ProposerVM
+- `client.proposerVM.xChain` - Exchange-Chain ProposerVM
+- `client.proposerVM.cChain` - LUExchange-Chain ProposerVM
 
 ### getProposedHeight
 
@@ -1497,18 +1497,18 @@ interface GetProposedHeightReturnType {
 
 ```typescript
 const pChainHeight = await client.proposerVM.pChain.getProposedHeight();
-console.log("P-Chain proposed height:", pChainHeight.height);
+console.log("Platform-Chain proposed height:", pChainHeight.height);
 
 const xChainHeight = await client.proposerVM.xChain.getProposedHeight();
-console.log("X-Chain proposed height:", xChainHeight.height);
+console.log("Exchange-Chain proposed height:", xChainHeight.height);
 
 const cChainHeight = await client.proposerVM.cChain.getProposedHeight();
-console.log("C-Chain proposed height:", cChainHeight.height);
+console.log("LUExchange-Chain proposed height:", cChainHeight.height);
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/api-reference/proposervm-api#proposervmgetproposedheight)
+- [API Reference](https://build.lux.network/docs/api-reference/proposervm-api#proposervmgetproposedheight)
 
 ---
 
@@ -1540,7 +1540,7 @@ interface GetCurrentEpochReturnType {
 | -------------- | -------- | --------------------------------------------- |
 | `number`       | `string` | The current epoch number                      |
 | `startTime`    | `string` | The epoch start time (Unix timestamp)         |
-| `pChainHeight` | `string` | The P-Chain height at the start of this epoch |
+| `pChainHeight` | `string` | The Platform-Chain height at the start of this epoch |
 
 **Example:**
 
@@ -1548,12 +1548,12 @@ interface GetCurrentEpochReturnType {
 const epoch = await client.proposerVM.pChain.getCurrentEpoch();
 console.log("Current epoch:", epoch.number);
 console.log("Epoch start time:", epoch.startTime);
-console.log("P-Chain height at epoch start:", epoch.pChainHeight);
+console.log("Platform-Chain height at epoch start:", epoch.pChainHeight);
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/api-reference/proposervm-api#proposervmgetcurrentepoch)
+- [API Reference](https://build.lux.network/docs/api-reference/proposervm-api#proposervmgetcurrentepoch)
 
 ---
 

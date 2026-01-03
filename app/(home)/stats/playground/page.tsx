@@ -686,8 +686,8 @@ function PlaygroundContent() {
     }
     if (savedLink) {
       const text = isOwner 
-        ? `check out my @avax ecosystem dashboard`
-        : `check out this @avax ecosystem dashboard`;
+        ? `check out my @lux ecosystem dashboard`
+        : `check out this @lux ecosystem dashboard`;
       const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(savedLink)}`;
       window.open(url, '_blank', 'noopener,noreferrer');
     }

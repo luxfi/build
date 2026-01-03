@@ -9,10 +9,10 @@ import { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, Brush, LineChart, Line } from "recharts";
 import { StatsBubbleNav } from "@/components/stats/stats-bubble.config";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { ChartWatermark } from "@/components/stats/ChartWatermark";
 
-interface AvaxSupplyData {
+interface LuxSupplyData {
   totalSupply: string;
   circulatingSupply: string;
   totalPBurned: string;
@@ -53,8 +53,8 @@ interface ICMFeesResponse {
 
 type Period = "D" | "W" | "M";
 
-export default function AvaxTokenPage() {
-  const [data, setData] = useState<AvaxSupplyData | null>(null);
+export default function LuxTokenPage() {
+  const [data, setData] = useState<LuxSupplyData | null>(null);
   const [cChainFees, setCChainFees] = useState<FeeDataPoint[]>([]);
   const [icmFees, setICMFees] = useState<FeeDataPoint[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,7 +71,7 @@ export default function AvaxTokenPage() {
       setError(null);
 
       const [supplyRes, cChainRes, icmRes] = await Promise.all([
-        fetch("/api/avax-supply"),
+        fetch("/api/lux-supply"),
         fetch("/api/chain-stats/43114?timeRange=all"),
         fetch("/api/icm-contract-fees?timeRange=all"),
       ]);
@@ -139,8 +139,8 @@ export default function AvaxTokenPage() {
     return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
   };
 
-  const formatUSD = (avaxAmount: string | number): string => {
-    const amount = typeof avaxAmount === "string" ? parseFloat(avaxAmount) : avaxAmount;
+  const formatUSD = (luxAmount: string | number): string => {
+    const amount = typeof luxAmount === "string" ? parseFloat(luxAmount) : luxAmount;
     const price = data?.price || 0;
     if (isNaN(amount) || price === 0) return "";
     const usdValue = amount * price;
@@ -294,23 +294,23 @@ export default function AvaxTokenPage() {
   const metrics = data
     ? [
         {
-          label: "AVAX Price",
+          label: "LUX Price",
           value: data.price > 0 ? `$${data.price.toFixed(2)}` : "N/A",
           fullValue: data.price > 0 ? `$${data.price.toFixed(4)}` : "N/A",
           icon: BadgeDollarSign,
           subtext:data.priceChange24h !== 0 ? `${data.priceChange24h > 0 ? "+" : ""}${data.priceChange24h.toFixed(2)}% (24h)` : "USD",
           color: data.priceChange24h >= 0 ? "#10B981" : "#EF4444",
-          tooltip: "Current AVAX price in USD from CoinGecko",
+          tooltip: "Current LUX price in USD from CoinGecko",
         },
         {
           label: "Total Supply",
           value: formatNumber(actualTotalSupply),
           fullValue: formatFullNumber(actualTotalSupply),
           icon: CircleDotDashed,
-          subtext: data.price > 0 ? formatUSD(actualTotalSupply) : "AVAX",
+          subtext: data.price > 0 ? formatUSD(actualTotalSupply) : "LUX",
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
-          color: "#E84142",
-          tooltip: "Total supply minus the burned tokens from P-Chain, C-Chain, and X-Chain",
+          color: "#FFFFFF",
+          tooltip: "Total supply minus the burned tokens from Platform-Chain, LUExchange-Chain, and Exchange-Chain",
         },
         {
           label: "Circulating Supply",
@@ -320,17 +320,17 @@ export default function AvaxTokenPage() {
           subtext: data.price > 0 ? formatUSD(data.circulatingSupply) : `${calculatePercentage(data.circulatingSupply, data.totalSupply)}% of total`,
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
           color: "#3752AC",
-          tooltip: "AVAX tokens actively circulating in the market",
+          tooltip: "LUX tokens actively circulating in the market",
         },
         {
           label: "Genesis Unlock",
           value: formatNumber(data.genesisUnlock),
           fullValue: formatFullNumber(data.genesisUnlock),
           icon: Unlock,
-          subtext: data.price > 0 ? formatUSD(data.genesisUnlock) : "AVAX",
+          subtext: data.price > 0 ? formatUSD(data.genesisUnlock) : "LUX",
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
-          color: "#E84142",
-          tooltip: "Amount of AVAX un during the genesis event",
+          color: "#FFFFFF",
+          tooltip: "Amount of LUX un during the genesis event",
         },
         {
           label: "Total Staked",
@@ -340,7 +340,7 @@ export default function AvaxTokenPage() {
           subtext:data.price > 0 ? formatUSD(data.totalStaked) : `${calculatePercentage(data.totalStaked, data.circulatingSupply)}% of circulating`,
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
           color: "#8B5CF6",
-          tooltip: "Total AVAX staked and delegated to validators on the Primary Network",
+          tooltip: "Total LUX staked and delegated to validators on the Primary Network",
         },
         {
           label: "Total Locked",
@@ -350,14 +350,14 @@ export default function AvaxTokenPage() {
           subtext: data.price > 0 ? formatUSD(data.totalLocked) : `${calculatePercentage(data.totalLocked, data.circulatingSupply)}% of circulating`,
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
           color: "#10B981",
-          tooltip: "Total AVAX locked in UTXOs on P-Chain and X-Chain",
+          tooltip: "Total LUX locked in UTXOs on Platform-Chain and Exchange-Chain",
         },
         {
           label: "Total Rewards",
           value: formatNumber(data.totalRewards),
           fullValue: formatFullNumber(data.totalRewards),
           icon: Award,
-          subtext: data.price > 0 ? formatUSD(data.totalRewards) : "AVAX",
+          subtext: data.price > 0 ? formatUSD(data.totalRewards) : "LUX",
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
           color: "#F59E0B",
           tooltip: "Cumulative staking rewards issued to validators and delegators",
@@ -373,7 +373,7 @@ export default function AvaxTokenPage() {
               : `${calculatePercentage((parseFloat(data.totalPBurned) + parseFloat(data.totalCBurned) + parseFloat(data.totalXBurned)).toString(), data.totalSupply)}% of genesis supply`,
           subtextTooltip: data.price > 0 ? "at current prices" : undefined,
           color: "#F59E0B",
-          tooltip: "Total AVAX burned across P-Chain, C-Chain, and X-Chain",
+          tooltip: "Total LUX burned across Platform-Chain, LUExchange-Chain, and Exchange-Chain",
         },
       ]
     : [];
@@ -381,21 +381,21 @@ export default function AvaxTokenPage() {
   const chainData = data
     ? [
         {
-          chain: "C-Chain",
+          chain: "LUExchange-Chain",
           burned: formatFullNumber(data.totalCBurned),
           percentage: parseFloat(calculatePercentage(data.totalCBurned,(parseFloat(data.totalPBurned) + parseFloat(data.totalCBurned) + parseFloat(data.totalXBurned)).toString())),
-          color: "bg-[#E84142]",
-          logo: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg",
+          color: "bg-[#FFFFFF]",
+          logo: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg",
         },
         {
-          chain: "P-Chain",
+          chain: "Platform-Chain",
           burned: formatFullNumber(data.totalPBurned),
           percentage: parseFloat(calculatePercentage(data.totalPBurned,(parseFloat(data.totalPBurned) + parseFloat(data.totalCBurned) + parseFloat(data.totalXBurned)).toString())),
           color: "bg-[#3752AC]",
           logo: "https://images.ctfassets.net/gcj8jwzm6086/42aMwoCLblHOklt6Msi6tm/1e64aa637a8cead39b2db96fe3225c18/pchain-square.svg",
         },
         {
-          chain: "X-Chain",
+          chain: "Exchange-Chain",
           burned: formatFullNumber(data.totalXBurned),
           percentage: parseFloat(calculatePercentage(data.totalXBurned,(parseFloat(data.totalPBurned) + parseFloat(data.totalCBurned) + parseFloat(data.totalXBurned)).toString())),
           color: "bg-[#10B981]",
@@ -458,14 +458,14 @@ export default function AvaxTokenPage() {
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div className="flex items-center gap-5">
               <div className="w-20 h-20 rounded-full bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center border border-neutral-200 dark:border-neutral-800 p-4">
-                <AvalancheLogo className="w-full h-full -mt-0.5" fill="currentColor"/>
+                <LuxLogo className="w-full h-full -mt-0.5" fill="currentColor"/>
               </div>
               <div>
-                <h1 className="text-5xl font-semibold tracking-tight text-black dark:text-white mb-2">Avalanche (AVAX)</h1>
+                <h1 className="text-5xl font-semibold tracking-tight text-black dark:text-white mb-2">Lux (LUX)</h1>
                 <div className="flex items-center gap-2 mt-2 flex-wrap">
                   <Badge variant="outline" className="bg-neutral-50 dark:bg-neutral-900">Native Token</Badge>
                   <a
-                    href="https://subnets.avax.network/x-chain/tx/FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z"
+                    href="https://subnets.lux.network/x-chain/tx/FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:opacity-80 transition-opacity"
@@ -482,7 +482,7 @@ export default function AvaxTokenPage() {
                     className="hover:opacity-80 transition-opacity"
                   >
                     <Badge variant="outline" className="bg-neutral-50 dark:bg-neutral-900 font-mono text-xs cursor-pointer flex items-center gap-1">
-                      WAVAX: 0xB31f...66c7
+                      WLUX: 0xB31f...66c7
                       <ArrowUpRight className="w-3 h-3" />
                     </Badge>
                   </a>
@@ -528,7 +528,7 @@ export default function AvaxTokenPage() {
                         <TooltipTrigger asChild>
                           <p
                             className={`text-xs mt-1 cursor-help ${
-                              metric.label === "AVAX Price"
+                              metric.label === "LUX Price"
                                 ? metric.color === "#10B981"
                                   ? "text-green-600 dark:text-green-400 font-semibold"
                                   : "text-red-600 dark:text-red-400 font-semibold"
@@ -545,7 +545,7 @@ export default function AvaxTokenPage() {
                     ) : (
                       <p
                         className={`text-xs mt-1 ${
-                          metric.label === "AVAX Price"
+                          metric.label === "LUX Price"
                             ? metric.color === "#10B981"
                               ? "text-green-600 dark:text-green-400 font-semibold"
                               : "text-red-600 dark:text-red-400 font-semibold"
@@ -569,7 +569,7 @@ export default function AvaxTokenPage() {
                     <div>
                       <h2 className="text-lg font-medium text-black dark:text-white">Network Fees Paid</h2>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        C-Chain and ICM contract fees over time
+                        LUExchange-Chain and ICM contract fees over time
                       </p>
                     </div>
                     <div className="flex gap-1">
@@ -616,7 +616,7 @@ export default function AvaxTokenPage() {
                           }}
                         />
                         <Tooltip
-                          cursor={{ fill: "#E8414220" }}
+                          cursor={{ fill: "#FFFFFF20" }}
                           content={({ active, payload }) => {
                             if (!active || !payload?.[0]) return null;
                             const formattedDate = formatTooltipDate(payload[0].payload.date);
@@ -627,12 +627,12 @@ export default function AvaxTokenPage() {
                                     {formattedDate}
                                   </div>
                                   <div className="text-xs flex items-center gap-1.5">
-                                    <div className="w-2 h-2 rounded bg-[#E84142]" />
+                                    <div className="w-2 h-2 rounded bg-[#FFFFFF]" />
                                     <span className="text-muted-foreground">
-                                      C-Chain:{" "}
+                                      LUExchange-Chain:{" "}
                                     </span>
                                     <span className="font-semibold">
-                                      {formatNumber(payload[0].payload.cChainFees)}{" "}AVAX
+                                      {formatNumber(payload[0].payload.cChainFees)}{" "}LUX
                                     </span>
                                   </div>
                                   <div className="text-xs flex items-center gap-1.5">
@@ -641,7 +641,7 @@ export default function AvaxTokenPage() {
                                       ICM:{" "}
                                     </span>
                                     <span className="font-semibold">
-                                      {formatNumber(payload[0].payload.icmFees)}{" "}AVAX
+                                      {formatNumber(payload[0].payload.icmFees)}{" "}LUX
                                     </span>
                                   </div>
                                 </div>
@@ -652,9 +652,9 @@ export default function AvaxTokenPage() {
                         <Bar
                           dataKey="cChainFees"
                           stackId="stack"
-                          fill="#E84142"
+                          fill="#FFFFFF"
                           radius={[0, 0, 0, 0]}
-                          name="C-Chain Fees"
+                          name="LUExchange-Chain Fees"
                         />
                         <Bar
                           dataKey="icmFees"
@@ -673,8 +673,8 @@ export default function AvaxTokenPage() {
                         <Brush
                           dataKey="date"
                           height={80}
-                          stroke="#E84142"
-                          fill="#E8414220"
+                          stroke="#FFFFFF"
+                          fill="#FFFFFF20"
                           alwaysShowText={false}
                           startIndex={brushIndexes?.startIndex ?? 0}
                           endIndex={
@@ -699,7 +699,7 @@ export default function AvaxTokenPage() {
                             <Line
                               type="monotone"
                               dataKey="cChainFees"
-                              stroke="#E84142"
+                              stroke="#FFFFFF"
                               strokeWidth={1}
                               dot={false}
                             />
@@ -737,7 +737,7 @@ export default function AvaxTokenPage() {
                                 {chain.chain}
                               </p>
                               <p className="text-xs text-muted-foreground">
-                                {chain.burned} AVAX
+                                {chain.burned} LUX
                               </p>
                             </div>
                           </div>
@@ -759,7 +759,7 @@ export default function AvaxTokenPage() {
                       <div className="flex items-center justify-between text-sm">
                         <span className="font-medium text-black dark:text-white">Total Burned</span>
                         <span className="font-bold font-mono text-black dark:text-white">
-                          {data && formatFullNumber(parseFloat(data.totalPBurned) + parseFloat(data.totalCBurned) + parseFloat(data.totalXBurned))}{" "}AVAX
+                          {data && formatFullNumber(parseFloat(data.totalPBurned) + parseFloat(data.totalCBurned) + parseFloat(data.totalXBurned))}{" "}LUX
                         </span>
                       </div>
                     </div>
@@ -784,7 +784,7 @@ export default function AvaxTokenPage() {
                       </div>
                       <div className="text-right">
                         <p className="text-lg font-mono font-semibold text-black dark:text-white">
-                          {formatNumber(data.l1ValidatorFees)} AVAX
+                          {formatNumber(data.l1ValidatorFees)} LUX
                         </p>
                         {data.price > 0 && (
                           <p className="text-xs text-neutral-600 dark:text-neutral-400 font-medium mt-0.5">
@@ -816,7 +816,7 @@ export default function AvaxTokenPage() {
                     </div>
                     <div className="text-right">
                       <p className="text-lg font-mono font-semibold text-black dark:text-white">
-                        {formatNumber(totalICMFees)} AVAX
+                        {formatNumber(totalICMFees)} LUX
                       </p>
                       {data && data.price > 0 && (
                         <p className="text-xs text-neutral-600 dark:text-neutral-400 font-medium mt-0.5">

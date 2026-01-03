@@ -8,7 +8,7 @@ icon: Terminal
 import ToolboxMdxWrapper from "@/components/toolbox/academy/wrapper/ToolboxMdxWrapper.tsx"
 import InitValidatorSet from "@/components/toolbox/console/permissioned-l1s/validator-manager-setup/InitValidatorSet.tsx"
 
-When converting an existing subnet to an L1 with sovereign validator management, you need to initialize the Validator Manager with the current validator set. This one-time operation bridges P-Chain subnet creation with L1 validator management using cryptographically verified conversion data.
+When converting an existing subnet to an L1 with sovereign validator management, you need to initialize the Validator Manager with the current validator set. This one-time operation bridges Platform-Chain subnet creation with L1 validator management using cryptographically verified conversion data.
 
 ![Validator Manager Deployment Initialize Validator Set](/common-images/permissioned-l1s/VMCDeploy6.png)
 
@@ -16,7 +16,7 @@ When converting an existing subnet to an L1 with sovereign validator management,
 
 ### Function Implementation
 
-You can view the full source code of the `initializeValidatorSet` function here: [ValidatorManager.sol#L211](https://github.com/ava-labs/icm-contracts/blob/ce85313c71f90282b390e685cb652e9b0150a4ae/contracts/validator-manager/ValidatorManager.sol#L211)
+You can view the full source code of the `initializeValidatorSet` function here: [ValidatorManager.sol#L211](https://github.com/luxfi/icm-contracts/blob/ce85313c71f90282b390e685cb652e9b0150a4ae/contracts/validator-manager/ValidatorManager.sol#L211)
 
 Here you will find pseudo-code that covers the main logic in the function:
 ```
@@ -26,8 +26,8 @@ initializeValidatorSet(conversionData, messageIndex):
     VERIFY blockchain ID matches current chain
     VERIFY validator manager address is correct
     
-    // 2. P-Chain Message Verification
-    GET conversion ID from P-Chain Warp message at messageIndex
+    // 2. Platform-Chain Message Verification
+    GET conversion ID from Platform-Chain Warp message at messageIndex
     COMPUTE hash of provided conversion data
     VERIFY hashes match (ensures data integrity)
     
@@ -49,11 +49,11 @@ initializeValidatorSet(conversionData, messageIndex):
     MARK validator set as initialized (permanent flag)
 ```
 
-### P-Chain Integration & Aggregated Signatures
+### Platform-Chain Integration & Aggregated Signatures
 
-The initialization leverages Avalanche Warp Messaging for security:
+The initialization leverages Lux Warp Messaging for security:
 
-1. **P-Chain Validators Sign** - The subnet's validators collectively sign the conversion data
+1. **Platform-Chain Validators Sign** - The subnet's validators collectively sign the conversion data
 2. **Aggregated Signature** - Creates a threshold signature proving consensus
 3. **Warp Precompile Verifies** - The signature is verified before the contract receives it
 4. **Contract Validates** - Additional checks ensure data integrity
@@ -63,7 +63,7 @@ The conversion ID is derived through:
 bytes32 conversionID = keccak256(abi.encode(conversionData));
 ```
 
-This ID must match the one in the P-Chain signed message, ensuring data hasn't been tampered with.
+This ID must match the one in the Platform-Chain signed message, ensuring data hasn't been tampered with.
 
 ## Understanding Conversion Data
 
@@ -78,7 +78,7 @@ struct ConversionData {
 }
 
 struct InitialValidator {
-    bytes nodeID;        // Validator's P-Chain node ID (e.g., "NodeID-...")
+    bytes nodeID;        // Validator's Platform-Chain node ID (e.g., "NodeID-...")
     bytes blsPublicKey;  // BLS public key for signature verification
     uint64 weight;       // Validator's voting weight
 }
@@ -87,7 +87,7 @@ struct InitialValidator {
 ### Required Information
 
 To initialize, you'll need:
-- **Conversion Data**: Current validator information from P-Chain
+- **Conversion Data**: Current validator information from Platform-Chain
 - **Message Index**: Position in the Warp message queue
 - **Proper Timing**: Must be done before other operations
 

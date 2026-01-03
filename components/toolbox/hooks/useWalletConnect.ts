@@ -1,5 +1,5 @@
 import { useWalletStore } from "../stores/walletStore";
-import { networkIDs } from "@avalabs/avalanchejs";
+import { networkIDs } from "luxfi";
 import { createCoreWalletClient } from "../coreViem";
 
 export function useWalletConnect() {
@@ -10,7 +10,7 @@ export function useWalletConnect() {
         setCoreEthAddress,
         setWalletChainId,
         setIsTestnet,
-        setAvalancheNetworkID,
+        setLuxNetworkID,
         setEvmChainName,
         updateAllBalances
     } = useWalletStore();
@@ -19,11 +19,11 @@ export function useWalletConnect() {
         if (typeof window === 'undefined') return;
 
         try {
-            if (!window.avalanche?.request) {
+            if (!window.lux?.request) {
                 return;
             }
 
-            const accounts = await window.avalanche.request<string[]>({
+            const accounts = await window.lux.request<string[]>({
                 method: 'eth_requestAccounts',
             });
 
@@ -54,7 +54,7 @@ export function useWalletConnect() {
                 }
                 if (typeof chainInfo?.isTestnet === 'boolean') {
                     setIsTestnet(chainInfo.isTestnet);
-                    setAvalancheNetworkID(chainInfo.isTestnet ? networkIDs.FujiID : networkIDs.MainnetID);
+                    setLuxNetworkID(chainInfo.isTestnet ? networkIDs.TestnetID : networkIDs.MainnetID);
                     setEvmChainName(chainInfo.chainName);
                 }
             } catch { }

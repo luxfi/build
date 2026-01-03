@@ -12,7 +12,7 @@ icon: BookOpen
 
 The first question to address is: How much should you pay a Relayer to ensure they are incentivized to deliver the message? The answer is straightforward but requires some analysis. The incentive should at least cover the expenses the Relayer will incur by delivering your message.
 
-As mentioned in previous lessons, a message will be considered delivered in the destination Chain if the Relayer sends at least the `requiredGasLimit` stated in the message, regardless of whether the execution succeeds or fails. Thus, the associated cost in $USD (or another asset like AVAX) that the Relayer will face to deliver your message is:  
+As mentioned in previous lessons, a message will be considered delivered in the destination Chain if the Relayer sends at least the `requiredGasLimit` stated in the message, regardless of whether the execution succeeds or fails. Thus, the associated cost in $USD (or another asset like LUX) that the Relayer will face to deliver your message is:  
 
 *Cost = requiredGasLimit * gas_price_in_native_token * native_token_price*
 
@@ -27,7 +27,7 @@ Excluding the Relayer's hosting costs, any Fee amount where *Costs < Income* wil
 Let's calculate the minimum fee that could incentivize a Relayer to pick and deliver a message.
 
 To simplify, consider the following assumptions:
-- We are sending a message from C-Chain to Dispatch.
+- We are sending a message from LUExchange-Chain to Dispatch.
 - ERC20 incentives will be paid in TLP.
 - DIS is the fee token in Bulletin.
 - Assume *DIS_price = TLP_price*.

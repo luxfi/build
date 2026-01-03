@@ -1,13 +1,13 @@
 # Docs Imported Directly from GitHub Repos
 
 Some pages, such as
-[Teleporter Overview](https://build.avax.network/docs/cross-chain/teleporter/overview),
+[Teleporter Overview](https://build.lux.network/docs/cross-chain/teleporter/overview),
 are maintained as MarkDown files directly in their respective GitHub repo, and imported into the docs.
 This is accomplished using a community-owned docusaurus plugin called [docusaurus-plugin-remote-content](https://github.com/rdilweb/docusaurus-plugin-remote-content?tab=readme-ov-file#docusaurus-plugin-remote-content). This guide goes into detail about how this is accomplished and how to maintain it.
 
 ## Requirements and Caveats
 
-- Each file imported in this matter **must be added** to the .gitignore to avoid storing directly in the builders-hub repository, and formatting/conflict issues.
+- Each file imported in this matter **must be added** to the .gitignore to avoid storing directly in the lux-build repository, and formatting/conflict issues.
 - All links included in imported files **must be tested**. For troubleshooting, see [The replaceRelativeLinks Function](#the-replacerelativelinks-function) section.
 - Markdown ([.md]) docs are imported _in their entirety._ Importing a single subsection or excluding certain information _is not possible._
 - These docs _by default_ will not be able to be translated by the github-translation-bot we employ.
@@ -57,7 +57,7 @@ Each of the arrays within this object will look like the following (based on the
       //docs/build/cross-chain/awm/deep-dive.md
       name: "awm-overview",
       sourceBaseUrl:
-        "https://raw.githubusercontent.com/ava-labs/avalanchego/master/vms/platformvm/warp/",
+        "https://raw.githubusercontent.com/luxfi/luxgo/master/vms/platformvm/warp/",
       documents: ["README.md"],
       outDir: "docs/build/cross-chain/awm/",
       // change file name and add metadata
@@ -65,14 +65,14 @@ Each of the arrays within this object will look like the following (based on the
         if (filename.includes("README")) {
           const updatedContent = replaceRelativeLinks(
             content,
-            "https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm/warp/"
+            "https://github.com/luxfi/luxgo/tree/master/vms/platformvm/warp/"
           );
           return {
             filename: "deep-dive.md",
             content: `---
-tags: [Avalanche Warp Messaging, AWM, cross-Avalanche L1 Communication, Cross-Chain Communication]
-description: Avalanche Warp Messaging (AWM) provides a primitive for cross-Avalanche L1 communication on the Avalanche Network.
-keywords: [ docs, documentation, avalanche, awm, cross-Avalanche L1 communication, cross-chain, cross-chain communication ]
+tags: [Lux Warp Messaging, AWM, cross-Lux L1 Communication, Cross-Chain Communication]
+description: Lux Warp Messaging (AWM) provides a primitive for cross-Lux L1 communication on the Lux Network.
+keywords: [ docs, documentation, lux, awm, cross-Lux L1 communication, cross-chain, cross-chain communication ]
 sidebar_label: Deep Dive
 ---
 
@@ -127,7 +127,7 @@ This function at the top of the file was created to correct relative links locat
 It works by:
 
 1. Looking for all relative links within the content of the [sourceBaseUrl](#sourcebaseurl)
-2. Replacing them with absolute links based on the second argument given to the function. In the content block below, the new base is given as `https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm/warp/`.
+2. Replacing them with absolute links based on the second argument given to the function. In the content block below, the new base is given as `https://github.com/luxfi/luxgo/tree/master/vms/platformvm/warp/`.
 
 **Note:** Yes, this will link the user to Github. This is _by design_. If we wanted to redirect the user to another part of the docs site,
 **every .md in every one of our external GH repos would need to have the exact file structure as their files appear in the docs**.
@@ -138,14 +138,14 @@ modifyContent(filename, content) {
         if (filename.includes("README")) {
           const updatedContent = replaceRelativeLinks(
             content,
-            "https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm/warp/"
+            "https://github.com/luxfi/luxgo/tree/master/vms/platformvm/warp/"
           );
           return {
             filename: "deep-dive.md",
             content: `---
-tags: [Avalanche Warp Messaging, AWM, cross-Avalanche L1 Communication, Cross-Chain Communication]
-description: Avalanche Warp Messaging (AWM) provides a primitive for cross-Avalanche L1 communication on the Avalanche Network.
-keywords: [ docs, documentation, avalanche, awm, cross-Avalanche L1 communication, cross-chain, cross-chain communication ]
+tags: [Lux Warp Messaging, AWM, cross-Lux L1 Communication, Cross-Chain Communication]
+description: Lux Warp Messaging (AWM) provides a primitive for cross-Lux L1 communication on the Lux Network.
+keywords: [ docs, documentation, lux, awm, cross-Lux L1 communication, cross-chain, cross-chain communication ]
 sidebar_label: Deep Dive
 sidebar_position: 1
 ---

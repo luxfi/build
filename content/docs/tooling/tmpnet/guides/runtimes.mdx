@@ -38,16 +38,16 @@ The Local Process Runtime is ideal for development and small-scale testing. For 
 
 ## Local Process Runtime
 
-The Local Process Runtime runs Avalanche nodes as operating system subprocesses on your local machine. Each node executes as an independent process with its own configuration, dynamically allocated ports, and isolated filesystem state.
+The Local Process Runtime runs Lux nodes as operating system subprocesses on your local machine. Each node executes as an independent process with its own configuration, dynamically allocated ports, and isolated filesystem state.
 
 ### How It Works
 
 When you create a network using the Local Process Runtime, tmpnet performs the following workflow:
 
-1. **Binary Validation** - Verifies the AvalancheGo binary exists at the configured path
+1. **Binary Validation** - Verifies the LuxGo binary exists at the configured path
 2. **Network Directory Creation** - Creates `~/.tmpnet/networks/[timestamp]/` with subdirectories for each node
 3. **Node Configuration** - Generates node-specific config files with dynamic port allocation
-4. **Process Spawning** - Launches each node via `exec.Command(avalancheGoPath, "--config-file", flagsPath)`
+4. **Process Spawning** - Launches each node via `exec.Command(luxGoPath, "--config-file", flagsPath)`
 5. **Health Monitoring** - Polls `GET /ext/health/liveness` until all nodes are ready
 
 Each node maintains its state in a dedicated directory structure:
@@ -76,8 +76,8 @@ The `ProcessRuntimeConfig` struct controls how the Local Process Runtime operate
 
 ```go
 type ProcessRuntimeConfig struct {
-    // Path to avalanchego binary (required)
-    AvalancheGoPath string
+    // Path to luxgo binary (required)
+    LuxGoPath string
 
     // Directory containing VM plugin binaries
     PluginDir string
@@ -89,25 +89,25 @@ type ProcessRuntimeConfig struct {
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `AvalancheGoPath` | Yes | Absolute path to the `avalanchego` binary executable |
-| `PluginDir` | No | Directory containing VM plugin binaries (defaults to `~/.avalanchego/plugins`) |
+| `LuxGoPath` | Yes | Absolute path to the `luxgo` binary executable |
+| `PluginDir` | No | Directory containing VM plugin binaries (defaults to `~/.luxgo/plugins`) |
 | `ReuseDynamicPorts` | No | Reuse the same API port when restarting nodes (default: `false`) |
 
 <Callout type="warning">
-The `AvalancheGoPath` must point to a compiled AvalancheGo binary. If you're building from source, run `./scripts/build.sh` before using tmpnet.
+The `LuxGoPath` must point to a compiled LuxGo binary. If you're building from source, run `./scripts/build.sh` before using tmpnet.
 </Callout>
 
 ### Quick Start
 
-First, ensure you have AvalancheGo built:
+First, ensure you have LuxGo built:
 
 ```bash
-# Clone and build AvalancheGo
-git clone https://github.com/ava-labs/avalanchego.git
-cd avalanchego
+# Clone and build LuxGo
+git clone https://github.com/luxfi/luxgo.git
+cd luxgo
 ./scripts/build.sh
 
-# The binary is now at ./build/avalanchego
+# The binary is now at ./build/luxgo
 ```
 
 Then create your network:
@@ -121,7 +121,7 @@ import (
     "log"
     "os"
 
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
 )
 
 func main() {
@@ -131,9 +131,9 @@ func main() {
     network := &tmpnet.Network{
         DefaultRuntimeConfig: tmpnet.NodeRuntimeConfig{
             Process: &tmpnet.ProcessRuntimeConfig{
-                // Use absolute path to your avalanchego binary
-                AvalancheGoPath:   os.Getenv("HOME") + "/avalanchego/build/avalanchego",
-                PluginDir:         os.Getenv("HOME") + "/.avalanchego/plugins",
+                // Use absolute path to your luxgo binary
+                LuxGoPath:   os.Getenv("HOME") + "/luxgo/build/luxgo",
+                PluginDir:         os.Getenv("HOME") + "/.luxgo/plugins",
                 ReuseDynamicPorts: true,
             },
         },
@@ -146,7 +146,7 @@ func main() {
         os.Stdout,
         network,
         "",  // Use default network directory
-        "",  // Use AvalancheGoPath from config
+        "",  // Use LuxGoPath from config
     ); err != nil {
         log.Fatal(err)
     }
@@ -192,11 +192,11 @@ The Kubernetes runtime implements tmpnet's network abstraction using native Kube
     subgraph K8s["Kubernetes Cluster"]
         subgraph SS["StatefulSet: tmpnet-network"]
             subgraph Pod0["Pod: node-0"]
-                AVA0["avalanchego"]
+                AVA0["luxgo"]
                 PVC0[("PVC-0")]
             end
             subgraph Pod1["Pod: node-1"]
-                AVA1["avalanchego"]
+                AVA1["luxgo"]
                 PVC1[("PVC-1")]
             end
         end
@@ -224,7 +224,7 @@ Before using the Kubernetes runtime:
 
 1. **Kubernetes Cluster**: KIND (recommended for local), Minikube, or cloud provider (GKE, EKS, AKS)
 2. **kubectl CLI**: Configured with cluster access
-3. **Container Registry Access**: For pulling `avaplatform/avalanchego` images
+3. **Container Registry Access**: For pulling `avaplatform/luxgo` images
 4. **RBAC Permissions**: Create/manage StatefulSets, Services, Ingress, PVCs
 
 ```bash
@@ -240,7 +240,7 @@ type KubeRuntimeConfig struct {
     ConfigPath             string  // kubeconfig path (default: ~/.kube/config)
     ConfigContext          string  // kubeconfig context to use
     Namespace              string  // target namespace
-    Image                  string  // avalanchego container image
+    Image                  string  // luxgo container image
     VolumeSizeGB           int     // PVC size in GB (minimum 2)
     UseExclusiveScheduling bool    // one pod per k8s node
     SchedulingLabelKey     string  // anti-affinity label key
@@ -254,7 +254,7 @@ type KubeRuntimeConfig struct {
 |-------|-------------|---------|
 | `ConfigContext` | Kubeconfig context | `"kind-tmpnet"` |
 | `Namespace` | Kubernetes namespace | `"tmpnet-test"` |
-| `Image` | Container image with tag | `"avaplatform/avalanchego:v1.11.0"` |
+| `Image` | Container image with tag | `"avaplatform/luxgo:v1.11.0"` |
 | `VolumeSizeGB` | PVC size per node | `10` |
 | `UseExclusiveScheduling` | One pod per k8s node | `true` |
 | `IngressHost` | External access hostname | `"localhost:30791"` |
@@ -288,7 +288,7 @@ import (
     "log"
     "os"
 
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
 )
 
 func main() {
@@ -300,7 +300,7 @@ func main() {
             Kube: &tmpnet.KubeRuntimeConfig{
                 ConfigContext: "kind-tmpnet",
                 Namespace:     "tmpnet-demo",
-                Image:         "avaplatform/avalanchego:latest",
+                Image:         "avaplatform/luxgo:latest",
                 VolumeSizeGB:  5,
                 IngressHost:   "localhost:30791",
             },
@@ -367,7 +367,7 @@ if config.UseExclusiveScheduling {
 | **Persistence** | `~/.tmpnet/networks/` | PersistentVolumeClaims |
 | **Port Access** | localhost:dynamic | Ingress or port-forward |
 | **Best For** | Development, quick tests | CI/CD, scale testing |
-| **Prerequisites** | AvalancheGo binary | Kubernetes cluster |
+| **Prerequisites** | LuxGo binary | Kubernetes cluster |
 | **OS Support** | macOS, Linux | Any with kubectl |
 
 <Callout type="tip">
@@ -386,7 +386,7 @@ The e2e framework provides a `TestEnvironment` abstraction that makes tests port
 
 ```go
 import (
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
 )
 
 var _ = ginkgo.Describe("[Cross-Runtime Tests]", func() {
@@ -415,7 +415,7 @@ Runtime selection is controlled by:
 
 ### Bootstrap Monitor for Continuous Testing
 
-The **bootstrap monitor** is a Kubernetes-based tool for continuous bootstrap testing on persistent networks (mainnet, fuji). It validates that new AvalancheGo versions can successfully sync from genesis.
+The **bootstrap monitor** is a Kubernetes-based tool for continuous bootstrap testing on persistent networks (mainnet, testnet). It validates that new LuxGo versions can successfully sync from genesis.
 
 **Architecture:**
 
@@ -424,7 +424,7 @@ StatefulSet: bootstrap-monitor
 ├── Init Container: bootstrap-monitor init
 │   └── Prepares configuration and data directory
 ├── Containers:
-│   ├── avalanchego (primary)
+│   ├── luxgo (primary)
 │   │   └── Runs node with sync monitoring
 │   └── bootstrap-monitor wait-for-completion (sidecar)
 │       └── Polls health and emits completion status
@@ -438,7 +438,7 @@ StatefulSet: bootstrap-monitor
 |------|--------------|----------|----------|
 | `full-sync` | P, X, C (full) | Hours-days | Complete validation |
 | `c-chain-state-sync` | P, X (full), C (state) | 1-3 hours | Fast comprehensive test |
-| `p-chain-full-sync-only` | P (full) | 30-60 min | P-Chain validation only |
+| `p-chain-full-sync-only` | P (full) | 30-60 min | Platform-Chain validation only |
 
 ### Monitoring Integration
 
@@ -482,7 +482,7 @@ For detailed troubleshooting of runtime-specific issues, see the [Troubleshootin
 
 **Local Runtime - Port Conflicts:**
 ```bash
-pkill -f avalanchego
+pkill -f luxgo
 lsof -i :9650-9660
 ```
 

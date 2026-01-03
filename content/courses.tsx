@@ -26,7 +26,7 @@ const officialCourses: Course[] = [
         tools: [],
         instructors: ["Martin Eckardt", "Ash", "Katherine Sullivan"],
         category: "Fundamentals",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Intro to Solidity",
@@ -41,9 +41,9 @@ const officialCourses: Course[] = [
         category: "Fundamentals",
     },
     {
-        name: "Avalanche Fundamentals",
-        description: "Get a high level overview of Avalanche Consensus, L1s and VMs",
-        slug: "avalanche-fundamentals",
+        name: "Lux Fundamentals",
+        description: "Get a high level overview of Lux Consensus, L1s and VMs",
+        slug: "lux-fundamentals",
         icon: <Triangle />,
         status: "featured",
         duration: "1 hour",
@@ -51,11 +51,11 @@ const officialCourses: Course[] = [
         tools: ["L1 Toolbox"],
         instructors: ["Martin Eckardt", "Ash", "Nicolas Arnedo"],
         category: "Fundamentals",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "x402 Payment Infrastructure",
-        description: "Learn about the x402 protocol for instant, permissionless HTTP-native payments on Avalanche",
+        description: "Learn about the x402 protocol for instant, permissionless HTTP-native payments on Lux",
         slug: "x402-payment-infrastructure",
         icon: <Coins />,
         status: "featured",
@@ -64,11 +64,11 @@ const officialCourses: Course[] = [
         tools: ["Thirdweb x402", "PayAI", "Ultravioleta DAO", "x402-rs"],
         instructors: ["Federico Nardelli"],
         category: "Fundamentals",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Interchain Messaging",
-        description: "Utilize Avalanche Interchain Messaging to build cross-chain dApps in the Avalanche network",
+        description: "Utilize Lux Interchain Messaging to build cross-chain dApps in the Lux network",
         slug: "interchain-messaging",
         icon: <MailIcon />,
         status: "featured",
@@ -77,11 +77,11 @@ const officialCourses: Course[] = [
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Nicolas Arnedo"], // + Usman
         category: "Interoperability",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "ERC-20 to ERC-20 Bridge",
-        description: "Learn how to bridge ERC-20 tokens between Avalanche L1s using Interchain Token Transfer",
+        description: "Learn how to bridge ERC-20 tokens between Lux L1s using Interchain Token Transfer",
         slug: "erc20-bridge",
         icon: <ArrowLeftRight />,
         status: "featured",
@@ -90,11 +90,11 @@ const officialCourses: Course[] = [
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren", "Sarp"],
         category: "Interoperability",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Interchain Token Transfer",
-        description: "Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
+        description: "Deploy Lux Interchain Token Transfer to transfer assets between Lux blockchains",
         slug: "interchain-token-transfer",
         icon: <ArrowLeftRight />,
         status: "normal",
@@ -103,7 +103,7 @@ const officialCourses: Course[] = [
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren", "Sarp"],
         category: "Interoperability",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Customizing the EVM",
@@ -112,37 +112,37 @@ const officialCourses: Course[] = [
         icon: <SquareCode />,
         duration: "4 hours",
         status: "featured",
-        tools: ["Avalanche CLI"],
+        tools: ["Lux CLI"],
         languages: ["Go"],
         instructors: ["Martin Eckardt", "Ash"],
         category: "L1 Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "L1 Native Tokenomics",
-        description: "Learn how to design and deploy tokenomics for your Avalanche L1",
+        description: "Learn how to design and deploy tokenomics for your Lux L1",
         slug: "l1-native-tokenomics",
         icon: <Coins />,
         duration: "2 hours",
         status: "featured",
-        tools: ["Avalanche CLI", "ICM"],
+        tools: ["Lux CLI", "ICM"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Owen Wahlgren", "Sarp", "Nicolas Arnedo"],
         category: "L1 Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Permissioned L1s",
-        description: "Learn how to create and manage permissioned blockchains with Proof of Authority on Avalanche",
+        description: "Learn how to create and manage permissioned blockchains with Proof of Authority on Lux",
         slug: "permissioned-l1s",
         icon: <SquareStackIcon />,
         duration: "2 hours",
         status: "featured",
-        tools: ["Validator Manager", "P-Chain", "ICM"],
+        tools: ["Validator Manager", "Platform-Chain", "ICM"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Owen Wahlgren", "Nicolas Arnedo"],
         category: "L1 Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Permissionless L1s",
@@ -151,15 +151,15 @@ const officialCourses: Course[] = [
         icon: <SquareStackIcon />,
         duration: "2 hours",
         status: "featured",
-        tools: ["Validator Manager", "P-Chain", "ICM"],
+        tools: ["Validator Manager", "Platform-Chain", "ICM"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Owen Wahlgren", "Nicolas Arnedo"],
         category: "L1 Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "AvaCloud APIs",
-        description: "Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
+        description: "Learn how to leverage AvaCloud APIs to build web apps on Lux",
         slug: "avacloudapis",
         icon: <SquareCode />,
         duration: "1 hour",
@@ -168,7 +168,7 @@ const officialCourses: Course[] = [
         languages: ["Typescript"],
         instructors: ["Owen Wahlgren"],
         category: "Smart Contract Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Solidity Programming with Foundry",
@@ -181,7 +181,7 @@ const officialCourses: Course[] = [
         languages: ["Solidity"],
         instructors: ["Andrea Vargas"],
         category: "Smart Contract Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "HyperSDK",
@@ -194,11 +194,11 @@ const officialCourses: Course[] = [
         languages: ["Go", "Typescript"],
         instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt", "Owen Wahlgren"],
         category: "L1 Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Chainlink on your L1 via ICM",
-        description: "Utilize Interchain Messaging to make Chainlink services available on any blockchain in the Avalanche Network",
+        description: "Utilize Interchain Messaging to make Chainlink services available on any blockchain in the Lux Network",
         slug: "icm-chainlink",
         icon: <HexagonIcon />,
         status: "featured",
@@ -207,7 +207,7 @@ const officialCourses: Course[] = [
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"],
         category: "Interoperability",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     {
         name: "Foundations of a Web3 Venture",
@@ -220,7 +220,7 @@ const officialCourses: Course[] = [
         tools: ["Entrepreneur"],
         instructors: ["Michael Martin", "Doro Unger-Lee", "Nicolas Arnedo"],
         category: "Entrepreneur",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-certificates/FillableAvalanche_EntrepreneurAcademy_Certificate_FW3V_R1.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-certificates/FillableLux_EntrepreneurAcademy_Certificate_FW3V_R1.pdf"
     },
     {
         name: "Go-to-Market Strategist",
@@ -233,7 +233,7 @@ const officialCourses: Course[] = [
         tools: ["Entrepreneur"],
         instructors: ["Michael Martin", "Doro Unger-Lee", "Nicolas Arnedo"],
         category: "Entrepreneur",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-certificates/FillableAvalanche_EntrepreneurAcademy_Certificate_W3GTM_R1.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-certificates/FillableLux_EntrepreneurAcademy_Certificate_W3GTM_R1.pdf"
     },
     {
         name: "Web3 Community Architect",
@@ -246,7 +246,7 @@ const officialCourses: Course[] = [
         tools: ["Entrepreneur"],
         instructors: ["Michael Martin", "Doro Unger-Lee", "Nicolas Arnedo"],
         category: "Entrepreneur",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-certificates/FillableAvalanche_EntrepreneurAcademy_Certificate_W3CA_R1.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-certificates/FillableLux_EntrepreneurAcademy_Certificate_W3CA_R1.pdf"
     },
     {
         name: "Fundraising & Finance Pro",
@@ -259,7 +259,7 @@ const officialCourses: Course[] = [
         tools: ["Entrepreneur"],
         instructors: ["Michael Martin", "Doro Unger-Lee", "Nicolas Arnedo"],
         category: "Entrepreneur",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-certificates/FillableAvalanche_EntrepreneurAcademy_Certificate_W3FFP_R1.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-certificates/FillableLux_EntrepreneurAcademy_Certificate_W3FFP_R1.pdf"
     },
     {
         name: "Encrypted ERC",
@@ -272,11 +272,11 @@ const officialCourses: Course[] = [
         languages: ["Solidity"],
         instructors: ["Alejandro Soto"],
         category: "Smart Contract Development",
-        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/AvalancheAcademy_Certificate.pdf"
+        certificateTemplate: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/LuxAcademy_Certificate.pdf"
     },
     /*{
         name:"Chainlink VRF with Interchain Messaging ",
-        description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Avalanche Network",
+        description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Lux Network",
         slug:"teleporter-chainlink-vrf",
         icon: Dice3Icon,
         status: "featured",
@@ -290,7 +290,7 @@ const officialCourses: Course[] = [
         slug:"hypersdk",
         icon: Blocks,
         duration: "4 hours",
-        tools: ["Avalanche-CLI"],
+        tools: ["Lux-CLI"],
         languages: ["Go"]
      },*/
 ];
@@ -298,20 +298,20 @@ const officialCourses: Course[] = [
 const ecosystemCourses: Course[] = [
     /*{
         name:"Run a Gogopool Minipool",
-        description:"A Minipool represents a validator that is jointly funded equally by AVAX borrowed from liquid stakers and AVAX contribution from the minipool operator. Thanks to Minipool design architecture, users can become validators on the Avalanche network with nearly half the usual AVAX requirement.",
+        description:"A Minipool represents a validator that is jointly funded equally by LUX borrowed from liquid stakers and LUX contribution from the minipool operator. Thanks to Minipool design architecture, users can become validators on the Lux network with nearly half the usual LUX requirement.",
         slug:"gogopool-minipool",
         icon: Blocks,
         duration: "2 hours",
-        tools: ["Avalanche-CLI"],
+        tools: ["Lux-CLI"],
         languages: ["Go"]
    },
    {
-        name:"Use Safe on an Avalanche Chain",
-        description:"Secure your multi-sig wallet with Safe on a Avalanche L1.",
-        slug:"safe-on-an-avalanche-chain",
+        name:"Use Safe on an Lux Chain",
+        description:"Secure your multi-sig wallet with Safe on a Lux L1.",
+        slug:"safe-on-an-lux-chain",
         icon: Blocks,
         duration: "4 hours",
-        tools: ["Avalanche-CLI"],
+        tools: ["Lux-CLI"],
         languages: ["Go"]
    }*/
 ];
@@ -350,7 +350,7 @@ export const getCourseNameMapping = () => {
 export default {
     official: officialCourses.filter((course) => ["normal", "featured"].includes(course.status) && course.category !== "Entrepreneur"),
     official_featured: officialCourses.filter((course) => course.status === "featured" && course.category !== "Entrepreneur"),
-    avalancheEntrepreneur: entrepreneurCourses,
+    luxEntrepreneur: entrepreneurCourses,
     ecosystem: ecosystemCourses,
 };
 

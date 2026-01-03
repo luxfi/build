@@ -18,17 +18,17 @@ export function useWrappedNativeToken(): WrappedNativeTokenHook {
   const viemChain = useViemChainStore();
   const contractAddress = useWrappedNativeTokenAddress();
   const { notify } = useConsoleNotifications();
-  const { avalancheWalletClient } = useWallet();
+  const { luxWalletClient } = useWallet();
 
   // Use the generic ERC20 hook for standard ERC20 functions
   const erc20Token = useERC20Token(contractAddress, WrappedNativeToken.abi);
 
   const deposit = async (amount: string): Promise<string> => {
-    if (!avalancheWalletClient || !contractAddress || !walletEVMAddress || !viemChain) {
+    if (!luxWalletClient || !contractAddress || !walletEVMAddress || !viemChain) {
       throw new Error('Wallet not connected or contract not ready');
     }
 
-    const writePromise = avalancheWalletClient.writeContract({
+    const writePromise = luxWalletClient.writeContract({
       address: contractAddress as `0x${string}`,
       abi: WrappedNativeToken.abi,
       functionName: 'deposit',
@@ -46,11 +46,11 @@ export function useWrappedNativeToken(): WrappedNativeTokenHook {
   };
 
   const withdraw = async (amount: string): Promise<string> => {
-    if (!avalancheWalletClient || !contractAddress || !walletEVMAddress || !viemChain) {
+    if (!luxWalletClient || !contractAddress || !walletEVMAddress || !viemChain) {
       throw new Error('Wallet not connected or contract not ready');
     }
 
-    const writePromise = avalancheWalletClient.writeContract({
+    const writePromise = luxWalletClient.writeContract({
       address: contractAddress as `0x${string}`,
       abi: WrappedNativeToken.abi,
       functionName: 'withdraw',

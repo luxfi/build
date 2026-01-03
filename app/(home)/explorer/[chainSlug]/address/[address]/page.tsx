@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: AddressPageProps): Promise<Me
   if (!chain) {
     return {
       title: `Address ${shortAddress} | Custom Chain Explorer`,
-      description: "View address details on Avalanche.",
+      description: "View address details on Lux.",
     };
   }
   

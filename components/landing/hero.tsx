@@ -168,7 +168,7 @@ function RotatingText() {
     // Show only first word on server-side render to prevent flash
     return (
       <span className="text-rotator min-w-[140px] sm:min-w-[180px] lg:min-w-[220px] xl:min-w-[280px] h-[1.3em] text-center lg:text-left inline-block">
-        <div className="h-[1.3em] flex items-center justify-center lg:justify-start bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent font-black tracking-tighter whitespace-nowrap">
+        <div className="h-[1.3em] flex items-center justify-center lg:justify-start bg-gradient-to-r from-zinc-600 to-zinc-500 dark:from-zinc-300 dark:to-zinc-400 bg-clip-text text-transparent font-black tracking-tighter whitespace-nowrap">
           {words[0]}
         </div>
       </span>
@@ -181,14 +181,14 @@ function RotatingText() {
         {words.map((word, index) => (
           <div 
             key={index}
-            className="h-[1.3em] flex items-center justify-center lg:justify-start bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent font-black tracking-tighter whitespace-nowrap"
+            className="h-[1.3em] flex items-center justify-center lg:justify-start bg-gradient-to-r from-zinc-600 to-zinc-500 dark:from-zinc-300 dark:to-zinc-400 bg-clip-text text-transparent font-black tracking-tighter whitespace-nowrap"
           >
             {word}
           </div>
         ))}
         {/* Duplicate first word for smooth loop */}
-        <div 
-          className="h-[1.3em] flex items-center justify-center lg:justify-start bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent font-black tracking-tighter whitespace-nowrap"
+        <div
+          className="h-[1.3em] flex items-center justify-center lg:justify-start bg-gradient-to-r from-zinc-600 to-zinc-500 dark:from-zinc-300 dark:to-zinc-400 bg-clip-text text-transparent font-black tracking-tighter whitespace-nowrap"
         >
           {words[0]}
         </div>
@@ -223,7 +223,7 @@ export default function Hero() {
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] sm:leading-[0.95] lg:leading-[0.9] xl:leading-[0.85]">
                 <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent dark:from-white dark:via-slate-100 dark:to-white animate-gradient-shift">
-                Builder Hub
+                Lux Build
                 </span>
               </h1>
               
@@ -240,7 +240,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start items-center">
               <Link
                 href="/academy"
-                className="group premium-button inline-flex items-center justify-center px-8 py-4 text-lg sm:text-base font-bold tracking-[-0.015em] rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-[1.02] transition-all duration-300 dark:shadow-blue-500/50 dark:hover:shadow-blue-500/70 min-w-[160px]"
+                className="group premium-button inline-flex items-center justify-center px-8 py-4 text-lg sm:text-base font-bold tracking-[-0.015em] rounded-xl bg-white text-zinc-900 shadow-xl shadow-zinc-500/20 hover:shadow-2xl hover:shadow-zinc-500/30 hover:scale-[1.02] transition-all duration-300 dark:bg-white dark:text-zinc-900 dark:shadow-white/20 dark:hover:shadow-white/40 min-w-[160px] border border-zinc-200 dark:border-zinc-300"
               >
                 <GraduationCap className="w-6 h-6 sm:w-5 sm:h-5 mr-3" />
                 Start Learning

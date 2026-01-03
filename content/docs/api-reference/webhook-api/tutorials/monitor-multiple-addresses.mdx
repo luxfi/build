@@ -13,7 +13,7 @@ A single webhook can monitor multiple addresses, you don't need to create one we
 Let's start by creating a new webhook to monitor all USDC and USDT activity:
 
 ```bash
-curl --location 'https://glacier-api.avax.network/v1/webhooks' \
+curl --location 'https://glacier-api.lux.network/v1/webhooks' \
 --header 'x-glacier-api-key: <YOUR_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -61,7 +61,7 @@ It returns the following:
 With the webhook `id` we can add more addresses. In this case, let's add the contract addresses for JOE and PNG:
 
 ```bash
-curl --location --request PATCH 'https://glacier-api.avax.network/v1/webhooks/401da7d9-d6d7-46c8-b431-72ff1e1543f4/addresses' \
+curl --location --request PATCH 'https://glacier-api.lux.network/v1/webhooks/401da7d9-d6d7-46c8-b431-72ff1e1543f4/addresses' \
 --header 'x-glacier-api-key: <YOUR_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -79,7 +79,7 @@ Following that, we will begin to receive events from the four smart contracts in
 To remove addresses, simply send an array:
 
 ```bash
-curl --location --request DELETE 'https://glacier-api.avax.network/v1/webhooks/401da7d9-d6d7-46c8-b431-72ff1e1543f4/addresses' \
+curl --location --request DELETE 'https://glacier-api.lux.network/v1/webhooks/401da7d9-d6d7-46c8-b431-72ff1e1543f4/addresses' \
 --header 'x-glacier-api-key: <YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{

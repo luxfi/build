@@ -100,7 +100,7 @@ interface ICTTDashboardProps {
 }
 
 const COLORS = [
-  "#E84142",
+  "#FFFFFF",
   "#3B82F6",
   "#10B981",
   "#F59E0B",
@@ -119,7 +119,7 @@ function OverviewCards({
   data: OverviewData | null;
   totalICMMessages?: number;
 }) {
-  const themeColor = "#E84142";
+  const themeColor = "#FFFFFF";
 
   const formatValue = (num: number): string => {
     if (num >= 1e9) {
@@ -318,7 +318,7 @@ function TokenTransferChart({ data }: { data: TokenData[] | null }) {
                   );
                 }}
               />
-              <Bar dataKey="value" fill="#E84142" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="value" fill="#FFFFFF" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -791,7 +791,7 @@ export function ICTTDashboard({
             Interchain Token Transfer (ICTT) Analytics
           </h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Comprehensive token transfer metrics across Avalanche L1s
+            Comprehensive token transfer metrics across Lux L1s
           </p>
         </div>
       )}

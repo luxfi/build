@@ -1,6 +1,6 @@
 import { parseAbiItem, hexToBytes } from 'viem';
 import { unpackRegisterL1ValidatorPayload, calculateValidationID, SolidityValidationPeriod } from '@/components/toolbox/coreViem/utils/convertWarp';
-import { utils } from '@avalabs/avalanchejs';
+import { utils } from 'luxfi';
 import { Buffer } from 'buffer'; // Import Buffer
 import { sha256 } from '@noble/hashes/sha256'; // Import sha256
 

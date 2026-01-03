@@ -1,6 +1,6 @@
 ---
 title: System Requirements
-description: Hardware, storage, and networking requirements for running Avalanche nodes on the Primary Network and Avalanche L1s.
+description: Hardware, storage, and networking requirements for running Lux nodes on the Primary Network and Lux L1s.
 ---
 
 ## Primary Network Validators
@@ -45,7 +45,7 @@ If you're unsure which tier applies to you: start with low-stake specs and monit
 
 ---
 
-## Avalanche L1 Validators
+## Lux L1 Validators
 
 L1 validators run your own blockchain with custom parameters. Hardware requirements depend on your chain's transaction throughput and state size.
 
@@ -59,18 +59,18 @@ L1 validators run your own blockchain with custom parameters. Hardware requireme
 | **OS** | Ubuntu 22.04 LTS or macOS ≥ 12 | Ubuntu 22.04 LTS or macOS ≥ 12 | Ubuntu 22.04 LTS or macOS ≥ 12 |
 
 <Callout>
-L1 validators sync the P-Chain to track validator sets and cross-chain messages. This adds minimal overhead to the requirements above.
+L1 validators sync the Platform-Chain to track validator sets and cross-chain messages. This adds minimal overhead to the requirements above.
 </Callout>
 
 ---
 
 ## Networking
 
-AvalancheGo requires inbound connections on port `9651`. Before installation, ensure your networking environment is properly configured.
+LuxGo requires inbound connections on port `9651`. Before installation, ensure your networking environment is properly configured.
 
 ### IPv4 and IPv6 Support
 
-AvalancheGo supports both IPv4 and IPv6:
+LuxGo supports both IPv4 and IPv6:
 - **IPv4**: Fully supported and most common
 - **IPv6**: Fully supported - your node can operate exclusively on IPv6 or dual-stack
 - **Dual-stack**: You can run both IPv4 and IPv6 simultaneously
@@ -90,7 +90,7 @@ Residential connections typically have dynamic IPs. You'll need to:
 2. Consider a dynamic DNS service if your IP changes frequently
 
 <Callout>
-A fully connected Avalanche node maintains thousands of live TCP connections. Under-powered home routers may struggle with this load, causing lag on other devices or node synchronization issues.
+A fully connected Lux node maintains thousands of live TCP connections. Under-powered home routers may struggle with this load, causing lag on other devices or node synchronization issues.
 </Callout>
 
 ---

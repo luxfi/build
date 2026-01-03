@@ -16,12 +16,12 @@ Once you have set up your Chainlink VRF subscription and have your LINK tokens r
 ## Prerequisites
 Before deployment, make sure you have:
 - A valid **Chainlink VRF Subscription ID** (see previous section for details).
-- The `TeleporterMessenger` contract address on your supported L1 (e.g., Avalanche Fuji).
+- The `TeleporterMessenger` contract address on your supported L1 (e.g., Lux Testnet).
 </Step>
 <Step>
 
 ## Deploy the Contract
-Using the `forge create` command, deploy the `CrossChainVRFWrapper` contract to the supported L1 (e.g., Avalanche Fuji).
+Using the `forge create` command, deploy the `CrossChainVRFWrapper` contract to the supported L1 (e.g., Lux Testnet).
 
 ```bash
 forge create --rpc-url <RPC_URL> --private-key <PRIVATE_KEY> --broadcast --constructor-args <TELEPORTER_MESSENGER_ADDRESS> src/CrossChainVRFWrapper.sol:CrossChainVRFWrapper

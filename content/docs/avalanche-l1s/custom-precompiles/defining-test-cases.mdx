@@ -5,13 +5,13 @@ description: In this section, we will go over the different ways we can write te
 
 ## Adding Config Tests
 
-Precompile generation tool generates skeletons for unit tests as well. Generated config tests will be under [`./precompile/contracts/helloworld/config_test.go`](https://github.com/ava-labs/subnet-evm/blob/helloworld-official-tutorial-v2/precompile/contracts/helloworld/config_test.go) for Subnet-EVM and [`./helloworld/config_test.go`](https://github.com/ava-labs/precompile-evm/blob/hello-world-example/helloworld/config_test.go) for Precompile-EVM. There are mainly two functions we need to test: `Verify` and `Equal`. `Verify` checks if the precompile is configured correctly. `Equal` checks if the precompile is equal to another precompile. Generated `Verify` tests contain a valid case.
+Precompile generation tool generates skeletons for unit tests as well. Generated config tests will be under [`./precompile/contracts/helloworld/config_test.go`](https://github.com/luxfi/subnet-evm/blob/helloworld-official-tutorial-v2/precompile/contracts/helloworld/config_test.go) for Subnet-EVM and [`./helloworld/config_test.go`](https://github.com/luxfi/precompile-evm/blob/hello-world-example/helloworld/config_test.go) for Precompile-EVM. There are mainly two functions we need to test: `Verify` and `Equal`. `Verify` checks if the precompile is configured correctly. `Equal` checks if the precompile is equal to another precompile. Generated `Verify` tests contain a valid case.
 
-You can add more invalid cases depending on your implementation. `Equal` tests generate some invalid cases to test different timestamps, types, and AllowList cases. You can check each `config_test.go` files for other precompiles under the Subnet-EVM's [`./precompile/contracts`](https://github.com/ava-labs/subnet-evm/blob/helloworld-official-tutorial-v2/precompile/contracts/) directory for more examples.
+You can add more invalid cases depending on your implementation. `Equal` tests generate some invalid cases to test different timestamps, types, and AllowList cases. You can check each `config_test.go` files for other precompiles under the Subnet-EVM's [`./precompile/contracts`](https://github.com/luxfi/subnet-evm/blob/helloworld-official-tutorial-v2/precompile/contracts/) directory for more examples.
 
 ## Adding Contract Tests
 
-The tool also generates contract tests to make sure our precompile is working correctly. Generated tests include cases to test allow list capabilities, gas costs, and calling functions in read-only mode. You can check other `contract_test.go` files in the `/precompile/contracts`. Hello World contract tests will be under [`./precompile/contracts/helloworld/contract_test.go`](https://github.com/ava-labs/subnet-evm/blob/helloworld-official-tutorial-v2/precompile/contracts/helloworld/contract_test.go) for Subnet-EVM and [`./helloworld/contract_test.go`](https://github.com/ava-labs/precompile-evm/blob/hello-world-example/helloworld/contract_test.go) for Precompile-EVM.
+The tool also generates contract tests to make sure our precompile is working correctly. Generated tests include cases to test allow list capabilities, gas costs, and calling functions in read-only mode. You can check other `contract_test.go` files in the `/precompile/contracts`. Hello World contract tests will be under [`./precompile/contracts/helloworld/contract_test.go`](https://github.com/luxfi/subnet-evm/blob/helloworld-official-tutorial-v2/precompile/contracts/helloworld/contract_test.go) for Subnet-EVM and [`./helloworld/contract_test.go`](https://github.com/luxfi/precompile-evm/blob/hello-world-example/helloworld/contract_test.go) for Precompile-EVM.
 
 We will also add more test to cover functionalities of `sayHello()` and `setGreeting()`. Contract tests are defined in a standard structure that each test can customize to their needs. The test structure is as follows:
 
@@ -62,7 +62,7 @@ Each test can populate the fields of the `PrecompileTest` struct to customize th
 
 This is only applicable for direct Subnet-EVM forks as test files are not directly exported in Golang. If you use Precompile-EVM you can skip this step.
 
-VM tests are tests that run the precompile by calling it through the Subnet-EVM. These are the most comprehensive tests that we can run. If your precompile modifies how the Subnet-EVM works, for example changing blockchain rules, you should add a VM test. For example, you can take a look at the `TestRewardManagerPrecompileSetRewardAddress` function in [here](https://github.com/ava-labs/subnet-evm/blob/helloworld-official-tutorial-v2/plugin/evm/vm_test.go#L2772).
+VM tests are tests that run the precompile by calling it through the Subnet-EVM. These are the most comprehensive tests that we can run. If your precompile modifies how the Subnet-EVM works, for example changing blockchain rules, you should add a VM test. For example, you can take a look at the `TestRewardManagerPrecompileSetRewardAddress` function in [here](https://github.com/luxfi/subnet-evm/blob/helloworld-official-tutorial-v2/plugin/evm/vm_test.go#L2772).
 
 For this Hello World example, we don't modify any Subnet-EVM rules, so we don't need to add any VM tests.
 
@@ -145,14 +145,14 @@ contract ExampleHelloWorldTest is AllowListTest {
 ```
 </Tab>
 <Tab value="Precompile-EVM">
-For Precompile-EVM, you should import AllowListTest with `@avalabs/subnet-evm-contracts` NPM package:
+For Precompile-EVM, you should import AllowListTest with `@luxfi/subnet-evm-contracts` NPM package:
 
 ```solidity
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 import "../ExampleHelloWorld.sol";
 import "../interfaces/IHelloWorld.sol";
-import "@avalabs/subnet-evm-contracts/contracts/test/AllowListTest.sol";
+import "@luxfi/subnet-evm-contracts/contracts/test/AllowListTest.sol";
 
 contract ExampleHelloWorldTest is AllowListTest {
   IHelloWorld helloWorld = IHelloWorld(HELLO_WORLD_ADDRESS);
@@ -194,14 +194,14 @@ contract ExampleHelloWorldTest is AllowListTest {
 
 ## Adding DS-Test Case
 
-We can now trigger this test contract via `hardhat` tests. The test script uses Subnet-EVM's `test` framework test in `./contracts/test`. You can find more information about the test framework [here](https://github.com/ava-labs/subnet-evm/blob/helloworld-official-tutorial-v2/contracts/test/utils.ts). We also can test the events emitted by the precompile. The test script looks like this:
+We can now trigger this test contract via `hardhat` tests. The test script uses Subnet-EVM's `test` framework test in `./contracts/test`. You can find more information about the test framework [here](https://github.com/luxfi/subnet-evm/blob/helloworld-official-tutorial-v2/contracts/test/utils.ts). We also can test the events emitted by the precompile. The test script looks like this:
 
 <Tabs items={['Subnet-EVM', 'Precompile-EVM']}>
 <Tab value="Subnet-EVM">
 The test script looks like this:
 
 ```go
-// (c) 2019-2022, Ava Labs, Inc. All rights reserved.
+// (c) 2019-2022, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 import { expect } from "chai";
@@ -286,14 +286,14 @@ describe("IHelloWorld events", function () {
 The test script looks like this:
 
 ```go 
-// (c) 2019-2022, Ava Labs, Inc. All rights reserved.
+// (c) 2019-2022, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 import { expect } from "chai";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { Contract } from "ethers";
 import { ethers } from "hardhat";
-import { test } from "@avalabs/subnet-evm-contracts";
+import { test } from "@luxfi/subnet-evm-contracts";
 
 // make sure this is always an admin for hello world precompile
 const ADMIN_ADDRESS = "0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC";

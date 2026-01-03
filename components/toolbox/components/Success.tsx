@@ -26,12 +26,12 @@ export const Success = ({ label, value, isTestnet = true, xpChain = "P" }: Succe
     const getExplorerUrl = () => {
         if (isPChainTxId) {
             if (xpChain === "P") {
-                // P-Chain uses external explorer
-                const baseUrl = isTestnet ? "https://subnets-test.avax.network" : "https://subnets.avax.network";
+                // Platform-Chain uses external explorer
+                const baseUrl = isTestnet ? "https://subnets-test.lux.network" : "https://subnets.lux.network";
                 return `${baseUrl}/p-chain/tx/${value}`;
             } else {
-                // C-Chain uses internal explorer
-                return `/explorer/avalanche-c-chain/tx/${value}`;
+                // LUExchange-Chain uses internal explorer
+                return `/explorer/lux-c-chain/tx/${value}`;
             }
         }
         return null;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { networkIDs } from "@avalabs/avalanchejs";
+import { networkIDs } from "luxfi";
 import { getBlockchainInfo, getSubnetInfo } from "@/components/toolbox/coreViem/utils/glacier";
 import InputSubnetId from "@/components/toolbox/components/InputSubnetId";
 import BlockchainDetailsDisplay from "@/components/toolbox/components/BlockchainDetailsDisplay";
@@ -11,11 +11,11 @@ interface CreateNodeFormProps {
     onClose: () => void;
     onSubmit: (subnetId: string, blockchainId: string) => void;
     onError: (title: string, message: string, isLoginError?: boolean) => void;
-    avalancheNetworkID: number;
+    luxNetworkID: number;
     isRegistering: boolean;
 }
 
-export default function CreateNodeForm({ onClose, onSubmit, onError, avalancheNetworkID, isRegistering }: CreateNodeFormProps) {
+export default function CreateNodeForm({ onClose, onSubmit, onError, luxNetworkID, isRegistering }: CreateNodeFormProps) {
     const [subnetId, setSubnetId] = useState("");
     const [subnet, setSubnet] = useState<any>(null);
     const [blockchainInfo, setBlockchainInfo] = useState<any>(null);
@@ -109,7 +109,7 @@ export default function CreateNodeForm({ onClose, onSubmit, onError, avalancheNe
                             key={blockchain.blockchainId}
                             blockchain={{
                                 ...blockchain,
-                                isTestnet: avalancheNetworkID === networkIDs.FujiID
+                                isTestnet: luxNetworkID === networkIDs.TestnetID
                             }}
                             isLoading={isLoading}
                             customTitle={`${blockchain.blockchainName} Blockchain Details`}

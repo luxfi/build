@@ -16,7 +16,7 @@ The cost of executing a transaction is determined by the gas units consumed and 
 Transaction Cost = Gas Units * Gas Price
 ```
 
-For EVM Avalanche L1s, gas payment can be configured to better suit the use case of the Avalanche L1. This means that the Avalanche L1 design can decide whether the gas fees are burned, paid to incentivize validators, or used for any other custom behavior.
+For EVM Lux L1s, gas payment can be configured to better suit the use case of the Lux L1. This means that the Lux L1 design can decide whether the gas fees are burned, paid to incentivize validators, or used for any other custom behavior.
 
 ## Purpose
 
@@ -26,7 +26,7 @@ The primary goal of setting and enforcing computational costs via gas is to prev
 
 Each transaction specifies the gas price and gas limit:
 
-**`Gas Price`:** The gas price is the amount of the Avalanche L1's native token that the sender is willing to spend per unit of gas, typically denoted in `gwei` (1 native token = 1,000,000,000 `gwei`). A well-designed gas mechanism adapts the gas price according to network activity to protect the network from spam.
+**`Gas Price`:** The gas price is the amount of the Lux L1's native token that the sender is willing to spend per unit of gas, typically denoted in `gwei` (1 native token = 1,000,000,000 `gwei`). A well-designed gas mechanism adapts the gas price according to network activity to protect the network from spam.
 
 **`Gas Limit`:** The gas limit is the maximum amount of gas the sender is willing to use for the transaction. It was introduced to prevent infinite loops in contract execution. In a Turing-complete language like Solidity (the main programming language in the EVM), it is possible to write a contract with an infinite loop, either accidentally or intentionally. While an infinite loop might be a nuisance in traditional computing, it could cause significant issues in a decentralized blockchain by causing the network to hang as it attempts to process a never-ending transaction. The gas limit prevents this by halting execution once the gas consumed reaches the limit.
 

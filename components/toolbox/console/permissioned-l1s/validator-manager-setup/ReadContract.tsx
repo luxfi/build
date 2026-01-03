@@ -77,7 +77,7 @@ function ReadContract({ onSuccess }: BaseConsoleToolProps) {
     setIsReading(true)
     setEventLogs({})
 
-    if (!proxyAddress || !window.avalanche) return
+    if (!proxyAddress || !window.lux) return
 
     try {
       // Read all view functions

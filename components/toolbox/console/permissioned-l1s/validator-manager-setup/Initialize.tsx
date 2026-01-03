@@ -7,7 +7,7 @@ import { Input } from "@/components/toolbox/components/Input";
 import { ResultField } from "@/components/toolbox/components/ResultField";
 import { AbiEvent } from 'viem';
 import ValidatorManagerABI from "@/contracts/icm-contracts/compiled/ValidatorManager.json";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import SelectSubnetId from "@/components/toolbox/components/SelectSubnetId";
 import { EVMAddressInput } from "@/components/toolbox/components/EVMAddressInput";
 import { useViemChainStore } from "@/components/toolbox/stores/toolboxStore";
@@ -71,7 +71,7 @@ function Initialize({ onSuccess }: BaseConsoleToolProps) {
 
 
     async function checkIfInitialized() {
-        if (!managerAddress || !window.avalanche) return;
+        if (!managerAddress || !window.lux) return;
 
         setIsChecking(true);
         try {
@@ -196,7 +196,7 @@ function Initialize({ onSuccess }: BaseConsoleToolProps) {
                     <Step>
                         <h2 className="text-lg font-semibold">Select Subnet/L1 for the Validator Manager</h2>
                         <p className="text-sm text-gray-500">
-                            Enter the SubnetID of the Subnet/L1 this Validator Manager contract will manage the validators for. The P-Chain will only accept validator set changes from the Validator Manager contract addresses and blockchainID combination that was indicated in the ConvertSubnetToL1Tx.
+                            Enter the SubnetID of the Subnet/L1 this Validator Manager contract will manage the validators for. The Platform-Chain will only accept validator set changes from the Validator Manager contract addresses and blockchainID combination that was indicated in the ConvertSubnetToL1Tx.
                         </p>
                         <SelectSubnetId
                             value={subnetId}

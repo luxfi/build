@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 interface CoinGeckoResponse {
-  "avalanche-2": {
+  "lux-2": {
     usd: number;
     usd_24h_change: number;
   };
@@ -10,14 +10,14 @@ interface CoinGeckoResponse {
 export async function GET() {
   try {
     const [supplyResponse, priceResponse] = await Promise.all([
-      fetch("https://data-api.avax.network/v1/avax/supply", {
+      fetch("https://data-api.lux.network/v1/lux/supply", {
         headers: {
           accept: "application/json",
         },
         next: { revalidate: 86400 }, // 24 hours - supply data changes slowly
       }),
       fetch(
-        "https://api.coingecko.com/api/v3/simple/price?ids=avalanche-2&vs_currencies=usd&include_24hr_change=true",
+        "https://api.coingecko.com/api/v3/simple/price?ids=lux-2&vs_currencies=usd&include_24hr_change=true",
         {
           headers: {
             Accept: "application/json",
@@ -28,7 +28,7 @@ export async function GET() {
     ]);
 
     if (!supplyResponse.ok) {
-      throw new Error(`Failed to fetch AVAX supply data: ${supplyResponse.status}`);
+      throw new Error(`Failed to fetch LUX supply data: ${supplyResponse.status}`);
     }
 
     const supplyData = await supplyResponse.json();
@@ -42,8 +42,8 @@ export async function GET() {
       try {
         const priceJson: CoinGeckoResponse = await priceResponse.json();
         priceData = {
-          price: priceJson["avalanche-2"]?.usd || 0,
-          change24h: priceJson["avalanche-2"]?.usd_24h_change || 0,
+          price: priceJson["lux-2"]?.usd || 0,
+          change24h: priceJson["lux-2"]?.usd_24h_change || 0,
         };
       } catch (priceError) {
         console.warn("Failed to parse price data:", priceError);
@@ -58,9 +58,9 @@ export async function GET() {
       priceChange24h: priceData.change24h,
     });
   } catch (error) {
-    console.error("Error fetching AVAX supply:", error);
+    console.error("Error fetching LUX supply:", error);
     return NextResponse.json(
-      { error: "Failed to fetch AVAX supply data" },
+      { error: "Failed to fetch LUX supply data" },
       { status: 500 }
     );
   }

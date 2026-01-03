@@ -52,7 +52,7 @@ const SubmissionPreview = ({ hackathon }: { hackathon: any }) => {
           <h3 className='text-xl font-semibold mb-2'>Evaluation Criteria</h3>
           <p className='text-sm'>
             Projects will be judged on value proposition, technical complexity
-            and usage of Avalanche technologies
+            and usage of Lux technologies
           </p>
         </div>
 
@@ -62,7 +62,7 @@ const SubmissionPreview = ({ hackathon }: { hackathon: any }) => {
             Submission Process
           </h3>
           <p className='text-sm text-zinc-50'>
-            Submit your project through the Avalanche Builder Hub, add your
+            Submit your project through the Lux Lux Build, add your
             team members, and upload your GitHub repo, presentation slides along with any other file that support your submission.
           </p>
         </div>
@@ -139,7 +139,7 @@ export default function HackathonPreview({ hackathonData, isRegistered = false, 
     location: hackathonData.location || 'Online',
     total_prizes: hackathonData.total_prizes || 0,
     tags: hackathonData.tags || [],
-    banner: hackathonData.banner || "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/main_banner_img-crBsoLT7R07pdstPKvRQkH65yAbpFX.png",
+    banner: hackathonData.banner || "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/main_banner_img-crBsoLT7R07pdstPKvRQkH65yAbpFX.png",
     participants: hackathonData.participants || 0,
     organizers: hackathonData.organizers || '',
     small_banner: '',

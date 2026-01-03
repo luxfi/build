@@ -1,5 +1,5 @@
 import { getPChainBalance, getNativeTokenBalance, getChains } from '../coreViem/utils/glacier';
-import { avalancheFuji, avalanche } from 'viem/chains';
+import { luxTestnet, lux } from 'viem/chains';
 
 // Local debounce function
 function debounce<T extends (...args: any[]) => any>(
@@ -132,7 +132,7 @@ class BalanceService {
     };
   }
 
-  // P-Chain balance fetching
+  // Platform-Chain balance fetching
   async fetchPChainBalance(isTestnet: boolean, pChainAddress: string): Promise<number> {
     if (!pChainAddress) return 0;
 
@@ -141,7 +141,7 @@ class BalanceService {
       const response = await getPChainBalance(network, pChainAddress);
       return Number(response.balances.unlockedUnstaked[0]?.amount || 0) / 1e9;
     } catch (error) {
-      console.error('Failed to fetch P-Chain balance:', error);
+      console.error('Failed to fetch Platform-Chain balance:', error);
       return 0;
     }
   }
@@ -173,12 +173,12 @@ class BalanceService {
     }
   }
 
-  // C-Chain balance fetching
+  // LUExchange-Chain balance fetching
   async fetchCChainBalance(isTestnet: boolean, walletEVMAddress: string): Promise<number> {
     if (!walletEVMAddress) return 0;
 
     try {
-      const chain = isTestnet ? avalancheFuji : avalanche;
+      const chain = isTestnet ? luxTestnet : lux;
       const balance = await getNativeTokenBalance(chain.id, walletEVMAddress);
       return Number(balance.balance) / (10 ** balance.decimals);
     } finally {

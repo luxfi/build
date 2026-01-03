@@ -1,6 +1,6 @@
 import { type LinkItemType } from 'fumadocs-ui/layouts/docs';
 import { MainItemType, type BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { AvalancheLogo } from '@/components/navigation/avalanche-logo';
+import { LuxLogo } from '@/components/navigation/lux-logo';
 import {
   Sprout,
   Logs,
@@ -63,7 +63,7 @@ export const integrationsMenu: LinkItemType = {
       icon: <Cloud />,
       text: 'Blockchain-as-a-Service',
       description:
-        'Managed solutions for deploying and managing your Avalanche L1s.',
+        'Managed solutions for deploying and managing your Lux L1s.',
       url: '/integrations#Blockchain%20as%20a%20Service',
       menu: {
         className: 'lg:col-start-3',
@@ -93,7 +93,7 @@ export const integrationsMenu: LinkItemType = {
       icon: <ArrowUpRight />,
       text: 'Browse All Integrations',
       description:
-        'Discover all available integrations in the Avalanche ecosystem.',
+        'Discover all available integrations in the Lux ecosystem.',
       url: '/integrations',
       menu: {
         className: 'lg:col-start-3 lg:row-start-2',
@@ -111,7 +111,7 @@ export const blogMenu: LinkItemType = {
       icon: <BookOpen />,
       text: 'Latest Articles',
       description:
-        'Read the latest guides, tutorials, and insights from the Avalanche ecosystem.',
+        'Read the latest guides, tutorials, and insights from the Lux ecosystem.',
       url: '/guides',
     },
     {
@@ -158,20 +158,20 @@ export const stats: LinkItemType = {
     },
     {
       icon: <Logs />,
-      text: "Avalanche L1s",
+      text: "Lux L1s",
       url: "/stats/overview",
       description:
-      "View the latest metrics for all Avalanche L1s in the network.",
+      "View the latest metrics for all Lux L1s in the network.",
       menu: {
         className: 'lg:col-start-2 lg:row-start-1',
       },
     },
     {
       icon: <Network />,
-      text: "C-Chain",
+      text: "LUExchange-Chain",
       url: "/stats/l1/c-chain",
       description:
-      "View the latest metrics for the Avalanche C-Chain.",
+      "View the latest metrics for the Lux LUExchange-Chain.",
       menu: {
         className: 'lg:col-start-2 lg:row-start-2',
       },
@@ -181,7 +181,7 @@ export const stats: LinkItemType = {
       text: "Primary Network Validators",
       url: "/stats/validators/c-chain",
       description:
-      "View the latest metrics for the Avalanche Primary Network validators.",
+      "View the latest metrics for the Lux Primary Network validators.",
       menu: {
         className: 'lg:col-start-3 lg:row-start-1',
       },
@@ -205,7 +205,7 @@ export const docsMenu: LinkItemType = {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-               src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-banner/multi-chain-architecture-lFotxOCNkXx0jUw9EGIaxnfdyuTb9G.jpg"
+               src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-banner/multi-chain-architecture-lFotxOCNkXx0jUw9EGIaxnfdyuTb9G.jpg"
                alt='Preview'
                width={900}
                height={400}
@@ -220,14 +220,14 @@ export const docsMenu: LinkItemType = {
       },
       icon: <Sprout />,
       text: 'Primary Network',
-      description: 'Connect to Avalanche and start building dApps',
+      description: 'Connect to Lux and start building dApps',
       url: '/docs/primary-network',
     },
     {
       icon: <Computer />,
       text: 'Nodes & Validators',
       description:
-        "Learn about setting up, configuring and maintaining Avalanche nodes and validators.",
+        "Learn about setting up, configuring and maintaining Lux nodes and validators.",
       url: '/docs/nodes',
       menu: {
         className: 'lg:col-start-2',
@@ -237,7 +237,7 @@ export const docsMenu: LinkItemType = {
       icon: <Database />,
       text: 'Data APIs',
       description:
-        'Explore the Data, Metrics, and Webhook APIs for the C-Chain, P-Chain, and X-Chain.',
+        'Explore the Data, Metrics, and Webhook APIs for the LUExchange-Chain, Platform-Chain, and Exchange-Chain.',
       url: '/docs/api-reference/data-api',
       menu: {
         className: 'lg:col-start-2',
@@ -247,7 +247,7 @@ export const docsMenu: LinkItemType = {
       icon: <GitBranch />,
       text: 'ACPs',
       description:
-        "Explore Avalanche's Community Proposals (ACPs) for network improvements and best practices.",
+        "Explore Lux's Community Proposals (ACPs) for network improvements and best practices.",
       url: '/docs/acps',
       menu: {
         className: 'lg:col-start-3 lg:row-start-1',
@@ -257,7 +257,7 @@ export const docsMenu: LinkItemType = {
       icon: <Code />,
       text: 'Developer Tools',
       description:
-        'Explore the Avalanche SDKs, CLI, and more.',
+        'Explore the Lux SDKs, CLI, and more.',
       url: '/docs/tooling',
       menu: {
         className: 'lg:col-start-3 lg:row-start-2',
@@ -267,7 +267,7 @@ export const docsMenu: LinkItemType = {
     //   icon: <ArrowUpRight />,
     //   text: 'Browse All Tools',
     //   description:
-    //     'Explore all available developer tools in the Avalanche ecosystem.',
+    //     'Explore all available developer tools in the Lux ecosystem.',
     //   url: '/docs/tooling',
     // },
   ],
@@ -283,7 +283,7 @@ export const academyMenu: LinkItemType = {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-banner/avalanche-fundamentals-skz9GZ84gSJ7MPvkSrbiNlnK5F7suB.jpg"}
+              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-banner/lux-fundamentals-skz9GZ84gSJ7MPvkSrbiNlnK5F7suB.jpg"}
               alt='Preview'
               width={900}
               height={400}
@@ -297,17 +297,17 @@ export const academyMenu: LinkItemType = {
         className: 'md:row-span-2',
       },
       icon: <Sprout />,
-      text: 'Avalanche L1 Academy',
+      text: 'Lux L1 Academy',
       description:
-        'Master blockchain development with comprehensive courses on Avalanche fundamentals, L1s, and advanced topics',
-      url: '/academy?path=avalanche-l1',
+        'Master blockchain development with comprehensive courses on Lux fundamentals, L1s, and advanced topics',
+      url: '/academy?path=lux-l1',
     },
     {
       menu: {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-banner/avalanche-entrepreneur-academy-header.png"}
+              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-banner/lux-entrepreneur-academy-header.png"}
               alt='Entrepreneur Academy'
               width={900}
               height={400}
@@ -331,7 +331,7 @@ export const academyMenu: LinkItemType = {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-              src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-banner/customizing-evm-DkMcINMgCwhkuHuumtAZtrPzROU74M.jpg"
+              src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-banner/customizing-evm-DkMcINMgCwhkuHuumtAZtrPzROU74M.jpg"
               alt='Blockchain Academy'
               width={900}
               height={400}
@@ -405,7 +405,7 @@ export const consoleMenu: LinkItemType = {
       icon: <HandCoins />,
       text: 'Testnet Faucet',
       description:
-        'Claim Fuji AVAX tokens from the testnet faucet to test your dApps.',
+        'Claim Testnet LUX tokens from the testnet faucet to test your dApps.',
       url: '/console/primary-network/faucet',
       menu: {
         className: 'lg:col-start-3 lg:row-start-1',
@@ -424,7 +424,7 @@ export const grantsMenu: LinkItemType = {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/nav-banner/codebase-banner-VKmQyN5sPojnIOU09p0lCkUgR6YTpQ.png"}
+              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/nav-banner/codebase-banner-VKmQyN5sPojnIOU09p0lCkUgR6YTpQ.png"}
               alt='Preview'
               width={900}
               height={400}
@@ -447,7 +447,7 @@ export const grantsMenu: LinkItemType = {
       icon: <Cpu />,
       text: 'InfraBUIDL',
       description:
-        "Strengthening Avalanche's infrastructure. Build the foundation for next-gen blockchain applications.",
+        "Strengthening Lux's infrastructure. Build the foundation for next-gen blockchain applications.",
       url: '/grants/infrabuidl',
       menu: {
         className: 'lg:col-start-2',
@@ -467,8 +467,8 @@ export const grantsMenu: LinkItemType = {
       icon: <MessageSquareQuote />,
       text: 'Retro9000',
       description:
-        'Build innovative projects on Avalanche. Get rewarded for your creativity.',
-      url: 'https://retro9000.avax.network',
+        'Build innovative projects on Lux. Get rewarded for your creativity.',
+      url: 'https://retro9000.lux.network',
       menu: {
         className: 'lg:col-start-3 lg:row-start-1',
       },
@@ -477,7 +477,7 @@ export const grantsMenu: LinkItemType = {
       icon: <Snowflake />,
       text: 'Blizzard Fund',
       description:
-        'A $200M+ fund investing in promising Avalanche projects. Fuel your growth with institutional support.',
+        'A $200M+ fund investing in promising Lux projects. Fuel your growth with institutional support.',
       url: 'https://www.blizzard.fund/',
       menu: {
         className: 'lg:col-start-3',
@@ -502,7 +502,7 @@ export const eventsMenu: LinkItemType = {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/nav-banner/hackathons-banner-nyqtkzooc3tJ4qcLjfLJijXz6uJ6oH.png"}
+              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/nav-banner/hackathons-banner-nyqtkzooc3tJ4qcLjfLJijXz6uJ6oH.png"}
               alt='Preview'
               width={900}
               height={400}
@@ -518,7 +518,7 @@ export const eventsMenu: LinkItemType = {
       icon: <Ticket />,
       text: 'Hackathons',
       description:
-        'The hackathons aims to harness the potential of Avalanche´s robust technology stack to address pressing issues and create scalable, practical solutions.',
+        'The hackathons aims to harness the potential of Lux´s robust technology stack to address pressing issues and create scalable, practical solutions.',
       url: '/hackathons',
     },
     {
@@ -526,7 +526,7 @@ export const eventsMenu: LinkItemType = {
         banner: (
           <div className='-mx-3 -mt-3'>
             <Image
-              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/nav-banner/local_events_team1-UJLssyvek3G880Q013A94SdMKxiLRq.jpg"}
+              src={"https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/nav-banner/local_events_team1-UJLssyvek3G880Q013A94SdMKxiLRq.jpg"}
               alt='Preview'
               width={900}
               height={400}
@@ -542,14 +542,14 @@ export const eventsMenu: LinkItemType = {
       icon: <Earth />,
       text: 'Community driven events',
       description:
-        'Check out and join the global meetups, workshops and events organized by Avalanche Team1',
+        'Check out and join the global meetups, workshops and events organized by Lux Team1',
       url: 'https://lu.ma/Team1?utm_source=builder_hub',
     },
     {
       icon: <Ticket />,
-      text: 'Avalanche Calendar',
+      text: 'Lux Calendar',
       description:
-        'Explore upcoming Avalanche events, meetups, and community gatherings. Stay connected with the latest happenings in the ecosystem.',
+        'Explore upcoming Lux events, meetups, and community gatherings. Stay connected with the latest happenings in the ecosystem.',
       url: 'https://lu.ma/calendar/cal-Igl2DB6quhzn7Z4',
       menu: {
         className: 'lg:col-start-3 lg:row-start-1',
@@ -578,8 +578,8 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <AvalancheLogo className="size-7" fill="currentColor" />
-        <span style={{ fontSize: "large", marginTop: "4px" }}>Builder Hub</span>
+        <LuxLogo className="size-7" fill="currentColor" />
+        <span style={{ fontSize: "large", marginTop: "4px" }}>Lux Build</span>
       </div>
     ),
   },

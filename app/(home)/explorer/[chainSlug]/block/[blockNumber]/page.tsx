@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: BlockPageProps): Promise<Meta
   if (!chain) {
     return {
       title: `Block #${blockNumber} | Custom Chain Explorer`,
-      description: "View block details on Avalanche.",
+      description: "View block details on Lux.",
     };
   }
   

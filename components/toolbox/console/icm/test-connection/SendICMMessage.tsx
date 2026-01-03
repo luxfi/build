@@ -6,7 +6,7 @@ import { Button } from "@/components/toolbox/components/Button";
 import { Success } from "@/components/toolbox/components/Success";
 import { createPublicClient, http } from 'viem';
 import ICMDemoABI from "@/contracts/example-contracts/compiled/ICMDemo.json";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import { Input } from "@/components/toolbox/components/Input";
 import SelectBlockchainId from "@/components/toolbox/components/SelectBlockchainId";
 import { useL1ByChainId, useSelectedL1 } from "@/components/toolbox/stores/l1ListStore";
@@ -18,13 +18,13 @@ import useConsoleNotifications from "@/hooks/useConsoleNotifications";
 import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-url";
 
 const predeployedDemos: Record<string, string> = {
-    //fuji
+    //testnet
     "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp": "0x05c474824e7d2cc67cf22b456f7cf60c0e3a1289"
 }
 
 const metadata: ConsoleToolMetadata = {
     title: "Send ICM Message",
-    description: "Send a test message between L1s using Avalanche's Inter-Chain Messaging (ICM) protocol",
+    description: "Send a test message between L1s using Lux's Inter-Chain Messaging (ICM) protocol",
     toolRequirements: [
         WalletRequirementsConfigKey.EVMChainBalance
     ],

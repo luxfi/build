@@ -134,7 +134,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
   }, {} as Record<string, QuizInfo[]>);
 
   const shareOnLinkedIn = () => {
-    const organizationName = 'Avalanche';
+    const organizationName = 'Lux';
     const organizationId = 19104188;
     const certificationName = encodeURIComponent(quizData.courses[courseId].title);
     const issuedMonth = new Date().getMonth() + 1;
@@ -144,7 +144,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
   };
 
   const shareOnTwitter = () => {
-    const text = `I just completed the ${quizData.courses[courseId].title} course on Avalanche Academy! 🎉`;
+    const text = `I just completed the ${quizData.courses[courseId].title} course on Lux Academy! 🎉`;
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };

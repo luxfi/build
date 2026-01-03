@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { TransferableOutput, addTxSignatures, pvm, utils, Context } from "@avalabs/avalanchejs";
+import { TransferableOutput, addTxSignatures, pvm, utils, Context } from "luxfi";
 import { getAuthSession } from '@/lib/auth/authSession';
 import { checkAndReserveFaucetClaim, completeFaucetClaim, cancelFaucetClaim } from '@/lib/faucet/rateLimit';
 
@@ -21,14 +21,14 @@ async function transferPToP(
   sourceAddress: string,
   destinationAddress: string
 ): Promise<{ txID: string }> {
-  const context = await Context.getContextFromURI("https://api.avax-test.network");
-  const pvmApi = new pvm.PVMApi("https://api.avax-test.network");
+  const context = await Context.getContextFromURI("https://api.lux-test.network");
+  const pvmApi = new pvm.PVMApi("https://api.lux-test.network");
   const feeState = await pvmApi.getFeeState();
   const { utxos } = await pvmApi.getUTXOs({ addresses: [sourceAddress] });
-  const amountNAvax = BigInt(Math.floor(FIXED_AMOUNT * 1e9));
+  const amountNLux = BigInt(Math.floor(FIXED_AMOUNT * 1e9));
 
   const outputs = [
-    TransferableOutput.fromNative(context.avaxAssetID, amountNAvax, [
+    TransferableOutput.fromNative(context.luxAssetID, amountNLux, [
       utils.bech32ToBytes(destinationAddress),
     ]),
   ];
@@ -82,7 +82,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     if (!destinationAddress.startsWith('P-')) {
       return NextResponse.json(
-        { success: false, message: 'Invalid P-Chain address format' },
+        { success: false, message: 'Invalid Platform-Chain address format' },
         { status: 400 }
       );
     }
@@ -124,11 +124,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       sourceAddress: FAUCET_P_CHAIN_ADDRESS,
       destinationAddress,
       amount: FIXED_AMOUNT,
-      message: `Successfully transferred ${FIXED_AMOUNT} AVAX`
+      message: `Successfully transferred ${FIXED_AMOUNT} LUX`
     });
 
   } catch (error) {
-    console.error('P-Chain faucet error:', error);
+    console.error('Platform-Chain faucet error:', error);
 
     if (claimId) {
       await cancelFaucetClaim(claimId);

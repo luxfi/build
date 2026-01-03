@@ -242,18 +242,18 @@ export const projectVerticals = [
   "Other",
 ]
 
-export const avalancheFundingTypes = [
+export const luxFundingTypes = [
   "Codebase",
   "infraBUIDL()",
   "infraBUIDL(AI)",
   "Retro9000",
   "Blizzard",
-  "Ava Labs Investment",
+  "Lux Network Investment",
   "Other",
   "No",
 ]
 
-export const nonAvalancheFundingTypes = [
+export const nonLuxFundingTypes = [
   "No Funding",
   "Self-Funding",
   "Family & Friends",
@@ -300,14 +300,14 @@ export const formSchema = z.object({
   funding_amount_seed: z.string().optional(),
   funding_amount_series_a: z.string().optional(),
 
-  previous_avalanche_funding_grants: z.array(z.string()).min(1, "Previous Avalanche funding selection is required"),
+  previous_lux_funding_grants: z.array(z.string()).min(1, "Previous Lux funding selection is required"),
   funding_amount_codebase: z.string().optional(),
   funding_amount_infrabuidl: z.string().optional(),
   funding_amount_infrabuidl_ai: z.string().optional(),
   funding_amount_retro9000: z.string().optional(),
   funding_amount_blizzard: z.string().optional(),
   funding_amount_avalabs: z.string().optional(),
-  funding_amount_other_avalanche: z.string().optional(),
+  funding_amount_other_lux: z.string().optional(),
 
   requested_funding_range: z.string().min(1, "Requested funding range is required"),
 
@@ -323,14 +323,14 @@ export const formSchema = z.object({
   project_live_status: z.string().min(1, "Project live status is required"),
   multichain_check: z.string().min(1, "Multichain selection is required"),
   multichain_chains: z.string().optional(),
-  first_build_avalanche: z.string().min(1, "First build Avalanche selection is required"),
-  previous_avalanche_project_info: z.string().optional(),
-  avalanche_contribution: z.string().min(1, "Avalanche contribution is required").max(200, "Maximum 200 words"),
-  avalanche_benefit_check: z.string().min(1, "Avalanche benefit selection is required"),
-  avalanche_l1_project_benefited_1_name: z.string().optional(),
-  avalanche_l1_project_benefited_1_website: z.string().optional(),
-  avalanche_l1_project_benefited_2_name: z.string().optional(),
-  avalanche_l1_project_benefited_2_website: z.string().optional(),
+  first_build_lux: z.string().min(1, "First build Lux selection is required"),
+  previous_lux_project_info: z.string().optional(),
+  lux_contribution: z.string().min(1, "Lux contribution is required").max(200, "Maximum 200 words"),
+  lux_benefit_check: z.string().min(1, "Lux benefit selection is required"),
+  lux_l1_project_benefited_1_name: z.string().optional(),
+  lux_l1_project_benefited_1_website: z.string().optional(),
+  lux_l1_project_benefited_2_name: z.string().optional(),
+  lux_l1_project_benefited_2_website: z.string().optional(),
   similar_project_check: z.string().min(1, "Similar project selection is required"),
   similar_project_name_1: z.string().optional(),
   similar_project_website_1: z.string().optional(),
@@ -341,7 +341,7 @@ export const formSchema = z.object({
   direct_competitor_1_website: z.string().optional(),
   direct_competitor_2_name: z.string().optional(),
   direct_competitor_2_website: z.string().optional(),
-  token_launch_avalanche_check: z.string().min(1, "Token launch selection is required"),
+  token_launch_lux_check: z.string().min(1, "Token launch selection is required"),
   token_launch_other_explanation: z.string().optional(),
   open_source_check: z.string().min(1, "Open source selection is required"),
 
@@ -379,8 +379,8 @@ export const formSchema = z.object({
   team_member_2_other: z.string().optional(),
   team_member_2_bio: z.string().optional(),
 
-  avalanche_grant_source: z.string().min(1, "Grant source is required"),
-  avalanche_grant_source_other: z.string().optional(),
+  lux_grant_source: z.string().min(1, "Grant source is required"),
+  lux_grant_source_other: z.string().optional(),
   program_referral_check: z.string().min(1, "Referral selection is required"),
   program_referrer: z.string().optional(),
 
@@ -396,15 +396,15 @@ export const formSchema = z.object({
   message: "Previous funding amount is required when you have received Retro9000 funding",
   path: ["retro9000_previous_funding_amount"],
 }).refine((data) => {
-  if (data.first_build_avalanche === "No" && (!data.previous_avalanche_project_info || data.previous_avalanche_project_info.trim() === "")) {
+  if (data.first_build_lux === "No" && (!data.previous_lux_project_info || data.previous_lux_project_info.trim() === "")) {
     return false;
   }
   return true;
 }, {
-  message: "Previous Avalanche project information is required when this is not your first time building on Avalanche",
-  path: ["previous_avalanche_project_info"],
+  message: "Previous Lux project information is required when this is not your first time building on Lux",
+  path: ["previous_lux_project_info"],
 }).refine((data) => {
-  if (data.token_launch_avalanche_check === "No" && (!data.token_launch_other_explanation || data.token_launch_other_explanation.trim() === "")) {
+  if (data.token_launch_lux_check === "No" && (!data.token_launch_other_explanation || data.token_launch_other_explanation.trim() === "")) {
     return false;
   }
   return true;
@@ -412,13 +412,13 @@ export const formSchema = z.object({
   message: "Please explain what chain(s) you will launch your token on and why",
   path: ["token_launch_other_explanation"],
 }).refine((data) => {
-  if (data.avalanche_benefit_check === "Yes" && (!data.avalanche_l1_project_benefited_1_name || data.avalanche_l1_project_benefited_1_name.trim() === "")) {
+  if (data.lux_benefit_check === "Yes" && (!data.lux_l1_project_benefited_1_name || data.lux_l1_project_benefited_1_name.trim() === "")) {
     return false;
   }
   return true;
 }, {
-  message: "Please provide at least one Avalanche project/L1 that would benefit",
-  path: ["avalanche_l1_project_benefited_1_name"],
+  message: "Please provide at least one Lux project/L1 that would benefit",
+  path: ["lux_l1_project_benefited_1_name"],
 }).refine((data) => {
   if (data.similar_project_check === "Yes" && (!data.similar_project_name_1 || data.similar_project_name_1.trim() === "")) {
     return false;

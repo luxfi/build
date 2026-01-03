@@ -4,17 +4,17 @@ description: Learn how to customize the Ethereum Virtual Machine with EVM and Pr
 root: true
 ---
 
-Welcome to the EVM configuration guide. This documentation explores how to extend and customize your Avalanche L1 using **EVM** and **precompiles**. Building upon the Validator Manager capabilities we discussed in the previous section, we'll now dive into other powerful customization features available in EVM.
+Welcome to the EVM configuration guide. This documentation explores how to extend and customize your Lux L1 using **EVM** and **precompiles**. Building upon the Validator Manager capabilities we discussed in the previous section, we'll now dive into other powerful customization features available in EVM.
 
 ## Overview of EVM
 
-EVM is Avalanche's customized version of the Ethereum Virtual Machine, tailored to run on Avalanche L1s. It allows developers to deploy Solidity smart contracts with enhanced capabilities, benefiting from Avalanche's high throughput and low latency. EVM enables more flexibility and performance optimizations compared to the standard EVM.
+EVM is Lux's customized version of the Ethereum Virtual Machine, tailored to run on Lux L1s. It allows developers to deploy Solidity smart contracts with enhanced capabilities, benefiting from Lux's high throughput and low latency. EVM enables more flexibility and performance optimizations compared to the standard EVM.
 
 Beyond the Validator Manager functionality we've covered, EVM provides additional configuration options through precompiles, allowing you to extend your L1's capabilities even further.
 
 ## Genesis Configuration
 
-Each blockchain has some genesis state when it's created. Each Virtual Machine defines the format and semantics of its genesis data. The genesis configuration is crucial for setting up your Avalanche L1's initial state and behavior.
+Each blockchain has some genesis state when it's created. Each Virtual Machine defines the format and semantics of its genesis data. The genesis configuration is crucial for setting up your Lux L1's initial state and behavior.
 
 ### Chain Configuration
 
@@ -75,7 +75,7 @@ The genesis block header is defined by several parameters that set the initial s
 
 These parameters have specific roles:
 
-- `nonce`, `mixHash`, `difficulty`: These are remnants from Proof of Work systems. For Avalanche, they don't play any relevant role and should be left as their default values.
+- `nonce`, `mixHash`, `difficulty`: These are remnants from Proof of Work systems. For Lux, they don't play any relevant role and should be left as their default values.
 - `timestamp`: The creation timestamp of the genesis block (commonly set to `0x0`).
 - `extraData`: Optional extra data field (commonly set to `0x`).
 - `coinbase`: The address of block producers (usually set to zero address for genesis).
@@ -91,28 +91,28 @@ Precompiles are specialized smart contracts that execute native Go code within t
 
 EVM comes with a set of default precompiles that extend the EVM's functionality:
 
-- **[AllowList Interface](/docs/avalanche-l1s/precompiles/allowlist-interface)**: Interface that manages access control by allowing or restricting specific addresses, inherited by all precompiles.
-- **[Deployer AllowList](/docs/avalanche-l1s/precompiles/deployer-allowlist)**: Restricts which addresses can deploy smart contracts.
-- **[Transaction AllowList](/docs/avalanche-l1s/precompiles/transaction-allowlist)**: Controls which addresses can submit transactions.
-- **[Native Minter](/docs/avalanche-l1s/precompiles/native-minter)**: Manages the minting and burning of native tokens.
-- **[Fee Manager](/docs/avalanche-l1s/precompiles/fee-manager)**: Controls gas fee parameters and fee markets.
-- **[Reward Manager](/docs/avalanche-l1s/precompiles/reward-manager)**: Handles the distribution of staking rewards to validators.
-- **[Warp Messenger](/docs/avalanche-l1s/precompiles/warp-messenger)**: Enables cross-chain communication between Avalanche L1s.
+- **[AllowList Interface](/docs/lux-l1s/precompiles/allowlist-interface)**: Interface that manages access control by allowing or restricting specific addresses, inherited by all precompiles.
+- **[Deployer AllowList](/docs/lux-l1s/precompiles/deployer-allowlist)**: Restricts which addresses can deploy smart contracts.
+- **[Transaction AllowList](/docs/lux-l1s/precompiles/transaction-allowlist)**: Controls which addresses can submit transactions.
+- **[Native Minter](/docs/lux-l1s/precompiles/native-minter)**: Manages the minting and burning of native tokens.
+- **[Fee Manager](/docs/lux-l1s/precompiles/fee-manager)**: Controls gas fee parameters and fee markets.
+- **[Reward Manager](/docs/lux-l1s/precompiles/reward-manager)**: Handles the distribution of staking rewards to validators.
+- **[Warp Messenger](/docs/lux-l1s/precompiles/warp-messenger)**: Enables cross-chain communication between Lux L1s.
 
 ### Precompile Addresses and Configuration
 
 If a precompile is enabled within the `genesis.json` using the respective `ConfigKey`, you can interact with the precompile using Foundry or other tools such as Remix.
 
-Below are the addresses and `ConfigKey` values of default precompiles available in EVM. The address and `ConfigKey` [are defined in the `module.go` of each precompile contract](https://github.com/ava-labs/subnet-evm/tree/master/precompile/contracts).
+Below are the addresses and `ConfigKey` values of default precompiles available in EVM. The address and `ConfigKey` [are defined in the `module.go` of each precompile contract](https://github.com/luxfi/subnet-evm/tree/master/precompile/contracts).
 
 | Precompile             | ConfigKey                         | Address                                      |
 | ---------------------- | --------------------------------- | -------------------------------------------- |
-| [Deployer AllowList](/docs/avalanche-l1s/precompiles/deployer-allowlist)     | `contractDeployerAllowListConfig` | `0x0200000000000000000000000000000000000000` |
-| [Native Minter](/docs/avalanche-l1s/precompiles/native-minter)          | `contractNativeMinterConfig`      | `0x0200000000000000000000000000000000000001` |
-| [Transaction AllowList](/docs/avalanche-l1s/precompiles/transaction-allowlist)  | `txAllowListConfig`               | `0x0200000000000000000000000000000000000002` |
-| [Fee Manager](/docs/avalanche-l1s/precompiles/fee-manager)            | `feeManagerConfig`                | `0x0200000000000000000000000000000000000003` |
-| [Reward Manager](/docs/avalanche-l1s/precompiles/reward-manager)         | `rewardManagerConfig`             | `0x0200000000000000000000000000000000000004` |
-| [Warp Messenger](/docs/avalanche-l1s/precompiles/warp-messenger)         | `warpConfig`                      | `0x0200000000000000000000000000000000000005` |
+| [Deployer AllowList](/docs/lux-l1s/precompiles/deployer-allowlist)     | `contractDeployerAllowListConfig` | `0x0200000000000000000000000000000000000000` |
+| [Native Minter](/docs/lux-l1s/precompiles/native-minter)          | `contractNativeMinterConfig`      | `0x0200000000000000000000000000000000000001` |
+| [Transaction AllowList](/docs/lux-l1s/precompiles/transaction-allowlist)  | `txAllowListConfig`               | `0x0200000000000000000000000000000000000002` |
+| [Fee Manager](/docs/lux-l1s/precompiles/fee-manager)            | `feeManagerConfig`                | `0x0200000000000000000000000000000000000003` |
+| [Reward Manager](/docs/lux-l1s/precompiles/reward-manager)         | `rewardManagerConfig`             | `0x0200000000000000000000000000000000000004` |
+| [Warp Messenger](/docs/lux-l1s/precompiles/warp-messenger)         | `warpConfig`                      | `0x0200000000000000000000000000000000000005` |
 
 #### Example Interaction
 

@@ -1,53 +1,53 @@
 ---
-title: Avalanche L1 Nodes
-description: Learn how to run an Avalanche node that tracks an Avalanche L1.
+title: Lux L1 Nodes
+description: Learn how to run an Lux node that tracks an Lux L1.
 ---
 
-This article describes how to run a node that tracks an Avalanche L1. It requires building AvalancheGo, adding Virtual Machine binaries as plugins to your local data directory, and running AvalancheGo to track these binaries.
+This article describes how to run a node that tracks an Lux L1. It requires building LuxGo, adding Virtual Machine binaries as plugins to your local data directory, and running LuxGo to track these binaries.
 
-This tutorial specifically covers tracking an Avalanche L1 built with Avalanche's [Subnet-EVM](https://github.com/ava-labs/subnet-evm), the default [Virtual Machine](/docs/primary-network/virtual-machines) run by Avalanche L1s on Avalanche.
+This tutorial specifically covers tracking an Lux L1 built with Lux's [Subnet-EVM](https://github.com/luxfi/subnet-evm), the default [Virtual Machine](/docs/primary-network/virtual-machines) run by Lux L1s on Lux.
 
-## Build AvalancheGo
+## Build LuxGo
 
-It is recommended that you must complete [this comprehensive guide](/docs/nodes/run-a-node/from-source) which demonstrates how to build and run a basic Avalanche node from source.
+It is recommended that you must complete [this comprehensive guide](/docs/nodes/run-a-node/from-source) which demonstrates how to build and run a basic Lux node from source.
 
-## Build Avalanche L1 Binaries
+## Build Lux L1 Binaries
 
-After building AvalancheGo successfully,
+After building LuxGo successfully,
 
 <Steps>
 <Step>
-Clone [Subnet-EVM](https://github.com/ava-labs/subnet-evm):
+Clone [Subnet-EVM](https://github.com/luxfi/subnet-evm):
 
 ```bash
-cd $GOPATH/src/github.com/ava-labs
-git clone https://github.com/ava-labs/subnet-evm.git
+cd $GOPATH/src/github.com/luxfi
+git clone https://github.com/luxfi/subnet-evm.git
 ```
 </Step>
 
 <Step>
-In the Subnet-EVM directory, run the build script, and save it in the `plugins` folder of your `.avalanchego` data directory. Name the plugin after the `VMID` of the Avalanche L1 you wish to track. The `VMID` of the WAGMI Avalanche L1 is the value beginning with **srEX...**
+In the Subnet-EVM directory, run the build script, and save it in the `plugins` folder of your `.luxgo` data directory. Name the plugin after the `VMID` of the Lux L1 you wish to track. The `VMID` of the WAGMI Lux L1 is the value beginning with **srEX...**
 
 ```bash
-cd $GOPATH/src/github.com/ava-labs/subnet-evm
-./scripts/build.sh ~/.avalanchego/plugins/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy
+cd $GOPATH/src/github.com/luxfi/subnet-evm
+./scripts/build.sh ~/.luxgo/plugins/srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy
 ```
 
 <Accordions>
-<Accordion title="Where can I find Avalanche L1 parameters like VMID?">
-VMID, Avalanche L1 ID (SubnetID), ChainID, and all other parameters can be found in the "Chain Info" section of the Avalanche L1 Explorer.
+<Accordion title="Where can I find Lux L1 parameters like VMID?">
+VMID, Lux L1 ID (SubnetID), ChainID, and all other parameters can be found in the "Chain Info" section of the Lux L1 Explorer.
 
-- [Avalanche Mainnet](https://subnets.avax.network/c-chain)
-- [Fuji Testnet](https://subnets-test.avax.network/c-chain)
+- [Lux Mainnet](https://subnets.lux.network/c-chain)
+- [Testnet Testnet](https://subnets-test.lux.network/c-chain)
 </Accordion>
 </Accordions>
 </Step>
 
 <Step>
-Create a file named `config.json` and add a `track-subnets` field that is populated with the `SubnetID` you wish to track. The `SubnetID` of the WAGMI Avalanche L1 is the value beginning with **28nr...**
+Create a file named `config.json` and add a `track-subnets` field that is populated with the `SubnetID` you wish to track. The `SubnetID` of the WAGMI Lux L1 is the value beginning with **28nr...**
 
 ```bash
-cd ~/.avalanchego
+cd ~/.luxgo
 echo '{"track-subnets": "28nrH5T2BMvNrWecFcV3mfccjs6axM1TVyqe79MCv2Mhs8kxiY"}' > config.json
 ```
 </Step>
@@ -55,23 +55,23 @@ echo '{"track-subnets": "28nrH5T2BMvNrWecFcV3mfccjs6axM1TVyqe79MCv2Mhs8kxiY"}' >
 
 ## Run the Node
 
-Run AvalancheGo with the `—config-file` flag to start your node and ensure it tracks the Avalanche L1s included in the configuration file.
+Run LuxGo with the `—config-file` flag to start your node and ensure it tracks the Lux L1s included in the configuration file.
 
 ```bash
-cd $GOPATH/src/github.com/ava-labs/avalanchego
-./build/avalanchego --config-file ~/.avalanchego/config.json --network-id=fuji
+cd $GOPATH/src/github.com/luxfi/luxgo
+./build/luxgo --config-file ~/.luxgo/config.json --network-id=testnet
 ```
 
 <Callout title="Note">
-Note: The above command includes the `--network-id=fuji` command because the WAGMI Avalanche L1 is deployed on Fuji Testnet.
+Note: The above command includes the `--network-id=testnet` command because the WAGMI Lux L1 is deployed on Testnet Testnet.
 </Callout>
 
 <Accordions>
 <Accordion title="Run L1 Node Without The Config File">
-If you would prefer to track Avalanche L1s using a command line flag, you can instead use the `--track-subnets` flag. For example:
+If you would prefer to track Lux L1s using a command line flag, you can instead use the `--track-subnets` flag. For example:
 
 ```bash
-./build/avalanchego --track-subnets 28nrH5T2BMvNrWecFcV3mfccjs6axM1TVyqe79MCv2Mhs8kxiY --network-id=fuji
+./build/luxgo --track-subnets 28nrH5T2BMvNrWecFcV3mfccjs6axM1TVyqe79MCv2Mhs8kxiY --network-id=testnet
 ```
 </Accordion>
 </Accordions>
@@ -80,7 +80,7 @@ You should now see terminal filled with logs and information to suggest the node
 
 ## Bootstrapping and RPC Details
 
-It may take a few hours for the node to fully [bootstrap](/docs/nodes/run-a-node/from-source#bootstrapping) to the Avalanche Primary Network and tracked Avalanche L1s.
+It may take a few hours for the node to fully [bootstrap](/docs/nodes/run-a-node/from-source#bootstrapping) to the Lux Primary Network and tracked Lux L1s.
 
 When finished bootstrapping, the endpoint will be:
 

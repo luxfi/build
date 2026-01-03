@@ -1,9 +1,9 @@
 {
     "title": "Clients",
-    "description": "Learn how to use the Avalanche Client SDK with different clients and transports.",
+    "description": "Learn how to use the Lux Client SDK with different clients and transports.",
     "pages": [
         "index",
-        "avalanche-client",
+        "lux-client",
         "wallet-client",
         "p-chain-client",
         "x-chain-client",

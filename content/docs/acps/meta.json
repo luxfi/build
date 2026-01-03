@@ -1,6 +1,6 @@
 {
   "title": "ACPs",
-  "description": "Official Avalanche Community Proposals (ACPs) for network improvements and best practices",
+  "description": "Official Lux Community Proposals (ACPs) for network improvements and best practices",
   "icon": "FileText",
   "root": true,
   "pages": [
@@ -29,7 +29,7 @@
     "62-disable-addvalidatortx-and-adddelegatortx",
     "41-remove-pending-stakers",
     "31-enable-subnet-ownership-transfer",
-    "30-avalanche-warp-x-evm",
+    "30-lux-warp-x-evm",
     "25-vm-application-errors",
     "24-shanghai-eips",
     "23-p-chain-native-transfers",

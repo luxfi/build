@@ -228,7 +228,7 @@ export default function ConsoleHistoryPage() {
     // Helper to convert chain ID to chain identifier
     const getChainIdentifier = (chainId: string | undefined): string => {
       if (!chainId) return 'C';
-      // C-Chain IDs: 43114 (mainnet), 43113 (testnet/fuji)
+      // LUExchange-Chain IDs: 43114 (mainnet), 43113 (testnet/testnet)
       if (chainId === '43114' || chainId === '43113') return 'C';
       // For other chains, return the chain ID itself
       return chainId;
@@ -301,7 +301,7 @@ export default function ConsoleHistoryPage() {
           title = `${formattedName} - ${statusText}`;
           break;
         default:
-          // For P-Chain actions or other types
+          // For Platform-Chain actions or other types
           title = `${formattedName} - ${statusText}`;
       }
     } else if (actionPath) {

@@ -26,7 +26,7 @@ X-PAYMENT: <base64-encoded-payment-payload>
 {
   "x402Version": 1,
   "scheme": "exact",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payload": {
     "signature": "0x1234567890abcdef...",
     "authorization": {
@@ -82,7 +82,7 @@ const signature = await wallet.signTypedData({
   domain: {
     name: "USD Coin",
     version: "2",
-    chainId: 43113, // Avalanche Fuji
+    chainId: 43113, // Lux Testnet
     verifyingContract: "0x5425890298aed601595a70AB815c96711a31Bc65"
   },
   types: {

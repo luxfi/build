@@ -1,16 +1,16 @@
 {
-  "title": "Avalanche-CLI",
-  "description": "Command-line interface for building and deploying on Avalanche",
+  "title": "Lux-CLI",
+  "description": "Command-line interface for building and deploying on Lux",
   "root": true,
   "pages": [
     "index",
-    "get-avalanche-cli",
+    "get-lux-cli",
     "cli-commands",
-    "create-avalanche-l1",
-    "create-deploy-avalanche-l1s",
+    "create-lux-l1",
+    "create-deploy-lux-l1s",
     "maintain",
     "upgrade",
-    "create-avalanche-nodes",
+    "create-lux-nodes",
     "cross-chain",
     "transactions",
     "guides"

@@ -5,7 +5,7 @@ icon: "tools"
 
 ## Overview
 
-The Avalanche SDK provides utility functions for AVAX unit conversion, CB58 encoding/decoding, transaction serialization, and UTXO operations. All viem utilities are also re-exported for EVM operations.
+The Lux SDK provides utility functions for LUX unit conversion, CB58 encoding/decoding, transaction serialization, and UTXO operations. All viem utilities are also re-exported for EVM operations.
 
 <Callout>
   **Note:** All utility functions are synchronous unless marked as `async`.
@@ -14,17 +14,17 @@ The Avalanche SDK provides utility functions for AVAX unit conversion, CB58 enco
 
 ## Importing Utilities
 
-Import utilities from `@avalanche-sdk/client/utils`:
+Import utilities from `@lux-sdk/client/utils`:
 
 ```typescript
 import {
-  // AVAX conversions
-  avaxToNanoAvax,
-  nanoAvaxToAvax,
-  avaxToWei,
-  weiToAvax,
-  weiToNanoAvax,
-  nanoAvaxToWei,
+  // LUX conversions
+  luxToNanoLux,
+  nanoLuxToLux,
+  luxToWei,
+  weiToLux,
+  weiToNanoLux,
+  nanoLuxToWei,
   // CB58 encoding
   CB58ToHex,
   hexToCB58,
@@ -35,111 +35,111 @@ import {
   getUtxoFromBytes,
   getUtxosForAddress,
   buildUtxoBytes,
-} from "@avalanche-sdk/client/utils";
+} from "@lux-sdk/client/utils";
 
 // Viem utilities are also available
-import { hexToBytes, bytesToHex, isAddress } from "@avalanche-sdk/client/utils";
+import { hexToBytes, bytesToHex, isAddress } from "@lux-sdk/client/utils";
 ```
 
-## AVAX Unit Conversion
+## LUX Unit Conversion
 
-Avalanche uses different units for different chains:
+Lux uses different units for different chains:
 
-- **AVAX**: Human-readable unit (1 AVAX)
-- **nanoAVAX (nAVAX)**: Smallest unit on P-Chain and X-Chain and C-Chain atomics (1 AVAX = 10^9 nAVAX)
-- **wei**: Used on C-Chain (1 AVAX = 10^18 wei)
+- **LUX**: Human-readable unit (1 LUX)
+- **nanoLUX (nLUX)**: Smallest unit on Platform-Chain and Exchange-Chain and LUExchange-Chain atomics (1 LUX = 10^9 nLUX)
+- **wei**: Used on LUExchange-Chain (1 LUX = 10^18 wei)
 
-### avaxToNanoAvax
+### luxToNanoLux
 
-Converts AVAX to nanoAVAX for P-Chain/X-Chain or C-Chain Atomic operations.
+Converts LUX to nanoLUX for Platform-Chain/Exchange-Chain or LUExchange-Chain Atomic operations.
 
 **Function Signature:**
 
 ```typescript
-function avaxToNanoAvax(amount: number): bigint;
+function luxToNanoLux(amount: number): bigint;
 ```
 
 **Parameters:**
 
 | Name     | Type     | Required | Description    |
 | -------- | -------- | -------- | -------------- |
-| `amount` | `number` | Yes      | Amount in AVAX |
+| `amount` | `number` | Yes      | Amount in LUX |
 
 **Returns:**
 
 | Type     | Description        |
 | -------- | ------------------ |
-| `bigint` | Amount in nanoAVAX |
+| `bigint` | Amount in nanoLUX |
 
 **Example:**
 
 ```typescript
-import { avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { luxToNanoLux } from "@lux-sdk/client/utils";
 
-const nanoAvax = avaxToNanoAvax(1.5);
-console.log(nanoAvax); // 1500000000n
+const nanoLux = luxToNanoLux(1.5);
+console.log(nanoLux); // 1500000000n
 
-// Use in P-Chain transaction
+// Use in Platform-Chain transaction
 const tx = await walletClient.pChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["P-avax1..."],
-      amount: Number(nanoAvax),
+      addresses: ["P-lux1..."],
+      amount: Number(nanoLux),
     },
   ],
 });
 ```
 
-### nanoAvaxToAvax
+### nanoLuxToLux
 
-Converts nanoAVAX back to AVAX for display purposes.
+Converts nanoLUX back to LUX for display purposes.
 
 **Function Signature:**
 
 ```typescript
-function nanoAvaxToAvax(amount: bigint): number;
+function nanoLuxToLux(amount: bigint): number;
 ```
 
 **Parameters:**
 
 | Name     | Type     | Required | Description        |
 | -------- | -------- | -------- | ------------------ |
-| `amount` | `bigint` | Yes      | Amount in nanoAVAX |
+| `amount` | `bigint` | Yes      | Amount in nanoLUX |
 
 **Returns:**
 
 | Type     | Description    |
 | -------- | -------------- |
-| `number` | Amount in AVAX |
+| `number` | Amount in LUX |
 
 **Example:**
 
 ```typescript
-import { nanoAvaxToAvax } from "@avalanche-sdk/client/utils";
+import { nanoLuxToLux } from "@lux-sdk/client/utils";
 
 const balance = await walletClient.pChain.getBalance({
-  addresses: ["P-avax1..."],
+  addresses: ["P-lux1..."],
 });
 
-const avax = nanoAvaxToAvax(BigInt(balance.balance || 0));
-console.log(`Balance: ${avax} AVAX`);
+const lux = nanoLuxToLux(BigInt(balance.balance || 0));
+console.log(`Balance: ${lux} LUX`);
 ```
 
-### avaxToWei
+### luxToWei
 
-Converts AVAX to wei for C-Chain operations.
+Converts LUX to wei for LUExchange-Chain operations.
 
 **Function Signature:**
 
 ```typescript
-function avaxToWei(amount: number): bigint;
+function luxToWei(amount: number): bigint;
 ```
 
 **Parameters:**
 
 | Name     | Type     | Required | Description    |
 | -------- | -------- | -------- | -------------- |
-| `amount` | `number` | Yes      | Amount in AVAX |
+| `amount` | `number` | Yes      | Amount in LUX |
 
 **Returns:**
 
@@ -150,26 +150,26 @@ function avaxToWei(amount: number): bigint;
 **Example:**
 
 ```typescript
-import { avaxToWei } from "@avalanche-sdk/client/utils";
+import { luxToWei } from "@lux-sdk/client/utils";
 
-const wei = avaxToWei(1.5);
+const wei = luxToWei(1.5);
 console.log(wei); // 1500000000000000000n
 
-// Use in C-Chain transaction
+// Use in LUExchange-Chain transaction
 const txHash = await walletClient.cChain.sendTransaction({
   to: "0x...",
   value: wei,
 });
 ```
 
-### weiToAvax
+### weiToLux
 
-Converts wei back to AVAX for display.
+Converts wei back to LUX for display.
 
 **Function Signature:**
 
 ```typescript
-function weiToAvax(amount: bigint): bigint;
+function weiToLux(amount: bigint): bigint;
 ```
 
 **Parameters:**
@@ -182,29 +182,29 @@ function weiToAvax(amount: bigint): bigint;
 
 | Type     | Description                |
 | -------- | -------------------------- |
-| `bigint` | Amount in AVAX (as bigint) |
+| `bigint` | Amount in LUX (as bigint) |
 
 **Example:**
 
 ```typescript
-import { weiToAvax } from "@avalanche-sdk/client/utils";
+import { weiToLux } from "@lux-sdk/client/utils";
 
 const balance = await walletClient.cChain.getBalance({
   address: "0x...",
 });
 
-const avax = weiToAvax(balance);
-console.log(`Balance: ${avax} AVAX`);
+const lux = weiToLux(balance);
+console.log(`Balance: ${lux} LUX`);
 ```
 
-### weiToNanoAvax
+### weiToNanoLux
 
-Converts wei to nanoAVAX for cross-chain operations.
+Converts wei to nanoLUX for cross-chain operations.
 
 **Function Signature:**
 
 ```typescript
-function weiToNanoAvax(amount: bigint): bigint;
+function weiToNanoLux(amount: bigint): bigint;
 ```
 
 **Parameters:**
@@ -217,36 +217,36 @@ function weiToNanoAvax(amount: bigint): bigint;
 
 | Type     | Description        |
 | -------- | ------------------ |
-| `bigint` | Amount in nanoAVAX |
+| `bigint` | Amount in nanoLUX |
 
 **Example:**
 
 ```typescript
-import { weiToNanoAvax } from "@avalanche-sdk/client/utils";
+import { weiToNanoLux } from "@lux-sdk/client/utils";
 
 const cChainBalance = await walletClient.cChain.getBalance({
   address: "0x...",
 });
 
-// Convert to nanoAVAX for P-Chain transfer
-const nanoAvax = weiToNanoAvax(cChainBalance);
+// Convert to nanoLUX for Platform-Chain transfer
+const nanoLux = weiToNanoLux(cChainBalance);
 ```
 
-### nanoAvaxToWei
+### nanoLuxToWei
 
-Converts nanoAVAX to wei for cross-chain operations.
+Converts nanoLUX to wei for cross-chain operations.
 
 **Function Signature:**
 
 ```typescript
-function nanoAvaxToWei(amount: bigint): bigint;
+function nanoLuxToWei(amount: bigint): bigint;
 ```
 
 **Parameters:**
 
 | Name     | Type     | Required | Description        |
 | -------- | -------- | -------- | ------------------ |
-| `amount` | `bigint` | Yes      | Amount in nanoAVAX |
+| `amount` | `bigint` | Yes      | Amount in nanoLUX |
 
 **Returns:**
 
@@ -257,19 +257,19 @@ function nanoAvaxToWei(amount: bigint): bigint;
 **Example:**
 
 ```typescript
-import { nanoAvaxToWei } from "@avalanche-sdk/client/utils";
+import { nanoLuxToWei } from "@lux-sdk/client/utils";
 
 const pChainBalance = await walletClient.pChain.getBalance({
-  addresses: ["P-avax1..."],
+  addresses: ["P-lux1..."],
 });
 
-// Convert to wei for C-Chain transfer
-const wei = nanoAvaxToWei(BigInt(pChainBalance.balance || 0));
+// Convert to wei for LUExchange-Chain transfer
+const wei = nanoLuxToWei(BigInt(pChainBalance.balance || 0));
 ```
 
 ## CB58 Encoding/Decoding
 
-CB58 is Avalanche's base58 encoding format used for transaction IDs, asset IDs, and addresses.
+CB58 is Lux's base58 encoding format used for transaction IDs, asset IDs, and addresses.
 
 ### CB58ToHex
 
@@ -296,7 +296,7 @@ function CB58ToHex(cb58: string): Hex;
 **Example:**
 
 ```typescript
-import { CB58ToHex } from "@avalanche-sdk/client/utils";
+import { CB58ToHex } from "@lux-sdk/client/utils";
 
 const txId = "mYxFK3CWs6iMFFaRx4wmVLDUtnktzm2o9Mhg9AG6JSzRijy5V";
 const hex = CB58ToHex(txId);
@@ -331,7 +331,7 @@ function hexToCB58(hex: Hex): string;
 **Example:**
 
 ```typescript
-import { hexToCB58 } from "@avalanche-sdk/client/utils";
+import { hexToCB58 } from "@lux-sdk/client/utils";
 
 const hex = "0x1234567890abcdef";
 const cb58 = hexToCB58(hex);
@@ -369,7 +369,7 @@ function getTxFromBytes(
 **Example:**
 
 ```typescript
-import { getTxFromBytes } from "@avalanche-sdk/client/utils";
+import { getTxFromBytes } from "@lux-sdk/client/utils";
 
 const txHex = "0x1234567890abcdef...";
 const [tx, credentials] = getTxFromBytes(txHex, "P");
@@ -407,7 +407,7 @@ function getUnsignedTxFromBytes(
 **Example:**
 
 ```typescript
-import { getUnsignedTxFromBytes } from "@avalanche-sdk/client/utils";
+import { getUnsignedTxFromBytes } from "@lux-sdk/client/utils";
 
 const txHex = "0x1234567890abcdef...";
 const unsignedTx = getUnsignedTxFromBytes(txHex, "P");
@@ -447,7 +447,7 @@ function getUtxoFromBytes(
 **Example:**
 
 ```typescript
-import { getUtxoFromBytes } from "@avalanche-sdk/client/utils";
+import { getUtxoFromBytes } from "@lux-sdk/client/utils";
 
 const utxoHex = "0x1234567890abcdef...";
 const utxo = getUtxoFromBytes(utxoHex, "P");
@@ -465,7 +465,7 @@ Fetches all UTXOs for a given address on a specific chain. This function handles
 
 ```typescript
 function getUtxosForAddress(
-  client: AvalancheWalletCoreClient,
+  client: LuxWalletCoreClient,
   params: {
     address: string;
     chainAlias: "P" | "X" | "C";
@@ -478,7 +478,7 @@ function getUtxosForAddress(
 
 | Name     | Type                        | Required | Description                |
 | -------- | --------------------------- | -------- | -------------------------- |
-| `client` | `AvalancheWalletCoreClient` | Yes      | The wallet client instance |
+| `client` | `LuxWalletCoreClient` | Yes      | The wallet client instance |
 | `params` | `object`                    | Yes      | Parameters object          |
 
 **params object:**
@@ -498,18 +498,18 @@ function getUtxosForAddress(
 **Example:**
 
 ```typescript
-import { getUtxosForAddress } from "@avalanche-sdk/client/utils";
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { getUtxosForAddress } from "@lux-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account: myAccount,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
 const utxos = await getUtxosForAddress(walletClient, {
-  address: "P-avax1...",
+  address: "P-lux1...",
   chainAlias: "P",
 });
 
@@ -555,14 +555,14 @@ function buildUtxoBytes(
 **Example:**
 
 ```typescript
-import { buildUtxoBytes } from "@avalanche-sdk/client/utils";
+import { buildUtxoBytes } from "@lux-sdk/client/utils";
 
 const utxoBytes = buildUtxoBytes(
   "mYxFK3CWs6iMFFaRx4wmVLDUtnktzm2o9Mhg9AG6JSzRijy5V",
   0,
   "U8iRqJoiJm8xZHAacmvYyZVwqQx6uDNtQeP3CQ6fcgQk3JqnK",
   "111947",
-  ["P-fuji1nv6w7m6egkwhkcvz96ze3qmzyk5gt6csqz7ejq"],
+  ["P-testnet1nv6w7m6egkwhkcvz96ze3qmzyk5gt6csqz7ejq"],
   "0",
   1
 );
@@ -589,26 +589,26 @@ The SDK re-exports all utilities from viem for EVM operations. See the [viem uti
 
 ```typescript
 import {
-  avaxToNanoAvax,
-  nanoAvaxToAvax,
-  avaxToWei,
-  weiToAvax,
-} from "@avalanche-sdk/client/utils";
+  luxToNanoLux,
+  nanoLuxToLux,
+  luxToWei,
+  weiToLux,
+} from "@lux-sdk/client/utils";
 
-// P-Chain: AVAX → nanoAVAX
-const nanoAvax = avaxToNanoAvax(1.5);
+// Platform-Chain: LUX → nanoLUX
+const nanoLux = luxToNanoLux(1.5);
 
-// C-Chain: AVAX → wei
-const wei = avaxToWei(1.5);
+// LUExchange-Chain: LUX → wei
+const wei = luxToWei(1.5);
 
-// Display: nanoAVAX → AVAX
-const avax = nanoAvaxToAvax(nanoAvax);
+// Display: nanoLUX → LUX
+const lux = nanoLuxToLux(nanoLux);
 ```
 
 ### Working with Transaction IDs
 
 ```typescript
-import { CB58ToHex, hexToCB58 } from "@avalanche-sdk/client/utils";
+import { CB58ToHex, hexToCB58 } from "@lux-sdk/client/utils";
 
 // Convert CB58 to hex for API calls
 const txId = "mYxFK3CWs6iMFFaRx4wmVLDUtnktzm2o9Mhg9AG6JSzRijy5V";
@@ -621,7 +621,7 @@ const cb58 = hexToCB58(hex);
 ### Parsing Transactions
 
 ```typescript
-import { getTxFromBytes } from "@avalanche-sdk/client/utils";
+import { getTxFromBytes } from "@lux-sdk/client/utils";
 
 const txHex = "0x...";
 const [tx, credentials] = getTxFromBytes(txHex, "P");

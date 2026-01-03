@@ -13,7 +13,7 @@ const ACCOUNT_ACTIONS = {
     LOGIN: {
         type: 'login' as const,
         label: 'Log In',
-        title: 'Log In to Builder Hub',
+        title: 'Log In to Lux Build',
         description: 'You need to be logged in to use this feature'
     }
 } as const;
@@ -38,8 +38,8 @@ interface AccountRequirementConfig {
 const ACCOUNT_REQUIREMENTS: Record<AccountRequirementsConfigKey, AccountRequirementConfig> = {
     [AccountRequirementsConfigKey.UserLoggedIn]: {
         id: 'user-logged-in',
-        title: 'Builder Hub Account',
-        description: 'You need to be logged in to Builder Hub',
+        title: 'Lux Build Account',
+        description: 'You need to be logged in to Lux Build',
         icon: User,
         action: ACCOUNT_ACTIONS.LOGIN,
         getStatus: (accountState: AccountState) => ({

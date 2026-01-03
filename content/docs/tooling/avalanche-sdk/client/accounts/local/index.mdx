@@ -1,7 +1,7 @@
 ---
 title: Local Accounts
 icon: shield
-description: Learn how to create and manage local accounts in the Avalanche Client SDK with private keys, mnemonics, and HD keys.
+description: Learn how to create and manage local accounts in the Lux Client SDK with private keys, mnemonics, and HD keys.
 ---
 
 ## Overview
@@ -16,12 +16,12 @@ Local accounts store keys on your machine and sign transactions before broadcast
 ## Quick Start
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
+const account = privateKeyToLuxAccount(process.env.PRIVATE_KEY!);
 
 console.log(account.getEVMAddress()); // 0x742d35Cc...
-console.log(account.getXPAddress("X")); // X-avax1...
+console.log(account.getXPAddress("X")); // X-lux1...
 ```
 
 ## Account Types
@@ -31,9 +31,9 @@ console.log(account.getXPAddress("X")); // X-avax1...
 Simplest option—create an account directly from a private key.
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 ```
 
 [Private Key Accounts →](local/private-key)
@@ -43,9 +43,9 @@ const account = privateKeyToAvalancheAccount("0x...");
 User-friendly option—create an account from a seed phrase.
 
 ```typescript
-import { mnemonicsToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { mnemonicsToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = mnemonicsToAvalancheAccount("abandon abandon abandon...");
+const account = mnemonicsToLuxAccount("abandon abandon abandon...");
 ```
 
 [Mnemonic Accounts →](local/mnemonic)
@@ -55,10 +55,10 @@ const account = mnemonicsToAvalancheAccount("abandon abandon abandon...");
 Advanced option—create accounts from HD keys with custom derivation paths.
 
 ```typescript
-import { hdKeyToAvalancheAccount, HDKey } from "@avalanche-sdk/client/accounts";
+import { hdKeyToLuxAccount, HDKey } from "@lux-sdk/client/accounts";
 
 const hdKey = HDKey.fromMasterSeed(seed);
-const account = hdKeyToAvalancheAccount(hdKey, { accountIndex: 0 });
+const account = hdKeyToLuxAccount(hdKey, { accountIndex: 0 });
 ```
 
 [HD Key Accounts →](local/hd-key)
@@ -68,23 +68,23 @@ const account = hdKeyToAvalancheAccount(hdKey, { accountIndex: 0 });
 ### Setup Wallet Client
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avaxToWei } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { luxToWei } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
+const account = privateKeyToLuxAccount(process.env.PRIVATE_KEY!);
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account, // Hoist account to avoid passing it to each method
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
 // Use wallet methods
 const txHash = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
-  amount: avaxToWei(0.001),
+  amount: luxToWei(0.001),
 });
 
 // Use public methods
@@ -100,12 +100,12 @@ const balance = await walletClient.getBalance({
 ```typescript
 import {
   generatePrivateKey,
-  privateKeyToAvalancheAccount,
-} from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+  privateKeyToLuxAccount,
+} from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
 const privateKey: string = generatePrivateKey();
-const account: AvalancheAccount = privateKeyToAvalancheAccount(privateKey);
+const account: LuxAccount = privateKeyToLuxAccount(privateKey);
 ```
 
 ### Generate Mnemonic
@@ -113,12 +113,12 @@ const account: AvalancheAccount = privateKeyToAvalancheAccount(privateKey);
 ```typescript
 import {
   generateMnemonic,
-  mnemonicsToAvalancheAccount,
-} from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+  mnemonicsToLuxAccount,
+} from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
 const mnemonic: string = generateMnemonic();
-const account: AvalancheAccount = mnemonicsToAvalancheAccount(mnemonic);
+const account: LuxAccount = mnemonicsToLuxAccount(mnemonic);
 ```
 
 ## Address Management
@@ -133,8 +133,8 @@ const addresses = {
 };
 
 console.log("EVM Address:", addresses.evm);
-console.log("X-Chain Address:", addresses.xChain);
-console.log("P-Chain Address:", addresses.pChain);
+console.log("Exchange-Chain Address:", addresses.xChain);
+console.log("Platform-Chain Address:", addresses.pChain);
 ```
 
 <Callout>
@@ -151,10 +151,10 @@ console.log("P-Chain Address:", addresses.pChain);
 
 ```typescript
 // ✅ Good: Use environment variables
-const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
+const account = privateKeyToLuxAccount(process.env.PRIVATE_KEY!);
 
 // ❌ Bad: Hardcoded private key
-const account = privateKeyToAvalancheAccount("0x1234...");
+const account = privateKeyToLuxAccount("0x1234...");
 ```
 
 ## Learn More

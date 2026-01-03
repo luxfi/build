@@ -1,6 +1,6 @@
 ---
 title: What are Stateful Precompiles?
-description: Learn about Stateful Precompiles in Avalanche L1 EVM.
+description: Learn about Stateful Precompiles in Lux L1 EVM.
 updated: 2024-05-31
 authors: [ashucoder9]
 icon: Book
@@ -116,14 +116,14 @@ An example of how we could leverage `BlockContext` in precompiles: *building a v
 // [NodeID] is the ID of this node
 type Context struct {
     NetworkID uint32
-    Avalanche L1ID  ids.ID
+    Lux L1ID  ids.ID
     ChainID   ids.ID
     NodeID    ids.NodeID
     PublicKey *bls.PublicKey
 
     XChainID    ids.ID
     CChainID    ids.ID
-    AVAXAssetID ids.ID
+    LUXAssetID ids.ID
 
     Log          logging.Logger
     Lock         sync.RWMutex
@@ -135,7 +135,7 @@ type Context struct {
     WarpSigner warp.Signer
 
     // snowman++ attributes
-    ValidatorState validators.State // interface for P-Chain validators
+    ValidatorState validators.State // interface for Platform-Chain validators
     // Chain-specific directory where arbitrary data can be written
     ChainDataDir string
 }

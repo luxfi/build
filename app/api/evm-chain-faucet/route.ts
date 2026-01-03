@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createWalletClient, http, parseEther, createPublicClient, defineChain, isAddress } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { avalancheFuji } from 'viem/chains';
+import { luxTestnet } from 'viem/chains';
 import { getAuthSession } from '@/lib/auth/authSession';
 import { checkAndReserveFaucetClaim, completeFaucetClaim, cancelFaucetClaim } from '@/lib/faucet/rateLimit';
 import { withChainLock, getNextNonce, withNonceRetry } from '@/lib/faucet/nonceManager';
@@ -23,7 +23,7 @@ function findSupportedChain(chainId: number): L1ListItem | undefined {
 
 function createViemChain(l1Data: L1ListItem) {
   if (l1Data.evmChainId === 43113) {
-    return avalancheFuji;
+    return luxTestnet;
   }
 
   return defineChain({
@@ -67,7 +67,7 @@ async function transferEVMTokens(
 
   const l1Data = findSupportedChain(chainId);
   if (!l1Data) {
-    throw new Error(`ChainID ${chainId} is not supported by Builder Hub Faucet`);
+    throw new Error(`ChainID ${chainId} is not supported by Lux Build Faucet`);
   }
 
   const viemChain = createViemChain(l1Data);

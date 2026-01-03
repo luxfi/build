@@ -15,13 +15,13 @@ This process establishes the VMC as the authority for validator management on yo
 The conversion from Subnet to L1 is a one-time, irreversible process that:
 
 - **Establishes Sovereignty**: Your blockchain becomes independent with its own validator set
-- **Transfers Authority**: Validator management shifts from P-Chain to your VMC
+- **Transfers Authority**: Validator management shifts from Platform-Chain to your VMC
 
 ## Key Parameters
 
 1. **Subnet ID**: The unique identifier of your Subnet (from the `CreateSubnetTx` transaction hash)
 
-2. **Validator Manager Blockchain ID**: The blockchain where your VMC will be deployed (Your L1, C-Chain, Another L1)
+2. **Validator Manager Blockchain ID**: The blockchain where your VMC will be deployed (Your L1, LUExchange-Chain, Another L1)
 
 3. **Validator Manager Address**: The address of the validator manager contract (or proxy) that will manage the L1's validator set. Chains created with Developer Console have a pre-deployed proxy at `0xfacade0000000000000000000000000000000000`.
 
@@ -39,9 +39,9 @@ You just converted your Subnet to an L1  - **Congratulations!** The following se
   chart="
 sequenceDiagram
     participant User
-    participant PChain as P-Chain
+    participant PChain as Platform-Chain
     participant VMC as VMC Chain
-    participant PChainState as P-Chain State
+    participant PChainState as Platform-Chain State
 
     User->>PChain: ConvertSubnetToL1Tx<br/>Contains: SubnetID, ChainID, Address, Validators, SubnetAuth
     PChain->>PChain: SyntacticVerify()
@@ -51,8 +51,8 @@ sequenceDiagram
     VMC->>PChain: SetSubnetToL1Conversion()
     PChain->>PChainState: Store ConversionID, ChainID, Address mapping
     PChain->>PChain: Generate ConversionID<br/>Hash of SubnetToL1ConversionData
-    Note right of PChain: No direct call - VMC reads P-Chain state
-    VMC->>PChainState: VMC can query conversion data via P-Chain APIs
+    Note right of PChain: No direct call - VMC reads Platform-Chain state
+    VMC->>PChainState: VMC can query conversion data via Platform-Chain APIs
 "
 />
 

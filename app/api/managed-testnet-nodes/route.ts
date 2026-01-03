@@ -27,7 +27,7 @@ async function handleGetNodes(): Promise<NextResponse> {
 
 /**
  * POST /api/managed-testnet-nodes
- * Creates a new managed node for a subnet by calling Builder Hub, then stores
+ * Creates a new managed node for a subnet by calling Lux Build, then stores
  * the node in the database. Enforces a 3-day expiration window in DB.
  */
 async function handleCreateNode(request: NextRequest): Promise<NextResponse> {
@@ -71,7 +71,7 @@ async function handleCreateNode(request: NextRequest): Promise<NextResponse> {
       return jsonError(400, `Unsupported VM for this service. Expected Subnet EVM (vmID ${SUBNET_EVM_VM_ID}), got ${blockchainInfo.vmId}.`);
     }
 
-    // Make the request to Builder Hub API to add node
+    // Make the request to Lux Build API to add node
     const data: SubnetStatusResponse = await builderHubAddNode(subnetId);
 
     // Store the new node in database
@@ -88,7 +88,7 @@ async function handleCreateNode(request: NextRequest): Promise<NextResponse> {
         }
       }, 201);
     } else {
-      return jsonError(502, 'No nodes returned from Builder Hub');
+      return jsonError(502, 'No nodes returned from Lux Build');
     }
 
   } catch (error) {

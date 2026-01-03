@@ -8,16 +8,16 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avalancheSDK.metrics.healthCheck({
+  const result = await luxSDK.metrics.healthCheck({
     retries: {
       strategy: "backoff",
       backoff: {
@@ -40,9 +40,9 @@ run();
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   retryConfig: {
     strategy: "backoff",
     backoff: {
@@ -59,7 +59,7 @@ const avalancheSDK = new Avalanche({
 });
 
 async function run() {
-  const result = await avalancheSDK.metrics.healthCheck();
+  const result = await luxSDK.metrics.healthCheck();
 
   // Handle the result
   console.log(result);

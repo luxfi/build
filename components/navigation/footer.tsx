@@ -42,33 +42,33 @@ export function Footer() {
     <footer className="mt-auto border-t border-border/40 bg-slate-50/50 dark:bg-zinc-950/50 backdrop-blur-xl py-12 lg:py-16 text-secondary-foreground">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 w-full max-w-7xl mx-auto">
-          <FooterSection title="Avalanche">
+          <FooterSection title="Lux">
             <ul className="flex flex-col space-y-3">
-              <FooterLink href="https://github.com/ava-labs/audits" external>Audits</FooterLink>
-              <FooterLink href="https://subnets.avax.network/" external>Explorer</FooterLink>
-              <FooterLink href="https://github.com/ava-labs" external>GitHub</FooterLink>
-              <FooterLink href="https://status.avax.network/" external>Network Status</FooterLink>
+              <FooterLink href="https://github.com/luxfi/audits" external>Audits</FooterLink>
+              <FooterLink href="https://subnets.lux.network/" external>Explorer</FooterLink>
+              <FooterLink href="https://github.com/luxfi" external>GitHub</FooterLink>
+              <FooterLink href="https://status.lux.network/" external>Network Status</FooterLink>
               <FooterLink href="https://avalabs.org/whitepapers" external>Whitepapers</FooterLink>
             </ul>
           </FooterSection>
           
           <FooterSection title="Community">
             <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-              <FooterLink href="https://www.avax.network/blog" external>Blog</FooterLink>
-              <FooterLink href="https://discord.gg/avax" external>Discord</FooterLink>
-              <FooterLink href="https://www.facebook.com/avalancheavax" external>Facebook</FooterLink>
-              <FooterLink href="https://forum.avax.network" external>Forum</FooterLink>
-              <FooterLink href="https://www.linkedin.com/company/avalancheavax" external>LinkedIn</FooterLink>
-              <FooterLink href="https://medium.com/@avaxdevelopers" external>Medium</FooterLink>
+              <FooterLink href="https://www.lux.network/blog" external>Blog</FooterLink>
+              <FooterLink href="https://discord.gg/lux" external>Discord</FooterLink>
+              <FooterLink href="https://www.facebook.com/luxlux" external>Facebook</FooterLink>
+              <FooterLink href="https://forum.lux.network" external>Forum</FooterLink>
+              <FooterLink href="https://www.linkedin.com/company/luxlux" external>LinkedIn</FooterLink>
+              <FooterLink href="https://medium.com/@luxdevelopers" external>Medium</FooterLink>
               <FooterLink href="https://t.me/+KDajA4iToKY2ZjBk" external>Telegram</FooterLink>
-              <FooterLink href="https://x.com/AvaxDevelopers" external>X</FooterLink>
-              <FooterLink href="https://www.youtube.com/@Avalancheavax" external>Youtube</FooterLink>
+              <FooterLink href="https://x.com/LuxDevelopers" external>X</FooterLink>
+              <FooterLink href="https://www.youtube.com/@Luxlux" external>Youtube</FooterLink>
             </div>
           </FooterSection>
           
           <FooterSection title="More Links">
             <ul className="flex flex-col space-y-3">
-              <FooterLink href="https://www.avax.network/legal" external>Legal</FooterLink>
+              <FooterLink href="https://www.lux.network/legal" external>Legal</FooterLink>
               <FooterLink href="/llms-full.txt" external>LLMs</FooterLink>
             </ul>
           </FooterSection>
@@ -100,8 +100,8 @@ export function Footer() {
         </div>
         
         <div className="mt-16 pt-8 border-t border-border/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>Crafted with ❤️ by Ava Labs DevRel team.</p>
-          <p>© {new Date().getFullYear()} Ava Labs, Inc.</p>
+          <p>Crafted with ❤️ by Lux Network DevRel team.</p>
+          <p>© {new Date().getFullYear()} Lux Network, Inc.</p>
         </div>
       </div>
     </footer>

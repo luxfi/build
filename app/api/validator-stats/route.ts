@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
-import { type ActiveValidatorDetails } from '@avalanche-sdk/chainkit/models/components/activevalidatordetails.js';
-import { type Subnet } from '@avalanche-sdk/chainkit/models/components/subnet.js';
+import { Lux } from "@luxfi/core";
+import { type ActiveValidatorDetails } from '@luxfi/core/models/components/activevalidatordetails.js';
+import { type Subnet } from '@luxfi/core/models/components/subnet.js';
 import { type SimpleValidator, type ValidatorVersion, type SubnetStats } from '@/types/validator-stats';
 import { MAINNET_VALIDATOR_DISCOVERY_URL, FUJI_VALIDATOR_DISCOVERY_URL } from '@/constants/validator-discovery';
 import l1ChainsData from "@/constants/l1-chains.json";
@@ -35,11 +35,11 @@ async function fetchWithTimeout(url: string, timeout: number = FETCH_TIMEOUT): P
   }
 }
 
-async function listClassicValidators(network: "mainnet" | "fuji"): Promise<SimpleValidator[]> {
-  const avalancheSDK = new Avalanche({ network });
+async function listClassicValidators(network: "mainnet" | "testnet"): Promise<SimpleValidator[]> {
+  const luxSDK = new Lux({ network });
   const validators: SimpleValidator[] = [];
   
-  const result = await avalancheSDK.data.primaryNetwork.listValidators({
+  const result = await luxSDK.data.primaryNetwork.listValidators({
     pageSize: PAGE_SIZE,
     network,
     validationStatus: "active",
@@ -57,11 +57,11 @@ async function listClassicValidators(network: "mainnet" | "fuji"): Promise<Simpl
   return validators;
 }
 
-async function listL1Validators(network: "mainnet" | "fuji"): Promise<SimpleValidator[]> {
-  const avalancheSDK = new Avalanche({ network });
+async function listL1Validators(network: "mainnet" | "testnet"): Promise<SimpleValidator[]> {
+  const luxSDK = new Lux({ network });
   const validators: SimpleValidator[] = [];
   
-  const result = await avalancheSDK.data.primaryNetwork.listL1Validators({
+  const result = await luxSDK.data.primaryNetwork.listL1Validators({
     pageSize: PAGE_SIZE,
     includeInactiveL1Validators: false,
     network,
@@ -80,7 +80,7 @@ async function listL1Validators(network: "mainnet" | "fuji"): Promise<SimpleVali
   return validators;
 }
 
-async function getAllValidators(network: "mainnet" | "fuji"): Promise<SimpleValidator[]> {
+async function getAllValidators(network: "mainnet" | "testnet"): Promise<SimpleValidator[]> {
   const now = Date.now();
   const cache = validatorsCached[network];
 
@@ -127,7 +127,7 @@ async function getAllValidators(network: "mainnet" | "fuji"): Promise<SimpleVali
   return promise;
 }
 
-async function getAllSubnets(network: "mainnet" | "fuji"): Promise<Subnet[]> {
+async function getAllSubnets(network: "mainnet" | "testnet"): Promise<Subnet[]> {
   const now = Date.now();
   const cache = subnetsCached[network];
 
@@ -141,10 +141,10 @@ async function getAllSubnets(network: "mainnet" | "fuji"): Promise<Subnet[]> {
 
   // Start new fetch
   const promise = (async () => {
-    const avalancheSDK = new Avalanche({ network });
+    const luxSDK = new Lux({ network });
     const allSubnets: Subnet[] = [];
     
-    const result = await avalancheSDK.data.primaryNetwork.listSubnets({
+    const result = await luxSDK.data.primaryNetwork.listSubnets({
       pageSize: PAGE_SIZE,
       network,
     });
@@ -176,7 +176,7 @@ async function getAllSubnets(network: "mainnet" | "fuji"): Promise<Subnet[]> {
   return promise;
 }
 
-async function getValidatorVersions(network: "mainnet" | "fuji"): Promise<Map<string, string>> {
+async function getValidatorVersions(network: "mainnet" | "testnet"): Promise<Map<string, string>> {
   const now = Date.now();
   const cache = validatorVersionsCached[network];
 
@@ -217,7 +217,7 @@ async function getValidatorVersions(network: "mainnet" | "fuji"): Promise<Map<st
   }
 }
 
-async function getNetworkStatsInternal(network: "mainnet" | "fuji"): Promise<SubnetStats[]> {
+async function getNetworkStatsInternal(network: "mainnet" | "testnet"): Promise<SubnetStats[]> {
   const [validators, subnets, versionMap] = await Promise.all([
     getAllValidators(network),
     getAllSubnets(network),
@@ -262,7 +262,7 @@ async function getNetworkStatsInternal(network: "mainnet" | "fuji"): Promise<Sub
     const stake = BigInt(validator.weight);
     subnetAccumulators[subnetId].totalStake += stake;
 
-    const version = versionMap.get(validator.nodeId)?.replace("avalanchego/", "") || "Unknown";
+    const version = versionMap.get(validator.nodeId)?.replace("luxgo/", "") || "Unknown";
 
     if (!subnetAccumulators[subnetId].byClientVersion[version]) {
       subnetAccumulators[subnetId].byClientVersion[version] = {
@@ -315,7 +315,7 @@ async function getNetworkStatsInternal(network: "mainnet" | "fuji"): Promise<Sub
   return result;
 }
 
-async function getNetworkStats(network: "mainnet" | "fuji"): Promise<SubnetStats[]> {
+async function getNetworkStats(network: "mainnet" | "testnet"): Promise<SubnetStats[]> {
   const now = Date.now();
   const cache = statsCached[network];
   const cacheAge = cache ? now - cache.timestamp : Infinity;
@@ -376,9 +376,9 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const network = searchParams.get('network');
 
-    if (!network || (network !== 'mainnet' && network !== 'fuji')) {
+    if (!network || (network !== 'mainnet' && network !== 'testnet')) {
       return createResponse(
-        { error: 'Invalid or missing network parameter. Use ?network=mainnet or ?network=fuji' },
+        { error: 'Invalid or missing network parameter. Use ?network=mainnet or ?network=testnet' },
         { source: 'error' },
         400
       );
@@ -408,7 +408,7 @@ export async function GET(request: Request) {
     const network = searchParams.get('network') || 'unknown';
     console.error(`[GET /api/validator-stats] Error (${network}):`, error);
 
-    if (network === 'mainnet' || network === 'fuji') {
+    if (network === 'mainnet' || network === 'testnet') {
       const cache = statsCached[network];
       if (cache) {
         console.log(`[GET /api/validator-stats] Network: ${network}, Source: error-fallback-cache`);

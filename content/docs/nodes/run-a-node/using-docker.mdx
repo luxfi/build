@@ -1,17 +1,17 @@
 ---
-title: Build AvalancheGo Docker Image
-description: Learn how to build a Docker image for AvalancheGo.
+title: Build LuxGo Docker Image
+description: Learn how to build a Docker image for LuxGo.
 ---
 
 <Callout type="info">
-For an easier way to set up and run a node, try the [Avalanche Console Node Setup Tool](/console/primary-network/node-setup).
+For an easier way to set up and run a node, try the [Lux Console Node Setup Tool](/console/primary-network/node-setup).
 </Callout>
 
 ## Prerequisites
 
 Before beginning, you must ensure that:
 - Docker is installed on your system
-- You need to clone the [AvalancheGo repository](https://github.com/ava-labs/avalanchego)
+- You need to clone the [LuxGo repository](https://github.com/luxfi/luxgo)
 - You need to install [GCC](https://gcc.gnu.org/) and [Go](https://go.dev/doc/install)
 - Docker daemon is running on your machine
 
@@ -22,7 +22,7 @@ docker --version
 
 ## Building the Docker Image
 
-To build the Docker image for the latest `avalanchego` branch:
+To build the Docker image for the latest `luxgo` branch:
 
 1. Navigate to the project directory
 2. Execute the build script:
@@ -30,7 +30,7 @@ To build the Docker image for the latest `avalanchego` branch:
    ./scripts/build_image.sh
    ```
 
-This script will create a Docker image containing the latest version of AvalancheGo.
+This script will create a Docker image containing the latest version of LuxGo.
 
 ## Verifying the Build
 
@@ -41,15 +41,15 @@ docker image ls
 ```
 
 You should see an image with:
-- Repository: `avaplatform/avalanchego`
+- Repository: `avaplatform/luxgo`
 - Tag: `xxxxxxxx` (where `xxxxxxxx` is the shortened commit hash of the source code used for the build)
 
-## Running AvalancheGo Node
+## Running LuxGo Node
 
-To start an AvalancheGo node, run the following command:
+To start an LuxGo node, run the following command:
 
 ```bash
-docker run -ti -p 9650:9650 -p 9651:9651 avaplatform/avalanchego:xxxxxxxx /avalanchego/build/avalanchego
+docker run -ti -p 9650:9650 -p 9651:9651 avaplatform/luxgo:xxxxxxxx /luxgo/build/luxgo
 ```
 
 This command:
@@ -57,12 +57,12 @@ This command:
 - Maps the following ports:
   - `9650`: HTTP API port
   - `9651`: P2P networking port
-- Uses the built AvalancheGo image
-- Executes the AvalancheGo binary inside the container
+- Uses the built LuxGo image
+- Executes the LuxGo binary inside the container
 
 ## Port Configuration
 
-The default ports used by AvalancheGo are:
+The default ports used by LuxGo are:
 - `9650`: HTTP API
 - `9651`: P2P networking
 

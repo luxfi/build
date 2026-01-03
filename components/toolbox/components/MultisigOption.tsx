@@ -206,7 +206,7 @@ export const MultisigOption: React.FC<MultisigOptionProps> = ({
         if (errorMessage.includes('multiSend') || errorMessage.includes('MultiSend')) {
           console.log('MultiSend addresses not found in Safe SDK, using hardcoded deterministic addresses...');
           
-          // Hardcoded deterministic Safe contract addresses for Avalanche L1s
+          // Hardcoded deterministic Safe contract addresses for Lux L1s
           // These are deployed via CREATE2 and have the same addresses across all chains for 1.3 deployments (What Ash Wallet uses)
           // ideally they are included in safe v1.3 deployments https://github.com/safe-global/safe-deployments/blob/main/src/assets/v1.3.0/multi_send.json
           protocolKitInstance = await Safe.init({
@@ -286,7 +286,7 @@ export const MultisigOption: React.FC<MultisigOptionProps> = ({
         safeTxHash,
         senderAddress: getAddress(walletAddress),
         senderSignature: signature,
-        origin: 'Avalanche Toolbox'
+        origin: 'Lux Toolbox'
       };
 
       // Propose transaction via backend API using Safe API Kit directly

@@ -1,9 +1,9 @@
 ---
 title: Getting Started with tmpnet Testing
-description: Set up your first Ginkgo test suite with tmpnet for testing Avalanche L1s
+description: Set up your first Ginkgo test suite with tmpnet for testing Lux L1s
 ---
 
-This guide shows you how to set up a Ginkgo test suite with tmpnet for testing Avalanche L1s. All testing with tmpnet should use Ginkgo for consistency and best practices.
+This guide shows you how to set up a Ginkgo test suite with tmpnet for testing Lux L1s. All testing with tmpnet should use Ginkgo for consistency and best practices.
 
 ## Prerequisites
 
@@ -12,8 +12,8 @@ Install required packages:
 ```bash
 go get github.com/onsi/ginkgo/v2
 go get github.com/onsi/gomega
-go get github.com/ava-labs/avalanchego/tests/fixture/tmpnet
-go get github.com/ava-labs/avalanchego/tests/fixture/e2e
+go get github.com/luxfi/luxgo/tests/fixture/tmpnet
+go get github.com/luxfi/luxgo/tests/fixture/e2e
 ```
 
 ## Basic Test Suite Structure
@@ -32,9 +32,9 @@ import (
     "testing"
     "time"
 
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/utils/logging"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/utils/logging"
     "github.com/onsi/ginkgo/v2"
     . "github.com/onsi/gomega"
 )
@@ -82,7 +82,7 @@ var _ = ginkgo.BeforeSuite(func() {
     )
     defer cancel()
 
-    runtimeCfg, err := e2eFlags.NodeRuntimeConfig() // validates AVALANCHEGO_PATH/AVAGO_PLUGIN_DIR or CLI flags
+    runtimeCfg, err := e2eFlags.NodeRuntimeConfig() // validates LUXGO_PATH/AVAGO_PLUGIN_DIR or CLI flags
     Expect(err).NotTo(HaveOccurred())
 
     // Create network configuration
@@ -231,10 +231,10 @@ import (
     "testing"
     "time"
 
-    "github.com/ava-labs/avalanchego/ids"
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/utils/logging"
+    "github.com/luxfi/luxgo/ids"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/utils/logging"
     "github.com/ethereum/go-ethereum/crypto"
     "github.com/ethereum/go-ethereum/ethclient"
     "github.com/onsi/ginkgo/v2"
@@ -377,7 +377,7 @@ var _ = ginkgo.Describe("[Funded Keys]", func() {
         // Get address
         address := crypto.PubkeyToAddress(ecdsaKey.PublicKey)
 
-        // Check balance on C-Chain
+        // Check balance on LUExchange-Chain
         balance, err := l1A.RPCClient.BalanceAt(
             context.Background(),
             address,
@@ -529,5 +529,5 @@ Expect(err).NotTo(HaveOccurred())
 
 - [Ginkgo Documentation](https://onsi.github.io/ginkgo/)
 - [Gomega Matchers](https://onsi.github.io/gomega/)
-- [ICM Services Tests](https://github.com/ava-labs/icm-services/tree/main/tests)
-- [tmpnet Package Docs](https://pkg.go.dev/github.com/ava-labs/avalanchego/tests/fixture/tmpnet)
+- [ICM Services Tests](https://github.com/luxfi/icm-services/tree/main/tests)
+- [tmpnet Package Docs](https://pkg.go.dev/github.com/luxfi/luxgo/tests/fixture/tmpnet)

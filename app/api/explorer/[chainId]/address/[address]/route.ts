@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 import l1ChainsData from '@/constants/l1-chains.json';
 
-// Initialize Avalanche SDK
-const avalanche = new Avalanche({
+// Initialize Lux SDK
+const lux = new Lux({
   network: "mainnet",
 });
 
@@ -189,7 +189,7 @@ async function getNativeBalance(rpcUrl: string, address: string, tokenSymbol?: s
 // Get contract metadata using Glacier
 async function getContractMetadata(address: string, chainId: string): Promise<ContractMetadata | undefined> {
   try {
-    const result = await avalanche.data.evm.contracts.getMetadata({
+    const result = await lux.data.evm.contracts.getMetadata({
       address: address,
       chainId: chainId,
     });
@@ -232,7 +232,7 @@ async function getContractMetadata(address: string, chainId: string): Promise<Co
 // Get address chains using Glacier (multichain info)
 async function getAddressChains(address: string): Promise<AddressChain[]> {
   try {
-    const result = await avalanche.data.evm.address.chains.list({
+    const result = await lux.data.evm.address.chains.list({
       address: address,
     });
 
@@ -281,7 +281,7 @@ async function getTransactions(
   pageToken?: string
 ): Promise<TransactionResult> {
   try {
-    const result = await avalanche.data.evm.address.transactions.list({
+    const result = await lux.data.evm.address.transactions.list({
       address: address,
       chainId: chainId,
       sortOrder: 'desc',

@@ -184,10 +184,10 @@ export async function GET(request: Request) {
         priceUsd,
         volumeUsd: transfer.transferCoinsTotal * priceUsd,
         homeChainLogo: homeChain?.chainLogoURI || "",
-        homeChainColor: homeChain?.color || "#E84142",
+        homeChainColor: homeChain?.color || "#FFFFFF",
         homeChainDisplayName: homeChain?.chainName || transfer.homeChainName,
         remoteChainLogo: remoteChain?.chainLogoURI || "",
-        remoteChainColor: remoteChain?.color || "#E84142",
+        remoteChainColor: remoteChain?.color || "#FFFFFF",
         remoteChainDisplayName: remoteChain?.chainName || transfer.remoteChainName,
       };
     });

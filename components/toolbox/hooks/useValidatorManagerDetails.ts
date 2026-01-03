@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { networkIDs } from "@avalabs/avalanchejs";
+import { networkIDs } from "luxfi";
 import { getTotalStake } from "../coreViem/hooks/getTotalStake";
 import { getSubnetInfoForNetwork, getBlockchainInfoForNetwork } from "../coreViem/utils/glacier";
 import { useWalletStore } from "../stores/walletStore";
@@ -29,7 +29,7 @@ interface UseValidatorManagerDetailsProps {
 }
 
 export function useValidatorManagerDetails({ subnetId }: UseValidatorManagerDetailsProps): ValidatorManagerDetails {
-    const { avalancheNetworkID, publicClient } = useWalletStore();
+    const { luxNetworkID, publicClient } = useWalletStore();
     const viemChain = useViemChainStore();
     const getChainIdFn = publicClient?.getChainId;
 
@@ -88,7 +88,7 @@ export function useValidatorManagerDetails({ subnetId }: UseValidatorManagerDeta
             setOwnerType(null);
             setIsDetectingOwnerType(false);
 
-            const cacheKey = `${avalancheNetworkID}-${subnetId}`;
+            const cacheKey = `${luxNetworkID}-${subnetId}`;
             if (subnetCache.current[cacheKey]) {
                 console.log(`Using cached Validator Manager details for subnet: ${subnetId}`);
                 const cached = subnetCache.current[cacheKey];
@@ -100,7 +100,7 @@ export function useValidatorManagerDetails({ subnetId }: UseValidatorManagerDeta
             }
 
             try {
-                const network = avalancheNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
+                const network = luxNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
                 console.log(`Fetching Validator Manager details for subnet: ${subnetId} on network: ${network}`);
 
                 const subnetInfo = await getSubnetInfoForNetwork(network, subnetId);
@@ -166,7 +166,7 @@ export function useValidatorManagerDetails({ subnetId }: UseValidatorManagerDeta
         };
 
         fetchDetails();
-    }, [subnetId, getChainIdFn, viemChain?.id, avalancheNetworkID]);
+    }, [subnetId, getChainIdFn, viemChain?.id, luxNetworkID]);
 
     // Fetch L1 total weight
     useEffect(() => {

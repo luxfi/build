@@ -24,7 +24,7 @@ export async function getUserId(): Promise<{ userId: string | null; error?: Next
   return { userId: session.user.id };
 }
 
-// we should have this in avalanche-sdk-ts
+// we should have this in lux-sdk-ts
 export function validateSubnetId(subnetId: string): boolean {
   return typeof subnetId === 'string' && subnetId.length >= 40 && subnetId.length <= 60;
 }

@@ -3,7 +3,7 @@ title: Installation
 description: Set up tmpnet and its prerequisites for local network testing
 ---
 
-This guide walks you through setting up tmpnet for testing your Avalanche applications and L1s.
+This guide walks you through setting up tmpnet for testing your Lux applications and L1s.
 
 ## Prerequisites
 
@@ -35,22 +35,22 @@ git --version
 
 ## Installation
 
-### Step 1: Clone AvalancheGo
+### Step 1: Clone LuxGo
 
-tmpnet is part of the AvalancheGo repository:
+tmpnet is part of the LuxGo repository:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ava-labs/avalanchego.git
-cd avalanchego
+git clone https://github.com/luxfi/luxgo.git
+cd luxgo
 ```
 
 ### Step 2: Build the Binaries
 
-Build both AvalancheGo and tmpnetctl:
+Build both LuxGo and tmpnetctl:
 
 ```bash
-# Build AvalancheGo
+# Build LuxGo
 ./scripts/build.sh
 
 # Build tmpnetctl
@@ -58,16 +58,16 @@ Build both AvalancheGo and tmpnetctl:
 ```
 
 You now have:
-- `build/avalanchego` and `build/tmpnetctl` - compiled binaries
-- `bin/avalanchego` and `bin/tmpnetctl` - thin wrappers that rebuild if needed
+- `build/luxgo` and `build/tmpnetctl` - compiled binaries
+- `bin/luxgo` and `bin/tmpnetctl` - thin wrappers that rebuild if needed
 
 ### Step 3: Verify Installation
 
 Test that the binaries work:
 
 ```bash
-# Check AvalancheGo
-./bin/avalanchego --version
+# Check LuxGo
+./bin/luxgo --version
 
 # Check tmpnetctl
 ./bin/tmpnetctl --help
@@ -77,17 +77,17 @@ You should see version information and available commands.
 
 ## Understanding the Directory Structure
 
-AvalancheGo has two directories for binaries:
+LuxGo has two directories for binaries:
 
 ### `build/` Directory (Actual Binaries)
 Contains the compiled binaries:
-- `build/avalanchego` - Main node binary
+- `build/luxgo` - Main node binary
 - `build/tmpnetctl` - Network management CLI
 - `build/plugins/` - Custom VM plugins
 
 ### `bin/` Directory (Convenience Wrappers)
 Symlinks that rebuild when needed, so they're safe defaults while iterating:
-- `bin/avalanchego` → `scripts/run_avalanchego.sh`
+- `bin/luxgo` → `scripts/run_luxgo.sh`
 - `bin/tmpnetctl` → `scripts/run_tmpnetctl.sh`
 
 For most workflows (and in the upstream README), use the `bin/` wrappers or enable the repo's `.envrc` so `tmpnetctl` is on your `PATH`.
@@ -115,16 +115,16 @@ echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### Enable in AvalancheGo
+### Enable in LuxGo
 
 ```bash
-cd /path/to/avalanchego
+cd /path/to/luxgo
 direnv allow
 ```
 
 The repo's `.envrc` then:
 - Adds `bin/` to `PATH` so you can run `tmpnetctl` directly
-- Sets `AVALANCHEGO_PATH=$PWD/bin/avalanchego`
+- Sets `LUXGO_PATH=$PWD/bin/luxgo`
 - Sets `AVAGO_PLUGIN_DIR=$PWD/build/plugins` (and creates the dir)
 - Sets `TMPNET_NETWORK_DIR=~/.tmpnet/networks/latest`
 
@@ -154,8 +154,8 @@ Key environment variables tmpnet uses:
 
 | Variable | Purpose | Default |
 |----------|---------|---------|
-| `AVALANCHEGO_PATH` | Path to avalanchego binary (required unless passed as `--avalanchego-path`) | None |
-| `AVAGO_PLUGIN_DIR` | Plugin directory for custom VMs | `~/.avalanchego/plugins` (or `$PWD/build/plugins` via `.envrc`) |
+| `LUXGO_PATH` | Path to luxgo binary (required unless passed as `--luxgo-path`) | None |
+| `AVAGO_PLUGIN_DIR` | Plugin directory for custom VMs | `~/.luxgo/plugins` (or `$PWD/build/plugins` via `.envrc`) |
 | `TMPNET_ROOT_NETWORK_DIR` | Where new networks are created | `~/.tmpnet/networks` |
 | `TMPNET_NETWORK_DIR` | Existing network to target for stop/restart/check commands | Unset (set automatically by `network.env` or `.envrc`) |
 
@@ -164,10 +164,10 @@ Key environment variables tmpnet uses:
 If you aren't using direnv, add something like this to `~/.bashrc` or `~/.zshrc`:
 
 ```bash
-export AVALANCHEGO_PATH=~/avalanchego/bin/avalanchego
-export AVAGO_PLUGIN_DIR=~/.avalanchego/plugins
+export LUXGO_PATH=~/luxgo/bin/luxgo
+export AVAGO_PLUGIN_DIR=~/.luxgo/plugins
 export TMPNET_NETWORK_DIR=~/.tmpnet/networks/latest  # optional convenience
-export PATH=$PATH:~/avalanchego/bin
+export PATH=$PATH:~/luxgo/bin
 ```
 
 ## Plugin Directory Setup
@@ -175,7 +175,7 @@ export PATH=$PATH:~/avalanchego/bin
 If you're testing custom VMs, create the plugin directory:
 
 ```bash
-mkdir -p ~/.avalanchego/plugins
+mkdir -p ~/.luxgo/plugins
 ```
 
 Place your custom VM binaries in this directory. The plugin binary name should match your VM name.
@@ -214,7 +214,7 @@ If builds fail:
 
 2. **Check you're in the repository root:**
    ```bash
-   pwd  # Should be /path/to/avalanchego
+   pwd  # Should be /path/to/luxgo
    ls scripts/build.sh  # Should exist
    ```
 
@@ -230,19 +230,19 @@ If you get permission errors:
 
 ```bash
 chmod +x ./bin/tmpnetctl
-chmod +x ./bin/avalanchego
+chmod +x ./bin/luxgo
 ```
 
 ### Binary Not Found Error
 
-If tmpnetctl says avalanchego not found:
+If tmpnetctl says luxgo not found:
 
 ```bash
 # Verify the binary exists
-ls -lh ./bin/avalanchego
+ls -lh ./bin/luxgo
 
 # Use absolute path when starting networks
-tmpnetctl start-network --avalanchego-path="$(pwd)/bin/avalanchego"
+tmpnetctl start-network --luxgo-path="$(pwd)/bin/luxgo"
 ```
 
 ## Next Steps

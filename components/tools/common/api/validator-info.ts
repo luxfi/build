@@ -1,13 +1,13 @@
 import { Validator, SubnetInfo, L1ValidatorManagerDetails } from './types';
 import { pChainEndpoint } from './consts';
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
+import { AvaCloudSDK } from "@luxfi/avacloud-sdk";
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
 const { isTestnet } = useWalletStore();
 
 export const avaCloudSDK = new AvaCloudSDK({
-    serverURL: isTestnet ? "https://api.avax-test.network" : "https://api.avax.network",
+    serverURL: isTestnet ? "https://api.lux-test.network" : "https://api.lux.network",
     chainId: "43114",
-    network: "fuji",
+    network: "testnet",
 });
 
 export async function fetchSubnetIdByValidationID(validationID: string): Promise<string> {

@@ -1,43 +1,43 @@
 ---
 title: Using Pre-Built Binary
-description: Learn how to run an Avalanche node from a pre-built binary program.
+description: Learn how to run an Lux node from a pre-built binary program.
 ---
 
 ## Download Binary
 
-To download a pre-built binary instead of building from source code, go to the official [AvalancheGo releases page](https://github.com/ava-labs/avalanchego/releases), and select the desired version.
+To download a pre-built binary instead of building from source code, go to the official [LuxGo releases page](https://github.com/luxfi/luxgo/releases), and select the desired version.
 
 Scroll down to the **Assets** section, and select the appropriate file. You can follow below rules to find out the right binary.
 
 ### For MacOS
 
-Download the `avalanchego-macos-<VERSION>.zip` file and unzip using the below command:
+Download the `luxgo-macos-<VERSION>.zip` file and unzip using the below command:
 
 ```bash
-unzip avalanchego-macos-<VERSION>.zip
+unzip luxgo-macos-<VERSION>.zip
 ```
 
-The resulting folder, `avalanchego-<VERSION>`, contains the binaries.
+The resulting folder, `luxgo-<VERSION>`, contains the binaries.
 
 ### Linux (PCs or Cloud Providers)
 
-Download the `avalanchego-linux-amd64-<VERSION>.tar.gz` file and unzip using the below command:
+Download the `luxgo-linux-amd64-<VERSION>.tar.gz` file and unzip using the below command:
 
 ```bash
-tar -xvf avalanchego-linux-amd64-<VERSION>.tar.gz
+tar -xvf luxgo-linux-amd64-<VERSION>.tar.gz
 ```
 
-The resulting folder, `avalanchego-<VERSION>-linux`, contains the binaries.
+The resulting folder, `luxgo-<VERSION>-linux`, contains the binaries.
 
 ### Linux (Arm64)
 
-Download the `avalanchego-linux-arm64-<VERSION>.tar.gz` file and unzip using the below command:
+Download the `luxgo-linux-arm64-<VERSION>.tar.gz` file and unzip using the below command:
 
 ```bash
-tar -xvf avalanchego-linux-arm64-<VERSION>.tar.gz
+tar -xvf luxgo-linux-arm64-<VERSION>.tar.gz
 ```
 
-The resulting folder, `avalanchego-<VERSION>-linux`, contains the binaries.
+The resulting folder, `luxgo-<VERSION>-linux`, contains the binaries.
 
 ## Start the Node
 
@@ -47,35 +47,35 @@ To be able to make API calls to your node from other machines, include the argum
 
 ### MacOS
 
-For running a node on the Avalanche Mainnet:
+For running a node on the Lux Mainnet:
 
 ```bash
-./avalanchego-<VERSION>/build/avalanchego
+./luxgo-<VERSION>/build/luxgo
 ```
 
-For running a node on the Fuji Testnet:
+For running a node on the Testnet Testnet:
 
 ```bash
-./avalanchego-<VERSION>/build/avalanchego --network-id=fuji
+./luxgo-<VERSION>/build/luxgo --network-id=testnet
 ```
 
 ### Linux
 
-For running a node on the Avalanche Mainnet:
+For running a node on the Lux Mainnet:
 
 ```bash
-./avalanchego-<VERSION>-linux/avalanchego
+./luxgo-<VERSION>-linux/luxgo
 ```
 
-For running a node on the Fuji Testnet:
+For running a node on the Testnet Testnet:
 
 ```bash
-./avalanchego-<VERSION>-linux/avalanchego --network-id=fuji
+./luxgo-<VERSION>-linux/luxgo --network-id=testnet
 ```
 
 ## Bootstrapping
 
-A new node needs to catch up to the latest network state before it can participate in consensus and serve API calls. This process (called bootstrapping) currently takes several days for a new node connected to Mainnet, and a day or so for a new node connected to Fuji Testnet. When a given chain is done bootstrapping, it will print logs like this:
+A new node needs to catch up to the latest network state before it can participate in consensus and serve API calls. This process (called bootstrapping) currently takes several days for a new node connected to Mainnet, and a day or so for a new node connected to Testnet Testnet. When a given chain is done bootstrapping, it will print logs like this:
 
 ```bash
 [09-09|17:01:45.295] INFO <C Chain> snowman/transitive.go:392 consensus starting {"lastAcceptedBlock": "2qaFwDJtmCCbMKP4jRpJwH8EFws82Q2yC1HhWgAiy3tGrpGFeb"}
@@ -108,7 +108,7 @@ Learn more about bootstrapping [here](/docs/nodes/maintain/bootstrapping).
 
 ## RPC
 
-When finished bootstrapping, the X, P, and C-Chain RPC endpoints will be:
+When finished bootstrapping, the X, P, and LUExchange-Chain RPC endpoints will be:
 
 ```bash
 localhost:9650/ext/bc/P
@@ -126,12 +126,12 @@ XXX.XX.XX.XXX:9650/ext/bc/C/rpc
 
 if run on a cloud provider. The “XXX.XX.XX.XXX" should be replaced with the public IP of your EC2 instance.
 
-For more information on the requests available at these endpoints, please see the [AvalancheGo API Reference](/docs/rpcs/p-chain) documentation.
+For more information on the requests available at these endpoints, please see the [LuxGo API Reference](/docs/rpcs/p-chain) documentation.
 
 ## Going Further
 
-Your Avalanche node will perform consensus on its own, but it is not yet a validator on the network. This means that the rest of the network will not query your node when sampling the network during consensus. If you want to add your node as a validator, check out [Add a Validator](/docs/primary-network/validate/node-validator) to take it a step further.
+Your Lux node will perform consensus on its own, but it is not yet a validator on the network. This means that the rest of the network will not query your node when sampling the network during consensus. If you want to add your node as a validator, check out [Add a Validator](/docs/primary-network/validate/node-validator) to take it a step further.
 
 Also check out the [Maintain](/docs/nodes/maintain/bootstrapping) section to learn about how to maintain and customize your node to fit your needs.
 
-To track an Avalanche L1 with your node, head to the [Avalanche L1 Node](/docs/nodes/run-a-node/avalanche-l1-nodes) tutorial.
+To track an Lux L1 with your node, head to the [Lux L1 Node](/docs/nodes/run-a-node/lux-l1-nodes) tutorial.

@@ -15,7 +15,7 @@ Navigate to the webhook section and click on Generate Signing Secret. Create the
 The following endpoint retrieves a shared secret:
 
 ```bash
-curl --location 'https://glacier-api.avax.network/v1/webhooks:getSharedSecret' \
+curl --location 'https://glacier-api.lux.network/v1/webhooks:getSharedSecret' \
 --header 'x-glacier-api-key: <YOUR_API_KEY>' \
 ```
 
@@ -328,7 +328,7 @@ This Node.js code sets up an HTTP server using the Express framework. It listens
 
 ### TypeScript (ChainKit SDK)
 ```typescript
-  import { isValidSignature } from '@avalanche-sdk/chainkit/utils';
+  import { isValidSignature } from '@lux-sdk/chainkit/utils';
   import express from 'express';
 
   const app = express();

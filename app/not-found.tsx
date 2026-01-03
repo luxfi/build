@@ -10,8 +10,8 @@ import { ArrowRight, Home, Search, BookOpen, Terminal, Github } from 'lucide-rea
 
 function createGitHubIssueURL(path: string | null) {
   return newGithubIssueUrl({
-    user: "ava-labs",
-    repo: "builders-hub",
+    user: "luxfi",
+    repo: "lux-build",
     title: `Missing Page${path ? `: ${path}` : ''}`,
     body: `# Missing Page Report
 
@@ -49,7 +49,7 @@ function findNearestAvailablePath(pathname: string): string | null {
 
 const quickLinks = [
   { href: "/docs", label: "Documentation", icon: BookOpen, description: "Guides & references" },
-  { href: "/academy", label: "Academy", icon: Search, description: "Learn Avalanche" },
+  { href: "/academy", label: "Academy", icon: Search, description: "Learn Lux" },
   { href: "/console", label: "Console", icon: Terminal, description: "Developer tools" },
 ];
 
@@ -108,7 +108,7 @@ export default function NotFound() {
               </div>
               {/* Glow effect */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-avax-red/10 dark:bg-avax-red/20 blur-3xl" />
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-lux-red/10 dark:bg-lux-red/20 blur-3xl" />
               </div>
               {/* Wolfie image */}
               <div className="relative z-10 flex justify-center">
@@ -161,7 +161,7 @@ export default function NotFound() {
               <Link href="/">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto gap-2 bg-avax-red hover:bg-avax-red/90 text-white px-6"
+                  className="w-full sm:w-auto gap-2 bg-lux-red hover:bg-lux-red/90 text-white px-6"
                 >
                   <Home className="w-4 h-4" />
                   Back to Home

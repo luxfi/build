@@ -1,12 +1,12 @@
 ---
 title: Remove Validator
-description:  Learn how to remove a validator from an Avalanche L1.
+description:  Learn how to remove a validator from an Lux L1.
 ---
 
-### Remove a Validator from an Avalanche L1
+### Remove a Validator from an Lux L1
 
 ```bash
-avalanche blockchain removeValidator <blockchainName>
+lux blockchain removeValidator <blockchainName>
 ```
 
 #### Choose the Network
@@ -15,14 +15,14 @@ Choose the network where the validator is registered.
 ? Choose a network for the operation: 
   ▸ Local Network
     Devnet
-    Fuji Testnet
+    Testnet Testnet
     Mainnet
 ```
 
-#### Choose P-Chain fee payer
-Choose the key to pay for the transaction fees on the P-Chain.
+#### Choose Platform-Chain fee payer
+Choose the key to pay for the transaction fees on the Platform-Chain.
 ```bash
-? Which key should be used to pay for transaction fees on P-Chain?: 
+? Which key should be used to pay for transaction fees on Platform-Chain?: 
   ▸ Use stored key
     Use ledger
 ```
@@ -33,7 +33,7 @@ Enter the Node-ID of the validator you want to remove.
 ✗ What is the NodeID of the node you want to remove as a blockchain validator?: 
 ```
 <Callout>
-You can find the NodeID in the node's configuration file or the console when first started with avalanchego.
+You can find the NodeID in the node's configuration file or the console when first started with luxgo.
 An example of a NodeID is `NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg`
 </Callout>
 
@@ -44,7 +44,7 @@ RPC Endpoint: http://127.0.0.1:9652/ext/bc/2qmU6w47Mp7D7fGhbRuZm6Z1Nn6FZXZAxKpae
 Forcing removal of NodeID-7cQrriPWGXa5yuJGZUgsxxwH9j4T8pPkY as it is a PoS bootstrap validator
 Using validationID: 228zzCgDmAmuaJDGnFkFgnVqbbJPRF7qF1Xpd3dhtqGDhMjJK2 for nodeID: NodeID-7cQrriPWGXa5yuJGZUgsxxwH9j4T8pPkY
 ValidationID: 228zzCgDmAmuaJDGnFkFgnVqbbJPRF7qF1Xpd3dhtqGDhMjJK2
-SetSubnetValidatorWeightTX fee: 0.000078836 AVAX
+SetSubnetValidatorWeightTX fee: 0.000078836 LUX
 SetSubnetValidatorWeightTx ID: 2FUimPZ37DscPJiQDLrtKtumER3LNr48MJi6VR2jGXkYEKpCaq
 ✓ Validator successfully removed from the Subnet
 ```

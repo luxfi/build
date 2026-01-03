@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useWallet } from './useWallet';
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import { getBlockchainInfo } from '../coreViem/utils/glacier';
 
 interface LookupResult {
@@ -27,12 +27,12 @@ export function useLookupChain() {
                 evmChainId = parseInt(anyChainId, 10);
             } else {
                 try {
-                    utils.base58check.decode(anyChainId); // Validate Avalanche Chain ID format
+                    utils.base58check.decode(anyChainId); // Validate Lux Chain ID format
                     const chain = await getBlockchainInfo(anyChainId);
                     evmChainId = chain.evmChainId;
                 } catch (e) {
                     console.error("Failed to lookup chain:", e);
-                    setError("Invalid chain ID. Please enter either a valid EVM chain ID number or an Avalanche blockchain ID in base58 format.");
+                    setError("Invalid chain ID. Please enter either a valid EVM chain ID number or an Lux blockchain ID in base58 format.");
                     return null;
                 }
             }

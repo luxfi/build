@@ -51,11 +51,11 @@ export async function POST(req: NextRequest) {
     const pdfDoc = await PDFDocument.load(templateArrayBuffer);
     const form = pdfDoc.getForm();
 
-    const isAvalancheTemplate = templateUrl.includes('AvalancheAcademy_Certificate.pdf');
+    const isLuxTemplate = templateUrl.includes('LuxAcademy_Certificate.pdf');
 
     try {
-      if (isAvalancheTemplate) {
-        // Original 4-field flow for Avalanche certificates
+      if (isLuxTemplate) {
+        // Original 4-field flow for Lux certificates
         form.getTextField('FullName').setText(userName);
         form.getTextField('Class').setText(courseName);
         form
@@ -112,7 +112,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       {
-        error: 'Failed to generate certificate, contact the Avalanche team.',
+        error: 'Failed to generate certificate, contact the Lux team.',
         details: (error as Error).message,
       },
       { status: 500 }

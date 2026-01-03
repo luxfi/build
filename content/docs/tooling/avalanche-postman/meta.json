@@ -1,6 +1,6 @@
 {
     "title": "Postman Collection",
-    "description": "Postman collection for Avalanche APIs",
+    "description": "Postman collection for Lux APIs",
     "root": true,
     "pages": [
       "index",

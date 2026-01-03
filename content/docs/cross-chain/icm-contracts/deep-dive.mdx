@@ -1,12 +1,12 @@
 ---
 title: "Deep Dive into ICM Contracts"
-description: "ICM Contracts is an EVM compatible cross-Avalanche L1 communication protocol built on top of Avalanche Interchain Messaging (ICM), and implemented as a Solidity smart contract."
-edit_url: https://github.com/ava-labs/icm-contracts/edit/main/README.md
+description: "ICM Contracts is an EVM compatible cross-Lux L1 communication protocol built on top of Lux Interchain Messaging (ICM), and implemented as a Solidity smart contract."
+edit_url: https://github.com/luxfi/icm-contracts/edit/main/README.md
 ---
 
 # ICM Contracts
 
-For help getting started with building ICM contracts, refer to [the avalanche-starter-kit repository](https://github.com/ava-labs/avalanche-starter-kit).
+For help getting started with building ICM contracts, refer to [the lux-starter-kit repository](https://github.com/luxfi/lux-starter-kit).
 
 - [Setup](#setup)
   - [Initialize the repository](#initialize-the-repository)
@@ -32,13 +32,13 @@ For help getting started with building ICM contracts, refer to [the avalanche-st
 ## Structure
 
 - `contracts/`
-  - [`governance/`](https://github.com/ava-labs/teleporter/blob/main/contracts/governance/README.md) includes contracts related to L1 governance.
-  - [`ictt/`](https://github.com/ava-labs/teleporter/blob/main/contracts/ictt/README.md) Interchain Token Transfer contracts. Facilitates the transfer of tokens among L1s.
-  - [`teleporter/`](https://github.com/ava-labs/teleporter/blob/main/contracts/teleporter/README.md) includes `TeleporterMessenger`, which serves as the interface for most contracts to use ICM.
-    - [`registry/`](https://github.com/ava-labs/teleporter/blob/main/contracts/teleporter/registry/README.md) includes a registry contract for managing different versions of `TeleporterMessenger`.
-  - [`validator-manager/`](https://github.com/ava-labs/teleporter/blob/main/contracts/validator-manager/README.md) includes contracts for managing the validator set of an L1.
+  - [`governance/`](https://github.com/luxfi/teleporter/blob/main/contracts/governance/README.md) includes contracts related to L1 governance.
+  - [`ictt/`](https://github.com/luxfi/teleporter/blob/main/contracts/ictt/README.md) Interchain Token Transfer contracts. Facilitates the transfer of tokens among L1s.
+  - [`teleporter/`](https://github.com/luxfi/teleporter/blob/main/contracts/teleporter/README.md) includes `TeleporterMessenger`, which serves as the interface for most contracts to use ICM.
+    - [`registry/`](https://github.com/luxfi/teleporter/blob/main/contracts/teleporter/registry/README.md) includes a registry contract for managing different versions of `TeleporterMessenger`.
+  - [`validator-manager/`](https://github.com/luxfi/teleporter/blob/main/contracts/validator-manager/README.md) includes contracts for managing the validator set of an L1.
 - `abi-bindings/` includes Go ABI bindings for the contracts in `contracts/`.
-- [`audits/`](https://github.com/ava-labs/teleporter/blob/main/audits/README.md) includes all audits conducted on contracts in this repository.
+- [`audits/`](https://github.com/luxfi/teleporter/blob/main/audits/README.md) includes all audits conducted on contracts in this repository.
 - `tests/` includes integration tests for the contracts in `contracts/`, written using the [Ginkgo](https://onsi.github.io/ginkgo/) testing framework.
 - `utils/` includes Go utility functions for interacting with the contracts in `contracts/`. Included are Golang scripts to derive the expected EVM contract address deployed from a given EOA at a specific nonce, and also construct a transaction to deploy provided byte code to the same address on any EVM chain using [Nick's method](https://yamenmerhi.medium.com/nicks-method-ethereum-keyless-execution-168a6659479c#).
 - `scripts/` includes bash scripts for interacting with TeleporterMessenger in various environments, as well as utility scripts.
@@ -47,7 +47,7 @@ For help getting started with building ICM contracts, refer to [the avalanche-st
 
 ## E2E tests
 
-In addition to the docker setup, end-to-end integration tests written using Ginkgo are provided in the `tests/` directory. E2E tests are run as part of CI, but can also be run locally. Any new features or cross-chain example applications checked into the repository should be accompanied by an end-to-end tests. See the [Contribution Guide](https://github.com/ava-labs/teleporter/blob/main/CONTRIBUTING.md) for additional details.
+In addition to the docker setup, end-to-end integration tests written using Ginkgo are provided in the `tests/` directory. E2E tests are run as part of CI, but can also be run locally. Any new features or cross-chain example applications checked into the repository should be accompanied by an end-to-end tests. See the [Contribution Guide](https://github.com/luxfi/teleporter/blob/main/CONTRIBUTING.md) for additional details.
 
 To run the E2E tests locally, you'll need to install Gingko following the instructions [here](https://onsi.github.io/ginkgo/#installing-ginkgo).
 
@@ -89,13 +89,13 @@ The auto-generated bindings should be written under the `abi-bindings/` director
 
 ## Docs
 
-- [ICM Protocol Overview](https://github.com/ava-labs/teleporter/blob/main/contracts/teleporter/README.md)
-- [Teleporter Registry and Upgrades](https://github.com/ava-labs/teleporter/blob/main/contracts/teleporter/registry/README.md)
-- [Contract Deployment](https://github.com/ava-labs/teleporter/blob/main/utils/contract-deployment/README.md)
-- [Teleporter CLI](https://github.com/ava-labs/teleporter/blob/main/cmd/teleporter-cli/README.md)
+- [ICM Protocol Overview](https://github.com/luxfi/teleporter/blob/main/contracts/teleporter/README.md)
+- [Teleporter Registry and Upgrades](https://github.com/luxfi/teleporter/blob/main/contracts/teleporter/registry/README.md)
+- [Contract Deployment](https://github.com/luxfi/teleporter/blob/main/utils/contract-deployment/README.md)
+- [Teleporter CLI](https://github.com/luxfi/teleporter/blob/main/cmd/teleporter-cli/README.md)
 
 ## Resources
 
 - List of blockchain signing cryptography algorithms [here](http://ethanfast.com/top-crypto.html).
-- Background on stateful precompiles [here](https://medium.com/avalancheavax/customizing-the-evm-with-stateful-precompiles-f44a34f39efd).
+- Background on stateful precompiles [here](https://medium.com/luxlux/customizing-the-evm-with-stateful-precompiles-f44a34f39efd).
 - Background on BLS signature aggregation [here](https://crypto.stanford.edu/~dabo/pubs/papers/BLSmultisig.html).

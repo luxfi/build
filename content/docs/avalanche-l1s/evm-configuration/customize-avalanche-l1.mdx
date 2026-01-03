@@ -1,29 +1,29 @@
 ---
-title: Customize an Avalanche L1
-description: Learn how to customize your EVM-powered Avalanche L1.
+title: Customize an Lux L1
+description: Learn how to customize your EVM-powered Lux L1.
 ---
 
-All Avalanche L1s can be customized by utilizing [`L1s Configs`](#avalanche-l1-configs).
+All Lux L1s can be customized by utilizing [`L1s Configs`](#lux-l1-configs).
 
-an Avalanche L1 can have one or more blockchains. For example, the Primary Network, which is an Avalanche L1, a special one nonetheless, has 3 blockchains. Each chain can be further customized using chain specific configuration file. See [here](/docs/nodes/configure/configs-flags) for detailed explanation.
+an Lux L1 can have one or more blockchains. For example, the Primary Network, which is an Lux L1, a special one nonetheless, has 3 blockchains. Each chain can be further customized using chain specific configuration file. See [here](/docs/nodes/configure/configs-flags) for detailed explanation.
 
-An Avalanche L1 created by or forked from [Subnet-EVM](https://github.com/ava-labs/subnet-evm) can be customized by utilizing one or more of the following methods:
+An Lux L1 created by or forked from [Subnet-EVM](https://github.com/luxfi/subnet-evm) can be customized by utilizing one or more of the following methods:
 
 - [Genesis](#genesis)
 - [Precompile](#precompiles)
 - [Upgrade Configs](#network-upgrades-enabledisable-precompiles)
-- [Chain Configs](#avalanchego-chain-configs)
+- [Chain Configs](#luxgo-chain-configs)
 
-Avalanche L1 Configs[​](#avalanche-l1-configs "Direct link to heading")
+Lux L1 Configs[​](#lux-l1-configs "Direct link to heading")
 -----------------------------------------------------------
 
-an Avalanche L1 can customized by setting parameters for the following:
+an Lux L1 can customized by setting parameters for the following:
 
-- [Validator-only communication to create a private Avalanche L1](/docs/nodes/configure/avalanche-l1-configs#validatoronly-bool)
-- [Consensus](/docs/nodes/configure/avalanche-l1-configs#consensus-parameters)
-- [Gossip](/docs/nodes/configure/avalanche-l1-configs#gossip-configs)
+- [Validator-only communication to create a private Lux L1](/docs/nodes/configure/lux-l1-configs#validatoronly-bool)
+- [Consensus](/docs/nodes/configure/lux-l1-configs#consensus-parameters)
+- [Gossip](/docs/nodes/configure/lux-l1-configs#gossip-configs)
 
-See [here](/docs/nodes/configure/avalanche-l1-configs) for more info.
+See [here](/docs/nodes/configure/lux-l1-configs) for more info.
 
 Genesis[​](#genesis "Direct link to heading")
 ---------------------------------------------
@@ -88,7 +88,7 @@ You can use `eth_getChainConfig` RPC call to get the current chain config. See [
 
 #### Fee Config[​](#fee-config "Direct link to heading")
 
-`gasLimit`: Sets the max amount of gas consumed per block. This restriction puts a cap on the amount of computation that can be done in a single block, which in turn sets a limit on the maximum gas usage allowed for a single transaction. For reference, C-Chain value is set to `15,000,000`.
+`gasLimit`: Sets the max amount of gas consumed per block. This restriction puts a cap on the amount of computation that can be done in a single block, which in turn sets a limit on the maximum gas usage allowed for a single transaction. For reference, LUExchange-Chain value is set to `15,000,000`.
 
 `targetBlockRate`: Sets the target rate of block production in seconds. A target of 2 will target producing a block every 2 seconds. If the network starts producing blocks at a faster rate, it indicates that more blocks than anticipated are being issued to the network, resulting in an increase in base fees. For C-chain this value is set to `2`.
 
@@ -98,7 +98,7 @@ You can use `eth_getChainConfig` RPC call to get the current chain config. See [
 
 `baseFeeChangeDenominator`: Divides the difference between actual and target utilization to determine how much to increase/decrease the base fee. A larger denominator indicates a slower changing, stickier base fee, while a lower denominator allows the base fee to adjust more quickly. For reference, the C-chain value is set to `36`. This value sets the base fee to increase or decrease by a factor of `1/36` of the parent block's base fee.
 
-`minBlockGasCost`: Sets the minimum amount of gas to charge for the production of a block. This value is set to `0` in C-Chain.
+`minBlockGasCost`: Sets the minimum amount of gas to charge for the production of a block. This value is set to `0` in LUExchange-Chain.
 
 `maxBlockGasCost`: Sets the maximum amount of gas to charge for the production of a block.
 
@@ -120,7 +120,7 @@ See section [Setting a Custom Fee Recipient](#setting-a-custom-fee-recipient)
 
 The fields `nonce`, `timestamp`, `extraData`, `gasLimit`, `difficulty`, `mixHash`, `coinbase`, `number`, `gasUsed`, `parentHash` defines the genesis block header. The field `gasLimit` should be set to match the `gasLimit` set in the `feeConfig`. You do not need to change any of the other genesis header fields.
 
-`nonce`, `mixHash` and `difficulty` are remnant parameters from Proof of Work systems. For Avalanche, these don't play any relevant role, so you should just leave them as their default values:
+`nonce`, `mixHash` and `difficulty` are remnant parameters from Proof of Work systems. For Lux, these don't play any relevant role, so you should just leave them as their default values:
 
 `nonce`: The result of the mining process iteration is this value. It can be any value in the genesis block. Default value is `0x0`.
 
@@ -144,9 +144,9 @@ The fields `nonce`, `timestamp`, `extraData`, `gasLimit`, `difficulty`, `mixHash
 
 ### Genesis Examples[​](#genesis-examples "Direct link to heading")
 
-Another example of a genesis file can be found in the [networks folder](https://github.com/ava-labs/public-chain-assets/blob/1951594346dcc91682bdd8929bcf8c1bf6a04c33/chains/11111/genesis.json). Please remove `airdropHash` and `airdropAmount` fields if you want to start with it.
+Another example of a genesis file can be found in the [networks folder](https://github.com/luxfi/public-chain-assets/blob/1951594346dcc91682bdd8929bcf8c1bf6a04c33/chains/11111/genesis.json). Please remove `airdropHash` and `airdropAmount` fields if you want to start with it.
 
-Here are a few examples on how a genesis file is used: [scripts/run.sh](https://github.com/ava-labs/subnet-evm/blob/master/scripts/run.sh#L99)
+Here are a few examples on how a genesis file is used: [scripts/run.sh](https://github.com/luxfi/subnet-evm/blob/master/scripts/run.sh#L99)
 
 ### Setting the Genesis Allocation[​](#setting-the-genesis-allocation "Direct link to heading")
 
@@ -177,7 +177,7 @@ To specify a different genesis allocation, populate the `alloc` field in the gen
 
 The keys in the allocation are [hex](https://en.wikipedia.org/wiki/Hexadecimal) addresses **without the canonical `0x` prefix**. The balances are denominated in Wei ([10^18 Wei = 1 Whole Unit of Native Token](https://eth-converter.com/)) and expressed as hex strings **with the canonical `0x` prefix**. You can use [this converter](https://www.rapidtables.com/convert/number/hex-to-decimal.html) to translate between decimal and hex numbers.
 
-The above example yields the following genesis allocations (denominated in whole units of the native token, that is 1 AVAX/1 WAGMI):
+The above example yields the following genesis allocations (denominated in whole units of the native token, that is 1 LUX/1 WAGMI):
 
 ```bash
 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC: 100000000 (0x52B7D2DCC80CD2E4000000=100000000000000000000000000 Wei)
@@ -200,7 +200,7 @@ To enable this feature, you'll need to add the following to your genesis file (u
 
 #### Fee Recipient Address[​](#fee-recipient-address "Direct link to heading")
 
-With `allowFeeRecipients` enabled, your validators can specify their addresses to collect fees. They need to update their EVM [chain config](#avalanchego-chain-configs) with the following to specify where the fee should be sent to.
+With `allowFeeRecipients` enabled, your validators can specify their addresses to collect fees. They need to update their EVM [chain config](#luxgo-chain-configs) with the following to specify where the fee should be sent to.
 
 ```json
 {
@@ -209,7 +209,7 @@ With `allowFeeRecipients` enabled, your validators can specify their addresses t
 ```
 
 <Callout type="warn">
-If `allowFeeRecipients` feature is enabled on the Avalanche L1, but a validator doesn't specify a "feeRecipient", the fees will be burned in blocks it produces.
+If `allowFeeRecipients` feature is enabled on the Lux L1, but a validator doesn't specify a "feeRecipient", the fees will be burned in blocks it produces.
 </Callout>
 
 This mechanism can be also activated as a precompile. See [Changing Fee Reward Mechanisms](#changing-fee-reward-mechanisms) section for more details.
@@ -238,7 +238,7 @@ The `AllowList` interface is used by precompiles to check if a given address is 
 
 `AllowList` configuration affects only the related precompile. For instance, the admin address in `feeManagerConfig` does not affect admin addresses in other activated precompiles.
 
-The `AllowList` solidity interface is defined as follows, and can be found in [IAllowList.sol](https://github.com/ava-labs/subnet-evm/blob/helloworld-official-tutorial-v2/contracts/contracts/interfaces/IAllowList.sol):
+The `AllowList` solidity interface is defined as follows, and can be found in [IAllowList.sol](https://github.com/luxfi/subnet-evm/blob/helloworld-official-tutorial-v2/contracts/contracts/interfaces/IAllowList.sol):
 
 ```solidity
 //SPDX-License-Identifier: MIT
@@ -277,7 +277,7 @@ Note: `AllowList` is not an actual contract but just an interface. It's not call
 
 ### Restricting Smart Contract Deployers[​](#restricting-smart-contract-deployers "Direct link to heading")
 
-If you'd like to restrict who has the ability to deploy contracts on your Avalanche L1, you can provide an `AllowList` configuration in your genesis or upgrade file:
+If you'd like to restrict who has the ability to deploy contracts on your Lux L1, you can provide an `AllowList` configuration in your genesis or upgrade file:
 
 ```json
 {
@@ -381,7 +381,7 @@ You can mint native(gas) coins with a precompiled contract. In order to activate
 The `Stateful Precompile` contract powering the `ContractNativeMinter` adheres to the following Solidity interface at `0x0200000000000000000000000000000000000001` (you can load this interface and interact directly in Remix):
 
 ```solidity
-// (c) 2022-2023, Ava Labs, Inc. All rights reserved.
+// (c) 2022-2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 pragma solidity ^0.8.0;
@@ -399,7 +399,7 @@ interface INativeMinter is IAllowList {
 }
 ```
 
-`mintNativeCoin` takes an address and amount of native coins to be minted. The amount denotes the amount in minimum denomination of native coins (10^18). For example, if you want to mint 1 native coin (in AVAX), you need to pass 1 \* 10^18 as the amount. A `NativeCoinMinted` event is emitted with the sender, recipient and amount when a native coin is minted.
+`mintNativeCoin` takes an address and amount of native coins to be minted. The amount denotes the amount in minimum denomination of native coins (10^18). For example, if you want to mint 1 native coin (in LUX), you need to pass 1 \* 10^18 as the amount. A `NativeCoinMinted` event is emitted with the sender, recipient and amount when a native coin is minted.
 
 Note that this uses `IAllowList` interface directly, meaning that it uses the same `AllowList` interface functions like `readAllowList` and `setAdmin`, `setManager`, `setEnabled`, `setNone`. For more information see [AllowList Solidity interface](#allowlist-interface).
 
@@ -443,7 +443,7 @@ You can configure the parameters of the dynamic fee algorithm on chain using the
 
 The precompile implements the `FeeManager` interface which includes the same `AllowList` interface used by ContractNativeMinter, TxAllowList, etc. For an example of the `AllowList` interface, see the [TxAllowList](#allowlist-interface) above.
 
-The `Stateful Precompile` contract powering the `FeeConfigManager` adheres to the following Solidity interface at `0x0200000000000000000000000000000000000003` (you can load this interface and interact directly in Remix). It can be also found in [IFeeManager.sol](https://github.com/ava-labs/subnet-evm/blob/5faabfeaa021a64c2616380ed2d6ec0a96c8f96d/contract-examples/contracts/IFeeManager.sol):
+The `Stateful Precompile` contract powering the `FeeConfigManager` adheres to the following Solidity interface at `0x0200000000000000000000000000000000000003` (you can load this interface and interact directly in Remix). It can be also found in [IFeeManager.sol](https://github.com/luxfi/subnet-evm/blob/5faabfeaa021a64c2616380ed2d6ec0a96c8f96d/contract-examples/contracts/IFeeManager.sol):
 
 ```solidity
 //SPDX-License-Identifier: MIT
@@ -539,16 +539,16 @@ To use the initial configuration, you need to specify the fee config in `initial
 
 This will set the fee config to the values specified in the `initialFeeConfig` field. For further information about precompile initial configurations see [Initial Precompile Configurations](#initial-precompile-configurations).
 
-### Avalanche Warp Messaging[​](#avalanche-warp-messaging "Direct link to heading")
+### Lux Warp Messaging[​](#lux-warp-messaging "Direct link to heading")
 
 <Callout type="warn">
-Currently Warp Precompile can only be activated in Mainnet after Durango occurs. Durango in Mainnet is set at 11 AM ET (4 PM UTC) on Wednesday, March 6th, 2024. If you plan to use Warp messaging in your own Subnet-EVM chain in Mainnet you should upgrade to AvalancheGo 1.11.11 or later and coordinate your precompile upgrade. Warp Config's "blockTimestamp" must be set after `1709740800`, Durango date (11 AM ET (4 PM UTC) on Wednesday, March 6th, 2024).
+Currently Warp Precompile can only be activated in Mainnet after Durango occurs. Durango in Mainnet is set at 11 AM ET (4 PM UTC) on Wednesday, March 6th, 2024. If you plan to use Warp messaging in your own Subnet-EVM chain in Mainnet you should upgrade to LuxGo 1.11.11 or later and coordinate your precompile upgrade. Warp Config's "blockTimestamp" must be set after `1709740800`, Durango date (11 AM ET (4 PM UTC) on Wednesday, March 6th, 2024).
 </Callout>
 
 Contract Examples[​](#contract-examples "Direct link to heading")
 -----------------------------------------------------------------
 
-Subnet-EVM contains example contracts for precompiles under `/contracts`. It's a hardhat project with tests and tasks. For more information see [contract examples README](https://github.com/ava-labs/subnet-evm/tree/master/contracts#subnet-evm-contracts).
+Subnet-EVM contains example contracts for precompiles under `/contracts`. It's a hardhat project with tests and tasks. For more information see [contract examples README](https://github.com/luxfi/subnet-evm/tree/master/contracts#subnet-evm-contracts).
 
 Network Upgrades: Enable/Disable Precompiles[​](#network-upgrades-enabledisable-precompiles "Direct link to heading")
 ---------------------------------------------------------------------------------------------------------------------
@@ -561,7 +561,7 @@ Any mistakes in configuring network upgrades or coordinating them on validators 
 
 In addition to specifying the configuration for each of the above precompiles in the genesis chain config, they can be individually enabled or disabled at a given timestamp as a network upgrade. Disabling a precompile disables calling the precompile and destructs its storage so it can be enabled at a later timestamp with a new configuration if desired.
 
-These upgrades must be specified in a file named `upgrade.json` placed in the same directory where [`config.json`](#avalanchego-chain-configs) resides: `{chain-config-dir}/{blockchainID}/upgrade.json`. For example, `WAGMI Subnet` upgrade should be placed in `~/.avalanchego/configs/chains/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/upgrade.json`.
+These upgrades must be specified in a file named `upgrade.json` placed in the same directory where [`config.json`](#luxgo-chain-configs) resides: `{chain-config-dir}/{blockchainID}/upgrade.json`. For example, `WAGMI Subnet` upgrade should be placed in `~/.luxgo/configs/chains/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/upgrade.json`.
 
 The content of the `upgrade.json` should be formatted according to the following:
 
@@ -640,11 +640,11 @@ This example enables the `feeManagerConfig` at the first block with timestamp >=
 
 When a precompile disable takes effect (that is, after its `blockTimestamp` has passed), its storage will be wiped. If you want to reenable it, you will need to treat it as a new configuration.
 
-After you have created the `upgrade.json` and placed it in the chain config directory, you need to restart the node for the upgrade file to be loaded (again, make sure you don't restart all Avalanche L1 validators at once!). On node restart, it will print out the configuration of the chain, where you can double-check that the upgrade has loaded correctly. In our example:
+After you have created the `upgrade.json` and placed it in the chain config directory, you need to restart the node for the upgrade file to be loaded (again, make sure you don't restart all Lux L1 validators at once!). On node restart, it will print out the configuration of the chain, where you can double-check that the upgrade has loaded correctly. In our example:
 
 ```bash
 INFO [08-15|15:09:36.772] <2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt Chain>
-github.com/ava-labs/subnet-evm/eth/backend.go:155: Initialised chain configuration
+github.com/luxfi/subnet-evm/eth/backend.go:155: Initialised chain configuration
 config=“{ChainID: 11111 Homestead: 0 EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0
 Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Subnet EVM: 0, FeeConfig:
 {\“gasLimit\“:20000000,\“targetBlockRate\“:2,\“minBaseFee\“:1000000000,\“targetGas\
@@ -655,7 +655,7 @@ Constantinople: 0 Petersburg: 0 Istanbul: 0, Muir Glacier: 0, Subnet EVM: 0, Fee
 
 Notice that `precompileUpgrades` entry correctly reflects the changes. You can also check the activated precompiles at a timestamp with the [`eth_getActivePrecompilesAt`](/docs/rpcs/subnet-evm#eth_getactiveprecompilesat) RPC method. The [`eth_getChainConfig`](/docs/rpcs/subnet-evm#eth_getchainconfig) RPC method will also return the configured upgrades in the response.
 
-That's it, your Avalanche L1 is all set and the desired upgrades will be activated at the indicated timestamp!
+That's it, your Lux L1 is all set and the desired upgrades will be activated at the indicated timestamp!
 
 ### Initial Precompile Configurations[​](#initial-precompile-configurations "Direct link to heading")
 
@@ -712,18 +712,18 @@ If you want to change the precompile initial configuration, you will need to fir
 
 See every precompile initial configuration in their relevant `Initial Configuration` sections under [Precompiles](#precompiles).
 
-AvalancheGo Chain Configs[​](#avalanchego-chain-configs "Direct link to heading")
+LuxGo Chain Configs[​](#luxgo-chain-configs "Direct link to heading")
 ---------------------------------------------------------------------------------
 
-As described in [this doc](/docs/nodes/configure/configs-flags#avalanche-l1-chain-configs), each blockchain of Avalanche L1s can have its own custom configuration. If an Avalanche L1's ChainID is `2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt`, the config file for this chain is located at `{chain-config-dir}/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/config.json`.
+As described in [this doc](/docs/nodes/configure/configs-flags#lux-l1-chain-configs), each blockchain of Lux L1s can have its own custom configuration. If an Lux L1's ChainID is `2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt`, the config file for this chain is located at `{chain-config-dir}/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/config.json`.
 
-For blockchains created by or forked from Subnet-EVM, most [C-Chain configs](/docs/nodes/chain-configs/primary-network/c-chain) are applicable except [Avalanche Specific APIs](/docs/nodes/chain-configs/primary-network/c-chain#enabling-avalanche-specific-apis).
+For blockchains created by or forked from Subnet-EVM, most [LUExchange-Chain configs](/docs/nodes/chain-configs/primary-network/c-chain) are applicable except [Lux Specific APIs](/docs/nodes/chain-configs/primary-network/c-chain#enabling-lux-specific-apis).
 
 ### Priority Regossip[​](#priority-regossip "Direct link to heading")
 
 A transaction is "regossiped" when the node does not find the transaction in a block after `priority-regossip-frequency` (defaults to `1m`). By default, up to 16 transactions (max 1 per address) are regossiped to validators per minute.
 
-Operators can use "priority regossip" to more aggressively "regossip" transactions for a set of important addresses (like bridge relayers). To do so, you'll need to update your [chain config](/docs/nodes/configure/configs-flags#avalanche-l1-chain-configs) with the following:
+Operators can use "priority regossip" to more aggressively "regossip" transactions for a set of important addresses (like bridge relayers). To do so, you'll need to update your [chain config](/docs/nodes/configure/configs-flags#lux-l1-chain-configs) with the following:
 
 ```json
 {
@@ -744,7 +744,7 @@ By default, up to 32 transactions from priority addresses (max 16 per address) a
 
 ### Fee Recipient[​](#fee-recipient "Direct link to heading")
 
-This works together with [`allowFeeRecipients`](#setting-a-custom-fee-recipient) and [RewardManager precompile](/docs/avalanche-l1s/precompiles/reward-manager) to specify where the fees should be sent to.
+This works together with [`allowFeeRecipients`](#setting-a-custom-fee-recipient) and [RewardManager precompile](/docs/lux-l1s/precompiles/reward-manager) to specify where the fees should be sent to.
 
 With `allowFeeRecipients` enabled, validators can specify their addresses to collect fees.
 
@@ -755,7 +755,7 @@ With `allowFeeRecipients` enabled, validators can specify their addresses to col
 ```
 
 <Callout type="warn">
-If `allowFeeRecipients` or `RewardManager` precompile is enabled on the Avalanche L1, but a validator doesn't specify a "feeRecipient", the fees will be burned in blocks it produces.
+If `allowFeeRecipients` or `RewardManager` precompile is enabled on the Lux L1, but a validator doesn't specify a "feeRecipient", the fees will be burned in blocks it produces.
 </Callout>
 
 ### Archival Node Configuration[​](#archival-node-configuration "Direct link to heading")
@@ -764,7 +764,7 @@ Running an archival node that retains all historical state data requires specifi
 
 #### Disabling Pruning
 
-To retain all historical state, you must disable pruning. For EVM chains (like C-Chain or Subnet-EVM chains), add the following to your chain's `config.json`:
+To retain all historical state, you must disable pruning. For EVM chains (like LUExchange-Chain or Subnet-EVM chains), add the following to your chain's `config.json`:
 
 ```json
 {
@@ -800,7 +800,7 @@ Important: An already synced database cannot be fully converted to an archival n
 
 When switching between database types (e.g., from LevelDB to PebbleDB), historical data does not carry over. If you need to change the database type for your archival node, you must start a fresh sync from genesis.
 
-For information about all available configuration options and directory structures, see the [AvalancheGo Config Flags documentation](https://build.avax.network/docs/nodes/configure/configs-flags).
+For information about all available configuration options and directory structures, see the [LuxGo Config Flags documentation](https://build.lux.network/docs/nodes/configure/configs-flags).
 
 Network Upgrades: State Upgrades[​](#network-upgrades-state-upgrades "Direct link to heading")
 ----------------------------------------------------------------------------------------------
@@ -870,7 +870,7 @@ A typical case when a network misses any mandatory activation would result in a 
 
 The `timestamp` should be a Unix timestamp in seconds.
 
-For instance, if you missed the Durango activation in Fuji (February 13th, 2024, 16:00 UTC) or Mainnet (March 6th, 2024, 16:00 UTC) and having issues in your network, you can reschedule the Durango activation via upgrades. In order to do this, you need to prepare a new upgrade.json including following:
+For instance, if you missed the Durango activation in Testnet (February 13th, 2024, 16:00 UTC) or Mainnet (March 6th, 2024, 16:00 UTC) and having issues in your network, you can reschedule the Durango activation via upgrades. In order to do this, you need to prepare a new upgrade.json including following:
 
 ```json
 {
@@ -883,11 +883,11 @@ For instance, if you missed the Durango activation in Fuji (February 13th, 2024,
 This reschedules the Durango activation to 2024-11-06 16:00:00 UTC (one month later than the actual activation). After preparing the upgrade.json, you need to update the chain directory with the new upgrade.json and restart your nodes. You should see logs similar to the following:
 
 ```bash
-INFO [03-22|14:04:48.284] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/ava-labs/subnet-evm/plugin/evm/vm.go:367: Applying network upgrade overrides overrides="{\"durangoTimestamp\":1712419200}"
+INFO [03-22|14:04:48.284] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/luxfi/subnet-evm/plugin/evm/vm.go:367: Applying network upgrade overrides overrides="{\"durangoTimestamp\":1712419200}"
 ...
-INFO [03-22|14:04:48.288] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/ava-labs/subnet-evm/core/blockchain.go:335: Avalanche Upgrades (timestamp based):
-INFO [03-22|14:04:48.288] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/ava-labs/subnet-evm/core/blockchain.go:335:  - SubnetEVM Timestamp:           @0          (https://github.com/ava-labs/avalanchego/releases/tag/v1.10.0)
-INFO [03-22|14:04:48.288] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/ava-labs/subnet-evm/core/blockchain.go:335:  - Durango Timestamp:            @1712419200 (https://github.com/ava-labs/avalanchego/releases/tag/v1.11.0)
+INFO [03-22|14:04:48.288] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/luxfi/subnet-evm/core/blockchain.go:335: Lux Upgrades (timestamp based):
+INFO [03-22|14:04:48.288] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/luxfi/subnet-evm/core/blockchain.go:335:  - SubnetEVM Timestamp:           @0          (https://github.com/luxfi/luxgo/releases/tag/v1.10.0)
+INFO [03-22|14:04:48.288] <fPypUHjNvJqBKXBx2LEoJ9u5b8rRxMtEhb4v2QEDQejEiTtMG Chain> github.com/luxfi/subnet-evm/core/blockchain.go:335:  - Durango Timestamp:            @1712419200 (https://github.com/luxfi/luxgo/releases/tag/v1.11.0)
 ...
 ```
 

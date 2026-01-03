@@ -70,8 +70,8 @@ export function LoginModal() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-red-500/10 via-transparent to-transparent"></div>
             <div className="flex py-5 items-center justify-center relative">
               <Image
-                src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackaton-platform-images/avalancheLoginLogo-LUyz1IYs0fZrQ3tE0CUjst07LPVAv8.svg"
-                alt="Avalanche"
+                src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackaton-platform-images/luxLoginLogo-LUyz1IYs0fZrQ3tE0CUjst07LPVAv8.svg"
+                alt="Lux"
                 width="120"
                 height="147"
                 className="max-w-full h-auto"
@@ -141,7 +141,7 @@ export function LoginModal() {
                   <p className="text-zinc-500 dark:text-zinc-400 text-center text-[10px] leading-relaxed">
                     By signing in, you agree to our{" "}
                     <Link
-                      href="https://www.avax.network/terms-of-use"
+                      href="https://www.lux.network/terms-of-use"
                       target="_blank"
                       className="text-zinc-700 dark:text-zinc-300 hover:text-red-500 dark:hover:text-red-400 transition-colors underline underline-offset-2"
                     >
@@ -149,7 +149,7 @@ export function LoginModal() {
                     </Link>{" "}
                     and{" "}
                     <Link
-                      href="https://www.avax.network/privacy-policy"
+                      href="https://www.lux.network/privacy-policy"
                       target="_blank"
                       className="text-zinc-700 dark:text-zinc-300 hover:text-red-500 dark:hover:text-red-400 transition-colors underline underline-offset-2"
                     >

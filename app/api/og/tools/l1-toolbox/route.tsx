@@ -22,7 +22,7 @@ export async function GET(
   return new ImageResponse(
     OG({
       title: 'L1 Toolbox',
-      description: 'Manage your L1 with a highly granular set of tools for the Avalanche ecosystem'
+      description: 'Manage your L1 with a highly granular set of tools for the Lux ecosystem'
     }),
     {
       width: 1200,
@@ -49,7 +49,7 @@ function OG({
         backgroundColor: '#fafafa',
         overflow: 'hidden',
         alignItems: 'center',
-        backgroundImage: "url('https://build.avax.network/og.png')",
+        backgroundImage: "url('https://build.lux.network/og.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -130,7 +130,7 @@ function OG({
                 />
               </g>
             </svg>
-            <span style={{paddingLeft: "10px"}}>build.avax.network/tools/<span style={{color: "red"}}>l1-toolbox</span></span>
+            <span style={{paddingLeft: "10px"}}>build.lux.network/tools/<span style={{color: "red"}}>l1-toolbox</span></span>
           </div>
         </div>
       </div>

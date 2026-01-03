@@ -38,9 +38,9 @@ The **Validator Manager Contract** is the smart contract system that manages val
 
 **Validator Lifecycle Management:**
 - `initiateValidatorRegistration()`: Starts adding a new validator
-- `completeValidatorRegistration()`: Finalizes validator addition after P-Chain confirmation
+- `completeValidatorRegistration()`: Finalizes validator addition after Platform-Chain confirmation
 - `initiateValidatorRemoval()`: Begins removing a validator
-- `completeValidatorRemoval()`: Finalizes removal after P-Chain confirmation
+- `completeValidatorRemoval()`: Finalizes removal after Platform-Chain confirmation
 - `initiateValidatorWeightUpdate()`: Changes validator voting weight
 - `completeValidatorWeightUpdate()`: Finalizes weight changes
 
@@ -50,25 +50,25 @@ The **Validator Manager Contract** is the smart contract system that manages val
 - Churn rate limiting to prevent rapid validator set changes
 - Warp message construction and verification
 
-## P-Chain Integration
+## Platform-Chain Integration
 
-The **Platform Chain (P-Chain)** is the backbone for Avalanche's native interoperability. It serves as a registry of all validators in the network, including L1 validators.
+The **Platform Chain (Platform-Chain)** is the backbone for Lux's native interoperability. It serves as a registry of all validators in the network, including L1 validators.
 
-### How P-Chain Calls Work:
+### How Platform-Chain Calls Work:
 
-1. **Validator Registration**: When adding a validator, the contract initiates a P-Chain transaction
-2. **Warp Messages**: Cross-chain communication uses Warp messages to interact with P-Chain
-3. **Confirmation Process**: P-Chain processes the request and sends confirmation back
-4. **State Updates**: The validator manager contract updates its state based on P-Chain confirmation
+1. **Validator Registration**: When adding a validator, the contract initiates a Platform-Chain transaction
+2. **Warp Messages**: Cross-chain communication uses Warp messages to interact with Platform-Chain
+3. **Confirmation Process**: Platform-Chain processes the request and sends confirmation back
+4. **State Updates**: The validator manager contract updates its state based on Platform-Chain confirmation
 
-### P-Chain Transaction Types:
+### Platform-Chain Transaction Types:
 - `CreateSubnetTx`: Creates new subnet for L1
 - `CreateChainTx`: Creates new blockchain within subnet
 - Validator registration/removal transactions
 - Weight update transactions
 
 ### Key Points:
-- P-Chain is **not EVM-based** - requires compatible wallet like Core wallet
-- L1 validators sync P-Chain but don't participate in its consensus
-- All validator changes must be confirmed by P-Chain before taking effect
-- P-Chain maintains the authoritative record of all validators across the network
+- Platform-Chain is **not EVM-based** - requires compatible wallet like Core wallet
+- L1 validators sync Platform-Chain but don't participate in its consensus
+- All validator changes must be confirmed by Platform-Chain before taking effect
+- Platform-Chain maintains the authoritative record of all validators across the network

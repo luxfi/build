@@ -1,36 +1,36 @@
 ---
-title: Avalanche Client
+title: Lux Client
 ---
 
 ## Overview
 
-The Avalanche Client (also known as the Public Client) is the main client for read-only operations across all Avalanche chains. It provides a unified interface for querying data from P-Chain, X-Chain, C-Chain, and various API endpoints.
+The Lux Client (also known as the Public Client) is the main client for read-only operations across all Lux chains. It provides a unified interface for querying data from Platform-Chain, Exchange-Chain, LUExchange-Chain, and various API endpoints.
 
-**When to use:** Use the Avalanche Client when you need to query blockchain data but don't need to send transactions.
+**When to use:** Use the Lux Client when you need to query blockchain data but don't need to send transactions.
 
 ## Installation & Setup
 
-For setup instructions, see the [Getting Started](/avalanche-sdk/client-sdk/getting-started) guide.
+For setup instructions, see the [Getting Started](/lux-sdk/client-sdk/getting-started) guide.
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 ```
 
 ## Available Clients
 
-The Avalanche Client automatically provides access to all chain-specific and API clients:
+The Lux Client automatically provides access to all chain-specific and API clients:
 
 ```typescript
 // Chain clients
-client.pChain; // P-Chain operations (validators, staking, subnets)
-client.xChain; // X-Chain operations (assets, UTXOs)
-client.cChain; // C-Chain operations (EVM, atomic transactions)
+client.pChain; // Platform-Chain operations (validators, staking, subnets)
+client.xChain; // Exchange-Chain operations (assets, UTXOs)
+client.cChain; // LUExchange-Chain operations (EVM, atomic transactions)
 
 // API clients
 client.admin; // Admin API operations
@@ -39,29 +39,29 @@ client.health; // Health API operations
 client.proposerVM.pChain; // ProposerVM API for P Chain
 client.proposerVM.xChain; // ProposerVM API for X Chain
 client.proposerVM.cChain; // ProposerVM API for C Chain
-client.indexBlock.pChain; // P-Chain block index
-client.indexBlock.cChain; // C-Chain block index
-client.indexBlock.xChain; // X-Chain block index
-client.indexTx.xChain; // X-Chain transaction index
+client.indexBlock.pChain; // Platform-Chain block index
+client.indexBlock.cChain; // LUExchange-Chain block index
+client.indexBlock.xChain; // Exchange-Chain block index
+client.indexTx.xChain; // Exchange-Chain transaction index
 ```
 
 ## Available Methods
 
-The Avalanche Client extends viem's Public Client and provides additional Avalanche-specific methods:
+The Lux Client extends viem's Public Client and provides additional Lux-specific methods:
 
-### Avalanche-Specific Methods
+### Lux-Specific Methods
 
 - **Public Methods**: `baseFee`, `getChainConfig`, `maxPriorityFeePerGas`, `feeConfig`, `getActiveRulesAt`
 
-For complete documentation, see [Public Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/public).
+For complete documentation, see [Public Methods Reference](/lux-sdk/client-sdk/methods/public-methods/public).
 
 ### Chain-Specific Methods
 
 Access methods through chain clients:
 
-- **P-Chain Methods**: See [P-Chain Client](/avalanche-sdk/client-sdk/clients/p-chain-client) and [P-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/p-chain)
-- **X-Chain Methods**: See [X-Chain Client](/avalanche-sdk/client-sdk/clients/x-chain-client) and [X-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/x-chain)
-- **C-Chain Methods**: See [C-Chain Client](/avalanche-sdk/client-sdk/clients/c-chain-client) and [C-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/c-chain)
+- **Platform-Chain Methods**: See [Platform-Chain Client](/lux-sdk/client-sdk/clients/p-chain-client) and [Platform-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/p-chain)
+- **Exchange-Chain Methods**: See [Exchange-Chain Client](/lux-sdk/client-sdk/clients/x-chain-client) and [Exchange-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/x-chain)
+- **LUExchange-Chain Methods**: See [LUExchange-Chain Client](/lux-sdk/client-sdk/clients/c-chain-client) and [LUExchange-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/c-chain)
 
 ### viem Public Client Methods
 
@@ -75,7 +75,7 @@ See the [viem documentation](https://viem.sh/docs/getting-started) for all avail
 
 ## Common Operations
 
-### Query P-Chain Data
+### Query Platform-Chain Data
 
 ```typescript
 // Get current block height
@@ -97,18 +97,18 @@ const balance = await client.pChain.getBalance({
 });
 ```
 
-### Query X-Chain Data
+### Query Exchange-Chain Data
 
 ```typescript
 // Get balance for specific asset
 const balance = await client.xChain.getBalance({
-  addresses: ["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
-  assetID: "AVAX",
+  addresses: ["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+  assetID: "LUX",
 });
 
 // Get all balances
 const allBalances = await client.xChain.getAllBalances({
-  addresses: ["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+  addresses: ["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
 });
 
 // Get asset information
@@ -117,7 +117,7 @@ const asset = await client.xChain.getAssetDescription({
 });
 ```
 
-### Query C-Chain Data
+### Query LUExchange-Chain Data
 
 ```typescript
 // Get EVM balance (viem action)
@@ -130,7 +130,7 @@ const receipt = await client.getTransactionReceipt({
   hash: "0x...",
 });
 
-// Get base fee (Avalanche-specific)
+// Get base fee (Lux-specific)
 const baseFee = await client.baseFee();
 
 // Get chain config
@@ -190,25 +190,25 @@ try {
 
 **Don't use this client for:**
 
-- ❌ Sending transactions (use [Wallet Client](/avalanche-sdk/client-sdk/clients/wallet-client))
-- ❌ Signing messages (use [Wallet Client](/avalanche-sdk/client-sdk/clients/wallet-client))
-- ❌ Cross-chain transfers (use [Wallet Client](/avalanche-sdk/client-sdk/clients/wallet-client))
+- ❌ Sending transactions (use [Wallet Client](/lux-sdk/client-sdk/clients/wallet-client))
+- ❌ Signing messages (use [Wallet Client](/lux-sdk/client-sdk/clients/wallet-client))
+- ❌ Cross-chain transfers (use [Wallet Client](/lux-sdk/client-sdk/clients/wallet-client))
 
 ## Best Practices
 
 ### Use Specific Clients
 
 ```typescript
-// Good: Use P-Chain client for platform operations
+// Good: Use Platform-Chain client for platform operations
 const validators = await client.pChain.getCurrentValidators({});
 
-// Good: Use X-Chain client for asset operations
+// Good: Use Exchange-Chain client for asset operations
 const balance = await client.xChain.getBalance({
-  addresses: ["X-avax..."],
-  assetID: "AVAX",
+  addresses: ["X-lux..."],
+  assetID: "LUX",
 });
 
-// Good: Use C-Chain client for EVM operations
+// Good: Use LUExchange-Chain client for EVM operations
 const atomicTx = await client.cChain.getAtomicTx({
   txID: "0x...",
 });
@@ -216,7 +216,7 @@ const atomicTx = await client.cChain.getAtomicTx({
 
 ### Using viem Actions
 
-Since the Avalanche Client extends viem's Public Client, you have access to all viem actions:
+Since the Lux Client extends viem's Public Client, you have access to all viem actions:
 
 ```typescript
 // Use viem's readContract action
@@ -243,8 +243,8 @@ See the [viem documentation](https://viem.sh/docs/getting-started) for all avail
 
 ## Next Steps
 
-- **[Wallet Client](/avalanche-sdk/client-sdk/clients/wallet-client)** - Transaction signing and sending
-- **[P-Chain Client](/avalanche-sdk/client-sdk/clients/p-chain-client)** - Detailed P-Chain operations
-- **[X-Chain Client](/avalanche-sdk/client-sdk/clients/x-chain-client)** - Asset and UTXO operations
-- **[C-Chain Client](/avalanche-sdk/client-sdk/clients/c-chain-client)** - EVM and atomic operations
-- **[Public Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/public)** - Complete public method documentation
+- **[Wallet Client](/lux-sdk/client-sdk/clients/wallet-client)** - Transaction signing and sending
+- **[Platform-Chain Client](/lux-sdk/client-sdk/clients/p-chain-client)** - Detailed Platform-Chain operations
+- **[Exchange-Chain Client](/lux-sdk/client-sdk/clients/x-chain-client)** - Asset and UTXO operations
+- **[LUExchange-Chain Client](/lux-sdk/client-sdk/clients/c-chain-client)** - EVM and atomic operations
+- **[Public Methods Reference](/lux-sdk/client-sdk/methods/public-methods/public)** - Complete public method documentation

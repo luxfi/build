@@ -1,9 +1,9 @@
 ---
-title: How to Upgrade AvalancheGo to Granite
-description: This guide shows how to upgrade AvalancheGo to Granite v1.14.0, the latest network upgrade with major improvements.
+title: How to Upgrade LuxGo to Granite
+description: This guide shows how to upgrade LuxGo to Granite v1.14.0, the latest network upgrade with major improvements.
 date: 2025-10-21
 authors: [owenwg]
-topics: [Granite Upgrade, AvalancheGo, Upgrade]
+topics: [Granite Upgrade, LuxGo, Upgrade]
 comments: true
 ---
 
@@ -11,11 +11,11 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 ## Introduction
 
-Avalanche Granite is the latest upgrade to the Avalanche network. It includes major improvements including P-Chain epoched views for ICM, secp256r1 support for biometric authentication, and dynamic minimum block times for faster transactions.
+Lux Granite is the latest upgrade to the Lux network. It includes major improvements including Platform-Chain epoched views for ICM, secp256r1 support for biometric authentication, and dynamic minimum block times for faster transactions.
 
 ## Prerequisites
 
-- An existing AvalancheGo node running any version prior to v1.14.0
+- An existing LuxGo node running any version prior to v1.14.0
 - Basic command line knowledge
 - Access to your node's terminal or SSH
 
@@ -27,8 +27,8 @@ Run the following commands to backup your staker files:
 
 ```bash
 cd
-cp ~/.avalanchego/staking/staker.crt .
-cp ~/.avalanchego/staking/staker.key .
+cp ~/.luxgo/staking/staker.crt .
+cp ~/.luxgo/staking/staker.key .
 ```
 
 Download these `staker.crt` and `staker.key` files and store them in a secure, private location. These files can be used to fully recreate your node if needed.
@@ -43,7 +43,7 @@ Choose one of the following methods to upgrade your Primary Network node to Gran
 
 ### Method 1: Using the Installer Script (Recommended)
 
-The easiest way to upgrade is using the AvalancheGo installer script.
+The easiest way to upgrade is using the LuxGo installer script.
 
 <Steps>
 <Step>
@@ -53,8 +53,8 @@ The easiest way to upgrade is using the AvalancheGo installer script.
 If you don't already have the installer script, download it:
 
 ```bash
-wget -nd -m https://raw.githubusercontent.com/ava-labs/avalanche-docs/master/scripts/avalanchego-installer.sh
-chmod 755 avalanchego-installer.sh
+wget -nd -m https://raw.githubusercontent.com/luxfi/lux-docs/master/scripts/luxgo-installer.sh
+chmod 755 luxgo-installer.sh
 ```
 
 </Step>
@@ -65,20 +65,20 @@ chmod 755 avalanchego-installer.sh
 Execute the installer script:
 
 ```bash
-./avalanchego-installer.sh
+./luxgo-installer.sh
 ```
 
 The script will automatically detect your existing installation and switch to upgrade mode:
 
 ```bash
-AvalancheGo installer
+LuxGo installer
 ---------------------
 Preparing environment...
 Found amd64 architecture...
 Looking for amd64 version latest...
 Node version found.
 Attempting to download: 
-   https://github.com/ava-labs/avalanchego/releases/download/v1.14.0/avalanchego-linux-amd64-v1.14.0.tar.gz
+   https://github.com/luxfi/luxgo/releases/download/v1.14.0/luxgo-linux-amd64-v1.14.0.tar.gz
 ```
 
 </Step>
@@ -88,7 +88,7 @@ Attempting to download:
 
 The script will:
 1. Stop your current node
-2. Download and install AvalancheGo v1.14.0 (Granite)
+2. Download and install LuxGo v1.14.0 (Granite)
 3. Restart your node with the new version
 
 You'll see output similar to:
@@ -96,7 +96,7 @@ You'll see output similar to:
 ```bash
 Node upgraded, starting service...
 New node version:
-avalanche/1.14.0 [network=mainnet, database=v1.4.0, commit=...]
+lux/1.14.0 [network=mainnet, database=v1.4.0, commit=...]
 Done!
 ```
 
@@ -107,25 +107,25 @@ Done!
 
 For Docker users, pull the new Granite image:
 
-- **Docker Image**: [`avaplatform/avalanchego:v1.14.0`](https://hub.docker.com/r/avaplatform/avalanchego/tags?name=v1.14.0)
+- **Docker Image**: [`avaplatform/luxgo:v1.14.0`](https://hub.docker.com/r/avaplatform/luxgo/tags?name=v1.14.0)
 
 ```bash
-docker pull avaplatform/avalanchego:v1.14.0
+docker pull avaplatform/luxgo:v1.14.0
 ```
 
 ### Method 3: Pre-Built Binary
 
-1. Go to the [AvalancheGo releases page](https://github.com/ava-labs/avalanchego/releases)
+1. Go to the [LuxGo releases page](https://github.com/luxfi/luxgo/releases)
 2. Find version v1.14.0 (Granite release)
 3. Download the appropriate file for your system:
-   - **Linux (AMD64)**: `avalanchego-linux-amd64-v1.14.0.tar.gz`
-   - **Linux (ARM64)**: `avalanchego-linux-arm64-v1.14.0.tar.gz`
+   - **Linux (AMD64)**: `luxgo-linux-amd64-v1.14.0.tar.gz`
+   - **Linux (ARM64)**: `luxgo-linux-arm64-v1.14.0.tar.gz`
 
 4. Extract and run:
 
 ```bash
-tar -xvf avalanchego-linux-amd64-v1.14.0.tar.gz
-./avalanchego-v1.14.0-linux/avalanchego
+tar -xvf luxgo-linux-amd64-v1.14.0.tar.gz
+./luxgo-v1.14.0-linux/luxgo
 ```
 
 ### Method 4: Build from Source
@@ -134,8 +134,8 @@ For developers who want to build from source:
 
 ```bash
 # Clone the repository (skip if already cloned)
-git clone https://github.com/ava-labs/avalanchego.git
-cd avalanchego
+git clone https://github.com/luxfi/luxgo.git
+cd luxgo
 
 # Fetch and checkout Granite release
 git fetch --all --tags
@@ -145,24 +145,24 @@ git checkout --force tags/v1.14.0
 ./scripts/build.sh
 
 # Verify the version
-./build/avalanchego --version
+./build/luxgo --version
 
 # Run the node
-./build/avalanchego
+./build/luxgo
 ```
 
 ## L1s/Subnets Nodes
 
-For nodes running L1s (formerly Subnets), you need to upgrade both AvalancheGo and the Subnet-EVM plugin:
+For nodes running L1s (formerly Subnets), you need to upgrade both LuxGo and the Subnet-EVM plugin:
 
 ### Method 1: Docker (Easiest)
 
-Use the Docker image that includes both AvalancheGo v1.14.0 and Subnet-EVM v0.8.0:
+Use the Docker image that includes both LuxGo v1.14.0 and Subnet-EVM v0.8.0:
 
-- **Docker Image**: [`avaplatform/subnet-evm_avalanchego:v0.8.0_v1.14.0`](https://hub.docker.com/r/avaplatform/subnet-evm_avalanchego/tags?name=v0.8.0_v1.14.0)
+- **Docker Image**: [`avaplatform/subnet-evm_luxgo:v0.8.0_v1.14.0`](https://hub.docker.com/r/avaplatform/subnet-evm_luxgo/tags?name=v0.8.0_v1.14.0)
 
 ```bash
-docker pull avaplatform/subnet-evm_avalanchego:v0.8.0_v1.14.0
+docker pull avaplatform/subnet-evm_luxgo:v0.8.0_v1.14.0
 ```
 
 <Callout type="info">
@@ -171,24 +171,24 @@ This Docker image includes the Subnet-EVM v0.8.0 binary pre-installed, so no add
 
 ### Method 2: Manual Binary Update
 
-If running AvalancheGo manually, you need to:
+If running LuxGo manually, you need to:
 
-1. **Upgrade AvalancheGo** using any method from the Primary Network section above
+1. **Upgrade LuxGo** using any method from the Primary Network section above
 2. **Update the Subnet-EVM plugin**:
 
 ```bash
 # Stop your node first
-sudo systemctl stop avalanchego
+sudo systemctl stop luxgo
 
 # Download the plugin (example for Linux AMD64)
-wget https://github.com/ava-labs/subnet-evm/releases/download/v0.8.0/subnet-evm_0.8.0_linux_amd64.tar.gz
+wget https://github.com/luxfi/subnet-evm/releases/download/v0.8.0/subnet-evm_0.8.0_linux_amd64.tar.gz
 tar -xvf subnet-evm_0.8.0_linux_amd64.tar.gz
 
 # Copy to plugins folder and rename to your VM ID
-cp subnet-evm ~/.avalanchego/plugins/<YOUR_VM_ID>
+cp subnet-evm ~/.luxgo/plugins/<YOUR_VM_ID>
 
 # Restart your node
-sudo systemctl start avalanchego
+sudo systemctl start luxgo
 ```
 
 <Callout type="warning">
@@ -214,18 +214,18 @@ curl -X POST --data '{
 You should see a response similar to:
 
 ```json
-{"jsonrpc":"2.0","result":{"version":"avalanchego/1.14.0","databaseVersion":"v1.4.5","rpcProtocolVersion":"44","gitCommit":"dce38e90b1542fafa3c2b8efa8ef864d7a370eb6","vmVersions":{"avm":"v1.14.0","evm":"v0.15.4","platform":"v1.14.0"}},"id":1}
+{"jsonrpc":"2.0","result":{"version":"luxgo/1.14.0","databaseVersion":"v1.4.5","rpcProtocolVersion":"44","gitCommit":"dce38e90b1542fafa3c2b8efa8ef864d7a370eb6","vmVersions":{"avm":"v1.14.0","evm":"v0.15.4","platform":"v1.14.0"}},"id":1}
 ```
 
-The `version` field should show `avalanche/1.14.0` confirming your node is running Granite.
+The `version` field should show `lux/1.14.0` confirming your node is running Granite.
 
 ## Stay Updated
 
 To receive notifications about future upgrades:
 
-1. **Avalanche Notify**: If you have a node, subscribe to the [Avalanche Notify service](/docs/nodes/maintain/enroll-in-avalanche-notify) with your node ID
-2. **GitHub Notifications**: Watch the [AvalancheGo repository](https://github.com/ava-labs/avalanchego) and select "Releases" under custom notifications
-3. **For L1s/Subnets**: Also watch the [Subnet-EVM repository](https://github.com/ava-labs/subnet-evm) for plugin updates
+1. **Lux Notify**: If you have a node, subscribe to the [Lux Notify service](/docs/nodes/maintain/enroll-in-lux-notify) with your node ID
+2. **GitHub Notifications**: Watch the [LuxGo repository](https://github.com/luxfi/luxgo) and select "Releases" under custom notifications
+3. **For L1s/Subnets**: Also watch the [Subnet-EVM repository](https://github.com/luxfi/subnet-evm) for plugin updates
 
 ## Troubleshooting
 
@@ -233,6 +233,6 @@ If you encounter issues during the upgrade:
 
 - Ensure you've properly backed up your staker files
 - Check that your previous node version is completely stopped before upgrading
-- For service-based installations, verify the service name (could be `avalanchego.service` or `avalanche.service`)
+- For service-based installations, verify the service name (could be `luxgo.service` or `lux.service`)
 - For L1s/Subnets, ensure the Subnet-EVM plugin is updated to v0.8.0 and renamed to match your VM ID
-- Join the [Avalanche Discord](https://discord.gg/avax) for community support
+- Join the [Lux Discord](https://discord.gg/lux) for community support

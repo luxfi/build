@@ -1,9 +1,9 @@
 {
-  "title": "Deploy Avalanche L1s",
-  "description": "CLI instructions for deploying Avalanche L1s.",
+  "title": "Deploy Lux L1s",
+  "description": "CLI instructions for deploying Lux L1s.",
   "pages": [
     "deploy-locally",
-    "deploy-on-fuji-testnet",
+    "deploy-on-testnet-testnet",
     "deploy-on-mainnet",
     "deploy-on-production-infra",
     "deploy-with-custom-vm",

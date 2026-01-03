@@ -17,7 +17,7 @@ Each block in the blockchain contains a set of state transitions. Each block is 
 
 ## Blockchain
 
-A blockchain relies on two major components: The **Consensus Engine** and the **VM**. The VM defines application specific behavior and how blocks are built and parsed to create the blockchain. All VMs run on top of the Avalanche Consensus Engine, which allows nodes in the network to agree on the state of the blockchain. Here's a quick example of how VMs interact with consensus:
+A blockchain relies on two major components: The **Consensus Engine** and the **VM**. The VM defines application specific behavior and how blocks are built and parsed to create the blockchain. All VMs run on top of the Lux Consensus Engine, which allows nodes in the network to agree on the state of the blockchain. Here's a quick example of how VMs interact with consensus:
 
 1.  A node wants to update the blockchain's state
 2.  The node's VM will notify the consensus engine that it wants to update the state
@@ -26,20 +26,20 @@ A blockchain relies on two major components: The **Consensus Engine** and the **
 5.  The consensus engine will get the network to reach consensus on whether to accept or reject the newly verified block. Every virtuous (well-behaved) node on the network will have the same preference for a particular block
 6.  Depending upon the consensus results, the engine will either accept or reject the block. What happens when a block is accepted or rejected is specific to the implementation of the VM
 
-AvalancheGo provides the consensus engine for every blockchain on the Avalanche Network. The consensus engine relies on the VM interface to handle building, parsing, and storing blocks as well as verifying and executing on behalf of the consensus engine.
+LuxGo provides the consensus engine for every blockchain on the Lux Network. The consensus engine relies on the VM interface to handle building, parsing, and storing blocks as well as verifying and executing on behalf of the consensus engine.
 
-This decoupling between the application and consensus layer allows developers to build their applications quickly by implementing virtual machines, without having to worry about the consensus layer managed by Avalanche which deals with how nodes agree on whether or not to accept a block.
+This decoupling between the application and consensus layer allows developers to build their applications quickly by implementing virtual machines, without having to worry about the consensus layer managed by Lux which deals with how nodes agree on whether or not to accept a block.
 
 ## Installing a VM
 
-VMs are supplied as binaries to a node running `AvalancheGo`. These binaries must be named the VM's assigned **VMID**. A VMID is a 32-byte hash encoded in CB58 that is generated when you build your VM.
+VMs are supplied as binaries to a node running `LuxGo`. These binaries must be named the VM's assigned **VMID**. A VMID is a 32-byte hash encoded in CB58 that is generated when you build your VM.
 
-In order to install a VM, its binary must be installed in the `AvalancheGo` plugin path. See [here](/docs/nodes/configure/configs-flags#--plugin-dir-string) for more details. Multiple VMs can be installed in this location.
+In order to install a VM, its binary must be installed in the `LuxGo` plugin path. See [here](/docs/nodes/configure/configs-flags#--plugin-dir-string) for more details. Multiple VMs can be installed in this location.
 
-Each VM runs as a separate process from AvalancheGo and communicates with `AvalancheGo` using gRPC calls. This functionality is enabled by **RPCChainVM**, a special VM which wraps around other VM implementations and bridges the VM and AvalancheGo, establishing a standardized communication protocol between them.
+Each VM runs as a separate process from LuxGo and communicates with `LuxGo` using gRPC calls. This functionality is enabled by **RPCChainVM**, a special VM which wraps around other VM implementations and bridges the VM and LuxGo, establishing a standardized communication protocol between them.
 
 <Callout title="Note">
-During VM creation, handshake messages are exchanged via **RPCChainVM** between AvalancheGo and the VM installation. Ensure matching **RPCChainVM** protocol versions to avoid errors, by updating your VM or using a [different version of AvalancheGo](https://github.com/ava-labs/AvalancheGo/releases).
+During VM creation, handshake messages are exchanged via **RPCChainVM** between LuxGo and the VM installation. Ensure matching **RPCChainVM** protocol versions to avoid errors, by updating your VM or using a [different version of LuxGo](https://github.com/luxfi/LuxGo/releases).
 
 Note that some VMs may not support the latest protocol version.
 </Callout>
@@ -57,7 +57,7 @@ For any readers familiar with object-oriented programming, static and non-static
 
 ### Instantiate a VM
 
-The `vm.Factory` interface is implemented to create new VM instances from which a blockchain can be initialized. The factory's `New` method shown below provides `AvalancheGo` with an instance of the VM. It's defined in the [`factory.go`](https://github.com/ava-labs/timestampvm/blob/main/timestampvm/factory.go) file of the `timestampvm` repository.
+The `vm.Factory` interface is implemented to create new VM instances from which a blockchain can be initialized. The factory's `New` method shown below provides `LuxGo` with an instance of the VM. It's defined in the [`factory.go`](https://github.com/luxfi/timestampvm/blob/main/timestampvm/factory.go) file of the `timestampvm` repository.
 
 ```go
 // Returning a new VM instance from VM's factory
@@ -66,7 +66,7 @@ func (f *Factory) New(*snow.Context) (interface{}, error) { return &vm.VM{}, nil
 
 ### Initializing a VM to Create a Blockchain
 
-Before a VM can run, AvalancheGo will initialize it by invoking its `Initialize` method. Here, the VM will bootstrap itself and sets up anything it requires before it starts running.
+Before a VM can run, LuxGo will initialize it by invoking its `Initialize` method. Here, the VM will bootstrap itself and sets up anything it requires before it starts running.
 
 This might involve setting up its database, mempool, genesis state, or anything else the VM requires to run.
 
@@ -83,7 +83,7 @@ if err := vm.Initialize(
 );
 ```
 
-You can refer to the [implementation](https://github.com/ava-labs/timestampvm/blob/main/timestampvm/vm.go#L75) of `vm.initialize` in the TimestampVM repository.
+You can refer to the [implementation](https://github.com/luxfi/timestampvm/blob/main/timestampvm/vm.go#L75) of `vm.initialize` in the TimestampVM repository.
 
 ## Interfaces
 
@@ -91,9 +91,9 @@ Every VM should implement the following interfaces:
 
 ### `block.ChainVM`
 
-To reach a consensus on linear blockchains, Avalanche uses the Snowman consensus engine. To be compatible with Snowman, a VM must implement the `block.ChainVM` interface.
+To reach a consensus on linear blockchains, Lux uses the Snowman consensus engine. To be compatible with Snowman, a VM must implement the `block.ChainVM` interface.
 
-For more information, see [here](https://github.com/ava-labs/avalanchego/blob/master/snow/engine/snowman/block/vm.go).
+For more information, see [here](https://github.com/luxfi/luxgo/blob/master/snow/engine/snowman/block/vm.go).
 
 ```go title="snow/engine/snowman/block/vm.go"
 // ChainVM defines the required functionality of a Snowman VM.
@@ -155,7 +155,7 @@ type Parser interface {
 
 ### `common.VM`
 
-`common.VM` is a type that every `VM` must implement. For more information, you can see the full file [here](https://github.com/ava-labs/avalanchego/blob/master/snow/engine/common/vm.go).
+`common.VM` is a type that every `VM` must implement. For more information, you can see the full file [here](https://github.com/luxfi/luxgo/blob/master/snow/engine/common/vm.go).
 
 ```go title="snow/engine/common/vm.go"
 // VM describes the interface that all consensus VMs must implement
@@ -244,7 +244,7 @@ type VM interface {
 
 ### `snowman.Block`
 
-The `snowman.Block` interface It define the functionality a block must implement to be a block in a linear Snowman chain. For more information, you can see the full file [here](https://github.com/ava-labs/avalanchego/blob/master/snow/consensus/snowman/block.go).
+The `snowman.Block` interface It define the functionality a block must implement to be a block in a linear Snowman chain. For more information, you can see the full file [here](https://github.com/luxfi/luxgo/blob/master/snow/consensus/snowman/block.go).
 
 ```go title="snow/consensus/snowman/block.go"
 // Block is a possible decision that dictates the next canonical block.
@@ -283,7 +283,7 @@ type Block interface {
 
 ### `choices.Decidable`
 
-This interface is a superset of every decidable object, such as transactions, blocks, and vertices. For more information, you can see the full file [here](https://github.com/ava-labs/avalanchego/blob/master/snow/choices/decidable.go).
+This interface is a superset of every decidable object, such as transactions, blocks, and vertices. For more information, you can see the full file [here](https://github.com/luxfi/luxgo/blob/master/snow/choices/decidable.go).
 
 ```go title="snow/choices/decidable.go"
 // Decidable represents element that can be decided.

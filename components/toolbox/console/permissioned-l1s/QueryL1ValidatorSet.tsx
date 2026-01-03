@@ -5,14 +5,14 @@ import { useState, useEffect } from "react"
 import { Calendar, Clock, Users, Coins, Info, Copy, Check, Search, ChevronDown } from "lucide-react"
 import { Container } from "@/components/toolbox/components/Container"
 import { Button } from "@/components/toolbox/components/Button"
-import { networkIDs } from "@avalabs/avalanchejs"
+import { networkIDs } from "luxfi"
 
-import { GlobalParamNetwork } from "@avalabs/avacloud-sdk/models/components"
-import { AvaCloudSDK } from "@avalabs/avacloud-sdk"
+import { GlobalParamNetwork } from "@luxfi/avacloud-sdk/models/components"
+import { AvaCloudSDK } from "@luxfi/avacloud-sdk"
 import SelectSubnetId from "@/components/toolbox/components/SelectSubnetId"
 import BlockchainDetailsDisplay from "@/components/toolbox/components/BlockchainDetailsDisplay"
 import { Tooltip } from "@/components/toolbox/components/Tooltip"
-import { formatAvaxBalance } from "@/components/toolbox/coreViem/utils/format"
+import { formatLuxBalance } from "@/components/toolbox/coreViem/utils/format"
 import { getSubnetInfo } from "@/components/toolbox/coreViem/utils/glacier"
 import { cb58ToHex } from "@/components/toolbox/console/utilities/format-converter/FormatConverter"
 
@@ -35,7 +35,7 @@ interface ValidatorResponse {
 }
 
 export default function QueryL1ValidatorSet() {
-  const { avalancheNetworkID, isTestnet } = useWalletStore()
+  const { luxNetworkID, isTestnet } = useWalletStore()
   const [validators, setValidators] = useState<ValidatorResponse[]>([])
   const [filteredValidators, setFilteredValidators] = useState<ValidatorResponse[]>([])
   const [isLoading, setIsLoading] = useState(false)
@@ -51,7 +51,7 @@ export default function QueryL1ValidatorSet() {
   // Network names for display
   const networkNames: Record<number, GlobalParamNetwork> = {
     [networkIDs.MainnetID]: "mainnet",
-    [networkIDs.FujiID]: "fuji",
+    [networkIDs.TestnetID]: "testnet",
   }
 
   // Fetch subnet details when subnet ID changes
@@ -90,18 +90,18 @@ export default function QueryL1ValidatorSet() {
         throw new Error("Subnet ID is required to query L1 validators")
       }
 
-      const network = networkNames[Number(avalancheNetworkID)]
+      const network = networkNames[Number(luxNetworkID)]
       if (!network) {
         throw new Error("Invalid network selected")
       }
 
       const sdk = new AvaCloudSDK({
-        serverURL: isTestnet ? "https://api.avax-test.network" : "https://api.avax.network",
-        network: networkNames[Number(avalancheNetworkID)],
+        serverURL: isTestnet ? "https://api.lux-test.network" : "https://api.lux.network",
+        network: networkNames[Number(luxNetworkID)],
       })
 
       const result = await sdk.data.primaryNetwork.listL1Validators({
-        network: networkNames[Number(avalancheNetworkID)],
+        network: networkNames[Number(luxNetworkID)],
         subnetId,
       })
 
@@ -182,7 +182,7 @@ export default function QueryL1ValidatorSet() {
   }, [validators]);
 
   return (
-    <Container title="L1 Validators" description="Query the validators of an L1 from the P-Chain using the Avalanche API" githubUrl="https://github.com/ava-labs/builders-hub/edit/master/components/toolbox/console/permissioned-l1s/QueryL1ValidatorSet.tsx">
+    <Container title="L1 Validators" description="Query the validators of an L1 from the Platform-Chain using the Lux API" githubUrl="https://github.com/luxfi/lux-build/edit/master/components/toolbox/console/permissioned-l1s/QueryL1ValidatorSet.tsx">
       <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-sm p-4 border border-zinc-200 dark:border-zinc-800 relative overflow-visible">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent dark:from-blue-900/10 dark:to-transparent pointer-events-none rounded-lg"></div>
 
@@ -287,7 +287,7 @@ export default function QueryL1ValidatorSet() {
                       </th>
                       <th className="px-3 py-2.5 text-left text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                         <div className="flex items-center">
-                          AVAX Balance
+                          LUX Balance
                           <ChevronDown className="h-3 w-3 ml-1 text-zinc-400" />
                         </div>
                       </th>
@@ -332,7 +332,7 @@ export default function QueryL1ValidatorSet() {
                           </div>
                         </td>
                         <td className="px-3 py-3 whitespace-nowrap text-sm text-zinc-800 dark:text-zinc-200">
-                          <span className="font-medium text-blue-600 dark:text-blue-400">{formatAvaxBalance(parseFloat(validator.remainingBalance))}</span>
+                          <span className="font-medium text-blue-600 dark:text-blue-400">{formatLuxBalance(parseFloat(validator.remainingBalance))}</span>
                         </td>
                         <td className="px-3 py-3 whitespace-nowrap text-sm text-zinc-800 dark:text-zinc-200">
                           <span className="font-medium">{formatStake(validator.weight.toString())}</span>
@@ -516,7 +516,7 @@ export default function QueryL1ValidatorSet() {
                   <div className="p-2.5 bg-white dark:bg-zinc-900/80 rounded-md border border-zinc-200 dark:border-zinc-700 flex flex-col justify-between">
                     <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-1">Amount Staked</p>
                     <p className="font-mono text-sm font-semibold text-blue-600 dark:text-blue-400">
-                      {formatAvaxBalance(parseFloat(selectedValidator.remainingBalance))}
+                      {formatLuxBalance(parseFloat(selectedValidator.remainingBalance))}
                     </p>
                   </div>
 

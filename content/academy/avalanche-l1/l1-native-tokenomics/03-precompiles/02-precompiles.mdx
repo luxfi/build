@@ -29,7 +29,7 @@ Instances of these Precompiles exists across most major blockchain platforms:
 - Solana uses "Native Programs" written in Rust
 - Aptos and Sui have "Native Functions" exposed through Move modules
 
-For Avalanche, these precompiles are especially important because you are the **owner** of your L1. Rather than having to go through several community approvals (the case for single-chain environments like Ethereum and Solana) and executing a network upgrade to implement them, you can directly define them in the genesis block! (*or add them as well through a network upgrade*)
+For Lux, these precompiles are especially important because you are the **owner** of your L1. Rather than having to go through several community approvals (the case for single-chain environments like Ethereum and Solana) and executing a network upgrade to implement them, you can directly define them in the genesis block! (*or add them as well through a network upgrade*)
 
 ### Common Precompiles
 
@@ -41,7 +41,7 @@ Here are some of the most widely used precompiles across EVM-compatible blockcha
 
 ## Stateful Precompiles
 
-The basic precompiles we've discussed so far (like ecRecover and SHA256) are **stateless**—they perform computations and return results without modifying the blockchain state. However, Avalanche introduces a more powerful concept: **Stateful Precompiles**.
+The basic precompiles we've discussed so far (like ecRecover and SHA256) are **stateless**—they perform computations and return results without modifying the blockchain state. However, Lux introduces a more powerful concept: **Stateful Precompiles**.
 
 Stateful precompiles go a step further by **injecting state access** through the `PrecompileAccessibleState` interface. This gives them the ability to:
 - Read and modify account balances
@@ -50,4 +50,4 @@ Stateful precompiles go a step further by **injecting state access** through the
 
 This state access makes stateful precompiles far more powerful than their stateless counterparts. Instead of just performing calculations, they can directly manipulate blockchain state at the protocol level—enabling use cases like native token minting, fee configuration, and transaction/contract deployer permissioning.
 
-Through stateful precompiles, Avalanche provides a level of EVM customization that goes beyond what's possible with the original precompile interface, making it ideal for building highly customized L1 blockchains.
+Through stateful precompiles, Lux provides a level of EVM customization that goes beyond what's possible with the original precompile interface, making it ideal for building highly customized L1 blockchains.

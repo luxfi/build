@@ -4,26 +4,26 @@ title: Clients
 
 ## Overview
 
-The SDK provides different client types for interacting with Avalanche. Each client is optimized for specific use cases.
+The SDK provides different client types for interacting with Lux. Each client is optimized for specific use cases.
 
 ## Client Architecture
 
 ```typescript
-Avalanche Client (Public)
-├── P-Chain Client
-├── X-Chain Client
-├── C-Chain Client
+Lux Client (Public)
+├── Platform-Chain Client
+├── Exchange-Chain Client
+├── LUExchange-Chain Client
 ├── Admin API Client
 ├── Info API Client
 ├── Health API Client
 ├── ProposerVM Client
 └── Index API Clients
 
-Avalanche Wallet Client
+Lux Wallet Client
 ├── All Public Client Methods
-├── P-Chain Wallet Operations
-├── X-Chain Wallet Operations
-├── C-Chain Wallet Operations
+├── Platform-Chain Wallet Operations
+├── Exchange-Chain Wallet Operations
+├── LUExchange-Chain Wallet Operations
 └── ERC20 Token Operations
 ```
 
@@ -31,14 +31,14 @@ Avalanche Wallet Client
 
 ### Main Clients
 
-- **[Avalanche Client](clients/avalanche-client)** - Read-only operations for all chains
-- **[Avalanche Wallet Client](clients/wallet-client)** - Transaction signing and sending
+- **[Lux Client](clients/lux-client)** - Read-only operations for all chains
+- **[Lux Wallet Client](clients/wallet-client)** - Transaction signing and sending
 
 ### Chain-Specific Clients
 
-- **[P-Chain Client](clients/p-chain-client)** - Validator and staking operations
-- **[X-Chain Client](clients/x-chain-client)** - Asset transfers and UTXO operations
-- **[C-Chain Client](clients/c-chain-client)** - EVM and atomic transaction operations
+- **[Platform-Chain Client](clients/p-chain-client)** - Validator and staking operations
+- **[Exchange-Chain Client](clients/x-chain-client)** - Asset transfers and UTXO operations
+- **[LUExchange-Chain Client](clients/c-chain-client)** - EVM and atomic transaction operations
 
 ### API Clients
 
@@ -53,7 +53,7 @@ Avalanche Wallet Client
 All clients accept a common configuration:
 
 ```typescript
-interface AvalancheClientConfig {
+interface LuxClientConfig {
   transport: Transport; // Required: HTTP, WebSocket, or Custom
   chain?: Chain; // Optional: Network configuration
   account?: Account | Address; // Optional: For wallet operations
@@ -100,11 +100,11 @@ interface AvalancheClientConfig {
 ### Public Client
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -116,38 +116,38 @@ const balance = await client.getBalance({ address: "0x..." });
 ### Wallet Client
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { avaxToWei } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { lux } from "@lux-sdk/client/chains";
+import { luxToWei } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
 // Send transaction
 const txHash = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
-  amount: avaxToWei(0.001),
+  amount: luxToWei(0.001),
 });
 ```
 
 ### Accessing Sub-Clients
 
 ```typescript
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
 // Chain clients
-client.pChain; // P-Chain operations
-client.xChain; // X-Chain operations
-client.cChain; // C-Chain operations
+client.pChain; // Platform-Chain operations
+client.xChain; // Exchange-Chain operations
+client.cChain; // LUExchange-Chain operations
 
 // API clients
 client.admin; // Admin API
@@ -156,15 +156,15 @@ client.health; // Health API
 client.proposerVM.pChain; // ProposerVM API for P Chain
 client.proposerVM.xChain; // ProposerVM API for X Chain
 client.proposerVM.cChain; // ProposerVM API for C Chain
-client.indexBlock.pChain; // P-Chain block index
-client.indexBlock.cChain; // C-Chain block index
-client.indexBlock.xChain; // X-Chain block index
-client.indexTx.xChain; // X-Chain transaction index
+client.indexBlock.pChain; // Platform-Chain block index
+client.indexBlock.cChain; // LUExchange-Chain block index
+client.indexBlock.xChain; // Exchange-Chain block index
+client.indexTx.xChain; // Exchange-Chain transaction index
 ```
 
 ## Next Steps
 
-- **[Avalanche Client](clients/avalanche-client)** - Read-only operations
-- **[Avalanche Wallet Client](clients/wallet-client)** - Transaction operations
-- **[Chain-Specific Clients](clients/p-chain-client)** - P, X, and C-Chain clients
+- **[Lux Client](clients/lux-client)** - Read-only operations
+- **[Lux Wallet Client](clients/wallet-client)** - Transaction operations
+- **[Chain-Specific Clients](clients/p-chain-client)** - P, X, and LUExchange-Chain clients
 - **[API Clients](clients/api-clients)** - Admin, Info, Health, ProposerVM, and Index APIs

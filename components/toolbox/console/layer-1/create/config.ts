@@ -1,4 +1,4 @@
-// Common configuration for Avalanche node setup
+// Common configuration for Lux node setup
 
 import { SUBNET_EVM_VM_ID } from '@/constants/console';
 import { getContainerVersions } from '@/components/toolbox/utils/containerVersions';
@@ -81,10 +81,10 @@ export const nodeConfigBase64 = (
 };
 
 /**
- * Generates Docker command for running an Avalanche node
+ * Generates Docker command for running an Lux node
  * @param subnets Subnet IDs to track
  * @param isRPC Whether this is an RPC node
- * @param networkID Network ID (Fuji or Mainnet)
+ * @param networkID Network ID (Testnet or Mainnet)
  * @param chainId The blockchain ID
  * @param vmId The VM ID
  * @param debugEnabled Whether to enable debug tracing
@@ -121,12 +121,12 @@ export const generateDockerCommand = (
   }
 
   // Set network ID
-  if (networkID === 5) { // Fuji
-    env.AVAGO_NETWORK_ID = "fuji";
+  if (networkID === 5) { // Testnet
+    env.AVAGO_NETWORK_ID = "testnet";
   } else if (networkID === 1) { // Mainnet
     // Default is mainnet, no need to set
   } else {
-    throw new Error(`This tool only supports Fuji (5) and Mainnet (1). Network ID ${networkID} is not supported.`);
+    throw new Error(`This tool only supports Testnet (5) and Mainnet (1). Network ID ${networkID} is not supported.`);
   }
 
   // Configure RPC settings
@@ -154,17 +154,17 @@ export const generateDockerCommand = (
     "docker run -it -d",
     `--name avago`,
     `-p ${isRPC ? "" : "127.0.0.1:"}9650:9650 -p 9651:9651`,
-    `-v ~/.avalanchego:/root/.avalanchego`,
+    `-v ~/.luxgo:/root/.luxgo`,
     ...Object.entries(env).map(([key, value]) => `-e ${key}=${value}`),
   ];
 
   // Add the appropriate image based on whether it's Primary Network or L1
-  const isTestnet = networkID === 5; // Fuji is testnet
+  const isTestnet = networkID === 5; // Testnet is testnet
   const versions = getContainerVersions(isTestnet);
   if (isPrimaryNetwork) {
-    chunks.push(`avaplatform/avalanchego:${versions['avaplatform/avalanchego']}`);
+    chunks.push(`avaplatform/luxgo:${versions['avaplatform/luxgo']}`);
   } else {
-    chunks.push(`avaplatform/subnet-evm_avalanchego:${versions['avaplatform/subnet-evm_avalanchego']}`);
+    chunks.push(`avaplatform/subnet-evm_luxgo:${versions['avaplatform/subnet-evm_luxgo']}`);
   }
 
   return chunks.map(chunk => `    ${chunk}`).join(" \\\n").trim();

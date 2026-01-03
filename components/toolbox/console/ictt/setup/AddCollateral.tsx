@@ -9,7 +9,7 @@ import { createPublicClient, http, formatUnits, parseUnits, Address, Chain } fro
 import { Input, Suggestion } from "@/components/toolbox/components/Input";
 import { EVMAddressInput } from "@/components/toolbox/components/EVMAddressInput";
 import { AmountInput } from "@/components/toolbox/components/AmountInput";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import SelectBlockchainId from "@/components/toolbox/components/SelectBlockchainId";
 import ERC20TokenRemoteABI from "@/contracts/icm-contracts/compiled/ERC20TokenRemote.json";
 import NativeTokenRemoteABI from "@/contracts/icm-contracts/compiled/NativeTokenRemote.json";

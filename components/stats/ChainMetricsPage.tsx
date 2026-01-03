@@ -16,7 +16,7 @@ import { StickyNavBar } from "@/components/stats/StickyNavBar";
 import { PeriodSelector } from "@/components/stats/PeriodSelector";
 import { MobileSocialLinks } from "@/components/stats/MobileSocialLinks";
 import { LinkableHeading } from "@/components/stats/LinkableHeading";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { ChartWatermark } from "@/components/stats/ChartWatermark";
 import { StatsBreadcrumb } from "@/components/navigation/StatsBreadcrumb";
 import { ChainCategoryFilter, allChains } from "@/components/stats/ChainCategoryFilter";
@@ -98,9 +98,9 @@ interface ChainMetricsPageProps {
 
 export default function ChainMetricsPage({
   chainId = "43114",
-  chainName = "Avalanche C-Chain",
+  chainName = "Lux LUExchange-Chain",
   chainSlug,
-  description = "Real-time metrics and analytics for the Avalanche C-Chain",
+  description = "Real-time metrics and analytics for the Lux LUExchange-Chain",
   themeColor = "#E57373",
   chainLogoURI,
   website,
@@ -463,8 +463,8 @@ export default function ChainMetricsPage({
     if (isNaN(priceValue)) return "N/A";
 
     // values are already in nano terms, no conversion needed
-    const isC_Chain = chainName.includes("C-Chain");
-    const unit = isC_Chain ? " nAVAX" : "";
+    const isC_Chain = chainName.includes("LUExchange-Chain");
+    const unit = isC_Chain ? " nLUX" : "";
 
     if (priceValue < 1) {
       return `${priceValue.toFixed(3)}${unit}`;
@@ -502,13 +502,13 @@ export default function ChainMetricsPage({
     return `${rateValue.toFixed(2)} ${unit}`;
   };
 
-  const formatEther = (avaxValue: number | string): string => {
-    if (avaxValue === "N/A" || avaxValue === "") return "N/A";
+  const formatEther = (luxValue: number | string): string => {
+    if (luxValue === "N/A" || luxValue === "") return "N/A";
     const value =
-      typeof avaxValue === "string" ? Number.parseFloat(avaxValue) : avaxValue;
+      typeof luxValue === "string" ? Number.parseFloat(luxValue) : luxValue;
     if (isNaN(value)) return "N/A";
-    const isC_Chain = chainName.includes("C-Chain");
-    const unit = isC_Chain ? " AVAX" : "";
+    const isC_Chain = chainName.includes("LUExchange-Chain");
+    const unit = isC_Chain ? " LUX" : "";
 
     if (value >= 1e6) {
       return `${(value / 1e6).toFixed(2)}M${unit}`;
@@ -955,7 +955,7 @@ export default function ChainMetricsPage({
                   <div className="h-6 w-20 bg-zinc-200 dark:bg-zinc-800 rounded-full animate-pulse mt-3" />
                 </div>
               </div>
-              {!chainName.includes("C-Chain") && (
+              {!chainName.includes("LUExchange-Chain") && (
                 <div className="h-9 w-32 bg-zinc-200 dark:bg-zinc-800 rounded animate-pulse" />
               )}
             </div>
@@ -1121,12 +1121,12 @@ export default function ChainMetricsPage({
             <div className="space-y-4 sm:space-y-6 flex-1">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                  <AvalancheLogo
+                  <LuxLogo
                     className="w-4 h-4 sm:w-5 sm:h-5"
-                    fill="#E84142"
+                    fill="#FFFFFF"
                   />
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                 </div>
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -1141,8 +1141,8 @@ export default function ChainMetricsPage({
                     />
                   )}
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                    {chainName.includes("C-Chain")
-                      ? "C-Chain Metrics"
+                    {chainName.includes("LUExchange-Chain")
+                      ? "LUExchange-Chain Metrics"
                       : `${chainName} Metrics`}
                   </h1>
                 </div>

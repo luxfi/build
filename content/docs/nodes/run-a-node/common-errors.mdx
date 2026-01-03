@@ -62,7 +62,7 @@ If you experience any issues running your node, here are common errors and their
 
 | Error | Cause | Solution |
 |-------|-------|----------|
-| `unknown network upgrade detected` | • Outdated node version<br/>• Network upgrade scheduled/active<br/>• Incompatible protocol | • **Update immediately** to latest version<br/>• Monitor upgrade announcements<br/>• Enable automatic updates<br/>• Check version: `avalanchego --version` |
+| `unknown network upgrade detected` | • Outdated node version<br/>• Network upgrade scheduled/active<br/>• Incompatible protocol | • **Update immediately** to latest version<br/>• Monitor upgrade announcements<br/>• Enable automatic updates<br/>• Check version: `luxgo --version` |
 | `unknown network upgrade - update as soon as possible` | • Network upgrade approaching<br/>• Node version outdated | • Update within the day<br/>• Check GitHub releases<br/>• Plan for maintenance window |
 | `imminent network upgrade - update immediately` | • Network upgrade imminent (within hour) | • **Critical: Update immediately**<br/>• Risk of network disconnection |
 | `invalid upgrade configuration` | • Upgrade times not chronological<br/>• Conflicting schedules<br/>• Invalid precompile config | • Review upgrade config files<br/>• Ensure sequential timing<br/>• Validate precompile settings<br/>• Consult upgrade documentation |
@@ -94,8 +94,8 @@ If you experience any issues running your node, here are common errors and their
 | **Network Connectivity** | Inbound/outbound connections active | Check firewall, use port scanners |
 | **Bootstrap Status** | Should be `bootstrapped` | `/api/health` |
 | **Validator Connections** | Connected to sufficient stake | `/ext/info` API, check peer count |
-| **Database Health** | No corruption warnings in logs | Monitor `~/.avalanchego/logs/` |
-| **Node Version** | Current with latest release | `avalanchego --version` |
+| **Database Health** | No corruption warnings in logs | Monitor `~/.luxgo/logs/` |
+| **Node Version** | Current with latest release | `luxgo --version` |
 
 ### Best Practices
 
@@ -122,17 +122,17 @@ If you experience any issues running your node, here are common errors and their
 
 If you encounter errors not listed here:
 
-1. **Check Logs**: Review `~/.avalanchego/logs/` for detailed error messages
-2. **Search Forum**: [Avalanche Forum](https://forum.avax.network/)
-3. **Join Discord**: [Avalanche Discord](https://chat.avax.network/)
-4. **GitHub Issues**: [Review existing issues](https://github.com/ava-labs/avalanchego/issues)
+1. **Check Logs**: Review `~/.luxgo/logs/` for detailed error messages
+2. **Search Forum**: [Lux Forum](https://forum.lux.network/)
+3. **Join Discord**: [Lux Discord](https://chat.lux.network/)
+4. **GitHub Issues**: [Review existing issues](https://github.com/luxfi/luxgo/issues)
 5. **Provide Context**: Include specific error messages, logs, and configuration when asking for help
 
 ### Quick Diagnostic Commands
 
 ```bash
 # Check node version
-avalanchego --version
+luxgo --version
 
 # Check disk space
 df -h

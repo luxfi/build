@@ -20,12 +20,12 @@ Building on the image shown in the introduction, now our L1 will have these cont
 The Validator Manager implementation:
 - Contains all validator management logic
 - Implements the ACP99Manager standard
-- Handles P-Chain communication
+- Handles Platform-Chain communication
 - Can be upgraded without losing state
 
 ## Validator Messages Library
 
-The ValidatorManager contract requires a separate library contract called **ValidatorMessages** to be deployed first. This library handles all the message encoding and decoding for communication with the P-Chain.
+The ValidatorManager contract requires a separate library contract called **ValidatorMessages** to be deployed first. This library handles all the message encoding and decoding for communication with the Platform-Chain.
 
 **Why a separate library?**
 - Solidity requires libraries to be deployed independently before they can be linked
@@ -33,8 +33,8 @@ The ValidatorManager contract requires a separate library contract called **Vali
 - This allows multiple validator managers to share the same message handling code
 
 **What it does:**
-- Packs validator registration messages for the P-Chain
-- Unpacks responses from the P-Chain 
+- Packs validator registration messages for the Platform-Chain
+- Unpacks responses from the Platform-Chain 
 - Handles weight updates and conversion messages
 - Ensures consistent message formatting across all validator operations
 

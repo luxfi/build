@@ -11,9 +11,9 @@ import { getAllCustomChains, findCustomChainByEvmChainId } from '@/components/ex
 const EXPLORER_BASE_PATH = "/explorer";
 
 const getEVMExplorerUrl = (txHash: string, viemChain: Chain) => {
-    // Special case for C-Chain (mainnet 43114 and testnet 43113)
+    // Special case for LUExchange-Chain (mainnet 43114 and testnet 43113)
     if (viemChain.id === 43114 || viemChain.id === 43113) {
-        return `${EXPLORER_BASE_PATH}/avalanche-c-chain/tx/${txHash}`;
+        return `${EXPLORER_BASE_PATH}/lux-c-chain/tx/${txHash}`;
     }
     
     // Check static L1 chains list first

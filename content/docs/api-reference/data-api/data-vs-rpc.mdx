@@ -4,7 +4,7 @@ description: Comparison of the Data API and RPC methods
 icon: Server
 ---
 
-In the rapidly evolving world of Web3 development, efficiently retrieving token balances for a user's address is a fundamental requirement. Whether you're building DeFi platforms, wallets, analytics tools, or exchanges, displaying accurate token balances is crucial for user engagement and trust. A typical use case involves showing a user's token portfolio in a wallet application, in this case, we have sAvax and USDC.
+In the rapidly evolving world of Web3 development, efficiently retrieving token balances for a user's address is a fundamental requirement. Whether you're building DeFi platforms, wallets, analytics tools, or exchanges, displaying accurate token balances is crucial for user engagement and trust. A typical use case involves showing a user's token portfolio in a wallet application, in this case, we have sLux and USDC.
 
 <img src="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=9a7596035baaa07bbeca4c3e65d54459" alt="title" data-og-width="3267" width="3267" data-og-height="2112" height="2112" data-path="images/wallet.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?w=280&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=e7852463251bb0cede8143ff4e777aae 280w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?w=560&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=523f9034b79bb173a77c3e8f1d1d5a37 560w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?w=840&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=65ff3d5662f91787c3eb2ae4b7675587 840w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?w=1100&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=7e68f4a1c8457c54efde9a989b2015f0 1100w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?w=1650&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=46e8d62f6c222b5f202db739928da286 1650w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wallet.png?w=2500&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=6d72d4bda1aca25d96bc63cda3c7cf25 2500w" />
 
@@ -23,7 +23,7 @@ You can refer to the [official documentation](https://ethereum.org/en/developers
 Here’s an example using the `eth_getBalance` method to retrieve the native balance of a wallet:
 
 ```bash 
-curl --location 'https://api.avax.network/ext/bc/C/rpc' \
+curl --location 'https://api.lux.network/ext/bc/C/rpc' \
 --header 'Content-Type: application/json' \
 --data '{"method":"eth_getBalance","params":["0x8ae323046633A07FB162043f28Cea39FFc23B50A", "latest"],"id":1,"jsonrpc":"2.0"}'
 ```
@@ -38,7 +38,7 @@ This call returns the following response:
 }
 ```
 
-The balance in this wallet is 2.9016 AVAX. However, despite the wallet holding multiple tokens such as USDC, the `eth_getBalance` method only returns the AVAX amount and it does so in Wei and in hexadecimal format. This is not particularly human-readable, adding to the challenge for developers who need to manually convert the balance to a more understandable format.
+The balance in this wallet is 2.9016 LUX. However, despite the wallet holding multiple tokens such as USDC, the `eth_getBalance` method only returns the LUX amount and it does so in Wei and in hexadecimal format. This is not particularly human-readable, adding to the challenge for developers who need to manually convert the balance to a more understandable format.
 
 #### No direct RPC methods to retrieve token balances
 
@@ -46,7 +46,7 @@ Despite their utility, RPC methods come with significant limitations when it com
 
 * **Listing all tokens held by a wallet**: There is no RPC method that provides a complete list of ERC-20 tokens owned by a wallet.
 * **Retrieving all transactions for a wallet**: : There is no direct method for fetching all transactions associated with a wallet.
-* **Getting ERC-20/721/1155 token balances**: The `eth_getBalance` method only returns the balance of the wallet’s native token (such as AVAX on Avalanche) and cannot be used to retrieve ERC-20/721/1155 token balances.
+* **Getting ERC-20/721/1155 token balances**: The `eth_getBalance` method only returns the balance of the wallet’s native token (such as LUX on Lux) and cannot be used to retrieve ERC-20/721/1155 token balances.
 
 To achieve these tasks using RPC methods alone, you would need to:
 
@@ -78,7 +78,7 @@ The Data API provides a streamlined, efficient, and scalable solution for fetchi
 With a single API call, you can retrieve all ERC-20 token balances for a user's address:
 
 ```javascript
-avalancheSDK.data.evm.balances.listErc20Balances({
+luxSDK.data.evm.balances.listErc20Balances({
   address: "0xYourAddress",
 });
 ```
@@ -114,7 +114,7 @@ Sample Response:
 As you can see with a single call the API returns an array of token balances for all the wallet tokens, including:
 
 * **Token metadata**: Contract address, name, symbol, decimals.
-* **Balance information**: Token balance in both hexadecimal and decimal formats, Also retrieves balances of native assets like ETH or AVAX.
+* **Balance information**: Token balance in both hexadecimal and decimal formats, Also retrieves balances of native assets like ETH or LUX.
 * **Price data**: Current value in USD or other supported currencies, saving you the effort of integrating another API.
 * **Visual assets**: Token logo URI for better user interface integration.
 
@@ -129,16 +129,16 @@ Below are two examples that demonstrate the power of the Data API: in the first,
     [Lists ERC transfers](/data-api/evm-transactions/list-erc-transfers) for an ERC-20, ERC-721, or ERC-1155 contract address.
 
     ```javascript  theme={null}
-    import { Avalanche } from "@avalanche-sdk/chainkit";
+    import { Lux } from "@lux-sdk/chainkit";
 
-    const avalancheSDK = new Avalanche({
+    const luxSDK = new Lux({
       apiKey: "<YOUR_API_KEY_HERE>",
       chainId: "43114",
       network: "mainnet",
     });
 
     async function run() {
-      const result = await avalancheSDK.data.evm.transactions.listTransfers({
+      const result = await luxSDK.data.evm.transactions.listTransfers({
         startBlock: 6479329,
         endBlock: 6479330,
         pageSize: 10,
@@ -166,27 +166,27 @@ Below are two examples that demonstrate the power of the Data API: in the first,
           "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
           "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4",
           "from": {
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
-            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/lux-lux-logo.svg",
             "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
           "to": {
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
-            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/lux-lux-logo.svg",
             "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
           "logIndex": 123,
           "value": "10000000000000000000",
           "erc20Token": {
             "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
-            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/lux-lux-logo.svg",
             "ercType": "ERC-20",
             "price": {
               "currencyCode": "usd",
@@ -203,16 +203,16 @@ Below are two examples that demonstrate the power of the Data API: in the first,
     [Returns a list of internal transactions](/data-api/evm-transactions/list-internal-transactions) for an address and chain. Filterable by block range.
 
     ```javascript  theme={null}
-    import { Avalanche } from "@avalanche-sdk/chainkit";
+    import { Lux } from "@lux-sdk/chainkit";
 
-    const avalancheSDK = new Avalanche({
+    const luxSDK = new Lux({
       apiKey: "<YOUR_API_KEY_HERE>",
       chainId: "43114",
       network: "mainnet",
     });
 
     async function run() {
-      const result = await avalancheSDK.data.evm.transactions.listInternalTransactions({
+      const result = await luxSDK.data.evm.transactions.listInternalTransactions({
         startBlock: 6479329,
         endBlock: 6479330,
         pageSize: 10,
@@ -240,17 +240,17 @@ Below are two examples that demonstrate the power of the Data API: in the first,
           "blockHash": "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
           "txHash": "0x3e9303f81be00b4af28515dab7b914bf3dbff209ea10e7071fa24d4af0a112d4",
           "from": {
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
-            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/lux-lux-logo.svg",
             "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
           "to": {
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
-            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+            "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/lux-lux-logo.svg",
             "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
           },
           "internalTxType": "UNKNOWN",

@@ -16,7 +16,7 @@ import { AmountInput } from "@/components/toolbox/components/AmountInput";
 import { Suggestion } from "@/components/toolbox/components/TokenInput";
 import { EVMAddressInput } from "@/components/toolbox/components/EVMAddressInput";
 import { Token, TokenInput } from "@/components/toolbox/components/TokenInputToolbox";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import SelectBlockchain, { type BlockchainSelection } from "@/components/toolbox/components/SelectBlockchain";
 import { Container } from "@/components/toolbox/components/Container";
 import { Toggle } from "@/components/toolbox/components/Toggle";
@@ -480,7 +480,7 @@ export default function TokenBridge() {
         <Container
             title="Cross-Chain Token Bridge"
             description={`Send tokens from the current chain (${selectedL1?.name}) to another chain.`}
-            githubUrl="https://github.com/ava-labs/builders-hub/edit/master/components/toolbox/console/ictt/token-transfer/TestSend.tsx"
+            githubUrl="https://github.com/luxfi/lux-build/edit/master/components/toolbox/console/ictt/token-transfer/TestSend.tsx"
         >
 
             <SelectBlockchain

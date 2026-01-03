@@ -1,10 +1,10 @@
 ---
 title: AI & LLM Integration
-description: Access Avalanche documentation programmatically for AI applications
+description: Access Lux documentation programmatically for AI applications
 icon: Bot
 ---
 
-The Builder Hub provides AI-friendly access to documentation through standardized formats. Whether you're building a chatbot, using Claude/ChatGPT, or integrating with AI development tools, we offer multiple ways to access our docs.
+The Lux Build provides AI-friendly access to documentation through standardized formats. Whether you're building a chatbot, using Claude/ChatGPT, or integrating with AI development tools, we offer multiple ways to access our docs.
 
 ## Endpoints Overview
 
@@ -20,7 +20,7 @@ The Builder Hub provides AI-friendly access to documentation through standardize
 A structured markdown index following the [llms.txt standard](https://llmstxt.org/). Use this for content discovery.
 
 ```
-https://build.avax.network/llms.txt
+https://build.lux.network/llms.txt
 ```
 
 Returns organized sections (Documentation, Academy, Integrations, Blog) with links and descriptions.
@@ -30,7 +30,7 @@ Returns organized sections (Documentation, Academy, Integrations, Blog) with lin
 All documentation content in a single markdown file for one-time context loading.
 
 ```
-https://build.avax.network/llms-full.txt
+https://build.lux.network/llms-full.txt
 ```
 
 Contains 1300+ pages. For models with limited context, use the MCP server or individual page endpoint instead.
@@ -40,8 +40,8 @@ Contains 1300+ pages. For models with limited context, use the MCP server or ind
 Fetch any page as markdown:
 
 ```
-https://build.avax.network/api/llms/page?path=/docs/primary-network/overview
-https://build.avax.network/api/llms/page?path=/academy/blockchain-fundamentals/blockchain-intro
+https://build.lux.network/api/llms/page?path=/docs/primary-network/overview
+https://build.lux.network/api/llms/page?path=/academy/blockchain-fundamentals/blockchain-intro
 ```
 
 Supports `/docs/`, `/academy/`, `/integrations/`, and `/blog/` paths.
@@ -50,22 +50,22 @@ Supports `/docs/`, `/academy/`, `/integrations/`, and `/blog/` paths.
 
 The [Model Context Protocol](https://modelcontextprotocol.io/) server enables AI systems to search and retrieve documentation dynamically.
 
-**Endpoint:** `https://build.avax.network/api/mcp`
+**Endpoint:** `https://build.lux.network/api/mcp`
 
 ### Tools
 
 | Tool | Purpose |
 | :--- | :------ |
-| `avalanche_docs_search` | Search docs by query with optional source filter |
-| `avalanche_docs_fetch` | Get a specific page by URL path |
-| `avalanche_docs_list_sections` | List all sections with page counts |
+| `lux_docs_search` | Search docs by query with optional source filter |
+| `lux_docs_fetch` | Get a specific page by URL path |
+| `lux_docs_list_sections` | List all sections with page counts |
 
 ### Claude Code Setup
 
 Add the MCP server to your project:
 
 ```bash
-claude mcp add avalanche-docs --transport http https://build.avax.network/api/mcp
+claude mcp add lux-docs --transport http https://build.lux.network/api/mcp
 ```
 
 Or add to your `.claude/settings.json`:
@@ -73,10 +73,10 @@ Or add to your `.claude/settings.json`:
 ```json
 {
   "mcpServers": {
-    "avalanche-docs": {
+    "lux-docs": {
       "transport": {
         "type": "http",
-        "url": "https://build.avax.network/api/mcp"
+        "url": "https://build.lux.network/api/mcp"
       }
     }
   }
@@ -90,10 +90,10 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "avalanche-docs": {
+    "lux-docs": {
       "transport": {
         "type": "http",
-        "url": "https://build.avax.network/api/mcp"
+        "url": "https://build.lux.network/api/mcp"
       }
     }
   }
@@ -105,9 +105,9 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 The MCP server uses JSON-RPC 2.0 for communication:
 
 ```bash
-curl -X POST https://build.avax.network/api/mcp \
+curl -X POST https://build.lux.network/api/mcp \
   -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"avalanche_docs_search","arguments":{"query":"create L1","limit":5}}}'
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"lux_docs_search","arguments":{"query":"create L1","limit":5}}}'
 ```
 
 **Response format:**
@@ -120,7 +120,7 @@ curl -X POST https://build.avax.network/api/mcp \
     "content": [
       {
         "type": "text",
-        "text": "[{\"title\":\"Create an L1\",\"url\":\"/docs/avalanche-l1s/create\",\"description\":\"...\",\"score\":45}]"
+        "text": "[{\"title\":\"Create an L1\",\"url\":\"/docs/lux-l1s/create\",\"description\":\"...\",\"score\":45}]"
       }
     ]
   }
@@ -132,14 +132,14 @@ curl -X POST https://build.avax.network/api/mcp \
 **Search all documentation:**
 
 ```bash
-curl -X POST https://build.avax.network/api/mcp \
+curl -X POST https://build.lux.network/api/mcp \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
     "id": 1,
     "method": "tools/call",
     "params": {
-      "name": "avalanche_docs_search",
+      "name": "lux_docs_search",
       "arguments": {
         "query": "smart contracts",
         "limit": 10
@@ -152,14 +152,14 @@ curl -X POST https://build.avax.network/api/mcp \
 
 ```bash
 # Search only academy content
-curl -X POST https://build.avax.network/api/mcp \
+curl -X POST https://build.lux.network/api/mcp \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/call",
     "params": {
-      "name": "avalanche_docs_search",
+      "name": "lux_docs_search",
       "arguments": {
         "query": "blockchain basics",
         "source": "academy",
@@ -172,14 +172,14 @@ curl -X POST https://build.avax.network/api/mcp \
 **Fetch specific page:**
 
 ```bash
-curl -X POST https://build.avax.network/api/mcp \
+curl -X POST https://build.lux.network/api/mcp \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
     "id": 3,
     "method": "tools/call",
     "params": {
-      "name": "avalanche_docs_fetch",
+      "name": "lux_docs_fetch",
       "arguments": {
         "url": "/docs/primary-network/overview"
       }

@@ -21,7 +21,7 @@ import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-
 
 const metadata: ConsoleToolMetadata = {
   title: "Remove Validator",
-  description: "Remove a validator from an Avalanche L1 by following these steps in order",
+  description: "Remove a validator from an Lux L1 by following these steps in order",
   toolRequirements: [
     WalletRequirementsConfigKey.EVMChainBalance,
     WalletRequirementsConfigKey.PChainBalance
@@ -147,7 +147,7 @@ const RemoveValidatorExpert: React.FC<BaseConsoleToolProps> = ({ onSuccess }) =>
             <Step>
               <h2 className="text-lg font-semibold">Initiate Validator Removal</h2>
               <p className="text-sm text-gray-500 mb-4">
-                Start the removal process by selecting the validator to remove and calling the <a href="https://github.com/ava-labs/icm-contracts/blob/main/contracts/validator-manager/ValidatorManager.sol#L508" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">initiateValidatorRemoval</a> function on the Validator Manager contract. This transaction will emit a <a href="/docs/acps/77-reinventing-subnets#l1validatorweightmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorWeightMessage</a> warp message.
+                Start the removal process by selecting the validator to remove and calling the <a href="https://github.com/luxfi/icm-contracts/blob/main/contracts/validator-manager/ValidatorManager.sol#L508" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">initiateValidatorRemoval</a> function on the Validator Manager contract. This transaction will emit a <a href="/docs/acps/77-reinventing-subnets#l1validatorweightmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorWeightMessage</a> warp message.
               </p>
               <InitiateValidatorRemoval
                 subnetId={subnetIdL1}
@@ -168,9 +168,9 @@ const RemoveValidatorExpert: React.FC<BaseConsoleToolProps> = ({ onSuccess }) =>
             </Step>
 
             <Step>
-              <h2 className="text-lg font-semibold">Sign L1ValidatorWeightMessage & Submit SetL1ValidatorWeightTx P-Chain</h2>
+              <h2 className="text-lg font-semibold">Sign L1ValidatorWeightMessage & Submit SetL1ValidatorWeightTx Platform-Chain</h2>
               <p className="text-sm text-gray-500 mb-4">
-                Sign the <a href="/docs/acps/77-reinventing-subnets#l1validatorweightmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorWeightMessage</a> and submit the <a href="/docs/acps/77-reinventing-subnets#setl1validatorweighttx" className="text-blue-600 hover:text-blue-800 underline">SetL1ValidatorWeightTx</a> to the P-Chain. This transaction will emit a <a href="/docs/acps/77-reinventing-subnets#l1validatorregistrationmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorRegistrationMessage</a> warp message.
+                Sign the <a href="/docs/acps/77-reinventing-subnets#l1validatorweightmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorWeightMessage</a> and submit the <a href="/docs/acps/77-reinventing-subnets#setl1validatorweighttx" className="text-blue-600 hover:text-blue-800 underline">SetL1ValidatorWeightTx</a> to the Platform-Chain. This transaction will emit a <a href="/docs/acps/77-reinventing-subnets#l1validatorregistrationmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorRegistrationMessage</a> warp message.
               </p>
               <SubmitPChainTxRemoval
                 key={`submit-pchain-${resetKey}`}
@@ -186,9 +186,9 @@ const RemoveValidatorExpert: React.FC<BaseConsoleToolProps> = ({ onSuccess }) =>
             </Step>
 
             <Step>
-              <h2 className="text-lg font-semibold">Sign P-Chain L1ValidatorRegistrationMessage & Submit completeValidatorRemoval on Validator Manager contract</h2>
+              <h2 className="text-lg font-semibold">Sign Platform-Chain L1ValidatorRegistrationMessage & Submit completeValidatorRemoval on Validator Manager contract</h2>
               <p className="text-sm text-gray-500 mb-4">
-                Complete the validator removal by signing the P-Chain <a href="/docs/acps/77-reinventing-subnets#l1validatorregistrationmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorRegistrationMessage</a> and calling the <a href="https://github.com/ava-labs/icm-contracts/blob/main/contracts/validator-manager/ValidatorManager.sol#L573" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">completeValidatorRemoval</a> function on the Validator Manager contract.
+                Complete the validator removal by signing the Platform-Chain <a href="/docs/acps/77-reinventing-subnets#l1validatorregistrationmessage" className="text-blue-600 hover:text-blue-800 underline">L1ValidatorRegistrationMessage</a> and calling the <a href="https://github.com/luxfi/icm-contracts/blob/main/contracts/validator-manager/ValidatorManager.sol#L573" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">completeValidatorRemoval</a> function on the Validator Manager contract.
               </p>
               <CompleteValidatorRemoval
                 key={`complete-removal-${resetKey}`}

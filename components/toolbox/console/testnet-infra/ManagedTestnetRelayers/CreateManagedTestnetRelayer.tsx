@@ -19,7 +19,7 @@ import { useWalletStore } from "@/components/toolbox/stores/walletStore";
 
 const metadata: ConsoleToolMetadata = {
     title: "Create Managed Testnet Relayer",
-    description: "Create a free testnet ICM relayer to enable cross-chain message delivery between your L1s. These relayers will shut down after 3 days. They are suitable for quick testing. For production settings or extended testing, use self-hosted relayers. You need a Builder Hub Account to use this tool.",
+    description: "Create a free testnet ICM relayer to enable cross-chain message delivery between your L1s. These relayers will shut down after 3 days. They are suitable for quick testing. For production settings or extended testing, use self-hosted relayers. You need a Lux Build Account to use this tool.",
     toolRequirements: [WalletRequirementsConfigKey.TestnetRequired],
     githubUrl: generateConsoleToolGitHubUrl(import.meta.url)
 };
@@ -117,9 +117,9 @@ function CreateManagedTestnetRelayerBase() {
 
     // Helper to get chain info from L1 list or fallback
     const getChainInfo = (config: RelayerConfig) => {
-        // First check if it's C-Chain
-        if (config.rpcUrl.includes('avax-test.network') || config.subnetId === '11111111111111111111111111111111LpoYY') {
-            return { name: 'C-Chain (Fuji)', coinName: 'AVAX' };
+        // First check if it's LUExchange-Chain
+        if (config.rpcUrl.includes('lux-test.network') || config.subnetId === '11111111111111111111111111111111LpoYY') {
+            return { name: 'LUExchange-Chain (Testnet)', coinName: 'LUX' };
         }
         
         // Look up in L1 list by blockchain ID
@@ -187,7 +187,7 @@ function CreateManagedTestnetRelayerBase() {
             // Get chain info for the transaction
             const chainInfo = getChainInfo(config);
             const l1 = l1List.find((item: L1ListItem) => item.id === config.blockchainId);
-            const evmChainId = l1?.evmChainId || (config.rpcUrl.includes('avax-test.network') ? 43113 : parseInt(config.blockchainId.slice(0, 8), 16));
+            const evmChainId = l1?.evmChainId || (config.rpcUrl.includes('lux-test.network') ? 43113 : parseInt(config.blockchainId.slice(0, 8), 16));
 
             const viemChain: Chain = {
                 id: evmChainId,

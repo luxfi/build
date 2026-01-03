@@ -93,7 +93,7 @@ export const NodeBootstrapCheck = ({
                 </div>
 
                 <Checkbox
-                    label="AvalancheGo node is fully bootstrapped"
+                    label="LuxGo node is fully bootstrapped"
                     checked={bootstrapChecked}
                     onChange={handleBootstrapCheckChange}
                 />

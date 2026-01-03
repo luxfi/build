@@ -4,7 +4,7 @@ import { RelayerServiceURLs } from '../constants';
 
 /**
  * DELETE /api/managed-testnet-relayers/[relayerId]
- * Deletes a relayer from the Builder Hub API.
+ * Deletes a relayer from the Lux Build API.
  */
 async function handleDeleteRelayer(relayerId: string, request: NextRequest): Promise<NextResponse> {
   const auth = await getUserId();
@@ -37,17 +37,17 @@ async function handleDeleteRelayer(relayerId: string, request: NextRequest): Pro
       return jsonOk({
         success: true,
         message: response.status === 404
-          ? 'Relayer was already deleted or expired in Builder Hub.'
+          ? 'Relayer was already deleted or expired in Lux Build.'
           : 'Relayer deleted successfully.'
       });
     }
 
-    const message = await extractServiceErrorMessage(response) || 'Failed to delete relayer from Builder Hub.';
+    const message = await extractServiceErrorMessage(response) || 'Failed to delete relayer from Lux Build.';
     return jsonError(502, message);
 
   } catch (hubError) {
-    console.error('Builder Hub request failed:', hubError);
-    return jsonError(503, 'Builder Hub was unreachable.', hubError);
+    console.error('Lux Build request failed:', hubError);
+    return jsonError(503, 'Lux Build was unreachable.', hubError);
   }
 }
 

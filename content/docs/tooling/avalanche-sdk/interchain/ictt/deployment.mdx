@@ -31,7 +31,7 @@ Deploys a new ERC20 token on the source chain.
 ```typescript
 const { txHash, contractAddress } = await ictt.deployERC20Token({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   name: "My Token",
   symbol: "MTK",
   initialSupply: 1000000,
@@ -64,7 +64,7 @@ Deploys a token home contract on the source chain.
 ```typescript
 const { txHash, contractAddress } = await ictt.deployTokenHomeContract({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   erc20TokenAddress: tokenAddress,
   minimumTeleporterVersion: 1,
 });
@@ -96,7 +96,7 @@ Deploys a token remote contract on the destination chain.
 ```typescript
 const { txHash, contractAddress } = await ictt.deployTokenRemoteContract({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   tokenHomeContract: tokenHomeAddress,
 });
@@ -128,7 +128,7 @@ Registers the token remote contract with the token home contract.
 ```typescript
 const { txHash } = await ictt.registerRemoteWithHome({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   tokenRemoteContract: tokenRemoteAddress,
 });

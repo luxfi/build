@@ -26,7 +26,7 @@ X-PAYMENT-RESPONSE: <base64-encoded-settlement-response>
 {
   "success": true,
   "transaction": "0x8f3d1a2b4c5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payer": "0x1234567890abcdef1234567890abcdef12345678",
   "errorReason": null
 }
@@ -50,7 +50,7 @@ When payment is successfully verified and settled:
 {
   "success": true,
   "transaction": "0x8f3d1a2b4c5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payer": "0x1234567890abcdef1234567890abcdef12345678",
   "errorReason": null
 }
@@ -75,7 +75,7 @@ X-PAYMENT-RESPONSE: eyJzdWNjZXNzIjpmYWxzZSwidHJhbnNhY3Rpb24iOm51bGwsIm5ldHdvcmsi
   "x402Version": 1,
   "accepts": [{
     "scheme": "exact",
-    "network": "avalanche-fuji",
+    "network": "lux-testnet",
     "maxAmountRequired": "10000",
     "payTo": "0x742d35...",
     "asset": "0x5425890...",
@@ -91,7 +91,7 @@ The `X-PAYMENT-RESPONSE` header (when decoded) contains:
 {
   "success": false,
   "transaction": null,
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payer": "0x1234567890abcdef1234567890abcdef12345678",
   "errorReason": "Insufficient authorization amount"
 }

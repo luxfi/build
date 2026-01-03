@@ -1,21 +1,21 @@
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-> In the following commands, make sure to substitute the name of your Avalanche L1 for `<name>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
+> In the following commands, make sure to substitute the name of your Lux L1 for `<name>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
 
 <Steps>
 <Step>
  
-### Start Avalanche L1 Configuration
-To create an Avalanche L1 configuration run the following command:
+### Start Lux L1 Configuration
+To create an Lux L1 configuration run the following command:
 
 ```bash
-avalanche blockchain create <name> --sovereign=false
+lux blockchain create <name> --sovereign=false
 ```
 
 For example:
 
 ```bash
-avalanche blockchain create myblockchain --sovereign=false
+lux blockchain create myblockchain --sovereign=false
 ```
  
 </Step>
@@ -23,7 +23,7 @@ avalanche blockchain create myblockchain --sovereign=false
 <Step>
  
 ### Select Virtual Machine
-You will be prompted a wizard to configure your Avalanche L1. In the first question, select `Subnet-EVM`:
+You will be prompted a wizard to configure your Lux L1. In the first question, select `Subnet-EVM`:
 
 ```bash
 ? Which Virtual Machine would you like to use?: 
@@ -50,7 +50,7 @@ In the second question, select `I want to use defaults for a test environment`:
 After the completing the configuration, you should see something like this:
 
 ```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain create myblockchain
+@martineckardt ➜ /workspaces/lux-starter-kit (main) $ lux blockchain create myblockchain
 ✔ Subnet-EVM
 ✔ I want to use defaults for a test environment
 Chain ID: 9999
@@ -62,26 +62,26 @@ subnet-evm-v0.6.8 installation successful
 ✓ Successfully created blockchain configuration
 ```
 
-This command creates the config files `genesis.json` and `sidecar.json` inside: `~/.avalanche-cli/subnets/<name>`. If you want, you can retrieve the current config with the following command:
+This command creates the config files `genesis.json` and `sidecar.json` inside: `~/.lux-cli/subnets/<name>`. If you want, you can retrieve the current config with the following command:
 
 ```bash
-avalanche blockchain describe <name>
+lux blockchain describe <name>
 ```
 
 </Step>
 
 <Step>
  
-### To deploy your Avalanche L1, run
+### To deploy your Lux L1, run
 
 ```bash
-avalanche blockchain deploy <name>
+lux blockchain deploy <name>
 ```
 
 So in our case:
 
 ```bash
-avalanche blockchain deploy myblockchain
+lux blockchain deploy myblockchain
 ```
 
 When prompted select `Local Network` to deploy on. 
@@ -90,22 +90,22 @@ When prompted select `Local Network` to deploy on.
 ? Choose a network for the operation: 
   ▸ Local Network
     Devnet
-    Fuji Testnet
+    Testnet Testnet
     Mainnet
 ```
 
 After the deployment your should see something like this:
 
 ```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain deploy myblockchain
+@martineckardt ➜ /workspaces/lux-starter-kit (main) $ lux blockchain deploy myblockchain
 ✔ Local Network
 Deploying [myblockchain] to Local Network
-Backend controller started, pid: 5317, output at: /home/vscode/.avalanche-cli/runs/server_20240808_164902/avalanche-cli-backend.log
-Installing avalanchego-v1.11.10...
-avalanchego-v1.11.10 installation successful
+Backend controller started, pid: 5317, output at: /home/vscode/.lux-cli/runs/server_20240808_164902/lux-cli-backend.log
+Installing luxgo-v1.11.10...
+luxgo-v1.11.10 installation successful
 
 Booting Network. Wait until healthy...
-Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240808_164903/node<i>/logs
+Node logs directory: /home/vscode/.lux-cli/runs/network_20240808_164903/node<i>/logs
 Network ready to use.
 
 Deploying Blockchain. Wait until network acknowledges...
@@ -236,7 +236,7 @@ If you chose a different name then `myblockchain` head to the `foundry.toml` fil
 local-c = "http://localhost:9650/ext/bc/C/rpc"
 myblockchain = "http://localhost:9650/ext/bc/myblockchain/rpc"
 yourblockchainname = "http://localhost:9650/ext/bc/yourblockchainname/rpc" 
-fuji-c = "https://api.avax-test.network/ext/bc/C/rpc"
+testnet-c = "https://api.lux-test.network/ext/bc/C/rpc"
 
 ```
 </Step>
@@ -248,7 +248,7 @@ Commenting this because on configure-ports in the devcontainer file, the visibil
  
 ### Make RPC-Endpoint publicly accessible
 
-The final part of the output shows the wallet connection details. You can use these to connect your wallet like Core or Metasmask to you newly created Avalanche L1.
+The final part of the output shows the wallet connection details. You can use these to connect your wallet like Core or Metasmask to you newly created Lux L1.
 
 import PublishPort from "@/content/common/codespaces/publish-port.mdx";
 

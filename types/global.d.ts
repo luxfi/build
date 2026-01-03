@@ -21,7 +21,7 @@ declare global {
             isMetaMask?: boolean;
             isConnected?: () => boolean;
         };
-        avalanche?: {
+        lux?: {
             request: <T>(args: {
                 method: string;
                 params?: Record<string, unknown> | unknown[];

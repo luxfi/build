@@ -1,15 +1,15 @@
 ---
 title: Consensus Protocols
-description: Deep dive into Avalanche's Snow* family of consensus protocols including Snowball, Snowman, and Avalanche consensus.
+description: Deep dive into Lux's Snow* family of consensus protocols including Snowball, Snowman, and Lux consensus.
 ---
 
-Avalanche uses a novel family of consensus protocols collectively known as the **Snow* protocols**. These protocols achieve consensus through repeated random sampling, providing probabilistic safety guarantees with sub-second finality.
+Lux uses a novel family of consensus protocols collectively known as the **Snow* protocols**. These protocols achieve consensus through repeated random sampling, providing probabilistic safety guarantees with sub-second finality.
 
 ## Consensus Overview
 
-Traditional consensus protocols (like PBFT) require all-to-all communication, limiting scalability. Avalanche's approach is fundamentally different:
+Traditional consensus protocols (like PBFT) require all-to-all communication, limiting scalability. Lux's approach is fundamentally different:
 
-| Property | Traditional (PBFT) | Avalanche Snow* |
+| Property | Traditional (PBFT) | Lux Snow* |
 |----------|-------------------|-----------------|
 | **Communication** | All-to-all (O(n²)) | Random sampling (O(k log n)) |
 | **Finality** | Deterministic | Probabilistic (tunable) |
@@ -17,7 +17,7 @@ Traditional consensus protocols (like PBFT) require all-to-all communication, li
 | **Latency** | Seconds | Sub-second |
 
 <Callout type="info">
-The Snow* protocols are named after their "snowball" effect - once a preference starts forming, it quickly avalanches to a decision.
+The Snow* protocols are named after their "snowball" effect - once a preference starts forming, it quickly luxs to a decision.
 </Callout>
 
 ## The Snow* Protocol Family
@@ -65,12 +65,12 @@ sequenceDiagram
 ### Snowman: Linear Chain Consensus
 
 Snowman extends Snowball to decide on a linear sequence of blocks. It's used by:
-- **P-Chain** (Platform Chain)
-- **C-Chain** (Contract Chain)
-- **X-Chain** (Exchange Chain) - linearized in the Cortina upgrade (April 2023)
-- **Most Avalanche L1s**
+- **Platform-Chain** (Platform Chain)
+- **LUExchange-Chain** (Contract Chain)
+- **Exchange-Chain** (Exchange Chain) - linearized in the Cortina upgrade (April 2023)
+- **Most Lux L1s**
 
-[View source on GitHub](https://github.com/ava-labs/avalanchego/blob/master/snow/consensus/snowman/consensus.go)
+[View source on GitHub](https://github.com/luxfi/luxgo/blob/master/snow/consensus/snowman/consensus.go)
 
 ```go title="snow/consensus/snowman/consensus.go"
 type Consensus interface {
@@ -118,13 +118,13 @@ stateDiagram-v2
     Rejected --> [*]
 `} />
 
-### Avalanche DAG Consensus (Historical)
+### Lux DAG Consensus (Historical)
 
 <Callout type="warning">
-The Avalanche DAG consensus engine is **no longer used on the Primary Network**. The X-Chain was linearized in the **Cortina upgrade** (April 2023 on Mainnet) and now uses Snowman consensus. The DAG engine code remains in the codebase for historical compatibility only.
+The Lux DAG consensus engine is **no longer used on the Primary Network**. The Exchange-Chain was linearized in the **Cortina upgrade** (April 2023 on Mainnet) and now uses Snowman consensus. The DAG engine code remains in the codebase for historical compatibility only.
 </Callout>
 
-Historically, Avalanche consensus operated on a Directed Acyclic Graph (DAG) of transactions, where non-conflicting transactions could be processed in parallel:
+Historically, Lux consensus operated on a Directed Acyclic Graph (DAG) of transactions, where non-conflicting transactions could be processed in parallel:
 
 ```
        ┌───┐
@@ -163,7 +163,7 @@ graph LR
 
 ### Engine States
 
-The consensus engine progresses through several states ([`snow/state.go`](https://github.com/ava-labs/avalanchego/blob/master/snow/state.go)):
+The consensus engine progresses through several states ([`snow/state.go`](https://github.com/luxfi/luxgo/blob/master/snow/state.go)):
 
 ```go
 type State uint8
@@ -185,7 +185,7 @@ const (
 
 ### The Snowman Engine
 
-[View source on GitHub](https://github.com/ava-labs/avalanchego/blob/master/snow/engine/snowman/engine.go)
+[View source on GitHub](https://github.com/luxfi/luxgo/blob/master/snow/engine/snowman/engine.go)
 
 ```go title="snow/engine/snowman/engine.go"
 type Engine struct {
@@ -270,7 +270,7 @@ func (e *Engine) Chits(ctx context.Context, nodeID ids.NodeID, requestID uint32,
 
 ## Snowman++ (ProposerVM)
 
-Snowman++ adds **soft proposer windows** on top of Snowman to pace block production. It is implemented by wrapping a ChainVM in the [ProposerVM](https://github.com/ava-labs/avalanchego/tree/master/vms/proposervm) and is enabled on the P-Chain and C-Chain.
+Snowman++ adds **soft proposer windows** on top of Snowman to pace block production. It is implemented by wrapping a ChainVM in the [ProposerVM](https://github.com/luxfi/luxgo/tree/master/vms/proposervm) and is enabled on the Platform-Chain and LUExchange-Chain.
 
 ```go title="vms/proposervm/vm.go"
 // ProposerVM wraps a ChainVM to add proposer selection
@@ -295,7 +295,7 @@ type VM struct {
 
 ## Consensus Parameters
 
-Consensus parameters live in [`snow/consensus/snowball/parameters.go`](https://github.com/ava-labs/avalanchego/blob/master/snow/consensus/snowball/parameters.go):
+Consensus parameters live in [`snow/consensus/snowball/parameters.go`](https://github.com/luxfi/luxgo/blob/master/snow/consensus/snowball/parameters.go):
 
 ```go
 type Parameters struct {
@@ -348,7 +348,7 @@ With default parameters: $P < \left(1 - \frac{15}{20}\right)^{20} \approx 10^{-1
 
 ### Liveness
 
-Avalanche guarantees liveness as long as:
+Lux guarantees liveness as long as:
 - More than `α/k` (75%) of stake is honest
 - Network is eventually synchronous
 

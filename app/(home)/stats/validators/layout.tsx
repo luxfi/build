@@ -4,12 +4,12 @@ import { createMetadata } from "@/utils/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Validator Stats",
   description:
-    "Real-time validator version tracking across Avalanche chains. Monitor validator health, stake percentages, and client version distribution for Mainnet and Fuji networks.",
+    "Real-time validator version tracking across Lux chains. Monitor validator health, stake percentages, and client version distribution for Mainnet and Testnet networks.",
   openGraph: {
     url: "/stats/validators",
     images: {
       alt: "Validator Stats",
-      url: "/api/og/stats?title=Validator Stats&description=Real-time validator version tracking across Avalanche chains. Monitor validator health, stake percentages, and client version distribution.",
+      url: "/api/og/stats?title=Validator Stats&description=Real-time validator version tracking across Lux chains. Monitor validator health, stake percentages, and client version distribution.",
       width: 1280,
       height: 720,
     },
@@ -17,7 +17,7 @@ export const metadata: Metadata = createMetadata({
   twitter: {
     images: {
       alt: "Validator Stats",
-      url: "/api/og/stats?title=Validator Stats&description=Real-time validator version tracking across Avalanche chains. Monitor validator health, stake percentages, and client version distribution.",
+      url: "/api/og/stats?title=Validator Stats&description=Real-time validator version tracking across Lux chains. Monitor validator health, stake percentages, and client version distribution.",
       width: 1280,
       height: 720,
     },

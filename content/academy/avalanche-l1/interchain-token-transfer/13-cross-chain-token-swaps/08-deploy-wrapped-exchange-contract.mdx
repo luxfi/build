@@ -17,8 +17,8 @@ Let's deploy our wrapper for the exchange contract on your own blockchain.
 
 While deploying the wrapped exchange contract, you will need to send two constructor arguments to the contract.
 
-- The first argument is the wrapped native token (WAVAX) address on the destination chain (Fuji), which is: [`0xd00ae08403B9bbb9124bB305C09058E32C39A48c`](https://testnet.snowtrace.io/address/0xd00ae08403B9bbb9124bB305C09058E32C39A48c).
-- The second argument is the Trader Joe's (or any other Uniswap V2-like dapp) Factory V1 contract address on the destination chain (Fuji), which is: [`0xF5c7d9733e5f53abCC1695820c4818C59B457C2C`](https://testnet.snowtrace.io/address/0xF5c7d9733e5f53abCC1695820c4818C59B457C2C). Deployed contracts of TraderJoe can be found [here](https://docs.traderjoexyz.com/deployment-addresses/fuji).
+- The first argument is the wrapped native token (WLUX) address on the destination chain (Testnet), which is: [`0xd00ae08403B9bbb9124bB305C09058E32C39A48c`](https://testnet.snowtrace.io/address/0xd00ae08403B9bbb9124bB305C09058E32C39A48c).
+- The second argument is the Trader Joe's (or any other Uniswap V2-like dapp) Factory V1 contract address on the destination chain (Testnet), which is: [`0xF5c7d9733e5f53abCC1695820c4818C59B457C2C`](https://testnet.snowtrace.io/address/0xF5c7d9733e5f53abCC1695820c4818C59B457C2C). Deployed contracts of TraderJoe can be found [here](https://docs.traderjoexyz.com/deployment-addresses/testnet).
 
 ```bash
 forge create --rpc-url local-c --private-key $PK --broadcast --constructor-args 0xd00ae08403B9bbb9124bB305C09058E32C39A48c 0xF5c7d9733e5f53abCC1695820c4818C59B457C2C contracts/interchain-token-transfer/cross-chain-token-swaps/DexERC20Wrapper.sol:DexERC20Wrapper
@@ -53,7 +53,7 @@ export WRAPPED_EXCHANGE_ADDRESS=0x38B097d95B96CD17966Cf617A71b7B20F61ba85B
 <Step>
 ### Initiate the Cross-Chain Swap
 
-Now that the wrapped exchange contract has been deployed, send an ERC20 token to execute a swap for WAVAX or AVAX from your Avalanche L1 to Fuji using the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) command in foundry.
+Now that the wrapped exchange contract has been deployed, send an ERC20 token to execute a swap for WLUX or LUX from your Lux L1 to Testnet using the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) command in foundry.
 
 ```bash
 cast send --rpc-url echo --private-key $PK $ERC20_HOME_C_CHAIN "sendAndCall((bytes32, address, address, bytes, uint256, uint256, address, address, address, uint256, uint256), uint256)" "(${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_L1}, ${WRAPPED_EXCHANGE_ADDRESS}, 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 2500000, 2000000, 0x0000000000000000000000000000000000000000, ${FUNDED_ADDRESS}, ${ERC20_HOME_C_CHAIN}, 0, 0)" 100000000000000000000
@@ -89,17 +89,17 @@ encode();
 <Step>
 ### Verify the Results
 
-To verify that your cross-chain swap was successful, you'll need to check the balance of your address on the destination chain (Fuji). You can use Foundry's cast command to check both native AVAX and WAVAX balances.
+To verify that your cross-chain swap was successful, you'll need to check the balance of your address on the destination chain (Testnet). You can use Foundry's cast command to check both native LUX and WLUX balances.
 
-**Check WAVAX Balance**: Since the swap involves WAVAX (the wrapped version of AVAX), use the following command to check the WAVAX token balance:
+**Check WLUX Balance**: Since the swap involves WLUX (the wrapped version of LUX), use the following command to check the WLUX token balance:
 
 ```bash
 cast call --rpc-url local-c 0xd00ae08403B9bbb9124bB305C09058E32C39A48c "balanceOf(address)" ${FUNDED_ADDRESS}
 ```
 
-This calls the `balanceOf` function on the WAVAX token contract to check your balance.
+This calls the `balanceOf` function on the WLUX token contract to check your balance.
 
-**Check Native AVAX Balance**: If you chose to receive native AVAX instead of WAVAX, check your native balance:
+**Check Native LUX Balance**: If you chose to receive native LUX instead of WLUX, check your native balance:
 
 ```bash
 cast balance --rpc-url local-c ${FUNDED_ADDRESS}

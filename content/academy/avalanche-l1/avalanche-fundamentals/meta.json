@@ -1,11 +1,11 @@
 {
-  "title": "Avalanche Fundamentals",
+  "title": "Lux Fundamentals",
   "icon": "Snowflake",
   "root": true,
   "pages": [
     "index",
-    "---Primer on Avalanche Consensus---",
-    "...02-avalanche-consensus-intro",
+    "---Primer on Lux Consensus---",
+    "...02-lux-consensus-intro",
     "---Multi-Chain Architecture---",
     "...03-multi-chain-architecture-intro",
     "---Creating an L1---",

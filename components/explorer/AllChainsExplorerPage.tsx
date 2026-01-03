@@ -176,7 +176,7 @@ const BLOCKS_FOR_CALCULATION = supportedChains.length * 10 * 1;
 
 export default function AllChainsExplorerPage() {
   const router = useRouter();
-  const themeColor = "#E84142"; // Avalanche red for all-chains view
+  const themeColor = "#FFFFFF"; // Lux red for all-chains view
   
   // State for accumulated data from all chains
   const [accumulatedBlocks, setAccumulatedBlocks] = useState<Block[]>([]);

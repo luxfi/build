@@ -6,15 +6,15 @@ import type { AcademyPathType } from './academy-types';
 
 export const academyBubbleConfig: BubbleNavigationConfig = {
     items: [
-        { id: "avalanche", label: "Avalanche L1", href: "/academy/avalanche-l1" },
+        { id: "lux", label: "Lux L1", href: "/academy/lux-l1" },
         { id: "blockchain", label: "Blockchain", href: "/academy/blockchain" },
         { id: "entrepreneur", label: "Entrepreneur", href: "/academy/entrepreneur" },
     ],
-    activeColor: "bg-red-600",
-    darkActiveColor: "dark:bg-red-500",
-    focusRingColor: "focus:ring-red-500",
-    pulseColor: "bg-red-200/40",
-    darkPulseColor: "dark:bg-red-400/40",
+    activeColor: "bg-zinc-800",
+    darkActiveColor: "dark:bg-white",
+    focusRingColor: "focus:ring-zinc-500",
+    pulseColor: "bg-zinc-200/40",
+    darkPulseColor: "dark:bg-zinc-400/40",
     buttonPadding: "px-4 py-2",
     buttonSpacing: "space-x-3",
 };
@@ -35,15 +35,15 @@ export function AcademyBubbleNav(props: AcademyBubbleNavProps = {}) {
             return "blockchain";
         } else if (
             pathname === "/academy" ||
-            pathname === "/academy/avalanche-l1" ||
-            pathname.startsWith("/academy/avalanche-l1/") ||
+            pathname === "/academy/lux-l1" ||
+            pathname.startsWith("/academy/lux-l1/") ||
             (pathname.startsWith("/academy/") &&
                 !pathname.startsWith("/academy/blockchain") &&
                 !pathname.startsWith("/academy/entrepreneur"))
         ) {
-            return "avalanche";
+            return "lux";
         }
-        return "avalanche";
+        return "lux";
     };
 
     return <BubbleNavigation config={academyBubbleConfig} getActiveItem={getActiveItem} />;

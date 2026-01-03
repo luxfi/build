@@ -34,7 +34,7 @@ function formatSectionName(section: string): string {
 }
 
 export async function GET() {
-  const baseUrl = 'https://build.avax.network';
+  const baseUrl = 'https://build.lux.network';
 
   // Get all pages from each source
   const docPages = documentation.getPages();
@@ -43,11 +43,11 @@ export async function GET() {
   const blogPages = blog.getPages();
 
   // Build the llms.txt content following the standard format
-  let content = `# Avalanche Builder Hub
+  let content = `# Lux Lux Build
 
-> Build your fast and interoperable Layer 1 blockchain with Avalanche. The Builder Hub provides comprehensive documentation, interactive tutorials, and developer tools.
+> Build your fast and interoperable Layer 1 blockchain with Lux. The Lux Build provides comprehensive documentation, interactive tutorials, and developer tools.
 
-Avalanche is a high-performance blockchain platform for decentralized applications, new financial primitives, and interoperable blockchains. The Builder Hub helps developers create custom Layer 1 blockchains (Avalanche L1s), build cross-chain applications using Interchain Messaging (ICM), and leverage the Avalanche ecosystem.
+Lux is a high-performance blockchain platform for decentralized applications, new financial primitives, and interoperable blockchains. The Lux Build helps developers create custom Layer 1 blockchains (Lux L1s), build cross-chain applications using Interchain Messaging (ICM), and leverage the Lux ecosystem.
 
 ## Full Documentation
 
@@ -55,7 +55,7 @@ Avalanche is a high-performance blockchain platform for decentralized applicatio
 
 ## Documentation
 
-Core technical documentation for building on Avalanche:
+Core technical documentation for building on Lux:
 
 `;
 
@@ -65,7 +65,7 @@ Core technical documentation for building on Avalanche:
   // Define priority sections for docs (order matters)
   const docPrioritySections = [
     'primary-network',
-    'avalanche-l1s',
+    'lux-l1s',
     'cross-chain',
     'nodes',
     'virtual-machines',
@@ -99,7 +99,7 @@ Structured learning paths and interactive tutorials:
   // Define priority academy courses
   const academyPrioritySections = [
     'blockchain-fundamentals',
-    'avalanche-l1',
+    'lux-l1',
     'interchain-messaging',
     'interchain-token-transfer',
     'customizing-evm',
@@ -120,7 +120,7 @@ Structured learning paths and interactive tutorials:
 
   content += `## Integrations
 
-Third-party tools and services for the Avalanche ecosystem:
+Third-party tools and services for the Lux ecosystem:
 
 - [All Integrations](${baseUrl}/integrations): Browse all integration partners and tools
 `;
@@ -149,10 +149,10 @@ Latest announcements, tutorials, and ecosystem updates:
   content += `
 ## Console Tools
 
-Interactive developer tools for building and managing Avalanche L1s:
+Interactive developer tools for building and managing Lux L1s:
 
 - [Create L1](${baseUrl}/console/layer-1/create): Launch custom Layer 1 blockchains
-- [Faucet](${baseUrl}/console/primary-network/faucet): Get testnet AVAX for development
+- [Faucet](${baseUrl}/console/primary-network/faucet): Get testnet LUX for development
 - [ICM Setup](${baseUrl}/console/icm/setup): Configure Interchain Messaging
 - [ICTT Setup](${baseUrl}/console/ictt/setup): Configure token bridges
 - [Validator Management](${baseUrl}/console/layer-1/validator-set): Manage L1 validators
@@ -198,7 +198,7 @@ Additional resources and reference documentation:
   }
 
   content += `
-### Avalanche Community Proposals (ACPs)
+### Lux Community Proposals (ACPs)
 `;
 
   if (docSections['acps']) {
@@ -211,10 +211,10 @@ Additional resources and reference documentation:
   content += `
 ## External Resources
 
-- [GitHub](https://github.com/ava-labs): Official Avalanche Labs repositories
-- [Discord](https://discord.gg/avalanche): Developer community
-- [Forum](https://forum.avax.network): Technical discussions
-- [Explorer](https://subnets.avax.network): Avalanche network explorer
+- [GitHub](https://github.com/luxfi): Official Lux Labs repositories
+- [Discord](https://discord.gg/lux): Developer community
+- [Forum](https://forum.lux.network): Technical discussions
+- [Explorer](https://subnets.lux.network): Lux network explorer
 `;
 
   return new Response(content, {

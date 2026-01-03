@@ -12,8 +12,8 @@ import versions from '@/scripts/versions.json';
 import { keccak256 } from 'viem';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
 
-const ICM_COMMIT = versions["ava-labs/icm-contracts"];
-const NATIVE_TOKEN_STAKING_MANAGER_SOURCE_URL = `https://github.com/ava-labs/icm-contracts/blob/${ICM_COMMIT}/contracts/validator-manager/NativeTokenStakingManager.sol`;
+const ICM_COMMIT = versions["luxfi/icm-contracts"];
+const NATIVE_TOKEN_STAKING_MANAGER_SOURCE_URL = `https://github.com/luxfi/icm-contracts/blob/${ICM_COMMIT}/contracts/validator-manager/NativeTokenStakingManager.sol`;
 
 // this should be pulled into a shared utils file with other contract deployments
 function calculateLibraryHash(libraryPath: string) {

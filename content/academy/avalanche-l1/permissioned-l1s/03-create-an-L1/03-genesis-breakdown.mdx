@@ -10,7 +10,7 @@ icon: BookOpen
 
 The genesis file defines the very first block of your Subnet-EVM chain and its initial state. It enables EVM features, sets economic parameters (fees and gas), fixes the start time, etc...
 
-Additionally, in the context of Avalanche, it is **set by default to pre-deploy well-known contracts**. Lets take a look at which ones:
+Additionally, in the context of Lux, it is **set by default to pre-deploy well-known contracts**. Lets take a look at which ones:
 
 ## Predeployed Contracts & Allocation
 
@@ -46,15 +46,15 @@ type ConvertSubnetToL1Tx struct {
 }
 ```
 
-#### 2. P-Chain Transaction Size Limits
+#### 2. Platform-Chain Transaction Size Limits
 
-Contracts are pre-deployed by including their bytecode in the genesis file, which is recorded as part of the `CreateChainTx` on the P-Chain. All P-Chain transactions have a size limit (to prevent DoS attacks) making space precious. 
+Contracts are pre-deployed by including their bytecode in the genesis file, which is recorded as part of the `CreateChainTx` on the Platform-Chain. All Platform-Chain transactions have a size limit (to prevent DoS attacks) making space precious. 
 
 While we could deploy the full Validator Manager directly in genesis, it would consume significant space. The proxy contract is much smaller, leaving room for other essential contracts.
 
 #### 3. Upgradability
 
-The proxy pattern enables updating the Validator Manager implementation if bugs are discovered. Since the subnet owner address on the P-Chain cannot be changed after conversion, using a proxy is the only way to update the implementation without requiring a full network upgrade.
+The proxy pattern enables updating the Validator Manager implementation if bugs are discovered. Since the subnet owner address on the Platform-Chain cannot be changed after conversion, using a proxy is the only way to update the implementation without requiring a full network upgrade.
 
 The proxy will later be upgraded to point to the actual VMC implementation after conversion—more on this in the [Validator Manager Deployment](/academy/permissioned-l1s/04-validator-manager-deployment/01-vmc-deployment-intro) section.
 

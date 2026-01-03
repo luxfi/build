@@ -64,7 +64,7 @@ export async function generateMetadata({
   } catch (error) {
     return createMetadata({
       title: 'Hackathons',
-      description: 'Join exciting blockchain hackathons and build the future on Avalanche',
+      description: 'Join exciting blockchain hackathons and build the future on Lux',
     });
   }
 }
@@ -110,7 +110,7 @@ export default async function HackathonPage({
           src={
             hackathon.icon.trim().length > 0
               ? hackathon.icon
-              : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/project-logo-ILfO9EujWnQj1xMZpIIWTZ8mc87I7f.png"
+              : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/project-logo-ILfO9EujWnQj1xMZpIIWTZ8mc87I7f.png"
           }
           alt="Hackathon background"
           width={40}
@@ -142,7 +142,7 @@ export default async function HackathonPage({
               bannerSrc={
                 hackathon.banner?.trim().length > 0
                   ? hackathon.banner
-                  : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/main_banner_img-crBsoLT7R07pdstPKvRQkH65yAbpFX.png"
+                  : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/main_banner_img-crBsoLT7R07pdstPKvRQkH65yAbpFX.png"
               }
               altText="Hackathon background"
               utm={utm as string}

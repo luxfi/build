@@ -120,7 +120,7 @@ export default function EntrepreneurAcademyPage(): React.ReactElement {
                 config={entrepreneurAcademyLandingPageConfig}
                 blogs={blogs}
                 blogsByPath={{
-                    avalanche: blogs,
+                    lux: blogs,
                     blockchain: blogs,
                     entrepreneur: entrepreneurBlogsFromConfig.length > 0 ? entrepreneurBlogsFromConfig : blogs,
                 }}

@@ -10,16 +10,16 @@ Accounts work with both public clients (read-only) and wallet clients (transacti
 ## Public Client (Read-Only)
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
 // Read operations
 const balance = await client.getBalance({ address: account.getEVMAddress() });
@@ -29,27 +29,27 @@ const height = await client.pChain.getHeight();
 ## Wallet Client (Transactions)
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avaxToWei } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { luxToWei } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
 // Hoist account (recommended)
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account, // Account is hoisted
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
-// C-Chain transaction
+// LUExchange-Chain transaction
 const txHash = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
-  amount: avaxToWei(0.001),
+  amount: luxToWei(0.001),
 });
 
-// X/P-Chain transaction
+// X/Platform-Chain transaction
 const xpTx = await walletClient.xChain.prepareBaseTxn({
   outputs: [{ addresses: [account.getXPAddress("X")], amount: 1 }],
 });
@@ -62,16 +62,16 @@ You can hoist the account into the client (recommended) or pass it to each metho
 
 ```typescript
 // Hoisted (recommended)
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account, // No need to pass to each method
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 await walletClient.send({ to: "0x...", amount: 0.001 });
 
 // Or pass per method
-const walletClient = createAvalancheWalletClient({
-  chain: avalanche,
+const walletClient = createLuxWalletClient({
+  chain: lux,
   transport: { type: "http" },
 });
 await walletClient.send({ account, to: "0x...", amount: 0.001 });
@@ -86,6 +86,6 @@ Cross-chain transfers use the export/import pattern. Export from the source chai
 ## Next Steps
 
 - **[Wallet Operations](methods/wallet-methods/wallet)** - Learn how to send transactions
-- **[P-Chain Operations](methods/public-methods/p-chain)** - Validator and staking operations
-- **[X-Chain Operations](methods/public-methods/x-chain)** - Asset transfers and UTXO operations
-- **[C-Chain Operations](methods/public-methods/c-chain)** - EVM and smart contract operations
+- **[Platform-Chain Operations](methods/public-methods/p-chain)** - Validator and staking operations
+- **[Exchange-Chain Operations](methods/public-methods/x-chain)** - Asset transfers and UTXO operations
+- **[LUExchange-Chain Operations](methods/public-methods/c-chain)** - EVM and smart contract operations

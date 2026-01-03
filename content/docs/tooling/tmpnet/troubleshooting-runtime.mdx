@@ -16,11 +16,11 @@ This guide helps you diagnose and resolve common issues with tmpnet's different 
 **Solution:**
 
 ```bash
-# Check for orphaned avalanchego processes
-ps aux | grep avalanchego
+# Check for orphaned luxgo processes
+ps aux | grep luxgo
 
 # Kill any orphaned processes
-pkill -f avalanchego
+pkill -f luxgo
 
 # Verify ports are free
 lsof -i :9650-9660
@@ -41,22 +41,22 @@ Avoid hardcoding port numbers unless you have a specific reason. Dynamic ports p
 
 ### Process Not Stopping
 
-**Symptom:** After calling `network.Stop()`, avalanchego processes remain running in the background.
+**Symptom:** After calling `network.Stop()`, luxgo processes remain running in the background.
 
 **Cause:** Process termination may fail silently, or cleanup may not complete properly.
 
 **Solution:**
 
 ```bash
-# Find all avalanchego processes
-ps aux | grep avalanchego
+# Find all luxgo processes
+ps aux | grep luxgo
 
 # Try graceful termination first
-pkill -TERM -f avalanchego
+pkill -TERM -f luxgo
 sleep 5
 
 # If processes still running, force kill as last resort
-pkill -9 -f avalanchego
+pkill -9 -f luxgo
 
 # Clean up temporary directories if needed
 # First verify which network you want to delete
@@ -83,22 +83,22 @@ if err := network.Stop(ctx); err != nil {
 
 ### Binary Not Found
 
-**Symptom:** Error "avalanchego not found" or "executable file not found in $PATH" when starting nodes.
+**Symptom:** Error "luxgo not found" or "executable file not found in $PATH" when starting nodes.
 
-**Cause:** The avalanchego binary path is incorrect or not specified.
+**Cause:** The luxgo binary path is incorrect or not specified.
 
 **Solution:**
 
 ```bash
 # Verify the binary exists
-ls -lh /path/to/avalanchego
+ls -lh /path/to/luxgo
 
 # Use absolute path when configuring
-export AVALANCHEGO_PATH="$(pwd)/bin/avalanchego"
+export LUXGO_PATH="$(pwd)/bin/luxgo"
 
 # Or specify in code
 runtimeCfg := &tmpnet.ProcessRuntimeConfig{
-    AvalancheGoPath: "/absolute/path/to/avalanchego",
+    LuxGoPath: "/absolute/path/to/luxgo",
 }
 ```
 
@@ -106,7 +106,7 @@ runtimeCfg := &tmpnet.ProcessRuntimeConfig{
 
 ```bash
 # Test the binary works
-/path/to/avalanchego --version
+/path/to/luxgo --version
 
 # Should output version information
 ```
@@ -160,7 +160,7 @@ tail -f ~/.tmpnet/networks/latest/$NODE_ID/logs/main.log
 
 ```bash
 # Check pod status details
-kubectl describe pod avalanchego-node-0 -n tmpnet
+kubectl describe pod luxgo-node-0 -n tmpnet
 
 # Look for events section
 kubectl get events -n tmpnet --sort-by='.lastTimestamp'
@@ -173,7 +173,7 @@ kubectl top nodes
 
 ```bash
 # If resource limits are too high, adjust them
-kubectl edit statefulset avalanchego -n tmpnet
+kubectl edit statefulset luxgo -n tmpnet
 
 # Verify your cluster has available nodes
 kubectl get nodes
@@ -192,17 +192,17 @@ kubectl describe nodes | grep -i taint
 
 ```bash
 # Check image pull status
-kubectl describe pod avalanchego-node-0 -n tmpnet | grep -A 5 "Events:"
+kubectl describe pod luxgo-node-0 -n tmpnet | grep -A 5 "Events:"
 
 # Verify image name
-kubectl get pod avalanchego-node-0 -n tmpnet -o jsonpath='{.spec.containers[0].image}'
+kubectl get pod luxgo-node-0 -n tmpnet -o jsonpath='{.spec.containers[0].image}'
 ```
 
 **Solutions:**
 
 ```bash
 # Verify image exists in registry
-docker pull avaplatform/avalanchego:latest
+docker pull avaplatform/luxgo:latest
 
 # If using private registry, check image pull secrets
 kubectl get secrets -n tmpnet
@@ -219,7 +219,7 @@ kubectl create secret docker-registry regcred \
 
 ```bash
 # Load image into kind cluster
-kind load docker-image avaplatform/avalanchego:latest --name tmpnet-cluster
+kind load docker-image avaplatform/luxgo:latest --name tmpnet-cluster
 ```
 
 ### Ingress Not Working
@@ -238,10 +238,10 @@ kubectl get pods -n ingress-nginx
 kubectl get ingress -n tmpnet
 
 # Check ingress details
-kubectl describe ingress avalanchego-ingress -n tmpnet
+kubectl describe ingress luxgo-ingress -n tmpnet
 
 # Test service directly (bypassing ingress)
-kubectl port-forward svc/avalanchego-node-0 9650:9650 -n tmpnet
+kubectl port-forward svc/luxgo-node-0 9650:9650 -n tmpnet
 curl http://localhost:9650/ext/health
 ```
 
@@ -272,20 +272,20 @@ For kind clusters, ensure you created the cluster with `extraPortMappings` to ex
 
 ```bash
 # Check update strategy
-kubectl get statefulset avalanchego -n tmpnet -o jsonpath='{.spec.updateStrategy}'
+kubectl get statefulset luxgo -n tmpnet -o jsonpath='{.spec.updateStrategy}'
 
 # Manually delete pods to trigger update
-kubectl delete pod avalanchego-node-0 -n tmpnet
+kubectl delete pod luxgo-node-0 -n tmpnet
 # StatefulSet will recreate with new image
 
 # Or delete all pods
-kubectl delete pods -l app=avalanchego -n tmpnet
+kubectl delete pods -l app=luxgo -n tmpnet
 ```
 
 **Change to rolling updates:**
 
 ```bash
-kubectl patch statefulset avalanchego -n tmpnet -p '{"spec":{"updateStrategy":{"type":"RollingUpdate"}}}'
+kubectl patch statefulset luxgo -n tmpnet -p '{"spec":{"updateStrategy":{"type":"RollingUpdate"}}}'
 ```
 
 ### Persistent Volume Issues
@@ -302,7 +302,7 @@ kubectl get pvc -n tmpnet
 
 # Should show "Bound" status
 # If "Pending", check details
-kubectl describe pvc data-avalanchego-node-0 -n tmpnet
+kubectl describe pvc data-luxgo-node-0 -n tmpnet
 
 # Verify storage class exists
 kubectl get storageclass
@@ -318,7 +318,7 @@ kubectl get storageclass
 # For custom clusters, install a storage provisioner
 
 # Delete stuck PVCs if needed (will delete data!)
-kubectl delete pvc data-avalanchego-node-0 -n tmpnet
+kubectl delete pvc data-luxgo-node-0 -n tmpnet
 ```
 
 ## General Runtime Issues
@@ -462,16 +462,16 @@ rm -rf ~/.tmpnet/networks/202*
 
 ### High Memory Usage
 
-**Symptom:** avalanchego processes consume excessive memory, system becomes slow.
+**Symptom:** luxgo processes consume excessive memory, system becomes slow.
 
 **Diagnosis:**
 
 ```bash
 # Check memory usage per process
-ps aux | grep avalanchego | awk '{print $2, $4, $11}'
+ps aux | grep luxgo | awk '{print $2, $4, $11}'
 
 # Monitor over time
-watch -n 5 'ps aux | grep avalanchego'
+watch -n 5 'ps aux | grep luxgo'
 ```
 
 **Solutions:**
@@ -514,10 +514,10 @@ node.Flags = tmpnet.FlagsMap{
 Redirect process output to see initialization errors:
 
 ```bash
-# Run avalanchego manually with same config
-/path/to/avalanchego \
+# Run luxgo manually with same config
+/path/to/luxgo \
   --config-file=~/.tmpnet/networks/latest/NodeID-*/flags.json \
-  2>&1 | tee avalanchego-debug.log
+  2>&1 | tee luxgo-debug.log
 ```
 
 ### Network State Inspection
@@ -557,13 +557,13 @@ func TestNodeHealth(t *testing.T) {
 If you're still experiencing issues:
 
 1. **Check logs** - Always check node logs first for error messages
-2. **Search GitHub issues** - Check [avalanchego issues](https://github.com/ava-labs/avalanchego/issues) for similar problems
-3. **Ask the community** - Post in [Avalanche Discord](https://chat.avax.network) #developers channel
+2. **Search GitHub issues** - Check [luxgo issues](https://github.com/luxfi/luxgo/issues) for similar problems
+3. **Ask the community** - Post in [Lux Discord](https://chat.lux.network) #developers channel
 4. **Include details** - Share error messages, logs, and your configuration
 
 **Information to include when asking for help:**
 
-- tmpnet version: `go list -m github.com/ava-labs/avalanchego`
+- tmpnet version: `go list -m github.com/luxfi/luxgo`
 - Runtime type: Local process or Kubernetes
 - Operating system and version
 - Error messages and relevant log excerpts

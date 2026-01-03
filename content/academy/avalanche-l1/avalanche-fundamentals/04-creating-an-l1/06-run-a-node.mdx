@@ -6,10 +6,10 @@ authors: [owenwahlgren]
 icon: Terminal
 ---
 
-import AvalancheGoDocker from "@/components/toolbox/console/layer-1/AvalancheGoDockerL1";
+import LuxGoDocker from "@/components/toolbox/console/layer-1/LuxGoDockerL1";
 import ToolboxMdxWrapper from "@/components/toolbox/academy/wrapper/ToolboxMdxWrapper.tsx";
 
-Now that the P-Chain records are set up, you can start syncing the node with your Subnet.
+Now that the Platform-Chain records are set up, you can start syncing the node with your Subnet.
 
 ## Run Your L1 Node
 
@@ -30,11 +30,11 @@ Managed nodes automatically shut down after 3 days. For production or extended t
 
 ## Optional Alternative: Self-Hosted Infrastructure
 
-The free managed testnet nodes are a great option for playing around with Avalanche L1s, but are not
+The free managed testnet nodes are a great option for playing around with Lux L1s, but are not
 intended for running on production environments. They are shut down automatically after 3 days. If you want to test out your production environment, running beyond 3 days, or anything more complex you should run nodes on your own infrastructure
 using Docker:
 
 <ToolboxMdxWrapper walletMode="testnet-mainnet">
-    <AvalancheGoDocker />
+    <LuxGoDocker />
 </ToolboxMdxWrapper>
 

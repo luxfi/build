@@ -12,7 +12,7 @@ Without the Reward Manager enabled, rewards are set to zero—validators receive
 
 ## How the Reward Manager Works
 
-The reward system operates through a **proposal-commit/abort mechanism** on the P-Chain. When a validator's or delegator's staking period ends, the system automatically calculates and distributes their rewards.
+The reward system operates through a **proposal-commit/abort mechanism** on the Platform-Chain. When a validator's or delegator's staking period ends, the system automatically calculates and distributes their rewards.
 
 <Mermaid
   chart="sequenceDiagram
@@ -20,7 +20,7 @@ The reward system operates through a **proposal-commit/abort mechanism** on the 
     participant RV as RewardValidatorTx
     participant PE as Proposal Executor
     participant RC as Reward Calculator
-    participant PS as P-Chain State
+    participant PS as Platform-Chain State
     participant V as Validator
     participant D as Delegator
     
@@ -87,7 +87,7 @@ When a staker's end time is reached, the **Block Builder** creates a `RewardVali
 The `RewardValidatorTx` is executed as a **proposal transaction** by the Proposal Executor:
 
 - The Reward Calculator computes the potential reward amount
-- The P-Chain State is queried for staker information
+- The Platform-Chain State is queried for staker information
 - A reward UTXO is prepared (if reward > 0)
 
 ### 3. Commit or Abort

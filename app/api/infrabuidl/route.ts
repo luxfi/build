@@ -42,12 +42,12 @@ export async function POST(request: Request) {
     processedFormData["2-44649732/token_launch_other"] = formData.token_launch_other || "N/A";
     processedFormData["2-44649732/direct_competitor_1"] = formData.direct_competitor_1 || "N/A";
     processedFormData["2-44649732/applicant_job_role_other"] = formData.applicant_job_role_other || "N/A";
-    processedFormData["2-44649732/avalanche_l1_project_benefited_1"] = formData.avalanche_l1_project_benefited_1 || "N/A";
-    processedFormData["2-44649732/previous_avalanche_project_info"] = formData.previous_avalanche_project_info || "N/A";
+    processedFormData["2-44649732/lux_l1_project_benefited_1"] = formData.lux_l1_project_benefited_1 || "N/A";
+    processedFormData["2-44649732/previous_lux_project_info"] = formData.previous_lux_project_info || "N/A";
     processedFormData["2-44649732/direct_competitor_1_website"] = formData.direct_competitor_1_website || "N/A";
     processedFormData["2-44649732/program_referrer"] = formData.program_referrer || "N/A";
     processedFormData["2-44649732/multichain_chains"] = formData.multichain_chains || "N/A";
-    processedFormData["2-44649732/avalanche_l1_project_benefited_1_website"] = formData.avalanche_l1_project_benefited_1_website || "N/A";   
+    processedFormData["2-44649732/lux_l1_project_benefited_1_website"] = formData.lux_l1_project_benefited_1_website || "N/A";   
     processedFormData["2-44649732/applicant_first_name"] = formData.firstname;
     processedFormData["2-44649732/applicant_last_name"] = formData.lastname;
     
@@ -64,15 +64,15 @@ export async function POST(request: Request) {
     processedFormData["2-44649732/retro9000_previous_funding_amount"] = formData.funding_amount_retro9000 || "0";
     processedFormData["2-44649732/previous_funding_amount_blizzard"] = formData.funding_amount_blizzard || "0";
     processedFormData["2-44649732/previous_funding_amount_ava_labs"] = formData.funding_amount_ava_labs || "0";
-    processedFormData["2-44649732/previous_funding_amount_entity_other"] = formData.funding_amount_other_avalanche || "0";
+    processedFormData["2-44649732/previous_funding_amount_entity_other"] = formData.funding_amount_other_lux || "0";
     
-    // Handle previous funding non-avalanche fields
+    // Handle previous funding non-lux fields
     const previousFunding = Array.isArray(formData.previous_funding) ? formData.previous_funding : [formData.previous_funding];
-    processedFormData["2-44649732/previous_funding_non_avalanche_grant"] = previousFunding.includes("Grant") ? "Yes" : "No";
-    processedFormData["2-44649732/previous_funding_non_avalanche___angel_investment"] = previousFunding.includes("Angel Investment") ? "Yes" : "No";
-    processedFormData["2-44649732/previous_funding_non_avalanche___pre_seed"] = previousFunding.includes("Pre-Seed") ? "Yes" : "No";
-    processedFormData["2-44649732/previous_funding_non_avalanche___seed"] = previousFunding.includes("Seed") ? "Yes" : "No";
-    processedFormData["2-44649732/previous_funding_non_avalanche___series_a"] = previousFunding.includes("Series A") ? "Yes" : "No";
+    processedFormData["2-44649732/previous_funding_non_lux_grant"] = previousFunding.includes("Grant") ? "Yes" : "No";
+    processedFormData["2-44649732/previous_funding_non_lux___angel_investment"] = previousFunding.includes("Angel Investment") ? "Yes" : "No";
+    processedFormData["2-44649732/previous_funding_non_lux___pre_seed"] = previousFunding.includes("Pre-Seed") ? "Yes" : "No";
+    processedFormData["2-44649732/previous_funding_non_lux___seed"] = previousFunding.includes("Seed") ? "Yes" : "No";
+    processedFormData["2-44649732/previous_funding_non_lux___series_a"] = previousFunding.includes("Series A") ? "Yes" : "No";
     
     // Handle similar project fields
     processedFormData["2-44649732/similar_project_name_1"] = formData.similar_project_name_1 || "N/A";
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
     const hubspotPayload: HubspotPayload = {
       fields: fields,
       context: {
-        pageUri: request.headers.get('referer') || 'https://build.avax.network',
+        pageUri: request.headers.get('referer') || 'https://build.lux.network',
         pageName: 'infraBUIDL Grant Application'
       }
     };
@@ -120,12 +120,12 @@ export async function POST(request: Request) {
       hubspotPayload.legalConsentOptions = {
         consent: {
           consentToProcess: true,
-          text: "I agree and authorize the Avalanche Foundation to utilize artificial intelligence systems to process the information in my application, any related material I provide and any related communications between me and the Avalanche Foundation, in order to assess the eligibility and suitability of my application and proposal.",
+          text: "I agree and authorize the Lux Foundation to utilize artificial intelligence systems to process the information in my application, any related material I provide and any related communications between me and the Lux Foundation, in order to assess the eligibility and suitability of my application and proposal.",
           communications: [
             {
               value: formData.marketing_consent === true,
               subscriptionTypeId: 999,
-              text: "I would like to receive marketing emails from the Avalanche Foundation."
+              text: "I would like to receive marketing emails from the Lux Foundation."
             }
           ]
         }

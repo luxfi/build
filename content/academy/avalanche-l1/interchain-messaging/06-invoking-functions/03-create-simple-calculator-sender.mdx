@@ -8,14 +8,14 @@ icon: Terminal
 
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Now, our goal is to create a dApp that works as a cross-Avalanche L1 Calculator, receiving multiple parameters and using those for a calculation. For now our calculator will only have the `Sum` function.
+Now, our goal is to create a dApp that works as a cross-Lux L1 Calculator, receiving multiple parameters and using those for a calculation. For now our calculator will only have the `Sum` function.
 
 <Steps>
 <Step>
 
 ### Create Sender Contract
 
-On the Fuji C-Chain, we need to create the sender part of our cross-chain calculator. This will send two numbers (uint) to the receiver contract on the Dispatch test L1. 
+On the Testnet LUExchange-Chain, we need to create the sender part of our cross-chain calculator. This will send two numbers (uint) to the receiver contract on the Dispatch test L1. 
 
 ```solidity title="contracts/interchain-messaging/invoking-functions/SimpleCalculatorSenderOnCChain.sol"
 pragma solidity ^0.8.18;
@@ -56,10 +56,10 @@ To increase the readability of the code, we have created a helper function `enco
 
 ### Deploy the Sender Contract
 
-Deploy the sender contract on the Fuji C-Chain:
+Deploy the sender contract on the Testnet LUExchange-Chain:
 
 ```bash
-forge create --rpc-url fuji-c --private-key $PK contracts/interchain-messaging/invoking-functions/SimpleCalculatorSenderOnCChain.sol:SimpleCalculatorSenderOnCChain --broadcast
+forge create --rpc-url testnet-c --private-key $PK contracts/interchain-messaging/invoking-functions/SimpleCalculatorSenderOnCChain.sol:SimpleCalculatorSenderOnCChain --broadcast
 ```
 ```
 [⠊] Compiling...

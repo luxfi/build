@@ -22,7 +22,7 @@ export async function GET(
   return new ImageResponse(
     OG({
       title: 'Academy',
-      description: 'Learn blockchain development with courses designed for the Avalanche ecosystem'
+      description: 'Learn blockchain development with courses designed for the Lux ecosystem'
     }),
     {
       width: 1280,
@@ -49,7 +49,7 @@ function OG({
         backgroundColor: '#fafafa',
         overflow: 'hidden',
         alignItems: 'center',
-        backgroundImage: "url('https://build.avax.network/og.png')",
+        backgroundImage: "url('https://build.lux.network/og.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -130,7 +130,7 @@ function OG({
                 />
               </g>
             </svg>
-            <span style={{paddingLeft: "10px"}}>build.avax.network/<span style={{color: "red"}}>academy</span></span>
+            <span style={{paddingLeft: "10px"}}>build.lux.network/<span style={{color: "red"}}>academy</span></span>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ declare global {
 }
 
 export async function getWalletAddress() {
-    if (!window.avalanche) {
+    if (!window.lux) {
         throw new Error('No wallet detected');
     }
 
@@ -24,7 +24,7 @@ export async function getWalletAddress() {
 }
 
 
-import { secp256k1, UnsignedTx } from '@avalabs/avalanchejs';
+import { secp256k1, UnsignedTx } from 'luxfi';
 import { bytesToHex, hexToBytes } from '@noble/hashes/utils';
 
 

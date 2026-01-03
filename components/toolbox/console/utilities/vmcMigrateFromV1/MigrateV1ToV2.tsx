@@ -185,12 +185,12 @@ function MigrateV1ToV2({ onSuccess }: BaseConsoleToolProps) {
               </li>
             </ul>
             You need to provide the validation ID, the latest nonce received
-            from the P-Chain, and the address of the Validator Manager contract.
+            from the Platform-Chain, and the address of the Validator Manager contract.
           </p>
           <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
             For full details about the migration process, see the{" "}
             <a
-              href="https://github.com/ava-labs/icm-contracts/blob/validator-manager-v2.1.0/contracts/validator-manager/MigratingFromV1.md"
+              href="https://github.com/luxfi/icm-contracts/blob/validator-manager-v2.1.0/contracts/validator-manager/MigratingFromV1.md"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline inline-flex items-center gap-1"
@@ -227,7 +227,7 @@ function MigrateV1ToV2({ onSuccess }: BaseConsoleToolProps) {
             label="Received Nonce"
             value={receivedNonce}
             onChange={setReceivedNonce}
-            helperText="The latest nonce received from the P-Chain (typically 0)"
+            helperText="The latest nonce received from the Platform-Chain (typically 0)"
             error={receivedNonceError}
           />
 
@@ -250,7 +250,7 @@ function MigrateV1ToV2({ onSuccess }: BaseConsoleToolProps) {
             <div className="space-y-2">
               <ResultField label="Transaction Hash" value={txHash} showCheck />
               <a
-                href={`https://subnets.avax.network/tx/${txHash}`}
+                href={`https://subnets.lux.network/tx/${txHash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-blue-500 hover:underline flex items-center gap-1"

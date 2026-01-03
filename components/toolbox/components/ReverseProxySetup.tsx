@@ -27,7 +27,7 @@ const generateReverseProxyCommand = (domain: string) => {
     @options method OPTIONS
     respond @options 204
     
-    # Proxy to AvalancheGo with CORS disabled
+    # Proxy to LuxGo with CORS disabled
     reverse_proxy localhost:9650 {
         header_down -Access-Control-Allow-Origin
         header_down -Access-Control-Allow-Methods

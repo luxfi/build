@@ -6,7 +6,7 @@ export async function sendMail(email: string, htmlTemplate: string,subject: stri
     console.log('Sending email to:', email);
     const from = {
         email: process.env.EMAIL_FROM as string,
-        name: "Avalanche Builder's Hub"
+        name: "Lux Builder's Hub"
       };
     
       const msg = {

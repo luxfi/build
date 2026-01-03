@@ -5,7 +5,7 @@ import { CreateRelayerRequest, Relayer } from './types';
 
 /**
  * GET /api/managed-testnet-relayers
- * Lists all active relayers from the Builder Hub API.
+ * Lists all active relayers from the Lux Build API.
  */
 async function handleGetRelayers(request: NextRequest): Promise<NextResponse> {
   const { userId, error } = await getUserId();
@@ -25,7 +25,7 @@ async function handleGetRelayers(request: NextRequest): Promise<NextResponse> {
     });
 
     if (!response.ok) {
-      const message = await extractServiceErrorMessage(response) || 'Failed to fetch relayers from Builder Hub';
+      const message = await extractServiceErrorMessage(response) || 'Failed to fetch relayers from Lux Build';
       return jsonError(502, message);
     }
 
@@ -74,7 +74,7 @@ async function handleGetRelayers(request: NextRequest): Promise<NextResponse> {
 
 /**
  * POST /api/managed-testnet-relayers
- * Creates a new managed relayer by calling Builder Hub API.
+ * Creates a new managed relayer by calling Lux Build API.
  */
 async function handleCreateRelayer(request: NextRequest): Promise<NextResponse> {
   const { userId, error } = await getUserId();
@@ -100,7 +100,7 @@ async function handleCreateRelayer(request: NextRequest): Promise<NextResponse> 
       }
     }
 
-    // Make the request to Builder Hub API to create relayer
+    // Make the request to Lux Build API to create relayer
     const response = await fetch(RelayerServiceURLs.create(password), {
       method: 'POST',
       headers: {
@@ -114,7 +114,7 @@ async function handleCreateRelayer(request: NextRequest): Promise<NextResponse> 
     });
 
     if (!response.ok) {
-      const message = await extractServiceErrorMessage(response) || 'Failed to create relayer in Builder Hub';
+      const message = await extractServiceErrorMessage(response) || 'Failed to create relayer in Lux Build';
       return jsonError(response.status === 429 ? 429 : 502, message);
     }
 

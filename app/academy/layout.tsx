@@ -8,7 +8,7 @@ import './styles.css';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const defaultTree = academy.pageTree;
-  const avalancheTree = getAcademyTree('/academy/avalanche-l1');
+  const luxTree = getAcademyTree('/academy/lux-l1');
   const blockchainTree = getAcademyTree('/academy/blockchain');
   const entrepreneurTree = getAcademyTree('/academy/entrepreneur');
 
@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <LayoutWrapper baseOptions={baseOptions}>
       <AcademyDocsLayoutWrapper
         defaultTree={defaultTree}
-        avalancheTree={avalancheTree}
+        luxTree={luxTree}
         blockchainTree={blockchainTree}
         entrepreneurTree={entrepreneurTree}
       >

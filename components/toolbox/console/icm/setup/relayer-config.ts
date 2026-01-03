@@ -26,10 +26,10 @@ export const genConfigCommand = (
         "metrics-port": 9090,
         "db-write-interval-seconds": 10,
         "info-api": {
-            "base-url": isTestnet ? "https://api.avax-test.network" : "https://api.avax.network"
+            "base-url": isTestnet ? "https://api.lux-test.network" : "https://api.lux.network"
         },
         "p-chain-api": {
-            "base-url": isTestnet ? "https://api.avax-test.network" : "https://api.avax.network"
+            "base-url": isTestnet ? "https://api.lux-test.network" : "https://api.lux.network"
         },
         "source-blockchains": sources.map(source => ({
             "subnet-id": source.subnetId,
@@ -102,10 +102,10 @@ export const generateRelayerConfig = (
         "metrics-port": 9090,
         "db-write-interval-seconds": 10,
         "info-api": {
-            "base-url": isTestnet ? "https://api.avax-test.network" : "https://api.avax.network"
+            "base-url": isTestnet ? "https://api.lux-test.network" : "https://api.lux.network"
         },
         "p-chain-api": {
-            "base-url": isTestnet ? "https://api.avax-test.network" : "https://api.avax.network"
+            "base-url": isTestnet ? "https://api.lux-test.network" : "https://api.lux.network"
         },
         "source-blockchains": sources.map(source => ({
             "subnet-id": source.subnetId,

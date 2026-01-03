@@ -40,7 +40,7 @@ export function EvmNetworkWallet() {
 
   useEffect(() => {
     const isCoreWalletInjected = (): boolean => (
-      typeof window !== 'undefined' && !!window.avalanche?.request
+      typeof window !== 'undefined' && !!window.lux?.request
     )
 
     setIsCoreWalletAvailable(isCoreWalletInjected())

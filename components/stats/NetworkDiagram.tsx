@@ -1012,7 +1012,7 @@ export default function NetworkDiagram({
       ctx.font = 'bold 11px Inter, system-ui, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-      ctx.fillText('AVALANCHE NETWORK', Math.round(dimensions.width / 2), Math.round(dimensions.height - 20));
+      ctx.fillText('LUX NETWORK', Math.round(dimensions.width / 2), Math.round(dimensions.height - 20));
 
       // Zoom indicator - use rounded coordinates
       if (zoom !== 1 || panOffset.x !== 0 || panOffset.y !== 0) {

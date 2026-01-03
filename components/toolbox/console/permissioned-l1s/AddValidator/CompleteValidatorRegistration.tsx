@@ -12,7 +12,7 @@ import poaManagerAbi from '@/contracts/icm-contracts/compiled/PoAManager.json';
 import nativeTokenStakingManagerAbi from '@/contracts/icm-contracts/compiled/NativeTokenStakingManager.json';
 import { packL1ValidatorRegistration } from '@/components/toolbox/coreViem/utils/convertWarp';
 import { getValidationIdHex } from '@/components/toolbox/coreViem/hooks/getValidationID';
-import { useAvalancheSDKChainkit } from '@/components/toolbox/stores/useAvalancheSDKChainkit';
+import { useLuxSDKChainkit } from '@/components/toolbox/stores/useLuxSDKChainkit';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
 import { Alert } from '@/components/toolbox/components/Alert';
 
@@ -41,8 +41,8 @@ const CompleteValidatorRegistration: React.FC<CompleteValidatorRegistrationProps
   isLoadingOwnership,
   ownerType,
 }) => {
-  const { coreWalletClient, publicClient, avalancheNetworkID } = useWalletStore();
-  const { aggregateSignature } = useAvalancheSDKChainkit();
+  const { coreWalletClient, publicClient, luxNetworkID } = useWalletStore();
+  const { aggregateSignature } = useLuxSDKChainkit();
   const { notify } = useConsoleNotifications();
   const viemChain = useViemChainStore();
   const [pChainTxIdState, setPChainTxId] = useState(pChainTxId || '');
@@ -87,8 +87,8 @@ const CompleteValidatorRegistration: React.FC<CompleteValidatorRegistrationProps
     setSuccessMessage(null);
 
     if (!pChainTxIdState.trim()) {
-      setErrorState("P-Chain transaction ID is required.");
-      onError("P-Chain transaction ID is required.");
+      setErrorState("Platform-Chain transaction ID is required.");
+      onError("Platform-Chain transaction ID is required.");
       return;
     }
     if (!subnetIdL1) {
@@ -124,7 +124,7 @@ const CompleteValidatorRegistration: React.FC<CompleteValidatorRegistrationProps
 
     setIsProcessing(true);
     try {
-      // Step 1: Extract RegisterL1ValidatorMessage from P-Chain transaction
+      // Step 1: Extract RegisterL1ValidatorMessage from Platform-Chain transaction
       const registrationMessageData = await coreWalletClient.extractRegisterL1ValidatorMessage({
         txId: pChainTxIdState
       });
@@ -174,15 +174,15 @@ const CompleteValidatorRegistration: React.FC<CompleteValidatorRegistrationProps
       // Update extracted data with validation ID
       setExtractedData(prev => prev ? { ...prev, validationId } : null);
 
-      // Step 3: Create L1ValidatorRegistrationMessage (P-Chain response)
-      // This message indicates that the validator has been registered on P-Chain
+      // Step 3: Create L1ValidatorRegistrationMessage (Platform-Chain response)
+      // This message indicates that the validator has been registered on Platform-Chain
       const validationIDBytes = hexToBytes(validationId);
 
       const l1ValidatorRegistrationMessage = packL1ValidatorRegistration(
         validationIDBytes,
         true, // true indicates successful registration
-        avalancheNetworkID,
-        "11111111111111111111111111111111LpoYY" // always use P-Chain ID
+        luxNetworkID,
+        "11111111111111111111111111111111LpoYY" // always use Platform-Chain ID
       );
 
       // Step 4: Get justification for the validation
@@ -198,7 +198,7 @@ const CompleteValidatorRegistration: React.FC<CompleteValidatorRegistrationProps
         throw new Error("No justification logs found for this validation ID");
       }
 
-      // Step 5: Create P-Chain warp signature using the L1ValidatorRegistrationMessage
+      // Step 5: Create Platform-Chain warp signature using the L1ValidatorRegistrationMessage
       const aggregateSignaturePromise = aggregateSignature({
         message: bytesToHex(l1ValidatorRegistrationMessage),
         justification: bytesToHex(justification),
@@ -278,10 +278,10 @@ const CompleteValidatorRegistration: React.FC<CompleteValidatorRegistrationProps
       )}
 
       <Input
-        label="P-Chain RegisterL1ValidatorTx ID"
+        label="Platform-Chain RegisterL1ValidatorTx ID"
         value={pChainTxIdState}
         onChange={setPChainTxId}
-        placeholder="Enter the P-Chain RegisterL1ValidatorTx ID from step 5"
+        placeholder="Enter the Platform-Chain RegisterL1ValidatorTx ID from step 5"
         disabled={isProcessing}
       />
 

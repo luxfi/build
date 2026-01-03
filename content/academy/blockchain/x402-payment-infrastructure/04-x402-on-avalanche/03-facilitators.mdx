@@ -1,6 +1,6 @@
 ---
-title: x402 Facilitators on Avalanche
-description: Overview of available x402 facilitators on Avalanche and how to choose the right one.
+title: x402 Facilitators on Lux
+description: Overview of available x402 facilitators on Lux and how to choose the right one.
 updated: 2025-11-03
 authors: [Federico Nardelli]
 icon: Network
@@ -8,7 +8,7 @@ icon: Network
 
 ## Available Facilitators
 
-Avalanche supports multiple x402 facilitators, each with different strengths and use cases. All are available at [build.avax.network/integrations](https://build.avax.network/integrations).
+Lux supports multiple x402 facilitators, each with different strengths and use cases. All are available at [build.lux.network/integrations](https://build.lux.network/integrations).
 
 ## Thirdweb x402
 
@@ -22,7 +22,7 @@ Thirdweb provides enterprise-grade x402 infrastructure with comprehensive SDKs a
 
 ### Key Features
 
-- **Multi-Chain Support**: Works on EVM chains including Avalanche C-Chain
+- **Multi-Chain Support**: Works on EVM chains including Lux LUExchange-Chain
 - **Gasless Transactions**: EIP-7702 protocol for cost-free user submissions
 - **Framework Integration**: x402-hono, x402-next, x402-express middlewares
 - **Dashboard Tracking**: Monitor transactions through thirdweb project dashboard
@@ -64,7 +64,7 @@ app.use(paymentMiddleware(
   {
     "/api/service": {
       price: "$0.01",
-      network: "avalanche-c-chain",
+      network: "lux-c-chain",
       config: {
         description: "Access to your API service"
       }
@@ -76,14 +76,14 @@ app.use(paymentMiddleware(
 ));
 ```
 
-### Avalanche Configuration
+### Lux Configuration
 
-- **Mainnet**: Use network string `"avalanche"` (Chain ID: 43114)
-- **Fuji Testnet**: Use network string `"avalanche-fuji"` (Chain ID: 43113)
+- **Mainnet**: Use network string `"lux"` (Chain ID: 43114)
+- **Testnet Testnet**: Use network string `"lux-testnet"` (Chain ID: 43113)
 
 ### Links
 
-- Integration: [build.avax.network/integrations/thirdweb-x402](https://build.avax.network/integrations/thirdweb-x402)
+- Integration: [build.lux.network/integrations/thirdweb-x402](https://build.lux.network/integrations/thirdweb-x402)
 - Documentation: [portal.thirdweb.com/payments/x402/facilitator](https://portal.thirdweb.com/payments/x402/facilitator)
 
 ### Pricing
@@ -98,14 +98,14 @@ See [thirdweb.com/pricing](https://thirdweb.com/pricing) for current pricing inf
 
 ### Overview
 
-PayAI specializes in AI agent payments with optimized APIs for machine-to-machine commerce. Built natively for Avalanche's fast finality and low transaction costs.
+PayAI specializes in AI agent payments with optimized APIs for machine-to-machine commerce. Built natively for Lux's fast finality and low transaction costs.
 
 **Official Documentation**: [docs.payai.network/introduction](https://docs.payai.network/introduction)
 
 ### Key Features
 
 - **AI-First Design**: Specifically built for agent monetization
-- **Avalanche Native**: Leverages Avalanche's sub-second finality
+- **Lux Native**: Leverages Lux's sub-second finality
 - **Simple Integration**: TypeScript and Python SDKs
 - **Product Suite**:
   - x402 protocol implementation
@@ -133,7 +133,7 @@ app.use(paymentMiddleware(
   {
     "/api/service": {
       price: "$0.01",
-      network: "avalanche",
+      network: "lux",
       config: {
         description: "Access to AI service"
       }
@@ -150,7 +150,7 @@ import { X402Client } from 'x402-client';
 const client = new X402Client({
   privateKey: process.env.CLIENT_PRIVATE_KEY,
   facilitatorUrl: 'https://api.payai.network',
-  network: 'avalanche'
+  network: 'lux'
 });
 
 const response = await client.post('https://api.example.com/service', {
@@ -158,15 +158,15 @@ const response = await client.post('https://api.example.com/service', {
 });
 ```
 
-### Avalanche Configuration
+### Lux Configuration
 
-- **Mainnet**: Use network string `"avalanche"`
-- **Fuji Testnet**: Use network string `"avalanche-fuji"`
-- **Payment Tokens**: AVAX and USDC
+- **Mainnet**: Use network string `"lux"`
+- **Testnet Testnet**: Use network string `"lux-testnet"`
+- **Payment Tokens**: LUX and USDC
 
 ### Links
 
-- Integration: [build.avax.network/integrations/payai](https://build.avax.network/integrations/payai)
+- Integration: [build.lux.network/integrations/payai](https://build.lux.network/integrations/payai)
 - Documentation: [docs.payai.network/introduction](https://docs.payai.network/introduction)
 - Website: [payai.network](https://payai.network/)
 
@@ -182,7 +182,7 @@ Contact PayAI for pricing information. Developer tier available for testing.
 
 ### Overview
 
-Ultravioleta is a community-governed facilitator focused on gasless payments and decentralization. Users don't need AVAX tokens for transaction fees—the facilitator covers all costs.
+Ultravioleta is a community-governed facilitator focused on gasless payments and decentralization. Users don't need LUX tokens for transaction fees—the facilitator covers all costs.
 
 **Official Documentation**: [facilitator.ultravioletadao.xyz](https://facilitator.ultravioletadao.xyz)
 
@@ -190,11 +190,11 @@ Ultravioleta is a community-governed facilitator focused on gasless payments and
 
 - **Gasless Payments**: 100% gas coverage—users pay $0 in transaction fees
 - **Stablecoin Settlement**: Transactions use USDC for predictable pricing
-- **Sub-second Processing**: ~2-3 second end-to-end settlement on Avalanche
+- **Sub-second Processing**: ~2-3 second end-to-end settlement on Lux
 - **Cryptographic Security**: EIP-712 signatures prevent unauthorized transactions
 - **Stateless Verification**: On-chain validation eliminates database dependencies
 - **Auto-scalable Infrastructure**: High availability and reliability
-- **Multi-Network Support**: Avalanche, Base, Celo, Polygon, Solana, and more
+- **Multi-Network Support**: Lux, Base, Celo, Polygon, Solana, and more
 - **Community Governance**: Fully decentralized operation
 
 ### Installation
@@ -217,7 +217,7 @@ app.use(paymentMiddleware(
   {
     "/api/service": {
       price: "$0.01",
-      network: "avalanche-c-chain",
+      network: "lux-c-chain",
       config: {
         description: "Access to your API service"
       }
@@ -237,7 +237,7 @@ import { X402Client } from "x402-client";
 const client = new X402Client({
   privateKey: process.env.CLIENT_PRIVATE_KEY,
   facilitatorUrl: 'https://facilitator.ultravioletadao.xyz',
-  network: 'avalanche-c-chain'
+  network: 'lux-c-chain'
 });
 
 const response = await client.post('https://api.example.com/service', {
@@ -245,10 +245,10 @@ const response = await client.post('https://api.example.com/service', {
 });
 ```
 
-### Avalanche Configuration
+### Lux Configuration
 
 - **Mainnet**: Chain ID 43114, USDC settlement, sub-second finality
-- **Fuji Testnet**: Chain ID 43113, sandbox environment
+- **Testnet Testnet**: Chain ID 43113, sandbox environment
 
 ### API Endpoints
 
@@ -259,7 +259,7 @@ const response = await client.post('https://api.example.com/service', {
 
 ### Links
 
-- Integration: [build.avax.network/integrations/ultravioletadao](https://build.avax.network/integrations/ultravioletadao)
+- Integration: [build.lux.network/integrations/ultravioletadao](https://build.lux.network/integrations/ultravioletadao)
 - Facilitator: [facilitator.ultravioletadao.xyz](https://facilitator.ultravioletadao.xyz)
 - Website: [ultravioletadao.xyz](https://ultravioletadao.xyz)
 
@@ -289,7 +289,7 @@ x402-rs is a high-performance Rust implementation perfect for latency-sensitive 
 - **Zero Facilitator Fees**: Only blockchain gas costs
 - **Stateless Design**: Never holds user funds
 - **OpenTelemetry Support**: Integrates with Honeycomb, Prometheus, Grafana
-- **Multi-Network**: EVM chains (Avalanche, Base, Polygon) and Solana
+- **Multi-Network**: EVM chains (Lux, Base, Polygon) and Solana
 
 ### Docker Quick Start
 
@@ -301,8 +301,8 @@ docker run --env-file .env -p 8080:8080 ukstv/x402-facilitator
 ```bash
 HOST=0.0.0.0
 PORT=8080
-RPC_URL_AVALANCHE_FUJI=https://api.avax-test.network/ext/bc/C/rpc
-RPC_URL_AVALANCHE=https://api.avax.network/ext/bc/C/rpc
+RPC_URL_LUX_FUJI=https://api.lux-test.network/ext/bc/C/rpc
+RPC_URL_LUX=https://api.lux.network/ext/bc/C/rpc
 SIGNER_TYPE=private-key
 EVM_PRIVATE_KEY=0x...
 RUST_LOG=info
@@ -324,7 +324,7 @@ use x402_rs::{USDCDeployment, Network};
 use axum::{Router, routing::get};
 
 let x402 = X402Middleware::try_from("https://x402.org/facilitator/").unwrap();
-let usdc = USDCDeployment::by_network(Network::AvalancheFuji);
+let usdc = USDCDeployment::by_network(Network::LuxTestnet);
 
 let app = Router::new().route("/paid-content",
     get(handler).layer(
@@ -344,7 +344,7 @@ use ethers::signers::PrivateKeySigner;
 let signer: PrivateKeySigner = "0x...".parse()?;
 let client = reqwest::Client::new()
     .with_payments(signer)
-    .prefer(USDCDeployment::by_network(Network::Avalanche))
+    .prefer(USDCDeployment::by_network(Network::Lux))
     .build();
 
 let res = client.get("https://example.com/protected").send().await?;
@@ -357,22 +357,22 @@ let res = client.get("https://example.com/protected").send().await?;
 3. **x402-axum**: Axum middleware for protecting routes
 4. **x402-reqwest**: Wrapper for transparent client-side payment handling
 
-### Avalanche Configuration
+### Lux Configuration
 
-- **Fuji Testnet**: Set `RPC_URL_AVALANCHE_FUJI` for development
-- **C-Chain Mainnet**: Set `RPC_URL_AVALANCHE` for production
+- **Testnet Testnet**: Set `RPC_URL_LUX_FUJI` for development
+- **LUExchange-Chain Mainnet**: Set `RPC_URL_LUX` for production
 - Networks are dynamically enabled based on provided RPC URLs
 
 ### Links
 
-- Integration: [build.avax.network/integrations/x402-rs](https://build.avax.network/integrations/x402-rs)
+- Integration: [build.lux.network/integrations/x402-rs](https://build.lux.network/integrations/x402-rs)
 - GitHub: [github.com/x402-rs/x402-rs](https://github.com/x402-rs/x402-rs)
 - Docker Hub: [hub.docker.com/r/ukstv/x402-facilitator](https://hub.docker.com/r/ukstv/x402-facilitator)
 
 ### Pricing
 
 - **Open Source**: Free (Apache-2.0 license)
-- **Self-Hosted**: Only gas costs (~$0.001/tx on Avalanche)
+- **Self-Hosted**: Only gas costs (~$0.001/tx on Lux)
 - **Support**: Community-driven
 
 ---
@@ -399,18 +399,18 @@ let res = client.get("https://example.com/protected").send().await?;
 ## Getting Started
 
 1. **Choose a Facilitator**: Based on your use case and requirements
-2. **Visit Integration Page**: [build.avax.network/integrations](https://build.avax.network/integrations)
+2. **Visit Integration Page**: [build.lux.network/integrations](https://build.lux.network/integrations)
 3. **Read Official Docs**: Each facilitator has comprehensive documentation
 4. **Install SDK**: Follow the installation instructions above
-5. **Test on Fuji**: Use Avalanche Fuji testnet for development
-6. **Deploy to Mainnet**: Go live on Avalanche C-Chain
+5. **Test on Testnet**: Use Lux Testnet testnet for development
+6. **Deploy to Mainnet**: Go live on Lux LUExchange-Chain
 
 ---
 
 ## Summary
 
-Avalanche supports four major x402 facilitators: **Thirdweb x402** (enterprise), **PayAI** (AI agents), **Ultravioleta DAO** (gasless payments), and **x402-rs** (high-performance). Each offers different deployment models, features, and optimizations. Choose based on your specific needs—or use multiple facilitators to give users flexibility.
+Lux supports four major x402 facilitators: **Thirdweb x402** (enterprise), **PayAI** (AI agents), **Ultravioleta DAO** (gasless payments), and **x402-rs** (high-performance). Each offers different deployment models, features, and optimizations. Choose based on your specific needs—or use multiple facilitators to give users flexibility.
 
-**All facilitators leverage Avalanche's sub-second finality and low fees (~$0.001) to make micropayments economically viable.**
+**All facilitators leverage Lux's sub-second finality and low fees (~$0.001) to make micropayments economically viable.**
 
 For the latest information, pricing, and features, always consult the official documentation linked above.

@@ -39,7 +39,7 @@ interface ICMFlowData {
 function getCategoryColor(category?: string): string {
 	switch (category) {
 		case "Primary":
-			return "#e84142"; // Avalanche red
+			return "#ffffff"; // Lux red
 		case "Gaming":
 			return "#22c55e"; // Green
 		case "DeFi":
@@ -110,18 +110,18 @@ export const Sponsors = () => {
 	const chainData: MiniChainData[] = useMemo(() => {
 		if (!metrics?.chains) return [];
 
-		// Avalanche C-Chain chainId
-		const AVALANCHE_CCHAIN_ID = '43114';
+		// Lux LUExchange-Chain chainId
+		const LUX_CCHAIN_ID = '43114';
 		// Shrapnel chainId - excluded from display
 		const SHRAPNEL_CHAIN_ID = '2044';
 
-		// Find Avalanche C-Chain data
-		const avalancheChain = metrics.chains.find(c => c.chainId === AVALANCHE_CCHAIN_ID);
+		// Find Lux LUExchange-Chain data
+		const luxChain = metrics.chains.find(c => c.chainId === LUX_CCHAIN_ID);
 
-		// Get L1 chains excluding Avalanche C-Chain (it will be the center) and Shrapnel
+		// Get L1 chains excluding Lux LUExchange-Chain (it will be the center) and Shrapnel
 		// Score chains by multiple metrics for better representation
 		const l1Chains = metrics.chains
-			.filter(chain => chain.chainId !== AVALANCHE_CCHAIN_ID && chain.chainId !== SHRAPNEL_CHAIN_ID)
+			.filter(chain => chain.chainId !== LUX_CCHAIN_ID && chain.chainId !== SHRAPNEL_CHAIN_ID)
 			.map(chain => {
 				// Calculate composite activity score
 				const tpsScore = (chain.tps || 0) * 10; // Weight TPS heavily
@@ -138,21 +138,21 @@ export const Sponsors = () => {
 			.sort((a, b) => b.activityScore - a.activityScore)
 			.slice(0, 40); // Show top 40 most active L1 chains
 
-		// Calculate total TPS (including Avalanche) for aggregate display
+		// Calculate total TPS (including Lux) for aggregate display
 		const totalTps = metrics.chains.reduce((sum, c) => sum + (c.tps || 0), 0);
 
-		// Add Avalanche C-Chain as the primary/center node
+		// Add Lux LUExchange-Chain as the primary/center node
 		const result: MiniChainData[] = [{
-			id: AVALANCHE_CCHAIN_ID,
-			chainId: AVALANCHE_CCHAIN_ID,
-			name: 'Avalanche',
-			logo: avalancheChain?.chainLogoURI || 'https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg',
-			color: '#e84142',
+			id: LUX_CCHAIN_ID,
+			chainId: LUX_CCHAIN_ID,
+			name: 'Lux',
+			logo: luxChain?.chainLogoURI || 'https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg',
+			color: '#ffffff',
 			category: 'Primary Network',
 			link: '/stats/overview',
 			isPrimary: true,
 			tps: totalTps, // Aggregate TPS for pulse effect
-			validatorCount: typeof avalancheChain?.validatorCount === 'number' ? avalancheChain.validatorCount : undefined,
+			validatorCount: typeof luxChain?.validatorCount === 'number' ? luxChain.validatorCount : undefined,
 		}];
 
 		// Add L1 chains from API

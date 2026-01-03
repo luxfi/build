@@ -15,9 +15,9 @@ import versions from '@/scripts/versions.json';
 import useConsoleNotifications from "@/hooks/useConsoleNotifications";
 import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-url";
 
-const ICM_COMMIT = versions["ava-labs/icm-contracts"];
-const VALIDATOR_MANAGER_SOURCE_URL = `https://github.com/ava-labs/icm-contracts/blob/${ICM_COMMIT}/contracts/validator-manager/ValidatorManager.sol`;
-const VALIDATOR_MESSAGES_SOURCE_URL = `https://github.com/ava-labs/icm-contracts/blob/${ICM_COMMIT}/contracts/validator-manager/ValidatorMessages.sol`;
+const ICM_COMMIT = versions["luxfi/icm-contracts"];
+const VALIDATOR_MANAGER_SOURCE_URL = `https://github.com/luxfi/icm-contracts/blob/${ICM_COMMIT}/contracts/validator-manager/ValidatorManager.sol`;
+const VALIDATOR_MESSAGES_SOURCE_URL = `https://github.com/luxfi/icm-contracts/blob/${ICM_COMMIT}/contracts/validator-manager/ValidatorMessages.sol`;
 
 function calculateLibraryHash(libraryPath: string) {
     const hash = keccak256(
@@ -155,7 +155,7 @@ function DeployValidatorContracts({ onSuccess }: BaseConsoleToolProps) {
                         <Step>
                             <h2 className="text-lg font-semibold">Deploy Validator Manager Contract</h2>
                             <p className="text-sm text-gray-500">
-                                This will deploy the <code>ValidatorManager</code> contract to the EVM network <code>{viemChain?.id}</code>. It is the interface for managing the validators for it's L1. The contract emits the ICM messages to change the L1s validator set on the P-Chain.
+                                This will deploy the <code>ValidatorManager</code> contract to the EVM network <code>{viemChain?.id}</code>. It is the interface for managing the validators for it's L1. The contract emits the ICM messages to change the L1s validator set on the Platform-Chain.
                             </p>
                             <p className="text-sm text-gray-500">
                                 Contract source: <a href={VALIDATOR_MANAGER_SOURCE_URL} target="_blank" rel="noreferrer">ValidatorManager.sol</a> @ <code>{ICM_COMMIT.slice(0, 7)}</code>

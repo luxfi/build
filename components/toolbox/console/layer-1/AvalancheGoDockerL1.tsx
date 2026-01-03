@@ -2,7 +2,7 @@
 
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
 import { useState, useEffect } from "react";
-import { networkIDs } from "@avalabs/avalanchejs";
+import { networkIDs } from "luxfi";
 import { Container } from "../../components/Container";
 import { getBlockchainInfo, getSubnetInfo } from "../../coreViem/utils/glacier";
 import InputSubnetId from "../../components/InputSubnetId";
@@ -19,7 +19,7 @@ import { generateChainConfig, generateDockerCommand, generateConfigFileCommand }
 import { useNodeConfigHighlighting } from "./useNodeConfigHighlighting";
 import { DockerInstallation } from "../../components/DockerInstallation";
 
-function AvalanchegoDockerInner() {
+function LuxgoDockerInner() {
     const { setHighlightPath, clearHighlight, highlightPath } = useGenesisHighlight();
     const [chainId, setChainId] = useState("");
     const [subnetId, setSubnetId] = useState("");
@@ -78,12 +78,12 @@ function AvalanchegoDockerInner() {
     // Network detection from subnet lookup (independent of wallet connection)
     const [detectedIsTestnet, setDetectedIsTestnet] = useState<boolean | null>(null);
 
-    const { avalancheNetworkID } = useWalletStore();
+    const { luxNetworkID } = useWalletStore();
 
     // Use detected network from subnet lookup, fallback to wallet network
     const effectiveNetworkID = detectedIsTestnet !== null
-        ? (detectedIsTestnet ? 5 : 1)  // Fuji = 5, Mainnet = 1
-        : avalancheNetworkID;
+        ? (detectedIsTestnet ? 5 : 1)  // Testnet = 5, Mainnet = 1
+        : luxNetworkID;
 
     const isRPC = nodeType === "public-rpc" || nodeType === "validator-rpc";
     const isValidator = nodeType === "validator" || nodeType === "validator-rpc";
@@ -299,7 +299,7 @@ function AvalanchegoDockerInner() {
         <Container
             title="L1 Node Setup with Docker"
             description="Configure your node settings, preview the Subnet-EVM chain config, create it on your server, and run Docker to start your L1 node."
-            githubUrl="https://github.com/ava-labs/builders-hub/edit/master/components/toolbox/console/layer-1/AvalancheGoDockerL1.tsx"
+            githubUrl="https://github.com/luxfi/lux-build/edit/master/components/toolbox/console/layer-1/LuxGoDockerL1.tsx"
         >
             <Steps>
                 <Step>
@@ -308,7 +308,7 @@ function AvalanchegoDockerInner() {
                     <p className="mt-4">
                         If you do not want to use Docker, you can follow the instructions{" "}
                         <a
-                            href="https://github.com/ava-labs/avalanchego?tab=readme-ov-file#installation"
+                            href="https://github.com/luxfi/luxgo?tab=readme-ov-file#installation"
                             target="_blank"
                             className="text-blue-600 dark:text-blue-400 hover:underline"
                             rel="noreferrer"
@@ -322,7 +322,7 @@ function AvalanchegoDockerInner() {
                 <Step>
                     <h3 className="text-xl font-bold mb-4">Select L1</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                        Enter the Avalanche Subnet ID of the L1 you want to run a node for
+                        Enter the Lux Subnet ID of the L1 you want to run a node for
                     </p>
 
                     <InputSubnetId
@@ -338,7 +338,7 @@ function AvalanchegoDockerInner() {
                                     key={blockchain.blockchainId}
                                     blockchain={{
                                         ...blockchain,
-                                        isTestnet: detectedIsTestnet ?? (avalancheNetworkID === networkIDs.FujiID)
+                                        isTestnet: detectedIsTestnet ?? (luxNetworkID === networkIDs.TestnetID)
                                     }}
                                     isLoading={isLoading}
                                     customTitle={`${blockchain.blockchainName} Blockchain Details`}
@@ -523,16 +523,16 @@ function AvalanchegoDockerInner() {
                                                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                                                     For advanced configuration options, see the{" "}
                                                     <a
-                                                        href="https://build.avax.network/docs/nodes/configure/configs-flags"
+                                                        href="https://build.lux.network/docs/nodes/configure/configs-flags"
                                                         target="_blank"
                                                         className="text-blue-600 dark:text-blue-400 hover:underline"
                                                         rel="noreferrer"
                                                     >
-                                                        AvalancheGo configuration
+                                                        LuxGo configuration
                                                     </a>{" "}
                                                     and{" "}
                                                     <a
-                                                        href="https://build.avax.network/docs/nodes/chain-configs/subnet-evm"
+                                                        href="https://build.lux.network/docs/nodes/chain-configs/subnet-evm"
                                                         target="_blank"
                                                         className="text-blue-600 dark:text-blue-400 hover:underline"
                                                         rel="noreferrer"
@@ -696,7 +696,7 @@ function AvalanchegoDockerInner() {
 
                                                         <div onMouseEnter={() => setHighlightPath('rpcTxFeeCap')} onMouseLeave={clearHighlight}>
                                                             <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
-                                                                RPC Tx Fee Cap (AVAX)
+                                                                RPC Tx Fee Cap (LUX)
                                                             </label>
                                                             <input
                                                                 type="number"
@@ -1031,21 +1031,21 @@ function AvalanchegoDockerInner() {
                             />
 
                             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.avalanchego/configs/chains/{chainId}/config.json</code>
+                                This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{chainId}/config.json</code>
                             </p>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                                 Read the documentation for more information on the configuration options. {" "}
                                 <a
-                                    href="https://build.avax.network/docs/nodes/configure/configs-flags"
+                                    href="https://build.lux.network/docs/nodes/configure/configs-flags"
                                     target="_blank"
                                     className="text-blue-600 dark:text-blue-400 hover:underline"
                                     rel="noreferrer"
                                 >
-                                    AvalancheGo configuration
+                                    LuxGo configuration
                                 </a>
                                 {" "}and{" "}
                                 <a
-                                    href="https://build.avax.network/docs/nodes/chain-configs/subnet-evm"
+                                    href="https://build.lux.network/docs/nodes/chain-configs/subnet-evm"
                                     target="_blank"
                                     className="text-blue-600 dark:text-blue-400 hover:underline"
                                     rel="noreferrer"
@@ -1082,7 +1082,7 @@ function AvalanchegoDockerInner() {
                             />
 
                             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.avalanchego/configs/chains/{chainId}/config.json</code> via the mounted volume.
+                                The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{chainId}/config.json</code> via the mounted volume.
                             </p>
 
 
@@ -1103,7 +1103,7 @@ function AvalanchegoDockerInner() {
                                     <ul className="list-disc pl-5 mt-1 text-sm">
                                         <li>Unique container name (change <code>--name</code> parameter)</li>
                                         <li>Different ports (modify port mappings)</li>
-                                        <li>Separate data directories (change <code>~/.avalanchego</code> path)</li>
+                                        <li>Separate data directories (change <code>~/.luxgo</code> path)</li>
                                     </ul>
                                 </Accordion>
 
@@ -1139,10 +1139,10 @@ function AvalanchegoDockerInner() {
     );
 }
 
-export default function AvalanchegoDocker() {
+export default function LuxgoDocker() {
     return (
         <GenesisHighlightProvider>
-            <AvalanchegoDockerInner />
+            <LuxgoDockerInner />
         </GenesisHighlightProvider>
     );
 }

@@ -6,7 +6,7 @@ icon: Book
 
 <Steps>
   <Step title="Create your account">
-    To begin, create your free account by visiting [Builder Hub Console](https://build.avax.network/login?callbackUrl=%2Fconsole%2Futilities%2Fdata-api-keys).
+    To begin, create your free account by visiting [Lux Build Console](https://build.lux.network/login?callbackUrl=%2Fconsole%2Futilities%2Fdata-api-keys).
 
     <img src="https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=5927ac95108dfe63037088d4c0a7f896" data-og-width="2674" width="2674" data-og-height="1606" height="1606" data-path="images/builderhub-console-login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?w=280&fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=a357dfa731f2e3e5e60dd37b052b2c29 280w, https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?w=560&fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=1fa134e801eb1a63aca1ef520878282a 560w, https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?w=840&fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=5aa62e6540313a8e9464abd2fd8325e6 840w, https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?w=1100&fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=3af03f95a370356f2d86c65067ecaed5 1100w, https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?w=1650&fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=457affef8d97909acab3b2c020ae041a 1650w, https://mintcdn.com/avalabs-47ea3976/8mDGi0vi4sjxkC4H/images/builderhub-console-login.png?w=2500&fit=max&auto=format&n=8mDGi0vi4sjxkC4H&q=85&s=a592489d1b4733663cc73500f0f92237 2500w" />
   </Step>
@@ -14,7 +14,7 @@ icon: Book
   <Step title="Get an API Key">
     Once the account is created:
 
-    1. Navigating to [**Data API Keys**](https://build.avax.network/console/utilities/data-api-keys)
+    1. Navigating to [**Data API Keys**](https://build.lux.network/console/utilities/data-api-keys)
     2. Click on **Create API Key**
     3. Set an alias and click on **create**
     4. Copy the the value
@@ -28,7 +28,7 @@ icon: Book
     With your API Key you can start making queries, for example to get the latest block on the C-chain(43114):
 
     ```bash  theme={null}
-      curl --location 'https://data-api.avax.network/v1/chains/43114/blocks' \
+      curl --location 'https://data-api.lux.network/v1/chains/43114/blocks' \
       --header 'accept: application/json' \
       --header 'x-glacier-api-key: <YOUR-API-KEY>' \
     ```

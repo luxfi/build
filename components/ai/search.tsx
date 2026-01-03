@@ -330,7 +330,7 @@ function Message({ message, isLast, onFollowUpClick, isStreaming, onToolReferenc
       <div className="max-w-[95%] space-y-4">
         <div className="flex items-start gap-4">
           {/* <img
-            src="/avax-gpt.png"
+            src="/lux-gpt.png"
             alt="AI"
             className="size-8 object-contain mt-1 shrink-0"
           /> */}
@@ -612,7 +612,7 @@ function SmallViewContent({ onExpand }: { onExpand: () => void }) {
       <div className="flex items-center justify-between border-b border-fd-border px-4 py-3">
         <div className="flex items-center gap-3">
           <img 
-            src="/avax-gpt.png" 
+            src="/lux-gpt.png" 
             alt="AI" 
             className="size-6 object-contain dark:invert"
           />
@@ -649,13 +649,13 @@ function SmallViewContent({ onExpand }: { onExpand: () => void }) {
               <div className="flex h-full items-center justify-center p-6">
                 <div className="text-center space-y-4">
                   <img 
-                    src="/avax-gpt.png" 
+                    src="/lux-gpt.png" 
                     alt="AI" 
                     className="mx-auto size-12 object-contain mb-4 dark:invert"
                   />
                   <h3 className="text-sm font-medium">How can I help?</h3>
                   <p className="text-xs text-fd-muted-foreground">
-                    Ask me anything about Avalanche
+                    Ask me anything about Lux
                   </p>
                 </div>
               </div>
@@ -683,7 +683,7 @@ function SmallViewContent({ onExpand }: { onExpand: () => void }) {
                 <div className="max-w-[85%] space-y-2">
                   <div className="flex items-center gap-2 mb-1">
                     <img 
-                      src="/avax-gpt.png" 
+                      src="/lux-gpt.png" 
                       alt="AI" 
                       className="size-7 object-contain dark:invert"
                     />
@@ -755,8 +755,8 @@ function Content({ onToolReference, onCollapse }: { onToolReference?: (toolId: s
     "How do I create a custom L1?",
     "How do I setup a block explorer for my L1?",
     "How do I setup a node?",
-    "Where can I get testnet AVAX?",
-    "Explain Avalanche's consensus mechanism",
+    "Where can I get testnet LUX?",
+    "Explain Lux's consensus mechanism",
     "What is the primary network?",
     "How do I setup ICTT?",
   ];
@@ -776,7 +776,7 @@ function Content({ onToolReference, onCollapse }: { onToolReference?: (toolId: s
       <div className="flex items-center justify-between border-b border-fd-border px-4 py-3">
         <div className="flex items-center gap-3">
           <img 
-            src="/avax-gpt.png" 
+            src="/lux-gpt.png" 
             alt="AI" 
             className="size-7 object-contain dark:invert"
           />
@@ -816,7 +816,7 @@ function Content({ onToolReference, onCollapse }: { onToolReference?: (toolId: s
             <div className="text-center space-y-6 max-w-2xl">
               <div className="space-y-4">
                 <img 
-                  src="/avax-gpt.png" 
+                  src="/lux-gpt.png" 
                   alt="AI" 
                   className="mx-auto size-16 object-contain mb-6 dark:invert"
                 />
@@ -862,7 +862,7 @@ function Content({ onToolReference, onCollapse }: { onToolReference?: (toolId: s
                 <div className="max-w-[85%] space-y-2">
                   <div className="flex items-center gap-2 mb-1">
                     <img 
-                      src="/avax-gpt.png" 
+                      src="/lux-gpt.png" 
                       alt="AI" 
                       className="size-7 object-contain dark:invert"
                     />

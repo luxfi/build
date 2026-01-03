@@ -1,7 +1,7 @@
 ---
 title: JSON-RPC Accounts
 icon: globe
-description: Learn how to use JSON-RPC accounts with browser wallets like MetaMask and Core in the Avalanche Client SDK.
+description: Learn how to use JSON-RPC accounts with browser wallets like MetaMask and Core in the Lux Client SDK.
 ---
 
 ## Overview
@@ -12,16 +12,16 @@ A JSON-RPC Account is an Account whose signing keys are stored on an external Wa
 
 ### Core Browser Extension
 
-Core is Avalanche's official browser extension wallet that provides native support for Avalanche networks (C/P/X-Chains).
+Core is Lux's official browser extension wallet that provides native support for Lux networks (C/P/Exchange-Chains).
 
 ```typescript
-import "@avalanche-sdk/client/window";
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import "@lux-sdk/client/window";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
 try {
   // Check if Core extension is available
-  const provider = window.avalanche;
+  const provider = window.lux;
   if (!provider) {
     throw new Error(
       "Core extension not found. Please install Core. https://core.app"
@@ -29,8 +29,8 @@ try {
   }
 
   // Create wallet client with Core provider
-  const walletClient = createAvalancheWalletClient({
-    chain: avalanche,
+  const walletClient = createLuxWalletClient({
+    chain: lux,
     transport: {
       type: "custom",
       provider,
@@ -43,12 +43,12 @@ try {
 
 ### MetaMask
 
-MetaMask can be used with Avalanche networks through custom network configuration for C-Chain evm operations.
+MetaMask can be used with Lux networks through custom network configuration for LUExchange-Chain evm operations.
 
 ```typescript
-import "@avalanche-sdk/client/window";
-import { createAvalancheWalletClient, custom } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import "@lux-sdk/client/window";
+import { createLuxWalletClient, custom } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
 // Use MetaMask provider
 const provider = window.ethereum;
@@ -56,8 +56,8 @@ if (!provider) {
   throw new Error("MetaMask not found. Please install MetaMask.");
 }
 
-const walletClient = createAvalancheWalletClient({
-  chain: avalanche,
+const walletClient = createLuxWalletClient({
+  chain: lux,
   transport: {
     type: "custom",
     provider,
@@ -98,20 +98,20 @@ try {
 ### 3. Switch Networks
 
 ```typescript
-import { avalanche, avalancheFuji } from "@avalanche-sdk/client/chains";
+import { lux, luxTestnet } from "@lux-sdk/client/chains";
 
 try {
-  // Switch to Avalanche mainnet
+  // Switch to Lux mainnet
   await walletClient.switchChain({
-    id: avalanche.id,
+    id: lux.id,
   });
-  console.log("Switched to Avalanche mainnet");
+  console.log("Switched to Lux mainnet");
 
-  // Switch to Fuji testnet
+  // Switch to Testnet testnet
   await walletClient.switchChain({
-    id: avalancheFuji.id,
+    id: luxTestnet.id,
   });
-  console.log("Switched to Fuji testnet");
+  console.log("Switched to Testnet testnet");
 } catch (error) {
   console.error("Failed to switch chain:", error);
 }
@@ -122,26 +122,26 @@ try {
 Here's a complete React component for wallet connection using Core:
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche, avalancheFuji } from "@avalanche-sdk/client/chains";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux, luxTestnet } from "@lux-sdk/client/chains";
 import { useState, useCallback } from "react";
-import "@avalanche-sdk/client/window";
+import "@lux-sdk/client/window";
 
 export function ConnectWallet() {
   const [connected, setConnected] = useState(false);
   const [address, setAddress] = useState<string | null>(null);
-  const [chain, setChain] = useState<"mainnet" | "fuji">("fuji");
+  const [chain, setChain] = useState<"mainnet" | "testnet">("testnet");
 
-  const selectedChain = chain === "fuji" ? avalancheFuji : avalanche;
+  const selectedChain = chain === "testnet" ? luxTestnet : lux;
 
   const connect = useCallback(async () => {
     try {
-      const provider = window.avalanche;
+      const provider = window.lux;
       if (!provider) {
         throw new Error("Core extension not found. Please install Core.");
       }
 
-      const walletClient = createAvalancheWalletClient({
+      const walletClient = createLuxWalletClient({
         chain: selectedChain,
         transport: { type: "custom", provider },
       });
@@ -160,8 +160,8 @@ export function ConnectWallet() {
     if (!connected || !address) return;
 
     try {
-      const provider = (window as any).avalanche;
-      const walletClient = createAvalancheWalletClient({
+      const provider = (window as any).lux;
+      const walletClient = createLuxWalletClient({
         chain: selectedChain,
         transport: { type: "custom", provider },
       });
@@ -192,11 +192,11 @@ export function ConnectWallet() {
             <label>
               <input
                 type="radio"
-                value="fuji"
-                checked={chain === "fuji"}
-                onChange={(e) => setChain(e.target.value as "fuji")}
+                value="testnet"
+                checked={chain === "testnet"}
+                onChange={(e) => setChain(e.target.value as "testnet")}
               />
-              Fuji Testnet
+              Testnet Testnet
             </label>
             <label>
               <input
@@ -219,16 +219,16 @@ export function ConnectWallet() {
 
 ## Cross-Chain Operations
 
-JSON-RPC accounts support cross-chain operations through the Avalanche Client SDK:
+JSON-RPC accounts support cross-chain operations through the Lux Client SDK:
 
 ```typescript
-// P-Chain export transaction
+// Platform-Chain export transaction
 const pChainExportTxn = await walletClient.pChain.prepareExportTxn({
   destinationChain: "C",
   fromAddress: address,
   exportedOutput: {
     addresses: [address],
-    amount: avaxToWei(0.001),
+    amount: luxToWei(0.001),
   },
 });
 
@@ -241,7 +241,7 @@ const txHash = await walletClient.sendXPTransaction(pChainExportTxn);
 
 ```typescript
 // Always check if the provider is available
-if (typeof window !== "undefined" && window.avalanche) {
+if (typeof window !== "undefined" && window.lux) {
   // Core is available
 } else if (typeof window !== "undefined" && window.ethereum) {
   // MetaMask is available
@@ -255,8 +255,8 @@ if (typeof window !== "undefined" && window.avalanche) {
 ```typescript
 // Check if wallet is on the correct network
 const currentChainId = await walletClient.getChainId();
-if (currentChainId !== avalanche.id) {
-  await walletClient.switchChain({ id: avalanche.id });
+if (currentChainId !== lux.id) {
+  await walletClient.switchChain({ id: lux.id });
 }
 ```
 
@@ -285,7 +285,7 @@ const handleWalletError = (error: any) => {
 
 ```typescript
 // Check if provider exists
-if (!window.avalanche && !window.ethereum) {
+if (!window.lux && !window.ethereum) {
   throw new Error("No wallet provider found. Please install Core or MetaMask.");
 }
 ```
@@ -295,8 +295,8 @@ if (!window.avalanche && !window.ethereum) {
 ```typescript
 // Ensure wallet is on the correct network
 const chainId = await walletClient.getChainId();
-if (chainId !== avalanche.id) {
-  await walletClient.switchChain({ id: avalanche.id });
+if (chainId !== lux.id) {
+  await walletClient.switchChain({ id: lux.id });
 }
 ```
 

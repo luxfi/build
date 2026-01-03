@@ -1,7 +1,7 @@
 ---
 title: Privy
 category: Wallets and Account Abstraction
-available: ["C-Chain", "All Avalanche L1s"]
+available: ["LUExchange-Chain", "All Lux L1s"]
 description: "Spin up embedded wallets and beautiful authentication flows for all users."
 logo: /images/privy.png
 developer: Privy
@@ -55,9 +55,9 @@ npm i viem@latest
 npm i ethers@latest
 ```
 
-### Define Your Avalanche L1
+### Define Your Lux L1
 
-In this guide, we are using the `Echo L1` as an example Avalanche L1. However, you can use any Avalanche L1 that has a public RPC URL. If the L1 has an explorer page, you can see better what is happening, but it is not required.
+In this guide, we are using the `Echo L1` as an example Lux L1. However, you can use any Lux L1 that has a public RPC URL. If the L1 has an explorer page, you can see better what is happening, but it is not required.
 
 ```typescript
 export const echo = defineChain({
@@ -71,11 +71,11 @@ export const echo = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ['https://subnets.avax.network/echo/testnet/rpc']
+      http: ['https://subnets.lux.network/echo/testnet/rpc']
     },
   },
   blockExplorers: {
-    default: {name: 'Explorer', url: 'https://subnets-test.avax.network/echo'},
+    default: {name: 'Explorer', url: 'https://subnets-test.lux.network/echo'},
   },
 });
 ```
@@ -161,7 +161,7 @@ As you can see, Privy has generated an embedded wallet for our user. We’ve dis
 <span>{balance} ECH</span>
 ```
 
-We’ve used the user object of Privy to retrieve the user ID and wallet address. To fetch the user’s balance, we need to create an HTTP client for our Avalanche L1, which we’ve already defined earlier.
+We’ve used the user object of Privy to retrieve the user ID and wallet address. To fetch the user’s balance, we need to create an HTTP client for our Lux L1, which we’ve already defined earlier.
 
 ```typescript
 const client = createPublicClient({
@@ -184,7 +184,7 @@ const { logout } = useLogout();
 
 ### Fund the New Wallet Using the Faucet
 
-We’ve funded the new wallet that was generated for our user with some ECH tokens from the [Echo AWM Testnet Faucet](https://test.core.app/tools/testnet-faucet/?avalanche-l1=echo&token=echo).
+We’ve funded the new wallet that was generated for our user with some ECH tokens from the [Echo AWM Testnet Faucet](https://test.core.app/tools/testnet-faucet/?lux-l1=echo&token=echo).
 
 After the ECH tokens were sent, our balance updated accordingly.
 

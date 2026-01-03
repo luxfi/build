@@ -6,27 +6,27 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-Before you can deploy contracts or send transactions, you'll need test tokens on both the Fuji C-Chain and Dispatch networks.
+Before you can deploy contracts or send transactions, you'll need test tokens on both the Testnet LUExchange-Chain and Dispatch networks.
 
 ## Getting Test Tokens
 
-1. Open Core wallet and switch to Fuji Testnet:
+1. Open Core wallet and switch to Testnet Testnet:
    - Click the network selector (top of window)
-   - Select "Fuji (C-Chain)"
+   - Select "Testnet (LUExchange-Chain)"
 
 2. Get test tokens:
-   - **Recommended:** Create a [Builder Hub account](https://build.avax.network/login) and connect your wallet to receive tokens automatically on C-Chain and Dispatch
+   - **Recommended:** Create a [Lux Build account](https://build.lux.network/login) and connect your wallet to receive tokens automatically on LUExchange-Chain and Dispatch
    - **Alternative:** Use external faucets:
-     - Fuji C-Chain: [Faucet](https://core.app/tools/testnet-faucet/?subnet=c&token=c) with code **avalanche-academy**
+     - Testnet LUExchange-Chain: [Faucet](https://core.app/tools/testnet-faucet/?subnet=c&token=c) with code **lux-academy**
      - Dispatch: [Faucet](https://core.app/tools/testnet-faucet/?subnet=dispatch&token=dispatch)
 
-3. Verify your balances inside of the codespace, you should have **2 AVAX** and **2 DIS**:
+3. Verify your balances inside of the codespace, you should have **2 LUX** and **2 DIS**:
 ```bash
-# Check balance on Fuji C-Chain
-cast balance $FUNDED_ADDRESS --rpc-url fuji-c
+# Check balance on Testnet LUExchange-Chain
+cast balance $FUNDED_ADDRESS --rpc-url testnet-c
 
 # Check balance on Dispatch
-cast balance $FUNDED_ADDRESS --rpc-url fuji-dispatch
+cast balance $FUNDED_ADDRESS --rpc-url testnet-dispatch
 ```
 
 You can also check your balance from the core extension, don't forget to toggle **testnet mode** inside the advanced settings.
@@ -35,15 +35,15 @@ You can also check your balance from the core extension, don't forget to toggle 
 
 For this course, we'll be using two testnet networks:
 
-### Fuji C-Chain
-- RPC URL: https://api.avax-test.network/ext/bc/C/rpc
+### Testnet LUExchange-Chain
+- RPC URL: https://api.lux-test.network/ext/bc/C/rpc
 - Chain ID: 43113
-- Native Token: AVAX
+- Native Token: LUX
 - Teleporter Messenger: 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf
 - Teleporter Registry: 0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228
 
 ### Dispatch Testnet
-- RPC URL: https://subnets.avax.network/dispatch/testnet/rpc
+- RPC URL: https://subnets.lux.network/dispatch/testnet/rpc
 - Chain ID: 779672
 - Native Token: DISP
 - Teleporter Messenger: 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf

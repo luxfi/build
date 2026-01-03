@@ -151,7 +151,7 @@ export default function IntegrationsClient({ list }: IntegrationsClientProps) {
                                 
                                 {/* Add Integration Button */}
                                 <Link 
-                                    href="https://github.com/ava-labs/builders-hub/blob/master/content/integrations" 
+                                    href="https://github.com/luxfi/lux-build/blob/master/content/integrations" 
                                     target='_blank'
                                     className="group relative overflow-hidden flex items-center justify-center gap-2 px-6 py-4 text-sm font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02] transition-all duration-300 dark:shadow-blue-500/40 dark:hover:shadow-blue-500/60 before:content-[''] before:absolute before:top-0 before:left-[-100%] before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transition-all before:duration-500 hover:before:left-[100%] lg:w-auto whitespace-nowrap"
                                 >

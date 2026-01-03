@@ -1,23 +1,23 @@
 ---
-title: Avalanche Granite Upgrade - Enhancing ICM, Unlocking Biometric Use Cases, and Enabling Dynamic Block Times
-description: The Avalanche Granite upgrade activates on Fuji Testnet on October 29th, 2025, bringing major improvements including P-Chain epoched views for ICM, secp256r1 support for biometric authentication, and dynamic minimum block times for faster transactions.
+title: Lux Granite Upgrade - Enhancing ICM, Unlocking Biometric Use Cases, and Enabling Dynamic Block Times
+description: The Lux Granite upgrade activates on Testnet Testnet on October 29th, 2025, bringing major improvements including Platform-Chain epoched views for ICM, secp256r1 support for biometric authentication, and dynamic minimum block times for faster transactions.
 date: 2025-11-05
-authors: [AvaxDevelopers]
+authors: [LuxDevelopers]
 topics: [Granite Upgrade, ICM, Biometric, Block Time, ACP, Performance]
 comments: true
 ---
 
-## Introducing Avalanche Granite
+## Introducing Lux Granite
 
-**UPDATED**: The Mainnet [release](https://github.com/ava-labs/avalanchego/releases/tag/v1.14.0) for the latest upgrade to the Avalanche Network, dubbed "Avalanche Granite", activated on Mainnet **November 19th, 2025 at 11 AM ET (4 PM UTC)**.
+**UPDATED**: The Mainnet [release](https://github.com/luxfi/luxgo/releases/tag/v1.14.0) for the latest upgrade to the Lux Network, dubbed "Lux Granite", activated on Mainnet **November 19th, 2025 at 11 AM ET (4 PM UTC)**.
 
-**_Action Required_: All Mainnet node operators must upgrade their nodes to v1.14 before the scheduled activation time or risk operational failure.** For instructions on upgrading your node, see [this guide](https://build.avax.network/blog/granite-installer).
+**_Action Required_: All Mainnet node operators must upgrade their nodes to v1.14 before the scheduled activation time or risk operational failure.** For instructions on upgrading your node, see [this guide](https://build.lux.network/blog/granite-installer).
 
-The [pre-release](https://github.com/ava-labs/avalanchego/releases/tag/v1.14.0-fuji) was published on October 21st, 2025 and successfully activated on the Fuji Testnet at 11 AM ET (3 PM UTC) on Wednesday, October 29th, 2025.
+The [pre-release](https://github.com/luxfi/luxgo/releases/tag/v1.14.0-testnet) was published on October 21st, 2025 and successfully activated on the Testnet Testnet at 11 AM ET (3 PM UTC) on Wednesday, October 29th, 2025.
 
-The Granite upgrade is driven by three Avalanche Community Proposals that significantly enhance the network's capabilities:
+The Granite upgrade is driven by three Lux Community Proposals that significantly enhance the network's capabilities:
 
-- [ACP-181: P-Chain Epoched Views](/docs/acps/181-p-chain-epoched-views)
+- [ACP-181: Platform-Chain Epoched Views](/docs/acps/181-p-chain-epoched-views)
 - [ACP-204: Precompile for secp256r1 Curve Support](/docs/acps/204-precompile-secp256r1)
 - [ACP-226: Dynamic Minimum Block Times](/docs/acps/226-dynamic-minimum-block-times)
 
@@ -29,36 +29,36 @@ The Granite upgrade is driven by three Avalanche Community Proposals that signif
 
 **Action Required**: All Mainnet node operators must upgrade their nodes to **v1.14** before **11 AM ET (4 PM UTC) on November 19th, 2025**.
 
-The Avalanche Granite Upgrade includes protocol optimizations that are not compatible with AvalancheGo versions < v1.14. If you run a node on Mainnet, you must upgrade your software to AvalancheGo >= v1.14 before the activation time. The plugin version is updated to 44. All plugins must update to be compatible. Ensure your node is running with the correct plugin version as specified in the [release notes](https://github.com/ava-labs/avalanchego/releases).
+The Lux Granite Upgrade includes protocol optimizations that are not compatible with LuxGo versions < v1.14. If you run a node on Mainnet, you must upgrade your software to LuxGo >= v1.14 before the activation time. The plugin version is updated to 44. All plugins must update to be compatible. Ensure your node is running with the correct plugin version as specified in the [release notes](https://github.com/luxfi/luxgo/releases).
 
 
 **Critical Warning**: All Mainnet nodes must upgrade before **11 AM ET, November 19, 2025**, or risk going offline once Granite activates. This warning applies to L1 validators who risk finalizing invalid blocks past the Granite activation time without epoch information if they fail to upgrade in time.
 
-L1 validators **must** upgrade to the latest version of Subnet-EVM to be compatible with the Granite upgrade. [Learn more about upgrading your L1 to Granite](https://build.avax.network/blog/granite-installer#l1ssubnets-nodes).
+L1 validators **must** upgrade to the latest version of Subnet-EVM to be compatible with the Granite upgrade. [Learn more about upgrading your L1 to Granite](https://build.lux.network/blog/granite-installer#l1ssubnets-nodes).
 
-### Fuji Testnet Node Operators
+### Testnet Testnet Node Operators
 
-The Granite upgrade successfully activated on the Fuji Testnet at **11 AM ET (3 PM UTC) on Wednesday, October 29th, 2025**. Fuji node operators have upgraded their nodes to **[v1.14-fuji](https://github.com/ava-labs/avalanchego/releases/tag/v1.14.0-fuji)**, which includes protocol optimizations that are not compatible with AvalancheGo versions < v1.14-fuji. The plugin version is updated to 44.
+The Granite upgrade successfully activated on the Testnet Testnet at **11 AM ET (3 PM UTC) on Wednesday, October 29th, 2025**. Testnet node operators have upgraded their nodes to **[v1.14-testnet](https://github.com/luxfi/luxgo/releases/tag/v1.14.0-testnet)**, which includes protocol optimizations that are not compatible with LuxGo versions < v1.14-testnet. The plugin version is updated to 44.
 
-**Please note**: This Fuji pre-release is unable to run on mainnet and will display "mainnet is not supported" if attempted with a mainnet configuration.
+**Please note**: This Testnet pre-release is unable to run on mainnet and will display "mainnet is not supported" if attempted with a mainnet configuration.
 
 ---
 
-## Enhancing ICM Verification with P-Chain Epoched Views
+## Enhancing ICM Verification with Platform-Chain Epoched Views
 
-This upgrade activates **ACP-181**, which significantly improves the robustness and cost-effectiveness of Interchain Messaging (ICM) verification on Avalanche's L1 chains.
+This upgrade activates **ACP-181**, which significantly improves the robustness and cost-effectiveness of Interchain Messaging (ICM) verification on Lux's L1 chains.
 
 ### The Challenge
 
-Previously, the P-Chain pointers were updated with every block, leading to validation uncertainty and potential invalidation of ICM messages due to continuous changes in the validator set. This created inefficiencies and increased costs for cross-chain message verification.
+Previously, the Platform-Chain pointers were updated with every block, leading to validation uncertainty and potential invalidation of ICM messages due to continuous changes in the validator set. This created inefficiencies and increased costs for cross-chain message verification.
 
 ### The Solution
 
-With ACP-181, the P-Chain height is fixed for an entire epoch period (approximately 5-10 minutes), providing a stable validator set view. This ensures ICM messages are verified against a consistent P-Chain height, reducing invalidation risk and lowering costs.
+With ACP-181, the Platform-Chain height is fixed for an entire epoch period (approximately 5-10 minutes), providing a stable validator set view. This ensures ICM messages are verified against a consistent Platform-Chain height, reducing invalidation risk and lowering costs.
 
 ### Benefits for Developers
 
-By allowing L1 chains to maintain a consistent view of the P-Chain, ACP-181 enhances the efficiency and reliability of ICM message handling across the network. Developers building cross-chain applications can now rely on:
+By allowing L1 chains to maintain a consistent view of the Platform-Chain, ACP-181 enhances the efficiency and reliability of ICM message handling across the network. Developers building cross-chain applications can now rely on:
 
 - **Cheaper message verification** - Reduced computational overhead
 - **More reliable cross-chain messaging** - Lower invalidation risk
@@ -70,7 +70,7 @@ By allowing L1 chains to maintain a consistent view of the P-Chain, ACP-181 enha
 
 ## Unlocking New Biometric Use Cases with secp256r1
 
-This upgrade introduces support for signature verifications using the **secp256r1 elliptic curve** via **ACP-204**, enabling innovative biometric data signing on the Avalanche network.
+This upgrade introduces support for signature verifications using the **secp256r1 elliptic curve** via **ACP-204**, enabling innovative biometric data signing on the Lux network.
 
 ### New Capabilities
 
@@ -90,13 +90,13 @@ The integration of biometric data signing facilitates the development of decentr
 - Healthcare applications with HIPAA compliance
 - Financial services with enhanced KYC/AML processes
 
-ACP-204 expands the possibilities for biometric implementations, positioning Avalanche at the forefront of blockchain innovation. Developers can now deliver stronger security and a smoother user experience by integrating modern biometric authentication methods into their applications.
+ACP-204 expands the possibilities for biometric implementations, positioning Lux at the forefront of blockchain innovation. Developers can now deliver stronger security and a smoother user experience by integrating modern biometric authentication methods into their applications.
 
 ---
 
 ## Enabling Faster Transactions with Dynamic Minimum Block Times
 
-This upgrade activates **ACP-226**, introducing a dynamic adjustment mechanism for block times on the Avalanche network, which enhances user experience by reducing latency.
+This upgrade activates **ACP-226**, introducing a dynamic adjustment mechanism for block times on the Lux network, which enhances user experience by reducing latency.
 
 ### How It Works
 
@@ -123,7 +123,7 @@ This upgrade ensures that users benefit from:
 
 ## Looking Ahead
 
-The Granite upgrade represents another significant step forward in Avalanche's evolution as a high-performance blockchain platform. By improving ICM reliability, enabling biometric authentication, and allowing dynamic block time adjustments, Avalanche continues to deliver the speed, flexibility, and scalability that developers need.
+The Granite upgrade represents another significant step forward in Lux's evolution as a high-performance blockchain platform. By improving ICM reliability, enabling biometric authentication, and allowing dynamic block time adjustments, Lux continues to deliver the speed, flexibility, and scalability that developers need.
 
 As the network continues to evolve with upcoming features like Streaming Asynchronous Execution (SAE) and Firewood Database integration, these Granite improvements lay the foundation for even greater performance enhancements.
 
@@ -140,11 +140,11 @@ Two new headers have been introduced as part of ACP-226 for dynamic block time m
 1. **`timestampMilliseconds`** (uint64) - Timestamp in milliseconds for more precise block timing
 2. **`minDelayExcess`** (uint64) - Tracks the excess delay for dynamic block time adjustments
 
-See the [full changelog](https://github.com/ava-labs/avalanchego/blob/master/graft/coreth/RELEASES.md#pending-release) for implementation details.
+See the [full changelog](https://github.com/luxfi/luxgo/blob/master/graft/coreth/RELEASES.md#pending-release) for implementation details.
 
 #### For L1s
 
-For Subnet-EVM's [Fee Manager Precompile](https://build.avax.network/docs/avalanche-l1s/precompiles/fee-manager) these fields are deprecated by ACP-226 and no longer effective:
+For Subnet-EVM's [Fee Manager Precompile](https://build.lux.network/docs/lux-l1s/precompiles/fee-manager) these fields are deprecated by ACP-226 and no longer effective:
 
 - `targetBlockRate`
 - `minBlockGasCost`
@@ -157,23 +157,23 @@ For new L1s, these fields should continue to be populated with their defaults. T
 
 ### New Data Structures (ACP-181)
 
-A new struct has been added as part of ACP-181 to support epoched P-Chain views:
+A new struct has been added as part of ACP-181 to support epoched Platform-Chain views:
 
-- **`Epoch`** struct - Provides stable P-Chain height references for ICM message verification
-  - [View implementation](https://github.com/ava-labs/avalanchego/blob/master/vms/proposervm/block/block.go#L58)
+- **`Epoch`** struct - Provides stable Platform-Chain height references for ICM message verification
+  - [View implementation](https://github.com/luxfi/luxgo/blob/master/vms/proposervm/block/block.go#L58)
 
 ### New API Methods
 
 Three new API methods have been added to support the Granite upgrade features:
 
 1. **`proposervm.GetProposedHeight`** - Returns this node's current proposer VM height.
-   - [Documentation](https://build.avax.network/docs/api-reference/proposervm-api#proposervmgetproposedheight)
+   - [Documentation](https://build.lux.network/docs/api-reference/proposervm-api#proposervmgetproposedheight)
 
 2. **`proposervm.GetCurrentEpoch`** - Returns the current epoch information.
-   - [Documentation](https://build.avax.network/docs/api-reference/proposervm-api#proposervmgetcurrentepoch)
+   - [Documentation](https://build.lux.network/docs/api-reference/proposervm-api#proposervmgetcurrentepoch)
 
-3. **`platform.GetAllValidatorsAt`** - Get the validators and their weights of all L1s and the Primary Network at a given P-Chain height.
-   - [Documentation](https://build.avax.network/docs/api-reference/p-chain/api#platformgetallvalidatorsat)
+3. **`platform.GetAllValidatorsAt`** - Get the validators and their weights of all L1s and the Primary Network at a given Platform-Chain height.
+   - [Documentation](https://build.lux.network/docs/api-reference/p-chain/api#platformgetallvalidatorsat)
 
 **Note**: While `platform.getProposedHeight` will not be immediately deprecated, you should switch to using `proposervm.getProposedHeight` for future compatibility.
 
@@ -181,7 +181,7 @@ Three new API methods have been added to support the Granite upgrade features:
 
 #### For L1 Operators
 
-Add the `--min-delay-target` parameter to your [subnet-evm chain config](https://build.avax.network/docs/nodes/chain-configs/subnet-evm) to enable sub-second minimum block times:
+Add the `--min-delay-target` parameter to your [subnet-evm chain config](https://build.lux.network/docs/nodes/chain-configs/subnet-evm) to enable sub-second minimum block times:
 
 ```json
 {
@@ -191,7 +191,7 @@ Add the `--min-delay-target` parameter to your [subnet-evm chain config](https:/
 
 #### For Primary Network Node Operators
 
-Add the `--min-delay-target` parameter to your [C-Chain config](https://build.avax.network/docs/nodes/chain-configs/c-chain) to vote on the target minimum block time enforced by the proposerVM on the C-Chain:
+Add the `--min-delay-target` parameter to your [LUExchange-Chain config](https://build.lux.network/docs/nodes/chain-configs/c-chain) to vote on the target minimum block time enforced by the proposerVM on the LUExchange-Chain:
 
 ```json
 {
@@ -205,20 +205,20 @@ _Note_: If the `--min-delay-target` parameter is not set, the validator abstains
 
 ## Resources
 
-- [ACP-181: P-Chain Epoched Views](/docs/acps/181-p-chain-epoched-views)
+- [ACP-181: Platform-Chain Epoched Views](/docs/acps/181-p-chain-epoched-views)
 - [ACP-204: secp256r1 Curve Support](/docs/acps/204-precompile-secp256r1)
 - [ACP-226: Dynamic Minimum Block Times](/docs/acps/226-dynamic-minimum-block-times)
-- [AvalancheGo Releases](https://github.com/ava-labs/avalanchego/releases)
-- [Join the discussion on GitHub](https://github.com/avalanche-foundation/ACPs/discussions)
+- [LuxGo Releases](https://github.com/luxfi/luxgo/releases)
+- [Join the discussion on GitHub](https://github.com/lux-foundation/ACPs/discussions)
 
 ---
 
-## About Avalanche
+## About Lux
 
-Avalanche is a high-performance blockchain platform designed for builders who need to scale. Engineered with a revolutionary three-part Layer 1 (L1) architecture, Avalanche is anchored by its Avalanche Consensus Mechanism, ensuring near-instant finality for transactions. The platform also features an open-source Layer 0 (L0) framework, enabling the seamless creation of interoperable Layer 1 blockchains with high throughput on both public and private networks.
+Lux is a high-performance blockchain platform designed for builders who need to scale. Engineered with a revolutionary three-part Layer 1 (L1) architecture, Lux is anchored by its Lux Consensus Mechanism, ensuring near-instant finality for transactions. The platform also features an open-source Layer 0 (L0) framework, enabling the seamless creation of interoperable Layer 1 blockchains with high throughput on both public and private networks.
 
-Supported by a global community of developers and validators, Avalanche offers a fast, low-cost environment for building the next generation of decentralized applications (dApps). With its unique blend of speed, flexibility, and scalability, Avalanche is the preferred choice for innovators pushing the boundaries of blockchain technology.
+Supported by a global community of developers and validators, Lux offers a fast, low-cost environment for building the next generation of decentralized applications (dApps). With its unique blend of speed, flexibility, and scalability, Lux is the preferred choice for innovators pushing the boundaries of blockchain technology.
 
 ---
 
-**Follow [@AvaxDevelopers](https://x.com/AvaxDevelopers) for updates and join our developer community to stay informed about future upgrades and tooling improvements.**
+**Follow [@LuxDevelopers](https://x.com/LuxDevelopers) for updates and join our developer community to stay informed about future upgrades and tooling improvements.**

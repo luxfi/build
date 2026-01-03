@@ -24,7 +24,7 @@ import { Button } from "@/components/toolbox/components/Button";
 
 
 const getDockerComposePsOutput = (versions: any) => `NAME          IMAGE                                 COMMAND                  SERVICE       CREATED        STATUS        PORTS
-avago         avaplatform/subnet-evm_avalanchego:${versions['avaplatform/subnet-evm_avalanchego']}  "./avalanchego"          avago         1 minute ago   Up 1 minute   127.0.0.1:9650->9650/tcp, 0.0.0.0:9651->9651/tcp, :::9651->9651/tcp
+avago         avaplatform/subnet-evm_luxgo:${versions['avaplatform/subnet-evm_luxgo']}  "./luxgo"          avago         1 minute ago   Up 1 minute   127.0.0.1:9650->9650/tcp, 0.0.0.0:9651->9651/tcp, :::9651->9651/tcp
 backend       blockscout/blockscout:6.10.1                       "sh -c 'bin/blocksco…"   backend       1 minute ago   Up 1 minute   
 bc_frontend   ghcr.io/blockscout/frontend:v1.37.4                "./entrypoint.sh nod…"   bc_frontend   1 minute ago   Up 1 minute   3000/tcp
 caddy         caddy:latest                                       "caddy run --config …"   caddy         1 minute ago   Up 1 minute   0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp, 443/udp, 2019/tcp
@@ -206,20 +206,20 @@ services:
       - "80:80"
       - "443:443"`;
 
-  const avalancheGoService = config.includeAvago ? `
+  const luxGoService = config.includeAvago ? `
   avago:
-    image: avaplatform/subnet-evm_avalanchego:${config.versions['avaplatform/subnet-evm_avalanchego']}
+    image: avaplatform/subnet-evm_luxgo:${config.versions['avaplatform/subnet-evm_luxgo']}
     container_name: avago
     restart: always
     ports:
       - "127.0.0.1:9650:9650"
       - "9651:9651"
     volumes:
-      - ~/.avalanchego:/root/.avalanchego
+      - ~/.luxgo:/root/.luxgo
     environment:
       AVAGO_PARTIAL_SYNC_PRIMARY_NETWORK: "true"
       AVAGO_PUBLIC_IP_RESOLUTION_SERVICE: "opendns"
-      AVAGO_NETWORK_ID: ${config.isTestnet ? "fuji" : "mainnet"}
+      AVAGO_NETWORK_ID: ${config.isTestnet ? "testnet" : "mainnet"}
       AVAGO_HTTP_HOST: "0.0.0.0"
       AVAGO_TRACK_SUBNETS: "${config.subnetId}" 
       AVAGO_HTTP_ALLOWED_HOSTS: "*"
@@ -230,7 +230,7 @@ services:
         max-size: "50m"
         max-file: "3"` : '';
 
-  return `${composeConfig}${avalancheGoService}
+  return `${composeConfig}${luxGoService}
 
 volumes:
   postgres_data:
@@ -335,7 +335,7 @@ export default function BlockScout() {
       <Container
         title="Self-hosted Explorer Setup"
         description="This will set up a self-hosted explorer with its own RPC Node leveraging Docker Compose."
-        githubUrl="https://github.com/ava-labs/builders-hub/edit/master/components/toolbox/console/layer-1/create/SelfHostedExplorer.tsx"
+        githubUrl="https://github.com/luxfi/lux-build/edit/master/components/toolbox/console/layer-1/create/SelfHostedExplorer.tsx"
       >
         <Steps>
           <Step>
@@ -350,7 +350,7 @@ export default function BlockScout() {
 
           <Step>
             <h3 className="text-xl font-bold mb-4">Select L1</h3>
-            <p>Enter the Avalanche Blockchain ID (not EVM chain ID) of the L1 you want to run a node for.</p>
+            <p>Enter the Lux Blockchain ID (not EVM chain ID) of the L1 you want to run a node for.</p>
 
             <InputChainId
               value={chainId}
@@ -527,12 +527,12 @@ export default function BlockScout() {
 
                 {rpcOption === 'local' && (
                   <div>
-                    <h4 className="font-semibold mb-2">Monitor the AvalancheGo node sync progress:</h4>
+                    <h4 className="font-semibold mb-2">Monitor the LuxGo node sync progress:</h4>
                     <DynamicCodeBlock lang="bash" code="docker logs -f avago" />
                     <div className="mt-4 p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
                       <h5 className="font-semibold mb-2">⚠️ Important Note About Sync Time</h5>
                       <p>
-                        The AvalancheGo node needs to sync with the network before the explorer can function properly. For testnet, this process typically takes 5-10 minutes, for mainnet, it takes 1-2 hours. You'll see progress updates in the logs showing the syncing progress with the p-chain (fetching blocks & executing blocks).
+                        The LuxGo node needs to sync with the network before the explorer can function properly. For testnet, this process typically takes 5-10 minutes, for mainnet, it takes 1-2 hours. You'll see progress updates in the logs showing the syncing progress with the p-chain (fetching blocks & executing blocks).
                       </p>
                     </div>
 

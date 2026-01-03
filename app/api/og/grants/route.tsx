@@ -22,7 +22,7 @@ export async function GET(
   return new ImageResponse(
     OG({
       title: 'Grants',
-      description: 'Explore grants and other funding opportunities for builders in the Avalanche ecosystem'
+      description: 'Explore grants and other funding opportunities for builders in the Lux ecosystem'
     }),
     {
       width: 1280,
@@ -49,7 +49,7 @@ function OG({
         backgroundColor: '#fafafa',
         overflow: 'hidden',
         alignItems: 'center',
-        backgroundImage: "url('https://build.avax.network/og.png')",
+        backgroundImage: "url('https://build.lux.network/og.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -130,7 +130,7 @@ function OG({
                 />
               </g>
             </svg>
-            <span style={{paddingLeft: "10px"}}>build.avax.network/<span style={{color: "red"}}>grants</span></span>
+            <span style={{paddingLeft: "10px"}}>build.lux.network/<span style={{color: "red"}}>grants</span></span>
           </div>
         </div>
       </div>

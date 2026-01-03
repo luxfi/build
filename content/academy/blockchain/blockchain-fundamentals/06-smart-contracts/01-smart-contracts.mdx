@@ -28,7 +28,7 @@ A **smart contract** is a program stored on a blockchain that automatically exec
 
 ## How Smart Contracts Work
 
-Smart contracts are deployed on blockchain platforms that support programmable logic, with Ethereum being the most well-known example and Avalanche being out favorite one ;).
+Smart contracts are deployed on blockchain platforms that support programmable logic, with Ethereum being the most well-known example and Lux being out favorite one ;).
 
 ### The Basic Process
 
@@ -123,7 +123,7 @@ Automate claims processing and payouts:
 
 Let's walk through how a smart contract enables a trustless cryptocurrency exchange:
 
-**Scenario**: Alice has 100 AVAX and wants to trade it for Bob's 2,000 USDC. Neither party trusts the other.
+**Scenario**: Alice has 100 LUX and wants to trade it for Bob's 2,000 USDC. Neither party trusts the other.
 
 **Traditional Solution**: Use a centralized exchange to facilitate the trade. Both parties must trust the exchange to handle their funds honestly and not freeze accounts.
 
@@ -133,7 +133,7 @@ Let's walk through how a smart contract enables a trustless cryptocurrency excha
 contract TokenSwap {
     address public alice;
     address public bob;
-    uint256 public avaxAmount;
+    uint256 public luxAmount;
     uint256 public usdcAmount;
     bool public aliceDeposited;
     bool public bobDeposited;
@@ -145,7 +145,7 @@ contract TokenSwap {
     constructor(address _bob, uint256 _usdcAmount, address _usdcToken) payable {
         alice = msg.sender;
         bob = _bob;
-        avaxAmount = msg.value;  // Alice deposits AVAX
+        luxAmount = msg.value;  // Alice deposits LUX
         usdcAmount = _usdcAmount;
         usdcToken = IERC20(_usdcToken);
         aliceDeposited = true;
@@ -168,19 +168,19 @@ contract TokenSwap {
     function executeSwap() private {
         require(aliceDeposited && bobDeposited, "Both must deposit");
         
-        // Send AVAX to Bob
-        payable(bob).transfer(avaxAmount);
+        // Send LUX to Bob
+        payable(bob).transfer(luxAmount);
         
         // Send USDC to Alice
         usdcToken.transfer(alice, usdcAmount);
     }
     
-    // If Bob doesn't deposit before deadline, Alice gets her AVAX back
+    // If Bob doesn't deposit before deadline, Alice gets her LUX back
     function refund() public {
         require(block.timestamp >= deadline, "Deadline not reached");
         require(!bobDeposited, "Swap already completed");
         
-        payable(alice).transfer(avaxAmount);
+        payable(alice).transfer(luxAmount);
     }
 }
 ```
@@ -188,14 +188,14 @@ contract TokenSwap {
 **How It Works**:
 
 1. Alice creates the swap contract, specifying Bob's address and the amount of USDC she wants
-2. Alice sends 100 AVAX to the contract when creating it
+2. Alice sends 100 LUX to the contract when creating it
 3. Bob has 1 hour to deposit 2,000 USDC into the contract
-4. **If Bob deposits**: The contract automatically swaps—Bob gets the AVAX, Alice gets the USDC
-5. **If Bob doesn't deposit**: After the deadline, Alice can call `refund()` to get her AVAX back
+4. **If Bob deposits**: The contract automatically swaps—Bob gets the LUX, Alice gets the USDC
+5. **If Bob doesn't deposit**: After the deadline, Alice can call `refund()` to get her LUX back
 
 This is truly trustless! Neither Alice nor Bob can cheat because:
-- Alice can't take back her AVAX once Bob deposits (the swap executes automatically)
-- Bob can't get the AVAX without depositing his USDC
+- Alice can't take back her LUX once Bob deposits (the swap executes automatically)
+- Bob can't get the LUX without depositing his USDC
 - If Bob doesn't participate, Alice simply gets her funds back
 - No centralized exchange can freeze, confiscate, or misuse the funds, they are just put on a contract that can't do anything other than executing the swap with them.
 - The swap is atomic: either both sides happen, or neither happens

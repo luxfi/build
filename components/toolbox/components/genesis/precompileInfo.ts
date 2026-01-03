@@ -51,14 +51,14 @@ export const PREDEPLOY_INFO = {
     icmMessenger: {
         address: '0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf',
         name: 'ICM Messenger',
-        description: 'Avalanche Interchain Messaging contract for cross-subnet communication and message relaying.',
-        githubUrl: 'https://github.com/ava-labs/icm-contracts/blob/main/contracts/teleporter/TeleporterMessenger.sol'
+        description: 'Lux Interchain Messaging contract for cross-subnet communication and message relaying.',
+        githubUrl: 'https://github.com/luxfi/icm-contracts/blob/main/contracts/teleporter/TeleporterMessenger.sol'
     },
     wrappedNativeToken: {
         address: '0x1111111111111111111111111111111111111111',
         name: 'Wrapped Native Token',
         description: 'ERC-20 wrapper for the native token, enabling DeFi integrations and smart contract interactions.',
-        githubUrl: 'https://github.com/ava-labs/icm-contracts/blob/main/contracts/ictt/WrappedNativeToken.sol'
+        githubUrl: 'https://github.com/luxfi/icm-contracts/blob/main/contracts/ictt/WrappedNativeToken.sol'
     },
     safeSingletonFactory: {
         address: '0x914d7Fec6aaC8cd542e72Bca78B30650d45643d7',

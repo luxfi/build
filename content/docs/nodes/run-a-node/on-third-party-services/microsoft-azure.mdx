@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure
-description: How to run an Avalanche node on Microsoft Azure.
+description: How to run an Lux node on Microsoft Azure.
 ---
 
 <Callout type="warn">
 This document was written by a community member, some information may be out of date.
 </Callout>
 
-Running a validator and staking with Avalanche provides extremely competitive rewards of between 9.69% and 11.54% depending on the length you stake for. The maximum rate is earned by staking for a year, whilst the lowest rate for 14 days. There is also no slashing, so you don't need to worry about a hardware failure or bug in the client which causes you to lose part or all of your stake. Instead with Avalanche you only need to currently maintain at least 80% uptime to receive rewards. If you fail to meet this requirement you don't get slashed, but you don't receive the rewards. **You also do not need to put your private keys onto a node to begin validating on that node.** Even if someone breaks into your cloud environment and gains access to the node, the worst they can do is turn off the node.
+Running a validator and staking with Lux provides extremely competitive rewards of between 9.69% and 11.54% depending on the length you stake for. The maximum rate is earned by staking for a year, whilst the lowest rate for 14 days. There is also no slashing, so you don't need to worry about a hardware failure or bug in the client which causes you to lose part or all of your stake. Instead with Lux you only need to currently maintain at least 80% uptime to receive rewards. If you fail to meet this requirement you don't get slashed, but you don't receive the rewards. **You also do not need to put your private keys onto a node to begin validating on that node.** Even if someone breaks into your cloud environment and gains access to the node, the worst they can do is turn off the node.
 
-Not only does running a validator node enable you to receive rewards in AVAX, but later you will also be able to validate other Avalanche L1s in the ecosystem as well and receive rewards in the token native to their Avalanche L1s.
+Not only does running a validator node enable you to receive rewards in LUX, but later you will also be able to validate other Lux L1s in the ecosystem as well and receive rewards in the token native to their Lux L1s.
 
-Hardware requirements to run a validator are relatively modest: 8 CPU cores, 16 GB of RAM and 1 TB SSD. It also doesn't use enormous amounts of energy. Avalanche's [revolutionary consensus mechanism](/docs/primary-network/avalanche-consensus) is able to scale to millions of validators participating in consensus at once, offering unparalleled decentralisation.
+Hardware requirements to run a validator are relatively modest: 8 CPU cores, 16 GB of RAM and 1 TB SSD. It also doesn't use enormous amounts of energy. Lux's [revolutionary consensus mechanism](/docs/primary-network/lux-consensus) is able to scale to millions of validators participating in consensus at once, offering unparalleled decentralisation.
 
-Currently the minimum amount required to stake to become a validator is 2,000 AVAX. Alternatively, validators can also charge a small fee to enable users to delegate their stake with them to help towards running costs.
+Currently the minimum amount required to stake to become a validator is 2,000 LUX. Alternatively, validators can also charge a small fee to enable users to delegate their stake with them to help towards running costs.
 In this article we will step through the process of configuring a node on Microsoft Azure. This tutorial assumes no prior experience with Microsoft Azure and will go through each step with as few assumptions possible.
 
 At the time of this article, spot pricing for a virtual machine with 2 Cores and 8 GB memory costs as little as 0.01060perhourwhichworksoutatabout0.01060 per hour which works out at about 113.44 a year, **a saving of 83.76%! compared to normal pay as you go prices.** In comparison a virtual machine in AWS with 2 Cores and 4 GB Memory with spot pricing is around $462 a year.
@@ -48,7 +48,7 @@ Enter your billing details and confirm identity as part of the sign-up process, 
 Create a Virtual Machine[​](#create-a-virtual-machine "Direct link to heading")
 -------------------------------------------------------------------------------
 
-Now that we have a subscription, we can create the Ubuntu Virtual Machine for our Avalanche Node. Select the Icon in the top left for the Menu and choose "+ Create a resource"
+Now that we have a subscription, we can create the Ubuntu Virtual Machine for our Lux Node. Select the Icon in the top left for the Menu and choose "+ Create a resource"
 
 ![Image for post](/images/azure6.png)
 
@@ -60,13 +60,13 @@ This will take you to the Create a virtual machine page as shown below:
 
 ![Image for post](/images/azure8.png)
 
-First, enter a virtual machine a name, this can be anything but in my example, I have called it Avalanche (This will also automatically change the resource group name to match)
+First, enter a virtual machine a name, this can be anything but in my example, I have called it Lux (This will also automatically change the resource group name to match)
 
 Then select a region from the drop-down list. Select one of the recommended ones in a region that you prefer as these tend to be the larger ones with most features enabled and cheaper prices. In this example I have selected North Europe.
 
 ![Image for post](/images/azure9.png)
 
-You have the option of using spot pricing to save significant amounts on running costs. Spot instances use a supply and demand market price structure. As demand for instances goes up, the price for the spot instance goes up. If there is insufficient capacity, then your VM will be turned off. The chances of this happening are incredibly low though, especially if you select the Capacity only option. Even in the unlikely event it does get turned off temporarily you only need to maintain at least 80% up time to receive the staking rewards and there is no slashing implemented in Avalanche.
+You have the option of using spot pricing to save significant amounts on running costs. Spot instances use a supply and demand market price structure. As demand for instances goes up, the price for the spot instance goes up. If there is insufficient capacity, then your VM will be turned off. The chances of this happening are incredibly low though, especially if you select the Capacity only option. Even in the unlikely event it does get turned off temporarily you only need to maintain at least 80% up time to receive the staking rewards and there is no slashing implemented in Lux.
 
 Select Yes for Azure Spot instance, select Eviction type to Capacity Only and **make sure to set the eviction policy to Stop / Deallocate. This is very important otherwise the VM will be deleted**
 
@@ -94,7 +94,7 @@ Below you can see the price history of the VM over the last 3 months for North E
 
 As a comparison a c5.large instance costs 0.085USDperhouronAWS.Thistotals 0.085 USD per hour on AWS. This totals ~745 USD per year. Spot instances can save 62%, bringing that total down to $462.
 
-The next step is to change the username for the VM, to align with other Avalanche tutorials change the username to Ubuntu. Otherwise you will need to change several commands later in this article and swap out Ubuntu with your new username.
+The next step is to change the username for the VM, to align with other Lux tutorials change the username to Ubuntu. Otherwise you will need to change several commands later in this article and swap out Ubuntu with your new username.
 
 ![Image for post](/images/azure15.png)
 
@@ -116,7 +116,7 @@ Then select "Static" as the Assignment type
 
 ![Image for post](/images/azure19.png)
 
-Then we need to configure the network security group to control access inbound to the Avalanche node. Select "Advanced" as the NIC network security group type and select "Create new"
+Then we need to configure the network security group to control access inbound to the Lux node. Select "Advanced" as the NIC network security group type and select "Create new"
 
 ![Image for post](/images/azure20.png)
 
@@ -126,7 +126,7 @@ For security purposes you want to restrict who is able to remotely connect to yo
 
 It's likely that you have been assigned a dynamic public IP for your home, unless you have specifically requested it, and so your assigned public IP may change in the future. It's still recommended to restrict access to your current IP though, and then in the event your home IP changes and you are no longer able to remotely connect to the VM, you can just update the network security rules with your new public IP so you are able to connect again.
 
-NOTE: If you need to change the network security group rules after deployment if your home IP has changed, search for "avalanche-nsg" and you can modify the rule for SSH and Port 9650 with the new IP. **Port 9651 needs to remain open to everyone** though as that's how it communicates with other Avalanche nodes.
+NOTE: If you need to change the network security group rules after deployment if your home IP has changed, search for "lux-nsg" and you can modify the rule for SSH and Port 9650 with the new IP. **Port 9651 needs to remain open to everyone** though as that's how it communicates with other Lux nodes.
 
 ![Image for post](/images/azure22.png)
 
@@ -134,11 +134,11 @@ Now that you have your public IP select the default allow ssh rule on the left u
 
 ![Image for post](/images/azure23.png)
 
-Then select "+ Add an inbound rule" to add another rule for RPC access, this should also be restricted to only your IP. Change Source to "IP Addresses" and enter in your public IP returned from google into the Source IP field. This time change the "Destination port ranges" field to 9650 and select "TCP" as the protocol. Change the priority to 110 and give it a name of "Avalanche\_RPC" and press Add.
+Then select "+ Add an inbound rule" to add another rule for RPC access, this should also be restricted to only your IP. Change Source to "IP Addresses" and enter in your public IP returned from google into the Source IP field. This time change the "Destination port ranges" field to 9650 and select "TCP" as the protocol. Change the priority to 110 and give it a name of "Lux\_RPC" and press Add.
 
 ![Image for post](/images/azure24.png)
 
-Select "+ Add an inbound rule" to add a final rule for the Avalanche Protocol so that other nodes can communicate with your node. This rule needs to be open to everyone so keep "Source" set to "Any." Change the Destination port range to "9651" and change the protocol to "TCP." Enter a priority of 120 and a name of Avalanche\_Protocol and press Add.
+Select "+ Add an inbound rule" to add a final rule for the Lux Protocol so that other nodes can communicate with your node. This rule needs to be open to everyone so keep "Source" set to "Any." Change the Destination port range to "9651" and change the protocol to "TCP." Enter a priority of 120 and a name of Lux\_Protocol and press Add.
 
 ![Image for post](/images/azure25.png)
 
@@ -181,7 +181,7 @@ Select "Size + performance" on the left under settings and change the size to 25
 
 ![Image for post](/images/azure34.png)
 
-Doing this now will also extend the partition automatically within Ubuntu. To go back to the virtual machine overview page, select Avalanche in the navigation setting.
+Doing this now will also extend the partition automatically within Ubuntu. To go back to the virtual machine overview page, select Lux in the navigation setting.
 
 ![Image for post](/images/azure35.png)
 
@@ -189,12 +189,12 @@ Then start the VM
 
 ![Image for post](/images/azure36.png)
 
-Connect to the Avalanche Node[​](#connect-to-the-avalanche-node "Direct link to heading")
+Connect to the Lux Node[​](#connect-to-the-lux-node "Direct link to heading")
 -----------------------------------------------------------------------------------------
 
 The following instructions show how to connect to the Virtual Machine from a Windows 10 machine. For instructions on how to connect from a Ubuntu machine see the [AWS tutorial](/docs/nodes/run-a-node/on-third-party-services/amazon-web-services).
 
-On your local PC, create a folder on the root of the C: drive called Avalanche and then move the Avalanche\_key.pem file you downloaded before into the folder. Then right click the file and select Properties. Go to the security tab and select "Advanced" at the bottom
+On your local PC, create a folder on the root of the C: drive called Lux and then move the Lux\_key.pem file you downloaded before into the folder. Then right click the file and select Properties. Go to the security tab and select "Advanced" at the bottom
 
 ![Image for post](/images/azure37.png)
 
@@ -210,27 +210,27 @@ Then from the permissions section make sure only "Read & Execute" and "Read" are
 
 ![Image for post](/images/azure40.png)
 
-It should look something like the below, except with a different PC name / user account. This just means the key file can't be modified or accessed by any other accounts on this machine for security purposes so they can't access your Avalanche Node.
+It should look something like the below, except with a different PC name / user account. This just means the key file can't be modified or accessed by any other accounts on this machine for security purposes so they can't access your Lux Node.
 
 ![Image for post](/images/azure41.png)
 
-### Find your Avalanche Node Public IP[​](#find-your-avalanche-node-public-ip "Direct link to heading")
+### Find your Lux Node Public IP[​](#find-your-lux-node-public-ip "Direct link to heading")
 
 From the Azure Portal make a note of your static public IP address that has been assigned to your node.
 
 ![Image for post](/images/azure42.png)
 
-To log onto the Avalanche node, open command prompt by searching for `cmd` and selecting "Command Prompt" on your Windows 10 machine.
+To log onto the Lux node, open command prompt by searching for `cmd` and selecting "Command Prompt" on your Windows 10 machine.
 
 ![Image for post](/images/azure43.png)
 
 Then use the following command and replace the EnterYourAzureIPHere with the static IP address shown on the Azure portal.
 
-ssh -i C:\\Avalanche\\Avalanche\_key.pem ubuntu@EnterYourAzureIPHere
+ssh -i C:\\Lux\\Lux\_key.pem ubuntu@EnterYourAzureIPHere
 
 for my example its:
 
-ssh -i C:\\Avalanche\\Avalanche\_key.pem
+ssh -i C:\\Lux\\Lux\_key.pem
 
 The first time you connect you will receive a prompt asking to continue, enter yes.
 
@@ -240,7 +240,7 @@ You should now be connected to your Node.
 
 ![Image for post](/images/azure45.png)
 
-The following section is taken from Colin's excellent tutorial for [configuring an Avalanche Node on Amazon's AWS](/docs/nodes/run-a-node/on-third-party-services/amazon-web-services).
+The following section is taken from Colin's excellent tutorial for [configuring an Lux Node on Amazon's AWS](/docs/nodes/run-a-node/on-third-party-services/amazon-web-services).
 
 ### Update Linux with Security Patches[​](#update-linux-with-security-patches "Direct link to heading")
 
@@ -256,14 +256,14 @@ sudo reboot
 
 This will make our instance up to date with the latest security patches for our operating system. This will also reboot the node. We'll give the node a minute or two to boot back up, then log in again, same as before.
 
-### Set up the Avalanche Node[​](#set-up-the-avalanche-node "Direct link to heading")
+### Set up the Lux Node[​](#set-up-the-lux-node "Direct link to heading")
 
-Now we'll need to set up our Avalanche node. To do this, follow the [Set Up Avalanche Node With Installer](/docs/nodes/run-a-node/using-install-script/installing-avalanche-go) tutorial which automates the installation process. You will need the "IPv4 Public IP" copied from the Azure Portal we set up earlier.
+Now we'll need to set up our Lux node. To do this, follow the [Set Up Lux Node With Installer](/docs/nodes/run-a-node/using-install-script/installing-lux-go) tutorial which automates the installation process. You will need the "IPv4 Public IP" copied from the Azure Portal we set up earlier.
 
-Once the installation is complete, our node should now be bootstrapping! We can run the following command to take a peek at the latest status of the AvalancheGo node:
+Once the installation is complete, our node should now be bootstrapping! We can run the following command to take a peek at the latest status of the LuxGo node:
 
 ```
-sudo systemctl status avalanchego
+sudo systemctl status luxgo
 ```
 
 To check the status of the bootstrap, we'll need to make a request to the local RPC using `curl`. This request is as follows:
@@ -291,7 +291,7 @@ The node can take some time (upward of an hour at this moment writing) to bootst
 }
 ```
 
-We can always use `sudo systemctl status avalanchego` to peek at the latest status of our service as before, as well.
+We can always use `sudo systemctl status luxgo` to peek at the latest status of our service as before, as well.
 
 ### Get Your NodeID[​](#get-your-nodeid "Direct link to heading")
 
@@ -318,9 +318,9 @@ That portion that says, "NodeID-Lve2PzuCvXZrqn8Stqwy9vWZux6VyGUCR" is our NodeID
 The last thing that should be done is backing up our staking keys in the untimely event that our instance is corrupted or terminated. It's just good practice for us to keep these keys. To back them up, we use the following command:
 
 ```
-scp -i C:\Avalanche\avalanche_key.pem -r ubuntu@EnterYourAzureIPHere:/home/ubuntu/.avalanchego/staking C:\Avalanche
+scp -i C:\Lux\lux_key.pem -r ubuntu@EnterYourAzureIPHere:/home/ubuntu/.luxgo/staking C:\Lux
 ```
 
-As before, we'll need to replace "EnterYourAzureIPHere" with the appropriate value that we retrieved. This backs up our staking key and staking certificate into the C:\\Avalanche folder we created before.
+As before, we'll need to replace "EnterYourAzureIPHere" with the appropriate value that we retrieved. This backs up our staking key and staking certificate into the C:\\Lux folder we created before.
 
 ![Image for post](/images/azure47.png)

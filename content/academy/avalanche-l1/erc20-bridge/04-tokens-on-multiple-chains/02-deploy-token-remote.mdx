@@ -7,7 +7,7 @@ icon: Book
 ---
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-To ensure the wrapped token is bridged into the destination chain (in this case, C-Chain) you'll need to deploy a _remote_ contract that implements the `IERC20Bridge` interface, as well as inheriting the properties of `TeleporterTokenRemote`. In order for the bridged tokens to have all the normal functionality of a locally deployed ERC20 token, this remote contract must also inherit the properties of a standard `ERC20` contract.
+To ensure the wrapped token is bridged into the destination chain (in this case, LUExchange-Chain) you'll need to deploy a _remote_ contract that implements the `IERC20Bridge` interface, as well as inheriting the properties of `TeleporterTokenRemote`. In order for the bridged tokens to have all the normal functionality of a locally deployed ERC20 token, this remote contract must also inherit the properties of a standard `ERC20` contract.
 
 <Steps>
 <Step>
@@ -15,7 +15,7 @@ To ensure the wrapped token is bridged into the destination chain (in this case,
 
 Before deploying the remote contract, ensure you have some test tokens on Dispatch:
 
-- **Recommended:** Create a [Builder Hub account](https://build.avax.network/login) and connect your wallet to receive testnet tokens automatically on Dispatch
+- **Recommended:** Create a [Lux Build account](https://build.lux.network/login) and connect your wallet to receive testnet tokens automatically on Dispatch
 - **Alternative:** Use the [external faucet](https://core.app/tools/testnet-faucet/?subnet=dispatch&token=dispatch) to claim DIS tokens
 
 </Step>

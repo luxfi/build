@@ -8,7 +8,7 @@ icon: BookOpen
 
 Now that we understand the key differences between native tokens and ERC20s, we can explore **native token wrapping** - what it is and why it's necessary for blockchain ecosystems.
 
-**Wrapped tokens** are blockchain assets that represent a native cryptocurrency (e.g., AVAX, ALOT, ETH) in a tokenized form, typically conforming to the **ERC-20 token standard**. Wrapping a native token allows it to be used in decentralized applications (dApps) and protocols that require ERC-20 tokens.
+**Wrapped tokens** are blockchain assets that represent a native cryptocurrency (e.g., LUX, ALOT, ETH) in a tokenized form, typically conforming to the **ERC-20 token standard**. Wrapping a native token allows it to be used in decentralized applications (dApps) and protocols that require ERC-20 tokens.
 
 ---
 
@@ -51,7 +51,7 @@ interface IWrappedToken {
 
 <Accordions>
 <Accordion title="deposit()">
-This function is used to wrap native tokens. When a user calls deposit(), they send the native cryptocurrency (e.g., AVAX, ETH) to the contract, which then mints an equivalent amount of the wrapped token.
+This function is used to wrap native tokens. When a user calls deposit(), they send the native cryptocurrency (e.g., LUX, ETH) to the contract, which then mints an equivalent amount of the wrapped token.
 </Accordion>
 <Accordion title="withdraw()">
 This function is used to unwrap the tokens. It burns the specified amount of wrapped tokens and returns the equivalent amount of native cryptocurrency to the user.

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Globe, Search } from "lucide-react";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { StatsBreadcrumb } from "@/components/navigation/StatsBreadcrumb";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -59,7 +59,7 @@ async function lookupTransactionAcrossChains(txHash: string): Promise<{ found: b
 
 export function AllChainsExplorerLayout({ children }: AllChainsExplorerLayoutProps) {
   const router = useRouter();
-  const themeColor = "#E84142"; // Avalanche red
+  const themeColor = "#FFFFFF"; // Lux red
   
   // Search state
   const [searchQuery, setSearchQuery] = useState("");
@@ -133,9 +133,9 @@ export function AllChainsExplorerLayout({ children }: AllChainsExplorerLayoutPro
             <div className="space-y-4 sm:space-y-6 flex-1">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-3 flex-wrap">
-                  <AvalancheLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#E84142" />
+                  <LuxLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#FFFFFF" />
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                   {/* Chain logos - inline after ecosystem text */}
                   {chainsWithRpc.length > 0 && (
@@ -179,7 +179,7 @@ export function AllChainsExplorerLayout({ children }: AllChainsExplorerLayoutPro
                   </h1>
                 </div>
                 <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 max-w-2xl mt-3">
-                  Real-time activity across all Avalanche L1 chains - blocks, transactions, and cross-chain messages from the entire ecosystem.
+                  Real-time activity across all Lux L1 chains - blocks, transactions, and cross-chain messages from the entire ecosystem.
                 </p>
                 
                 {/* Search Bar */}

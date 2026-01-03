@@ -23,10 +23,10 @@ A permissioned **private blockchain** is the most restrictive model. Think of it
 
 **Two Types of Privacy**: It's important to understand that "private" can mean two different things in blockchain contexts:
 
-1. **Access Privacy (Walled Garden)**: The blockchain itself is hidden from the public - only authorized participants can access the RPC endpoints to read any data. This is what we mean by "private blockchain" and is natively supported on Avalanche.
+1. **Access Privacy (Walled Garden)**: The blockchain itself is hidden from the public - only authorized participants can access the RPC endpoints to read any data. This is what we mean by "private blockchain" and is natively supported on Lux.
 
 2. **Data Privacy (Encryption)**: The blockchain is publicly accessible, but the actual transaction data is encrypted. Anyone can see that transactions occurred, but the contents are encrypted and only readable by authorized parties. 
-Examples include [Zama's FHE-based confidential smart contracts](https://www.zama.ai/) and [Avalanche's EncryptedERC implementation](https://github.com/ava-labs/EncryptedERC) using zero-knowledge proofs.
+Examples include [Zama's FHE-based confidential smart contracts](https://www.zama.ai/) and [Lux's EncryptedERC implementation](https://github.com/luxfi/EncryptedERC) using zero-knowledge proofs.
 
 Most private blockchains use access privacy, while some public blockchains add data privacy through encryption.
 
@@ -65,9 +65,9 @@ A **permissionless blockchain** is completely open:
 
 > **Note**: Permissioned Private refers to "Walled Garden" approach where data visibility is restricted.
 
-## Avalanche L1s: Flexible by Design
+## Lux L1s: Flexible by Design
 
-What makes Avalanche L1s powerful is their flexibility to implement any of these models:
+What makes Lux L1s powerful is their flexibility to implement any of these models:
 
 - **Permissioned Private L1**: Configure validator manager with a fixed set of validators and restrict RPC access
 - **Permissioned Public L1**: Use Proof of Authority with controlled validator additions

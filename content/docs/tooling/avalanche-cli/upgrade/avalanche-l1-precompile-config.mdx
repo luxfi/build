@@ -3,42 +3,42 @@ title: Precompile Configs
 description: Learn how to upgrade your Subnet-EVM precompile configurations.
 ---
 
-You can customize Subnet-EVM based Avalanche L1s after deployment by enabling and disabling precompiles. To do this, create a `upgrade.json` file and place it in the appropriate directory.
+You can customize Subnet-EVM based Lux L1s after deployment by enabling and disabling precompiles. To do this, create a `upgrade.json` file and place it in the appropriate directory.
 
 This document describes how to perform such network upgrades. It's specific for Subnet-EVM upgrades.
 
-The document [Upgrade an Avalanche L1](/docs/avalanche-l1s/upgrade/considerations) describes all the background information required regarding Avalanche L1 upgrades.
+The document [Upgrade an Lux L1](/docs/lux-l1s/upgrade/considerations) describes all the background information required regarding Lux L1 upgrades.
 
 <Callout type="warn">
 It's very important that you have read and understood the previously linked document. Failing to do so can potentially grind your network to a halt.
 </Callout>
 
-This tutorial assumes that you have already [installed](/docs/tooling/avalanche-cli) Avalanche-CLI. It assumes you have already created and deployed an Avalanche L1 called `testblockchain`.
+This tutorial assumes that you have already [installed](/docs/tooling/lux-cli) Lux-CLI. It assumes you have already created and deployed an Lux L1 called `testblockchain`.
 
 Generate the Upgrade File[​](#generate-the-upgrade-file "Direct link to heading")
 ---------------------------------------------------------------------------------
 
-The [Precompiles](/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1#network-upgrades-enabledisable-precompiles) documentation describes what files the network upgrade requires, and where to place them.
+The [Precompiles](/docs/lux-l1s/evm-configuration/customize-lux-l1#network-upgrades-enabledisable-precompiles) documentation describes what files the network upgrade requires, and where to place them.
 
 To generate a valid `upgrade.json` file, run:
 
 ```bash
-avalanche blockchain upgrade generate testblockchain
+lux blockchain upgrade generate testblockchain
 ```
 
 If you didn't create `testblockchain` yet, you would see this result:
 
 ```bash
-avalanche blockchain upgrade generate testblockchain
-The provided Avalanche L1 name "testblockchain" does not exist
+lux blockchain upgrade generate testblockchain
+The provided Lux L1 name "testblockchain" does not exist
 ```
 
-Again, it makes no sense to try the upgrade command if the Avalanche L1 doesn't exist. If that's the case, please go ahead and [create](/docs/tooling/avalanche-cli) the Avalanche L1 first.
+Again, it makes no sense to try the upgrade command if the Lux L1 doesn't exist. If that's the case, please go ahead and [create](/docs/tooling/lux-cli) the Lux L1 first.
 
-If the Avalanche L1 definition exists, the tool launches a wizard. It may feel a bit redundant, but you first see some warnings, to draw focus to the dangers involved:
+If the Lux L1 definition exists, the tool launches a wizard. It may feel a bit redundant, but you first see some warnings, to draw focus to the dangers involved:
 
 ```bash
-avalanche blockchain upgrade generate testblockchain
+lux blockchain upgrade generate testblockchain
 Performing a network upgrade requires coordinating the upgrade network-wide.
 A network upgrade changes the rule set used to process and verify blocks, such that any node that
 upgrades incorrectly or fails to upgrade by the time that upgrade goes into effect may become
@@ -47,7 +47,7 @@ out of sync with the rest of the network.
 Any mistakes in configuring network upgrades or coordinating them on validators may cause the
 network to halt and recovering may be difficult.
 Please consult
-https://build.avax.network/docs/subnets/customize-a-subnet#network-upgrades-enabledisable-precompiles
+https://build.lux.network/docs/subnets/customize-a-subnet#network-upgrades-enabledisable-precompiles
 for more information
 Use the arrow keys to navigate: ↓ ↑ → ←
 ? Press [Enter] to continue, or abort by choosing 'no':
@@ -60,7 +60,7 @@ Go ahead and select `Yes` if you understand everything and you agree.
 You see a last note, before the actual configuration wizard starts:
 
 ```bash
-Avalanchego and this tool support configuring multiple precompiles.
+Luxgo and this tool support configuring multiple precompiles.
 However, we suggest to only configure one per upgrade.
 
 Use the arrow keys to navigate: ↓ ↑ → ←
@@ -71,11 +71,11 @@ Use the arrow keys to navigate: ↓ ↑ → ←
     Transaction Allow List
 ```
 
-Refer to [Precompiles](/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1#precompiles) for a description of available precompiles and how to configure them.
+Refer to [Precompiles](/docs/lux-l1s/evm-configuration/customize-lux-l1#precompiles) for a description of available precompiles and how to configure them.
 
 Make sure you understand precompiles thoroughly and how to configure them before attempting to continue.
 
-For every precompile in the list, the wizard guides you to provide correct information by prompting relevant questions. For the sake of this tutorial, select `Transaction Allow List`. The document [Restricting Who Can Submit Transactions](/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1#restricting-who-can-submit-transactions) describes what this precompile is about.
+For every precompile in the list, the wizard guides you to provide correct information by prompting relevant questions. For the sake of this tutorial, select `Transaction Allow List`. The document [Restricting Who Can Submit Transactions](/docs/lux-l1s/evm-configuration/customize-lux-l1#restricting-who-can-submit-transactions) describes what this precompile is about.
 
 ```bash
 ✔ Transaction Allow List
@@ -117,7 +117,7 @@ Use the arrow keys to navigate: ↓ ↑ → ←
 This will enable the addresses added in this section to add other admins and/or add enabled addresses for transaction issuance. The addresses provided in this tutorial are fake.
 
 <Callout type="warn">
-However, make sure you or someone you trust have full control over the addresses. Otherwise, you might bring your Avalanche L1 to a halt.
+However, make sure you or someone you trust have full control over the addresses. Otherwise, you might bring your Lux L1 to a halt.
 </Callout>
 
 ```bash
@@ -212,15 +212,15 @@ So at this point you can either:
 
 - Deploy your upgrade bytes locally
 - Export your upgrade bytes to a file, for installation on a validator running on another machine
-- Import a file into a different machine running Avalanche-CLI
+- Import a file into a different machine running Lux-CLI
 
 How To Upgrade a Local Network[​](#how-to-upgrade-a-local-network "Direct link to heading")
 -------------------------------------------------------------------------------------------
 
 The normal use case for this operation is that:
 
-- You already created an Avalanche L1
-- You already deployed the Avalanche L1 locally
+- You already created an Lux L1
+- You already deployed the Lux L1 locally
 - You already generated the upgrade file with the preceding command or imported into the tool
 - This tool already started the network
 
@@ -229,37 +229,37 @@ If the preceding requirements aren't met, the network upgrade command fails.
 Therefore, to apply your generated or imported upgrade configuration:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain
+lux blockchain upgrade apply testblockchain
 ```
 
-A number of checks run. For example, if you created the Avalanche L1 but didn't deploy it locally:
+A number of checks run. For example, if you created the Lux L1 but didn't deploy it locally:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain
+lux blockchain upgrade apply testblockchain
 Error: no deployment target available
 Usage:
-  avalanche blockchain upgrade apply [blockchainName] [flags]
+  lux blockchain upgrade apply [blockchainName] [flags]
 
 Flags:
-      --avalanchego-chain-config-dir string   avalanchego's chain config file directory (default "/home/fabio/.avalanchego/chains")
-      --config                                create upgrade config for future Avalanche L1 deployments (same as generate)
-      --fuji fuji                             apply upgrade existing fuji deployment (alias for `testnet`)
+      --luxgo-chain-config-dir string   luxgo's chain config file directory (default "/home/fabio/.luxgo/chains")
+      --config                                create upgrade config for future Lux L1 deployments (same as generate)
+      --testnet testnet                             apply upgrade existing testnet deployment (alias for `testnet`)
   -h, --help                                  help for apply
       --local local                           apply upgrade existing local deployment
       --mainnet mainnet                       apply upgrade existing mainnet deployment
       --print                                 if true, print the manual config without prompting (for public networks only)
-      --testnet testnet                       apply upgrade existing testnet deployment (alias for `fuji`)
+      --testnet testnet                       apply upgrade existing testnet deployment (alias for `testnet`)
 
 Global Flags:
       --log-level string   log level for the application (default "ERROR")
 ```
 
-Go ahead and [deploy](/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-locally) first your Avalanche L1 if that's your case.
+Go ahead and [deploy](/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-locally) first your Lux L1 if that's your case.
 
-If you already had deployed the Avalanche L1 instead, you see something like this:
+If you already had deployed the Lux L1 instead, you see something like this:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain
+lux blockchain upgrade apply testblockchain
 Use the arrow keys to navigate: ↓ ↑ → ←
 ? What deployment would you like to upgrade:
   ▸ Existing local deployment
@@ -291,33 +291,33 @@ The next upgrade will go into effect 2023-03-31 09:00:00
 
 There is only so much the tool can do here for you. It installed the upgrade bytes _as-is_ as you configured respectively provided them to the tool. You should verify yourself that the upgrades were actually installed correctly, for example issuing some transactions - mind the timestamp!.
 
-Apply the Upgrade to a Public Node (Fuji or Mainnet)[​](#apply-the-upgrade-to-a-public-node-fuji-or-mainnet "Direct link to heading")
+Apply the Upgrade to a Public Node (Testnet or Mainnet)[​](#apply-the-upgrade-to-a-public-node-testnet-or-mainnet "Direct link to heading")
 -------------------------------------------------------------------------------------------------------------------------------------
 
-For this scenario to work, you should also have deployed the Avalanche L1 to the public network (Fuji or Mainnet) with this tool. Otherwise, the tool won't know the details of the Avalanche L1, and won't be able to guide you.
+For this scenario to work, you should also have deployed the Lux L1 to the public network (Testnet or Mainnet) with this tool. Otherwise, the tool won't know the details of the Lux L1, and won't be able to guide you.
 
-Assuming the Avalanche L1 has been already deployed to Fuji, when running the `apply` command, the tool notices the deployment:
+Assuming the Lux L1 has been already deployed to Testnet, when running the `apply` command, the tool notices the deployment:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain
+lux blockchain upgrade apply testblockchain
 Use the arrow keys to navigate: ↓ ↑ → ←
 ? What deployment would you like to upgrade:
     Existing local deployment
-  ▸ Fuji
+  ▸ Testnet
 ```
 
-If not, you would not find the `Fuji` entry here.
+If not, you would not find the `Testnet` entry here.
 
 <Callout title="Note">
-This scenario assumes that you are running the `fuji` validator on the same machine which is running Avalanche-CLI.
+This scenario assumes that you are running the `testnet` validator on the same machine which is running Lux-CLI.
 </Callout>
 
-If this is the case, the tool tries to install the upgrade file at the expected destination. If you use default paths, it tries to install at `$HOME/.avalanchego/chains/`, creating the chain id directory, so that the file finally ends up at `$HOME/.avalanchego/chains/<chain-id>/upgrade.json`.
+If this is the case, the tool tries to install the upgrade file at the expected destination. If you use default paths, it tries to install at `$HOME/.luxgo/chains/`, creating the chain id directory, so that the file finally ends up at `$HOME/.luxgo/chains/<chain-id>/upgrade.json`.
 
-If you are _not_ using default paths, you can configure the path by providing the flag `--avalanchego-chain-config-dir` to the tool. For example:
+If you are _not_ using default paths, you can configure the path by providing the flag `--luxgo-chain-config-dir` to the tool. For example:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain --avalanchego-chain-config-dir /path/to/your/chains
+lux blockchain upgrade apply testblockchain --luxgo-chain-config-dir /path/to/your/chains
 ```
 
 Make sure to identify correctly where your chain config dir is, or the node might fail to find it.
@@ -325,26 +325,26 @@ Make sure to identify correctly where your chain config dir is, or the node migh
 If all is correct, the file gets installed:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain
-✔ Fuji
-The chain config dir avalanchego uses is set at /home/fabio/.avalanchego/chains
-Trying to install the upgrade files at the provided /home/fabio/.avalanchego/chains path
+lux blockchain upgrade apply testblockchain
+✔ Testnet
+The chain config dir luxgo uses is set at /home/fabio/.luxgo/chains
+Trying to install the upgrade files at the provided /home/fabio/.luxgo/chains path
 Successfully installed upgrade file
 ```
 
-If however the node is _not_ running on this same machine where you are executing Avalanche-CLI, there is no point in running this command for a Fuji node. In this case, you might rather export the file and install it at the right location.
+If however the node is _not_ running on this same machine where you are executing Lux-CLI, there is no point in running this command for a Testnet node. In this case, you might rather export the file and install it at the right location.
 
 To see the instructions about how to go about this, add the `--print` flag:
 
 ```bash
-avalanche blockchain upgrade apply testblockchain --print
-✔ Fuji
+lux blockchain upgrade apply testblockchain --print
+✔ Testnet
 To install the upgrade file on your validator:
 
-1. Identify where your validator has the avalanchego chain config dir configured.
-   The default is at $HOME/.avalanchego/chains (/home/user/.avalanchego/chains on this machine).
+1. Identify where your validator has the luxgo chain config dir configured.
+   The default is at $HOME/.luxgo/chains (/home/user/.luxgo/chains on this machine).
    If you are using a different chain config dir for your node, use that one.
-2. Create a directory with the blockchainID in the configured chain-config-dir (e.g. $HOME/.avalanchego/chains/ExDKhjXqiVg7s35p8YJ56CJpcw6nJgcGCCE7DbQ4oBknZ1qXi) if doesn't already exist.
+2. Create a directory with the blockchainID in the configured chain-config-dir (e.g. $HOME/.luxgo/chains/ExDKhjXqiVg7s35p8YJ56CJpcw6nJgcGCCE7DbQ4oBknZ1qXi) if doesn't already exist.
 3. Create an `upgrade.json` file in the blockchain directory with the content of your upgrade file.
    This is the content of your upgrade file as configured in this tool:
 {
@@ -364,7 +364,7 @@ To install the upgrade file on your validator:
    ******************************************************************************************************************
    * Upgrades are tricky. The syntactic correctness of the upgrade file is important.                               *
    * The sequence of upgrades must be strictly observed.                                                            *
-   * Make sure you understand https://build.avax.network/docs/nodes/configure/configs-flags#subnet-chain-configs  *
+   * Make sure you understand https://build.lux.network/docs/nodes/configure/configs-flags#subnet-chain-configs  *
    * before applying upgrades manually.                                                                             *
    ******************************************************************************************************************
 ```
@@ -377,14 +377,14 @@ Export the Upgrade File[​](#export-the-upgrade-file "Direct link to heading")
 If you have generated the upgrade file, you can export it:
 
 ```bash
-avalanche blockchain upgrade export testblockchain
+lux blockchain upgrade export testblockchain
 ✔ Provide a path where we should export the file to: /tmp/testblockchain-upgrade.json
 ```
 
 Just provide a valid path to the prompt, and the tool exports the file there.
 
 ```bash
-avalanche blockchain upgrade export testblockchain
+lux blockchain upgrade export testblockchain
 Provide a path where we should export the file to: /tmp/testblockchain-upgrade.json
 Writing the upgrade bytes file to "/tmp/testblockchain-upgrade.json"...
 File written successfully.
@@ -395,12 +395,12 @@ You can now take that file and copy it to validator nodes, see preceding instruc
 Import the Upgrade File[​](#import-the-upgrade-file "Direct link to heading")
 -----------------------------------------------------------------------------
 
-You or someone else might have generated the file elsewhere, or on another machine. And now you want to install it on the validator machine, using Avalanche-CLI.
+You or someone else might have generated the file elsewhere, or on another machine. And now you want to install it on the validator machine, using Lux-CLI.
 
 You can import the file:
 
 ```bash
-avalanche blockchain upgrade import testblockchain
+lux blockchain upgrade import testblockchain
 Provide the path to the upgrade file to import: /tmp/testblockchain-upgrade.json
 ```
 

@@ -1,15 +1,15 @@
 ---
-title: ICM Contracts Avalanche L1s on Devnet
-description: This how-to guide focuses on deploying ICM contract-enabled Avalanche L1s to a Devnet.
+title: ICM Contracts Lux L1s on Devnet
+description: This how-to guide focuses on deploying ICM contract-enabled Lux L1s to a Devnet.
 ---
 
-After this tutorial, you would have created a Devnet and deployed two Avalanche L1s in it, and have enabled them to cross-communicate with each other and with the C-Chain through ICM contracts and the underlying Warp technology.
+After this tutorial, you would have created a Devnet and deployed two Lux L1s in it, and have enabled them to cross-communicate with each other and with the LUExchange-Chain through ICM contracts and the underlying Warp technology.
 
 For more information on cross chain messaging through ICM contracts and Warp, check:
 
 - [Cross Chain References](/docs/cross-chain)
 
-Note that currently only [Subnet-EVM](https://github.com/ava-labs/subnet-evm) and [Subnet-EVM-Based](/docs/avalanche-l1s/evm-configuration/evm-l1-customization) virtual machines support ICM contracts.
+Note that currently only [Subnet-EVM](https://github.com/luxfi/subnet-evm) and [Subnet-EVM-Based](/docs/lux-l1s/evm-configuration/evm-l1-customization) virtual machines support ICM contracts.
 
 ## Prerequisites
 
@@ -19,12 +19,12 @@ Before we begin, you will need to have:
 
 Note: the tutorial uses AWS hosts, but Devnets can also be created and operated in other supported cloud providers, such as GCP.
 
-Create Avalanche L1s Configurations[​](#create-avalanche-l1s-configurations "Direct link to heading")
+Create Lux L1s Configurations[​](#create-lux-l1s-configurations "Direct link to heading")
 -----------------------------------------------------------------------------------------
 
-For this section we will follow this [steps](/docs/tooling/avalanche-cli/cross-chain/teleporter-local-network#create-avalanche-l1s-configurations), to create two ICM contract-enabled Avalanche L1s, `<chain1>` and `<chain2>`.
+For this section we will follow this [steps](/docs/tooling/lux-cli/cross-chain/teleporter-local-network#create-lux-l1s-configurations), to create two ICM contract-enabled Lux L1s, `<chain1>` and `<chain2>`.
 
-Create a Devnet and Deploy an Avalanche L1 in It[​](#create-a-devnet-and-deploy-a-avalanche-l1-in-it "Direct link to heading")
+Create a Devnet and Deploy an Lux L1 in It[​](#create-a-devnet-and-deploy-a-lux-l1-in-it "Direct link to heading")
 -----------------------------------------------------------------------------------------------------------------
 
 Let's use the `devnet wiz` command to create a devnet `<devnetName>` and deploy `<chain1>` in it.
@@ -32,47 +32,47 @@ Let's use the `devnet wiz` command to create a devnet `<devnetName>` and deploy 
 The devnet will be created in the `us-east-1` region of AWS, and will consist of 5 validators only.
 
 ```
-avalanche node devnet wiz <devnetName> <chain1> --aws --node-type default --region us-east-1 --num-validators 5 --num-apis 0 --enable-monitoring=false --default-validator-params 
+lux node devnet wiz <devnetName> <chain1> --aws --node-type default --region us-east-1 --num-validators 5 --num-apis 0 --enable-monitoring=false --default-validator-params 
 
 Creating the devnet...
 
 Creating new EC2 instance(s) on AWS...
 ...
 
-Deploying [Avalanche L1] to Cluster <devnetName>
+Deploying [Lux L1] to Cluster <devnetName>
 ...
 
 configuring AWM RElayer on host i-0f1815c016b555fcc
 
-Setting the nodes as Avalanche L1 trackers
+Setting the nodes as Lux L1 trackers
 ...
 
-Setting up ICM contracts on Avalanche L1
+Setting up ICM contracts on Lux L1
 
-Teleporter Messenger successfully deployed to Avalanche L1 (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Teleporter Registry successfully deployed to Avalanche L1 (0xb623C4495220C603D0A939D32478F55891a61750)
+Teleporter Messenger successfully deployed to Lux L1 (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to Lux L1 (0xb623C4495220C603D0A939D32478F55891a61750)
 Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
 Teleporter Registry successfully deployed to c-chain (0x5DB9A7629912EBF95876228C24A848de0bfB43A9)
 
 Starting AWM Relayer Service
 
 setting AWM Relayer on host i-0f1815c016b555fcc to relay L1 chain1
-updating configuration file ~/.avalanche-cli/nodes/i-0f1815c016b555fcc/services/awm-relayer/awm-relayer-config.json
+updating configuration file ~/.lux-cli/nodes/i-0f1815c016b555fcc/services/awm-relayer/awm-relayer-config.json
 
 Devnet <devnetName> is successfully created and is now validating blockchain chain1!
 
-Avalanche L1 <chain1> RPC URL: http://67.202.23.231:9650/ext/bc/fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p/rpc
+Lux L1 <chain1> RPC URL: http://67.202.23.231:9650/ext/bc/fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p/rpc
  
-✓ Cluster information YAML file can be found at ~/.avalanche-cli/nodes/inventories/<devnetName>/clusterInfo.yaml at local host
+✓ Cluster information YAML file can be found at ~/.lux-cli/nodes/inventories/<devnetName>/clusterInfo.yaml at local host
 ```
 
 Notice some details here:
 
-- Two smart contracts are deployed to the Avalanche L1: Teleporter Messenger and Teleporter Registry
-- Both ICM smart contracts are also deployed to `C-Chain`
-- [AWM ICM Relayer](https://github.com/ava-labs/icm-services/tree/main/relayer is installed and configured as a service into one of the nodes (A Relayer [listens](/docs/cross-chain/teleporter/overview#data-flow) for new messages being generated on a source Avalanche L1 and sends them to the destination Avalanche L1.)
+- Two smart contracts are deployed to the Lux L1: Teleporter Messenger and Teleporter Registry
+- Both ICM smart contracts are also deployed to `LUExchange-Chain`
+- [AWM ICM Relayer](https://github.com/luxfi/icm-services/tree/main/relayer is installed and configured as a service into one of the nodes (A Relayer [listens](/docs/cross-chain/teleporter/overview#data-flow) for new messages being generated on a source Lux L1 and sends them to the destination Lux L1.)
 
-CLI configures the Relayer to enable every Avalanche L1 to send messages to all other Avalanche L1s. If you add more Avalanche L1s to the Devnet, the Relayer will be automatically reconfigured.
+CLI configures the Relayer to enable every Lux L1 to send messages to all other Lux L1s. If you add more Lux L1s to the Devnet, the Relayer will be automatically reconfigured.
 
 Checking Devnet Configuration and Relayer Logs[​](#checking-devnet-configuration-and-relayer-logs "Direct link to heading")
 ---------------------------------------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ Checking Devnet Configuration and Relayer Logs[​](#checking-devnet-configurati
 Execute `node list` command to get a list of the devnet nodes:
 
 ```
-avalanche node list
+lux node list
 
 Cluster "<devnetName>" (Devnet)
   Node i-0f1815c016b555fcc (NodeID-91PGQ7keavfSV1XVFva2WsQXWLWZqqqKe) 67.202.23.231 [Validator,Relayer]
@@ -95,7 +95,7 @@ Notice that, in this case, `i-0f1815c016b555fcc` was set as Relayer. This host c
 To view the Relayer logs, the following command can be used:
 
 ```
-avalanche node ssh i-0f1815c016b555fcc "journalctl -u awm-relayer --no-pager"
+lux node ssh i-0f1815c016b555fcc "journalctl -u awm-relayer --no-pager"
 
   [Node i-0f1815c016b555fcc (NodeID-91PGQ7keavfSV1XVFva2WsQXWLWZqqqKe) 67.202.23.231 [Validator,Relayer]]
 Warning: Permanently added '67.202.23.231' (ED25519) to the list of known hosts.
@@ -124,17 +124,17 @@ Apr 05 14:15:08 ip-172-31-47-187 awm-relayer[6886]: {"level":"info","timestamp":
 Apr 05 14:15:08 ip-172-31-47-187 awm-relayer[6886]: {"level":"info","timestamp":"2024-04-05T14:15:08.180Z","logger":"awm-relayer","caller":"main/main.go:295","msg":"Relayer initialized. Listening for messages to relay.","originBlockchainID":"fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p"}
 ```
 
-Deploying the Second Avalanche L1[​](#deploying-the-second-avalanche-l1 "Direct link to heading")
+Deploying the Second Lux L1[​](#deploying-the-second-lux-l1 "Direct link to heading")
 -------------------------------------------------------------------------------------
 
 Let's use the `devnet wiz` command again to deploy `<chain2>`.
 
-When deploying Avalanche L1 `<chain2>`, the two ICM contracts will not be deployed to C-Chain in Local Network as they have already been deployed when we deployed the first Avalanche L1.
+When deploying Lux L1 `<chain2>`, the two ICM contracts will not be deployed to LUExchange-Chain in Local Network as they have already been deployed when we deployed the first Lux L1.
 
 ```
-avalanche node devnet wiz <devnetName> <chain2> --default-validator-params 
+lux node devnet wiz <devnetName> <chain2> --default-validator-params 
 
-Adding Avalanche L1 into existing devnet <devnetName>...
+Adding Lux L1 into existing devnet <devnetName>...
 ...
 
 Deploying [chain2] to Cluster <devnetName>
@@ -142,25 +142,25 @@ Deploying [chain2] to Cluster <devnetName>
 
 Stopping AWM Relayer Service
 
-Setting the nodes as Avalanche L1 trackers
+Setting the nodes as Lux L1 trackers
 ...
 
-Setting up ICM contracts on Avalanche L1
+Setting up ICM contracts on Lux L1
 
-Teleporter Messenger successfully deployed to Avalanche L1 (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Teleporter Registry successfully deployed to Avalanche L1 (0xb623C4495220C603D0A939D32478F55891a61750)
+Teleporter Messenger successfully deployed to Lux L1 (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to Lux L1 (0xb623C4495220C603D0A939D32478F55891a61750)
 Teleporter Messenger has already been deployed to c-chain
 
 Starting AWM Relayer Service
 
 setting AWM Relayer on host i-0f1815c016b555fcc to relay L1 chain2
-updating configuration file ~/.avalanche-cli/nodes/i-0f1815c016b555fcc/services/awm-relayer/awm-relayer-config.json
+updating configuration file ~/.lux-cli/nodes/i-0f1815c016b555fcc/services/awm-relayer/awm-relayer-config.json
 
-Devnet <devnetName> is now validating Avalanche L1 chain2
+Devnet <devnetName> is now validating Lux L1 chain2
 
-Avalanche L1 <chain2> RPC URL: http://67.202.23.231:9650/ext/bc/7gKt6evRnkA2uVHRfmk9WrH3dYZH9gEVVxDAknwtjvtaV3XuQ/rpc
+Lux L1 <chain2> RPC URL: http://67.202.23.231:9650/ext/bc/7gKt6evRnkA2uVHRfmk9WrH3dYZH9gEVVxDAknwtjvtaV3XuQ/rpc
 
-✓ Cluster information YAML file can be found at ~/.avalanche-cli/nodes/inventories/<devnetName>/clusterInfo.yaml at local host
+✓ Cluster information YAML file can be found at ~/.lux-cli/nodes/inventories/<devnetName>/clusterInfo.yaml at local host
 ```
 
 Verify ICM Contracts Are Successfully Set Up[​](#verify-teleporter-is-successfully-set-up "Direct link to heading")
@@ -169,18 +169,18 @@ Verify ICM Contracts Are Successfully Set Up[​](#verify-teleporter-is-successf
 To verify that ICM contracts are successfully set up, let's send a couple of cross messages:
 
 ```
-avalanche teleporter msg C-Chain chain1 "Hello World" --cluster <devnetName>
+lux teleporter msg LUExchange-Chain chain1 "Hello World" --cluster <devnetName>
 
-Delivering message "this is a message" to source Avalanche L1 "C-Chain" (2EfJg86if9Ka5Ag73JRfoqWz4EGuFwtemaNf4XiBBpUW4YngS6)
-Waiting for message to be received at destination Avalanche L1 "chain1" (fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p)
+Delivering message "this is a message" to source Lux L1 "LUExchange-Chain" (2EfJg86if9Ka5Ag73JRfoqWz4EGuFwtemaNf4XiBBpUW4YngS6)
+Waiting for message to be received at destination Lux L1 "chain1" (fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p)
 Message successfully Teleported!
 ```
 
 ```
-avalanche teleporter msg chain2 chain1 "Hello World" --cluster <devnetName>
+lux teleporter msg chain2 chain1 "Hello World" --cluster <devnetName>
 
-Delivering message "this is a message" to source Avalanche L1 "chain2" (29WP91AG7MqPUFEW2YwtKnsnzVrRsqcWUpoaoSV1Q9DboXGf4q)
-Waiting for message to be received at destination Avalanche L1 "chain1" (fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p)
+Delivering message "this is a message" to source Lux L1 "chain2" (29WP91AG7MqPUFEW2YwtKnsnzVrRsqcWUpoaoSV1Q9DboXGf4q)
+Waiting for message to be received at destination Lux L1 "chain1" (fqcM24LNb3kTV7KD1mAvUJXYy5XunwP8mrE44YuNwPjgZHY6p)
 Message successfully Teleported!
 ```
 
@@ -189,9 +189,9 @@ You have sent your first ICM message in the Devnet!
 Obtaining Information on ICM Contract Deploys[​](#obtaining-information-on-teleporter-deploys "Direct link to heading")
 ---------------------------------------------------------------------------------------------------------------------
 
-### Obtaining Avalanche L1 Information[​](#obtaining-avalanche-l1-information "Direct link to heading")
+### Obtaining Lux L1 Information[​](#obtaining-lux-l1-information "Direct link to heading")
 
-By executing `blockchain describe` on an ICM contract-enabled Avalanche L1, the following relevant information can be found:
+By executing `blockchain describe` on an ICM contract-enabled Lux L1, the following relevant information can be found:
 
 - Blockchain RPC URL
 - Blockchain ID in cb58 format
@@ -202,7 +202,7 @@ By executing `blockchain describe` on an ICM contract-enabled Avalanche L1, the 
 Let's get the information for `<chain1>`:
 
 ```
-avalanche blockchain describe <chain1>
+lux blockchain describe <chain1>
 
  _____       _        _ _
 |  __ \     | |      (_) |
@@ -214,7 +214,7 @@ avalanche blockchain describe <chain1>
 +--------------------------------+----------------------------------------------------------------------------------------+
 |           PARAMETER            |                               VALUE                                                    |
 +--------------------------------+----------------------------------------------------------------------------------------+
-| Blockchain Name                    | Avalanche L1                                                                            |
+| Blockchain Name                    | Lux L1                                                                            |
 +--------------------------------+----------------------------------------------------------------------------------------+
 | ChainID                        | 1                                                                                      |
 +--------------------------------+----------------------------------------------------------------------------------------+
@@ -246,12 +246,12 @@ avalanche blockchain describe <chain1>
 ...
 ```
 
-### Obtaining C-Chain Information[​](#obtaining-c-chain-information "Direct link to heading")
+### Obtaining LUExchange-Chain Information[​](#obtaining-c-chain-information "Direct link to heading")
 
-Similar information can be found for C-Chain by using `primary describe`:
+Similar information can be found for LUExchange-Chain by using `primary describe`:
 
 ```
-avalanche primary describe --cluster <devnetName>
+lux primary describe --cluster <devnetName>
 
    _____       _____ _           _         _____
   / ____|     / ____| |         (_)       |  __ \
@@ -267,7 +267,7 @@ avalanche primary describe --cluster <devnetName>
 +------------------------------+--------------------------------------------------------------------+
 | EVM Chain ID                 | 43112                                                              |
 +------------------------------+--------------------------------------------------------------------+
-| TOKEN SYMBOL                 | AVAX                                                               |
+| TOKEN SYMBOL                 | LUX                                                               |
 +------------------------------+--------------------------------------------------------------------+
 | Address                      | 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC                         |
 +------------------------------+--------------------------------------------------------------------+
@@ -291,12 +291,12 @@ Controlling Relayer Execution[​](#controlling-relayer-execution "Direct link t
 CLI provides two commands to remotely control Relayer execution:
 
 ```
-avalanche interchain relayer stop --cluster <devnetName>
+lux interchain relayer stop --cluster <devnetName>
 ✓ Remote AWM Relayer on i-0f1815c016b555fcc successfully stopped
 ```
 
 ```
-avalanche interchain relayer start --cluster <devnetName>
+lux interchain relayer start --cluster <devnetName>
 ✓ Remote AWM Relayer on i-0f1815c016b555fcc successfully started
 
 ```

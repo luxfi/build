@@ -7,7 +7,7 @@ icon: BookOpen
 ---
 import { Steps, Step } from 'fumadocs-ui/components/steps';
 
-The contracts in the [`validator-manager`](https://github.com/ava-labs/icm-contracts/tree/main/contracts/validator-manager) branch define the Validator Manager used to manage Subnet-only Validators. 
+The contracts in the [`validator-manager`](https://github.com/luxfi/icm-contracts/tree/main/contracts/validator-manager) branch define the Validator Manager used to manage Subnet-only Validators. 
 
 For this section we have blurred out some of the contracts, as these are not relevant to the Proof of Authority hierarchy used to create a **permissioned L1**:
 
@@ -51,11 +51,11 @@ The validator management system follows a layered architecture, with each level 
 The `ACP99Manager` is the foundational abstract contract that standardizes validator management for EVM-based L1s, as defined in [ACP-99](/docs/acps/99-validatorsetmanager-contract). This standard emerged after [ACP-77](/docs/acps/77-reinventing-subnets) introduced the protocol-level capability for L1s to manage their own validators. ACP99Manager provides four essential functions that all validator managers must implement:
 
 - **`initializeValidatorSet()`**: Establishes the initial validator set when converting an existing Subnet to an L1
-- **`completeValidatorRegistration()`**: Finalizes validator addition after P-Chain confirmation
-- **`completeValidatorRemoval()`**: Finalizes validator removal after P-Chain confirmation
-- **`completeValidatorWeightUpdate()`**: Finalizes weight changes after P-Chain confirmation
+- **`completeValidatorRegistration()`**: Finalizes validator addition after Platform-Chain confirmation
+- **`completeValidatorRemoval()`**: Finalizes validator removal after Platform-Chain confirmation
+- **`completeValidatorWeightUpdate()`**: Finalizes weight changes after Platform-Chain confirmation
 
-These functions handle the critical interactions with the P-Chain through Warp messages, forming the backbone of cross-chain validator management.
+These functions handle the critical interactions with the Platform-Chain through Warp messages, forming the backbone of cross-chain validator management.
 
 ### ValidatorManager (Concrete Implementation)
 

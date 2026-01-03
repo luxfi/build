@@ -95,7 +95,7 @@ function DeployExampleERC20() {
         supply of 1,000,000 tokens will be minted to your wallet - view the
         contract{" "}
         <a
-          href="https://github.com/ava-labs/icm-contracts/blob/51dd21550444e7141d938fd721d994e29a58f7af/contracts/mocks/ExampleERC20.sol"
+          href="https://github.com/luxfi/icm-contracts/blob/51dd21550444e7141d938fd721d994e29a58f7af/contracts/mocks/ExampleERC20.sol"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-500 hover:underline"

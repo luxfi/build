@@ -1,22 +1,22 @@
 ---
-title: "AvalancheGo X-Chain RPC"
-description: "This page is an overview of the X-Chain RPC associated with AvalancheGo."
-edit_url: https://github.com/ava-labs/avalanchego/edit/master/vms/avm/service.md
+title: "LuxGo Exchange-Chain RPC"
+description: "This page is an overview of the Exchange-Chain RPC associated with LuxGo."
+edit_url: https://github.com/luxfi/luxgo/edit/master/vms/avm/service.md
 ---
 
-The [X-Chain](https://build.avax.network/docs/quick-start/primary-network#x-chain),
-Avalanche's native platform for creating and trading assets, is an instance of the Avalanche Virtual
-Machine (AVM). This API allows clients to create and trade assets on the X-Chain and other instances
+The [Exchange-Chain](https://build.lux.network/docs/quick-start/primary-network#x-chain),
+Lux's native platform for creating and trading assets, is an instance of the Lux Virtual
+Machine (AVM). This API allows clients to create and trade assets on the Exchange-Chain and other instances
 of the AVM.
 
 ## Format
 
 This API uses the `json 2.0` RPC format. For more information on making JSON RPC calls, see
-[here](https://build.avax.network/docs/api-reference/guides/issuing-api-calls).
+[here](https://build.lux.network/docs/api-reference/guides/issuing-api-calls).
 
 ## Endpoints
 
-`/ext/bc/X` to interact with the X-Chain.
+`/ext/bc/X` to interact with the Exchange-Chain.
 
 `/ext/bc/blockchainID` to interact with other AVM instances, where `blockchainID` is the ID of a
 blockchain running the AVM.
@@ -26,7 +26,7 @@ blockchain running the AVM.
 ### `avm.getAllBalances`
 
 <Callout type="warn">
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 </Callout>
 
 Get the balances of all assets controlled by a given address.
@@ -50,7 +50,7 @@ curl -X POST --data '{
     "id"     : 1,
     "method" :"avm.getAllBalances",
     "params" :{
-        "address":"X-avax1c79e0dd0susp7dc8udq34jgk2yvve7hapvdyht"
+        "address":"X-lux1c79e0dd0susp7dc8udq34jgk2yvve7hapvdyht"
     }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
 ```
@@ -63,7 +63,7 @@ curl -X POST --data '{
   "result": {
     "balances": [
       {
-        "asset": "AVAX",
+        "asset": "LUX",
         "balance": "102"
       },
       {
@@ -100,7 +100,7 @@ avm.getAssetDescription({assetID: string}) -> {
   .100, etc.
 
 <Callout type="note">
-The AssetID for AVAX differs depending on the network you are on.
+The AssetID for LUX differs depending on the network you are on.
 
 Mainnet: FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
 
@@ -130,8 +130,8 @@ curl -X POST --data '{
     "jsonrpc": "2.0",
     "result": {
         "assetID": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
-        "name": "Avalanche",
-        "symbol": "AVAX",
+        "name": "Lux",
+        "symbol": "LUX",
         "denomination": "9"
     },
     "id": 1
@@ -141,7 +141,7 @@ curl -X POST --data '{
 ### `avm.getBalance`
 
 <Callout type="warn">
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 </Callout>
 
 Get the balance of an asset controlled by a given address.
@@ -166,7 +166,7 @@ curl -X POST --data '{
   "id"     : 1,
   "method" :"avm.getBalance",
   "params" :{
-      "address":"X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address":"X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "assetID": "2pYGetDWyKdHxpFxh2LHeoLNCH6H5vxxCxHQtFnnFaYxLsqtHC"
   }
 }' -H 'content-type:application/json;' 127.0.0.1:9650/ext/bc/X
@@ -397,7 +397,7 @@ curl -X POST --data '{
             "assetID": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
             "fxID": "spdxUxVJQbX85MGxMHbKw1sHxMnSqJ3QBzDyDYEP3h6TLuxqQ",
             "output": {
-              "addresses": ["X-avax1tnuesf6cqwnjw7fxjyk7lhch0vhf0v95wj5jvy"],
+              "addresses": ["X-lux1tnuesf6cqwnjw7fxjyk7lhch0vhf0v95wj5jvy"],
               "amount": 2569382395,
               "locktime": 0,
               "threshold": 1
@@ -429,9 +429,9 @@ Where:
   transaction's creator is allowed to consume one of this transaction's inputs. Each credential is a
   list of signatures.
 - `unsignedTx` is the non-signature portion of the transaction.
-- `networkID` is the ID of the network this transaction happened on. (Avalanche Mainnet is `1`.)
-- `blockchainID` is the ID of the blockchain this transaction happened on. (Avalanche Mainnet
-  X-Chain is `2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM`.)
+- `networkID` is the ID of the network this transaction happened on. (Lux Mainnet is `1`.)
+- `blockchainID` is the ID of the blockchain this transaction happened on. (Lux Mainnet
+  Exchange-Chain is `2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM`.)
 - Each element of `outputs` is an output (UTXO) of this transaction that is not being exported to
   another chain.
 - Each element of `inputs` is an input of this transaction which has not been imported from another
@@ -443,7 +443,7 @@ Where:
 
 An output contains:
 
-- `assetID`: The ID of the asset being transferred. (The Mainnet Avax ID is
+- `assetID`: The ID of the asset being transferred. (The Mainnet Lux ID is
   `FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z`.)
 - `fxID`: The ID of the FX this output uses.
 - `output`: The FX-specific contents of this output.
@@ -455,7 +455,7 @@ Most outputs use the secp256k1 FX, look like this:
   "assetID": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
   "fxID": "spdxUxVJQbX85MGxMHbKw1sHxMnSqJ3QBzDyDYEP3h6TLuxqQ",
   "output": {
-    "addresses": ["X-avax126rd3w35xwkmj8670zvf7y5r8k36qa9z9803wm"],
+    "addresses": ["X-lux126rd3w35xwkmj8670zvf7y5r8k36qa9z9803wm"],
     "amount": 1530084210,
     "locktime": 0,
     "threshold": 1
@@ -483,7 +483,7 @@ avm.getTxFee() ->
 - `txFee` is the default fee for making transactions.
 - `createAssetTxFee` is the fee for creating a new asset.
 
-All fees are denominated in nAVAX.
+All fees are denominated in nLUX.
 
 **Example Call**:
 
@@ -597,7 +597,7 @@ avm.getUTXOs({
 #### **Example**
 
 Suppose we want all UTXOs that reference at least one of
-`X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5` and `X-avax1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6`.
+`X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5` and `X-lux1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6`.
 
 ```sh
 curl -X POST --data '{
@@ -605,7 +605,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getUTXOs",
     "params" :{
-        "addresses":["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5", "X-avax1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6"],
+        "addresses":["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5", "X-lux1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6"],
         "limit":5,
         "encoding": "hex"
     }
@@ -627,7 +627,7 @@ This gives response:
       "0x000054f6826c39bc957c0c6d44b70f961a994898999179cc32d21eb09c1908d7167b00000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f000000070000000000000001000000000000000000000001000000018ba98dabaebcd83056799841cfbc567d8b10f2166290e79d"
     ],
     "endIndex": {
-      "address": "X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address": "X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
     },
     "encoding": "hex"
@@ -645,10 +645,10 @@ curl -X POST --data '{
     "id"     :2,
     "method" :"avm.getUTXOs",
     "params" :{
-        "addresses":["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+        "addresses":["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
         "limit":5,
         "startIndex": {
-            "address": "X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+            "address": "X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
             "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
         },
         "encoding": "hex"
@@ -670,7 +670,7 @@ This gives response:
       "0x000082f30327514f819da6009fad92b5dba24d27db01e29ad7541aa8e6b6b554615c00000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f000000070000000000000001000000000000000000000001000000018ba98dabaebcd83056799841cfbc567d8b10f216779c2d59"
     ],
     "endIndex": {
-      "address": "X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address": "X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "utxo": "21jG2RfqyHUUgkTLe2tUp6ETGLriSDTW3th8JXFbPRNiSZ11jK"
     },
     "encoding": "hex"
@@ -692,7 +692,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"avm.getUTXOs",
     "params" :{
-        "addresses":["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5", "X-avax1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6"],
+        "addresses":["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5", "X-lux1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6"],
         "limit":5,
         "sourceChain": "P",
         "encoding": "hex"
@@ -711,7 +711,7 @@ This gives response:
       "0x00001f989ffaf18a18a59bdfbf209342aa61c6a62a67e8639d02bb3c8ddab315c6fa0000000039c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d550088000000070011c304cd7eb5c0000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29c83497819"
     ],
     "endIndex": {
-      "address": "X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address": "X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "utxo": "2Sz2XwRYqUHwPeiKoRnZ6ht88YqzAF1SQjMYZQQaB5wBFkAqST"
     },
     "encoding": "hex"
@@ -772,7 +772,7 @@ This call is made to the wallet API endpoint:
 `/ext/bc/X/wallet`
 
 :::caution
-Endpoint deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Endpoint deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 
 :::
 

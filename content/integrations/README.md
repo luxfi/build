@@ -3,9 +3,9 @@ title: Publish your integration
 description: README guide for adding yourself to the integrations page
 category: "null"
 ---
-# Contributing to Avalanche Integrations
+# Contributing to Lux Integrations
 
-Welcome! This guide will help you add your integration to the [Avalanche Integrations page](https://build.avax.network/integrations).
+Welcome! This guide will help you add your integration to the [Lux Integrations page](https://build.lux.network/integrations).
 
 ## Quick Start
 
@@ -31,7 +31,7 @@ Every integration must include frontmatter with these fields:
 ---
 title: Your Integration Name
 category: Category Name
-available: ["C-Chain"]
+available: ["LUExchange-Chain"]
 description: "Brief one-sentence description of what your integration does."
 logo: /images/your-logo.png
 developer: Your Company Name
@@ -46,7 +46,7 @@ documentation: https://docs.yourwebsite.com/
 |-------|------|-------------|---------|
 | `title` | string | Display name of your integration | `"Chainlink"` |
 | `category` | string | Category (see list below) | `"Oracles"` |
-| `available` | array | Supported networks | `["C-Chain"]`, `["C-Chain", "All Avalanche L1s"]` |
+| `available` | array | Supported networks | `["LUExchange-Chain"]`, `["LUExchange-Chain", "All Lux L1s"]` |
 | `description` | string | One-sentence overview | `"Decentralized oracle network providing reliable data feeds."` |
 | `logo` | string | Path to logo in `/public/images/` | `/images/chainlink.png` |
 | `developer` | string | Company or developer name | `"Chainlink Labs"` |
@@ -96,13 +96,13 @@ Choose the most appropriate category for your integration:
 Your integration page should include these sections:
 
 ### 1. Overview (Required)
-Explain what your integration does and why it's valuable for Avalanche developers.
+Explain what your integration does and why it's valuable for Lux developers.
 
 ```markdown
 ## Overview
 
 [Your Integration] is a [type of service] that provides [main functionality]. 
-Built on Avalanche's C-Chain, it enables developers to [key benefits].
+Built on Lux's LUExchange-Chain, it enables developers to [key benefits].
 ```
 
 ### 2. Features (Required)
@@ -113,7 +113,7 @@ List key features using bullet points:
 
 - **Feature Name**: Brief description of the feature
 - **Another Feature**: What it does and why it matters
-- **Third Feature**: Benefits for Avalanche developers
+- **Third Feature**: Benefits for Lux developers
 ```
 
 ### 3. Getting Started (Optional but Recommended)
@@ -121,7 +121,7 @@ List key features using bullet points:
 
 If including Getting Started:
 - Keep it simple and focused
-- Show Avalanche-specific configuration
+- Show Lux-specific configuration
 - Include working code examples
 
 ```markdown
@@ -131,7 +131,7 @@ To begin using [Your Integration]:
 
 1. **Sign Up**: Create an account at [your website]
 2. **Get API Key**: Obtain your API credentials
-3. **Configure**: Set up for Avalanche C-Chain
+3. **Configure**: Set up for Lux LUExchange-Chain
 ```
 
 ### 4. Documentation (Required)
@@ -162,7 +162,7 @@ Brief closing statement:
 ```markdown
 ## Conclusion
 
-[Your Integration] provides [summary of value] for blockchain applications on Avalanche, 
+[Your Integration] provides [summary of value] for blockchain applications on Lux, 
 offering [key differentiators].
 ```
 
@@ -172,8 +172,8 @@ offering [key differentiators].
 ---
 title: Example Protocol
 category: DeFi
-available: ["C-Chain", "All Avalanche L1s"]
-description: "Example Protocol provides decentralized lending and borrowing on Avalanche with competitive rates."
+available: ["LUExchange-Chain", "All Lux L1s"]
+description: "Example Protocol provides decentralized lending and borrowing on Lux with competitive rates."
 logo: /images/example-protocol.png
 developer: Example Labs
 website: https://example.protocol/
@@ -182,8 +182,8 @@ documentation: https://docs.example.protocol/
 
 ## Overview
 
-Example Protocol is a decentralized lending platform on Avalanche that enables users to lend 
-and borrow crypto assets with competitive interest rates. Built specifically for Avalanche's 
+Example Protocol is a decentralized lending platform on Lux that enables users to lend 
+and borrow crypto assets with competitive interest rates. Built specifically for Lux's 
 high-performance infrastructure, it provides efficient DeFi services with low transaction costs.
 
 ## Features
@@ -191,8 +191,8 @@ high-performance infrastructure, it provides efficient DeFi services with low tr
 - **Lending Markets**: Supply crypto assets to earn interest
 - **Borrowing**: Borrow against collateral with flexible terms
 - **Multi-Asset Support**: Support for major cryptocurrencies and stablecoins
-- **Low Fees**: Benefit from Avalanche's low transaction costs
-- **High Performance**: Fast transaction confirmation on Avalanche C-Chain
+- **Low Fees**: Benefit from Lux's low transaction costs
+- **High Performance**: Fast transaction confirmation on Lux LUExchange-Chain
 
 ## Documentation
 
@@ -208,8 +208,8 @@ Example Protocol serves various DeFi needs:
 
 ## Conclusion
 
-Example Protocol brings efficient DeFi lending to Avalanche, offering users competitive rates 
-and reliable service powered by Avalanche's fast, low-cost infrastructure.
+Example Protocol brings efficient DeFi lending to Lux, offering users competitive rates 
+and reliable service powered by Lux's fast, low-cost infrastructure.
 ```
 
 ## Logo Guidelines
@@ -230,13 +230,13 @@ Place your logo in `/public/images/` directory.
 
 If your integration requires code, follow these guidelines:
 
-### Use Avalanche-Specific Values
+### Use Lux-Specific Values
 
 ```typescript
-// ✅ Good - Shows Avalanche configuration
+// ✅ Good - Shows Lux configuration
 const provider = new Provider({
-  chainId: 43114, // Avalanche C-Chain
-  rpcUrl: "https://api.avax.network/ext/bc/C/rpc"
+  chainId: 43114, // Lux LUExchange-Chain
+  rpcUrl: "https://api.lux.network/ext/bc/C/rpc"
 });
 ```
 
@@ -255,7 +255,7 @@ import { YourSDK } from 'your-sdk';
 
 const client = new YourSDK({
   apiKey: process.env.API_KEY,
-  network: 'avalanche'
+  network: 'lux'
 });
 
 const result = await client.query({ /* ... */ });
@@ -280,7 +280,7 @@ yarn dev
 Visit `http://localhost:3000/integrations` to preview your integration.
 
 ### 3. Submit Pull Request
-- Fork the [builders-hub repository](https://github.com/ava-labs/builders-hub)
+- Fork the [lux-build repository](https://github.com/luxfi/lux-build)
 - Create a new branch: `git checkout -b add-your-integration`
 - Commit your changes: `git commit -m "Add Your Integration"`
 - Push to your fork: `git push origin add-your-integration`
@@ -299,7 +299,7 @@ Visit `http://localhost:3000/integrations` to preview your integration.
 ### Writing Style
 - **Concise**: Keep descriptions brief and scannable
 - **Professional**: Maintain a professional, technical tone
-- **Avalanche-Focused**: Emphasize Avalanche-specific benefits
+- **Lux-Focused**: Emphasize Lux-specific benefits
 - **Consistent**: Follow the style of existing integrations
 
 ### Formatting
@@ -327,17 +327,17 @@ Visit `http://localhost:3000/integrations` to preview your integration.
 
 ## Need Help?
 
-- **Questions?** Open an issue on [GitHub](https://github.com/ava-labs/builders-hub/issues)
+- **Questions?** Open an issue on [GitHub](https://github.com/luxfi/lux-build/issues)
 - **Technical Issues?** Check existing integrations for reference
-- **Style Questions?** Review [similar integrations](https://github.com/ava-labs/builders-hub/tree/master/content/integrations)
+- **Style Questions?** Review [similar integrations](https://github.com/luxfi/lux-build/tree/master/content/integrations)
 
 ## Additional Resources
 
-- [Builders Hub Repository](https://github.com/ava-labs/builders-hub)
-- [Avalanche Documentation](https://docs.avax.network/)
+- [Lux Build Repository](https://github.com/luxfi/lux-build)
+- [Lux Documentation](https://docs.lux.network/)
 - [MDX Documentation](https://mdxjs.com/)
 
 ---
 
-**Thank you for contributing to the Avalanche ecosystem!** 🔺
+**Thank you for contributing to the Lux ecosystem!** 🔺
 

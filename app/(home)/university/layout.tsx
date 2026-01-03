@@ -3,14 +3,14 @@ import { createMetadata } from '@/utils/metadata';
 
 export const metadata: Metadata = createMetadata({
   title: 'University',
-  description: 'Discover opportunities for students and educators to explore blockchain technology, access educational resources, and join our community of builders on Avalanche.',
+  description: 'Discover opportunities for students and educators to explore blockchain technology, access educational resources, and join our community of builders on Lux.',
   openGraph: {
     url: '/university',
     images: {
       url: '/api/og/university',
       width: 1200,
       height: 630,
-      alt: 'Avalanche University Program',
+      alt: 'Lux University Program',
     },
   },
   twitter: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = createMetadata({
       url: '/api/og/university',
       width: 1200,
       height: 630,
-      alt: 'Avalanche University Program',
+      alt: 'Lux University Program',
     },
   },
 });

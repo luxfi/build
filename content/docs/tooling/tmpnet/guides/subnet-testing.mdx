@@ -27,10 +27,10 @@ import (
     "os"
     "time"
 
-    "github.com/ava-labs/avalanchego/ids"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/utils/constants"
-    "github.com/ava-labs/avalanchego/utils/logging"
+    "github.com/luxfi/luxgo/ids"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/utils/constants"
+    "github.com/luxfi/luxgo/utils/logging"
 )
 
 // Create 5-node network
@@ -38,7 +38,7 @@ network := &tmpnet.Network{
     Nodes: tmpnet.NewNodesOrPanic(5),
     DefaultRuntimeConfig: tmpnet.NodeRuntimeConfig{
         Process: &tmpnet.ProcessRuntimeConfig{
-            AvalancheGoPath: os.Getenv("AVALANCHEGO_PATH"),
+            LuxGoPath: os.Getenv("LUXGO_PATH"),
             PluginDir:       os.Getenv("AVAGO_PLUGIN_DIR"),
         },
     },
@@ -185,7 +185,7 @@ func testL1Conversion(t *testing.T) {
 
 ## Cross-Subnet Messaging
 
-Test Avalanche Warp Messaging between subnets:
+Test Lux Warp Messaging between subnets:
 
 ```go
 func testWarpMessaging(t *testing.T) {
@@ -284,7 +284,7 @@ func testSubnetConfigUpdate(t *testing.T) {
         Subnets: []*tmpnet.Subnet{subnet},
         DefaultRuntimeConfig: tmpnet.NodeRuntimeConfig{
             Process: &tmpnet.ProcessRuntimeConfig{
-                AvalancheGoPath: avalanchegoPath,
+                LuxGoPath: luxgoPath,
                 PluginDir:       pluginDir,
             },
         },
@@ -488,6 +488,6 @@ cat ~/.tmpnet/networks/latest/NodeID-*/flags.json | jq '.["track-subnets"]'
 
 ## Additional Resources
 
-- [Subnet Examples in E2E Tests](https://github.com/ava-labs/avalanchego/tree/master/tests/e2e)
+- [Subnet Examples in E2E Tests](https://github.com/luxfi/luxgo/tree/master/tests/e2e)
 - [Subnet Documentation](/docs/subnets)
 - [Warp Messaging](/docs/cross-chain)

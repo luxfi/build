@@ -4,7 +4,7 @@ import { Input, type Suggestion } from "./Input";
 import { useL1ListStore } from "../stores/l1ListStore";
 import { useCreateChainStore } from "../stores/createChainStore";
 import { useMemo, useState, useCallback, useEffect } from "react";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import { getSubnetInfo } from "../coreViem/utils/glacier";
 
 // Primary network subnet ID

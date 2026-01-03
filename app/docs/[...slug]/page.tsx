@@ -43,14 +43,14 @@ export default async function Page(props: {
 
   const { body: MDX, toc } = await page.data.load();
   // Use page.path which contains the actual file path relative to collection root
-  // (e.g., "tooling/avalanche-sdk/index.mdx" for an index file)
+  // (e.g., "tooling/lux-sdk/index.mdx" for an index file)
   // This correctly handles both regular .mdx files and index.mdx files
   const path = `content/docs/${page.path}`;
 
   // Use custom edit URL if provided in frontmatter, otherwise use default path
   const editUrl =
     (page.data.edit_url as string) ||
-    `https://github.com/ava-labs/builders-hub/edit/master/${path}`;
+    `https://github.com/luxfi/lux-build/edit/master/${path}`;
 
   return (
     <DocsPage
@@ -184,7 +184,7 @@ export async function generateMetadata(props: {
 
   const description =
     page.data.description ??
-    "Developer documentation for everything related to the Avalanche ecosystem.";
+    "Developer documentation for everything related to the Lux ecosystem.";
 
   const imageParams = new URLSearchParams();
   imageParams.set("title", page.data.title || "Untitled");

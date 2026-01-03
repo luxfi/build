@@ -13,7 +13,7 @@ import { ExplorerDropdown } from "@/components/stats/ExplorerDropdown";
 import { MobileSocialLinks } from "@/components/stats/MobileSocialLinks";
 import { SearchInputWithClear } from "@/components/stats/SearchInputWithClear";
 import { SortIcon } from "@/components/stats/SortIcon";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import l1ChainsData from "@/constants/l1-chains.json";
 import Image from "next/image";
@@ -536,9 +536,9 @@ export default function ChainValidatorsPage() {
             <div className="space-y-4 sm:space-y-6 flex-1">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                  <AvalancheLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#E84142" />
+                  <LuxLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#FFFFFF" />
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                 </div>
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -935,7 +935,7 @@ export default function ChainValidatorsPage() {
                       </td>
                       <td className="border-r border-slate-100 dark:border-neutral-800 px-4 py-2 text-right font-mono text-sm">
                         {formatNumber((validator.remainingBalance || 0) / 1e9)}{" "}
-                        AVAX
+                        LUX
                       </td>
                       <td className="border-r border-slate-100 dark:border-neutral-800 px-4 py-2 text-right text-xs">
                         {formatTimestamp(validator.creationTimestamp)}
@@ -1007,7 +1007,7 @@ export default function ChainValidatorsPage() {
                         </span>
                       </td>
                       <td className="border-r border-slate-100 dark:border-neutral-800 px-4 py-2 text-right font-mono text-sm">
-                        {formatStake(validator.amountStaked)} AVAX
+                        {formatStake(validator.amountStaked)} LUX
                       </td>
                       <td className="border-r border-slate-100 dark:border-neutral-800 px-4 py-2 text-right text-sm">
                         {validator.delegationFee}%
@@ -1016,7 +1016,7 @@ export default function ChainValidatorsPage() {
                         {validator.delegatorCount}
                       </td>
                       <td className="px-4 py-2 text-right font-mono text-sm">
-                        {formatStake(validator.amountDelegated)} AVAX
+                        {formatStake(validator.amountDelegated)} LUX
                       </td>
                     </tr>
                   ))

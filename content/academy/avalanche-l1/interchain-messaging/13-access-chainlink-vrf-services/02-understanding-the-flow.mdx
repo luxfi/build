@@ -24,7 +24,7 @@ The DApp, running on an L1 without direct Chainlink support, initiates a request
 
 ### `CrossChainVRFConsumer` Sends Cross-Chain Message
 
-Once the DApp submits the request, the `CrossChainVRFConsumer` prepares a message containing the necessary VRF request parameters (such as `keyHash`, `request confirmations`, `gas limit`, etc.). This message is sent across chains via the `TeleporterMessenger` to the `CrossChainVRFWrapper` on the Chainlink-supported network (e.g., Fuji).
+Once the DApp submits the request, the `CrossChainVRFConsumer` prepares a message containing the necessary VRF request parameters (such as `keyHash`, `request confirmations`, `gas limit`, etc.). This message is sent across chains via the `TeleporterMessenger` to the `CrossChainVRFWrapper` on the Chainlink-supported network (e.g., Testnet).
 
 </Step>
 <Step>
@@ -62,7 +62,7 @@ Finally, the `CrossChainVRFConsumer` processes the random words and sends them t
 
 </Steps>
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/interchain-messaging/cross-chain-vrf-NiG2EHgc4ulWBUx9Ekx0DZxTGdoHXk.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/interchain-messaging/cross-chain-vrf-NiG2EHgc4ulWBUx9Ekx0DZxTGdoHXk.png)
 
 This end-to-end process demonstrates how decentralized applications on unsupported L1 networks can request verifiable randomness from Chainlink VRF, leveraging **ICM** to handle cross-chain communication.
 

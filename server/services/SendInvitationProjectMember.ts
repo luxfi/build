@@ -1,6 +1,6 @@
 import { sendMail } from './mail';
 export async function sendInvitation(email: string, projectName: string, inviterName: string, inviteLink: string) {
-  const text = `${inviterName} has invited you to join the project "${projectName}" on Avalanche Builder's Hub. Click the link below to accept the invitation:\n\n${inviteLink}`;
+  const text = `${inviterName} has invited you to join the project "${projectName}" on Lux Builder's Hub. Click the link below to accept the invitation:\n\n${inviteLink}`;
   const subject = `You're invited to collaborate on "${projectName}"`;
   const html = `
     <div style="background-color: #18181B; color: white; font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; border-radius: 8px; border: 1px solid #EF4444; text-align: center;">
@@ -19,8 +19,8 @@ export async function sendInvitation(email: string, projectName: string, inviter
       <p style="font-size: 12px; color: #A1A1AA;">If you did not expect this invitation, you can safely ignore this email.</p>
 
       <div style="margin-top: 20px;">
-        <img src="https://build.avax.network/logo-white.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;">
-        <p style="font-size: 12px; color: #A1A1AA;">Avalanche Builder's Hub © 2025</p>
+        <img src="https://build.lux.network/logo-white.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;">
+        <p style="font-size: 12px; color: #A1A1AA;">Lux Builder's Hub © 2025</p>
       </div>
     </div>
     `;

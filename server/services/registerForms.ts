@@ -220,15 +220,15 @@ export async function sendConfirmationMail(
       <div style="background-color: #27272A; border: 1px solid #EF4444; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
         <p style="font-size: 20px; font-weight: bold; color: #ffffff; margin: 8px 0;">Your registration for</p>
         <p style="font-size: 20px; font-weight: bold; color: #EF4444; margin: 8px 0;">${hackathon?.title}</p>
-        <p style="font-size: 20px; font-weight: bold; color: #ffffff; margin: 8px 0;"> has been approved. Please <a href="https://t.me/c/avalancheacademy/4337" style="color: #3B82F6; text-decoration: underline;">join the hackathon chat</a>. </p>
+        <p style="font-size: 20px; font-weight: bold; color: #ffffff; margin: 8px 0;"> has been approved. Please <a href="https://t.me/c/luxacademy/4337" style="color: #3B82F6; text-decoration: underline;">join the hackathon chat</a>. </p>
         <p style="font-size: 10px; font-weight: bold; color: #ffffff; margin: 8px 0;">This is an automated message — please do not reply.</p>
       </div>
 
       <p style="font-size: 12px; color: #A1A1AA;">If you did not expect this invitation, you can safely ignore this email.</p>
 
       <div style="margin-top: 20px;">
-        <img src="https://build.avax.network/logo-white.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;">
-        <p style="font-size: 12px; color: #A1A1AA;">Avalanche Builder's Hub © 2025</p>
+        <img src="https://build.lux.network/logo-white.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;">
+        <p style="font-size: 12px; color: #A1A1AA;">Lux Builder's Hub © 2025</p>
       </div>
     </div>
     `;
@@ -272,13 +272,13 @@ export async function sendRegistrationToHubSpot(
       'name': registrationData.company_name || '',
       'telegram_handle': registrationData.telegram_user || '',
       'github_url': registrationData.github_portfolio || '',
-      //'avalanche_ecosystem_member': registrationData.hackathon_participation || '',
+      //'lux_ecosystem_member': registrationData.hackathon_participation || '',
       'hackathon_interests': registrationData.interests || '',
       'programming_language_familiarity': registrationData.languages || '',
       'employment_role_other': registrationData.roles || 'Other',
       'tooling_familiarity': registrationData.tools || '',
       'founder_check': registrationData.founder_check ? 'Yes' : 'No',
-      'avalanche_ecosystem_member': registrationData.avalanche_ecosystem_member ? 'Yes' : 'No',
+      'lux_ecosystem_member': registrationData.lux_ecosystem_member ? 'Yes' : 'No',
       //'hackathon_event_id': registrationData.hackathon_id, // TODO: add this to the HS form
       //'hackathon_event_title': hackathon?.title || '', // TODO: add this to the HS form
       
@@ -303,18 +303,18 @@ export async function sendRegistrationToHubSpot(
     const hubspotPayload = {
       fields: fields,
       context: {
-        pageUri: 'https://build.avax.network/hackathons/registration-form',
+        pageUri: 'https://build.lux.network/hackathons/registration-form',
         pageName: 'Hackathon Registration'
       },
       legalConsentOptions: {
         consent: {
           consentToProcess: true,
-          text: "I agree to allow Avalanche Foundation to store and process my personal data for hackathon participation purposes.",
+          text: "I agree to allow Lux Foundation to store and process my personal data for hackathon participation purposes.",
           communications: [
             {
               value: registrationData.newsletter_subscription || false,
               subscriptionTypeId: 999,
-              text: "I would like to receive marketing emails from the Avalanche Foundation."
+              text: "I would like to receive marketing emails from the Lux Foundation."
             }
           ]
         }

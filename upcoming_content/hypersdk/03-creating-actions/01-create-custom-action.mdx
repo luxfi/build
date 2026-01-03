@@ -17,7 +17,7 @@ Let's add the Greeting action. This action doesn’t change anything; it simply 
 
 We will create a simple `Greeting` action that will greet the user with their name, the current date, and their balance. This action will not change the state of the chain, but it will read the user's balance.
 
-Place the following code in `actions/greeting.go`. The code includes some comments, but for more details, check out the [docs folder in HyperSDK](https://github.com/ava-labs/hypersdk/tree/main/docs).
+Place the following code in `actions/greeting.go`. The code includes some comments, but for more details, check out the [docs folder in HyperSDK](https://github.com/luxfi/hypersdk/tree/main/docs).
 
 ```go title="actions/greeting.go"
 package actions
@@ -27,14 +27,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ava-labs/avalanchego/ids"
+	"github.com/luxfi/luxgo/ids"
 
-	"github.com/ava-labs/hypersdk-starter/consts"
-	"github.com/ava-labs/hypersdk-starter/storage"
-	"github.com/ava-labs/hypersdk/chain"
-	"github.com/ava-labs/hypersdk/codec"
-	"github.com/ava-labs/hypersdk/state"
-	"github.com/ava-labs/hypersdk/utils"
+	"github.com/luxfi/hypersdk-starter/consts"
+	"github.com/luxfi/hypersdk-starter/storage"
+	"github.com/luxfi/hypersdk/chain"
+	"github.com/luxfi/hypersdk/codec"
+	"github.com/luxfi/hypersdk/state"
+	"github.com/luxfi/hypersdk/utils"
 )
 
 // Please see chain.Action interface description for more information

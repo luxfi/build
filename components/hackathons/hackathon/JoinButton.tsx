@@ -41,7 +41,7 @@ export default function JoinButton({
   const getButtonHref = () => {
     if (isRegistered) {
       if (showChatWhenRegistered) {
-        return "https://t.me/avalancheacademy";
+        return "https://t.me/luxacademy";
       }
       if (allowNavigationWhenRegistered) {
         if (customLink) {

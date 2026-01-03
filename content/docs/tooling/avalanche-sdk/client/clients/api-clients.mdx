@@ -4,18 +4,18 @@ title: API Clients
 
 ## Overview
 
-API clients provide access to node-level operations. They're included with the main Avalanche Client and handle administrative tasks, node information, health monitoring, and indexed blockchain queries.
+API clients provide access to node-level operations. They're included with the main Lux Client and handle administrative tasks, node information, health monitoring, and indexed blockchain queries.
 
-## Accessing from Avalanche Client
+## Accessing from Lux Client
 
-All API clients are available on the main Avalanche Client:
+All API clients are available on the main Lux Client:
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -44,7 +44,7 @@ const indexXChainTx = client.indexTx.xChain;
 
 Node configuration, aliases, logging, and profiling.
 
-### From Avalanche Client
+### From Lux Client
 
 ```typescript
 const admin = client.admin;
@@ -59,14 +59,14 @@ await admin.setLoggerLevel({
 ### Create Standalone Client
 
 ```typescript
-import { createAdminApiClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createAdminApiClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
 const adminClient = createAdminApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: {
     type: "http",
-    url: "https://api.avax.network/ext/admin",
+    url: "https://api.lux.network/ext/admin",
   },
 });
 
@@ -82,7 +82,7 @@ await adminClient.alias({
 
 Node and network information, statistics, and status.
 
-### From Avalanche Client
+### From Lux Client
 
 ```typescript
 const info = client.info;
@@ -95,11 +95,11 @@ const version = await info.getNodeVersion();
 ### Create Standalone Client
 
 ```typescript
-import { createInfoApiClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createInfoApiClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
 const infoClient = createInfoApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -113,7 +113,7 @@ const version = await infoClient.getNodeVersion();
 
 Node health monitoring and status checks.
 
-### From Avalanche Client
+### From Lux Client
 
 ```typescript
 const health = client.health;
@@ -126,11 +126,11 @@ const isAlive = await health.liveness();
 ### Create Standalone Client
 
 ```typescript
-import { createHealthApiClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createHealthApiClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
 const healthClient = createHealthApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -144,7 +144,7 @@ const liveness = await healthClient.liveness();
 
 ProposerVM operations for each chain.
 
-### From Avalanche Client
+### From Lux Client
 
 ```typescript
 // Access ProposerVM for each chain
@@ -156,26 +156,26 @@ const proposervmCChain = client.proposerVM.cChain;
 ### Create Standalone Client
 
 ```typescript
-import { createProposervmApiClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createProposervmApiClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-// P-Chain ProposerVM
+// Platform-Chain ProposerVM
 const proposervmPChain = createProposervmApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "proposervmPChain",
 });
 
-// X-Chain ProposerVM
+// Exchange-Chain ProposerVM
 const proposervmXChain = createProposervmApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "proposervmXChain",
 });
 
-// C-Chain ProposerVM
+// LUExchange-Chain ProposerVM
 const proposervmCChain = createProposervmApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "proposervmCChain",
 });
@@ -188,7 +188,7 @@ const pChainHeight = await proposervmPChain.getProposedHeight();
 
 Fast indexed queries for blockchain data.
 
-### From Avalanche Client
+### From Lux Client
 
 ```typescript
 // Block indexes
@@ -208,33 +208,33 @@ const lastBlock = await indexPChainBlock.getLastAccepted({
 ### Create Standalone Client
 
 ```typescript
-import { createIndexApiClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createIndexApiClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-// P-Chain block index
+// Platform-Chain block index
 const indexPChainBlock = createIndexApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "indexPChainBlock",
 });
 
-// C-Chain block index
+// LUExchange-Chain block index
 const indexCChainBlock = createIndexApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "indexCChainBlock",
 });
 
-// X-Chain block index
+// Exchange-Chain block index
 const indexXChainBlock = createIndexApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "indexXChainBlock",
 });
 
-// X-Chain transaction index
+// Exchange-Chain transaction index
 const indexXChainTx = createIndexApiClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
   clientType: "indexXChainTx",
 });
@@ -253,8 +253,8 @@ const block = await indexPChainBlock.getContainerByIndex({
 ### Node Health Check
 
 ```typescript
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -301,5 +301,5 @@ const block = await client.indexBlock.cChain.getContainerByIndex({
 ## Next Steps
 
 - **[API Methods Reference](methods/public-methods/api)** - Complete method documentation
-- **[Avalanche Client](clients/avalanche-client)** - Main client operations
+- **[Lux Client](clients/lux-client)** - Main client operations
 - **[Wallet Client](clients/wallet-client)** - Transaction operations

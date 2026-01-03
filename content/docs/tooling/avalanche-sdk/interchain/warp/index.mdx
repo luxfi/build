@@ -5,7 +5,7 @@ icon: layers
 
 ## Overview
 
-Warp messages enable cross-chain communication in Avalanche. Parse and build Warp protocol messages for validator registration, weight updates, and subnet conversions.
+Warp messages enable cross-chain communication in Lux. Parse and build Warp protocol messages for validator registration, weight updates, and subnet conversions.
 
 ## Supported Message Types
 
@@ -20,7 +20,7 @@ Warp messages enable cross-chain communication in Avalanche. Parse and build War
 import {
   WarpMessage,
   RegisterL1ValidatorMessage,
-} from "@avalanche-sdk/interchain/warp";
+} from "@lux-sdk/interchain/warp";
 
 // Parse a signed Warp message
 const signedWarpMsg = WarpMessage.fromHex(signedWarpMsgHex);
@@ -32,10 +32,10 @@ const registerMsg = RegisterL1ValidatorMessage.fromHex(signedWarpMsgHex);
 ## Methods
 
 <Cards>
-  <Card title="Parsing" href="/avalanche-sdk/interchain/warp/parsing">
+  <Card title="Parsing" href="/lux-sdk/interchain/warp/parsing">
     Parse Warp messages
   </Card>
-  <Card title="Building" href="/avalanche-sdk/interchain/warp/building">
+  <Card title="Building" href="/lux-sdk/interchain/warp/building">
     Build Warp messages
   </Card>
 </Cards>

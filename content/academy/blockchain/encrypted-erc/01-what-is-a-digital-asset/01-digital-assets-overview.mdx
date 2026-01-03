@@ -1,6 +1,6 @@
 ---
 title: Standards
-description: Learn about ERC-20, ERC-721, and ERC-1155 in the Avalanche ecosystem, starting from the concept of digital assets.
+description: Learn about ERC-20, ERC-721, and ERC-1155 in the Lux ecosystem, starting from the concept of digital assets.
 updated: 2025-09-02
 authors: [alejandro99so]
 icon: Coins
@@ -8,11 +8,11 @@ icon: Coins
 
 A **digital asset** is any representation of value, rights, or property stored and transacted on a blockchain. These can range from cryptocurrencies and stablecoins to in-game items, tokenized real estate, and certificates.  
 
-On Avalanche, most digital assets are created and managed on the **C-Chain**, which is fully compatible with the **EVM (Ethereum Virtual Machine)**. This compatibility allows Avalanche to use the same token standards as the broader EVM ecosystem while adding **high throughput, sub-second finality, and low fees**.  
+On Lux, most digital assets are created and managed on the **LUExchange-Chain**, which is fully compatible with the **EVM (Ethereum Virtual Machine)**. This compatibility allows Lux to use the same token standards as the broader EVM ecosystem while adding **high throughput, sub-second finality, and low fees**.  
 
-Because of this, developers building on Avalanche, whether deploying to **C-Chain** for **mainnet** or **Fuji** (testnet), use **standards** to ensure their tokens are interoperable with wallets, marketplaces, and decentralized applications. These standards define the rules for how tokens behave, how they are transferred, and how they are recognized across different platforms.
+Because of this, developers building on Lux, whether deploying to **LUExchange-Chain** for **mainnet** or **Testnet** (testnet), use **standards** to ensure their tokens are interoperable with wallets, marketplaces, and decentralized applications. These standards define the rules for how tokens behave, how they are transferred, and how they are recognized across different platforms.
 
-The three most widely used token standards in the EVM ecosystem, and therefore in Avalanche, are:
+The three most widely used token standards in the EVM ecosystem, and therefore in Lux, are:
 
 ---
 
@@ -23,7 +23,7 @@ The ERC-20 standard defines fungible tokens where each unit is identical.
 - Fungible: Each token has the same value as any other token of the same contract.
 - Divisible: Commonly 18 decimal places for microtransactions.
 - Highly interoperable with all EVM-compatible tools and dApps.
-- Extremely low-cost transfers on Avalanche due to low gas fees.
+- Extremely low-cost transfers on Lux due to low gas fees.
 
 **Common Functions**
 - `transfer(address to, uint amount)`
@@ -63,7 +63,7 @@ The ERC-1155 standard supports multiple token types (fungible, non-fungible, and
 
 ---
 
-## Standards Comparison Table (Avalanche Context)
+## Standards Comparison Table (Lux Context)
 
 | Feature | ERC-20 | ERC-721 | ERC-1155 |
 |---------|--------|---------|----------|
@@ -71,13 +71,13 @@ The ERC-1155 standard supports multiple token types (fungible, non-fungible, and
 | Uniqueness | No | Yes | Optional per token ID |
 | Metadata | No | Yes (`tokenURI`) | Yes |
 | Batch Transfers | No | No | Yes |
-| Typical Use Cases on Avalanche | Stablecoins, governance, utilities | NFTs, in-game items, certificates | Gaming, collectibles, asset baskets |
-| Gas Efficiency on Avalanche | High | Moderate | High (batch) |
+| Typical Use Cases on Lux | Stablecoins, governance, utilities | NFTs, in-game items, certificates | Gaming, collectibles, asset baskets |
+| Gas Efficiency on Lux | High | Moderate | High (batch) |
 | Privacy | None | None | None |
 | Interoperability | Very high | High | Medium–High |
 
 ---
 
-These standards are the foundation for asset creation and interaction in Avalanche’s C-Chain Mainnet and Fuji (Testnet). They allow developers to build interoperable applications and ensure that tokens can be used across different wallets, marketplaces, and decentralized protocols.  
+These standards are the foundation for asset creation and interaction in Lux’s LUExchange-Chain Mainnet and Testnet (Testnet). They allow developers to build interoperable applications and ensure that tokens can be used across different wallets, marketplaces, and decentralized protocols.  
 
-In the **next section**, we will explore the **current uses of these standards in blockchain**, with real examples from Avalanche’s ecosystem, including DeFi platforms, NFT marketplaces, gaming L1, and tokenized real-world assets.
+In the **next section**, we will explore the **current uses of these standards in blockchain**, with real examples from Lux’s ecosystem, including DeFi platforms, NFT marketplaces, gaming L1, and tokenized real-world assets.

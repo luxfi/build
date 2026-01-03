@@ -29,7 +29,7 @@ export function generateOGImage({
         backgroundColor: '#fafafa',
         overflow: 'hidden',
         alignItems: 'center',
-        backgroundImage: "url('https://build.avax.network/og.png')",
+        backgroundImage: "url('https://build.lux.network/og.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -110,7 +110,7 @@ export function generateOGImage({
                 />
               </g>
             </svg>
-            <span style={{paddingLeft: "10px"}}>build.avax.network/<span style={{color: "red"}}>{path}</span></span>
+            <span style={{paddingLeft: "10px"}}>build.lux.network/<span style={{color: "red"}}>{path}</span></span>
           </div>
         </div>
       </div>

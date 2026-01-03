@@ -1,11 +1,11 @@
 ---
-title: Avalanche Network Protocol 
+title: Lux Network Protocol 
 ---
 
 Overview[​](#overview "Direct link to heading")
 -----------------------------------------------
 
-Avalanche network defines the core communication format between Avalanche nodes. It uses the [primitive serialization](/docs/rpcs/other/standards/serialization-primitives) format for payload packing.
+Lux network defines the core communication format between Lux nodes. It uses the [primitive serialization](/docs/rpcs/other/standards/serialization-primitives) format for payload packing.
 
 `"Containers"` are mentioned extensively in the description. A Container is simply a generic term for blocks.
 
@@ -50,7 +50,7 @@ message Ping {
 ```
 
 - `uptime`: Uptime percentage on the primary network \[0, 100\].
-- `subnet_uptimes`: Uptime percentages on Avalanche L1s.
+- `subnet_uptimes`: Uptime percentages on Lux L1s.
 
 ### Pong[​](#pong "Direct link to heading")
 
@@ -84,10 +84,10 @@ message Version {
 - `my_time`: Unix timestamp when the `Version` message was created.
 - `ip_addr`: IP address of the peer.
 - `ip_port`: IP port of the peer.
-- `my_version`: Avalanche client version.
+- `my_version`: Lux client version.
 - `my_version_time`: Timestamp of the IP.
 - `sig`: Signature of the peer IP port pair at a provided timestamp.
-- `tracked_subnets`: Avalanche L1s the peer is tracking.
+- `tracked_subnets`: Lux L1s the peer is tracking.
 
 ### PeerList[​](#peerlist "Direct link to heading")
 

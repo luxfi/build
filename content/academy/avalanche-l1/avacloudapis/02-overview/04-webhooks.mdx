@@ -12,15 +12,15 @@ You can create receiver endpoints in your server in any programming language and
 
 ## What are AvaCloud Webhooks?
 
-With the Webhooks API, you can monitor real-time events on the Avalanche C-Chain and L1s. For example, you can monitor smart contract events, track NFT transfers, and observe wallet-to-wallet transactions.
+With the Webhooks API, you can monitor real-time events on the Lux LUExchange-Chain and L1s. For example, you can monitor smart contract events, track NFT transfers, and observe wallet-to-wallet transactions.
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/avacloudsdk/glacier-webhooks-xpLeH8o7slcnvOdWsIorDJSUeNlz04.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/avacloudsdk/glacier-webhooks-xpLeH8o7slcnvOdWsIorDJSUeNlz04.png)
 
 ### Key Features:
 - **Real-time notifications:** Receive immediate updates on specified on-chain activities without polling.
 - **Customizable:** Specify the desired event type to listen for, customizing notifications according to individual requirements.
 - **Secure:** Employ shared secrets and signature-based verification to guarantee that notifications originate from a trusted source.
-- **Broad Coverage:** Support for C-chain mainnet, testnet, and L1s within the Avalanche ecosystem, ensuring wide-ranging monitoring capabilities.
+- **Broad Coverage:** Support for C-chain mainnet, testnet, and L1s within the Lux ecosystem, ensuring wide-ranging monitoring capabilities.
 
 ### Use Cases:
 - **NFT Marketplace Transactions:** Get alerts for NFT minting, transfers, auctions, bids, sales, and other interactions within NFT marketplaces.
@@ -35,7 +35,7 @@ With the Webhooks API, you can monitor real-time events on the Avalanche C-Chain
 [Create a new webhook](https://developers.avacloud.io/webhooks-api/webhooks/create-a-webhook)
 ```bash
 curl --request POST \
-     --url https://glacier-api.avax.network/v1/webhooks \
+     --url https://glacier-api.lux.network/v1/webhooks \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --data '
@@ -49,7 +49,7 @@ curl --request POST \
 [Lists webhooks for the user.](https://developers.avacloud.io/webhooks-api/webhooks/list-webhooks)
 ```bash
 curl --request GET \
-     --url https://glacier-api.avax.network/v1/webhooks \
+     --url https://glacier-api.lux.network/v1/webhooks \
      --header 'accept: application/json'
 ```
 
@@ -59,7 +59,7 @@ curl --request GET \
 [Retrieves a webhook by ID.](https://developers.avacloud.io/webhooks-api/webhooks/get-a-webhook-by-id)
 ```bash
 curl --request GET \
-     --url https://glacier-api.avax.network/v1/webhooks/id \
+     --url https://glacier-api.lux.network/v1/webhooks/id \
      --header 'accept: application/json'
 ```
 
@@ -69,7 +69,7 @@ curl --request GET \
 [Deactivates a webhook by ID.](https://developers.avacloud.io/webhooks-api/webhooks/deactivate-a-webhook)
 ```bash
 curl --request DELETE \
-     --url https://glacier-api.avax.network/v1/webhooks/id \
+     --url https://glacier-api.lux.network/v1/webhooks/id \
      --header 'accept: application/json'
 ```
 
@@ -79,7 +79,7 @@ curl --request DELETE \
 [Updates an existing webhook.](https://developers.avacloud.io/webhooks-api/webhooks/update-a-webhook)
 ```bash
 curl --request PATCH \
-     --url https://glacier-api.avax.network/v1/webhooks/id \
+     --url https://glacier-api.lux.network/v1/webhooks/id \
      --header 'accept: application/json' \
      --header 'content-type: application/json'
 ```
@@ -89,7 +89,7 @@ curl --request PATCH \
 [Generates a new shared secret.](https://developers.avacloud.io/webhooks-api/webhooks/generate-a-shared-secret)
 ```bash
 curl --request POST \
-     --url https://glacier-api.avax.network/v1/webhooks:generateOrRotateSharedSecret \
+     --url https://glacier-api.lux.network/v1/webhooks:generateOrRotateSharedSecret \
      --header 'accept: application/json'
 ```
 
@@ -99,7 +99,7 @@ curl --request POST \
 [Get a previously generated shared secret.](https://developers.avacloud.io/webhooks-api/webhooks/get-a-shared-secret)
 ```bash
 curl --request GET \
-     --url https://glacier-api.avax.network/v1/webhooks:getSharedSecret \
+     --url https://glacier-api.lux.network/v1/webhooks:getSharedSecret \
      --header 'accept: application/json'
 ```
 
@@ -109,7 +109,7 @@ curl --request GET \
 [Add addresses to webhook.](https://developers.avacloud.io/webhooks-api/webhooks/add-addresses-to-webhook)
 ```bash
 curl --request PATCH \
-     --url https://glacier-api.avax.network/v1/webhooks/id/addresses \
+     --url https://glacier-api.lux.network/v1/webhooks/id/addresses \
      --header 'accept: application/json' \
      --header 'content-type: application/json'
 ```
@@ -119,7 +119,7 @@ curl --request PATCH \
 [Remove addresses from webhook.](https://developers.avacloud.io/webhooks-api/webhooks/remove-addresses-from-webhook)
 ```bash
 curl --request DELETE \
-     --url https://glacier-api.avax.network/v1/webhooks/id/addresses \
+     --url https://glacier-api.lux.network/v1/webhooks/id/addresses \
      --header 'accept: application/json' \
      --header 'content-type: application/json'
 ```
@@ -130,7 +130,7 @@ curl --request DELETE \
 [List adresses by webhook.](https://developers.avacloud.io/webhooks-api/webhooks/list-adresses-by-webhook)
 ```bash
 curl --request GET \
-     --url https://glacier-api.avax.network/v1/webhooks/id/addresses \
+     --url https://glacier-api.lux.network/v1/webhooks/id/addresses \
      --header 'accept: application/json'
 ```
 

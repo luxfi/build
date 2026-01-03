@@ -1,30 +1,30 @@
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-In this section, you’ll learn how to pause and resume your deployed Avalanche L1 using GitHub Codespaces. This will allow you to preserve the state of your blockchains and easily restore them when you return to development.
+In this section, you’ll learn how to pause and resume your deployed Lux L1 using GitHub Codespaces. This will allow you to preserve the state of your blockchains and easily restore them when you return to development.
 
 ### Restarting the Network After Codespace Pauses
 
-With **GitHub Codespaces**, you can easily spin up and manage your Avalanche L1 blockchains. However, after a period of inactivity, Codespace instances will automatically pause, or you can stop them manually.
+With **GitHub Codespaces**, you can easily spin up and manage your Lux L1 blockchains. However, after a period of inactivity, Codespace instances will automatically pause, or you can stop them manually.
 
 When you want to resume your work, start the Codespace instance again and follow these steps to restore your network.
 
 <Steps>
 <Step>
-### Start the Avalanche Network
-After restarting your Codespace instance, use the following command to restart your Avalanche network:
+### Start the Lux Network
+After restarting your Codespace instance, use the following command to restart your Lux network:
 
 ```bash
-avalanche network start
+lux network start
 ```
 
 Here’s what the output of this command looks like:
 
 ```bash
-$ avalanche network start
-Backend controller started, pid: 1781, output at: /home/vscode/.avalanche-cli/runs/server_20241007_035854/avalanche-cli-backend.log
+$ lux network start
+Backend controller started, pid: 1781, output at: /home/vscode/.lux-cli/runs/server_20241007_035854/lux-cli-backend.log
 Starting previously deployed and stopped snapshot
 Booting Network. Wait until healthy...
-Node logs directory: /home/vscode/.avalanche-cli/runs/network_20241007_035856/node<i>/logs
+Node logs directory: /home/vscode/.lux-cli/runs/network_20241007_035856/node<i>/logs
 
 Network ready to use.
 

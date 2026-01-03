@@ -5,7 +5,7 @@ icon: "key"
 
 ## Overview
 
-Private Key Accounts provide the simplest way to create an Avalanche account from a single private key. They support both EVM (C-Chain) and X/P (X-Chain/P-Chain) operations with unified address management.
+Private Key Accounts provide the simplest way to create an Lux account from a single private key. They support both EVM (LUExchange-Chain) and X/P (Exchange-Chain/Platform-Chain) operations with unified address management.
 
 **Best for:**
 
@@ -25,23 +25,23 @@ Private Key Accounts provide the simplest way to create an Avalanche account fro
 ### Basic Usage
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
 const privateKey = "0x1234...your_private_key_here";
-const account: AvalancheAccount = privateKeyToAvalancheAccount(privateKey);
+const account: LuxAccount = privateKeyToLuxAccount(privateKey);
 
 console.log("EVM Address:", account.getEVMAddress());
-console.log("X-Chain Address:", account.getXPAddress("X"));
-console.log("P-Chain Address:", account.getXPAddress("P"));
+console.log("Exchange-Chain Address:", account.getXPAddress("X"));
+console.log("Platform-Chain Address:", account.getXPAddress("P"));
 ```
 
 ### Working with Environment Variables
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
+const account = privateKeyToLuxAccount(process.env.PRIVATE_KEY!);
 ```
 
 ## Generating Private Keys
@@ -51,31 +51,31 @@ const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
 ```typescript
 import {
   generatePrivateKey,
-  privateKeyToAvalancheAccount,
-} from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+  privateKeyToLuxAccount,
+} from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
 const privateKey: string = generatePrivateKey();
 console.log("Generated private key:", privateKey);
 
-const account: AvalancheAccount = privateKeyToAvalancheAccount(privateKey);
+const account: LuxAccount = privateKeyToLuxAccount(privateKey);
 
 console.log("EVM Address:", account.getEVMAddress());
-console.log("X-Chain Address:", account.getXPAddress("X"));
-console.log("P-Chain Address:", account.getXPAddress("P"));
+console.log("Exchange-Chain Address:", account.getXPAddress("X"));
+console.log("Platform-Chain Address:", account.getXPAddress("P"));
 ```
 
 ## Account Properties
 
 ### EVM Account
 
-Each Avalanche account contains an EVM account for C-Chain operations:
+Each Lux account contains an EVM account for LUExchange-Chain operations:
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
-const account: AvalancheAccount = privateKeyToAvalancheAccount("0x...");
+const account: LuxAccount = privateKeyToLuxAccount("0x...");
 
 // Access EVM account properties
 const evmAccount = account.evmAccount;
@@ -92,16 +92,16 @@ if (evmAccount.publicKey) {
 
 ### XP Account
 
-Each Avalanche account contains an XP account for X-Chain and P-Chain operations:
+Each Lux account contains an XP account for Exchange-Chain and Platform-Chain operations:
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 import type {
-  AvalancheAccount,
+  LuxAccount,
   LocalXPAccount,
-} from "@avalanche-sdk/client/accounts";
+} from "@lux-sdk/client/accounts";
 
-const account: AvalancheAccount = privateKeyToAvalancheAccount("0x...");
+const account: LuxAccount = privateKeyToLuxAccount("0x...");
 
 // Access XP account properties
 if (account.xpAccount) {
@@ -118,17 +118,17 @@ if (account.xpAccount) {
 ### Get All Addresses
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
-const account: AvalancheAccount = privateKeyToAvalancheAccount("0x...");
+const account: LuxAccount = privateKeyToLuxAccount("0x...");
 
 // Get all addresses
 const addresses = {
   evm: account.getEVMAddress(), // "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"
-  xChain: account.getXPAddress("X"), // "X-avax1..."
-  pChain: account.getXPAddress("P"), // "P-avax1..."
-  base: account.getXPAddress(), // "avax1..." (without chain prefix)
+  xChain: account.getXPAddress("X"), // "X-lux1..."
+  pChain: account.getXPAddress("P"), // "P-lux1..."
+  base: account.getXPAddress(), // "lux1..." (without chain prefix)
 };
 
 console.log("All Addresses:", addresses);
@@ -137,23 +137,23 @@ console.log("All Addresses:", addresses);
 ### Network-Specific Addresses
 
 ```typescript
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
-const account: AvalancheAccount = privateKeyToAvalancheAccount("0x...");
+const account: LuxAccount = privateKeyToLuxAccount("0x...");
 
 // Mainnet addresses (default)
 const mainnetAddresses = {
   evm: account.getEVMAddress(),
-  xChain: account.getXPAddress("X", "avax"),
-  pChain: account.getXPAddress("P", "avax"),
+  xChain: account.getXPAddress("X", "lux"),
+  pChain: account.getXPAddress("P", "lux"),
 };
 
-// Testnet (Fuji) addresses
+// Testnet (Testnet) addresses
 const testnetAddresses = {
   evm: account.getEVMAddress(),
-  xChain: account.getXPAddress("X", "fuji"),
-  pChain: account.getXPAddress("P", "fuji"),
+  xChain: account.getXPAddress("X", "testnet"),
+  pChain: account.getXPAddress("P", "testnet"),
 };
 
 console.log("Mainnet:", mainnetAddresses);
@@ -163,25 +163,25 @@ console.log("Testnet:", testnetAddresses);
 ## Using with Wallet Client
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
+const account = privateKeyToLuxAccount(process.env.PRIVATE_KEY!);
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
-// C-Chain transaction
+// LUExchange-Chain transaction
 const txHash = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
   amount: 0.001,
 });
 
-// X/P-Chain transaction
+// X/Platform-Chain transaction
 const xpTx = await walletClient.xChain.prepareBaseTxn({
   outputs: [{ addresses: [account.getXPAddress("X")], amount: 1 }],
 });
@@ -191,21 +191,21 @@ await walletClient.sendXPTransaction(xpTx);
 ## Message Signing
 
 ```typescript
-import { signMessage } from "@avalanche-sdk/client/accounts";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { signMessage } from "@lux-sdk/client/accounts";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
 // EVM message signing
 const evmSignature = await signMessage({
   account: account.evmAccount,
-  message: "Hello Avalanche!",
+  message: "Hello Lux!",
 });
 
 // XP message signing
 if (account.xpAccount) {
-  const xpSignature = await account.xpAccount.signMessage("Hello Avalanche!");
-  const isValid = account.xpAccount.verify("Hello Avalanche!", xpSignature);
+  const xpSignature = await account.xpAccount.signMessage("Hello Lux!");
+  const isValid = account.xpAccount.verify("Hello Lux!", xpSignature);
 }
 ```
 
@@ -218,10 +218,10 @@ if (account.xpAccount) {
 
 ```typescript
 // ✅ Good
-const account = privateKeyToAvalancheAccount(process.env.PRIVATE_KEY!);
+const account = privateKeyToLuxAccount(process.env.PRIVATE_KEY!);
 
 // ❌ Bad
-const account = privateKeyToAvalancheAccount("0x1234...");
+const account = privateKeyToLuxAccount("0x1234...");
 ```
 
 ## Next Steps

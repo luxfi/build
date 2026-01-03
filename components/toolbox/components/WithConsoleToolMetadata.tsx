@@ -41,7 +41,7 @@ type ConsoleToolComponent = BaseConsoleToolComponent & {
  *     CrossChainTransferInner,
  *     {
  *         title: "Cross-Chain Transfer",
- *         description: "Transfer AVAX between Platform (P) and Contract (C) chains",
+ *         description: "Transfer LUX between Platform (P) and Contract (C) chains",
  *         toolRequirements: [WalletRequirementsConfigKey.CoreWalletConnected]
  *     }
  * );

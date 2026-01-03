@@ -5,11 +5,11 @@ icon: "map-pin"
 
 ## Overview
 
-Avalanche uses different address formats for each chain. EVM addresses work the same across networks, but XP addresses use network-specific HRPs (Human-Readable Prefixes).
+Lux uses different address formats for each chain. EVM addresses work the same across networks, but XP addresses use network-specific HRPs (Human-Readable Prefixes).
 
 ## Address Formats
 
-### EVM Addresses (C-Chain)
+### EVM Addresses (LUExchange-Chain)
 
 EVM addresses are the same across all networks:
 
@@ -17,18 +17,18 @@ EVM addresses are the same across all networks:
 const evmAddress = account.getEVMAddress(); // 0x742d35Cc...
 ```
 
-### XP Addresses (X/P-Chain)
+### XP Addresses (X/Platform-Chain)
 
 XP addresses use network-specific HRPs:
 
 ```typescript
 // Mainnet
-const mainnetX = account.getXPAddress("X", "avax"); // X-avax1...
-const mainnetP = account.getXPAddress("P", "avax"); // P-avax1...
+const mainnetX = account.getXPAddress("X", "lux"); // X-lux1...
+const mainnetP = account.getXPAddress("P", "lux"); // P-lux1...
 
-// Testnet (Fuji)
-const fujiX = account.getXPAddress("X", "fuji"); // X-fuji1...
-const fujiP = account.getXPAddress("P", "fuji"); // P-fuji1...
+// Testnet (Testnet)
+const testnetX = account.getXPAddress("X", "testnet"); // X-testnet1...
+const testnetP = account.getXPAddress("P", "testnet"); // P-testnet1...
 ```
 
 ## Network Configuration
@@ -37,15 +37,15 @@ const fujiP = account.getXPAddress("P", "fuji"); // P-fuji1...
 // Mainnet addresses
 const mainnet = {
   evm: account.getEVMAddress(),
-  xChain: account.getXPAddress("X", "avax"),
-  pChain: account.getXPAddress("P", "avax"),
+  xChain: account.getXPAddress("X", "lux"),
+  pChain: account.getXPAddress("P", "lux"),
 };
 
 // Testnet addresses
 const testnet = {
   evm: account.getEVMAddress(),
-  xChain: account.getXPAddress("X", "fuji"),
-  pChain: account.getXPAddress("P", "fuji"),
+  xChain: account.getXPAddress("X", "testnet"),
+  pChain: account.getXPAddress("P", "testnet"),
 };
 ```
 

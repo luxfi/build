@@ -1,15 +1,15 @@
 ---
 title: Introduction
-description: A brief introduction to the concepts of nodes and validators within the Avalanche ecosystem.
+description: A brief introduction to the concepts of nodes and validators within the Lux ecosystem.
 ---
 
-AvalancheGo nodes relay transactions/blocks, expose APIs, and (when staked) participate in consensus on the Primary Network and any Avalanche L1s they validate.
+LuxGo nodes relay transactions/blocks, expose APIs, and (when staked) participate in consensus on the Primary Network and any Lux L1s they validate.
 
 ## Node Roles
 
 | Role | Purpose | Consensus Participation |
 |------|---------|-------------------------|
-| **Validator** | Stakes on the P-Chain, validates the Primary Network and any Subnets/L1s it joins | Yes (polled for Snowman/Snowman++) |
+| **Validator** | Stakes on the Platform-Chain, validates the Primary Network and any Subnets/L1s it joins | Yes (polled for Snowman/Snowman++) |
 | **Non-validating** | Tracks chains, serves APIs, used for infra and indexing | No (not polled) |
 
 All nodes: connect via P2P with staking certs, track P/C/X, bootstrap or state-sync chains, and serve APIs if enabled.
@@ -28,11 +28,11 @@ Choose per-chain via chain configs.
 
 | Network | Requirements |
 |---------|--------------|
-| **Primary Network** | Stake **2,000 AVAX** on the P-Chain; validation period **14–365 days**; meet uptime to earn rewards; must validate P-Chain, C-Chain, X-Chain |
-| **Avalanche L1s** | Validators pay **1.33 AVAX/month** (burned) to the P-Chain for validation slots; each L1 sets its own validation/staking rules beyond that. |
+| **Primary Network** | Stake **2,000 LUX** on the Platform-Chain; validation period **14–365 days**; meet uptime to earn rewards; must validate Platform-Chain, LUExchange-Chain, Exchange-Chain |
+| **Lux L1s** | Validators pay **1.33 LUX/month** (burned) to the Platform-Chain for validation slots; each L1 sets its own validation/staking rules beyond that. |
 
 <Callout type="info">
-Avalanche L1s are blockchains that run on a Subnet. When you validate a Subnet, you validate all Avalanche L1s on that Subnet.
+Lux L1s are blockchains that run on a Subnet. When you validate a Subnet, you validate all Lux L1s on that Subnet.
 </Callout>
 
 ### Validator Responsibilities

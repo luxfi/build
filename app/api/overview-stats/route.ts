@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 import l1ChainsData from "@/constants/l1-chains.json";
 import { STATS_CONFIG } from "@/types/stats";
 
@@ -10,7 +10,7 @@ const CACHE_CONTROL_HEADER = 'public, max-age=14400, s-maxage=14400, stale-while
 const REQUEST_TIMEOUT_MS = 8000;
 const MAX_CONCURRENT_CHAINS = 10;
 
-const avalanche = new Avalanche({ network: "mainnet" });
+const lux = new Lux({ network: "mainnet" });
 
 const TIME_RANGE_CONFIG = {
   day: { days: 3, secondsInRange: SECONDS_PER_DAY },
@@ -122,7 +122,7 @@ async function getTxCountData(chainId: string, timeRange: TimeRangeKey): Promise
     const startTimestamp = endTimestamp - (config.days * SECONDS_PER_DAY);
     const rlToken = getRlToken();
     
-    const result = await avalanche.metrics.chains.getMetrics({
+    const result = await lux.metrics.chains.getMetrics({
       chainId,
       metric: 'txCount' as const,
       startTimestamp,
@@ -157,7 +157,7 @@ async function getActiveAddressesData(chainId: string, timeRange: TimeRangeKey):
     const startTimestamp = endTimestamp - (30 * SECONDS_PER_DAY);
     const rlToken = getRlToken();
     
-    const result = await avalanche.metrics.chains.getMetrics({
+    const result = await lux.metrics.chains.getMetrics({
       chainId,
       metric: 'activeAddresses' as const,
       startTimestamp,
@@ -213,7 +213,7 @@ async function getValidatorCount(subnetId: string): Promise<number | string> {
 
   try {
     const rlToken = getRlToken();
-    const url = new URL('https://metrics.avax.network/v2/networks/mainnet/metrics/validatorCount');
+    const url = new URL('https://metrics.lux.network/v2/networks/mainnet/metrics/validatorCount');
     url.searchParams.set('pageSize', '1');
     url.searchParams.set('subnetId', subnetId);
     if (rlToken) url.searchParams.set('rltoken', rlToken);
@@ -328,7 +328,7 @@ function createResponse(
   if (meta.timeRange) headers['X-Time-Range'] = meta.timeRange;
   if (meta.cacheAge !== undefined) headers['X-Cache-Age'] = `${Math.round(meta.cacheAge / 1000)}s`;
   if (meta.fetchTime !== undefined) headers['X-Fetch-Time'] = `${meta.fetchTime}ms`;
-  if (meta.chainCount !== undefined) headers['X-Chain-Count'] = meta.chainCount.toString();
+  if (meta.chainCount !== undefined) headers['Exchange-Chain-Count'] = meta.chainCount.toString();
   return NextResponse.json(data, { status, headers });
 }
 

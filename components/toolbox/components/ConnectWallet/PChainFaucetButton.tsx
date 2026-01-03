@@ -20,7 +20,7 @@ export const PChainFaucetButton = ({
 }: PChainFaucetButtonProps = {}) => {
   const { pChainAddress, isTestnet, pChainBalance } =
     useWalletStore();
-  const { claimPChainAVAX, isClaimingPChain } = useTestnetFaucet();
+  const { claimPChainLUX, isClaimingPChain } = useTestnetFaucet();
   const { 
     canClaim, 
     isLoading: isCheckingRateLimit, 
@@ -36,7 +36,7 @@ export const PChainFaucetButton = ({
     if (isDisabled || !pChainAddress) return;
 
     try {
-      await claimPChainAVAX(false);
+      await claimPChainLUX(false);
       // Refresh rate limit status after successful claim
       setTimeout(() => checkRateLimit(), 1000);
     } catch (error) {
@@ -69,7 +69,7 @@ export const PChainFaucetButton = ({
       onClick={handlePChainTokenRequest}
       disabled={isDisabled}
       className={className || defaultClassName}
-      title={showRateLimitStatus && !allowed ? getRateLimitMessage() : "Get free P-Chain AVAX"}
+      title={showRateLimitStatus && !allowed ? getRateLimitMessage() : "Get free Platform-Chain LUX"}
     >
       {getButtonText()}
     </button>

@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 import l1ChainsData from "@/constants/l1-chains.json";
 
-// Initialize Avalanche SDK
-const avalanche = new Avalanche({
+// Initialize Lux SDK
+const lux = new Lux({
   network: "mainnet",
 });
 
@@ -17,7 +17,7 @@ interface Block {
   gasLimit: string;
   baseFeePerGas?: string;
   gasFee?: string; // Total gas fee in native token (sum of all tx fees)
-  timestampMilliseconds?: number; // Avalanche-specific: block timestamp in milliseconds
+  timestampMilliseconds?: number; // Lux-specific: block timestamp in milliseconds
 }
 
 interface RpcTransaction {
@@ -85,10 +85,10 @@ interface RpcBlock {
   gasUsed: string;
   gasLimit: string;
   baseFeePerGas?: string;
-  blockGasCost?: string; // Avalanche-specific
-  extDataGasUsed?: string; // Avalanche-specific
-  extDataHash?: string; // Avalanche-specific
-  timestampMilliseconds?: string; // Avalanche-specific: block timestamp in milliseconds (hex)
+  blockGasCost?: string; // Lux-specific
+  extDataGasUsed?: string; // Lux-specific
+  extDataHash?: string; // Lux-specific
+  timestampMilliseconds?: string; // Lux-specific: block timestamp in milliseconds (hex)
 }
 
 interface Transaction {
@@ -110,7 +110,7 @@ interface ExplorerStats {
   latestBlock: number;
   totalTransactions: number;
   avgBlockTime?: number; // Average block time in seconds (based on last 5000 blocks or fewer)
-  avgBlockTimeMs?: number; // Average block time in milliseconds (Avalanche-specific, based on timestampMilliseconds)
+  avgBlockTimeMs?: number; // Average block time in milliseconds (Lux-specific, based on timestampMilliseconds)
   avgBlockTimeBlockSpan?: number; // Number of blocks used to calculate avgBlockTime
   gasPrice: string;
   lastFinalizedBlock?: number;
@@ -124,7 +124,7 @@ interface TransactionHistoryPoint {
 
 interface PriceData {
   price: number;
-  priceInAvax?: number;
+  priceInLux?: number;
   change24h: number;
   marketCap: number;
   volume24h: number;
@@ -209,8 +209,8 @@ function shortenAddress(address: string | null): string {
   return `${address.slice(0, 10)}...${address.slice(-8)}`;
 }
 
-// Cache for AVAX price
-let avaxPriceCache: { price: number; timestamp: number } | null = null;
+// Cache for LUX price
+let luxPriceCache: { price: number; timestamp: number } | null = null;
 
 // Cache for daily transactions
 let dailyTxsCache: { data: Map<string, TransactionHistoryPoint[]>; timestamp: number } | null = null;
@@ -323,15 +323,15 @@ async function fetchDailyTxsByChain(): Promise<Map<string, TransactionHistoryPoi
   }
 }
 
-async function fetchAvaxPrice(): Promise<number> {
-  // Check AVAX price cache
-  if (avaxPriceCache && Date.now() - avaxPriceCache.timestamp < PRICE_CACHE_TTL) {
-    return avaxPriceCache.price;
+async function fetchLuxPrice(): Promise<number> {
+  // Check LUX price cache
+  if (luxPriceCache && Date.now() - luxPriceCache.timestamp < PRICE_CACHE_TTL) {
+    return luxPriceCache.price;
   }
 
   try {
     const response = await fetch(
-      'https://api.coingecko.com/api/v3/simple/price?ids=avalanche-2&vs_currencies=usd',
+      'https://api.coingecko.com/api/v3/simple/price?ids=lux-2&vs_currencies=usd',
       {
         headers: { 'Accept': 'application/json' },
         next: { revalidate: 60 }
@@ -340,12 +340,12 @@ async function fetchAvaxPrice(): Promise<number> {
 
     if (response.ok) {
       const data = await response.json();
-      const price = data['avalanche-2']?.usd || 0;
-      avaxPriceCache = { price, timestamp: Date.now() };
+      const price = data['lux-2']?.usd || 0;
+      luxPriceCache = { price, timestamp: Date.now() };
       return price;
     }
   } catch (error) {
-    console.warn("Failed to fetch AVAX price:", error);
+    console.warn("Failed to fetch LUX price:", error);
   }
   return 0;
 }
@@ -377,13 +377,13 @@ async function fetchPrice(coingeckoId: string): Promise<PriceData | undefined> {
     const data = await response.json();
     const priceUsd = data.market_data?.current_price?.usd || 0;
 
-    // Fetch AVAX price to calculate token price in AVAX
-    const avaxPrice = await fetchAvaxPrice();
-    const priceInAvax = avaxPrice > 0 ? priceUsd / avaxPrice : undefined;
+    // Fetch LUX price to calculate token price in LUX
+    const luxPrice = await fetchLuxPrice();
+    const priceInLux = luxPrice > 0 ? priceUsd / luxPrice : undefined;
 
     const priceData: PriceData = {
       price: priceUsd,
-      priceInAvax,
+      priceInLux,
       change24h: data.market_data?.price_change_percentage_24h || 0,
       marketCap: data.market_data?.market_cap?.usd || 0,
       volume24h: data.market_data?.total_volume?.usd || 0,
@@ -625,7 +625,7 @@ async function fetchExplorerData(chainId: string, evmChainId: string, rpcUrl: st
     const gasFeeWei = blockGasFees.get(blockIndex) || BigInt(0);
     const gasFee = gasFeeWei > 0 ? (Number(gasFeeWei) / 1e18).toFixed(6) : undefined;
 
-    // Parse timestampMilliseconds for Avalanche (hex string to number)
+    // Parse timestampMilliseconds for Lux (hex string to number)
     const timestampMilliseconds = block.timestampMilliseconds 
       ? parseInt(block.timestampMilliseconds, 16) 
       : undefined;
@@ -774,7 +774,7 @@ async function fetchExplorerData(chainId: string, evmChainId: string, rpcUrl: st
   // Calculate average block time based on last 5000 blocks (or all blocks if chain has fewer)
   // Fetch block at (latest - 5000) or block 1 if chain has fewer blocks
   let avgBlockTime: number | undefined;
-  let avgBlockTimeMs: number | undefined; // Millisecond precision for Avalanche
+  let avgBlockTimeMs: number | undefined; // Millisecond precision for Lux
   let avgBlockTimeBlockSpan: number | undefined; // Track the actual block span used
 
   if (latestBlockNumber > 1 && validBlocks.length > 0) {
@@ -789,7 +789,7 @@ async function fetchExplorerData(chainId: string, evmChainId: string, rpcUrl: st
         const latestBlock = validBlocks[0];
         avgBlockTimeBlockSpan = blockSpan; // Store the block span used
         
-        // Try millisecond precision first (Avalanche)
+        // Try millisecond precision first (Lux)
         if (latestBlock?.timestampMilliseconds && historicalBlock.timestampMilliseconds) {
           const latestTimeMs = parseInt(latestBlock.timestampMilliseconds, 16);
           const historicalTimeMs = parseInt(historicalBlock.timestampMilliseconds, 16);
@@ -865,7 +865,7 @@ async function fetchExplorerData(chainId: string, evmChainId: string, rpcUrl: st
 // Check if Glacier supports this chain
 async function checkGlacierSupport(chainId: string): Promise<boolean> {
   try {
-    const result = await avalanche.data.evm.chains.get({
+    const result = await lux.data.evm.chains.get({
       chainId: chainId,
     });
     // If we get a result with a chainId, the chain is supported

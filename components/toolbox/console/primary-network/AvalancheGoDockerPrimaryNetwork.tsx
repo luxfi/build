@@ -17,7 +17,7 @@ import { useNodeConfigHighlighting } from "@/components/toolbox/console/layer-1/
 import { C_CHAIN_ID } from "@/components/toolbox/console/layer-1/create/config";
 import { getContainerVersions } from "@/components/toolbox/utils/containerVersions";
 
-function AvalancheGoDockerPrimaryNetworkInner() {
+function LuxGoDockerPrimaryNetworkInner() {
     const { setHighlightPath, clearHighlight, highlightPath } = useGenesisHighlight();
     const [nodeType, setNodeType] = useState<"validator" | "public-rpc">("validator");
     const [domain, setDomain] = useState("");
@@ -68,12 +68,12 @@ function AvalancheGoDockerPrimaryNetworkInner() {
     const [showAdvancedSettings, setShowAdvancedSettings] = useState<boolean>(false);
 
     // Network selection (allows explicit choice independent of wallet)
-    const [selectedNetwork, setSelectedNetwork] = useState<"mainnet" | "fuji">("mainnet");
+    const [selectedNetwork, setSelectedNetwork] = useState<"mainnet" | "testnet">("mainnet");
 
-    const { avalancheNetworkID } = useWalletStore();
+    const { luxNetworkID } = useWalletStore();
 
-    // Use selected network for configuration (1 = mainnet, 5 = fuji)
-    const effectiveNetworkID = selectedNetwork === "fuji" ? 5 : 1;
+    // Use selected network for configuration (1 = mainnet, 5 = testnet)
+    const effectiveNetworkID = selectedNetwork === "testnet" ? 5 : 1;
 
     const isRPC = nodeType === "public-rpc";
 
@@ -202,12 +202,12 @@ function AvalancheGoDockerPrimaryNetworkInner() {
             const env: Record<string, string> = {
                 AVAGO_PUBLIC_IP_RESOLUTION_SERVICE: "opendns",
                 AVAGO_HTTP_HOST: "0.0.0.0",
-                AVAGO_CHAIN_CONFIG_DIR: "/root/.avalanchego/configs/chains"
+                AVAGO_CHAIN_CONFIG_DIR: "/root/.luxgo/configs/chains"
             };
 
             // Set network ID
             if (effectiveNetworkID === 5) {
-                env.AVAGO_NETWORK_ID = "fuji";
+                env.AVAGO_NETWORK_ID = "testnet";
             }
 
             // Configure RPC settings
@@ -219,9 +219,9 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                 "docker run -it -d",
                 "--name avago",
                 `-p ${isRPC ? "" : "127.0.0.1:"}9650:9650 -p 9651:9651`,
-                "-v ~/.avalanchego:/root/.avalanchego",
+                "-v ~/.luxgo:/root/.luxgo",
                 ...Object.entries(env).map(([key, value]) => `-e ${key}=${value}`),
-                `avaplatform/avalanchego:${versions['avaplatform/avalanchego']}`
+                `avaplatform/luxgo:${versions['avaplatform/luxgo']}`
             ];
 
             return chunks.map(chunk => `    ${chunk}`).join(" \\\n").trim();
@@ -244,7 +244,7 @@ function AvalancheGoDockerPrimaryNetworkInner() {
             <Container
                 title="Primary Network Node Setup with Docker"
             description="Configure your node settings, preview the chain config, and run Docker to start your Primary Network node."
-                githubUrl="https://github.com/ava-labs/builders-hub/edit/master/components/toolbox/console/primary-network/AvalancheGoDockerPrimaryNetwork.tsx"
+                githubUrl="https://github.com/luxfi/lux-build/edit/master/components/toolbox/console/primary-network/LuxGoDockerPrimaryNetwork.tsx"
             >
                 <Steps>
                     <Step>
@@ -266,7 +266,7 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                         <p className="mt-4">
                             If you do not want to use Docker, you can follow the instructions{" "}
                             <a
-                                href="https://github.com/ava-labs/avalanchego?tab=readme-ov-file#installation"
+                                href="https://github.com/luxfi/luxgo?tab=readme-ov-file#installation"
                                 target="_blank"
                                 className="text-blue-600 dark:text-blue-400 hover:underline"
                                 rel="noreferrer"
@@ -288,14 +288,14 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                                 </label>
                                 <select
                                     value={selectedNetwork}
-                                    onChange={(e) => setSelectedNetwork(e.target.value as "mainnet" | "fuji")}
+                                    onChange={(e) => setSelectedNetwork(e.target.value as "mainnet" | "testnet")}
                                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
                                 >
                                     <option value="mainnet">Mainnet</option>
-                                    <option value="fuji">Fuji (Testnet)</option>
+                                    <option value="testnet">Testnet (Testnet)</option>
                                 </select>
                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                    Select which Avalanche network to connect to
+                                    Select which Lux network to connect to
                                 </p>
                             </div>
 
@@ -421,21 +421,21 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                                         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                                             For advanced configuration options, see the{" "}
                                             <a
-                                                href="https://build.avax.network/docs/nodes/configure/configs-flags"
+                                                href="https://build.lux.network/docs/nodes/configure/configs-flags"
                                                 target="_blank"
                                                 className="text-blue-600 dark:text-blue-400 hover:underline"
                                                 rel="noreferrer"
                                             >
-                                                AvalancheGo configuration
+                                                LuxGo configuration
                                             </a>{" "}
                                             and{" "}
                                             <a
-                                                href="https://build.avax.network/docs/nodes/chain-configs/c-chain"
+                                                href="https://build.lux.network/docs/nodes/chain-configs/c-chain"
                                                 target="_blank"
                                                 className="text-blue-600 dark:text-blue-400 hover:underline"
                                                 rel="noreferrer"
                                             >
-                                                C-Chain configuration
+                                                LUExchange-Chain configuration
                                             </a> documentation.
                                         </span>
 
@@ -595,7 +595,7 @@ function AvalancheGoDockerPrimaryNetworkInner() {
 
                                                 <div onMouseEnter={() => setHighlightPath('rpcTxFeeCap')} onMouseLeave={clearHighlight}>
                                                     <label className="block text-xs text-gray-600 dark:text-gray-400 mb-1">
-                                                        RPC Tx Fee Cap (AVAX)
+                                                        RPC Tx Fee Cap (LUX)
                                                     </label>
                                                     <input
                                                         type="number"
@@ -914,32 +914,32 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                     <Step>
                         <h3 className="text-xl font-bold mb-4">Create Configuration File</h3>
                         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                            Run this command on your server to create the C-Chain configuration file:
+                            Run this command on your server to create the LUExchange-Chain configuration file:
                         </p>
 
                         <DynamicCodeBlock lang="bash" code={getConfigFileCommand()} />
 
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                            This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.avalanchego/configs/chains/{C_CHAIN_ID}/config.json</code>
+                            This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{C_CHAIN_ID}/config.json</code>
                         </p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
                             Read the documentation for more information on the configuration options. {" "}
                             <a
-                                href="https://build.avax.network/docs/nodes/configure/configs-flags"
+                                href="https://build.lux.network/docs/nodes/configure/configs-flags"
                                 target="_blank"
                                 className="text-blue-600 dark:text-blue-400 hover:underline"
                                 rel="noreferrer"
                             >
-                                AvalancheGo configuration
+                                LuxGo configuration
                             </a>
                             {" "}and{" "}
                             <a
-                                href="https://build.avax.network/docs/nodes/chain-configs/c-chain"
+                                href="https://build.lux.network/docs/nodes/chain-configs/c-chain"
                                 target="_blank"
                                 className="text-blue-600 dark:text-blue-400 hover:underline"
                                 rel="noreferrer"
                             >
-                                C-Chain configuration
+                                LUExchange-Chain configuration
                             </a>
                         </p>
                     </Step>
@@ -953,7 +953,7 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                     <DynamicCodeBlock lang="bash" code={getDockerCommand()} />
 
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                        The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.avalanchego/configs/chains/{C_CHAIN_ID}/config.json</code> via the mounted volume.
+                        The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{C_CHAIN_ID}/config.json</code> via the mounted volume.
                     </p>
 
                     <Accordions type="single" className="mt-4">
@@ -962,9 +962,9 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                             <ul className="list-disc pl-5 mt-1 text-sm">
                                     <li>Unique container name (change <code>--name</code> parameter)</li>
                                 <li>Different ports (modify port mappings)</li>
-                                <li>Separate data directories (change <code>~/.avalanchego</code> path)</li>
+                                <li>Separate data directories (change <code>~/.luxgo</code> path)</li>
                                 </ul>
-                            <p className="mt-1 text-sm">Example for second node: Use ports 9652/9653, container name &quot;avago2&quot;, and data directory &quot;~/.avalanchego2&quot;</p>
+                            <p className="mt-1 text-sm">Example for second node: Use ports 9652/9653, container name &quot;avago2&quot;, and data directory &quot;~/.luxgo2&quot;</p>
                         </Accordion>
 
                         <Accordion title="Monitoring Logs">
@@ -988,7 +988,7 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                     {nodeType === "validator" && (
                         <Step>
                         <h3 className="text-xl font-bold mb-4">Wait for the Node to Bootstrap</h3>
-                            <p>Your node will now bootstrap and sync the Primary Network (P-Chain, X-Chain, and C-Chain). This process can take <strong>several hours to days</strong> depending on your hardware and network connection.</p>
+                            <p>Your node will now bootstrap and sync the Primary Network (Platform-Chain, Exchange-Chain, and LUExchange-Chain). This process can take <strong>several hours to days</strong> depending on your hardware and network connection.</p>
 
                             <p className="mt-4">You can follow the process by checking the logs with the following command:</p>
 
@@ -1000,15 +1000,15 @@ function AvalancheGoDockerPrimaryNetworkInner() {
 
                                     <ul className="list-disc pl-5 mt-1">
                                         <li>
-                                            <strong>P-Chain (Platform Chain):</strong> Handles platform operations and staking
+                                            <strong>Platform-Chain (Platform Chain):</strong> Handles platform operations and staking
                                             <DynamicCodeBlock lang="bash" code='[05-04|17:14:13.793] INFO <P Chain> bootstrap/bootstrapper.go:615 fetching blocks {"numFetchedBlocks": 10099, "numTotalBlocks": 23657, "eta": "37s"}' />
                                         </li>
                                         <li>
-                                            <strong>X-Chain (Exchange Chain):</strong> Handles asset creation and exchange
+                                            <strong>Exchange-Chain (Exchange Chain):</strong> Handles asset creation and exchange
                                             <DynamicCodeBlock lang="bash" code='[05-04|17:14:45.641] INFO <X Chain> bootstrap/storage.go:244 executing blocks {"numExecuted": 9311, "numToExecute": 23657, "eta": "15s"}' />
                                         </li>
                                         <li>
-                                            <strong>C-Chain (Contract Chain):</strong> EVM-compatible smart contract chain
+                                            <strong>LUExchange-Chain (Contract Chain):</strong> EVM-compatible smart contract chain
                                             <DynamicCodeBlock lang="bash" code='[05-04|17:15:12.123] INFO <C Chain> chain/chain_state_manager.go:325 syncing {"current": 1234567, "target": 2345678}' />
                                         </li>
                                     </ul>
@@ -1027,7 +1027,7 @@ function AvalancheGoDockerPrimaryNetworkInner() {
                     {nodeIsReady && nodeType === "validator" && (
                         <Step>
                             <h3 className="text-xl font-bold mb-4">Node Setup Complete</h3>
-                            <p>Your AvalancheGo Primary Network node is now fully bootstrapped and ready to be used as a validator node.</p>
+                            <p>Your LuxGo Primary Network node is now fully bootstrapped and ready to be used as a validator node.</p>
 
                             <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
                                 <div className="flex items-center">
@@ -1061,10 +1061,10 @@ function AvalancheGoDockerPrimaryNetworkInner() {
     );
 }
 
-export default function AvalancheGoDockerPrimaryNetwork() {
+export default function LuxGoDockerPrimaryNetwork() {
     return (
         <GenesisHighlightProvider>
-            <AvalancheGoDockerPrimaryNetworkInner />
+            <LuxGoDockerPrimaryNetworkInner />
         </GenesisHighlightProvider>
     );
 }

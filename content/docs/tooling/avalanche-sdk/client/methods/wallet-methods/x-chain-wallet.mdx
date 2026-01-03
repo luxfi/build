@@ -1,17 +1,17 @@
 ---
-title: X-Chain Wallet Methods
-description: Complete reference for X-Chain transaction preparation methods
+title: Exchange-Chain Wallet Methods
+description: Complete reference for Exchange-Chain transaction preparation methods
 ---
 
 ## Overview
 
-The X-Chain Wallet Methods provide transaction preparation capabilities for the Exchange Chain. These methods allow you to create unsigned transactions for various operations including base transfers and cross-chain transfers.
+The Exchange-Chain Wallet Methods provide transaction preparation capabilities for the Exchange Chain. These methods allow you to create unsigned transactions for various operations including base transfers and cross-chain transfers.
 
 **Access:** `walletClient.xChain`
 
 ## prepareBaseTxn
 
-Prepare a base X-Chain transaction for transferring AVAX or other assets.
+Prepare a base Exchange-Chain transaction for transferring LUX or other assets.
 
 **Function Signature:**
 
@@ -62,7 +62,7 @@ interface PrepareBaseTxnReturnType {
 | Name        | Type       | Required | Description                                                        |
 | ----------- | ---------- | -------- | ------------------------------------------------------------------ |
 | `addresses` | `string[]` | Yes      | Addresses who can sign the consuming of this UTXO                  |
-| `amount`    | `bigint`   | Yes      | Amount in nano AVAX                                                |
+| `amount`    | `bigint`   | Yes      | Amount in nano LUX                                                |
 | `assetId`   | `string`   | No       | Asset ID of the UTXO                                               |
 | `locktime`  | `bigint`   | No       | Timestamp in seconds after which this UTXO can be consumed         |
 | `threshold` | `number`   | No       | Threshold of `addresses`' signatures required to consume this UTXO |
@@ -84,24 +84,24 @@ interface PrepareBaseTxnReturnType {
 **Example:**
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { lux } from "@lux-sdk/client/chains";
+import { luxToNanoLux } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
 const unsignedTx = await walletClient.xChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
-      amount: avaxToNanoAvax(1),
+      addresses: ["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+      amount: luxToNanoLux(1),
     },
   ],
 });
@@ -129,7 +129,7 @@ console.log("Transaction hash:", txHash);
 
 ## prepareExportTxn
 
-Prepare a transaction to export AVAX or other assets from X-Chain to another chain.
+Prepare a transaction to export LUX or other assets from Exchange-Chain to another chain.
 
 **Function Signature:**
 
@@ -191,7 +191,7 @@ const exportTx = await walletClient.xChain.prepareExportTxn({
   exportedOutputs: [
     {
       addresses: ["0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"],
-      amount: avaxToNanoAvax(1),
+      amount: luxToNanoLux(1),
     },
   ],
 });
@@ -210,14 +210,14 @@ const { txHash } = await walletClient.sendXPTransaction({
 
 **Related:**
 
-- [prepareImportTxn](#prepareimporttxn) - Import to X-Chain
+- [prepareImportTxn](#prepareimporttxn) - Import to Exchange-Chain
 - [Wallet send method](./wallet#send) - Simplified cross-chain transfers
 
 ---
 
 ## prepareImportTxn
 
-Prepare a transaction to import AVAX or other assets from another chain to X-Chain.
+Prepare a transaction to import LUX or other assets from another chain to Exchange-Chain.
 
 **Function Signature:**
 
@@ -289,7 +289,7 @@ interface PrepareImportTxnReturnType {
 const importTx = await walletClient.xChain.prepareImportTxn({
   sourceChain: "C",
   importedOutput: {
-    addresses: ["X-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+    addresses: ["X-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
     threshold: 1,
   },
 });
@@ -308,13 +308,13 @@ const { txHash } = await walletClient.sendXPTransaction({
 
 **Related:**
 
-- [prepareExportTxn](#prepareexporttxn) - Export from X-Chain
+- [prepareExportTxn](#prepareexporttxn) - Export from Exchange-Chain
 
 ---
 
 ## Next Steps
 
 - **[Wallet Methods](./wallet)** - General wallet operations
-- **[P-Chain Wallet Methods](./p-chain-wallet)** - P-Chain transaction preparation
-- **[C-Chain Wallet Methods](./c-chain-wallet)** - C-Chain atomic transactions
+- **[Platform-Chain Wallet Methods](./p-chain-wallet)** - Platform-Chain transaction preparation
+- **[LUExchange-Chain Wallet Methods](./c-chain-wallet)** - LUExchange-Chain atomic transactions
 - **[Account Management](../accounts)** - Account types and management

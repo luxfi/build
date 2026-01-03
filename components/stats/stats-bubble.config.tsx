@@ -13,12 +13,12 @@ export const statsBubbleConfig: BubbleNavigationConfig = {
     { id: "icm", label: "ICM", href: "/stats/interchain-messaging", icon: MessageCircleMore },
     { id: "validators", label: "Validators", href: "/stats/validators", icon: Users },
   ],
-  activeColor: "bg-red-100 dark:bg-red-500/20",
+  activeColor: "bg-zinc-100 dark:bg-zinc-500/20",
   darkActiveColor: "",
-  activeTextColor: "text-red-600 dark:text-red-400",
-  focusRingColor: "focus:ring-red-500",
-  pulseColor: "bg-red-200/40",
-  darkPulseColor: "dark:bg-red-400/40",
+  activeTextColor: "text-zinc-700 dark:text-zinc-300",
+  focusRingColor: "focus:ring-zinc-500",
+  pulseColor: "bg-zinc-200/40",
+  darkPulseColor: "dark:bg-zinc-400/40",
 };
 
 export function StatsBubbleNav() {

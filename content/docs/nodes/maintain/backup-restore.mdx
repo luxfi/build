@@ -6,7 +6,7 @@ Once you have your node up and running, it's time to prepare for disaster recove
 
 When running, a complete node installation along with the database can grow to be multiple gigabytes in size. Having to back up and restore such a large volume of data can be expensive, complicated and time-consuming. Luckily, there is a better way.
 
-Instead of having to back up and restore everything, we need to back up only what is essential, that is, those files that cannot be reconstructed because they are unique to your node. For AvalancheGo node, unique files are those that identify your node on the network, in other words, files that define your NodeID.
+Instead of having to back up and restore everything, we need to back up only what is essential, that is, those files that cannot be reconstructed because they are unique to your node. For LuxGo node, unique files are those that identify your node on the network, in other words, files that define your NodeID.
 
 Even if your node is a validator on the network and has multiple delegations on it, you don't need to worry about backing up anything else, because the validation and delegation transactions are also stored on the blockchain and will be restored during bootstrapping, along with the rest of the blockchain data.
 
@@ -16,7 +16,7 @@ NodeID[​](#nodeid "Direct link to heading")
 -------------------------------------------
 
 <Callout type="warn">
-If more than one running nodes share the same NodeID, the communications from other nodes in the Avalanche network to this NodeID will be random to one of these nodes. If this NodeID is of a validator, it will dramatically impact the uptime calculation of the validator which will very likely disqualify the validator from receiving the staking rewards. Please make sure only one node with the same NodeID run at one time.
+If more than one running nodes share the same NodeID, the communications from other nodes in the Lux network to this NodeID will be random to one of these nodes. If this NodeID is of a validator, it will dramatically impact the uptime calculation of the validator which will very likely disqualify the validator from receiving the staking rewards. Please make sure only one node with the same NodeID run at one time.
 </Callout>
 
 NodeID is a unique identifier that differentiates your node from all the other peers on the network. It's a string formatted like `NodeID-5mb46qkSBj81k9g9e4VFjGGSbaaSLFRzD`. You can look up the technical background of how the NodeID is constructed [here](/docs/rpcs/other/standards/cryptographic-primitives#tls-addresses). In essence, NodeID is defined by two files:
@@ -35,7 +35,7 @@ NodePOP is defined by the `signer.key` file.
 For enhanced security, you can use [CubeSigner remote signing](/docs/nodes/maintain/cube-signer-sidecar) instead of storing BLS keys locally. CubeSigner stores keys in hardware-backed enclaves and eliminates the need to back up `signer.key` files.
 </Callout>
 
-In the default installation, they can be found in the working directory, specifically in `~/.avalanchego/staking/`. All we need to do to recreate the node on another machine is to run a new installation with those same three files.
+In the default installation, they can be found in the working directory, specifically in `~/.luxgo/staking/`. All we need to do to recreate the node on another machine is to run a new installation with those same three files.
 
 If `staker.key` and `staker.crt` are removed from a node, which is restarted afterwards, they will be recreated and a new node ID will be assigned.
 
@@ -61,7 +61,7 @@ Let's get the files off the machine running the node.
 
 If you're running the node locally, on your desktop computer, just navigate to where the files are and copy them somewhere safe.
 
-On a default Linux installation, the path to them will be `/home/USERNAME/.avalanchego/staking/`, where `USERNAME` needs to be replaced with the actual username running the node. Select and copy the files from there to a backup location. You don't need to stop the node to do that.
+On a default Linux installation, the path to them will be `/home/USERNAME/.luxgo/staking/`, where `USERNAME` needs to be replaced with the actual username running the node. Select and copy the files from there to a backup location. You don't need to stop the node to do that.
 
 #### From Remote Node Using `scp`[​](#from-remote-node-using-scp "Direct link to heading")
 
@@ -72,45 +72,45 @@ To copy the files from the node, you will need to be able to remotely log into t
 When you have means of remote login into the machine, you can copy the files over with the following command:
 
 ```bash
-scp -r ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking ~/avalanche_backup
+scp -r ubuntu@PUBLICIP:/home/ubuntu/.luxgo/staking ~/lux_backup
 ```
 
 This assumes the username on the machine is `ubuntu`, replace with correct username in both places if it is different. Also, replace `PUBLICIP` with the actual public IP of the machine. If `scp` doesn't automatically use your downloaded SSH key, you can point to it manually:
 
 ```bash
-scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking ~/avalanche_backup
+scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/.luxgo/staking ~/lux_backup
 ```
 
-Once executed, this command will create `avalanche_backup` directory and place those three files in it. You need to store them somewhere safe.
+Once executed, this command will create `lux_backup` directory and place those three files in it. You need to store them somewhere safe.
 
 ### Restore[​](#restore "Direct link to heading")
 
 To restore your node from a backup, we need to do the reverse: restore `staker.key`, `staker.crt` and `signer.key` from the backup to the working directory of the new node.
 
-First, we need to do the usual [installation](/docs/nodes/run-a-node/using-install-script/installing-avalanche-go) of the node. This will create a new NodeID, a new BLS key and a new BLS signature, which we need to replace. When the node is installed correctly, log into the machine where the node is running and stop it:
+First, we need to do the usual [installation](/docs/nodes/run-a-node/using-install-script/installing-lux-go) of the node. This will create a new NodeID, a new BLS key and a new BLS signature, which we need to replace. When the node is installed correctly, log into the machine where the node is running and stop it:
 
 ```bash
-sudo systemctl stop avalanchego
+sudo systemctl stop luxgo
 ```
 
 We're ready to restore the node.
 
 #### To Local Node[​](#to-local-node "Direct link to heading")
 
-If you're running the node locally, just copy the `staker.key`, `staker.crt` and `signer.key` files from the backup location into the working directory, which on the default Linux installation will be `/home/USERNAME/.avalanchego/staking/`. Replace `USERNAME` with the actual username used to run the node.
+If you're running the node locally, just copy the `staker.key`, `staker.crt` and `signer.key` files from the backup location into the working directory, which on the default Linux installation will be `/home/USERNAME/.luxgo/staking/`. Replace `USERNAME` with the actual username used to run the node.
 
 #### To Remote Node Using `scp`[​](#to-remote-node-using-scp "Direct link to heading")
 
 Again, the process is just the reverse operation. Using `scp` we need to copy the `staker.key`, `staker.crt` and `signer.key` files from the backup location into the remote working directory. Assuming the backed up files are located in the directory where the above backup procedure placed them:
 
 ```bash
-scp ~/avalanche_backup/{staker.*,signer.key} ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking
+scp ~/lux_backup/{staker.*,signer.key} ubuntu@PUBLICIP:/home/ubuntu/.luxgo/staking
 ```
 
 Or if you need to specify the path to the SSH key:
 
 ```bash
-scp -i /path/to/the/key.pem ~/avalanche_backup/{staker.*,signer.key} ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking
+scp -i /path/to/the/key.pem ~/lux_backup/{staker.*,signer.key} ubuntu@PUBLICIP:/home/ubuntu/.luxgo/staking
 ```
 
 And again, replace `ubuntu` with correct username if different, and `PUBLICIP` with the actual public IP of the machine running the node, as well as the path to the SSH key if used.
@@ -120,7 +120,7 @@ And again, replace `ubuntu` with correct username if different, and `PUBLICIP` w
 Once the files have been replaced, log into the machine and start the node using:
 
 ```bash
-sudo systemctl start avalanchego
+sudo systemctl start luxgo
 ```
 
 You can now check that the node is restored with the correct NodeID and NodePOP by issuing the [getNodeID](/docs/rpcs/other/info-rpc#infogetnodeid) API call in the same console you ran the previous command:
@@ -144,20 +144,20 @@ This tutorial will walk you through compressing your node's DB and moving it to 
 
 ### Database Backup[​](#database-backup "Direct link to heading")
 
-First, make sure to stop AvalancheGo, run:
+First, make sure to stop LuxGo, run:
 
 ```bash
-sudo systemctl stop avalanchego
+sudo systemctl stop luxgo
 ```
 
 <Callout type="warn">
-You must stop the Avalanche node before you back up the database otherwise data could become corrupted.
+You must stop the Lux node before you back up the database otherwise data could become corrupted.
 </Callout>
 
 Once the node is stopped, you can `zip` the database directory to reduce the size of the backup and speed up the transfer using `scp`:
 
 ```bash
-zip -r avalanche_db_backup.zip .avalanchego/db
+zip -r lux_db_backup.zip .luxgo/db
 ```
 
 _Note: It may take > 30 minutes to zip the node's DB._
@@ -165,53 +165,53 @@ _Note: It may take > 30 minutes to zip the node's DB._
 Next, you can transfer the backup to another machine:
 
 ```bash
-scp -r ubuntu@PUBLICIP:/home/ubuntu/avalanche_db_backup.zip ~/avalanche_db_backup.zip
+scp -r ubuntu@PUBLICIP:/home/ubuntu/lux_db_backup.zip ~/lux_db_backup.zip
 ```
 
 This assumes the username on the machine is `ubuntu`, replace with correct username in both places if it is different. Also, replace `PUBLICIP` with the actual public IP of the machine. If `scp` doesn't automatically use your downloaded SSH key, you can point to it manually:
 
 ```bash
-scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/avalanche_db_backup.zip ~/avalanche_db_backup.zip
+scp -i /path/to/the/key.pem -r ubuntu@PUBLICIP:/home/ubuntu/lux_db_backup.zip ~/lux_db_backup.zip
 ```
 
-Once executed, this command will create `avalanche_db_backup.zip` directory in you home directory.
+Once executed, this command will create `lux_db_backup.zip` directory in you home directory.
 
 ### Database Restore[​](#database-restore "Direct link to heading")
 
-_This tutorial assumes you have already completed "Database Backup" and have a backup at ~/avalanche\_db\_backup.zip._
+_This tutorial assumes you have already completed "Database Backup" and have a backup at ~/lux\_db\_backup.zip._
 
-First, we need to do the usual [installation](/docs/nodes/run-a-node/using-install-script/installing-avalanche-go) of the node. When the node is installed correctly, log into the machine where the node is running and stop it:
+First, we need to do the usual [installation](/docs/nodes/run-a-node/using-install-script/installing-lux-go) of the node. When the node is installed correctly, log into the machine where the node is running and stop it:
 
 ```bash
-sudo systemctl stop avalanchego
+sudo systemctl stop luxgo
 ```
 
 <Callout type="warn">
-You must stop the Avalanche node before you restore the database otherwise data could become corrupted.
+You must stop the Lux node before you restore the database otherwise data could become corrupted.
 </Callout>
 
 We're ready to restore the database. First, let's move the DB on the existing node (you can remove this old DB later if the restore was successful):
 
 ```bash
-mv .avalanchego/db .avalanchego/db-old
+mv .luxgo/db .luxgo/db-old
 ```
 
-Next, we'll unzip the backup we moved from another node (this will place the unzipped files in `~/.avalanchego/db` when the command is run in the home directory):
+Next, we'll unzip the backup we moved from another node (this will place the unzipped files in `~/.luxgo/db` when the command is run in the home directory):
 
 ```bash
-unzip avalanche_db_backup.zip
+unzip lux_db_backup.zip
 ```
 
 After the database has been restored on a new node, use this command to start the node:
 
 ```bash
-sudo systemctl start avalanchego
+sudo systemctl start luxgo
 ```
 
 Node should now be running from the database on the new instance. To check that everything is in order and that node is not bootstrapping from scratch (which would indicate a problem), use:
 
 ```bash
-sudo journalctl -u avalanchego -f
+sudo journalctl -u luxgo -f
 ```
 
 The node should be catching up to the network and fetching a small number of blocks before resuming normal operation (all the ones produced from the time when the node was stopped before the backup).
@@ -219,7 +219,7 @@ The node should be catching up to the network and fetching a small number of blo
 Once the backup has been restored and is working as expected, the zip can be deleted:
 
 ```bash
-rm avalanche_db_backup.zip
+rm lux_db_backup.zip
 ```
 
 ### Database Direct Copy[​](#database-direct-copy "Direct link to heading")
@@ -233,38 +233,38 @@ To do so, you will need `ssh` access from the destination machine (where you wan
 Same as shown previously, you need to stop the node (on both machines):
 
 ```bash
-sudo systemctl stop avalanchego
+sudo systemctl stop luxgo
 ```
 
 <Callout type="warn">
-You must stop the Avalanche node before you back up the database otherwise data could become corrupted.
+You must stop the Lux node before you back up the database otherwise data could become corrupted.
 </Callout>
 
 Then, on the destination machine, change to a directory where you would like to the put the database files, enter the following command:
 
 ```bash
-ssh -i /path/to/the/key.pem ubuntu@PUBLICIP 'tar czf - .avalanchego/db' | tar xvzf - -C .
+ssh -i /path/to/the/key.pem ubuntu@PUBLICIP 'tar czf - .luxgo/db' | tar xvzf - -C .
 ```
 
 Make sure to replace the correct path to the key, and correct IP of the source machine. This will compress the database, but instead of writing it to a file it will pipe it over `ssh` directly to destination machine, where it will be decompressed and written to disk. The process can take a long time, make sure it completes before continuing.
 
-After copying is done, all you need to do now is move the database to the correct location on the destination machine. Assuming there is a default AvalancheGo node installation, we remove the old database and replace it with the new one:
+After copying is done, all you need to do now is move the database to the correct location on the destination machine. Assuming there is a default LuxGo node installation, we remove the old database and replace it with the new one:
 
 ```bash
-rm -rf ~/.avalanchego/db
-mv db ~/.avalanchego/db
+rm -rf ~/.luxgo/db
+mv db ~/.luxgo/db
 ```
 
 You can now start the node on the destination machine:
 
 ```bash
-sudo systemctl start avalanchego
+sudo systemctl start luxgo
 ```
 
 Node should now be running from the copied database. To check that everything is in order and that node is not bootstrapping from scratch (which would indicate a problem), use:
 
 ```bash
-sudo journalctl -u avalanchego -f
+sudo journalctl -u luxgo -f
 ```
 
 The node should be catching up to the network and fetching a small number of blocks before resuming normal operation (all the ones produced from the time when the node was stopped before the backup).

@@ -5,7 +5,7 @@ import l1ChainsData from "@/constants/l1-chains.json";
 
 interface PriceData {
   price: number;
-  priceInAvax?: number;
+  priceInLux?: number;
   change24h: number;
   marketCap: number;
   volume24h: number;

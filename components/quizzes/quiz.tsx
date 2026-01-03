@@ -170,8 +170,8 @@ const Quiz: React.FC<QuizProps> = ({ quizId, onQuizCompleted }) => {
                 isAnswerChecked
                   ? selectedAnswers.includes(index)
                     ? quizInfo.correctAnswers.includes(index)
-                      ? 'border-avax-green bg-green-50 dark:bg-green-900/30 dark:border-green-700'
-                      : 'border-avax-red bg-red-50 dark:bg-red-900/30 dark:border-red-700'
+                      ? 'border-lux-green bg-green-50 dark:bg-green-900/30 dark:border-green-700'
+                      : 'border-lux-red bg-red-50 dark:bg-red-900/30 dark:border-red-700'
                     : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-black'
                   : selectedAnswers.includes(index)
                     ? 'border-[#3752ac] bg-[#3752ac] bg-opacity-10 dark:bg-opacity-30'
@@ -183,8 +183,8 @@ const Quiz: React.FC<QuizProps> = ({ quizId, onQuizCompleted }) => {
                 isAnswerChecked
                   ? selectedAnswers.includes(index)
                     ? quizInfo.correctAnswers.includes(index)
-                      ? 'bg-avax-green text-white'
-                      : 'bg-avax-red text-white'
+                      ? 'bg-lux-green text-white'
+                      : 'bg-lux-red text-white'
                     : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                   : selectedAnswers.includes(index)
                     ? 'bg-[#3752ac] text-white'

@@ -12,7 +12,7 @@ For this tutorial, we will be working in a new branch in Subnet-EVM/Precompile-E
 <Tabs items={['Subnet-EVM', 'Precompile-EVM']}>
 <Tab value="Subnet-EVM">
 ```bash
-cd $GOPATH/src/github.com/ava-labs/subnet-evm
+cd $GOPATH/src/github.com/luxfi/subnet-evm
 ```
 
 We will start off in this directory `./contracts/`:
@@ -24,7 +24,7 @@ cd contracts/
 Create a new file called `IHelloWorld.sol` and copy and paste the below code:
 
 ```solidity title="contracts/IHelloWorld.sol"
-// (c) 2022-2023, Ava Labs, Inc. All rights reserved.
+// (c) 2022-2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 // SPDX-License-Identifier: MIT
@@ -240,7 +240,7 @@ Now let's generate the precompile template files!
 
 <Tab value="Precompile-EVM">
 ```bash
-cd $GOPATH/src/github.com/ava-labs/precompile-evm
+cd $GOPATH/src/github.com/luxfi/precompile-evm
 ```
 
 We will start off in this directory `./contracts/`:
@@ -249,10 +249,10 @@ We will start off in this directory `./contracts/`:
 cd contracts/
 ```
 
-For Precompile-EVM interfaces and other contracts in Subnet-EVM can be accessible through `@avalabs/subnet-evm-contracts` package. This is already added to the `package.json` file. You can install it by running `npm install`. In order to import `IAllowList` interface, you can use the following import statement:
+For Precompile-EVM interfaces and other contracts in Subnet-EVM can be accessible through `@luxfi/subnet-evm-contracts` package. This is already added to the `package.json` file. You can install it by running `npm install`. In order to import `IAllowList` interface, you can use the following import statement:
 
 ```solidity
-import "@avalabs/subnet-evm-contracts/contracts/interfaces/IAllowList.sol";
+import "@luxfi/subnet-evm-contracts/contracts/interfaces/IAllowList.sol";
 ```
 
 The full file looks like this:
@@ -260,7 +260,7 @@ The full file looks like this:
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0;
-import "@avalabs/subnet-evm-contracts/contracts/interfaces/IAllowList.sol";
+import "@luxfi/subnet-evm-contracts/contracts/interfaces/IAllowList.sol";
 
 interface IHelloWorld is IAllowList {
   event GreetingChanged(
@@ -279,7 +279,7 @@ interface IHelloWorld is IAllowList {
 
 Now we have an interface that our precompile can implement! Let's create an ABI of our Solidity interface.
 
-In Precompile-EVM we import contracts from `@avalabs/subnet-evm-contracts` package. In order to generate the ABI in Precompile-EVM we need to include the `node_modules` folder to find imported contracts with following flags:
+In Precompile-EVM we import contracts from `@luxfi/subnet-evm-contracts` package. In order to generate the ABI in Precompile-EVM we need to include the `node_modules` folder to find imported contracts with following flags:
 
 - `--abi`: ABI specification of the contracts.
 - `--base-path path`: Use the given path as the root of the source tree instead of the root of the filesystem.

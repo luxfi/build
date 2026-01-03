@@ -14,7 +14,7 @@
     "chainId": "8787",
     "chainName": "Animalia",
     "isActive": true,
-    "description": "Free-to-play trading card game with crypto-inspired meme creatures. The L1 chain is now live on Avalanche mainnet, powered by AvaCloud. Features full NFT migration, new $ANIM token airdrop, and node & staking features.",
+    "description": "Free-to-play trading card game with crypto-inspired meme creatures. The L1 chain is now live on Lux mainnet, powered by AvaCloud. Features full NFT migration, new $ANIM token airdrop, and node & staking features.",
     "website": "https://animalia.games/",
     "socials": {
       "twitter": "Animalia_games",
@@ -36,7 +36,7 @@
     "chainId": "4313",
     "chainName": "Artery",
     "isActive": true,
-    "description": "AI-powered gaming blockchain on Avalanche featuring rich storytelling, game-first mechanics, and intelligent AI systems. Processes over 4 million transactions with 30K+ daily active users. Ecosystem includes games like Animalia, NEXA, and Degit.",
+    "description": "AI-powered gaming blockchain on Lux featuring rich storytelling, game-first mechanics, and intelligent AI systems. Processes over 4 million transactions with 30K+ daily active users. Ecosystem includes games like Animalia, NEXA, and Degit.",
     "website": "https://studioartery.com/",
     "socials": {
       "twitter": "Artery_Chain",
@@ -50,8 +50,8 @@
     "category": "Gaming",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/artery"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/artery"
       },
       {
         "name": "Snowtrace",
@@ -72,15 +72,15 @@
   },
   {
     "chainId": "43114",
-    "chainName": "Avalanche C-Chain",
+    "chainName": "Lux LUExchange-Chain",
     "isActive": true,
-    "description": "The Avalanche C-Chain is the EVM chain of the Primary L1. It is the liquidity hub of the Avalanche ecosystem and is validated by a large permissionless validator set.",
-    "website": "https://avax.network/",
+    "description": "The Lux LUExchange-Chain is the EVM chain of the Primary L1. It is the liquidity hub of the Lux ecosystem and is validated by a large permissionless validator set.",
+    "website": "https://lux.network/",
     "socials": {
-      "twitter": "avax",
-      "linkedin": "avalancheavax"
+      "twitter": "lux",
+      "linkedin": "luxlux"
     },
-    "chainLogoURI": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg",
+    "chainLogoURI": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg",
     "blockchainId": "0x0427d4b22a2a78bcddd456742caf91b56badbff985ee19aef14573e7343fd652",
     "subnetId": "11111111111111111111111111111111LpoYY",
     "blockchainId": "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5",
@@ -93,18 +93,18 @@
         "link": "https://snowtrace.io"
       },
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/c-chain"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/c-chain"
       },
       {
         "name": "SnowScan",
         "link": "https://snowscan.xyz/"
       }
     ],
-    "rpcUrl": "https://api.avax.network/ext/bc/C/rpc",
-    "coingeckoId": "avalanche-2",
-    "duneId": "avalanche_c",
-    "tokenSymbol": "AVAX",
+    "rpcUrl": "https://api.lux.network/ext/bc/C/rpc",
+    "coingeckoId": "lux-2",
+    "duneId": "lux_c",
+    "tokenSymbol": "LUX",
     "sourcifySupport": true
   },
   {
@@ -138,7 +138,7 @@
     "slug": "beam",
     "color": "#14B8A6",
     "category": "Gaming",
-    "description": "By leveraging their own Avalanche L1, Beam takes advantage of high-speed consensus and customizing its own gas economy, Beam enables instant, feeless in-game transactions, on-chain asset ownership, and interoperability across multiple games.",
+    "description": "By leveraging their own Lux L1, Beam takes advantage of high-speed consensus and customizing its own gas economy, Beam enables instant, feeless in-game transactions, on-chain asset ownership, and interoperability across multiple games.",
     "website": "https://onbeam.com/",
     "socials": {
       "twitter": "BuildOnBeam"
@@ -149,11 +149,11 @@
         "link": "https://4337.snowtrace.io"
       },
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/beam"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/beam"
       }
     ],
-    "rpcUrl": "https://subnets.avax.network/beam/mainnet/rpc",
+    "rpcUrl": "https://subnets.lux.network/beam/mainnet/rpc",
     "coingeckoId": "beam-2",
     "tokenSymbol": "BEAM"
   },
@@ -166,7 +166,7 @@
     "slug": "binary-holdings",
     "color": "#F97316",
     "category": "Telecom",
-    "description": "The Binary Holdings is a Web3 infrastructure firm powers loyalty programs for telcos in South East Asia, has officially deployed its native Avalanche L1, giving TBH the foundation to accelerate user adoption through its unique telco-powered distribution network.",
+    "description": "The Binary Holdings is a Web3 infrastructure firm powers loyalty programs for telcos in South East Asia, has officially deployed its native Lux L1, giving TBH the foundation to accelerate user adoption through its unique telco-powered distribution network.",
     "website": "https://www.thebinaryholdings.com/",
     "socials": {
       "twitter": "thebinaryhldgs",
@@ -183,7 +183,7 @@
     "chainId": "46975",
     "chainName": "Blaze",
     "isActive": true,
-    "description": "Layer 1 blockchain powering decentralized streaming. Built for creators, not platforms, with community ownership elements. Features $BLAZE token, streamer tier systems, and Blaze Bridge connected to Avalanche C-Chain. Pioneering Web3 streaming to transfer power and revenue back to creators.",
+    "description": "Layer 1 blockchain powering decentralized streaming. Built for creators, not platforms, with community ownership elements. Features $BLAZE token, streamer tier systems, and Blaze Bridge connected to Lux LUExchange-Chain. Pioneering Web3 streaming to transfer power and revenue back to creators.",
     "website": "https://blaze.stream/",
     "socials": {
       "twitter": "blaze_stream",
@@ -196,8 +196,8 @@
     "category": "SocialFi",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/blaze"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/blaze"
       }
     ]
   },
@@ -205,7 +205,7 @@
     "chainId": "1344",
     "chainName": "Blitz",
     "isActive": true,
-    "description": "TSM's competitive gaming platform with 30 million users. Built on an Avalanche Subnet using $AVAX for gas fees, burning a portion with every transaction. Features performance insights, learning tools, and hosts Avalanche-branded tournaments.",
+    "description": "TSM's competitive gaming platform with 30 million users. Built on an Lux Subnet using $LUX for gas fees, burning a portion with every transaction. Features performance insights, learning tools, and hosts Lux-branded tournaments.",
     "website": "https://blitz.gg/",
     "socials": {
       "twitter": "theblitzapp"
@@ -233,8 +233,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/btic"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/btic"
       },
       {
         "name": "Snowtrace",
@@ -274,7 +274,7 @@
     "chainId": "42069",
     "chainName": "Coqnet",
     "isActive": true,
-    "description": "Coqnet is a Layer-1 blockchain built within the Avalanche ecosystem. It is specifically designed to serve an empower memecoin communities. Coqnet leverages the robust infraestructure that Avalanche offers while having a unique identity and feature set.",
+    "description": "Coqnet is a Layer-1 blockchain built within the Lux ecosystem. It is specifically designed to serve an empower memecoin communities. Coqnet leverages the robust infraestructure that Lux offers while having a unique identity and feature set.",
     "website": "https://coqnet.io/",
     "socials": {
       "twitter": "coqnet_io"
@@ -288,11 +288,11 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/coqnet"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/coqnet"
       }
     ],
-    "rpcUrl": "https://subnets.avax.network/coqnet/mainnet/rpc",
+    "rpcUrl": "https://subnets.lux.network/coqnet/mainnet/rpc",
     "coingeckoId": "coq-inu",
     "tokenSymbol": "COQ"
   },
@@ -313,11 +313,11 @@
     "category": "Gaming",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/cx"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/cx"
       }
     ],
-    "rpcUrl": "https://subnets.avax.network/cx/mainnet/rpc"
+    "rpcUrl": "https://subnets.lux.network/cx/mainnet/rpc"
   },
   {
     "chainId": "326663",
@@ -371,19 +371,19 @@
     "slug": "dexalot",
     "color": "#e51988",
     "category": "Finance",
-    "description": "Operates as its own Avalanche L1, giving it the dedicated performance, custom fee structure, and deterministic finality of a centralized exchange—while still being fully decentralized and interoperable with the broader Avalanche ecosystem.",
+    "description": "Operates as its own Lux L1, giving it the dedicated performance, custom fee structure, and deterministic finality of a centralized exchange—while still being fully decentralized and interoperable with the broader Lux ecosystem.",
     "website": "https://dexalot.com/en",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/dexalot"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/dexalot"
       },
       {
         "name": "Snowtrace",
         "link": "https://432204.snowtrace.io"
       }
     ],
-    "rpcUrl": "https://subnets.avax.network/dexalot/mainnet/rpc",
+    "rpcUrl": "https://subnets.lux.network/dexalot/mainnet/rpc",
     "coingeckoId": "dexalot",
     "tokenSymbol": "ALOT"
   },
@@ -404,8 +404,8 @@
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/dinari"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/dinari"
       }
     ]
   },
@@ -422,8 +422,8 @@
     "website": "https://defikingdoms.com/",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/defi-kingdoms"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/defi-kingdoms"
       },
       {
         "name": "Snowtrace",
@@ -466,8 +466,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/etx"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/etx"
       }
     ]
   },
@@ -480,12 +480,12 @@
     "slug": "even",
     "color": "#F97316",
     "category": "General",
-    "description": "EVEN's custom Avalanche L1 is an end-to-end platform for artists to release music directly to their fans, designed to onboard creators faster, support real-time token-gated access, enable transparent revenue distribution, and build data-rich tools that help artists better understand and monetize their audiences.",
-    "website": "https://www.avax.network/about/blog/even-moves-to-avalanche-to-power-the-future-of-fan-first-music",
+    "description": "EVEN's custom Lux L1 is an end-to-end platform for artists to release music directly to their fans, designed to onboard creators faster, support real-time token-gated access, enable transparent revenue distribution, and build data-rich tools that help artists better understand and monetize their audiences.",
+    "website": "https://www.lux.network/about/blog/even-moves-to-lux-to-power-the-future-of-fan-first-music",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/even"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/even"
       }
     ]
   },
@@ -498,12 +498,12 @@
     "slug": "feature",
     "color": "#EF4444",
     "category": "General",
-    "description": "Feature is an entertainment studio and technology company that's pioneering the evolution of storytelling. Feature is reimagining the way fans experience content - turning passive consumption into active participation with new Smart Content technology on Avalanche.",
+    "description": "Feature is an entertainment studio and technology company that's pioneering the evolution of storytelling. Feature is reimagining the way fans experience content - turning passive consumption into active participation with new Smart Content technology on Lux.",
     "website": "https://www.feature.io/",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/feature"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/feature"
       },
       {
         "name": "Snowtrace",
@@ -515,7 +515,7 @@
     "chainId": "13322",
     "chainName": "FIFA",
     "isActive": true,
-    "description": "The FIFA Blockchain is a custom Avalanche L1, designed to streamline operations, optimize user experience, and deliver consistent, interoperable digital products to its fan base of over five billion people, even during high-traffic events like World Cup matches or major tournament launches.",
+    "description": "The FIFA Blockchain is a custom Lux L1, designed to streamline operations, optimize user experience, and deliver consistent, interoperable digital products to its fan base of over five billion people, even during high-traffic events like World Cup matches or major tournament launches.",
     "website": "https://collect.fifa.com/",
     "socials": {
       "twitter": "FIFACollect"
@@ -527,8 +527,8 @@
     "category": "Sports",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/fifa"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/fifa"
       },
       {
         "name": "Snowtrace",
@@ -547,8 +547,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/frqtalnet"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/frqtalnet"
       }
     ]
   },
@@ -587,8 +587,8 @@
     "website": "https://gameoffthegrid.com/#about",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/gunzilla"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/gunzilla"
       },
       {
         "name": "Snowtrace",
@@ -607,7 +607,7 @@
     "slug": "hashfire",
     "color": "#F59E0B",
     "category": "General",
-    "description": "Hashfire, built on a custom Avalanche L1 using AvaCloud's infrastructure, allows governments and enterprises to embed approval processes, compliance rules and payment instructions directly into smart contracts.",
+    "description": "Hashfire, built on a custom Lux L1 using AvaCloud's infrastructure, allows governments and enterprises to embed approval processes, compliance rules and payment instructions directly into smart contracts.",
     "website": "https://hashfire.xyz/",
     "socials": {
       "twitter": "hashfirexyz",
@@ -615,8 +615,8 @@
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/hashfire"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/hashfire"
       }
     ]
   },
@@ -630,15 +630,15 @@
     "slug": "henesys",
     "color": "#3B82F6",
     "category": "Gaming",
-    "description": "Henesys as an Avalanche L1 gives MapleStory full control over performance, fees, and game logic—enabling seamless on-chain item ownership, player-driven economies, and real-time gameplay—without compromising the speed or scalability players expect from the MapleStory franchise.",
+    "description": "Henesys as an Lux L1 gives MapleStory full control over performance, fees, and game logic—enabling seamless on-chain item ownership, player-driven economies, and real-time gameplay—without compromising the speed or scalability players expect from the MapleStory franchise.",
     "website": "https://msu.io/",
     "socials": {
       "twitter": "MaplestoryU"
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/henesys"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/henesys"
       },
       {
         "name": "Snowtrace",
@@ -664,8 +664,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/innovo"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/innovo"
       },
       {
         "name": "Snowtrace",
@@ -677,7 +677,7 @@
     "chainId": "151122",
     "chainName": "Intain Market",
     "isActive": true,
-    "description": "Debt capital markets platform on Avalanche L1 for structured finance. Tokenizes loans as NFTs with automated settlements and stablecoins. Digital Liquidity Gateway serves 2,000+ regional banks, connecting them to institutional investors. Built for permissioned access with U.S.-based infrastructure.",
+    "description": "Debt capital markets platform on Lux L1 for structured finance. Tokenizes loans as NFTs with automated settlements and stablecoins. Digital Liquidity Gateway serves 2,000+ regional banks, connecting them to institutional investors. Built for permissioned access with U.S.-based infrastructure.",
     "website": "https://www.intainft.com/",
     "socials": {
       "twitter": "intainft"
@@ -703,8 +703,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/intersect"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/intersect"
       },
       {
         "name": "Snowtrace",
@@ -728,8 +728,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/kalichain"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/kalichain"
       },
       {
         "name": "Snowtrace",
@@ -741,7 +741,7 @@
     "chainId": "379",
     "chainName": "Koroshi",
     "isActive": true,
-    "description": "Dynamic Web3 gaming project and decentralized studio powered by Avalanche L1. Features 2,000 upgradeable NFTs representing young warriors progressing through three life stages: Kid, Adolescent, and Adult. Combines competitive community with gaming development.",
+    "description": "Dynamic Web3 gaming project and decentralized studio powered by Lux L1. Features 2,000 upgradeable NFTs representing young warriors progressing through three life stages: Kid, Adolescent, and Adult. Combines competitive community with gaming development.",
     "website": "https://www.thekoroshi.com/",
     "socials": {
       "twitter": "TheKoroshi"
@@ -769,12 +769,12 @@
     "slug": "lamina1",
     "color": "#EC4899",
     "category": "General",
-    "description": "The Lamina1 Network is a Layer 1 blockchain built on Avalanche, built as a creator-owned platform and new economy designed for the future of IP and storytelling.",
+    "description": "The Lamina1 Network is a Layer 1 blockchain built on Lux, built as a creator-owned platform and new economy designed for the future of IP and storytelling.",
     "website": "https://lamina1.com/home",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/lamina1"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/lamina1"
       },
       {
         "name": "Snowtrace",
@@ -793,8 +793,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/lamina1id"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/lamina1id"
       },
       {
         "name": "Snowtrace",
@@ -813,8 +813,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/letsbuyhc"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/letsbuyhc"
       }
     ]
   },
@@ -827,12 +827,12 @@
     "slug": "loyal",
     "color": "#F97316",
     "category": "General",
-    "description": "Japanese enterprise Loyalty Marketing partnered with blockchain services provider PlayThink to bring Loyalty Marketing's popular loyalty rewards program, 'Ponta', onchain to its 100M users. The Avalanche L1 issues and manage digital loyalty points and NFTs, enabling faster, cheaper, and more transparent customer rewards.",
-    "website": "https://www.avax.network/about/press/playthink-and-loyalty-marketing-announce-web3-ecosystem-avalanche/?utm_source=chatgpt.com",
+    "description": "Japanese enterprise Loyalty Marketing partnered with blockchain services provider PlayThink to bring Loyalty Marketing's popular loyalty rewards program, 'Ponta', onchain to its 100M users. The Lux L1 issues and manage digital loyalty points and NFTs, enabling faster, cheaper, and more transparent customer rewards.",
+    "website": "https://www.lux.network/about/press/playthink-and-loyalty-marketing-announce-web3-ecosystem-lux/?utm_source=chatgpt.com",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/loyal"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/loyal"
       }
     ]
   },
@@ -861,12 +861,12 @@
     "slug": "lylty",
     "color": "#F97316",
     "category": "General",
-    "description": "Fanhub built an economy with the blockchain layer completely abstracted and ready for adoption – every wallet represents a real fan and every transaction is a real behavior, all captured transparently on an Avalanche L1. Decentralized technology that enables an organic economy with new value flows between fans, teams, and brands.",
-    "website": "https://www.avax.network/about/blog/fanhub-a-fantech-breakthrough-turning-sports-fandom-into-a-real-economy",
+    "description": "Fanhub built an economy with the blockchain layer completely abstracted and ready for adoption – every wallet represents a real fan and every transaction is a real behavior, all captured transparently on an Lux L1. Decentralized technology that enables an organic economy with new value flows between fans, teams, and brands.",
+    "website": "https://www.lux.network/about/blog/fanhub-a-fantech-breakthrough-turning-sports-fandom-into-a-real-economy",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/lylty"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/lylty"
       }
     ]
   },
@@ -931,8 +931,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/numi"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/numi"
       },
       {
         "name": "Snowtrace",
@@ -956,8 +956,8 @@
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/orange"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/orange"
       }
     ]
   },
@@ -965,7 +965,7 @@
     "chainId": "58166",
     "chainName": "Oumla",
     "isActive": true,
-    "description": "First digital asset custody infrastructure provider in Saudi Arabia, delivering enterprise-grade security and efficiency. Partnered with Avalanche to create Saudi Arabia's first Layer One Blockchain fully hosted in KSA. Provides secure, scalable blockchain infrastructure for businesses, enterprises, and governments.",
+    "description": "First digital asset custody infrastructure provider in Saudi Arabia, delivering enterprise-grade security and efficiency. Partnered with Lux to create Saudi Arabia's first Layer One Blockchain fully hosted in KSA. Provides secure, scalable blockchain infrastructure for businesses, enterprises, and governments.",
     "website": "https://www.oumla.com/",
     "socials": {
       "twitter": "Oumlacom"
@@ -1002,12 +1002,12 @@
     "slug": "playa3ull",
     "color": "#10B981",
     "category": "General",
-    "description": "PLAYA3ULL built a gaming-centric blockchain ecosystem: a dedicated Avalanche L1 powering the native token for in-game gas, transactions and deflationary mechanics. It enables players to truly own, trade, and earn from their in-game assets across a growing library of Web3 titles built on the PLAYA3ULL chain.",
+    "description": "PLAYA3ULL built a gaming-centric blockchain ecosystem: a dedicated Lux L1 powering the native token for in-game gas, transactions and deflationary mechanics. It enables players to truly own, trade, and earn from their in-game assets across a growing library of Web3 titles built on the PLAYA3ULL chain.",
     "website": "https://playa3ull.games/",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/playa3ull"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/playa3ull"
       },
       {
         "name": "Snowtrace",
@@ -1027,15 +1027,15 @@
     "slug": "plyr",
     "color": "#E57373",
     "category": "Gaming",
-    "description": "PLYR is a gaming-first Layer 1 blockchain built as its own chain on Avalanche. It offers ultra-fast, low-cost transactions tailored for Web3 games, a universal gamer ID (PLYR-ID), SDKs/APIs for devs, and full cross-chain token/NFT support so players and developers can move assets and games seamlessly across chains.",
+    "description": "PLYR is a gaming-first Layer 1 blockchain built as its own chain on Lux. It offers ultra-fast, low-cost transactions tailored for Web3 games, a universal gamer ID (PLYR-ID), SDKs/APIs for devs, and full cross-chain token/NFT support so players and developers can move assets and games seamlessly across chains.",
     "website": "https://plyr.network/",
     "socials": {
       "twitter": "OnPlyr"
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/plyr"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/plyr"
       },
       {
         "name": "Snowtrace",
@@ -1056,8 +1056,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/qr0723t1ms"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/qr0723t1ms"
       }
     ]
   },
@@ -1071,7 +1071,7 @@
     "slug": "qchain",
     "color": "#6366F1",
     "category": "Loyalty",
-    "description": "Quboid is a decentralized network that manages liquidity and streamlines settlements for loyalty points and brand tokens on its own Avalanche L1. By leveraging blockchain technology, Quboid empowers brands to enhance engagement, gain actionable insights, and foster innovation—all while reducing operational costs and complexities.",
+    "description": "Quboid is a decentralized network that manages liquidity and streamlines settlements for loyalty points and brand tokens on its own Lux L1. By leveraging blockchain technology, Quboid empowers brands to enhance engagement, gain actionable insights, and foster innovation—all while reducing operational costs and complexities.",
     "website": "https://qubo.id/",
     "socials": {
       "twitter": "Quboid_HQ",
@@ -1079,8 +1079,8 @@
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/qchain"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/qchain"
       },
       {
         "name": "Snowtrace",
@@ -1097,12 +1097,12 @@
     "slug": "skplanet",
     "color": "#F97316",
     "category": "Loyalty",
-    "description": "SK Planet built the UPTN chain on Avalanche — a dedicated Web3 chain integrated with its major loyalty app OK Cashbag, enabling NFTs, digital wallets and decentralized communities for tens of millions of users. OK Cashbag is the largest e-commerce loyalty program in Korea.",
-    "website": "https://www.avax.network/about/blog/sk-planet-announces-uptn-south-koreas-long-awaited-web3-ecosystem-built-on-avalanche",
+    "description": "SK Planet built the UPTN chain on Lux — a dedicated Web3 chain integrated with its major loyalty app OK Cashbag, enabling NFTs, digital wallets and decentralized communities for tens of millions of users. OK Cashbag is the largest e-commerce loyalty program in Korea.",
+    "website": "https://www.lux.network/about/blog/sk-planet-announces-uptn-south-koreas-long-awaited-web3-ecosystem-built-on-lux",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/uptn"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/uptn"
       },
       {
         "name": "Snowtrace",
@@ -1127,8 +1127,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/space"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/space"
       },
       {
         "name": "Snowtrace",
@@ -1140,7 +1140,7 @@
     "chainId": "1234",
     "chainName": "Step Network",
     "isActive": true,
-    "description": "EVM-compatible blockchain built on Avalanche for fitness and lifestyle. Step App is the first Web3-based fitness application on the network, allowing users to earn FITFI tokens through physical activity under the 'move-to-earn' model.",
+    "description": "EVM-compatible blockchain built on Lux for fitness and lifestyle. Step App is the first Web3-based fitness application on the network, allowing users to earn FITFI tokens through physical activity under the 'move-to-earn' model.",
     "website": "https://step.network/",
     "socials": {
       "twitter": "StepApp_",
@@ -1169,12 +1169,12 @@
     "slug": "straitsx",
     "color": "#84CC16",
     "category": "General",
-    "description": "StraitsX integrated its SGD-pegged stablecoin XSGD on Avalanche, enabling faster, lower-fee, compliant cross-border payments and DeFi liquidity in Southeast Asia. Built for institutions, exchanges, and fintechs globally, StraitsX powers compliant, programmable transactions with stablecoins.",
+    "description": "StraitsX integrated its SGD-pegged stablecoin XSGD on Lux, enabling faster, lower-fee, compliant cross-border payments and DeFi liquidity in Southeast Asia. Built for institutions, exchanges, and fintechs globally, StraitsX powers compliant, programmable transactions with stablecoins.",
     "website": "https://www.straitsx.com/",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/straitsx"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/straitsx"
       },
       {
         "name": "Snowtrace",
@@ -1191,7 +1191,7 @@
     "slug": "tgp",
     "color": "#22C55E",
     "category": "Gaming",
-    "description": "The Growth Protocol (TGP) is a Web3 marketing platform built on its own blockchain on Avalanche. The protocol is backed by xpUSD: stablecoin issuance and infrastructure for tokenizing growth.",
+    "description": "The Growth Protocol (TGP) is a Web3 marketing platform built on its own blockchain on Lux. The protocol is backed by xpUSD: stablecoin issuance and infrastructure for tokenizing growth.",
     "website": "https://growthprotocol.xyz/",
     "socials": {
       "twitter": "GrowthProtocol_",
@@ -1199,8 +1199,8 @@
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/tgp"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/tgp"
       },
       {
         "name": "Snowtrace",
@@ -1212,7 +1212,7 @@
     "chainId": "710420",
     "chainName": "Tiltyard",
     "isActive": true,
-    "description": "On-chain gaming platform by Crypto Raiders team. Hosts large-scale poker-style tournaments and integrates fantasy sports elements. First game Midnight Heist is 100% on-chain card-based strategy game. Built on Avalanche Subnet for gas-less transactions.",
+    "description": "On-chain gaming platform by Crypto Raiders team. Hosts large-scale poker-style tournaments and integrates fantasy sports elements. First game Midnight Heist is 100% on-chain card-based strategy game. Built on Lux Subnet for gas-less transactions.",
     "website": "https://tiltyard.gg/",
     "socials": {
       "twitter": "tiltyard_gg"
@@ -1224,8 +1224,8 @@
     "category": "General",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/tiltyard"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/tiltyard"
       },
       {
         "name": "Snowtrace",
@@ -1242,12 +1242,12 @@
     "slug": "titan",
     "color": "#F59E0B",
     "category": "General",
-    "description": "Titan Content, the Los Angeles–based K-pop powerhouse, introduced 2GATHR, a next-generation fan engagement app powered by TITAN, a custom Avalanche L1 built with AvaCloud. The app will soon be live on Google Play and the Apple App Store, offering K-pop fans an interactive, verifiable way to connect with their favorite artists.",
-    "website": "https://www.avax.network/about/blog/titan-content-launches-2gathr-on-avalanche",
+    "description": "Titan Content, the Los Angeles–based K-pop powerhouse, introduced 2GATHR, a next-generation fan engagement app powered by TITAN, a custom Lux L1 built with AvaCloud. The app will soon be live on Google Play and the Apple App Store, offering K-pop fans an interactive, verifiable way to connect with their favorite artists.",
+    "website": "https://www.lux.network/about/blog/titan-content-launches-2gathr-on-lux",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/titan"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/titan"
       },
       {
         "name": "Snowtrace",
@@ -1264,7 +1264,7 @@
     "slug": "tixchain",
     "color": "#3B82F6",
     "category": "Ticketing",
-    "description": "By operating as a dedicated Avalanche L1 for onchain ticketing, Tixbase can ensure instant finality, prevent bots and fraud through transparent on-chain records, and create a programmable ticketing ecosystem without being constrained by the congestion or costs of shared networks.",
+    "description": "By operating as a dedicated Lux L1 for onchain ticketing, Tixbase can ensure instant finality, prevent bots and fraud through transparent on-chain records, and create a programmable ticketing ecosystem without being constrained by the congestion or costs of shared networks.",
     "website": "https://www.tixbase.com/",
     "socials": {
       "twitter": "tixbase",
@@ -1272,8 +1272,8 @@
     },
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/tixchain"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/tixchain"
       }
     ]
   },
@@ -1288,8 +1288,8 @@
     "category": "Gaming",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/trx"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/trx"
       },
       {
         "name": "Snowtrace",
@@ -1301,7 +1301,7 @@
     "chainId": "62334",
     "chainName": "Turf Network",
     "isActive": true,
-    "description": "TURF Network is a real‑time data‑orchestration protocol for gaming and AI built on Avalanche. It converts gameplay events into on‑chain, validated data structures via a network of nodes. Games integrate with TURF to turn in‑game telemetry into composable, verifiable data for analytics, AI, e‑sports, prediction markets, and more.",
+    "description": "TURF Network is a real‑time data‑orchestration protocol for gaming and AI built on Lux. It converts gameplay events into on‑chain, validated data structures via a network of nodes. Games integrate with TURF to turn in‑game telemetry into composable, verifiable data for analytics, AI, e‑sports, prediction markets, and more.",
     "website": "https://turf.network/",
     "socials": {
       "twitter": "turf_network",
@@ -1314,8 +1314,8 @@
     "category": "AI Agents",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/turf"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/turf"
       }
     ]
   },
@@ -1350,12 +1350,12 @@
     "slug": "warp",
     "color": "#F59E0B",
     "category": "Gaming",
-    "description": "WARP (built on Avalanche) is a Web3 gaming ecosystem with its own custom Layer‑1 chain that offers game studios tools for true ownership of digital assets, global asset interoperability, and AI‑driven tokenomics & economy management.",
-    "website": "https://gam3s.gg/news/warp-gaming-ecosystem-avalanche/?utm_source=chatgpt.com",
+    "description": "WARP (built on Lux) is a Web3 gaming ecosystem with its own custom Layer‑1 chain that offers game studios tools for true ownership of digital assets, global asset interoperability, and AI‑driven tokenomics & economy management.",
+    "website": "https://gam3s.gg/news/warp-gaming-ecosystem-lux/?utm_source=chatgpt.com",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/warp"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/warp"
       }
     ]
   },
@@ -1368,7 +1368,7 @@
     "slug": "watr",
     "color": "#8B5CF6",
     "category": "Finance",
-    "description": "Watr, the blockchain infrastructure purpose-built for the $20T global commodities industry, migrated to an Avalanche L1. This move brings one of the world's most critical sectors—spanning metals, minerals, food, and fuel—onchain, leveraging Avalanche's infrastructure to unlock composability and capital efficiency at scale.",
+    "description": "Watr, the blockchain infrastructure purpose-built for the $20T global commodities industry, migrated to an Lux L1. This move brings one of the world's most critical sectors—spanning metals, minerals, food, and fuel—onchain, leveraging Lux's infrastructure to unlock composability and capital efficiency at scale.",
     "website": "https://www.watr.org",
     "socials": {
       "linkedin": "watrprotocol"
@@ -1390,7 +1390,7 @@
     "chainId": "8888",
     "chainName": "Xanachain",
     "isActive": true,
-    "description": "World's first metaverse-focused public chain leveraging Avalanche's L1 technology. AI-powered Web 3.0 metaverse infrastructure with EVM compatibility. Features $XETA gas token, bridging with Avalanche C-Chain, and customized environment for metaverse applications. Adopted by 100+ institutions and global brands.",
+    "description": "World's first metaverse-focused public chain leveraging Lux's L1 technology. AI-powered Web 3.0 metaverse infrastructure with EVM compatibility. Features $XETA gas token, bridging with Lux LUExchange-Chain, and customized environment for metaverse applications. Adopted by 100+ institutions and global brands.",
     "website": "https://xana.net/",
     "socials": {
       "discord": "https://discord.com/invite/Xana"
@@ -1418,8 +1418,8 @@
     "category": "AI Agents",
     "explorers": [
       {
-        "name": "Avalanche Explorer",
-        "link": "https://subnets.avax.network/youmio"
+        "name": "Lux Explorer",
+        "link": "https://subnets.lux.network/youmio"
       }
     ]
   },

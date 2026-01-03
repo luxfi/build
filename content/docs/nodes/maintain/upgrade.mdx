@@ -1,5 +1,5 @@
 ---
-title: Upgrade Your AvalancheGo Node
+title: Upgrade Your LuxGo Node
 ---
 
 Backup Your Node[​](#backup-your-node "Direct link to heading")
@@ -9,8 +9,8 @@ Before upgrading your node, it is recommended you backup your staker files which
 
 ```bash
 cd
-cp ~/.avalanchego/staking/staker.crt .
-cp ~/.avalanchego/staking/staker.key .
+cp ~/.luxgo/staking/staker.crt .
+cp ~/.luxgo/staking/staker.key .
 ```
 
 Then download `staker.crt` and `staker.key` files and keep them somewhere safe and private. If anything happens to your node or the machine node runs on, these files can be used to fully recreate your node.
@@ -20,20 +20,20 @@ If you use your node for development purposes and have keystore users on your no
 Node Installed Using the Installer Script[​](#node-installed-using-the-installer-script "Direct link to heading")
 -----------------------------------------------------------------------------------------------------------------
 
-If you installed your node using the [installer script](/docs/nodes/run-a-node/using-install-script/installing-avalanche-go), to upgrade your node, just run the installer script again.
+If you installed your node using the [installer script](/docs/nodes/run-a-node/using-install-script/installing-lux-go), to upgrade your node, just run the installer script again.
 
 ```bash
-./avalanchego-installer.sh
+./luxgo-installer.sh
 ```
 
-It will detect that you already have AvalancheGo installed:
+It will detect that you already have LuxGo installed:
 
 ```bash
-AvalancheGo installer
+LuxGo installer
 ---------------------
 Preparing environment...
 Found 64bit Intel/AMD architecture...
-Found AvalancheGo systemd service already installed, switching to upgrade mode.
+Found LuxGo systemd service already installed, switching to upgrade mode.
 Stopping service...
 ```
 
@@ -42,7 +42,7 @@ It will then upgrade your node to the latest version, and after it's done, start
 ```bash
 Node upgraded, starting service...
 New node version:
-avalanche/1.1.1 [network=mainnet, database=v1.0.0, commit=f76f1fd5f99736cf468413bbac158d6626f712d2]
+lux/1.1.1 [network=mainnet, database=v1.0.0, commit=f76f1fd5f99736cf468413bbac158d6626f712d2]
 Done!
 ```
 
@@ -61,17 +61,17 @@ If your node is running in a terminal stop it by pressing `ctrl+c`.
 
 ### Node Running as a Service[​](#node-running-as-a-service "Direct link to heading")
 
-If your node is running as a service, stop it by entering: `sudo systemctl stop avalanchego.service`
+If your node is running as a service, stop it by entering: `sudo systemctl stop luxgo.service`
 
-(your service may be named differently, `avalanche.service`, or similar)
+(your service may be named differently, `lux.service`, or similar)
 
 ### Node Running in Background[​](#node-running-in-background "Direct link to heading")
 
-If your node is running in the background (by running with `nohup`, for example) then find the process running the node by running `ps aux | grep avalanche`. This will produce output like:
+If your node is running in the background (by running with `nohup`, for example) then find the process running the node by running `ps aux | grep lux`. This will produce output like:
 
 ```bash
-ubuntu  6834  0.0  0.0   2828   676 pts/1    S+   19:54   0:00 grep avalanche
-ubuntu  2630 26.1  9.4 2459236 753316 ?      Sl   Dec02 1220:52 /home/ubuntu/build/avalanchego
+ubuntu  6834  0.0  0.0   2828   676 pts/1    S+   19:54   0:00 grep lux
+ubuntu  2630 26.1  9.4 2459236 753316 ?      Sl   Dec02 1220:52 /home/ubuntu/build/luxgo
 ```
 
 In this example, second line shows information about your node. Note the process id, in this case, `2630`. Stop the node by running `kill -2 2630`.
@@ -80,35 +80,35 @@ Now we are ready to download the new version of the node. You can either downloa
 
 Downloading pre-built binary is easier and recommended if you're just looking to run your own node and stake on it.
 
-Building the node [from source](/docs/nodes/maintain/upgrade#build-from-source) is recommended if you're a developer looking to experiment and build on Avalanche.
+Building the node [from source](/docs/nodes/maintain/upgrade#build-from-source) is recommended if you're a developer looking to experiment and build on Lux.
 
 Download Pre-Built Binary[​](#download-pre-built-binary "Direct link to heading")
 ---------------------------------------------------------------------------------
 
-If you want to download a pre-built binary instead of building it yourself, go to our [releases page](https://github.com/ava-labs/avalanchego/releases), and select the release you want (probably the latest one.)
+If you want to download a pre-built binary instead of building it yourself, go to our [releases page](https://github.com/luxfi/luxgo/releases), and select the release you want (probably the latest one.)
 
 <Callout title="Note">
-If you have a node, you can subscribe to the [avalanche notify service](/docs/nodes/maintain/enroll-in-avalanche-notify) with your node ID to be notified about new releases.
+If you have a node, you can subscribe to the [lux notify service](/docs/nodes/maintain/enroll-in-lux-notify) with your node ID to be notified about new releases.
 
-In addition, or if you don't have a node ID, you can get release notifications from github. To do so, you can go to our [repository](https://github.com/ava-labs/avalanchego) and look on the top-right corner for the **Watch** option. After you click on it, select **Custom**, and then **Releases**. Press **Apply** and it is done.
+In addition, or if you don't have a node ID, you can get release notifications from github. To do so, you can go to our [repository](https://github.com/luxfi/luxgo) and look on the top-right corner for the **Watch** option. After you click on it, select **Custom**, and then **Releases**. Press **Apply** and it is done.
 </Callout>
 
 Under `Assets`, select the appropriate file.
 
 For MacOS:  
-Download: `avalanchego-macos-<VERSION>.zip`  
-Unzip: `unzip avalanchego-macos-<VERSION>.zip`  
-The resulting folder, `avalanchego-<VERSION>`, contains the binaries.
+Download: `luxgo-macos-<VERSION>.zip`  
+Unzip: `unzip luxgo-macos-<VERSION>.zip`  
+The resulting folder, `luxgo-<VERSION>`, contains the binaries.
 
 For Linux on PCs or cloud providers:  
-Download: `avalanchego-linux-amd64-<VERSION>.tar.gz`  
-Unzip: `tar -xvf avalanchego-linux-amd64-<VERSION>.tar.gz`  
-The resulting folder, `avalanchego-<VERSION>-linux`, contains the binaries.
+Download: `luxgo-linux-amd64-<VERSION>.tar.gz`  
+Unzip: `tar -xvf luxgo-linux-amd64-<VERSION>.tar.gz`  
+The resulting folder, `luxgo-<VERSION>-linux`, contains the binaries.
 
 For Linux on Arm64-based computers:  
-Download: `avalanchego-linux-arm64-<VERSION>.tar.gz`  
-Unzip: `tar -xvf avalanchego-linux-arm64-<VERSION>.tar.gz`  
-The resulting folder, `avalanchego-<VERSION>-linux`, contains the binaries.
+Download: `luxgo-linux-arm64-<VERSION>.tar.gz`  
+Unzip: `tar -xvf luxgo-linux-arm64-<VERSION>.tar.gz`  
+The resulting folder, `luxgo-<VERSION>-linux`, contains the binaries.
 
 You are now ready to run the new version of the node.
 
@@ -117,13 +117,13 @@ You are now ready to run the new version of the node.
 If you are using the pre-built binaries on MacOS:
 
 ```bash
-./avalanchego-<VERSION>/build/avalanchego
+./luxgo-<VERSION>/build/luxgo
 ```
 
 If you are using the pre-built binaries on Linux:
 
 ```bash
-./avalanchego-<VERSION>-linux/avalanchego
+./luxgo-<VERSION>-linux/luxgo
 ```
 
 Add `nohup` at the start of the command if you want to run the node in the background.
@@ -133,10 +133,10 @@ Add `nohup` at the start of the command if you want to run the node in the backg
 If you're running the node as a service, you need to replace the old binaries with the new ones.
 
 ```bash
-cp -r avalanchego-<VERSION>-linux/* <DIRECTORY_WITH_OLD_BINARIES>
+cp -r luxgo-<VERSION>-linux/* <DIRECTORY_WITH_OLD_BINARIES>
 ```
 
-and then restart the service with: `sudo systemctl start avalanchego.service`.
+and then restart the service with: `sudo systemctl start luxgo.service`.
 
 Build from Source[​](#build-from-source "Direct link to heading")
 -----------------------------------------------------------------
@@ -144,21 +144,21 @@ Build from Source[​](#build-from-source "Direct link to heading")
 First clone our GitHub repo (you can skip this step if you've done this before):
 
 ```bash
-git clone https://github.com/ava-labs/avalanchego.git
+git clone https://github.com/luxfi/luxgo.git
 ```
 
 <Callout title="Note">
 The repository cloning method used is HTTPS, but SSH can be used too:
 
-`git clone git@github.com:ava-labs/avalanchego.git`
+`git clone git@github.com:luxfi/luxgo.git`
 
 You can find more about SSH and how to use it [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh).
 </Callout>
 
-Then move to the AvalancheGo directory:
+Then move to the LuxGo directory:
 
 ```bash
-cd avalanchego
+cd luxgo
 ```
 
 Pull the latest code:
@@ -181,7 +181,7 @@ Check that your local code is up to date. Do:
 git rev-parse HEAD
 ```
 
-and check that the first 7 characters printed match the Latest commit field on our [GitHub](https://github.com/ava-labs/avalanchego).
+and check that the first 7 characters printed match the Latest commit field on our [GitHub](https://github.com/luxfi/luxgo).
 
 <Callout title="Note">
 If you used the `git checkout tags/<tag>` then these first 7 characters should match commit hash of that tag.
@@ -197,11 +197,11 @@ This should print: `Build Successful`
 You can check what version you're running by doing:
 
 ```bash
-./build/avalanchego --version
+./build/luxgo --version
 ```
 
 You can run your node with:
 
 ```bash
-./build/avalanchego
+./build/luxgo
 ```

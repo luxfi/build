@@ -1,6 +1,6 @@
 ---
 title: Receiving a Message
-description: Learn to receive messages with Avalanche Interchain Messaging.
+description: Learn to receive messages with Lux Interchain Messaging.
 updated: 2024-05-31
 authors: [martineckardt]
 icon: BookOpen
@@ -8,7 +8,7 @@ icon: BookOpen
 
 To receive a message we need to enable our cross-L1 dApps to being called by the Interchain Messaging contract.
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/teleporter/teleporter-source-destination-with-relayer-SvUFYGP77XxLjoyWqf7IpC85Ssxmmo.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/teleporter/teleporter-source-destination-with-relayer-SvUFYGP77XxLjoyWqf7IpC85Ssxmmo.png)
 
 The Interchain Messaging does not know our contract and what functions it has. Therefore, our dApp on the destination L1 has to implement the ITeleporterReceiver interface. It is very straight forward and only requires a single method for receiving the message that then can be called by the Interchain Messaging contract:
 
@@ -45,8 +45,8 @@ An example for a contract being able to receive Interchain Messaging messages an
 ```solidity
 pragma solidity 0.8.18;
 
-import "https://github.com/ava-labs/teleporter/blob/main/contracts/src/Teleporter/ITeleporterMessenger.sol";
-import "https://github.com/ava-labs/teleporter/blob/main/contracts/src/Teleporter/ITeleporterReceiver.sol";
+import "https://github.com/luxfi/teleporter/blob/main/contracts/src/Teleporter/ITeleporterMessenger.sol";
+import "https://github.com/luxfi/teleporter/blob/main/contracts/src/Teleporter/ITeleporterReceiver.sol";
 
 contract MessageReceiver is ITeleporterReceiver {
     // Messages sent to this contract.

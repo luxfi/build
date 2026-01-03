@@ -9,7 +9,7 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Now we have all the Smart Contract 📜 set we can start sending incentivized cross-chain messages. Now let complete the flow 
 
-- Deploy sender contract on **C-Chain**
+- Deploy sender contract on **LUExchange-Chain**
 - Deploy receiver contract on **Dispatch**
 - Approve the sender contract to spend ERC20 funds from the message sender address
 - Send the message
@@ -22,7 +22,7 @@ Now we have all the Smart Contract 📜 set we can start sending incentivized cr
 To deploy the sender contract run:
 
 ```bash
-forge create --rpc-url fuji-c --private-key $PK contracts/interchain-messaging/incentivize-relayer/senderWithFees.sol:SenderWithFeesOnCChain --broadcast
+forge create --rpc-url testnet-c --private-key $PK contracts/interchain-messaging/incentivize-relayer/senderWithFees.sol:SenderWithFeesOnCChain --broadcast
 ```
 
 ```bash {6}
@@ -51,7 +51,7 @@ export SENDER_ADDRESS=0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407
 Now, deploy the receiver contract.
 
 ```bash
-forge create --rpc-url fuji-dispatch --private-key $PK contracts/interchain-messaging/incentivize-relayer/receiverWithFees.sol:ReceiverOnDispatch --broadcast
+forge create --rpc-url testnet-dispatch --private-key $PK contracts/interchain-messaging/incentivize-relayer/receiverWithFees.sol:ReceiverOnDispatch --broadcast
 ```
 
 ```bash {6}
@@ -78,10 +78,10 @@ export RECEIVER_ADDRESS=0xe336d36FacA76840407e6836d26119E1EcE0A2b4
 
 ### Approve ERC20 Token Expense
 
-👩 The Message Sender (User) requires to approve the Cross-Avalanche L1 dApp as a spender on the ERC20 contract to be used as fee. We'll approve 0.0005 tokens (500000000000000 wei) from your total supply of 1,000,000 tokens which matches the fee amount set in the sender contract.
+👩 The Message Sender (User) requires to approve the Cross-Lux L1 dApp as a spender on the ERC20 contract to be used as fee. We'll approve 0.0005 tokens (500000000000000 wei) from your total supply of 1,000,000 tokens which matches the fee amount set in the sender contract.
 
 ```bash
-cast send --rpc-url fuji-c --private-key $PK $FEE_TOKEN_ADDRESS "approve(address,uint256)" $SENDER_ADDRESS 500000000000000
+cast send --rpc-url testnet-c --private-key $PK $FEE_TOKEN_ADDRESS "approve(address,uint256)" $SENDER_ADDRESS 500000000000000
 ```
 
 </Step>
@@ -90,16 +90,16 @@ cast send --rpc-url fuji-c --private-key $PK $FEE_TOKEN_ADDRESS "approve(address
 ### Send an incentivized message
 
 ```bash
-cast send --rpc-url fuji-c --private-key $PK $SENDER_ADDRESS "sendMessage(address, string, address)" $RECEIVER_ADDRESS "Hello" $FEE_TOKEN_ADDRESS
+cast send --rpc-url testnet-c --private-key $PK $SENDER_ADDRESS "sendMessage(address, string, address)" $RECEIVER_ADDRESS "Hello" $FEE_TOKEN_ADDRESS
 ```
 
 </Step>
 <Step>
 
-### Verify message was received on Avalanche L1 
+### Verify message was received on Lux L1 
 
 ```bash
-cast call --rpc-url fuji-dispatch $RECEIVER_ADDRESS "lastMessage()(string)"
+cast call --rpc-url testnet-dispatch $RECEIVER_ADDRESS "lastMessage()(string)"
 ```
 ```bash
 "Hello"

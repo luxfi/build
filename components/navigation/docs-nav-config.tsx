@@ -19,15 +19,15 @@ import {
 export const documentationOptions = [
   {
     title: 'Primary Network',
-    description: 'C-Chain, P-Chain, and X-Chain',
+    description: 'LUExchange-Chain, Platform-Chain, and Exchange-Chain',
     icon: <Network className="w-5 h-5" />,
     url: '/docs/primary-network',
   },
   {
     title: 'Layer 1s',
-    description: 'Build your own Avalanche blockchain',
+    description: 'Build your own Lux blockchain',
     icon: <Layers className="w-5 h-5" />,
-    url: '/docs/avalanche-l1s',
+    url: '/docs/lux-l1s',
   },
   {
     title: 'Interchain Messaging',
@@ -39,25 +39,25 @@ export const documentationOptions = [
 
 export const nodesOptions = [
   {
-    title: 'AvalancheGo Node',
+    title: 'LuxGo Node',
     description: 'Run nodes and validators',
     icon: <Server className="w-5 h-5" />,
     url: '/docs/nodes',
   },
   {
-    title: 'C-Chain RPC',
+    title: 'LUExchange-Chain RPC',
     description: 'Contract Chain RPC reference',
     icon: <Code className="w-5 h-5" />,
     url: '/docs/rpcs/c-chain',
   },
   {
-    title: 'P-Chain RPC',
+    title: 'Platform-Chain RPC',
     description: 'Platform Chain RPC reference',
     icon: <Server className="w-5 h-5" />,
     url: '/docs/rpcs/p-chain',
   },
   {
-    title: 'X-Chain RPC',
+    title: 'Exchange-Chain RPC',
     description: 'Exchange Chain RPC reference',
     icon: <CircleDollarSign className="w-5 h-5" />,
     url: '/docs/rpcs/x-chain',
@@ -99,16 +99,16 @@ export const apiReferenceOptions = [
 
 export const toolingOptions = [
   {
-    title: 'Avalanche-SDK',
-    description: 'Software development kit for Avalanche',
+    title: 'Lux-SDK',
+    description: 'Software development kit for Lux',
     icon: <Package className="w-5 h-5" />,
-    url: '/docs/tooling/avalanche-sdk',
+    url: '/docs/tooling/lux-sdk',
   },
   {
-    title: 'Avalanche-CLI',
-    description: 'Command-line interface for Avalanche',
+    title: 'Lux-CLI',
+    description: 'Command-line interface for Lux',
     icon: <Terminal className="w-5 h-5" />,
-    url: '/docs/tooling/avalanche-cli',
+    url: '/docs/tooling/lux-cli',
   },
   {
     title: 'tmpnet',
@@ -118,9 +118,9 @@ export const toolingOptions = [
   },
   {
     title: "Postman Collection",
-    description: 'Postman collection for Avalanche APIs',
+    description: 'Postman collection for Lux APIs',
     icon: <Milestone className="w-5 h-5" />,
-    url: '/docs/tooling/avalanche-postman',
+    url: '/docs/tooling/lux-postman',
   },
   {
     title: 'AI & LLM',
@@ -152,7 +152,7 @@ export const acpsOptions = [
   },
   {
     title: "View All ACPs",
-    description: 'View all Avalanche Community Proposals',
+    description: 'View all Lux Community Proposals',
     icon: <Eye className="w-5 h-5" />,
     url: '/docs/acps',
   }

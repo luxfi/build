@@ -28,7 +28,7 @@ The answer comes down to **performance and access**:
 Smart contracts in the application layer must go through the EVM interpreter to access blockchain state. Precompiles, living in the execution layer, have **direct access** to the EVM state—they can read and modify balances, storage, and consensus data without the overhead of bytecode interpretation.
 
 **2. Native Code Execution**  
-Application layer contracts are compiled to EVM bytecode and executed opcode-by-opcode. Precompiles are written in Go (Avalanche's client language) and execute as **native code**, making them orders of magnitude faster for complex operations.
+Application layer contracts are compiled to EVM bytecode and executed opcode-by-opcode. Precompiles are written in Go (Lux's client language) and execute as **native code**, making them orders of magnitude faster for complex operations.
 
 **3. Protocol-Level Operations**  
 Precompiles need to perform operations that regular smart contracts cannot or should not do—like minting native tokens, configuring transaction fees, or managing validator permissions. These are **protocol-level concerns** that require execution layer access.

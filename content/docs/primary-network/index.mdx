@@ -1,73 +1,73 @@
 ---
 title: Primary Network
-description: Learn about the Avalanche Primary Network and its three blockchains.
+description: Learn about the Lux Primary Network and its three blockchains.
 ---
 
 import { Network, Layers, Terminal, ArrowRight, Database, Package } from 'lucide-react';
 
-Avalanche is a heterogeneous network of blockchains. As opposed to homogeneous networks, where all applications reside in the same chain, heterogeneous networks allow separate chains to be created for different applications.
+Lux is a heterogeneous network of blockchains. As opposed to homogeneous networks, where all applications reside in the same chain, heterogeneous networks allow separate chains to be created for different applications.
 
-![Primary Network Architecture](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/multi-chain-architecture/multi-chain.png)
+![Primary Network Architecture](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/multi-chain-architecture/multi-chain.png)
 
-The Primary Network is a special [Avalanche L1](/docs/avalanche-l1s) that runs three blockchains:
+The Primary Network is a special [Lux L1](/docs/lux-l1s) that runs three blockchains:
 
-- The Contract Chain [(C-Chain)](/docs/primary-network#c-chain-contract-chain)
-- The Platform Chain [(P-Chain)](/docs/primary-network#p-chain-platform-chain)
-- The Exchange Chain [(X-Chain)](/docs/primary-network#x-chain-exchange-chain)
+- The Contract Chain [(LUExchange-Chain)](/docs/primary-network#c-chain-contract-chain)
+- The Platform Chain [(Platform-Chain)](/docs/primary-network#p-chain-platform-chain)
+- The Exchange Chain [(Exchange-Chain)](/docs/primary-network#x-chain-exchange-chain)
 
 <Callout title="Note">
-Avalanche Mainnet is comprised of the Primary Network and all deployed Avalanche L1s.
+Lux Mainnet is comprised of the Primary Network and all deployed Lux L1s.
 </Callout>
 
-A node can become a validator for the Primary Network by staking at least **2,000 AVAX**.
+A node can become a validator for the Primary Network by staking at least **2,000 LUX**.
 
-### C-Chain (Contract Chain)
+### LUExchange-Chain (Contract Chain)
 
-The **C-Chain** is an implementation of the Ethereum Virtual Machine (EVM). The [C-Chain's API](/docs/rpcs/c-chain) supports Geth's API and supports the deployment and execution of smart contracts written in Solidity.
+The **LUExchange-Chain** is an implementation of the Ethereum Virtual Machine (EVM). The [LUExchange-Chain's API](/docs/rpcs/c-chain) supports Geth's API and supports the deployment and execution of smart contracts written in Solidity.
 
-The C-Chain is an instance of the [Coreth](https://github.com/ava-labs/avalanchego/tree/master/graft/coreth) Virtual Machine.
+The LUExchange-Chain is an instance of the [Coreth](https://github.com/luxfi/luxgo/tree/master/graft/coreth) Virtual Machine.
 
-| Property | Mainnet | Fuji Testnet |
+| Property | Mainnet | Testnet Testnet |
 |----------|---------|--------------|
-| **Network Name** | Avalanche C-Chain | Avalanche Fuji C-Chain |
+| **Network Name** | Lux LUExchange-Chain | Lux Testnet LUExchange-Chain |
 | **Chain ID** | 43114 (0xA86A) | 43113 (0xA869) |
-| **Currency** | AVAX | AVAX |
-| **RPC URL** | https://api.avax.network/ext/bc/C/rpc | https://api.avax-test.network/ext/bc/C/rpc |
-| **Explorer** | https://subnets.avax.network/c-chain | https://subnets-test.avax.network/c-chain |
-| **Faucet** | - | [Get Test AVAX](/console/primary-network/faucet) |
-| **Add to Wallet** | <AddNetworkButtonInline network="mainnet" /> | <AddNetworkButtonInline network="fuji" /> |
+| **Currency** | LUX | LUX |
+| **RPC URL** | https://api.lux.network/ext/bc/C/rpc | https://api.lux-test.network/ext/bc/C/rpc |
+| **Explorer** | https://subnets.lux.network/c-chain | https://subnets-test.lux.network/c-chain |
+| **Faucet** | - | [Get Test LUX](/console/primary-network/faucet) |
+| **Add to Wallet** | <AddNetworkButtonInline network="mainnet" /> | <AddNetworkButtonInline network="testnet" /> |
 
-### P-Chain (Platform Chain)
+### Platform-Chain (Platform Chain)
 
-The **P-Chain** is responsible for all validator and Avalanche L1-level operations. The [P-Chain API](/docs/rpcs/p-chain) supports the creation of new blockchains and Avalanche L1s, the addition of validators to Avalanche L1s, staking operations, and other platform-level operations.
+The **Platform-Chain** is responsible for all validator and Lux L1-level operations. The [Platform-Chain API](/docs/rpcs/p-chain) supports the creation of new blockchains and Lux L1s, the addition of validators to Lux L1s, staking operations, and other platform-level operations.
 
-The P-Chain is an instance of the [Platform Virtual Machine](https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm).
+The Platform-Chain is an instance of the [Platform Virtual Machine](https://github.com/luxfi/luxgo/tree/master/vms/platformvm).
 
-| Property | Mainnet | Fuji Testnet |
+| Property | Mainnet | Testnet Testnet |
 |----------|---------|--------------|
-| **RPC URL** | https://api.avax.network/ext/bc/P | https://api.avax-test.network/ext/bc/P |
-| **Currency** | AVAX | AVAX |
-| **Explorer** | https://subnets.avax.network/p-chain | https://subnets-test.avax.network/p-chain |
+| **RPC URL** | https://api.lux.network/ext/bc/P | https://api.lux-test.network/ext/bc/P |
+| **Currency** | LUX | LUX |
+| **Explorer** | https://subnets.lux.network/p-chain | https://subnets-test.lux.network/p-chain |
 
-### X-Chain (Exchange Chain)
+### Exchange-Chain (Exchange Chain)
 
-The **X-Chain** is responsible for operations on digital smart assets known as **Avalanche Native Tokens**. A smart asset is a representation of a real-world resource (for example, equity, or a bond) with sets of rules that govern its behavior, like "can't be traded until tomorrow." The [X-Chain API](/docs/rpcs/x-chain) supports the creation and trade of Avalanche Native Tokens.
+The **Exchange-Chain** is responsible for operations on digital smart assets known as **Lux Native Tokens**. A smart asset is a representation of a real-world resource (for example, equity, or a bond) with sets of rules that govern its behavior, like "can't be traded until tomorrow." The [Exchange-Chain API](/docs/rpcs/x-chain) supports the creation and trade of Lux Native Tokens.
 
-One asset traded on the X-Chain is AVAX. When you issue a transaction to a blockchain on Avalanche, you pay a fee denominated in AVAX.
+One asset traded on the Exchange-Chain is LUX. When you issue a transaction to a blockchain on Lux, you pay a fee denominated in LUX.
 
-The X-Chain is an instance of the Avalanche Virtual Machine (AVM).
+The Exchange-Chain is an instance of the Lux Virtual Machine (AVM).
 
-| Property | Mainnet | Fuji Testnet |
+| Property | Mainnet | Testnet Testnet |
 |----------|---------|--------------|
-| **RPC URL** | https://api.avax.network/ext/bc/X | https://api.avax-test.network/ext/bc/X |
-| **Currency** | AVAX | AVAX |
-| **Explorer** | https://subnets.avax.network/x-chain | https://subnets-test.avax.network/x-chain |
+| **RPC URL** | https://api.lux.network/ext/bc/X | https://api.lux-test.network/ext/bc/X |
+| **Currency** | LUX | LUX |
+| **Explorer** | https://subnets.lux.network/x-chain | https://subnets-test.lux.network/x-chain |
 
 ## Explore More
 
 <div className="not-prose grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
   <a
-    href="/docs/avalanche-l1s"
+    href="/docs/lux-l1s"
     className="group block p-6 rounded-lg transition-all duration-150 bg-zinc-50/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 hover:border-zinc-300/50 dark:hover:border-zinc-700/50"
   >
     <div className="flex flex-col h-full">
@@ -76,7 +76,7 @@ The X-Chain is an instance of the Avalanche Virtual Machine (AVM).
       </div>
       <div className="flex-1">
         <h3 className="text-lg font-semibold mb-2 text-zinc-900 dark:text-zinc-100">
-          Avalanche L1s
+          Lux L1s
         </h3>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
           Discover how to build sovereign networks with custom rules and token economics.
@@ -101,7 +101,7 @@ The X-Chain is an instance of the Avalanche Virtual Machine (AVM).
           Data APIs
         </h3>
         <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          Access data APIs for the C-Chain, P-Chain, and X-Chain.
+          Access data APIs for the LUExchange-Chain, Platform-Chain, and Exchange-Chain.
         </p>
       </div>
       <div className="mt-4 flex justify-end">

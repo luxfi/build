@@ -205,7 +205,7 @@ export default function Hackathons({
                 src={
                   topMostHackathon.banner?.trim().trim().length > 0
                     ? topMostHackathon.banner
-                    : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/main_banner_img-crBsoLT7R07pdstPKvRQkH65yAbpFX.png"
+                    : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/main_banner_img-crBsoLT7R07pdstPKvRQkH65yAbpFX.png"
                 }
                 alt="Hackathon background"
                 width={1270}
@@ -249,7 +249,7 @@ export default function Hackathons({
                 No upcoming hackathons at the moment. Join our Telegram community to be the first to know about new opportunities!
               </p>
               <a
-                href="https://t.me/avalancheacademy"
+                href="https://t.me/luxacademy"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md transition-colors duration-200"
@@ -282,15 +282,15 @@ export default function Hackathons({
           <Separator className="mb-6 bg-zinc-300 dark:bg-zinc-800" />
           <div className="grid md:grid-cols-3 gap-6">
             <DiscoveryCard
-              title="Avalanche Calendar"
-              description="Explore upcoming Avalanche events, meetups, and community gatherings. Stay connected with the latest happenings in the ecosystem."
-              image="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/nav-banner/Avalanche-Event-TnQovuFzkt8CGHyF0wfiSYTrGVtuPU.jpg"
+              title="Lux Calendar"
+              description="Explore upcoming Lux events, meetups, and community gatherings. Stay connected with the latest happenings in the ecosystem."
+              image="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/nav-banner/Lux-Event-TnQovuFzkt8CGHyF0wfiSYTrGVtuPU.jpg"
               url="https://lu.ma/calendar/cal-Igl2DB6quhzn7Z4"
             />
             <DiscoveryCard
               title="Community Events"
-              description="Check out and join the global meetups, workshops and events organized by Avalanche Team1"
-              image="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/nav-banner/local_events_team1-UJLssyvek3G880Q013A94SdMKxiLRq.jpg"
+              description="Check out and join the global meetups, workshops and events organized by Lux Team1"
+              image="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/nav-banner/local_events_team1-UJLssyvek3G880Q013A94SdMKxiLRq.jpg"
               url="https://lu.ma/Team1?utm_source=builder_hub"
             />
             <DiscoveryCard

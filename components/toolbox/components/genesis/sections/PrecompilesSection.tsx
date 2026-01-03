@@ -81,7 +81,7 @@ export const PrecompilesSection = ({
         warp: {
             address: '0x0200000000000000000000000000000000000005',
             name: 'Warp Messenger',
-            description: 'Enables native cross-subnet messaging for Avalanche interchain communication.'
+            description: 'Enables native cross-subnet messaging for Lux interchain communication.'
         }
     };
 

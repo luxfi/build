@@ -34,7 +34,7 @@ function ManagedTestnetNodesBase() {
         fetchNodes();
     }, []);
     
-    const { avalancheNetworkID } = useWalletStore();
+    const { luxNetworkID } = useWalletStore();
     const {
         nodes,
         isLoadingNodes,
@@ -129,7 +129,7 @@ function ManagedTestnetNodesBase() {
                     onClose={() => setShowCreateForm(false)}
                     onSubmit={handleRegistration}
                     onError={(title, message) => toast({ title, description: message, variant: "destructive" })}
-                    avalancheNetworkID={avalancheNetworkID}
+                    luxNetworkID={luxNetworkID}
                     isRegistering={isRegistering}
                 />
             )}

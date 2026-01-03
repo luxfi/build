@@ -19,15 +19,15 @@ export interface CourseNode {
 }
 
 // Import configs
-import { avalancheLearningPaths, avalancheCategoryStyles } from './learning-path-configs/avalanche.config';
+import { luxLearningPaths, luxCategoryStyles } from './learning-path-configs/lux.config';
 import { entrepreneurLearningPaths, entrepreneurCategoryStyles } from './learning-path-configs/entrepreneur.config';
 import { blockchainLearningPaths, blockchainCategoryStyles } from './learning-path-configs/blockchain.config';
 
 interface LearningTreeProps {
-  pathType?: 'avalanche' | 'entrepreneur' | 'blockchain';
+  pathType?: 'lux' | 'entrepreneur' | 'blockchain';
 }
 
-export default function LearningTree({ pathType = 'avalanche' }: LearningTreeProps) {
+export default function LearningTree({ pathType = 'lux' }: LearningTreeProps) {
   const [hoveredNode, setHoveredNode] = React.useState<string | null>(null);
   const [hoveredCategory, setHoveredCategory] = React.useState<string | null>(null);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -52,13 +52,13 @@ export default function LearningTree({ pathType = 'avalanche' }: LearningTreePro
   }, []);
 
   // Select the appropriate learning paths and styles based on pathType
-  const learningPaths = pathType === 'avalanche' 
-    ? avalancheLearningPaths 
+  const learningPaths = pathType === 'lux' 
+    ? luxLearningPaths 
     : pathType === 'blockchain' 
     ? blockchainLearningPaths 
     : entrepreneurLearningPaths;
-  const categoryStyles = pathType === 'avalanche' 
-    ? avalancheCategoryStyles 
+  const categoryStyles = pathType === 'lux' 
+    ? luxCategoryStyles 
     : pathType === 'blockchain' 
     ? blockchainCategoryStyles 
     : entrepreneurCategoryStyles;

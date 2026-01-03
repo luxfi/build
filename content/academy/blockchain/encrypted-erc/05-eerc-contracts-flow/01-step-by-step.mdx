@@ -1,12 +1,12 @@
 ---
 title: eERC Contracts Flow
-description: Step-by-step process to create, configure, and use eERC on Avalanche.
+description: Step-by-step process to create, configure, and use eERC on Lux.
 updated: 2025-09-02
 authors: [alejandro99so]
 icon: GitBranch
 ---
 
-The **eERC (Encrypted ERC)** standard on Avalanche provides privacy-preserving tokens while remaining EVM-compatible.  
+The **eERC (Encrypted ERC)** standard on Lux provides privacy-preserving tokens while remaining EVM-compatible.  
 This section walks through the full lifecycle of an eERC, from deployment to interaction, including key considerations for developers.
 
 ---
@@ -31,7 +31,7 @@ This section walks through the full lifecycle of an eERC, from deployment to int
 ## 2. About the zk-Proof Type
 
 In the current **EncryptedERC** implementation, the proving system is **not chosen by the end-user**.  
-By default, the official Avalanche eERC contracts use **Groth16** for proof generation and verification.
+By default, the official Lux eERC contracts use **Groth16** for proof generation and verification.
 
 If a developer wants to change the proving system (e.g., to PLONK or Halo2), they must:
 1. Modify the Circom circuits.
@@ -44,7 +44,7 @@ If a developer wants to change the proving system (e.g., to PLONK or Halo2), the
 | **PLONK** | Universal setup, flexibility for new circuits | ❌ Requires custom build |
 | **Halo2** | No trusted setup, recursion support | ❌ Requires major changes |
 
-> **Avalanche Tip:** Groth16 is optimal for most L1 and C-Chain deployments due to its low gas cost and existing integration in the eERC stack.
+> **Lux Tip:** Groth16 is optimal for most L1 and LUExchange-Chain deployments due to its low gas cost and existing integration in the eERC stack.
 
 ---
 
@@ -68,7 +68,7 @@ cd eerc-backend-converter
 - This step is VERY important because you need those private keys to run `zkit` files.
 
 - Create `.env` file:
-- Add to `.env` file: RPC_URL = YOUR_RPC_URL // If you are using Fuji C-Chain (https://api.avax-test.network/ext/bc/C/rpc)
+- Add to `.env` file: RPC_URL = YOUR_RPC_URL // If you are using Testnet LUExchange-Chain (https://api.lux-test.network/ext/bc/C/rpc)
 - Add to `.env` file: PRIVATE_KEY = PRIVATE_KEY_1
 - Add to `.env` file: PRIVATE_KEY_2 = PRIVATE_KEY_2
 
@@ -184,7 +184,7 @@ npm run converter:balance
 
 ### Step 11:  Choose your way (Standalone way)
 
-- Follow the flow by yourself and reach out to us at https://t.me/avalancheacademy
+- Follow the flow by yourself and reach out to us at https://t.me/luxacademy
 
 ## 6. Considerations for Production
 

@@ -25,7 +25,7 @@ interface ValidatorListInputProps {
   label?: string
   description?: string
   l1TotalInitializedWeight?: bigint | null;
-  userPChainBalanceNavax?: bigint | null;
+  userPChainBalanceNlux?: bigint | null;
   maxValidators?: number;
   selectedSubnetId?: string | null;
   isTestnet?: boolean;
@@ -39,7 +39,7 @@ export function ValidatorListInput({
   label = "Initial Validators",
   description,
   l1TotalInitializedWeight = null,
-  userPChainBalanceNavax = null,
+  userPChainBalanceNlux = null,
   maxValidators,
   selectedSubnetId = null,
   isTestnet = false,
@@ -86,7 +86,7 @@ export function ValidatorListInput({
           validators={validators}
           onChange={onChange}
           l1TotalInitializedWeight={l1TotalInitializedWeight}
-          userPChainBalanceNavax={userPChainBalanceNavax}
+          userPChainBalanceNlux={userPChainBalanceNlux}
           hideConsensusWeight={hideConsensusWeight}
         />
       </div>

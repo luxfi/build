@@ -97,7 +97,7 @@ async function aggregateChainICMData(days: number): Promise<AggregateResult> {
               const totalIncoming = data.reduce((sum: number, d: any) => sum + (d.incomingCount || 0), 0);
               const totalOutgoing = data.reduce((sum: number, d: any) => sum + (d.outgoingCount || 0), 0);
               
-              // For chains with ICM activity, create flows to/from C-Chain as the hub
+              // For chains with ICM activity, create flows to/from LUExchange-Chain as the hub
               const cChain = mainnetChains.find(c => c.chainId === '43114');
               
               if (totalOutgoing > 0 && chain.chainId !== '43114') {
@@ -108,7 +108,7 @@ async function aggregateChainICMData(days: number): Promise<AggregateResult> {
                     sourceChainId: chain.chainId,
                     sourceLogo: chain.chainLogoURI || '',
                     sourceColor: chain.color || generateColor(chain.chainName),
-                    targetChain: cChain?.chainName || 'Avalanche C-Chain',
+                    targetChain: cChain?.chainName || 'Lux LUExchange-Chain',
                     targetChainId: '43114',
                     targetLogo: cChain?.chainLogoURI || '',
                     targetColor: cChain?.color || '#E57373',
@@ -121,7 +121,7 @@ async function aggregateChainICMData(days: number): Promise<AggregateResult> {
                 const key = `43114-${chain.chainId}`;
                 if (!flowsMap.has(key)) {
                   flowsMap.set(key, {
-                    sourceChain: cChain?.chainName || 'Avalanche C-Chain',
+                    sourceChain: cChain?.chainName || 'Lux LUExchange-Chain',
                     sourceChainId: '43114',
                     sourceLogo: cChain?.chainLogoURI || '',
                     sourceColor: cChain?.color || '#E57373',
@@ -232,7 +232,7 @@ export async function GET(request: Request) {
         'X-Data-Source': 'fresh',
         'X-Total-Flows': flows.length.toString(),
         'X-Days': days.toString(),
-        'X-Chains-Scanned': mainnetChains.length.toString(),
+        'Exchange-Chains-Scanned': mainnetChains.length.toString(),
         'X-Failed-Chains': failedChainIds.length.toString(),
       }
     });

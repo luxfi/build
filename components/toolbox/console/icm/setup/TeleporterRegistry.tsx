@@ -16,8 +16,8 @@ import versions from '@/scripts/versions.json';
 import useConsoleNotifications from "@/hooks/useConsoleNotifications";
 import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-url";
 
-const ICM_COMMIT = versions["ava-labs/icm-contracts"];
-const TELEPORTER_REGISTRY_SOURCE_URL = `https://github.com/ava-labs/icm-contracts/blob/${ICM_COMMIT}/contracts/teleporter/registry/TeleporterRegistry.sol`;
+const ICM_COMMIT = versions["luxfi/icm-contracts"];
+const TELEPORTER_REGISTRY_SOURCE_URL = `https://github.com/luxfi/icm-contracts/blob/${ICM_COMMIT}/contracts/teleporter/registry/TeleporterRegistry.sol`;
 
 const metadata: ConsoleToolMetadata = {
     title: "Deploy ICM Registry",

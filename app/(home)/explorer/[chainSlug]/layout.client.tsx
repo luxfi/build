@@ -153,7 +153,7 @@ function CustomChainLoader({
   // Update document title when chain changes
   useEffect(() => {
     if (chain) {
-      document.title = `${chain.chainName} Explorer | Avalanche L1`;
+      document.title = `${chain.chainName} Explorer | Lux L1`;
     }
   }, [chain]);
 

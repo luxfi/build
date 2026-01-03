@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useWalletStore } from '@/components/toolbox/stores/walletStore'
 import { createCoreWalletClient } from '@/components/toolbox/coreViem'
-import { networkIDs } from '@avalabs/avalanchejs'
+import { networkIDs } from 'luxfi'
 
 export function WalletBootstrap() {
   const setCoreWalletClient = useWalletStore((s) => s.setCoreWalletClient)
@@ -12,13 +12,13 @@ export function WalletBootstrap() {
   const setPChainAddress = useWalletStore((s) => s.setPChainAddress)
   const setCoreEthAddress = useWalletStore((s) => s.setCoreEthAddress)
   const setIsTestnet = useWalletStore((s) => s.setIsTestnet)
-  const setAvalancheNetworkID = useWalletStore((s) => s.setAvalancheNetworkID)
+  const setLuxNetworkID = useWalletStore((s) => s.setLuxNetworkID)
   const setEvmChainName = useWalletStore((s) => s.setEvmChainName)
   const updateAllBalances = useWalletStore((s) => s.updateAllBalances)
   const setBootstrapped = useWalletStore((s) => s.setBootstrapped)
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !window.avalanche) return;
+    if (typeof window === 'undefined' || !window.lux) return;
 
     const onChainChanged = async (chainId: string | number) => {
       const numericId = typeof chainId === 'string' ? Number.parseInt(chainId, 16) : chainId
@@ -30,7 +30,7 @@ export function WalletBootstrap() {
         if (client) {
           const data = await client.getEthereumChain()
           const { isTestnet, chainName } = data
-          setAvalancheNetworkID(isTestnet ? networkIDs.FujiID : networkIDs.MainnetID)
+          setLuxNetworkID(isTestnet ? networkIDs.TestnetID : networkIDs.MainnetID)
           setIsTestnet(isTestnet)
           setEvmChainName(chainName)
         }
@@ -47,7 +47,7 @@ export function WalletBootstrap() {
         setPChainAddress('')
         setCoreEthAddress('')
         setWalletChainId(0)
-        // Keep network settings (isTestnet, avalancheNetworkID) as they are user preferences
+        // Keep network settings (isTestnet, luxNetworkID) as they are user preferences
         return
       }
       if (accounts.length > 1) {
@@ -77,7 +77,7 @@ export function WalletBootstrap() {
         }
         if (typeof chainInfo?.isTestnet === 'boolean') {
           setIsTestnet(chainInfo.isTestnet)
-          setAvalancheNetworkID(chainInfo.isTestnet ? networkIDs.FujiID : networkIDs.MainnetID)
+          setLuxNetworkID(chainInfo.isTestnet ? networkIDs.TestnetID : networkIDs.MainnetID)
           setEvmChainName(chainInfo.chainName)
         }
       } catch { }
@@ -89,21 +89,21 @@ export function WalletBootstrap() {
     try {
       setBootstrapped(true)
 
-      if (window.avalanche.on) {
-        window.avalanche.on('accountsChanged', handleAccountsChanged)
-        window.avalanche.on('chainChanged', onChainChanged)
+      if (window.lux.on) {
+        window.lux.on('accountsChanged', handleAccountsChanged)
+        window.lux.on('chainChanged', onChainChanged)
       }
     } catch { }
 
     return () => {
       try {
-        if (window.avalanche?.removeListener) {
-          window.avalanche.removeListener('accountsChanged', handleAccountsChanged as any)
-          window.avalanche.removeListener('chainChanged', onChainChanged as any)
+        if (window.lux?.removeListener) {
+          window.lux.removeListener('accountsChanged', handleAccountsChanged as any)
+          window.lux.removeListener('chainChanged', onChainChanged as any)
         }
       } catch { }
     }
-  }, [setCoreWalletClient, setWalletEVMAddress, setWalletChainId, setPChainAddress, setCoreEthAddress, setIsTestnet, setAvalancheNetworkID, setEvmChainName, updateAllBalances])
+  }, [setCoreWalletClient, setWalletEVMAddress, setWalletChainId, setPChainAddress, setCoreEthAddress, setIsTestnet, setLuxNetworkID, setEvmChainName, updateAllBalances])
 
   return null
 }

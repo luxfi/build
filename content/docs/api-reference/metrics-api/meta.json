@@ -1,6 +1,6 @@
 {
   "title": "Metrics API",
-  "description": "Popsicle Metrics API for Avalanche network metrics",
+  "description": "Popsicle Metrics API for Lux network metrics",
   "icon": "ChartLine",
   "root": true,
   "pages": [

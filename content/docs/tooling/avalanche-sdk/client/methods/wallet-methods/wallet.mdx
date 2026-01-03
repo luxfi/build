@@ -1,11 +1,11 @@
 ---
 title: Wallet Methods
-description: Complete reference for Avalanche wallet operations
+description: Complete reference for Lux wallet operations
 ---
 
 ## Overview
 
-The Avalanche Wallet Client provides methods for sending transactions, signing messages and transactions, and managing accounts across all Avalanche chains (P-Chain, X-Chain, and C-Chain). This reference covers all wallet-specific methods available through the Avalanche Wallet Client SDK.
+The Lux Wallet Client provides methods for sending transactions, signing messages and transactions, and managing accounts across all Lux chains (Platform-Chain, Exchange-Chain, and LUExchange-Chain). This reference covers all wallet-specific methods available through the Lux Wallet Client SDK.
 
 **Access:** `walletClient`
 
@@ -19,13 +19,13 @@ Send tokens from the source chain to the destination chain. Automatically handle
 function send(params: SendParameters): Promise<SendReturnType>;
 
 interface SendParameters {
-  account?: AvalancheAccount;
+  account?: LuxAccount;
   amount: bigint;
   to: Address | XPAddress;
   from?: Address | XPAddress;
   sourceChain?: "P" | "C";
   destinationChain?: "P" | "C";
-  token?: "AVAX";
+  token?: "LUX";
   context?: Context;
 }
 
@@ -43,13 +43,13 @@ interface TransactionDetails {
 
 | Name               | Type                   | Required | Description                                           |
 | ------------------ | ---------------------- | -------- | ----------------------------------------------------- |
-| `account`          | `AvalancheAccount`     | No       | Account to send from (uses client account if omitted) |
+| `account`          | `LuxAccount`     | No       | Account to send from (uses client account if omitted) |
 | `amount`           | `bigint`               | Yes      | Amount to send in wei                                 |
 | `to`               | `Address \| XPAddress` | Yes      | Destination address                                   |
 | `from`             | `Address \| XPAddress` | No       | Source address (defaults to account address)          |
 | `sourceChain`      | `"P" \| "C"`           | No       | Source chain (default: "C")                           |
 | `destinationChain` | `"P" \| "C"`           | No       | Destination chain (default: "C")                      |
-| `token`            | `"AVAX"`               | No       | Token to send (only AVAX supported)                   |
+| `token`            | `"LUX"`               | No       | Token to send (only LUX supported)                   |
 | `context`          | `Context`              | No       | Transaction context (auto-fetched if omitted)         |
 
 **Returns:**
@@ -74,32 +74,32 @@ interface TransactionDetails {
 **Example:**
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { avaxToWei, avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { lux } from "@lux-sdk/client/chains";
+import { luxToWei, luxToNanoLux } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
-// Send AVAX on C-Chain
+// Send LUX on LUExchange-Chain
 const result = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
-  amount: avaxToWei(0.001),
+  amount: luxToWei(0.001),
   destinationChain: "C",
 });
 
 console.log("Transaction hash:", result.txHashes[0].txHash);
 
-// Send AVAX from C-Chain to P-Chain
+// Send LUX from LUExchange-Chain to Platform-Chain
 const crossChainResult = await walletClient.send({
-  to: "P-avax1example...",
-  amount: avaxToWei(1),
+  to: "P-lux1example...",
+  amount: luxToWei(1),
   sourceChain: "C",
   destinationChain: "P",
 });
@@ -153,7 +153,7 @@ console.log("XP public key:", pubKeys.xp);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/x-chain#avmgetaccountpubkey)
+- [API Reference](https://build.lux.network/docs/rpcs/x-chain#avmgetaccountpubkey)
 - [Account Management](../accounts) - Account types and management
 
 ---
@@ -218,7 +218,7 @@ try {
 
 ## sendXPTransaction
 
-Send a signed XP transaction to the network (X-Chain, P-Chain, or C-Chain).
+Send a signed XP transaction to the network (Exchange-Chain, Platform-Chain, or LUExchange-Chain).
 
 **Function Signature:**
 
@@ -228,7 +228,7 @@ function sendXPTransaction(
 ): Promise<SendXPTransactionReturnType>;
 
 interface SendXPTransactionParameters {
-  account?: AvalancheAccount | Address;
+  account?: LuxAccount | Address;
   tx: string | UnsignedTx;
   chainAlias: "X" | "P" | "C";
   externalIndices?: number[];
@@ -251,7 +251,7 @@ interface SendXPTransactionReturnType {
 
 | Name              | Type                          | Required | Description                                           |
 | ----------------- | ----------------------------- | -------- | ----------------------------------------------------- |
-| `account`         | `AvalancheAccount \| Address` | No       | Account to use for the transaction                    |
+| `account`         | `LuxAccount \| Address` | No       | Account to use for the transaction                    |
 | `tx`              | `string \| UnsignedTx`        | Yes      | Transaction to send (hex string or UnsignedTx object) |
 | `chainAlias`      | `"X" \| "P" \| "C"`           | Yes      | Target chain                                          |
 | `externalIndices` | `number[]`                    | No       | External indices to use for the transaction           |
@@ -283,8 +283,8 @@ interface SendXPTransactionReturnType {
 const unsignedTx = await walletClient.pChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
-      amount: avaxToNanoAvax(1),
+      addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+      amount: luxToNanoLux(1),
     },
   ],
 });
@@ -305,14 +305,14 @@ console.log("Transaction hash:", txHash);
 **Related:**
 
 - [signXPTransaction](#signxptransaction) - Sign transactions
-- [P-Chain Wallet Methods](./p-chain-wallet) - P-Chain transaction preparation
-- [X-Chain Wallet Methods](./x-chain-wallet) - X-Chain transaction preparation
+- [Platform-Chain Wallet Methods](./p-chain-wallet) - Platform-Chain transaction preparation
+- [Exchange-Chain Wallet Methods](./x-chain-wallet) - Exchange-Chain transaction preparation
 
 ---
 
 ## signXPTransaction
 
-Sign an XP transaction (X-Chain, P-Chain, or C-Chain).
+Sign an XP transaction (Exchange-Chain, Platform-Chain, or LUExchange-Chain).
 
 **Function Signature:**
 
@@ -322,7 +322,7 @@ function signXPTransaction(
 ): Promise<SignXPTransactionReturnType>;
 
 interface SignXPTransactionParameters {
-  account?: AvalancheAccount | Address;
+  account?: LuxAccount | Address;
   tx?: string | UnsignedTx;
   signedTxHex?: string;
   chainAlias: "X" | "P" | "C";
@@ -354,7 +354,7 @@ interface SignXPTransactionReturnType {
 
 | Name            | Type                          | Required | Description                                                                  |
 | --------------- | ----------------------------- | -------- | ---------------------------------------------------------------------------- |
-| `account`       | `AvalancheAccount \| Address` | No       | Account to use for the transaction                                           |
+| `account`       | `LuxAccount \| Address` | No       | Account to use for the transaction                                           |
 | `tx`            | `string \| UnsignedTx`        | No       | Unsigned transaction (either `tx` or `signedTxHex` must be provided)         |
 | `signedTxHex`   | `string`                      | No       | Pre-signed transaction bytes (either `tx` or `signedTxHex` must be provided) |
 | `chainAlias`    | `"X" \| "P" \| "C"`           | Yes      | Target chain                                                                 |
@@ -396,8 +396,8 @@ interface SignXPTransactionReturnType {
 const unsignedTx = await walletClient.pChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
-      amount: avaxToNanoAvax(0.1),
+      addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+      amount: luxToNanoLux(0.1),
     },
   ],
 });
@@ -425,7 +425,7 @@ console.log("Transaction hash:", txHash);
 
 ## signXPMessage
 
-Sign a message with an XP account (P-Chain or X-Chain addresses).
+Sign a message with an XP account (Platform-Chain or Exchange-Chain addresses).
 
 **Function Signature:**
 
@@ -435,7 +435,7 @@ function signXPMessage(
 ): Promise<SignXPMessageReturnType>;
 
 interface SignXPMessageParameters {
-  account?: AvalancheAccount | Address;
+  account?: LuxAccount | Address;
   message: string;
   accountIndex?: number;
 }
@@ -449,7 +449,7 @@ interface SignXPMessageReturnType {
 
 | Name           | Type                          | Required | Description                                                                       |
 | -------------- | ----------------------------- | -------- | --------------------------------------------------------------------------------- |
-| `account`      | `AvalancheAccount \| Address` | No       | Account to use for the message                                                    |
+| `account`      | `LuxAccount \| Address` | No       | Account to use for the message                                                    |
 | `message`      | `string`                      | Yes      | Message to sign                                                                   |
 | `accountIndex` | `number`                      | No       | Account index to use for the message from custom transport (e.g., core extension) |
 
@@ -469,7 +469,7 @@ interface SignXPMessageReturnType {
 
 ```typescript
 const { signature } = await walletClient.signXPMessage({
-  message: "Hello Avalanche",
+  message: "Hello Lux",
 });
 
 console.log("Signature:", signature);
@@ -477,14 +477,14 @@ console.log("Signature:", signature);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/x-chain#avmsignmessage)
+- [API Reference](https://build.lux.network/docs/rpcs/x-chain#avmsignmessage)
 - [signXPTransaction](#signxptransaction) - Sign transactions
 
 ---
 
 ## EVM Transaction Methods
 
-The Avalanche Wallet Client extends viem's Wallet Client, providing access to all standard Ethereum transaction methods.
+The Lux Wallet Client extends viem's Wallet Client, providing access to all standard Ethereum transaction methods.
 
 ### Standard viem Methods
 
@@ -515,7 +515,7 @@ const typedSignature = await walletClient.signTypedData({
 
 ## Chain-Specific Wallet Operations
 
-### P-Chain Wallet Operations
+### Platform-Chain Wallet Operations
 
 Access through `walletClient.pChain`:
 
@@ -524,8 +524,8 @@ Access through `walletClient.pChain`:
 const baseTx = await walletClient.pChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
-      amount: avaxToNanoAvax(1),
+      addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+      amount: luxToNanoLux(1),
     },
   ],
 });
@@ -536,7 +536,7 @@ const exportTx = await walletClient.pChain.prepareExportTxn({
   exportedOutputs: [
     {
       addresses: ["0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"],
-      amount: avaxToNanoAvax(1),
+      amount: luxToNanoLux(1),
     },
   ],
 });
@@ -545,14 +545,14 @@ const exportTx = await walletClient.pChain.prepareExportTxn({
 const importTx = await walletClient.pChain.prepareImportTxn({
   sourceChain: "C",
   importedOutput: {
-    addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+    addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
   },
 });
 ```
 
-See [P-Chain Wallet Methods](./p-chain-wallet) for complete reference.
+See [Platform-Chain Wallet Methods](./p-chain-wallet) for complete reference.
 
-### X-Chain Wallet Operations
+### Exchange-Chain Wallet Operations
 
 Access through `walletClient.xChain`:
 
@@ -561,16 +561,16 @@ Access through `walletClient.xChain`:
 const baseTx = await walletClient.xChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["X-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
-      amount: avaxToNanoAvax(1),
+      addresses: ["X-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+      amount: luxToNanoLux(1),
     },
   ],
 });
 ```
 
-See [X-Chain Wallet Methods](./x-chain-wallet) for complete reference.
+See [Exchange-Chain Wallet Methods](./x-chain-wallet) for complete reference.
 
-### C-Chain Wallet Operations
+### LUExchange-Chain Wallet Operations
 
 Access through `walletClient.cChain`:
 
@@ -581,7 +581,7 @@ const exportTx = await walletClient.cChain.prepareExportTxn({
   fromAddress: account.getEVMAddress(),
   exportedOutput: {
     addresses: [account.getXPAddress("P")],
-    amount: avaxToNanoAvax(1),
+    amount: luxToNanoLux(1),
   },
 });
 
@@ -592,14 +592,14 @@ const importTx = await walletClient.cChain.prepareImportTxn({
 });
 ```
 
-See [C-Chain Wallet Methods](./c-chain-wallet) for complete reference.
+See [LUExchange-Chain Wallet Methods](./c-chain-wallet) for complete reference.
 
 ---
 
 ## Next Steps
 
-- **[P-Chain Wallet Methods](./p-chain-wallet)** - P-Chain transaction preparation
-- **[X-Chain Wallet Methods](./x-chain-wallet)** - X-Chain transaction preparation
-- **[C-Chain Wallet Methods](./c-chain-wallet)** - C-Chain atomic transactions
+- **[Platform-Chain Wallet Methods](./p-chain-wallet)** - Platform-Chain transaction preparation
+- **[Exchange-Chain Wallet Methods](./x-chain-wallet)** - Exchange-Chain transaction preparation
+- **[LUExchange-Chain Wallet Methods](./c-chain-wallet)** - LUExchange-Chain atomic transactions
 - **[Account Management](../accounts)** - Account types and creation
 - **[Viem Documentation](https://viem.sh/docs)** - Complete EVM wallet reference

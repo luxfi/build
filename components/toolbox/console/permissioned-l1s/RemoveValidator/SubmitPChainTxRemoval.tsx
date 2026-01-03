@@ -4,7 +4,7 @@ import { Button } from '@/components/toolbox/components/Button';
 import { Input } from '@/components/toolbox/components/Input';
 import { Success } from '@/components/toolbox/components/Success';
 import { Alert } from '@/components/toolbox/components/Alert';
-import { useAvalancheSDKChainkit } from '@/components/toolbox/stores/useAvalancheSDKChainkit';
+import { useLuxSDKChainkit } from '@/components/toolbox/stores/useLuxSDKChainkit';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
 
 interface SubmitPChainTxRemovalProps {
@@ -28,7 +28,7 @@ const SubmitPChainTxRemoval: React.FC<SubmitPChainTxRemovalProps> = ({
   onError,
 }) => {
   const { coreWalletClient, pChainAddress, publicClient } = useWalletStore();
-  const { aggregateSignature } = useAvalancheSDKChainkit();
+  const { aggregateSignature } = useLuxSDKChainkit();
   const { notify } = useConsoleNotifications();
   const [evmTxHash, setEvmTxHash] = useState(initialEvmTxHash || '');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -263,14 +263,14 @@ const SubmitPChainTxRemoval: React.FC<SubmitPChainTxRemovalProps> = ({
       onError("Event data not found. Check the transaction hash.");
       return;
     }
-    if (typeof window === 'undefined' || !window.avalanche) {
+    if (typeof window === 'undefined' || !window.lux) {
       setErrorState("Core wallet not found. Please ensure Core is installed and active.");
       onError("Core wallet not found. Please ensure Core is installed and active.");
       return;
     }
     if (!pChainAddress) {
-      setErrorState("P-Chain address is missing from wallet. Please connect your wallet properly.");
-      onError("P-Chain address is missing from wallet. Please connect your wallet properly.");
+      setErrorState("Platform-Chain address is missing from wallet. Please connect your wallet properly.");
+      onError("Platform-Chain address is missing from wallet. Please connect your wallet properly.");
       return;
     }
 
@@ -290,14 +290,14 @@ const SubmitPChainTxRemoval: React.FC<SubmitPChainTxRemovalProps> = ({
 
       setSignedWarpMessage(signedMessage);
 
-      // Step 2: Submit to P-Chain
+      // Step 2: Submit to Platform-Chain
       const pChainTxIdPromise = coreWalletClient.setL1ValidatorWeight({
         signedWarpMessage: signedMessage,
       });
       notify('setL1ValidatorWeight', pChainTxIdPromise);
       const pChainTxId = await pChainTxIdPromise;
 
-      setTxSuccess(`P-Chain transaction successful! ID: ${pChainTxId}`);
+      setTxSuccess(`Platform-Chain transaction successful! ID: ${pChainTxId}`);
       onSuccess(pChainTxId, eventData);
     } catch (err: any) {
       let message = err instanceof Error ? err.message : String(err);
@@ -313,8 +313,8 @@ const SubmitPChainTxRemoval: React.FC<SubmitPChainTxRemovalProps> = ({
         message = 'Transaction nonce error. Please try again.';
       }
 
-      setErrorState(`P-Chain transaction failed: ${message}`);
-      onError(`P-Chain transaction failed: ${message}`);
+      setErrorState(`Platform-Chain transaction failed: ${message}`);
+      onError(`Platform-Chain transaction failed: ${message}`);
     } finally {
       setIsProcessing(false);
     }
@@ -350,7 +350,7 @@ const SubmitPChainTxRemoval: React.FC<SubmitPChainTxRemovalProps> = ({
         onClick={handleSubmitPChainTx}
         disabled={isProcessing || !evmTxHash.trim() || !unsignedWarpMessage || !eventData || txSuccess !== null}
       >
-        {isProcessing ? 'Processing...' : 'Sign & Submit to P-Chain'}
+        {isProcessing ? 'Processing...' : 'Sign & Submit to Platform-Chain'}
       </Button>
 
       {error && (
@@ -360,7 +360,7 @@ const SubmitPChainTxRemoval: React.FC<SubmitPChainTxRemovalProps> = ({
       {txSuccess && (
         <Success
           label="Transaction Hash"
-          value={txSuccess.replace('P-Chain transaction successful! ID: ', '')}
+          value={txSuccess.replace('Platform-Chain transaction successful! ID: ', '')}
         />
       )}
     </div>

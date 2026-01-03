@@ -3,7 +3,7 @@ import { SUBNET_EVM_VM_ID } from '@/constants/console';
 import { getContainerVersions } from '@/components/toolbox/utils/containerVersions';
 
 // Subnet-EVM default configuration values
-// Reference: https://build.avax.network/docs/nodes/chain-configs/subnet-evm
+// Reference: https://build.lux.network/docs/nodes/chain-configs/subnet-evm
 const SUBNET_EVM_DEFAULTS = {
     "pruning-enabled": true,
     "commit-interval": 4096,
@@ -31,7 +31,7 @@ const SUBNET_EVM_DEFAULTS = {
 /**
  * Generates the Subnet-EVM chain configuration
  * Only includes values that differ from defaults
- * This configuration is saved to ~/.avalanchego/configs/chains/<blockchainID>/config.json
+ * This configuration is saved to ~/.luxgo/configs/chains/<blockchainID>/config.json
  */
 export const generateChainConfig = (
     nodeType: 'validator' | 'public-rpc' | 'validator-rpc',
@@ -228,7 +228,7 @@ export const generateDeploymentMetadata = (
 
     return {
         "deployment": {
-            "network": isTestnet ? "fuji" : "mainnet",
+            "network": isTestnet ? "testnet" : "mainnet",
             "networkID": networkID,
             "subnetId": subnetId,
             "blockchainId": blockchainId,
@@ -264,7 +264,7 @@ export const generateConfigFileCommand = (
     chainConfig: any
 ) => {
     const configJson = JSON.stringify(chainConfig, null, 2);
-    const configPath = `~/.avalanchego/configs/chains/${blockchainId}`;
+    const configPath = `~/.luxgo/configs/chains/${blockchainId}`;
 
     // Escape single quotes in the JSON for the shell command
     const escapedJson = configJson.replace(/'/g, "'\\''");
@@ -277,7 +277,7 @@ EOF`;
 
 /**
  * Generates the complete Docker command
- * The chain config is read from the mounted volume at ~/.avalanchego/configs/chains/<blockchainID>/config.json
+ * The chain config is read from the mounted volume at ~/.luxgo/configs/chains/<blockchainID>/config.json
  */
 export const generateDockerCommand = (
     subnetId: string,
@@ -288,7 +288,7 @@ export const generateDockerCommand = (
     vmId: string = SUBNET_EVM_VM_ID
 ) => {
     const isRPC = nodeType === 'public-rpc' || nodeType === 'validator-rpc';
-    const isTestnet = networkID === 5; // Fuji
+    const isTestnet = networkID === 5; // Testnet
     const isCustomVM = vmId !== SUBNET_EVM_VM_ID;
     const versions = getContainerVersions(isTestnet);
 
@@ -297,12 +297,12 @@ export const generateDockerCommand = (
         AVAGO_HTTP_HOST: "0.0.0.0",
         AVAGO_PARTIAL_SYNC_PRIMARY_NETWORK: "true",
         AVAGO_TRACK_SUBNETS: subnetId,
-        AVAGO_CHAIN_CONFIG_DIR: "/root/.avalanchego/configs/chains"
+        AVAGO_CHAIN_CONFIG_DIR: "/root/.luxgo/configs/chains"
     };
 
     // Set network ID
     if (networkID === 5) {
-        env.AVAGO_NETWORK_ID = "fuji";
+        env.AVAGO_NETWORK_ID = "testnet";
     }
 
     // Configure RPC settings
@@ -322,9 +322,9 @@ export const generateDockerCommand = (
         "docker run -it -d",
         `--name avago`,
         `-p ${isRPC ? "" : "127.0.0.1:"}9650:9650 -p 9651:9651`,
-        `-v ~/.avalanchego:/root/.avalanchego`,
+        `-v ~/.luxgo:/root/.luxgo`,
         ...Object.entries(env).map(([key, value]) => `-e ${key}=${value}`),
-        `avaplatform/subnet-evm_avalanchego:${versions['avaplatform/subnet-evm_avalanchego']}`
+        `avaplatform/subnet-evm_luxgo:${versions['avaplatform/subnet-evm_luxgo']}`
     ];
 
     return chunks.map(chunk => `    ${chunk}`).join(" \\\n").trim();

@@ -49,14 +49,14 @@ export default function StudentLaunchpadPage() {
           <div className="flex justify-center mb-6">
             <Image
               src="/logo-black.png"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="dark:hidden"
             />
             <Image
               src="/logo-white.png"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="hidden dark:block"
@@ -113,12 +113,12 @@ export default function StudentLaunchpadPage() {
           <div className="relative px-6 py-12 text-center space-y-6 rounded-3xl border border-yellow-500/30 backdrop-blur-xs shadow-2xl">
             <h2 className="text-3xl font-bold">Explore More Opportunities</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Discover more ways to get involved with Avalanche. From learning resources to community events, there's something for every student.
+              Discover more ways to get involved with Lux. From learning resources to community events, there's something for every student.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/academy">
                 <Button className="rounded-full px-8 py-6 bg-red-500 hover:bg-red-600 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
-                  Explore Avalanche Academy<ArrowRight color="white" className="ml-2 h-5 w-5" />
+                  Explore Lux Academy<ArrowRight color="white" className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/university">

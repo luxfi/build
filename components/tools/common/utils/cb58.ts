@@ -5,7 +5,7 @@ import { base58 } from '@scure/base';
 const CHECKSUM_LENGTH = 4;
 
 function calculateChecksum(data: Uint8Array): Uint8Array {
-    // In Avalanche, hashing.Checksum uses a single SHA256
+    // In Lux, hashing.Checksum uses a single SHA256
     return sha256(data).slice(0, CHECKSUM_LENGTH);
 }
 

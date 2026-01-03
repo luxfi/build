@@ -162,7 +162,7 @@ export const FeeConfigurationSection = ({
             title="Fee Configuration"
             description={compact ? "" : "Configure fee parameters and dynamic managers."}
             titleTooltip="Set transaction fees and gas parameters for your blockchain. You can also enable dynamic fee management to adjust fees after launch without requiring network upgrades."
-            titleTooltipLink={{ href: "/docs/avalanche-l1s/evm-configuration/transaction-fees", text: "Learn more about transaction fees" }}
+            titleTooltipLink={{ href: "/docs/lux-l1s/evm-configuration/transaction-fees", text: "Learn more about transaction fees" }}
             sectionId="transactionFees"
             compact={compact}
         >

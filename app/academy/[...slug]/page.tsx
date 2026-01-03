@@ -39,7 +39,7 @@ import posthog from "posthog-js";
 
 import ToolboxMdxWrapper from "@/components/toolbox/academy/wrapper/ToolboxMdxWrapper";
 import CrossChainTransfer from "@/components/toolbox/console/primary-network/CrossChainTransfer";
-import AvalancheGoDocker from "@/components/toolbox/console/layer-1/AvalancheGoDockerL1";
+import LuxGoDocker from "@/components/toolbox/console/layer-1/LuxGoDockerL1";
 import CreateChain from "@/components/toolbox/console/layer-1/create/CreateChain";
 import ConvertSubnetToL1 from "@/components/toolbox/console/layer-1/create/ConvertSubnetToL1";
 import GenesisBuilder from "@/components/toolbox/console/layer-1/create/GenesisBuilder";
@@ -61,7 +61,7 @@ const toolboxComponents = {
   CrossChainTransfer,
   GenesisBuilder,
   CreateChain,
-  AvalancheGoDocker,
+  LuxGoDocker,
   CreateManagedTestnetNode,
   ConvertToL1: ConvertSubnetToL1,
   DeployExampleERC20,
@@ -84,15 +84,15 @@ export default async function Page(props: {
   if (!page) notFound();
 
   // Use page.path which contains the actual file path relative to collection root
-  // (e.g., "avalanche-l1/course/module/index.mdx" for an index file)
+  // (e.g., "lux-l1/course/module/index.mdx" for an index file)
   // This correctly handles both regular .mdx files and index.mdx files
   const path = `content/academy/${page.path}`;
-  const editUrl = `https://github.com/ava-labs/builders-hub/edit/master/${path}`;
+  const editUrl = `https://github.com/luxfi/lux-build/edit/master/${path}`;
   const MDX = page.data.body;
   // Check both official courses and entrepreneur courses
-  // page.slugs[1] contains the course slug (e.g., "avalanche-fundamentals", "foundations-web3-venture")
+  // page.slugs[1] contains the course slug (e.g., "lux-fundamentals", "foundations-web3-venture")
   const course = COURSES.official.find((c) => c.slug === page.slugs[1]) 
-    || COURSES.avalancheEntrepreneur.find((c) => c.slug === page.slugs[1]);
+    || COURSES.luxEntrepreneur.find((c) => c.slug === page.slugs[1]);
 
   return (
     <DocsPage
@@ -115,7 +115,7 @@ export default async function Page(props: {
                 <Instructors names={course?.instructors || []} />
               </div>
               <Link
-                href="https://t.me/avalancheacademy"
+                href="https://t.me/luxacademy"
                 target="_blank"
                 className={cn(
                   buttonVariants({ size: "lg", variant: "secondary" })
@@ -203,10 +203,10 @@ export async function generateMetadata(props: {
 
   const description =
     page.data.description ??
-    "Learn how to build on Avalanche blockchain with Academy";
+    "Learn how to build on Lux blockchain with Academy";
 
   const imageParams = new URLSearchParams();
-  imageParams.set("title", `${page.data.title} | Avalanche Builder Hub`);
+  imageParams.set("title", `${page.data.title} | Lux Lux Build`);
   imageParams.set("description", description);
 
   const image = {

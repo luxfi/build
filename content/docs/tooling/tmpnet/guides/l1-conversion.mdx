@@ -12,7 +12,7 @@ This guide shows how to test converting a subnet to an L1 (Layer 1) blockchain w
 Converting a subnet to an L1 involves:
 
 1. Deploying a validator manager contract
-2. Issuing a `ConvertSubnetToL1Tx` on the P-Chain
+2. Issuing a `ConvertSubnetToL1Tx` on the Platform-Chain
 3. Initializing the validator set with a Warp message
 4. Managing validator registration and removal
 
@@ -47,11 +47,11 @@ import (
     "testing"
     "time"
 
-    "github.com/ava-labs/avalanchego/ids"
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/units"
-    "github.com/ava-labs/avalanchego/utils/crypto/secp256k1"
+    "github.com/luxfi/luxgo/ids"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/units"
+    "github.com/luxfi/luxgo/utils/crypto/secp256k1"
     "github.com/ethereum/go-ethereum/common"
     "github.com/ethereum/go-ethereum/crypto"
     "github.com/ethereum/go-ethereum/ethclient"
@@ -141,9 +141,9 @@ import (
     "context"
     "math/big"
 
-    "github.com/ava-labs/avalanchego/ids"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/vms/platformvm/warp"
+    "github.com/luxfi/luxgo/ids"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/vms/platformvm/warp"
     "github.com/ethereum/go-ethereum/common"
 )
 
@@ -197,7 +197,7 @@ func ConvertSubnet(
         newNodes[i] = node
     }
 
-    // Step 4: Issue ConvertSubnetToL1Tx on P-Chain
+    // Step 4: Issue ConvertSubnetToL1Tx on Platform-Chain
     convertSubnetTxID := issueConvertSubnetToL1Tx(
         ctx,
         network,
@@ -291,7 +291,7 @@ func initializeValidatorManager(
     }
 }
 
-// issueConvertSubnetToL1Tx issues the conversion transaction on P-Chain
+// issueConvertSubnetToL1Tx issues the conversion transaction on Platform-Chain
 func issueConvertSubnetToL1Tx(
     ctx context.Context,
     network *tmpnet.Network,
@@ -300,7 +300,7 @@ func issueConvertSubnetToL1Tx(
     fundedKey *ecdsa.PrivateKey,
 ) ids.ID {
 
-    // Get P-Chain wallet
+    // Get Platform-Chain wallet
     pChainWallet := network.GetPChainWallet(fundedKey)
 
     // Convert address to proper format
@@ -351,7 +351,7 @@ func initializeValidatorSet(
         Validators:                validatorSet,
     }
 
-    // Sign with P-Chain validators
+    // Sign with Platform-Chain validators
     unsignedMessage := warp.NewUnsignedMessage(
         network.NetworkID,
         l1.BlockchainID,
@@ -415,8 +415,8 @@ ginkgo.It("should convert to native staking",
     func() {
         // Use different weights for validators
         weights := []uint64{
-            1 * units.Schmeckle,      // Validator 1: 1 AVAX
-            1000 * units.Schmeckle,   // Validator 2: 1000 AVAX
+            1 * units.Schmeckle,      // Validator 1: 1 LUX
+            1000 * units.Schmeckle,   // Validator 2: 1000 LUX
         }
 
         nodes, validationIDs := convertSubnetToL1WithWeights(
@@ -493,7 +493,7 @@ func verifyValidatorsActive(
 }
 ```
 
-### Check P-Chain State
+### Check Platform-Chain State
 
 ```go
 func verifyPChainValidators(
@@ -547,10 +547,10 @@ nodes, validationIDs := convertSubnetToL1WithWeights(
 
 ## Best Practices
 
-1. **Use generous timeouts**: Conversion involves P-Chain transactions which can be slow
+1. **Use generous timeouts**: Conversion involves Platform-Chain transactions which can be slow
 2. **Verify all steps**: Check validator status after conversion
 3. **Test different weights**: Ensure validator weighting works correctly
-4. **Handle errors**: P-Chain operations can fail, plan for retries
+4. **Handle errors**: Platform-Chain operations can fail, plan for retries
 5. **Clean up**: Stop extra nodes in AfterEach if creating new networks per test
 
 ## Troubleshooting

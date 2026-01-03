@@ -18,8 +18,8 @@ import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-
 
 const MINIMUM_BALANCE = parseEther('11');
 
-const ICM_COMMIT = versions["ava-labs/icm-contracts"];
-const TELEPORTER_MESSENGER_SOURCE_URL = `https://github.com/ava-labs/icm-contracts/blob/${ICM_COMMIT}/contracts/teleporter/TeleporterMessenger.sol`;
+const ICM_COMMIT = versions["luxfi/icm-contracts"];
+const TELEPORTER_MESSENGER_SOURCE_URL = `https://github.com/luxfi/icm-contracts/blob/${ICM_COMMIT}/contracts/teleporter/TeleporterMessenger.sol`;
 
 const metadata: ConsoleToolMetadata = {
     title: "Deploy ICM Messenger",
@@ -164,7 +164,7 @@ function TeleporterMessenger({ onSuccess }: BaseConsoleToolProps) {
     return (
         <>
                 <div>
-                    <p className="mt-2">This tool deploys the TeleporterMessenger contract, which is the core contract that handles cross-subnet message sending and receiving. Please read more <a href="https://github.com/ava-labs/icm-contracts/blob/main/contracts/teleporter/README.md" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">here</a>.</p>
+                    <p className="mt-2">This tool deploys the TeleporterMessenger contract, which is the core contract that handles cross-subnet message sending and receiving. Please read more <a href="https://github.com/luxfi/icm-contracts/blob/main/contracts/teleporter/README.md" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">here</a>.</p>
                 </div>
                 <p className="text-sm text-gray-500 mb-4">
                     Contract source: <a href={TELEPORTER_MESSENGER_SOURCE_URL} target="_blank" rel="noreferrer">TeleporterMessenger.sol</a> @ <code>{ICM_COMMIT.slice(0, 7)}</code>

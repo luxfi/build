@@ -30,7 +30,7 @@ export function WalletPChain() {
     setTimeout(() => setIsRefreshing(false), 2000);
   };
 
-  // Format P-Chain address for compact display
+  // Format Platform-Chain address for compact display
   const formatAddressForDisplay = (
     address: string,
     leading: number = 6,
@@ -49,12 +49,12 @@ export function WalletPChain() {
         <Button variant="outline" size="sm">
           <div className="flex items-center gap-3">
             <div className="flex-shrink-0 w-5 h-5 rounded-md overflow-hidden flex items-center justify-start">
-              <img src="https://images.ctfassets.net/gcj8jwzm6086/42aMwoCLblHOklt6Msi6tm/1e64aa637a8cead39b2db96fe3225c18/pchain-square.svg" alt="P-Chain Logo" className="w-full h-full object-cover" />
+              <img src="https://images.ctfassets.net/gcj8jwzm6086/42aMwoCLblHOklt6Msi6tm/1e64aa637a8cead39b2db96fe3225c18/pchain-square.svg" alt="Platform-Chain Logo" className="w-full h-full object-cover" />
             </div>
             <div className="flex gap-2 items-center">
-              <span className="text-sm font-medium leading-none">P-Chain</span>
+              <span className="text-sm font-medium leading-none">Platform-Chain</span>
               <span className="text-xs text-muted-foreground leading-none">
-                {formatBalance(pChainBalance)} AVAX
+                {formatBalance(pChainBalance)} LUX
               </span>
             </div>
           </div>
@@ -66,7 +66,7 @@ export function WalletPChain() {
           <div className="flex items-center justify-between">
             <div className="flex-1 min-w-0">
               <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-medium mb-1">
-                P-Chain Address
+                Platform-Chain Address
               </div>
               <div
                 className="text-xs font-mono text-foreground cursor-pointer hover:text-primary transition-colors"
@@ -115,7 +115,7 @@ export function WalletPChain() {
         <PChainFaucetMenuItem />
         <DropdownMenuItem onClick={() => window.location.href = '/console/primary-network/c-p-bridge'} className='cursor-pointer'>
           <ArrowLeftRight className="mr-2 h-3 w-3" />
-          Bridge AVAX from C-Chain
+          Bridge LUX from LUExchange-Chain
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

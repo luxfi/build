@@ -1,6 +1,6 @@
 {
     "title": "Wallet Methods",
-    "description": "Complete reference for Avalanche-specific wallet methods",
+    "description": "Complete reference for Lux-specific wallet methods",
     "pages": [
         "wallet",
         "p-chain-wallet",

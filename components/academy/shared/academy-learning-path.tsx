@@ -11,8 +11,8 @@ export function AcademyLearningPath({ pathType }: AcademyLearningPathProps) {
         <div id="learning-path-section" className="mb-20 scroll-mt-20">
             <div className="text-center mb-6">
                 <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white mb-3">
-                    Explore our <span className="text-red-600">
-                        {pathType === 'avalanche' ? 'Avalanche L1' : pathType === 'blockchain' ? 'Blockchain' : 'Entrepreneur'}
+                    Explore our <span className="text-zinc-600 dark:text-zinc-300">
+                        {pathType === 'lux' ? 'Lux L1' : pathType === 'blockchain' ? 'Blockchain' : 'Entrepreneur'}
                     </span> Courses
                 </h2>
 
@@ -23,7 +23,7 @@ export function AcademyLearningPath({ pathType }: AcademyLearningPathProps) {
                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                         </svg>
-                        {pathType === 'avalanche'
+                        {pathType === 'lux'
                             ? 'Start with fundamentals and advance to custom L1s'
                             : pathType === 'blockchain'
                             ? 'Master blockchain basics and smart contracts'

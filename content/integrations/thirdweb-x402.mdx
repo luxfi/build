@@ -1,8 +1,8 @@
 ---
 title: Thirdweb x402
 category: x402
-available: ["C-Chain"]
-description: Thirdweb provides an x402 facilitator service that handles verifying and submitting x402 payments on Avalanche.
+available: ["LUExchange-Chain"]
+description: Thirdweb provides an x402 facilitator service that handles verifying and submitting x402 payments on Lux.
 logo: /images/thirdweb.png
 developer: Thirdweb
 website: https://thirdweb.com/
@@ -11,7 +11,7 @@ documentation: https://portal.thirdweb.com/payments/x402/facilitator
 
 ## Overview
 
-Thirdweb's x402 facilitator is a service that handles verifying and submitting x402 payments on Avalanche's C-Chain. It uses your own server wallet and leverages EIP-7702 to submit transactions gaslessly, making it easy to integrate payment-gated APIs and AI services.
+Thirdweb's x402 facilitator is a service that handles verifying and submitting x402 payments on Lux's LUExchange-Chain. It uses your own server wallet and leverages EIP-7702 to submit transactions gaslessly, making it easy to integrate payment-gated APIs and AI services.
 
 The thirdweb facilitator is compatible with any x402 backend and middleware libraries like `x402-hono`, `x402-next`, `x402-express`, and more.
 
@@ -26,14 +26,14 @@ You can view all transactions processed by your facilitator in your thirdweb pro
 
 ## Chain and Token Support
 
-The thirdweb facilitator supports payments on **any EVM chain**, including Avalanche C-Chain, as long as the payment token supports either:
+The thirdweb facilitator supports payments on **any EVM chain**, including Lux LUExchange-Chain, as long as the payment token supports either:
 
 - **ERC-2612 permit** (most ERC20 tokens)
 - **ERC-3009 sign with authorization** (USDC on all chains)
 
 ## Key Features
 
-- **Multi-Chain Support**: Works on Avalanche C-Chain and all EVM-compatible chains
+- **Multi-Chain Support**: Works on Lux LUExchange-Chain and all EVM-compatible chains
 - **Gasless Transactions**: Leverages EIP-7702 for user-friendly payment experience
 - **Your Own Wallet**: Use your own server wallet to receive payments directly
 - **Dashboard Monitoring**: Track all facilitator transactions in your thirdweb dashboard
@@ -82,12 +82,12 @@ const thirdwebFacilitator = facilitator({
 
 ### Usage with settlePayment()
 
-Use the facilitator with the `settlePayment()` function on Avalanche:
+Use the facilitator with the `settlePayment()` function on Lux:
 
 ```typescript
 import { settlePayment, facilitator } from "thirdweb/x402";
 import { createThirdwebClient } from "thirdweb";
-import { avalanche } from "thirdweb/chains";
+import { lux } from "thirdweb/chains";
 
 const client = createThirdwebClient({
   secretKey: process.env.THIRDWEB_SECRET_KEY,
@@ -106,7 +106,7 @@ export async function GET(request: Request) {
     method: "GET",
     paymentData,
     payTo: "0x1234567890123456789012345678901234567890",
-    network: avalanche, // Use Avalanche C-Chain
+    network: lux, // Use Lux LUExchange-Chain
     price: "$0.10",
     facilitator: thirdwebFacilitator, // Pass the facilitator here
   });
@@ -124,7 +124,7 @@ export async function GET(request: Request) {
 
 ### Usage with x402-hono Middleware
 
-Use the facilitator with Hono middleware on Avalanche:
+Use the facilitator with Hono middleware on Lux:
 
 ```typescript
 import { Hono } from "hono";
@@ -150,7 +150,7 @@ app.use(
     {
       "/api/paywall": {
         price: "$0.01",
-        network: "avalanche", // Use Avalanche mainnet
+        network: "lux", // Use Lux mainnet
         config: {
           description: "Access to paid content",
         },
@@ -169,7 +169,7 @@ export default app;
 
 ### Usage with x402-express Middleware
 
-Use the facilitator with Express middleware on Avalanche:
+Use the facilitator with Express middleware on Lux:
 
 ```typescript
 import express from "express";
@@ -194,7 +194,7 @@ app.use(
     {
       "GET /api/premium": {
         price: "$0.05",
-        network: "avalanche", // Use Avalanche mainnet
+        network: "lux", // Use Lux mainnet
       },
     },
     thirdwebFacilitator,
@@ -210,33 +210,33 @@ app.listen(3000);
 
 ## Getting Supported Payment Methods
 
-Query which payment methods are supported by the facilitator on Avalanche:
+Query which payment methods are supported by the facilitator on Lux:
 
 ```typescript
 // Get all supported payment methods
 const allSupported = await thirdwebFacilitator.supported();
 
-// Filter by Avalanche C-Chain
-const avalancheSupported = await thirdwebFacilitator.supported({
-  chainId: 43114, // Avalanche C-Chain
+// Filter by Lux LUExchange-Chain
+const luxSupported = await thirdwebFacilitator.supported({
+  chainId: 43114, // Lux LUExchange-Chain
 });
 
-// Filter by chain and token (e.g., USDC on Avalanche)
-const usdcOnAvalanche = await thirdwebFacilitator.supported({
+// Filter by chain and token (e.g., USDC on Lux)
+const usdcOnLux = await thirdwebFacilitator.supported({
   chainId: 43114,
-  tokenAddress: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E", // USDC on Avalanche
+  tokenAddress: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E", // USDC on Lux
 });
 ```
 
-## Avalanche C-Chain Integration
+## Lux LUExchange-Chain Integration
 
-When using thirdweb's x402 facilitator on Avalanche's C-Chain:
+When using thirdweb's x402 facilitator on Lux's LUExchange-Chain:
 
-- **Chain ID**: 43114 for mainnet, 43113 for Fuji testnet
-- **Network String**: Use `"avalanche"` for mainnet or `"avalanche-fuji"` for testnet
-- **Fast Settlement**: Benefit from Avalanche's sub-second transaction finality
+- **Chain ID**: 43114 for mainnet, 43113 for Testnet testnet
+- **Network String**: Use `"lux"` for mainnet or `"lux-testnet"` for testnet
+- **Fast Settlement**: Benefit from Lux's sub-second transaction finality
 - **Low Costs**: Enable micropayments with minimal gas fees
-- **Dashboard Tracking**: Monitor all Avalanche transactions in your thirdweb dashboard
+- **Dashboard Tracking**: Monitor all Lux transactions in your thirdweb dashboard
 
 ## Use Cases
 
@@ -250,7 +250,7 @@ Protect your API endpoints with automatic payment verification and settlement.
 Enable micropayments for content, data, or compute resources with minimal overhead.
 
 ### Multi-Chain AI Services
-Build AI services that accept payments across Avalanche and other EVM chains.
+Build AI services that accept payments across Lux and other EVM chains.
 
 ## Documentation
 
@@ -260,5 +260,5 @@ For detailed implementation guides and API references:
 
 ## Conclusion
 
-Thirdweb's x402 facilitator provides a robust infrastructure for handling payment-gated services on Avalanche's C-Chain. With gasless transactions, automatic payment verification, and seamless integration with popular middleware libraries, it's the perfect solution for developers building monetized AI services and APIs. Whether you're using Express, Hono, Next.js, or custom implementations, thirdweb's facilitator makes it easy to accept x402 payments on Avalanche.
+Thirdweb's x402 facilitator provides a robust infrastructure for handling payment-gated services on Lux's LUExchange-Chain. With gasless transactions, automatic payment verification, and seamless integration with popular middleware libraries, it's the perfect solution for developers building monetized AI services and APIs. Whether you're using Express, Hono, Next.js, or custom implementations, thirdweb's facilitator makes it easy to accept x402 payments on Lux.
 

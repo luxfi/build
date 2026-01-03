@@ -3,14 +3,14 @@ import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-The Avalanche Starter Kit contains everything you need to get started quickly with Avalanche. Among other tools it contains Avalanche CLI. With that you can set up a local network, create a Avalanche L1, customize the Avalanche L1/VM configuration, and so on. 
+The Lux Starter Kit contains everything you need to get started quickly with Lux. Among other tools it contains Lux CLI. With that you can set up a local network, create a Lux L1, customize the Lux L1/VM configuration, and so on. 
 
-In this course we will run the Avalanche Starter Kit in a hosted environment on Github. This is the quickest way to get started.
+In this course we will run the Lux Starter Kit in a hosted environment on Github. This is the quickest way to get started.
 
 <Steps>
 <Step>
 
-### Set Up Avalanche Starter Kit:
+### Set Up Lux Starter Kit:
 
 ### Create a Codespace
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=769886086&machine=standardLinux32gb)
@@ -18,12 +18,12 @@ In this course we will run the Avalanche Starter Kit in a hosted environment on 
 The Codespace will open in a new tab. You must be logged into a GitHub account, otherwise codespaces will not be available. Wait a few minutes until it's fully built. Alternatively, you can also clone the repo:
 
 <Link
-    href="https://github.com/ava-labs/avalanche-starter-kit"
+    href="https://github.com/luxfi/lux-starter-kit"
     className={cn(
     buttonVariants({ variant: 'default', className: 'mt-4' }),
     )}
     target='_blank'
->Open Avalanche Starter Kit</Link>
+>Open Lux Starter Kit</Link>
 
 </Step>
 <Step>
@@ -32,29 +32,29 @@ The Codespace will open in a new tab. You must be logged into a GitHub account, 
 
 Open the terminal with `` Ctrl + ` `` or by opening it through the menu:
 
-![](/common-images/avalanche-starter-kit/new-terminal.png)
+![](/common-images/lux-starter-kit/new-terminal.png)
 
-Now enter avalanche -h to verify everything is working:
+Now enter lux -h to verify everything is working:
 
 ```bash
-avalanche -h
+lux -h
 ```
 
-As a result you should see the help of Avalanche CLI:
+As a result you should see the help of Lux CLI:
 
 ```
-Avalanche-CLI is a command-line tool that gives developers access to
-everything Avalanche. This release specializes in helping developers
-build and test Avalanche L1s.
+Lux-CLI is a command-line tool that gives developers access to
+everything Lux. This release specializes in helping developers
+build and test Lux L1s.
 
 To get started, look at the documentation for the subcommands or jump right
-in with avalanche blockchain create myNewAvalanche L1.
+in with lux blockchain create myNewLux L1.
 
 Usage:
-  avalanche [command]
+  lux [command]
 
 Available Commands:
-  config                Modify configuration for Avalanche-CLI
+  config                Modify configuration for Lux-CLI
   help                  Help about any command
   key                   Create and manage testnet signing keys
 ```
@@ -66,7 +66,7 @@ Available Commands:
 
 You can switch any time from the browser IDE to Visual Studio Code:
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/codespaces/open-locally-y9B0R9TH2myjvdJ2XVAoCkx60wIIvz.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/codespaces/open-locally-y9B0R9TH2myjvdJ2XVAoCkx60wIIvz.png)
 
 The first time you switch, you will be asked to install the [Codespaces extension](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces) and connect VS Code to you GitHub account, if it is not already connceted.
 

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 
-const avalanche = new Avalanche({
+const lux = new Lux({
   network: "mainnet",
   apiKey: process.env.GLACIER_API_KEY,
 });
@@ -20,7 +20,7 @@ interface Validator {
   nodeId: string;
   amountStaked: string;
   validationStatus: string;
-  avalancheGoVersion: string;
+  luxGoVersion: string;
   geolocation: ValidatorGeolocation;
 }
 
@@ -41,7 +41,7 @@ const CACHE_CONTROL_HEADER = 'public, max-age=86400, s-maxage=86400, stale-while
 async function fetchAllValidators(): Promise<Validator[]> {
   try {
     const allValidators: Validator[] = [];
-    const result = await avalanche.data.primaryNetwork.listValidators({
+    const result = await lux.data.primaryNetwork.listValidators({
       validationStatus: "active",
       subnetId: PRIMARY_NETWORK_SUBNET_ID,
     });
@@ -58,7 +58,7 @@ async function fetchAllValidators(): Promise<Validator[]> {
           nodeId: v.nodeId,
           amountStaked: v.amountStaked,
           validationStatus: v.validationStatus,
-          avalancheGoVersion: v.avalancheGoVersion || 'unknown',
+          luxGoVersion: v.luxGoVersion || 'unknown',
           geolocation: {
             city: v.geolocation.city,
             country: v.geolocation.country,

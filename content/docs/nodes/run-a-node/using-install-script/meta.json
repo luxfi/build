@@ -2,8 +2,8 @@
   "title": "Using Install Script",
   "pages": [
     "preparing-environment",
-    "installing-avalanche-go",
-    "managing-avalanche-go",
+    "installing-lux-go",
+    "managing-lux-go",
     "node-config-maintenance"
   ]
 }

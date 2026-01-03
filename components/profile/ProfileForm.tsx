@@ -577,15 +577,15 @@ export default function ProfileForm({
                   <div className="space-y-1">
                     <FormLabel>Email Notifications</FormLabel>
                     <p className="text-sm text-zinc-600 dark:text-zinc-400 whitespace-pre-line italic">
-                      I wish to stay informed about Avalanche news and events and
+                      I wish to stay informed about Lux news and events and
                       agree to receive newsletters and other promotional materials
                       at the email address I provided. {"\n"}I know that I
                       may opt-out at any time. I have read and agree to the{" "}
                       <a
-                        href="https://www.avax.network/privacy-policy"
+                        href="https://www.lux.network/privacy-policy"
                         className="text-primary hover:text-primary/80 dark:text-primary/90 dark:hover:text-primary/70"
                       >
-                        Avalanche Privacy Policy
+                        Lux Privacy Policy
                       </a>
                       .
                     </p>

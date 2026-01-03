@@ -1,51 +1,51 @@
 ---
-title: C-Chain Client
+title: LUExchange-Chain Client
 ---
 
 ## Overview
 
-The C-Chain (Contract Chain) Client provides an interface for interacting with Avalanche's Contract Chain, which is an instance of the Ethereum Virtual Machine (EVM) with additional Avalanche-specific features like cross-chain atomic transactions.
+The LUExchange-Chain (Contract Chain) Client provides an interface for interacting with Lux's Contract Chain, which is an instance of the Ethereum Virtual Machine (EVM) with additional Lux-specific features like cross-chain atomic transactions.
 
-**When to use:** Use the C-Chain Client for EVM operations and atomic transactions (cross-chain transfers).
+**When to use:** Use the LUExchange-Chain Client for EVM operations and atomic transactions (cross-chain transfers).
 
 ## Installation & Setup
 
-For setup instructions, see the [Getting Started](/avalanche-sdk/client-sdk/getting-started) guide.
+For setup instructions, see the [Getting Started](/lux-sdk/client-sdk/getting-started) guide.
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
 const cChainClient = client.cChain;
 ```
 
-Or create a standalone C-Chain client:
+Or create a standalone LUExchange-Chain client:
 
 ```typescript
-import { createCChainClient } from "@avalanche-sdk/client";
+import { createCChainClient } from "@lux-sdk/client";
 
 const cChainClient = createCChainClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 ```
 
 ## Available Methods
 
-The C-Chain Client provides methods for:
+The LUExchange-Chain Client provides methods for:
 
 - **Atomic Transaction Operations**: `getAtomicTx`, `getAtomicTxStatus`
 - **UTXO Operations**: `getUTXOs`
 - **Transaction Operations**: `issueTx`
 
-Additionally, the C-Chain Client extends viem's Public Client, providing access to all standard EVM actions such as `getBalance`, `getBlock`, `readContract`, `call`, and more.
+Additionally, the LUExchange-Chain Client extends viem's Public Client, providing access to all standard EVM actions such as `getBalance`, `getBlock`, `readContract`, `call`, and more.
 
-For complete method documentation with signatures, parameters, and examples, see the [C-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/c-chain).
+For complete method documentation with signatures, parameters, and examples, see the [LUExchange-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/c-chain).
 
 ## Common Use Cases
 
@@ -72,7 +72,7 @@ console.log("Status:", status.status);
 ### Query UTXOs
 
 ```typescript
-// Get UTXOs for C-Chain addresses
+// Get UTXOs for LUExchange-Chain addresses
 const utxos = await client.cChain.getUTXOs({
   addresses: ["0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"],
   limit: 100,
@@ -83,7 +83,7 @@ console.log("Number of UTXOs:", utxos.utxos.length);
 
 ## Using viem Actions
 
-The C-Chain Client extends viem's Public Client, so you have access to all standard EVM actions:
+The LUExchange-Chain Client extends viem's Public Client, so you have access to all standard EVM actions:
 
 ```typescript
 // Get EVM balance
@@ -120,18 +120,18 @@ See the [viem documentation](https://viem.sh/docs/getting-started) for all avail
 For transaction operations (sending transactions, writing contracts), use the wallet client:
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { parseEther } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { parseEther } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
-const walletClient = createAvalancheWalletClient({
+const account = privateKeyToLuxAccount("0x...");
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
-// Send AVAX
+// Send LUX
 const txHash = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
   value: parseEther("0.001"),
@@ -143,7 +143,7 @@ console.log("Transaction hash:", txHash);
 ### Cross-Chain Operations
 
 ```typescript
-// Export from C-Chain to P-Chain
+// Export from LUExchange-Chain to Platform-Chain
 const exportTx = await walletClient.cChain.prepareExportTxn({
   destinationChain: "P",
   to: account.getXPAddress("P"),
@@ -153,7 +153,7 @@ const exportTx = await walletClient.cChain.prepareExportTxn({
 const exportTxHash = await walletClient.sendXPTransaction(exportTx);
 console.log("Export transaction:", exportTxHash);
 
-// Import to C-Chain from P-Chain
+// Import to LUExchange-Chain from Platform-Chain
 const importTx = await walletClient.cChain.prepareImportTxn({
   to: account.getEVMAddress(),
   amount: "0.001",
@@ -164,12 +164,12 @@ const importTxHash = await walletClient.sendXPTransaction(importTx);
 console.log("Import transaction:", importTxHash);
 ```
 
-For complete wallet operations documentation, see [C-Chain Wallet Methods](/avalanche-sdk/client-sdk/methods/wallet-methods/c-chain-wallet).
+For complete wallet operations documentation, see [LUExchange-Chain Wallet Methods](/lux-sdk/client-sdk/methods/wallet-methods/c-chain-wallet).
 
 ## Next Steps
 
-- **[C-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/c-chain)** - Complete method documentation
-- **[C-Chain Wallet Methods](/avalanche-sdk/client-sdk/methods/wallet-methods/c-chain-wallet)** - Transaction preparation and sending
-- **[Wallet Client](/avalanche-sdk/client-sdk/clients/wallet-client)** - Complete wallet operations
-- **[P-Chain Client](/avalanche-sdk/client-sdk/clients/p-chain-client)** - Validator operations
-- **[X-Chain Client](/avalanche-sdk/client-sdk/clients/x-chain-client)** - Asset operations
+- **[LUExchange-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/c-chain)** - Complete method documentation
+- **[LUExchange-Chain Wallet Methods](/lux-sdk/client-sdk/methods/wallet-methods/c-chain-wallet)** - Transaction preparation and sending
+- **[Wallet Client](/lux-sdk/client-sdk/clients/wallet-client)** - Complete wallet operations
+- **[Platform-Chain Client](/lux-sdk/client-sdk/clients/p-chain-client)** - Validator operations
+- **[Exchange-Chain Client](/lux-sdk/client-sdk/clients/x-chain-client)** - Asset operations

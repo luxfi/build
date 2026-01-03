@@ -1,7 +1,7 @@
 ---
 title: MoonPay
 category: Fiat On-Ramp
-available: ["C-Chain", "All Avalanche L1s"]
+available: ["LUExchange-Chain", "All Lux L1s"]
 description: MoonPay is a financial technology company that provides payment infrastructure for cryptocurrencies, enabling easy fiat-to-crypto on-ramp and off-ramp solutions.
 logo: /images/moonpay.png
 developer: MoonPay
@@ -39,7 +39,7 @@ To integrate MoonPay into your application:
      ```javascript
      const moonpayUrl = new URL('https://buy.moonpay.com');
      moonpayUrl.searchParams.append('apiKey', 'YOUR_API_KEY');
-     moonpayUrl.searchParams.append('currencyCode', 'avax');
+     moonpayUrl.searchParams.append('currencyCode', 'lux');
      moonpayUrl.searchParams.append('walletAddress', userWalletAddress);
      
      window.open(moonpayUrl.href, '_blank');
@@ -59,7 +59,7 @@ To integrate MoonPay into your application:
        variant: 'overlay', // or 'embedded'
        params: {
          apiKey: 'YOUR_API_KEY',
-         currencyCode: 'avax',
+         currencyCode: 'lux',
          walletAddress: userWalletAddress,
          baseCurrencyCode: 'usd',
          baseCurrencyAmount: 100,
@@ -99,13 +99,13 @@ To integrate MoonPay into your application:
            flow: 'buy',
            params: {
              apiKey: 'YOUR_API_KEY',
-             currencyCode: 'avax',
+             currencyCode: 'lux',
              walletAddress: userWalletAddress
            }
          });
        };
        
-       return <button onClick={handleClick}>Buy AVAX</button>;
+       return <button onClick={handleClick}>Buy LUX</button>;
      }
      
      function App() {

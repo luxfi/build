@@ -58,7 +58,7 @@ export function RPCURLInput({ value, onChange, label = "RPC URL", placeholder, d
                   <p className="text-red-800/80">
                     Clone and run the toolbox locally to avoid browser security restrictions.
                     <a
-                      href="https://github.com/ava-labs/builders-hub/blob/master/toolbox/README.md"
+                      href="https://github.com/luxfi/lux-build/blob/master/toolbox/README.md"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center text-red-700 hover:text-red-900 font-medium ml-1"

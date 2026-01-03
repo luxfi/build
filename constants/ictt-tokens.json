@@ -5,9 +5,9 @@
     "coingeckoId": "coq-inu"
   },
   "0x0ceE9001DafFf03080E71b76c47e2C89c4c9e752": {
-    "name": "Wrapped AVAX (non-official)",
-    "symbol": "WAVAX",
-    "coingeckoId": "wrapped-avax"
+    "name": "Wrapped LUX (non-official)",
+    "symbol": "WLUX",
+    "coingeckoId": "wrapped-lux"
   },
   "0x81CB6998c6313E1782A6bf1491c43cF36935E41d": {
     "name": "Wrapped PEARL",
@@ -30,9 +30,9 @@
     "symbol": "GAMR"
   },
   "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7": {
-    "name": "WAVAX",
-    "symbol": "WAVAX",
-    "coingeckoId": "wrapped-avax"
+    "name": "WLUX",
+    "symbol": "WLUX",
+    "coingeckoId": "wrapped-lux"
   },
   "0x413F1a8F0A2Bd9b6D31B2CA91c4aa7bC08266731": {
     "name": "GAMR",
@@ -90,13 +90,13 @@
     "symbol": "BOOTY"
   },
   "0xC139Aa91399600f6b72975AC3317b6d49Cb30a69": {
-    "name": "Avax Meme Index",
+    "name": "Lux Meme Index",
     "symbol": "AMI"
   },
   "0x0000000000000000000000000000000000000000": {
-    "name": "C-Chain Native Token",
-    "symbol": "AVAX",
-    "coingeckoId": "avalanche"
+    "name": "LUExchange-Chain Native Token",
+    "symbol": "LUX",
+    "coingeckoId": "lux"
   },
   "0x7916aA8ceecdc0bF72D7Bd38fDd82592e0146D4": {
     "name": "Wrapped KALIS",

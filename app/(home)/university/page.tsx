@@ -133,14 +133,14 @@ export default function Page() {
           <div className="flex justify-center mb-6">
             <Image
               src="/logo-black.png"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="dark:hidden"
             />
             <Image
               src="/logo-white.png"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="hidden dark:block"
@@ -151,7 +151,7 @@ export default function Page() {
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Discover opportunities for students and educators to explore blockchain technology, 
-            access educational resources, and join our community of builders on Avalanche.
+            access educational resources, and join our community of builders on Lux.
           </p>
         </section>
 
@@ -159,7 +159,7 @@ export default function Page() {
         <section className="mt-16">
           <UniversitySlideshow className="mb-8" />
           <p className="text-center text-2xl md:text-3xl font-semibold">
-            Learn, connect, build and innovate with Avalanche.
+            Learn, connect, build and innovate with Lux.
           </p>
         </section>
 
@@ -175,8 +175,8 @@ export default function Page() {
           </div>
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
             <ProgramCard
-              title="Avalanche Academy"
-              description="Master blockchain development with hands-on courses designed specifically for the Avalanche ecosystem. From fundamentals to advanced L1 development, gain the skills to build the next generation of blockchain applications and get certified for free."
+              title="Lux Academy"
+              description="Master blockchain development with hands-on courses designed specifically for the Lux ecosystem. From fundamentals to advanced L1 development, gain the skills to build the next generation of blockchain applications and get certified for free."
               icon={<BookOpen className="w-6 h-6 text-foreground" />}
               href="/academy"
             />
@@ -201,7 +201,7 @@ export default function Page() {
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">CONNECT</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Students and educators — step into blockchain and join the Avalanche builder community.
+              Students and educators — step into blockchain and join the Lux builder community.
             </p>
           </div>
           
@@ -218,7 +218,7 @@ export default function Page() {
             {/* Attend events */}
             <ActionCard
               title="Attend Hackathons & Events"
-              description="Join hackathons, Team1 meetups, and Avalanche global events near you."
+              description="Join hackathons, Team1 meetups, and Lux global events near you."
               icon={<Calendar className="w-6 h-6 text-foreground" />}
               href="/hackathons"
             />
@@ -228,7 +228,7 @@ export default function Page() {
               title="Join Our Communities"
               description="Dedicated chats for university students, educators, and entrepreneurs. Find study groups, get support for your projects, and network with like-minded builders."
               icon={<MessageSquare className="w-6 h-6 text-foreground" />}
-              href="http://t.me/avalancheacademy"
+              href="http://t.me/luxacademy"
               external
             />
           </div>
@@ -248,7 +248,7 @@ export default function Page() {
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold">STUDENT CLUB LAUNCHPAD</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                  Want more Avalanche on your campus? Get access to resources for your club, from guest speakers to teaching materials and funding for your event.
+                  Want more Lux on your campus? Get access to resources for your club, from guest speakers to teaching materials and funding for your event.
                 </p>
               </div>
 
@@ -309,7 +309,7 @@ export default function Page() {
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
               Join thousands of students and educators already building the future of blockchain 
-              technology with Avalanche. Start learning today and become part of our global community.
+              technology with Lux. Start learning today and become part of our global community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/academy">

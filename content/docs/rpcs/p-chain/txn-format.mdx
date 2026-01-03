@@ -3,8 +3,8 @@ title: Transaction Format
 ---
 
 This file is meant to be the single source of truth for how we serialize
-transactions in Avalanche's Platform Virtual Machine, aka the `Platform Chain`
-or `P-Chain`. This document uses the [primitive serialization](/docs/rpcs/other/standards/serialization-primitives) format for packing and
+transactions in Lux's Platform Virtual Machine, aka the `Platform Chain`
+or `Platform-Chain`. This document uses the [primitive serialization](/docs/rpcs/other/standards/serialization-primitives) format for packing and
 [secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#secp256k1-addresses) for cryptographic
 user identification.
 
@@ -77,7 +77,7 @@ Transferable outputs wrap an output with an asset ID.
 A transferable output contains an `AssetID` and an `Output`.
 
 - **`AssetID`** is a 32-byte array that defines which asset this output
-  references. The only valid `AssetID` is the AVAX `AssetID`.
+  references. The only valid `AssetID` is the LUX `AssetID`.
 - **`Output`** is an output, as defined below. For example, this can be a SECP256K1 transfer output.
 
 ### Gantt Transferable Output Specification
@@ -141,7 +141,7 @@ A transferable input contains a `TxID`, `UTXOIndex` `AssetID` and an `Input`.
 - **`TxID`** is a 32-byte array that defines which transaction this input is consuming an output from.
 - **`UTXOIndex`** is an int that defines which utxo this input is consuming the specified transaction.
 - **`AssetID`** is a 32-byte array that defines which asset this input
-  references. The only valid `AssetID` is the AVAX `AssetID`.
+  references. The only valid `AssetID` is the LUX `AssetID`.
 - **`Input`** is a transferable input object.
 
 ### Gantt Transferable Input Specification
@@ -216,7 +216,7 @@ Outputs have two possible type: `SECP256K1TransferOutput`, `SECP256K1OutputOwner
 
 A [secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#secp256k1-addresses) transfer output
 allows for sending a quantity of an asset to a collection of addresses after a
-specified Unix time. The only valid asset is AVAX.
+specified Unix time. The only valid asset is LUX.
 
 ### What SECP256K1 Transfer Output Contains
 
@@ -733,22 +733,22 @@ Let's make an unsigned add validator TX that uses the inputs and outputs from th
 ]
 ```
 
-## Unsigned Remove Avalanche L1 Validator TX
+## Unsigned Remove Lux L1 Validator TX
 
-### What Unsigned Remove Avalanche L1 Validator TX Contains
+### What Unsigned Remove Lux L1 Validator TX Contains
 
-An unsigned remove Avalanche L1 validator TX contains a `BaseTx`, `NodeID`,
+An unsigned remove Lux L1 validator TX contains a `BaseTx`, `NodeID`,
 `SubnetID`, and `SubnetAuth`. The `TypeID` for this type is 23 or `0x00000017`.
 
 - **`BaseTx`**
 - **`NodeID`** is the 20 byte node ID of the validator.
-- **`SubnetID`** is the 32 byte Avalanche L1 ID (SubnetID) that the validator is being removed from.
+- **`SubnetID`** is the 32 byte Lux L1 ID (SubnetID) that the validator is being removed from.
 - **`SubnetAuth`** contains `SigIndices` and has a type id of `0x0000000a`.
   `SigIndices` is a list of unique ints that define the addresses signing the
   control signature which proves that the issuer has the right to remove the
-  node from the Avalanche L1. The array must be sorted low to high.
+  node from the Lux L1. The array must be sorted low to high.
 
-### Gantt Unsigned Remove Avalanche L1 Validator TX Specification
+### Gantt Unsigned Remove Lux L1 Validator TX Specification
 
 ```text
 +---------------+----------------------+------------------------------------------------+
@@ -764,7 +764,7 @@ An unsigned remove Avalanche L1 validator TX contains a `BaseTx`, `NodeID`,
 +---------------------------------------------------------------------------------------+
 ```
 
-### Proto Unsigned Remove Avalanche L1 Validator TX Specification
+### Proto Unsigned Remove Lux L1 Validator TX Specification
 
 ```text
 message RemoveSubnetValidatorTx {
@@ -775,9 +775,9 @@ message RemoveSubnetValidatorTx {
 }
 ```
 
-### Unsigned Remove Avalanche L1 Validator TX Example
+### Unsigned Remove Lux L1 Validator TX Example
 
-Let's make an unsigned remove Avalanche L1 validator TX that uses the inputs and
+Let's make an unsigned remove Lux L1 validator TX that uses the inputs and
 outputs from the previous examples:
 
 - **`BaseTx`**: `"Example BaseTx as defined above with ID set to 17"`
@@ -836,7 +836,7 @@ An unsigned add permissionless validator TX contains a `BaseTx`, `Validator`,
   - **`StartTime`** is a long which is the Unix time when the validator starts validating.
   - **`EndTime`** is a long which is the Unix time when the validator stops validating.
   - **`Weight`** is a long which is the amount the validator stakes
-- **`SubnetID`** is the 32 byte Avalanche L1 ID (SubnetID) of the Avalanche L1 this validator will validate.
+- **`SubnetID`** is the 32 byte Lux L1 ID (SubnetID) of the Lux L1 this validator will validate.
 - **`Signer`** If the [SubnetID] is the primary network, [Signer] is the type ID
   28 (`0x1C`) followed by a [Proof of Possession](#proof-of-possession). If the
   [SubnetID] is not the primary network, this value is the empty signer, whose
@@ -1041,7 +1041,7 @@ is 26 or `0x0000001a`.
   - **`StartTime`** is a long which is the Unix time when the validator starts validating.
   - **`EndTime`** is a long which is the Unix time when the validator stops validating.
   - **`Weight`** is a long which is the amount the validator stakes
-- **`SubnetID`** is the 32 byte Avalanche L1 ID (SubnetID) of the Avalanche L1 this delegation is on.
+- **`SubnetID`** is the 32 byte Lux L1 ID (SubnetID) of the Lux L1 this delegation is on.
 - **`StakeOuts`** An array of Transferable Outputs. Where to send staked tokens when done validating.
 - **`DelegatorRewardsOwner`** Where to send staking rewards when done validating.
 
@@ -1165,15 +1165,15 @@ outputs from the previous examples:
 ]
 ```
 
-## Unsigned Transform Avalanche L1 TX
+## Unsigned Transform Lux L1 TX
 
-> **Note:** This transaction type has been disabled post-activation of ACP-77 (Etna upgrade). The `TransformSubnetTx` is no longer accepted on the P-Chain after the activation of this upgrade.
+> **Note:** This transaction type has been disabled post-activation of ACP-77 (Etna upgrade). The `TransformSubnetTx` is no longer accepted on the Platform-Chain after the activation of this upgrade.
 
-Transforms a permissioned Avalanche L1 into a permissionless Avalanche L1. Must be signed by the Avalanche L1 owner.
+Transforms a permissioned Lux L1 into a permissionless Lux L1. Must be signed by the Lux L1 owner.
 
-### What Unsigned Transform Avalanche L1 TX Contains
+### What Unsigned Transform Lux L1 TX Contains
 
-An unsigned transform Avalanche L1 TX contains a `BaseTx`, `SubnetID`, `AssetID`,
+An unsigned transform Lux L1 TX contains a `BaseTx`, `SubnetID`, `AssetID`,
 `InitialSupply`, `MaximumSupply`, `MinConsumptionRate`, `MaxConsumptionRate`,
 `MinValidatorStake`, `MaxValidatorStake`, `MinStakeDuration`,
 `MaxStakeDuration`, `MinDelegationFee`, `MinDelegatorStake`,
@@ -1181,11 +1181,11 @@ An unsigned transform Avalanche L1 TX contains a `BaseTx`, `SubnetID`, `AssetID`
 for this type is 24 or `0x00000018`.
 
 - **`BaseTx`**
-- **`SubnetID`** a 32-byte Avalanche L1 ID of the Avalanche L1 to transform.
-- **`AssetID`** is a 32-byte array that defines which asset to use when staking on the Avalanche L1.
+- **`SubnetID`** a 32-byte Lux L1 ID of the Lux L1 to transform.
+- **`AssetID`** is a 32-byte array that defines which asset to use when staking on the Lux L1.
   - Restrictions
     - Must not be the Empty ID
-    - Must not be the AVAX ID
+    - Must not be the LUX ID
 - **`InitialSupply`** is a long which is the amount to initially specify as the current supply.
   - Restrictions
     - Must be > 0
@@ -1236,7 +1236,7 @@ for this type is 24 or `0x00000018`.
   control signature to authorizes this transformation. The array must be sorted
   low to high.
 
-### Gantt Unsigned Transform Avalanche L1 TX Specification
+### Gantt Unsigned Transform Lux L1 TX Specification
 
 ```text
 +----------------------+------------------+----------------------------------+
@@ -1276,7 +1276,7 @@ for this type is 24 or `0x00000018`.
 +----------------------------------------------------------------------------+
 ```
 
-### Proto Unsigned Transform Avalanche L1 TX Specification
+### Proto Unsigned Transform Lux L1 TX Specification
 
 ```text
 message TransformSubnetTx {
@@ -1299,9 +1299,9 @@ message TransformSubnetTx {
 }
 ```
 
-### Unsigned Transform Avalanche L1 TX Example
+### Unsigned Transform Lux L1 TX Example
 
-Let's make an unsigned transform Avalanche L1 TX that uses the inputs and outputs from the previous examples:
+Let's make an unsigned transform Lux L1 TX that uses the inputs and outputs from the previous examples:
 
 - **`BaseTx`**: `"Example BaseTx as defined above with ID set to 18"`
 - **`SubnetID`**: `0x5fa29ed4356903dac2364713c60f57d8472c7dda4a5e08d88a88ad8ea71aed60`
@@ -1427,11 +1427,11 @@ Let's make an unsigned transform Avalanche L1 TX that uses the inputs and output
 ]
 ```
 
-## Unsigned Add Avalanche L1 Validator TX
+## Unsigned Add Lux L1 Validator TX
 
-### What Unsigned Add Avalanche L1 Validator TX Contains
+### What Unsigned Add Lux L1 Validator TX Contains
 
-An unsigned add Avalanche L1 validator TX contains a `BaseTx`, `Validator`,
+An unsigned add Lux L1 validator TX contains a `BaseTx`, `Validator`,
 `SubnetID`, and `SubnetAuth`. The `TypeID` for this type is `0x0000000d`.
 
 - **`BaseTx`**
@@ -1440,13 +1440,13 @@ An unsigned add Avalanche L1 validator TX contains a `BaseTx`, `Validator`,
   - **`StartTime`** is a long which is the Unix time when the validator starts validating.
   - **`EndTime`** is a long which is the Unix time when the validator stops validating.
   - **`Weight`** is a long which is the amount the validator stakes
-- **`SubnetID`** is the 32 byte Avalanche L1 ID to add the validator to.
+- **`SubnetID`** is the 32 byte Lux L1 ID to add the validator to.
 - **`SubnetAuth`** contains `SigIndices` and has a type id of `0x0000000a`.
   `SigIndices` is a list of unique ints that define the addresses signing the
-  control signature to add a validator to an Avalanche L1. The array must be sorted low
+  control signature to add a validator to an Lux L1. The array must be sorted low
   to high.
 
-### Gantt Unsigned Add Avalanche L1 Validator TX Specification
+### Gantt Unsigned Add Lux L1 Validator TX Specification
 
 ```text
 +---------------+----------------------+-----------------------------------------+
@@ -1462,7 +1462,7 @@ An unsigned add Avalanche L1 validator TX contains a `BaseTx`, `Validator`,
                                    +---------------------------------------------+
 ```
 
-### Proto Unsigned Add Avalanche L1 Validator TX Specification
+### Proto Unsigned Add Lux L1 Validator TX Specification
 
 ```text
 message AddSubnetValidatorTx {
@@ -1473,9 +1473,9 @@ message AddSubnetValidatorTx {
 }
 ```
 
-### Unsigned Add Avalanche L1 Validator TX Example
+### Unsigned Add Lux L1 Validator TX Example
 
-Let's make an unsigned add Avalanche L1 validator TX that uses the inputs and outputs from the previous examples:
+Let's make an unsigned add Lux L1 validator TX that uses the inputs and outputs from the previous examples:
 
 - **`BaseTx`**: `"Example BaseTx as defined above with ID set to 0d"`
 - **`NodeID`**: `0xe9094f73698002fd52c90819b457b9fbc866ab80`
@@ -1569,7 +1569,7 @@ An unsigned add delegator TX contains a `BaseTx`, `Validator`, `Stake`, and
   - **`NodeID`** is 20 bytes which is the node ID of the delegatee.
   - **`StartTime`** is a long which is the Unix time when the delegator starts delegating.
   - **`EndTime`** is a long which is the Unix time when the delegator stops
-    delegating (and staked AVAX is returned).
+    delegating (and staked LUX is returned).
   - **`Weight`** is a long which is the amount the delegator stakes
 - **`Stake`** Stake has `LockedOuts`
   - **`LockedOuts`** An array of Transferable Outputs that are locked for the
@@ -1699,12 +1699,12 @@ An unsigned create chain TX contains a `BaseTx`, `SubnetID`, `ChainName`,
 `0x0000000f`.
 
 - **`BaseTx`**
-- **`SubnetID`** ID of the Avalanche L1 that validates this blockchain
+- **`SubnetID`** ID of the Lux L1 that validates this blockchain
 - **`ChainName`** A human readable name for the chain; need not be unique
 - **`VMID`** ID of the VM running on the new chain
 - **`FxIDs`** IDs of the feature extensions running on the new chain
 - **`GenesisData`** Byte representation of genesis state of the new chain
-- **`SubnetAuth`** Authorizes this blockchain to be added to this Avalanche L1
+- **`SubnetAuth`** Authorizes this blockchain to be added to this Lux L1
 
 ### Gantt Unsigned Create Chain TX Specification
 
@@ -1849,16 +1849,16 @@ Let's make an unsigned create chain TX that uses the inputs and outputs from the
 ]
 ```
 
-## Unsigned Create Avalanche L1 TX
+## Unsigned Create Lux L1 TX
 
-### What Unsigned Create Avalanche L1 TX Contains
+### What Unsigned Create Lux L1 TX Contains
 
-An unsigned create Avalanche L1 TX contains a `BaseTx`, and `RewardsOwner`. The `TypeID` for this type is `0x00000010`.
+An unsigned create Lux L1 TX contains a `BaseTx`, and `RewardsOwner`. The `TypeID` for this type is `0x00000010`.
 
 - **`BaseTx`**
 - **`RewardsOwner`** A `SECP256K1OutputOwners`
 
-### Gantt Unsigned Create Avalanche L1 TX Specification
+### Gantt Unsigned Create Lux L1 TX Specification
 
 ```text
 +-----------------+-----------------------|---------------------------------+
@@ -1870,7 +1870,7 @@ An unsigned create Avalanche L1 TX contains a `BaseTx`, and `RewardsOwner`. The 
                                 +-------------------------------------------+
 ```
 
-### Proto Unsigned Create Avalanche L1 TX Specification
+### Proto Unsigned Create Lux L1 TX Specification
 
 ```text
 message CreateSubnetTx {
@@ -1879,9 +1879,9 @@ message CreateSubnetTx {
 }
 ```
 
-### Unsigned Create Avalanche L1 TX Example
+### Unsigned Create Lux L1 TX Example
 
-Let's make an unsigned create Avalanche L1 TX that uses the inputs from the previous examples:
+Let's make an unsigned create Lux L1 TX that uses the inputs from the previous examples:
 
 - **`BaseTx`**: "Example BaseTx as defined above but with TypeID set to 16"
 - **`RewardsOwner`**:
@@ -2580,20 +2580,20 @@ Let's make a stakeablelockout with:
 ]
 ```
 
-## Avalanche L1 Auth
+## Lux L1 Auth
 
-### What Avalanche L1 Auth Contains
+### What Lux L1 Auth Contains
 
 Specifies the addresses whose signatures will be provided to demonstrate that
-the owners of an Avalanche L1 approve something.
+the owners of an Lux L1 approve something.
 
 - **`TypeID`** is the ID for this type. It is `0x0000000a`.
 - **`AddressIndices`** defines which addresses' signatures will be attached to
-  this transaction. AddressIndices[i] is the index in an Avalanche L1 owner list that
+  this transaction. AddressIndices[i] is the index in an Lux L1 owner list that
   corresponds to the signature at index i in the signature list. Must be sorted
   low to high and not have duplicates.
 
-### Gantt Avalanche L1 Auth Specification
+### Gantt Lux L1 Auth Specification
 
 ```text
 +-----------------+------------------+-------------------------------------+
@@ -2605,7 +2605,7 @@ the owners of an Avalanche L1 approve something.
 +-----------------+--------------------------------------------------------+
 ```
 
-### Proto Avalanche L1 Auth Specification
+### Proto Lux L1 Auth Specification
 
 ```text
 message SubnetAuth {
@@ -2614,9 +2614,9 @@ message SubnetAuth {
 }
 ```
 
-### Avalanche L1 Auth Example
+### Lux L1 Auth Example
 
-Let's make an Avalanche L1 auth:
+Let's make an Lux L1 auth:
 
 - **`TypeID`**: `10`
 - **`AddressIndices`**: [`0`]
@@ -2855,7 +2855,7 @@ message ConvertSubnetToL1Tx {
 An unsigned register L1 validator TX contains a `BaseTx`, `Balance`, `Signer` and `Message`. The `TypeID` for this type is `0x00000031`.
 
 - **`BaseTx`**
-- **`Balance`** is the amount of AVAX being provided for fees, where `Balance <= sum($AVAX inputs) - sum($AVAX outputs) - TxFee`.
+- **`Balance`** is the amount of LUX being provided for fees, where `Balance <= sum($LUX inputs) - sum($LUX outputs) - TxFee`.
 - **`Signer`** is a BLS signature proving ownership of the BLS public key specified in the Message for this validator.
 - **`Message`** is a RegisterL1ValidatorMessage payload delivered as a Warp Message.
 
@@ -2958,7 +2958,7 @@ An unsigned increase L1 validator balance TX contains a `BaseTx`, `ValidationID`
 
 - **`BaseTx`**
 - **`ValidationID`** ID corresponding to the validator.
-- **`Balance`** Additional AVAX amount to add to the validator's balance where `Balance <= sum($AVAX inputs) - sum($AVAX outputs) - TxFee`.
+- **`Balance`** Additional LUX amount to add to the validator's balance where `Balance <= sum($LUX inputs) - sum($LUX outputs) - TxFee`.
 
 ### Gantt Unsigned Increase L1 Validator Balance TX Specification
 

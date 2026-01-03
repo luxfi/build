@@ -10,12 +10,12 @@ const communityResources = [
   {
     title: 'Join the Telegram chat',
     icon: 'send',
-    link: 'https://t.me/avalancheacademy',
+    link: 'https://t.me/luxacademy',
   },
   {
-    title: 'Avalanche Team1 X',
+    title: 'Lux Team1 X',
     icon: 'bird',
-    link: 'https://x.com/AvaxTeam1',
+    link: 'https://x.com/LuxTeam1',
   },
 ];
 

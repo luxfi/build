@@ -2,9 +2,9 @@
 
 import SelectSubnetId from "./SelectSubnetId";
 import { useState, useCallback, useEffect } from "react";
-import { Subnet } from "@avalanche-sdk/chainkit/models/components/subnet.js";
+import { Subnet } from "@luxfi/core/models/components/subnet.js";
 import BlockchainDetailsDisplay from "./BlockchainDetailsDisplay";
-import { useAvalancheSDKChainkit } from "../stores/useAvalancheSDKChainkit";
+import { useLuxSDKChainkit } from "../stores/useLuxSDKChainkit";
 
 export type SubnetSelection = {
     subnetId: string;
@@ -24,7 +24,7 @@ export default function SelectSubnet({
     onlyNotConverted?: boolean,
     hidePrimaryNetwork?: boolean
 }) {
-    const { getSubnetById } = useAvalancheSDKChainkit();
+    const { getSubnetById } = useLuxSDKChainkit();
     const [subnetDetails, setSubnetDetails] = useState<Record<string, Subnet>>({});
     const [isLoading, setIsLoading] = useState(false);
 

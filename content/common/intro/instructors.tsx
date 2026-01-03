@@ -11,7 +11,7 @@ const instructors: Instructor[] = [
     {
         name: "Martin Eckardt",
         title: "Sr. Director of Developer Relations",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/martin-eckardt.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/martin-eckardt.jpeg",
         x: "https://x.com/martin_eckardt",
         linkedin: "https://www.linkedin.com/in/eckardt/",
         github: "https://github.com/martineckardt",
@@ -19,7 +19,7 @@ const instructors: Instructor[] = [
     {
         name: "Andrea Vargas",
         title: "Sr. Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/andrea-vargas.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/andrea-vargas.jpeg",
         x: "https://x.com/Andyvargtz",
         linkedin: "https://www.linkedin.com/in/andyvargtz/",
         github: "https://github.com/andyvargtz",
@@ -27,7 +27,7 @@ const instructors: Instructor[] = [
     {
         name: "Ash",
         title: "Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/ash.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/ash.jpeg",
         x: "https://x.com/ashngmi",
         linkedin: "https://www.linkedin.com/in/andyvargtz/",
         github: "https://github.com/ashucoder9",
@@ -35,7 +35,7 @@ const instructors: Instructor[] = [
     {
         name: "Owen Wahlgren",
         title: "Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/owen-wahlgren.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/owen-wahlgren.jpeg",
         x: "https://x.com/owenwahlgren",
         linkedin: "https://www.linkedin.com/in/owenwahlgren/",
         github: "https://github.com/owenwahlgren",
@@ -43,7 +43,7 @@ const instructors: Instructor[] = [
     {
         name: "Sarp",
         title: "Sr. Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/sarp.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/sarp.jpeg",
         x: "https://x.com/satatocom",
         linkedin: "https://www.linkedin.com/in/sarptaylan/",
         github: "https://github.com/0xstt",
@@ -51,7 +51,7 @@ const instructors: Instructor[] = [
     {
         name: "Aaron Buchwald",
         title: "HyperSDK Lead Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/aaron-buchwald.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/aaron-buchwald.jpeg",
         x: "https://x.com/AaronBuchwald",
         linkedin: "",
         github: "",
@@ -59,7 +59,7 @@ const instructors: Instructor[] = [
     {
         name: "Ilya",
         title: "Sr. Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/ilya.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/ilya.jpeg",
         x: "https://x.com/containerman17",
         linkedin: "",
         github: "",
@@ -67,7 +67,7 @@ const instructors: Instructor[] = [
     {
         name: "Rodrigo Villar",
         title: "Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/rodrigo-villar.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/rodrigo-villar.jpeg",
         x: "https://x.com/rrodrigovillar",
         linkedin: "",
         github: "",
@@ -75,7 +75,7 @@ const instructors: Instructor[] = [
     {
         name: "Nicolas Arnedo",
         title: "Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/nicolas-arnedo.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/nicolas-arnedo.jpeg",
         x: "https://x.com/navilla_eth",
         linkedin: "https://www.linkedin.com/in/nicolasarnedo/",
         github: "https://github.com/navillanueva",
@@ -83,7 +83,7 @@ const instructors: Instructor[] = [
     {
         name: "Michael Martin",
         title: "Codebase Director",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/michael-martin.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/michael-martin.jpeg",
         x: "https://x.com/mmartinxyz",
         linkedin: "https://www.linkedin.com/in/michaeltmartin/",
         github: "",
@@ -91,7 +91,7 @@ const instructors: Instructor[] = [
     {
         name: "Doro Unger-Lee",
         title: "Senior Developer Relations",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/doro-unger-lee.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/doro-unger-lee.jpeg",
         x: "https://x.com/doroungerlee",
         linkedin: "https://www.linkedin.com/in/doro-unger-lee/",
         github: "",
@@ -99,7 +99,7 @@ const instructors: Instructor[] = [
     {
         name: "Alejandro Soto",
         title: "Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/alejandro-soto.png",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/alejandro-soto.png",
         x: "https://x.com/alejandro99so",
         linkedin: "https://www.linkedin.com/in/alejandro99so/",
         github: "https://github.com/alejandro99so",
@@ -107,7 +107,7 @@ const instructors: Instructor[] = [
     {
         name: "Federico Nardelli",
         title: "Developer Relations Engineer",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/federico-nardelli.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/federico-nardelli.jpeg",
         x: "https://x.com/federico_nardo7",
         linkedin: "https://www.linkedin.com/in/federico-nardelli-a2969b26a/",
         github: "https://github.com/federiconardelli7",
@@ -115,7 +115,7 @@ const instructors: Instructor[] = [
     {
         name: "Katherine Sullivan",
         title: "Developer Relations Intern",
-        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/instructors/katherine-sullivan.jpeg",
+        image: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/instructors/katherine-sullivan.jpeg",
         x: "https://x.com/katherine_xoxos",
         linkedin: "https://www.linkedin.com/in/katherine-sullivan-45aa4326a//",
         github: "https://github.com/katherineavalabs",

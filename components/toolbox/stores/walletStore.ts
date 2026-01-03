@@ -1,8 +1,8 @@
 import { create } from 'zustand'
-import { networkIDs } from "@avalabs/avalanchejs";
+import { networkIDs } from "luxfi";
 import { createCoreWalletClient, CoreWalletClientType } from '../coreViem';
 import { createPublicClient, custom, http } from 'viem';
-import { avalancheFuji } from 'viem/chains';
+import { luxTestnet } from 'viem/chains';
 import { zeroAddress } from 'viem';
 import { balanceService } from '../services/balanceService';
 import { useMemo } from 'react';
@@ -20,7 +20,7 @@ interface WalletState {
   coreEthAddress: string;
 
   // Network state
-  avalancheNetworkID: typeof networkIDs.FujiID | typeof networkIDs.MainnetID;
+  luxNetworkID: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID;
   isTestnet: boolean;
   evmChainName: string;
 
@@ -51,7 +51,7 @@ interface WalletActions {
   }) => void;
 
   updateNetworkSettings: (data: {
-    avalancheNetworkID?: typeof networkIDs.FujiID | typeof networkIDs.MainnetID;
+    luxNetworkID?: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID;
     isTestnet?: boolean;
     evmChainName?: string;
   }) => void;
@@ -64,7 +64,7 @@ interface WalletActions {
   setCoreWalletClient: (coreWalletClient: CoreWalletClientType | null) => void;
   setWalletChainId: (walletChainId: number) => void;
   setWalletEVMAddress: (walletEVMAddress: string) => void;
-  setAvalancheNetworkID: (avalancheNetworkID: typeof networkIDs.FujiID | typeof networkIDs.MainnetID) => void;
+  setLuxNetworkID: (luxNetworkID: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID) => void;
   setPChainAddress: (pChainAddress: string) => void;
   setCoreEthAddress: (coreEthAddress: string) => void;
   setIsTestnet: (isTestnet: boolean) => void;
@@ -103,13 +103,13 @@ export const useWalletStore = create<WalletStore>((set, get) => {
     // Initial state
     coreWalletClient: null,
     publicClient: createPublicClient({
-      transport: typeof window !== 'undefined' && window.avalanche
-        ? custom(window.avalanche)
-        : http(avalancheFuji.rpcUrls.default.http[0]),
+      transport: typeof window !== 'undefined' && window.lux
+        ? custom(window.lux)
+        : http(luxTestnet.rpcUrls.default.http[0]),
     }),
     walletChainId: 0,
     walletEVMAddress: "",
-    avalancheNetworkID: networkIDs.FujiID as typeof networkIDs.FujiID | typeof networkIDs.MainnetID,
+    luxNetworkID: networkIDs.TestnetID as typeof networkIDs.TestnetID | typeof networkIDs.MainnetID,
     pChainAddress: "",
     coreEthAddress: "",
     isTestnet: false,
@@ -131,7 +131,7 @@ export const useWalletStore = create<WalletStore>((set, get) => {
       set((state) => ({ ...state, ...data }));
     },
 
-    updateNetworkSettings: (data: { avalancheNetworkID?: typeof networkIDs.FujiID | typeof networkIDs.MainnetID; isTestnet?: boolean; evmChainName?: string; }) => {
+    updateNetworkSettings: (data: { luxNetworkID?: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID; isTestnet?: boolean; evmChainName?: string; }) => {
       set((state) => ({
         ...state,
         ...data,
@@ -192,7 +192,7 @@ export const useWalletStore = create<WalletStore>((set, get) => {
     setCoreWalletClient: (coreWalletClient: CoreWalletClientType | null) => set({ coreWalletClient }),
     setWalletChainId: (walletChainId: number) => set({ walletChainId }),
     setWalletEVMAddress: (walletEVMAddress: string) => set({ walletEVMAddress }),
-    setAvalancheNetworkID: (avalancheNetworkID: typeof networkIDs.FujiID | typeof networkIDs.MainnetID) => set({ avalancheNetworkID }),
+    setLuxNetworkID: (luxNetworkID: typeof networkIDs.TestnetID | typeof networkIDs.MainnetID) => set({ luxNetworkID }),
     setPChainAddress: (pChainAddress: string) => set({ pChainAddress }),
     setCoreEthAddress: (coreEthAddress: string) => set({ coreEthAddress }),
     setIsTestnet: (isTestnet: boolean) => set({ isTestnet }),
@@ -267,19 +267,19 @@ export const useBalances = () => {
 export const useNetworkInfo = () => {
   const isTestnet = useWalletStore((state) => state.isTestnet);
   const chainId = useWalletStore((state) => state.walletChainId);
-  const avalancheNetworkID = useWalletStore((state) => state.avalancheNetworkID);
+  const luxNetworkID = useWalletStore((state) => state.luxNetworkID);
   const evmChainName = useWalletStore((state) => state.evmChainName);
 
   return useMemo(() => {
-    const networkName = avalancheNetworkID === networkIDs.MainnetID ? "mainnet" : "fuji";
+    const networkName = luxNetworkID === networkIDs.MainnetID ? "mainnet" : "testnet";
     return {
       isTestnet,
       chainId,
       networkName: networkName,
-      avalancheNetworkID,
+      luxNetworkID,
       evmChainName,
     };
-  }, [isTestnet, chainId, avalancheNetworkID, evmChainName]);
+  }, [isTestnet, chainId, luxNetworkID, evmChainName]);
 };
 
 // Selector for specific L1 balance

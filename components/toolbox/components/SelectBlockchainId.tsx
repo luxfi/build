@@ -16,7 +16,7 @@ export default function SelectBlockchainId({
     value,
     onChange,
     error,
-    label = "Select Avalanche Blockchain ID",
+    label = "Select Lux Blockchain ID",
     disabled = false
 }: {
     value: string,

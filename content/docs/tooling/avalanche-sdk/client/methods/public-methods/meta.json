@@ -1,6 +1,6 @@
 {
     "title": "Public Methods",
-    "description": "Complete reference for Avalanche-specific public client methods",
+    "description": "Complete reference for Lux-specific public client methods",
     "pages": [
         "public",
         "c-chain",

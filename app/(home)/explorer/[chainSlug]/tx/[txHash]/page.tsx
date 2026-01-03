@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: TxPageProps): Promise<Metadat
   if (!chain) {
     return {
       title: `Transaction ${shortHash} | Custom Chain Explorer`,
-      description: "View transaction details on Avalanche.",
+      description: "View transaction details on Lux.",
     };
   }
   

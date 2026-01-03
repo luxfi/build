@@ -3,7 +3,7 @@ title: Transaction Format
 ---
 
 This file is meant to be the single source of truth for how we serialize
-transactions in the Avalanche Virtual Machine (AVM). This document uses the
+transactions in the Lux Virtual Machine (AVM). This document uses the
 [primitive serialization](/docs/rpcs/other/standards/serialization-primitives) format for packing and
 [secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#secp256k1-addresses) for cryptographic
 user identification.
@@ -1387,8 +1387,8 @@ An unsigned create asset TX contains a `BaseTx`, `Name`, `Symbol`,
   symbol must consist of only printable ASCII characters and must be no longer
   than 4 characters.
 - **`Denomination`** is a byte that defines the divisibility of the asset this
-  transaction will create. For example, the AVAX token is divisible into
-  billionths. Therefore, the denomination of the AVAX token is 9. The
+  transaction will create. For example, the LUX token is divisible into
+  billionths. Therefore, the denomination of the LUX token is 9. The
   denomination must be no more than 32.
 - **`InitialStates`** is a variable length array that defines the feature
   extensions this asset supports, and the [initial state](/docs/rpcs/x-chain/txn-format#initial-state) of those feature
@@ -2207,8 +2207,8 @@ An instance of a GenesisAsset contains an `Alias`, `NetworkID`, `BlockchainID`,
   symbol must consist of only printable ASCII characters and must be no longer
   than 4 characters.
 - **`Denomination`** is a byte that defines the divisibility of the asset this
-  transaction will create. For example, the AVAX token is divisible into
-  billionths. Therefore, the denomination of the AVAX token is 9. The
+  transaction will create. For example, the LUX token is divisible into
+  billionths. Therefore, the denomination of the LUX token is 9. The
   denomination must be no more than 32.
 - **`InitialStates`** is a variable length array that defines the feature
   extensions this asset supports, and the [initial state](/docs/rpcs/x-chain/txn-format#initial-state) of those feature

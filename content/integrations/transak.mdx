@@ -1,7 +1,7 @@
 ---
 title: Transak
 category: Fiat On-Ramp
-available: ["C-Chain", "All Avalanche L1s"]
+available: ["LUExchange-Chain", "All Lux L1s"]
 description: Transak is a global fiat-to-crypto payment gateway that enables users to buy cryptocurrencies with fiat directly within your application.
 logo: /images/transak.png
 developer: Transak
@@ -39,8 +39,8 @@ To integrate Transak into your application:
      ```javascript
      const transakUrl = new URL('https://global.transak.com/');
      transakUrl.searchParams.append('apiKey', 'YOUR_API_KEY');
-     transakUrl.searchParams.append('defaultCryptoCurrency', 'AVAX');
-     transakUrl.searchParams.append('network', 'avalanche');
+     transakUrl.searchParams.append('defaultCryptoCurrency', 'LUX');
+     transakUrl.searchParams.append('network', 'lux');
      transakUrl.searchParams.append('walletAddress', userWalletAddress);
      
      window.open(transakUrl.href, '_blank');
@@ -57,8 +57,8 @@ To integrate Transak into your application:
      const transak = new transakSDK({
        apiKey: 'YOUR_API_KEY',
        environment: 'PRODUCTION', // or 'STAGING' for testing
-       defaultCryptoCurrency: 'AVAX',
-       network: 'avalanche',
+       defaultCryptoCurrency: 'LUX',
+       network: 'lux',
        walletAddress: userWalletAddress, // Pre-fill user's wallet
        themeColor: '000000', // Custom color in hex
        hostURL: window.location.origin,

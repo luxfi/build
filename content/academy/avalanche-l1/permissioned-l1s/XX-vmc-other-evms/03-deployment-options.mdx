@@ -10,17 +10,17 @@ While Validator Manager Contract's (VMC) location choice becomes more critical w
 
 ## Why can it be located anywhere?
 
-The PoA Validator Manager contract can be deployed on any EVM-compatible chain within the Avalanche ecosystem. Since the contract communicates with the P-Chain through Interchain Messaging (ICM), **the deployment location doesn't affect its core functionality** - validator management operations work the same regardless of where the contract resides.
+The PoA Validator Manager contract can be deployed on any EVM-compatible chain within the Lux ecosystem. Since the contract communicates with the Platform-Chain through Interchain Messaging (ICM), **the deployment location doesn't affect its core functionality** - validator management operations work the same regardless of where the contract resides.
 
-The Validator Manager Contract and P-chain generally follow a **Request-Process-Confirm** flow. The VMC chain initiates cross-chain communication to interact with the P-Chain for all validator operations (e.g: *adding a validator*):
+The Validator Manager Contract and P-chain generally follow a **Request-Process-Confirm** flow. The VMC chain initiates cross-chain communication to interact with the Platform-Chain for all validator operations (e.g: *adding a validator*):
 
-- **Request**: Sends `RegisterL1ValidatorMessage` to P-Chain
-- **Process**: P-Chain verifies signatures and processes the operation  
+- **Request**: Sends `RegisterL1ValidatorMessage` to Platform-Chain
+- **Process**: Platform-Chain verifies signatures and processes the operation  
 - **Confirm**: Receives `L1ValidatorRegistrationMessage` confirmations
 
 ## Deployment Options
 
-<Tabs items={['Your L1', 'C-Chain', 'Another L1']} collapsible="true">
+<Tabs items={['Your L1', 'LUExchange-Chain', 'Another L1']} collapsible="true">
 
 <Tab value="Your L1">
 Best for L1's that plan to remain always permissioned with PoA
@@ -34,11 +34,11 @@ Best for L1's that plan to remain always permissioned with PoA
 - Requires bootstrapping initial validators before contract deployment
 </Tab>
 
-<Tab value="C-Chain">
+<Tab value="LUExchange-Chain">
 Best for L1s planning future decentralization (PoS) or DeFi integration
 
 **Advantages**
-- Highest security and decentralization (Avalanche's primary network)
+- Highest security and decentralization (Lux's primary network)
 - Can manage multiple L1s from one location
 - **DeFi Composability**: Easy integration with existing DeFi ecosystem
 - **Decentralization Path**: Ideal for transition to Proof of Stake

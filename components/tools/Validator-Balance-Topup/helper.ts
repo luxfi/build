@@ -1,8 +1,8 @@
-import { secp256k1, UnsignedTx, utils, pvm, Utxo, Context, evm } from '@avalabs/avalanchejs';
+import { secp256k1, UnsignedTx, utils, pvm, Utxo, Context, evm } from 'luxfi';
 import { bytesToHex, hexToBytes } from '@noble/hashes/utils';
 import { Address } from 'micro-eth-signer';
 import { keccak256, toRlp, toBytes, createPublicClient, http, parseEther } from 'viem';
-import { avalancheFuji } from 'viem/chains';
+import { luxTestnet } from 'viem/chains';
 import { deduplicateEthRequestAccounts } from '@/components/tools/common/ui/deduplicateEthRequestAccounts';
 // Type definitions
 declare global {
@@ -15,11 +15,11 @@ declare global {
     }
 }
 
-export const RPC_ENDPOINT = "https://api.avax-test.network";
+export const RPC_ENDPOINT = "https://api.lux-test.network";
 
 // Wallet Functions
 export async function getWalletAddress() {
-    if (!window.avalanche) {
+    if (!window.lux) {
         throw new Error('No wallet detected');
     }
     const accounts = await deduplicateEthRequestAccounts()
@@ -36,7 +36,7 @@ export function newPrivateKey(): string {
 export function getAddresses(privateKeyHex: string): { C: `0x${string}`, P: string } {
     const publicKey = secp256k1.getPublicKey(hexToBytes(privateKeyHex));
     const pChainAddress = `P-${utils.formatBech32(
-        "fuji",
+        "testnet",
         secp256k1.publicKeyBytesToAddress(publicKey)
     )}`;
     const cChainAddress = Address.fromPublicKey(publicKey);
@@ -71,7 +71,7 @@ export function calculateContractAddress(deployerPrivateKey: string, nonce: numb
 // UTXO Transfer Functions
 export async function transferCToP(amount: string, privateKeyHex: string, setNewPChainBalance: (balance: string) => void) {
     const publicClient = createPublicClient({
-        chain: avalancheFuji,
+        chain: luxTestnet,
         transport: http(RPC_ENDPOINT + '/ext/bc/C/rpc')
     });
     const address = await getAddresses(privateKeyHex);
@@ -83,8 +83,8 @@ export async function transferCToP(amount: string, privateKeyHex: string, setNew
         throw new Error('Insufficient C-chain balance');
     }
 
-    const avaxAmount = Number(amountToTransfer) / 1e18;
-    await exportUTXO(privateKeyHex, avaxAmount);
+    const luxAmount = Number(amountToTransfer) / 1e18;
+    await exportUTXO(privateKeyHex, luxAmount);
 
     let imported = false;
     for (let i = 0; i < 3; i++) {
@@ -103,7 +103,7 @@ export async function transferCToP(amount: string, privateKeyHex: string, setNew
 
 async function exportUTXO(privateKeyHex: string, amount: number) {
     const publicClient = createPublicClient({
-        chain: avalancheFuji,
+        chain: luxTestnet,
         transport: http(RPC_ENDPOINT + '/ext/bc/C/rpc')
     });
     const evmapi = new evm.EVMApi(RPC_ENDPOINT);
@@ -169,7 +169,7 @@ async function importExistingUTXOs(privateKeyHex: string): Promise<boolean> {
 }
 
 async function getPChainBalance(address: string): Promise<string> {
-    const response = await fetch('https://api.avax-test.network/ext/bc/P', {
+    const response = await fetch('https://api.lux-test.network/ext/bc/P', {
         method: 'POST',
         headers: {
             'content-type': 'application/json;'

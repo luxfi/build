@@ -5,21 +5,21 @@ icon: message-square
 
 ## Overview
 
-Send arbitrary messages between Avalanche chains and subnets using the Teleporter protocol. Messages are encoded as strings and delivered cross-chain.
+Send arbitrary messages between Lux chains and subnets using the Teleporter protocol. Messages are encoded as strings and delivered cross-chain.
 
 ## Create Client
 
 ```typescript
-import { createICMClient } from "@avalanche-sdk/interchain";
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalancheFuji, dispatch } from "@avalanche-sdk/interchain/chains";
+import { createICMClient } from "@lux-sdk/interchain";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { luxTestnet, dispatch } from "@lux-sdk/interchain/chains";
 
 // Setup wallet
-const account = privateKeyToAvalancheAccount("0x...");
-const wallet = createAvalancheWalletClient({
+const account = privateKeyToLuxAccount("0x...");
+const wallet = createLuxWalletClient({
   account,
-  chain: avalancheFuji,
+  chain: luxTestnet,
   transport: { type: "http" },
 });
 
@@ -30,15 +30,15 @@ const icm = createICMClient(wallet, sourceChain, destinationChain);
 
 <Callout type="warn">
   The wallet client's chain configuration must match the `sourceChain` used in
-  your interchain operations. For example, if you're sending messages from Fuji
-  testnet, ensure your wallet client is configured with the Fuji chain.
+  your interchain operations. For example, if you're sending messages from Testnet
+  testnet, ensure your wallet client is configured with the Testnet chain.
   Mismatched chains will result in an "invalid sender" error.
 </Callout>
 
 ## Methods
 
 <Cards>
-  <Card title="sendMsg" href="/avalanche-sdk/interchain/icm/methods">
+  <Card title="sendMsg" href="/lux-sdk/interchain/icm/methods">
     Send a cross-chain message
   </Card>
 </Cards>

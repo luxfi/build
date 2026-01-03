@@ -1,7 +1,7 @@
 # Load Testing Report: `/hackathons` Endpoint – Vercel Deployment
 
 **Tool used:** [Autocannon](https://github.com/mcollina/autocannon)  
-**Target URL:** `https://avalanche-docs-eight.vercel.app/hackathons`  
+**Target URL:** `https://lux-docs-eight.vercel.app/hackathons`  
 **Testing Strategy:** Progressive ramp-up — gradually increasing concurrency levels (50 → 100 → 200 → 300) to evaluate performance under load.
 
 
@@ -11,7 +11,7 @@
 
 **Command:**
 ```bash
-npx autocannon -c 300 -d 120 -p 10 https://avalanche-docs-eight.vercel.app/hackathons
+npx autocannon -c 300 -d 120 -p 10 https://lux-docs-eight.vercel.app/hackathons
 ```
 
 - **Total Requests:** ~98,000  

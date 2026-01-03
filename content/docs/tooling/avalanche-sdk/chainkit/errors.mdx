@@ -20,7 +20,7 @@ All SDK methods return a response object or throw an error. If Error objects are
 Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The SDKValidationError that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging.
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 import {
   BadGateway,
   BadRequest,
@@ -31,9 +31,9 @@ import {
   ServiceUnavailable,
   TooManyRequests,
   Unauthorized,
-} from "@avalanche-sdk/chainkit/models/errors";
+} from "@lux-sdk/chainkit/models/errors";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
@@ -41,7 +41,7 @@ const avalancheSDK = new Avalanche({
 
 async function run() {
   try {
-    await avalancheSDK.data.nfts.reindex({
+    await luxSDK.data.nfts.reindex({
       address: "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
       tokenId: "145",
     });

@@ -1,6 +1,6 @@
 ---
 title: Issuing API Calls
-description: This guide explains how to make calls to APIs exposed by Avalanche nodes.
+description: This guide explains how to make calls to APIs exposed by Lux nodes.
 ---
 
 Endpoints[​](#endpoints "Direct link to heading")
@@ -33,7 +33,7 @@ Each API's documentation specifies what endpoint path a user should make calls t
 
 In general, they are formatted like:
 
-So for the Admin API, the endpoint path is `/ext/admin`, for the Info API it is `/ext/info` and so on. Note that some APIs have additional path components, most notably the chain RPC endpoints which includes the Avalanche L1 chain RPCs. We'll go over those in detail in the next section.
+So for the Admin API, the endpoint path is `/ext/admin`, for the Info API it is `/ext/info` and so on. Note that some APIs have additional path components, most notably the chain RPC endpoints which includes the Lux L1 chain RPCs. We'll go over those in detail in the next section.
 
 So, in combining the base URL and the endpoint path we get the complete URL for making RPC calls. For example, to make a local RPC call on the Info API, the full URL would be:
 
@@ -41,10 +41,10 @@ So, in combining the base URL and the endpoint path we get the complete URL for 
 http://127.0.0.1:9650/ext/info
 ```
 
-Primary Network and Avalanche L1 RPC calls[​](#primary-network-and-avalanche-l1-rpc-calls "Direct link to heading")
+Primary Network and Lux L1 RPC calls[​](#primary-network-and-lux-l1-rpc-calls "Direct link to heading")
 -------------------------------------------------------------------------------------------------------
 
-Besides the APIs that are local to the node, like Admin or Metrics APIs, nodes also expose endpoints for talking to particular chains that are either part of the Primary Network (the X, P and C chains), or part of any Avalanche L1s the node might be syncing or validating.
+Besides the APIs that are local to the node, like Admin or Metrics APIs, nodes also expose endpoints for talking to particular chains that are either part of the Primary Network (the X, P and C chains), or part of any Lux L1s the node might be syncing or validating.
 
 In general, chain endpoints are formatted as:
 
@@ -52,27 +52,27 @@ In general, chain endpoints are formatted as:
 
 The Primary Network consists of three chains: X, P and C chain. As those chains are present on every node, there are also convenient aliases defined that can be used instead of the full blockchainIDs. So, the endpoints look like:
 
-### C-Chain and Subnet-EVM Endpoints[​](#c-chain-and-subnet-evm-endpoints "Direct link to heading")
+### LUExchange-Chain and Subnet-EVM Endpoints[​](#c-chain-and-subnet-evm-endpoints "Direct link to heading")
 
-C-Chain and many Avalanche L1s run a version of the EthereumVM (EVM). EVM exposes its own endpoints, which are also accessible on the node: JSON-RPC, and Websocket.
+LUExchange-Chain and many Lux L1s run a version of the EthereumVM (EVM). EVM exposes its own endpoints, which are also accessible on the node: JSON-RPC, and Websocket.
 
 #### JSON-RPC EVM Endpoints[​](#json-rpc-evm-endpoints "Direct link to heading")
 
-To interact with C-Chain EVM via the JSON-RPC use the endpoint:
+To interact with LUExchange-Chain EVM via the JSON-RPC use the endpoint:
 
-To interact with Avalanche L1 instances of the EVM via the JSON-RPC endpoint:
+To interact with Lux L1 instances of the EVM via the JSON-RPC endpoint:
 
 ```
 /ext/bc/[blockchainID]/rpc
 ```
 
-where `blockchainID` is the ID of the blockchain running the EVM. So for example, the RPC URL for the DFK Network (an Avalanche L1 that runs the DeFi Kingdoms:Crystalvale game) running on a local node would be:
+where `blockchainID` is the ID of the blockchain running the EVM. So for example, the RPC URL for the DFK Network (an Lux L1 that runs the DeFi Kingdoms:Crystalvale game) running on a local node would be:
 
 ```
 http://127.0.0.1/ext/bc/q2aTwKuyzgs8pynF7UXBZCU7DejbZbZ6EUyHr3JQzYgwNPUPi/rpc
 ```
 
-Or for the WAGMI Avalanche L1 on the Fuji testnet:
+Or for the WAGMI Lux L1 on the Testnet testnet:
 
 ```
 http://127.0.0.1/ext/bc/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/rpc
@@ -80,11 +80,11 @@ http://127.0.0.1/ext/bc/2ebCneCbwthjQ1rYT41nhd7M76Hc6YmosMAQrTFhBq8qeqh6tt/rpc
 
 #### Websocket EVM Endpoints[​](#websocket-evm-endpoints "Direct link to heading")
 
-To interact with C-Chain via the websocket endpoint, use:
+To interact with LUExchange-Chain via the websocket endpoint, use:
 
 To interact with other instances of the EVM via the websocket endpoint:
 
-where `blockchainID` is the ID of the blockchain running the EVM. For example, to interact with the C-Chain's Ethereum APIs via websocket on localhost you can use:
+where `blockchainID` is the ID of the blockchain running the EVM. For example, to interact with the LUExchange-Chain's Ethereum APIs via websocket on localhost you can use:
 
 ```
 ws://127.0.0.1:9650/ext/bc/C/ws
@@ -94,22 +94,22 @@ ws://127.0.0.1:9650/ext/bc/C/ws
 <Callout title="Note">
 When using the [Public API](/docs/rpcs) or another host that supports HTTPS, use `https://` or `wss://` instead of `http://` or `ws://`.
 
-Also, note that the [public API](/docs/rpcs#using-the-public-api-nodes) only supports C-Chain websocket API calls for API methods that don't exist on the C-Chain's HTTP API.
+Also, note that the [public API](/docs/rpcs#using-the-public-api-nodes) only supports LUExchange-Chain websocket API calls for API methods that don't exist on the LUExchange-Chain's HTTP API.
 </Callout>
 
 
 Making a JSON RPC Request[​](#making-a-json-rpc-request "Direct link to heading")
 ---------------------------------------------------------------------------------
 
-Most of the built-in APIs use the [JSON RPC 2.0](https://www.jsonrpc.org/specification) format to describe their requests and responses. Such APIs include the Platform API and the X-Chain API.
+Most of the built-in APIs use the [JSON RPC 2.0](https://www.jsonrpc.org/specification) format to describe their requests and responses. Such APIs include the Platform API and the Exchange-Chain API.
 
-Suppose we want to call the `getTxStatus` method of the [X-Chain API](/docs/rpcs/x-chain). The X-Chain API documentation tells us that the endpoint for this API is `/ext/bc/X`.
+Suppose we want to call the `getTxStatus` method of the [Exchange-Chain API](/docs/rpcs/x-chain). The Exchange-Chain API documentation tells us that the endpoint for this API is `/ext/bc/X`.
 
 That means that the endpoint we send our API call to is:
 
 `[node-ip]:[http-port]/ext/bc/X`
 
-The X-Chain API documentation tells us that the signature of `getTxStatus` is:
+The Exchange-Chain API documentation tells us that the signature of `getTxStatus` is:
 
 [`avm.getTxStatus`](/docs/rpcs/x-chain#avmgettxstatus)`(txID:bytes) -> (status:string)`
 

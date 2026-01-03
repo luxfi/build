@@ -34,7 +34,7 @@ Content-Type: application/json
   "accepts": [
     {
       "scheme": "exact",
-      "network": "avalanche-fuji",
+      "network": "lux-testnet",
       "maxAmountRequired": "10000",
       "resource": "/api/premium-data",
       "description": "Access to premium data API",
@@ -51,7 +51,7 @@ This response tells the client:
 - Payment is required to access this resource
 - The maximum amount needed (10000 base units = 0.01 USDC)
 - Where to send payment (`payTo` address)
-- Which blockchain to use (`avalanche-fuji`)
+- Which blockchain to use (`lux-testnet`)
 - Which token contract to use (`asset`)
 - Payment scheme to use (`exact` = EIP-3009)
 
@@ -90,7 +90,7 @@ The `X-PAYMENT-RESPONSE` header (decoded) contains:
 {
   "success": true,
   "transaction": "0x8f3d1a2b4c5e6f7a...",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payer": "0x1234567890abcdef...",
   "errorReason": null
 }
@@ -102,7 +102,7 @@ The client now has access to the resource, and the entire cycle completed in app
 
 For a deeper understanding, here's the complete technical flow including facilitator interactions:
 
-![Detailed x402 payment flow](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/x402-payment-infrastructure/12StepPaymentFlow.png)
+![Detailed x402 payment flow](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/x402-payment-infrastructure/12StepPaymentFlow.png)
 
 ### Phase 1: Initial Request
 
@@ -124,7 +124,7 @@ Content-Type: application/json
   "x402Version": 1,
   "accepts": [{
     "scheme": "exact",
-    "network": "avalanche-fuji",
+    "network": "lux-testnet",
     "maxAmountRequired": "10000",
     "payTo": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
     "asset": "0x5425890298aed601595a70AB815c96711a31Bc65",
@@ -189,7 +189,7 @@ POST https://facilitator.payai.network/verify
 {
   "x402Version": 1,
   "scheme": "exact",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payload": {
     "signature": "0x1234...",
     "authorization": {...}
@@ -229,7 +229,7 @@ POST https://facilitator.payai.network/settle
 {
   "x402Version": 1,
   "scheme": "exact",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payload": {
     "signature": "0x1234...",
     "authorization": {
@@ -249,7 +249,7 @@ POST https://facilitator.payai.network/settle
 The facilitator calls the USDC contract's `transferWithAuthorization` function (EIP-3009):
 
 ```solidity
-// USDC.transferWithAuthorization on Avalanche Fuji
+// USDC.transferWithAuthorization on Lux Testnet
 transferWithAuthorization(
   from: 0x1234...,        // Payer
   to: 0x742d35...,        // Recipient
@@ -265,7 +265,7 @@ transferWithAuthorization(
 
 **Step 10**: Blockchain confirms transaction
 
-Avalanche's sub-second finality confirms the transaction in \<1 second.
+Lux's sub-second finality confirms the transaction in \<1 second.
 
 ### Phase 5: Settlement Response
 
@@ -278,7 +278,7 @@ The facilitator returns settlement status to the server:
   "success": true,
   "error": null,
   "txHash": "0x8f3d1a2b4c5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a...",
-  "networkId": "avalanche-fuji"
+  "networkId": "lux-testnet"
 }
 ```
 
@@ -299,7 +299,7 @@ The `X-PAYMENT-RESPONSE` (decoded):
 {
   "success": true,
   "transaction": "0x8f3d1a2b4c5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a...",
-  "network": "avalanche-fuji",
+  "network": "lux-testnet",
   "payer": "0x1234567890abcdef...",
   "errorReason": null
 }
@@ -349,7 +349,7 @@ For comprehensive security details, see [Security Considerations](./07-security-
 
 ## Summary
 
-The x402 payment flow transforms HTTP 402 into a functional payment request mechanism through a 4-step cycle (or 12-step detailed flow) that completes in approximately 2 seconds. By using facilitators to mediate blockchain interactions and leveraging Avalanche's fast finality, x402 makes instant, permissionless payments a reality while maintaining security and simplicity.
+The x402 payment flow transforms HTTP 402 into a functional payment request mechanism through a 4-step cycle (or 12-step detailed flow) that completes in approximately 2 seconds. By using facilitators to mediate blockchain interactions and leveraging Lux's fast finality, x402 makes instant, permissionless payments a reality while maintaining security and simplicity.
 
 ## Next Steps
 

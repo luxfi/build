@@ -93,8 +93,8 @@ export const useTestnetFaucet = () => {
     }
   }, [walletEVMAddress, isTestnet, l1List, notify, markChainAsSatisfied]);
 
-  const claimPChainAVAX = useCallback(async (silent: boolean = false): Promise<FaucetClaimResult> => {
-    if (!pChainAddress) { throw new Error("P-Chain address is required") }
+  const claimPChainLUX = useCallback(async (silent: boolean = false): Promise<FaucetClaimResult> => {
+    if (!pChainAddress) { throw new Error("Platform-Chain address is required") }
     if (!isTestnet) { throw new Error("Faucet is only available on testnet") }
     setIsClaimingPChain(true);
 
@@ -126,7 +126,7 @@ export const useTestnetFaucet = () => {
         notify(
           {
             type: "local",
-            name: "P-Chain AVAX Faucet Claim",
+            name: "Platform-Chain LUX Faucet Claim",
           },
           faucetPromise
         );
@@ -142,7 +142,7 @@ export const useTestnetFaucet = () => {
 
   return {
     claimEVMTokens,
-    claimPChainAVAX,
+    claimPChainLUX,
     getChainsWithFaucet,
     isClaimingEVM,
     isClaimingPChain,

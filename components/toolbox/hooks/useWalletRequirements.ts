@@ -51,19 +51,19 @@ const ACTIONS = {
         description: 'Get free tokens from the testnet faucet',
         link: '/console/primary-network/faucet'
     },
-    BUY_AVAX: {
+    BUY_LUX: {
         type: 'redirect' as const,
-        label: 'Buy AVAX',
-        title: 'Buy AVAX',
-        description: 'Buy AVAX from a supported on-ramp or exchange',
+        label: 'Buy LUX',
+        title: 'Buy LUX',
+        description: 'Buy LUX from a supported on-ramp or exchange',
         link: 'https://core.app/buy',
         target: '_blank'
     },
     TRANSFER_C_TO_P: {
         type: 'redirect' as const,
         label: 'Bridge',
-        title: 'Bridge from C-Chain',
-        description: 'Bridge AVAX from C-Chain to P-Chain',
+        title: 'Bridge from LUExchange-Chain',
+        description: 'Bridge LUX from LUExchange-Chain to Platform-Chain',
         link: '/console/primary-network/c-p-bridge'
     }
 } as const;
@@ -135,15 +135,15 @@ const WALLET_REQUIREMENTS: Record<WalletRequirementsConfigKey, WalletRequirement
     },
     [WalletRequirementsConfigKey.CChainBalance]: {
         id: 'c-chain-balance',
-        title: 'C-Chain balance',
+        title: 'LUExchange-Chain balance',
         description: 'You need tokens to pay for transaction fees',
         icon: Coins,
         prerequisites: [WalletRequirementsConfigKey.CoreWalletConnected],
         action: {
             type: 'conditional',
             label: 'Get Tokens',
-            title: 'Get C-Chain Tokens',
-            description: 'Get tokens for C-Chain transactions',
+            title: 'Get LUExchange-Chain Tokens',
+            description: 'Get tokens for LUExchange-Chain transactions',
             conditions: [
                 {
                     condition: (walletState) => walletState.isTestnet,
@@ -151,7 +151,7 @@ const WALLET_REQUIREMENTS: Record<WalletRequirementsConfigKey, WalletRequirement
                 },
                 {
                     condition: (walletState) => !walletState.isTestnet,
-                    action: ACTIONS.BUY_AVAX
+                    action: ACTIONS.BUY_LUX
                 }
             ]
         },
@@ -163,15 +163,15 @@ const WALLET_REQUIREMENTS: Record<WalletRequirementsConfigKey, WalletRequirement
     },
     [WalletRequirementsConfigKey.PChainBalance]: {
         id: 'p-chain-balance',
-        title: 'P-Chain balance',
+        title: 'Platform-Chain balance',
         description: 'You need tokens to pay for transaction fees',
         icon: Coins,
         prerequisites: [WalletRequirementsConfigKey.CoreWalletConnected],
         action: {
             type: 'conditional',
             label: 'Get Tokens',
-            title: 'Get P-Chain Tokens',
-            description: 'Get tokens for P-Chain transactions',
+            title: 'Get Platform-Chain Tokens',
+            description: 'Get tokens for Platform-Chain transactions',
             conditions: [
                 {
                     condition: (walletState) => walletState.isTestnet,
@@ -241,7 +241,7 @@ export function useWalletRequirements(configKey: WalletRequirementsConfigKey | W
     }), [coreWalletClient, isTestnet, walletEVMAddress, walletChainId, pChainAddress, pChainBalance, cChainBalance, selectedL1Balance, bootstrapped]);
 
     const handleSwitchToTestnet = async () => {
-        await safelySwitch(43113, true); // Fuji testnet chain ID and testnet flag
+        await safelySwitch(43113, true); // Testnet testnet chain ID and testnet flag
     };
 
     // Resolve conditional actions based on current wallet state

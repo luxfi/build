@@ -1,8 +1,8 @@
 ---
 title: Ledger
 category: Hardware Wallets
-available: ["C-Chain", "All Avalanche L1s"]
-description: Integrate Ledger hardware wallet support into your applications using official Ledger SDKs for Avalanche.
+available: ["LUExchange-Chain", "All Lux L1s"]
+description: Integrate Ledger hardware wallet support into your applications using official Ledger SDKs for Lux.
 logo: /images/ledger.png
 developer: Ledger
 website: https://www.ledger.com/
@@ -11,17 +11,17 @@ documentation: https://developers.ledger.com/
 
 ## Overview
 
-Ledger provides multiple SDKs that enable wallet applications and dApps to integrate hardware wallet functionality for Avalanche chains. The SDKs are available in Go and JavaScript, making it easy to add Ledger support to both desktop and web applications.
+Ledger provides multiple SDKs that enable wallet applications and dApps to integrate hardware wallet functionality for Lux chains. The SDKs are available in Go and JavaScript, making it easy to add Ledger support to both desktop and web applications.
 
 ## Available SDKs
 
-- **[Avalanche Ledger App](https://github.com/ava-labs/ledger-avalanche)**: Core application running on Ledger devices
-- **[Go SDK](https://github.com/ava-labs/ledger-avalanche-go)**: Native Go implementation for backend and desktop applications
-- **[JavaScript SDK](https://github.com/ava-labs/ledger-avalanche)**: Browser and Node.js support for web applications
+- **[Lux Ledger App](https://github.com/luxfi/ledger-lux)**: Core application running on Ledger devices
+- **[Go SDK](https://github.com/luxfi/ledger-lux-go)**: Native Go implementation for backend and desktop applications
+- **[JavaScript SDK](https://github.com/luxfi/ledger-lux)**: Browser and Node.js support for web applications
 
 ## Integration Features
 
-- **Multi-Chain Support**: Enable transaction signing across C-Chain, X-Chain, and P-Chain
+- **Multi-Chain Support**: Enable transaction signing across LUExchange-Chain, Exchange-Chain, and Platform-Chain
 - **Hardware-Based Security**: Leverage Ledger's secure element for key protection
 - **Cross-Platform**: Support for both desktop and web applications
 - **Transaction Signing**: Secure signing for transfers, staking, and smart contracts
@@ -31,7 +31,7 @@ Ledger provides multiple SDKs that enable wallet applications and dApps to integ
 ### Go SDK Integration
 
 ```go
-import ledger "github.com/ava-labs/ledger-avalanche-go"
+import ledger "github.com/luxfi/ledger-lux-go"
 
 // Initialize connection
 ledgerApp, err := ledger.NewLedgerApp()
@@ -43,7 +43,7 @@ if err != nil {
 ### JavaScript SDK Integration
 
 ```javascript
-import Ledger from '@avalabs/ledger-avalanche'
+import Ledger from '@luxfi/ledger-lux'
 
 const ledger = new Ledger()
 await ledger.connect()
@@ -59,10 +59,10 @@ await ledger.connect()
 ## Documentation
 
 - [Ledger Developer Portal](https://developers.ledger.com/)
-- [Go SDK Documentation](https://pkg.go.dev/github.com/ava-labs/ledger-avalanche-go)
-- [JavaScript SDK Documentation](https://github.com/ava-labs/ledger-avalanche)
+- [Go SDK Documentation](https://pkg.go.dev/github.com/luxfi/ledger-lux-go)
+- [JavaScript SDK Documentation](https://github.com/luxfi/ledger-lux)
 
 ## Conclusion
 
-Ledger's SDKs provide the essential tools for integrating secure hardware wallet functionality into your Avalanche applications. Whether you're building a wallet, DeFi platform, or validator tools, Ledger's SDKs offer robust support for hardware-based key management and transaction signing across all Avalanche chains.
+Ledger's SDKs provide the essential tools for integrating secure hardware wallet functionality into your Lux applications. Whether you're building a wallet, DeFi platform, or validator tools, Ledger's SDKs offer robust support for hardware-based key management and transaction signing across all Lux chains.
 

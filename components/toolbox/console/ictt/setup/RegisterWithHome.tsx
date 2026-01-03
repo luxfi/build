@@ -16,7 +16,7 @@ import ERC20TokenHomeABI from "@/contracts/icm-contracts/compiled/ERC20TokenHome
 import { Abi, createPublicClient, http, PublicClient, zeroAddress } from "viem";
 import { Suggestion } from "@/components/toolbox/components/Input";
 import { EVMAddressInput } from "@/components/toolbox/components/EVMAddressInput";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import { ListContractEvents } from "@/components/toolbox/components/ListContractEvents";
 import SelectBlockchainId from "@/components/toolbox/components/SelectBlockchainId";
 import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-url";

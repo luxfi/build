@@ -9,7 +9,7 @@ export const dynamicParams = true;
 
 export const metadata: Metadata = createMetadata({
   title: 'Hackathons',
-  description: 'Join exciting blockchain hackathons and build the future on Avalanche',
+  description: 'Join exciting blockchain hackathons and build the future on Lux',
   openGraph: {
     images: '/api/og/hackathons',
   },

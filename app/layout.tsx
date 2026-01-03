@@ -13,11 +13,11 @@ import { Body } from "./layout.client";
 
 export const metadata = createMetadata({
   title: {
-    template: "%s | Avalanche Builder Hub",
-    default: "Avalanche Builder Hub",
+    template: "%s | Lux Build",
+    default: "Lux Build",
   },
   description:
-    "Build your Fast & Interoperable Layer 1 Blockchain with Avalanche.",
+    "Build your Post-Quantum Secure Layer 1 Blockchain with Lux Network.",
   metadataBase: baseUrl,
 });
 

@@ -30,23 +30,23 @@ Sends a cross-chain message to the specified destination chain.
 ### Example
 
 ```typescript
-import { createICMClient } from "@avalanche-sdk/interchain";
-import { avalancheFuji, dispatch } from "@avalanche-sdk/interchain/chains";
+import { createICMClient } from "@lux-sdk/interchain";
+import { luxTestnet, dispatch } from "@lux-sdk/interchain/chains";
 
 const icm = createICMClient(wallet);
 
 // Simple message
 const hash = await icm.sendMsg({
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
-  message: "Hello from Avalanche!",
+  message: "Hello from Lux!",
 });
 
 // With options
 const hash = await icm.sendMsg({
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
-  message: "Hello from Avalanche!",
+  message: "Hello from Lux!",
   recipientAddress: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
   feeInfo: {
     feeTokenAddress: "0x0000000000000000000000000000000000000000",

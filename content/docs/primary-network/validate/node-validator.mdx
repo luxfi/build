@@ -1,20 +1,20 @@
 ---
 title: Turn Node Into Validator
-description: This tutorial will show you how to add a node to the validator set of Primary Network on Avalanche.
+description: This tutorial will show you how to add a node to the validator set of Primary Network on Lux.
 ---
 
 ## Introduction
 
 The [Primary Network](/docs/primary-network)
-is inherent to the Avalanche platform and validates Avalanche's built-in
+is inherent to the Lux platform and validates Lux's built-in
 blockchains. In this
-tutorial, we'll add a node to the Primary Network on Avalanche.
+tutorial, we'll add a node to the Primary Network on Lux.
 
-The P-Chain manages metadata on Avalanche. This includes tracking which nodes
-are in which Avalanche L1s, which blockchains exist, and which Avalanche L1s are validating
+The Platform-Chain manages metadata on Lux. This includes tracking which nodes
+are in which Lux L1s, which blockchains exist, and which Lux L1s are validating
 which blockchains. To add a validator, we'll issue
 [transactions](http://support.avalabs.org/en/articles/4587384-what-is-a-transaction)
-to the P-Chain.
+to the Platform-Chain.
 
 <Callout type="warn">
 Note that once you issue the transaction to add a node as a validator, there is
@@ -26,16 +26,16 @@ our [Discord](https://chat.avalabs.org/) to ask questions.
 
 ## Requirements
 
-You've completed [Run an Avalanche Node](/docs/nodes/run-a-node/from-source) and are familiar with
-[Avalanche's architecture](/docs/primary-network). In this
-tutorial, we use [AvalancheJS](/docs/tooling/avalanche-sdk) and
-[Avalanche's Postman collection](/docs/tooling/avalanche-postman) 
+You've completed [Run an Lux Node](/docs/nodes/run-a-node/from-source) and are familiar with
+[Lux's architecture](/docs/primary-network). In this
+tutorial, we use [LuxJS](/docs/tooling/lux-sdk) and
+[Lux's Postman collection](/docs/tooling/lux-postman) 
 to help us make API calls.
 
 In order to ensure your node is well-connected, make sure that your node can
 receive and send TCP traffic on the staking port (`9651` by default) and your node
 has a public IP address(it's optional to set --public-ip=[YOUR NODE'S PUBLIC IP HERE]
-when executing the AvalancheGo binary, as by default, the node will attempt to perform
+when executing the LuxGo binary, as by default, the node will attempt to perform
 NAT traversal to get the node's IP according to its router). Failing to do either of
 these may jeopardize your staking reward.
 
@@ -79,8 +79,8 @@ Here, choose 'Validate' from the menu.
 Fill out the staking parameters. They are explained in more detail in [this doc](/docs/primary-network/validate/how-to-stake). When you've 
 filled in all the staking parameters and double-checked them, click `Submit Validation`. Make sure the staking period is at
 least 2 weeks, the delegation fee rate is at least 2%, and you're staking at
-least 2,000 AVAX on Mainnet (1 AVAX on Fuji Testnet). A full guide about this can be found 
-[here](https://support.avax.network/en/articles/8117267-core-web-how-do-i-validate-in-core-stake).
+least 2,000 LUX on Mainnet (1 LUX on Testnet Testnet). A full guide about this can be found 
+[here](https://support.lux.network/en/articles/8117267-core-web-how-do-i-validate-in-core-stake).
 
 You should see a success message, and your balance should be updated.
 
@@ -101,22 +101,22 @@ to check that your node's id is included in the response.
 
 That's it!
 
-## Add a Validator with AvalancheJS
+## Add a Validator with LuxJS
 
-We can also add a node to the validator set using [AvalancheJS](/docs/tooling/avalanche-sdk).
+We can also add a node to the validator set using [LuxJS](/docs/tooling/lux-sdk).
 
-### Install AvalancheJS
+### Install LuxJS
 
-To use AvalancheJS, you can clone the repo:
+To use LuxJS, you can clone the repo:
 
 ```bash
-git clone https://github.com/ava-labs/avalanchejs.git
+git clone https://github.com/luxfi/luxjs.git
 ```
 
 <Callout title="Note">
 The repository cloning method used is HTTPS, but SSH can be used too:
 
-`git clone git@github.com:ava-labs/avalanchejs.git`
+`git clone git@github.com:luxfi/luxjs.git`
 
 You can find more about SSH and how to use it
 [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh).
@@ -125,33 +125,33 @@ You can find more about SSH and how to use it
 or add it to an existing project:
 
 ```bash
-yarn add @avalabs/avalanchejs
+yarn add @luxfi/luxjs
 ```
 
 For this tutorial we will use [`ts-node`](https://www.npmjs.com/package/ts-node)
-to run the example scripts directly from an AvalancheJS directory.
+to run the example scripts directly from an LuxJS directory.
 
-### Fuji Workflow
+### Testnet Workflow
 
-In this section, we will use Fuji Testnet to show how to add a node to the validator set.
+In this section, we will use Testnet Testnet to show how to add a node to the validator set.
 
-Open your AvalancheJS directory and select the
-[**`examples/p-chain`**](https://github.com/ava-labs/avalanchejs/tree/master/examples/p-chain)
+Open your LuxJS directory and select the
+[**`examples/p-chain`**](https://github.com/luxfi/luxjs/tree/master/examples/p-chain)
 folder to view the source code for the examples scripts.
 
 We will use the
-[**`validate.ts`**](https://github.com/ava-labs/avalanchejs/blob/master/examples/p-chain/validate.ts)
+[**`validate.ts`**](https://github.com/luxfi/luxjs/blob/master/examples/p-chain/validate.ts)
 script to add a validator.
 
 #### Add Necessary Environment Variables
 
-Locate the `.env.example` file at the root of AvalancheJS, and remove `.example`
+Locate the `.env.example` file at the root of LuxJS, and remove `.example`
 from the title. Now, this will be the `.env` file for global variables.
 
-Add the private key and the P-Chain address associated with it.
-The API URL is already set to Fuji (`https://api.avax-test.network/`).
+Add the private key and the Platform-Chain address associated with it.
+The API URL is already set to Testnet (`https://api.lux-test.network/`).
 
-![env Variables](/images/validator-avalanchejs-1.png)
+![env Variables](/images/validator-luxjs-1.png)
 
 #### Retrieve the Node ID, the BLS signature and the BLS key
 
@@ -188,7 +188,7 @@ After retrieving this data, go to `examples/p-chain/validate.ts`.
 Replace the `nodeID`, `blsPublicKey` and `blsSignature` with your 
 own node's values.
 
-![Replaced values](/images/validator-avalanchejs-2.png)
+![Replaced values](/images/validator-luxjs-2.png)
 
 #### Settings for Validation
 
@@ -227,14 +227,14 @@ const end = BigInt(endTime.getTime() / 1000);
 
 #### Delegation Fee Rate
 
-Avalanche allows for delegation of stake. This parameter is the percent fee this
+Lux allows for delegation of stake. This parameter is the percent fee this
 validator charges when others delegate stake to them. For example, if
 `delegationFeeRate` is `10` and someone delegates to this validator, then when
 the delegation period is over, 10% of the reward goes to the validator and the
 rest goes to the delegator, if this node meets the validation reward
 requirements.
 
-The delegation fee on AvalancheJS is set `20`. To change this, you need
+The delegation fee on LuxJS is set `20`. To change this, you need
 to provide the desired fee percent as a parameter to `newAddPermissionlessValidatorTx`,
 which is by default `1e4 * 20`.
 
@@ -265,7 +265,7 @@ const tx = newAddPermissionlessValidatorTx(
 
 Set the amount being locked for validation when calling
 `newAddPermissionlessValidatorTx` by replacing `weight` with a number
-in the unit of nAVAX. For example, `2 AVAX` would be `2e9 nAVAX`.
+in the unit of nLUX. For example, `2 LUX` would be `2e9 nLUX`.
 
 ```ts
 const tx = newAddPermissionlessValidatorTx(
@@ -291,7 +291,7 @@ const tx = newAddPermissionlessValidatorTx(
 #### Execute the Code
 
 Now that we have made all of the necessary changes to the example script, it's
-time to add a validator to the Fuji Network.
+time to add a validator to the Testnet Network.
 
 Run the command:
 
@@ -302,7 +302,7 @@ node --loader ts-node/esm examples/p-chain/validate.ts
 The response:
 
 ```bash
-laviniatalpas@Lavinias-MacBook-Pro avalanchejs % node --loader ts-node/esm examples/p-chain/validate.ts
+laviniatalpas@Lavinias-MacBook-Pro luxjs % node --loader ts-node/esm examples/p-chain/validate.ts
 (node:87616) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
 --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("ts-node/esm", pathToFileURL("./"));'
 (Use `node --trace-warnings ...` to show where the warning was created)
@@ -312,15 +312,15 @@ laviniatalpas@Lavinias-MacBook-Pro avalanchejs % node --loader ts-node/esm examp
 We can check the transaction's status by running the example script with
 [`platform.getTxStatus`](/docs/rpcs/p-chain#platformgettxstatus)
 or looking up the validator directly on the 
-[explorer](https://subnets-test.avax.network/validators/NodeID-JXJNyJXhgXzvVGisLkrDiZvF938zJxnT5).
+[explorer](https://subnets-test.lux.network/validators/NodeID-JXJNyJXhgXzvVGisLkrDiZvF938zJxnT5).
 
-![Added Validator](/images/validator-avalanchejs-3.png)
+![Added Validator](/images/validator-luxjs-3.png)
 
 ### Mainnet Workflow
 
-The Fuji workflow above can be adapted to Mainnet with the following modifications:
+The Testnet workflow above can be adapted to Mainnet with the following modifications:
 
-- `AVAX_PUBLIC_URL` should be `https://api.avax.network/`.
-- `P_CHAIN_ADDRESS` should be the Mainnet P-Chain address.
+- `LUX_PUBLIC_URL` should be `https://api.lux.network/`.
+- `P_CHAIN_ADDRESS` should be the Mainnet Platform-Chain address.
 - Set the correct amount to stake.
 - The `blsPublicKey`, `blsSignature` and `nodeID` need to be the ones for your Mainnet Node.

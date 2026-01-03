@@ -1,17 +1,17 @@
 ---
 title: Public Methods
-description: Complete reference for Avalanche-specific public client methods
+description: Complete reference for Lux-specific public client methods
 ---
 
 ## Overview
 
-The Avalanche Client extends viem's Public Client with Avalanche-specific methods for querying fee information, chain configuration, and active rules. These methods are available on both the main Avalanche Client and the C-Chain client.
+The Lux Client extends viem's Public Client with Lux-specific methods for querying fee information, chain configuration, and active rules. These methods are available on both the main Lux Client and the LUExchange-Chain client.
 
 ## Fee Operations
 
 ### baseFee
 
-Get the base fee for the next block on the C-Chain.
+Get the base fee for the next block on the LUExchange-Chain.
 
 **Function Signature:**
 
@@ -32,11 +32,11 @@ No parameters required.
 **Example:**
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -46,7 +46,7 @@ console.log("Base fee:", baseFee); // "0x3b9aca00"
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#eth_basefee)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#eth_basefee)
 - [maxPriorityFeePerGas](#maxpriorityfeepergas) - Get max priority fee per gas
 
 ---
@@ -80,7 +80,7 @@ console.log("Max priority fee per gas:", maxPriorityFee);
 // Use in EIP-1559 transaction
 const txHash = await walletClient.sendTransaction({
   to: "0x...",
-  value: avaxToWei(1),
+  value: luxToWei(1),
   maxFeePerGas: baseFee + maxPriorityFee,
   maxPriorityFeePerGas: maxPriorityFee,
 });
@@ -88,7 +88,7 @@ const txHash = await walletClient.sendTransaction({
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#eth_maxpriorityfeepergas)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#eth_maxpriorityfeepergas)
 - [baseFee](#basefee) - Get base fee
 
 ---
@@ -147,7 +147,7 @@ const blockFeeConfig = await client.feeConfig({ blk: "0x123456" });
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/subnet-evm#eth_feeconfig)
+- [API Reference](https://build.lux.network/docs/rpcs/subnet-evm#eth_feeconfig)
 - [baseFee](#basefee) - Get base fee
 
 ---
@@ -156,7 +156,7 @@ const blockFeeConfig = await client.feeConfig({ blk: "0x123456" });
 
 ### getChainConfig
 
-Get the chain configuration for the C-Chain, including fork blocks and Avalanche-specific upgrade timestamps.
+Get the chain configuration for the LUExchange-Chain, including fork blocks and Lux-specific upgrade timestamps.
 
 **Function Signature:**
 
@@ -228,7 +228,7 @@ console.log("Apricot Phase 1:", chainConfig.apricotPhase1BlockTimestamp);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#eth_getchainconfig)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#eth_getchainconfig)
 
 ---
 
@@ -251,7 +251,7 @@ interface GetActiveRulesAtParameters {
 
 interface GetActiveRulesAtReturnType {
   ethRules: Map<string, true>;
-  avalancheRules: Map<string, true>;
+  luxRules: Map<string, true>;
   precompiles: Map<string, object>;
 }
 ```
@@ -273,7 +273,7 @@ interface GetActiveRulesAtReturnType {
 | Property         | Type                  | Description                                  |
 | ---------------- | --------------------- | -------------------------------------------- |
 | `ethRules`       | `Map<string, true>`   | Active Ethereum rules (EIPs)                 |
-| `avalancheRules` | `Map<string, true>`   | Active Avalanche-specific rules              |
+| `luxRules` | `Map<string, true>`   | Active Lux-specific rules              |
 | `precompiles`    | `Map<string, object>` | Active precompiles with their configurations |
 
 **Example:**
@@ -285,7 +285,7 @@ const activeRules = await client.getActiveRulesAt({
 });
 
 console.log("Ethereum rules:", Array.from(activeRules.ethRules.keys()));
-console.log("Avalanche rules:", Array.from(activeRules.avalancheRules.keys()));
+console.log("Lux rules:", Array.from(activeRules.luxRules.keys()));
 console.log("Precompiles:", Array.from(activeRules.precompiles.keys()));
 
 // Get active rules at specific timestamp
@@ -296,13 +296,13 @@ const historicalRules = await client.getActiveRulesAt({
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/subnet-evm#eth_getactiverulesat)
+- [API Reference](https://build.lux.network/docs/rpcs/subnet-evm#eth_getactiverulesat)
 
 ---
 
 ## Viem Integration
 
-The Avalanche Client extends viem's Public Client, providing access to all standard Ethereum RPC methods. For complete method reference, see:
+The Lux Client extends viem's Public Client, providing access to all standard Ethereum RPC methods. For complete method reference, see:
 
 - **[viem Documentation](https://viem.sh/docs)** - Complete EVM method reference
 - **[viem Actions](https://viem.sh/docs/actions/public)** - Public client actions
@@ -310,6 +310,6 @@ The Avalanche Client extends viem's Public Client, providing access to all stand
 
 ## Next Steps
 
-- **[C-Chain Methods](c-chain)** - C-Chain-specific methods
+- **[LUExchange-Chain Methods](c-chain)** - LUExchange-Chain-specific methods
 - **[Wallet Client](../clients/wallet-client)** - Transaction operations
 - **[Account Management](../../accounts)** - Account types and management

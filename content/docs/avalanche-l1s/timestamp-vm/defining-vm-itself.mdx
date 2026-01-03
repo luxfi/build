@@ -5,10 +5,10 @@ description: After examining several of the data structures and functionalities 
 
 ## Aside: SnowmanVM
 
-In addition to blocks having to adhere to the `Snowman.Block` interface, VMs which interact with the Snowman Consensus Engine must also implement the `SnowmanVM` interface. In the context of a Rust-based VM, this means that we must satisfy the `ChainVM` trait in `avalanche-types`:
+In addition to blocks having to adhere to the `Snowman.Block` interface, VMs which interact with the Snowman Consensus Engine must also implement the `SnowmanVM` interface. In the context of a Rust-based VM, this means that we must satisfy the `ChainVM` trait in `lux-types`:
 
-```rust title="avalanche-types/src/subnet/rpc/snowman/block.rs"
-/// ref. <https://pkg.go.dev/github.com/ava-labs/avalanchego/snow/engine/snowman/block#ChainVm>
+```rust title="lux-types/src/subnet/rpc/snowman/block.rs"
+/// ref. <https://pkg.go.dev/github.com/luxfi/luxgo/snow/engine/snowman/block#ChainVm>
 #[tonic::async_trait]
 pub trait ChainVm: CommonVm + BatchedChainVm + Getter + Parser {
     type Block: snowman::Block;

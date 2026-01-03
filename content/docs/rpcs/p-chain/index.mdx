@@ -1,10 +1,10 @@
 ---
-title: "AvalancheGo P-Chain RPC"
-description: "This page is an overview of the P-Chain RPC associated with AvalancheGo."
-edit_url: https://github.com/ava-labs/avalanchego/edit/master/vms/platformvm/service.md
+title: "LuxGo Platform-Chain RPC"
+description: "This page is an overview of the Platform-Chain RPC associated with LuxGo."
+edit_url: https://github.com/luxfi/luxgo/edit/master/vms/platformvm/service.md
 ---
 
-The P-Chain API allows clients to interact with the [P-Chain](https://build.avax.network/docs/quick-start/primary-network#p-chain), which maintains Avalanche’s validator set and handles blockchain creation.
+The Platform-Chain API allows clients to interact with the [Platform-Chain](https://build.lux.network/docs/quick-start/primary-network#p-chain), which maintains Lux’s validator set and handles blockchain creation.
 
 ## Endpoint
 
@@ -22,11 +22,11 @@ This API uses the `json 2.0` RPC format.
 
 <Callout title="Caution" type="warn">
 
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 
 </Callout>
 
-Get the balance of AVAX controlled by a given address.
+Get the balance of LUX controlled by a given address.
 
 **Signature:**
 
@@ -208,7 +208,7 @@ curl -X POST --data '{
                 "fxID": "spdxUxVJQbX85MGxMHbKw1sHxMnSqJ3QBzDyDYEP3h6TLuxqQ",
                 "output": {
                   "addresses": [
-                    "P-avax1jkjyvlwclyu42n4yuegpczpfgwrf8r9lyj0d3c"
+                    "P-lux1jkjyvlwclyu42n4yuegpczpfgwrf8r9lyj0d3c"
                   ],
                   "amount": 13838124063,
                   "locktime": 0,
@@ -341,7 +341,7 @@ curl -X POST --data '{
                 "fxID": "spdxUxVJQbX85MGxMHbKw1sHxMnSqJ3QBzDyDYEP3h6TLuxqQ",
                 "output": {
                   "addresses": [
-                    "P-avax1jkjyvlwclyu42n4yuegpczpfgwrf8r9lyj0d3c"
+                    "P-lux1jkjyvlwclyu42n4yuegpczpfgwrf8r9lyj0d3c"
                   ],
                   "amount": 13838124063,
                   "locktime": 0,
@@ -370,11 +370,11 @@ curl -X POST --data '{
 
 <Callout title="Caution" type="warn">
 
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 
 </Callout>
 
-Get all the blockchains that exist (excluding the P-Chain).
+Get all the blockchains that exist (excluding the Platform-Chain).
 
 **Signature:**
 
@@ -390,7 +390,7 @@ platform.getBlockchains() ->
 }
 ```
 
-- `blockchains` is all of the blockchains that exists on the Avalanche network.
+- `blockchains` is all of the blockchains that exists on the Lux network.
 - `name` is the human-readable name of this blockchain.
 - `id` is the blockchain’s ID.
 - `subnetID` is the ID of the Subnet that validates this blockchain.
@@ -416,13 +416,13 @@ curl -X POST --data '{
     "blockchains": [
       {
         "id": "2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM",
-        "name": "X-Chain",
+        "name": "Exchange-Chain",
         "subnetID": "11111111111111111111111111111111LpoYY",
         "vmID": "jvYyfQTxGMJLuGWa55kdP2p2zSUYsQ5Raupu4TW34ZAUBAbtq"
       },
       {
         "id": "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5",
-        "name": "C-Chain",
+        "name": "LUExchange-Chain",
         "subnetID": "11111111111111111111111111111111LpoYY",
         "vmID": "mgj786NP7uDwBCcq6YwThhaN8FLyybkCa4zBWTQbNgmK6k9A6"
       },
@@ -551,7 +551,7 @@ curl -X POST --data '{
 }
 ```
 
-The response in this example indicates that AVAX’s supply is at most 365.865 million.
+The response in this example indicates that LUX’s supply is at most 365.865 million.
 
 ### `platform.getCurrentValidators`
 
@@ -659,7 +659,7 @@ platform.getCurrentValidators({
     - `txID` is the delegator transaction.
     - `startTime` is the Unix time when the delegator started.
     - `endTime` is the Unix time when the delegator stops.
-    - `weight` is the amount of nAVAX this delegator staked.
+    - `weight` is the amount of nLUX this delegator staked.
     - `nodeID` is the validating node’s node ID.
     - `rewardOwner` is an `OutputOwners` output which includes `locktime`, `threshold` and array of
       `addresses`.
@@ -696,12 +696,12 @@ curl -X POST --data '{
         "validationRewardOwner": {
           "locktime": "0",
           "threshold": "1",
-          "addresses": ["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"]
+          "addresses": ["P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"]
         },
         "delegationRewardOwner": {
           "locktime": "0",
           "threshold": "1",
-          "addresses": ["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"]
+          "addresses": ["P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"]
         },
         "potentialReward": "117431493426",
         "delegationFee": "10.0000",
@@ -719,7 +719,7 @@ curl -X POST --data '{
             "rewardOwner": {
               "locktime": "0",
               "threshold": "1",
-              "addresses": ["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"]
+              "addresses": ["P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"]
             },
             "potentialReward": "11743144774"
           }
@@ -746,14 +746,14 @@ curl -X POST --data '{
           "locktime": "0",
           "threshold": "1",
           "addresses": [
-            "P-fuji1ywzvrftfqexh5g6qa9zyrytj6pqdfetza2hqln"
+            "P-testnet1ywzvrftfqexh5g6qa9zyrytj6pqdfetza2hqln"
           ]
         },
         "deactivationOwner": {
           "locktime": "0",
           "threshold": "1",
           "addresses": [
-            "P-fuji1ywzvrftfqexh5g6qa9zyrytj6pqdfetza2hqln"
+            "P-testnet1ywzvrftfqexh5g6qa9zyrytj6pqdfetza2hqln"
           ]
         },
         "startTime": "1734034648",
@@ -1066,7 +1066,7 @@ curl -X POST --data '{
 
 <Callout title="Caution" type="warn">
 
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 
 </Callout>
 
@@ -1126,11 +1126,11 @@ curl -X POST --data '{
 
 <Callout title="Caution" type="warn">
 
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 
 </Callout>
 
-Get the amount of nAVAX staked by a set of addresses. The amount returned does not include staking
+Get the amount of nLUX staked by a set of addresses. The amount returned does not include staking
 rewards.
 
 **Signature:**
@@ -1161,7 +1161,7 @@ curl -X POST --data '{
     "method": "platform.getStake",
     "params": {
         "addresses": [
-            "P-avax1pmgmagjcljjzuz2ve339dx82khm7q8getlegte"
+            "P-lux1pmgmagjcljjzuz2ve339dx82khm7q8getlegte"
           ],
         "validatorsOnly": true
     },
@@ -1233,7 +1233,7 @@ curl -X POST --data '{
 
 <Callout title="Note">
 
-The AssetID for AVAX differs depending on the network you are on.
+The AssetID for LUX differs depending on the network you are on.
 
 Mainnet: FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
 
@@ -1292,8 +1292,8 @@ curl -X POST --data '{
   "result": {
     "isPermissioned": true,
     "controlKeys": [
-      "P-fuji1ztvstx6naeg6aarfd047fzppdt8v4gsah88e0c",
-      "P-fuji193kvt4grqewv6ce2x59wnhydr88xwdgfcedyr3"
+      "P-testnet1ztvstx6naeg6aarfd047fzppdt8v4gsah88e0c",
+      "P-testnet193kvt4grqewv6ce2x59wnhydr88xwdgfcedyr3"
     ],
     "threshold": "1",
     "locktime": "0",
@@ -1310,7 +1310,7 @@ curl -X POST --data '{
 
 <Callout title="Caution" type="warn">
 
-Deprecated as of [**v1.9.12**](https://github.com/ava-labs/avalanchego/releases/tag/v1.9.12).
+Deprecated as of [**v1.9.12**](https://github.com/luxfi/luxgo/releases/tag/v1.9.12).
 
 </Callout>
 
@@ -1372,7 +1372,7 @@ curl -X POST --data '{
 
 ### `platform.getTimestamp`
 
-Get the current P-Chain timestamp.
+Get the current Platform-Chain timestamp.
 
 **Signature:**
 
@@ -1554,7 +1554,7 @@ curl -X POST --data '{
             "assetID": "FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z",
             "fxID": "spdxUxVJQbX85MGxMHbKw1sHxMnSqJ3QBzDyDYEP3h6TLuxqQ",
             "output": {
-              "addresses": ["P-avax1tnuesf6cqwnjw7fxjyk7lhch0vhf0v95wj5jvy"],
+              "addresses": ["P-lux1tnuesf6cqwnjw7fxjyk7lhch0vhf0v95wj5jvy"],
               "amount": 48944170378,
               "locktime": 0,
               "threshold": 1
@@ -1562,7 +1562,7 @@ curl -X POST --data '{
           }
         ],
         "rewardsOwner": {
-          "addresses": ["P-avax19zfygxaf59stehzedhxjesads0p5jdvfeedal0"],
+          "addresses": ["P-lux19zfygxaf59stehzedhxjesads0p5jdvfeedal0"],
           "locktime": 0,
           "threshold": 1
         }
@@ -1679,7 +1679,7 @@ platform.getUTXOs(
 #### **Example**
 
 Suppose we want all UTXOs that reference at least one of
-`P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5` and `P-avax1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6`.
+`P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5` and `P-lux1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6`.
 
 ```sh
 curl -X POST --data '{
@@ -1687,7 +1687,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"platform.getUTXOs",
     "params" :{
-        "addresses":["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5", "P-avax1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6"],
+        "addresses":["P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5", "P-lux1d09qn852zcy03sfc9hay2llmn9hsgnw4tp3dv6"],
         "limit":5,
         "encoding": "hex"
     }
@@ -1709,7 +1709,7 @@ This gives response:
       "0x000054f6826c39bc957c0c6d44b70f961a994898999179cc32d21eb09c1908d7167b00000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f000000070000000000000001000000000000000000000001000000018ba98dabaebcd83056799841cfbc567d8b10f2166290e79d"
     ],
     "endIndex": {
-      "address": "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address": "P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "utxo": "kbUThAUfmBXUmRgTpgD6r3nLj7rJUGho6xyht5nouNNypH45j"
     },
     "encoding": "hex"
@@ -1727,10 +1727,10 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"platform.getUTXOs",
     "params" :{
-        "addresses":["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+        "addresses":["P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
         "limit":5,
         "startIndex": {
-            "address": "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+            "address": "P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
             "utxo": "0x62fc816bb209857923770c286192ab1f9e3f11e4a7d4ba0943111c3bbfeb9e4a5ea72fae"
         },
         "encoding": "hex"
@@ -1752,7 +1752,7 @@ This gives response:
       "0x000082f30327514f819da6009fad92b5dba24d27db01e29ad7541aa8e6b6b554615c00000000345aa98e8a990f4101e2268fab4c4e1f731c8dfbcffa3a77978686e6390d624f000000070000000000000001000000000000000000000001000000018ba98dabaebcd83056799841cfbc567d8b10f216779c2d59"
     ],
     "endIndex": {
-      "address": "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address": "P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "utxo": "21jG2RfqyHUUgkTLe2tUp6ETGLriSDTW3th8JXFbPRNiSZ11jK"
     },
     "encoding": "hex"
@@ -1774,7 +1774,7 @@ curl -X POST --data '{
     "id"     :1,
     "method" :"platform.getUTXOs",
     "params" :{
-        "addresses":["P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
+        "addresses":["P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5"],
         "sourceChain": "X",
         "encoding": "hex"
     }
@@ -1792,7 +1792,7 @@ This gives response:
       "0x00001f989ffaf18a18a59bdfbf209342aa61c6a62a67e8639d02bb3c8ddab315c6fa0000000139c33a499ce4c33a3b09cdd2cfa01ae70dbf2d18b2d7d168524440e55d55008800000007000000746a528800000000000000000000000001000000013cb7d3842e8cee6a0ebd09f1fe884f6861e1b29cd704fe76"
     ],
     "endIndex": {
-      "address": "P-avax18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
+      "address": "P-lux18jma8ppw3nhx5r4ap8clazz0dps7rv5ukulre5",
       "utxo": "S5UKgWoVpoGFyxfisebmmRf8WqC7ZwcmYwS7XaDVZqoaFcCwK"
     },
     "encoding": "hex"
@@ -1803,7 +1803,7 @@ This gives response:
 
 ### `platform.getValidatorsAt`
 
-Get the validators and their weights of a Subnet or the Primary Network at a given P-Chain height.
+Get the validators and their weights of a Subnet or the Primary Network at a given Platform-Chain height.
 
 **Signature:**
 
@@ -1816,7 +1816,7 @@ platform.getValidatorsAt(
 )
 ```
 
-- `height` is the P-Chain height to get the validator set at, or the string literal "proposed"
+- `height` is the Platform-Chain height to get the validator set at, or the string literal "proposed"
   to return the validator set at this node's ProposerVM height.
 - `subnetID` is the Subnet ID to get the validator set of. If not given, gets validator set of the
   Primary Network.
@@ -1854,7 +1854,7 @@ curl -X POST --data '{
 
 ### `platform.getAllValidatorsAt`
 
-Get the validators and their weights of all Subnets and the Primary Network at a given P-Chain height.
+Get the validators and their weights of all Subnets and the Primary Network at a given Platform-Chain height.
 
 **Signature:**
 
@@ -1930,14 +1930,14 @@ curl -X POST --data '{
 }
 ```
 
-- `height` is the P-Chain height to get the validator set at, or the string literal "proposed"
+- `height` is the Platform-Chain height to get the validator set at, or the string literal "proposed"
   to return the validator set at this node's ProposerVM height.
 
 **Example Call:**
 
 ### `platform.getValidatorFeeConfig`
 
-Returns the validator fee configuration of the P-Chain.
+Returns the validator fee configuration of the Platform-Chain.
 
 **Signature:**
 
@@ -1984,7 +1984,7 @@ curl -X POST --data '{
 
 ### `platform.getValidatorFeeState`
 
-Returns the current validator fee state of the P-Chain.
+Returns the current validator fee state of the Platform-Chain.
 
 **Signature:**
 

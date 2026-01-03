@@ -128,7 +128,7 @@ function ConsoleDashboard() {
       <div>
         <h2 className="text-2xl font-bold text-foreground mb-2">Welcome to Builder Console</h2>
         <p className="text-muted-foreground">
-          Manage your Avalanche L1s, validators, and deployments from one central location.
+          Manage your Lux L1s, validators, and deployments from one central location.
         </p>
       </div>
 
@@ -144,7 +144,7 @@ function ConsoleDashboard() {
               <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">Setup Primary Network Node</h3>
-            <p className="text-sm text-muted-foreground mb-4">Configure and deploy your Avalanche Primary Network node infrastructure</p>
+            <p className="text-sm text-muted-foreground mb-4">Configure and deploy your Lux Primary Network node infrastructure</p>
             <div className="text-xs text-muted-foreground font-medium">Get Started →</div>
           </div>
         </Link>
@@ -219,7 +219,7 @@ function ConsoleDashboard() {
               <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
             </div>
             <h3 className="font-semibold text-foreground mb-2">Get Test Tokens</h3>
-            <p className="text-sm text-muted-foreground mb-4">Access the testnet faucet to get AVAX for development and testing</p>
+            <p className="text-sm text-muted-foreground mb-4">Access the testnet faucet to get LUX for development and testing</p>
             <div className="text-xs text-muted-foreground font-medium">Get Tokens →</div>
           </div>
         </Link>
@@ -228,7 +228,7 @@ function ConsoleDashboard() {
       {/* Ecosystem Section */}
       <div className="mb-12">
         <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
-          Explore Avalanche L1s
+          Explore Lux L1s
         </h2>
         <div className="flex flex-wrap justify-center gap-3">
           {ecosystemChains.map((chain, index) => (
@@ -260,7 +260,7 @@ function ConsoleDashboard() {
         </div>
         <div className="text-center mt-6">
           <a
-            href="https://subnets.avax.network/subnets/"
+            href="https://subnets.lux.network/subnets/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"

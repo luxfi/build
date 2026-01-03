@@ -6,9 +6,9 @@ authors: [andyvargtz]
 icon: Terminal
 ---
 
-To add incentives for relayers, we need an ERC20 token on the source chain (Fuji C-Chain). We'll deploy a simple ERC20 token that will be used to pay relayers for delivering our cross-chain messages.
+To add incentives for relayers, we need an ERC20 token on the source chain (Testnet LUExchange-Chain). We'll deploy a simple ERC20 token that will be used to pay relayers for delivering our cross-chain messages.
 
-<ToolboxMdxWrapper chain="fuji-c">
+<ToolboxMdxWrapper chain="testnet-c">
   <DeployExampleERC20 />
 </ToolboxMdxWrapper>
 
@@ -33,7 +33,7 @@ Replace `<your-deployed-token-address>` with the address shown in the interface 
 You can check that you received the initial supply:
 
 ```bash
-cast call --rpc-url fuji-c \
+cast call --rpc-url testnet-c \
   $FEE_TOKEN_ADDRESS \
   "balanceOf(address)(uint256)" \
   $FUNDED_ADDRESS

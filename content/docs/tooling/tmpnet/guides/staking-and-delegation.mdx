@@ -1,21 +1,21 @@
 ---
-title: Testing P-Chain Staking and Delegation
+title: Testing Platform-Chain Staking and Delegation
 description: Test Primary Network validator staking, delegation, and reward distribution
 ---
 
-This guide covers testing P-Chain staking and delegation on the Primary Network, including validator registration, delegator management, reward distribution, and uptime tracking.
+This guide covers testing Platform-Chain staking and delegation on the Primary Network, including validator registration, delegator management, reward distribution, and uptime tracking.
 
-> This is a pattern guide. For a runnable example, see `tests/e2e/p/staking_rewards.go` in the avalanchego repo. Adapt the code there for your suite rather than copying these snippets verbatim.
+> This is a pattern guide. For a runnable example, see `tests/e2e/p/staking_rewards.go` in the luxgo repo. Adapt the code there for your suite rather than copying these snippets verbatim.
 
 **Where to put your tests:** keep tmpnet-based staking tests alongside your application code or in an existing test suite (e.g., `tests/e2e` in your repo). Avoid creating a new repo just for these; reuse your project’s test harness and helpers so fixtures, CI, and dependencies stay in one place.
 
 ## Overview
 
-P-Chain staking differs from L1 validator management:
-- **P-Chain**: AddValidatorTx / AddDelegatorTx on Primary Network
+Platform-Chain staking differs from L1 validator management:
+- **Platform-Chain**: AddValidatorTx / AddDelegatorTx on Primary Network
 - **L1s**: Contract-based validator managers (see [L1 Validator Management](/docs/tooling/tmpnet/guides/validator-management-native-staking))
 
-This guide covers P-Chain patterns from avalanchego tests including:
+This guide covers Platform-Chain patterns from luxgo tests including:
 - Validator registration with stake
 - Delegator addition and rewards
 - Uptime-based reward distribution
@@ -40,12 +40,12 @@ import (
     "testing"
     "time"
 
-    "github.com/ava-labs/avalanchego/ids"
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/units"
-    "github.com/ava-labs/avalanchego/vms/platformvm/txs"
-    "github.com/ava-labs/avalanchego/wallet/subnet/primary"
+    "github.com/luxfi/luxgo/ids"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/units"
+    "github.com/luxfi/luxgo/vms/platformvm/txs"
+    "github.com/luxfi/luxgo/wallet/subnet/primary"
     "github.com/onsi/ginkgo/v2"
     . "github.com/onsi/gomega"
 )
@@ -67,7 +67,7 @@ func TestPChainStaking(t *testing.T) {
     }
 
     RegisterFailHandler(ginkgo.Fail)
-    ginkgo.RunSpecs(t, "P-Chain Staking Test Suite")
+    ginkgo.RunSpecs(t, "Platform-Chain Staking Test Suite")
 }
 
 var _ = ginkgo.BeforeSuite(func() {
@@ -83,7 +83,7 @@ var _ = ginkgo.AfterSuite(func() {
     }
 })
 
-var _ = ginkgo.Describe("[P-Chain Staking]", func() {
+var _ = ginkgo.Describe("[Platform-Chain Staking]", func() {
     ginkgo.It("should add validator and delegate",
         ginkgo.Label("staking", "p-chain"),
         func() {
@@ -93,7 +93,7 @@ var _ = ginkgo.Describe("[P-Chain Staking]", func() {
             nodeID, txID := addPrimaryNetworkValidator(
                 ctx,
                 network,
-                2*units.Avax,  // stake
+                2*units.Lux,  // stake
                 24*time.Hour,  // duration
             )
 
@@ -105,7 +105,7 @@ var _ = ginkgo.Describe("[P-Chain Staking]", func() {
                 ctx,
                 network,
                 nodeID,
-                1*units.Avax,
+                1*units.Lux,
                 12*time.Hour,
             )
 
@@ -130,7 +130,7 @@ func addPrimaryNetworkValidator(
     // Get pre-funded key
     fundedKey := network.PreFundedKeys[0]
 
-    // Create P-Chain wallet
+    // Create Platform-Chain wallet
     pWallet := createPChainWallet(ctx, network, fundedKey)
 
     // Create new ephemeral node to validate
@@ -243,7 +243,7 @@ func addDelegator(
 
 ### Testing Validator Rewards
 
-Based on avalanchego `reward_validator_test.go`:
+Based on luxgo `reward_validator_test.go`:
 
 ```go
 ginkgo.It("should distribute validator rewards on completion",
@@ -254,7 +254,7 @@ ginkgo.It("should distribute validator rewards on completion",
         initialBalance := getBalance(ctx, network, validatorKey)
 
         // Add validator with min stake
-        stakeAmount := 2000 * units.Avax
+        stakeAmount := 2000 * units.Lux
         nodeID, _ := addPrimaryNetworkValidator(
             ctx,
             network,
@@ -288,19 +288,19 @@ ginkgo.It("should handle delegator rewards post-Cortina",
         ctx := context.Background()
 
         // Add validator
-        nodeID, _ := addPrimaryNetworkValidator(ctx, network, 2*units.Avax, 24*time.Hour)
+        nodeID, _ := addPrimaryNetworkValidator(ctx, network, 2*units.Lux, 24*time.Hour)
 
         // Add delegator
         delegatorInitial := getBalance(ctx, network, delegatorKey)
 
-        delegationID := addDelegator(ctx, network, nodeID, 1*units.Avax, 12*time.Hour)
+        delegationID := addDelegator(ctx, network, nodeID, 1*units.Lux, 12*time.Hour)
 
         // Wait for delegation period to end
         waitForDelegationEnd(ctx, network, delegationID)
 
         // Delegator receives 75% of rewards immediately (post-Cortina)
         delegatorFinal := getBalance(ctx, network, delegatorKey)
-        delegatorReward := delegatorFinal - delegatorInitial - (1 * units.Avax)
+        delegatorReward := delegatorFinal - delegatorInitial - (1 * units.Lux)
 
         Expect(delegatorReward).To(BeNumerically(">", 0))
 
@@ -313,7 +313,7 @@ ginkgo.It("should handle delegator rewards post-Cortina",
 
 ### E2E Uptime Test Pattern
 
-From avalanchego `staking_rewards.go`:
+From luxgo `staking_rewards.go`:
 
 ```go
 ginkgo.It("should only reward validators with sufficient uptime",
@@ -322,8 +322,8 @@ ginkgo.It("should only reward validators with sufficient uptime",
         ctx := context.Background()
 
         // Add two validators
-        alphaID, _ := addPrimaryNetworkValidator(ctx, network, 2*units.Avax, 48*time.Hour)
-        betaID, _ := addPrimaryNetworkValidator(ctx, network, 2*units.Avax, 48*time.Hour)
+        alphaID, _ := addPrimaryNetworkValidator(ctx, network, 2*units.Lux, 48*time.Hour)
+        betaID, _ := addPrimaryNetworkValidator(ctx, network, 2*units.Lux, 48*time.Hour)
 
         // Keep alpha online, stop beta
         betaNode := network.GetNode(betaID)
@@ -335,11 +335,11 @@ ginkgo.It("should only reward validators with sufficient uptime",
 
         // Alpha gets rewards (good uptime)
         alphaBalance := getBalance(ctx, network, alphaKey)
-        Expect(alphaBalance).To(BeNumerically(">", 2*units.Avax))
+        Expect(alphaBalance).To(BeNumerically(">", 2*units.Lux))
 
         // Beta gets no rewards (insufficient uptime)
         betaBalance := getBalance(ctx, network, betaKey)
-        Expect(betaBalance).To(Equal(2 * units.Avax)) // Only stake returned
+        Expect(betaBalance).To(Equal(2 * units.Lux)) // Only stake returned
     })
 ```
 
@@ -384,7 +384,7 @@ ginkgo.It("should handle maximum delegation correctly",
     func() {
         ctx := context.Background()
 
-        validatorStake := 2 * units.Avax
+        validatorStake := 2 * units.Lux
         nodeID, _ := addPrimaryNetworkValidator(ctx, network, validatorStake, 48*time.Hour)
 
         // First delegator: 5x validator stake (maximum)
@@ -392,14 +392,14 @@ ginkgo.It("should handle maximum delegation correctly",
         Expect(delegationID1).NotTo(BeEmpty())
 
         // Second delegator: Should fail (would exceed 5x limit)
-        _, err := addDelegatorTx(ctx, network, nodeID, 1*units.Avax, 24*time.Hour)
+        _, err := addDelegatorTx(ctx, network, nodeID, 1*units.Lux, 24*time.Hour)
         Expect(err).To(HaveOccurred())
     })
 ```
 
 ## Helper Functions
 
-### Create P-Chain Wallet
+### Create Platform-Chain Wallet
 
 ```go
 func createPChainWallet(
@@ -414,7 +414,7 @@ func createPChainWallet(
         ctx,
         &primary.WalletConfig{
             URI:          nodeURI,
-            AVAXKeychain: secp256k1fx.NewKeychain(key),
+            LUXKeychain: secp256k1fx.NewKeychain(key),
             EthKeychain:  secp256k1fx.NewKeychain(),
         },
     )
@@ -424,7 +424,7 @@ func createPChainWallet(
 }
 ```
 
-### Get P-Chain Balance
+### Get Platform-Chain Balance
 
 ```go
 func getBalance(
@@ -455,22 +455,22 @@ func getBalance(
 
 ## Best Practices
 
-1. **Use generous timeouts**: P-Chain operations can be slow
+1. **Use generous timeouts**: Platform-Chain operations can be slow
 2. **Test uptime requirements**: Validators need sufficient uptime for rewards
 3. **Handle fork behavior**: Cortina fork changed delegation reward distribution
 4. **Test edge cases**: Minimum stake, maximum delegation, invalid times
 5. **Verify balances**: Check stake return and reward distribution
 6. **Clean up validators**: Stop test nodes after validation periods
 
-## Key Differences: P-Chain vs L1 Validators
+## Key Differences: Platform-Chain vs L1 Validators
 
-| Aspect | P-Chain | L1 Validators |
+| Aspect | Platform-Chain | L1 Validators |
 |--------|---------|---------------|
 | Transaction Type | AddValidatorTx | Contract calls |
-| Staking | AVAX on P-Chain | Native/ERC20 tokens on L1 |
+| Staking | LUX on Platform-Chain | Native/ERC20 tokens on L1 |
 | Rewards | Protocol-level | Contract-managed |
-| Uptime | Tracked by P-Chain | Can use uptime proofs |
-| Registration | Direct P-Chain tx | Three-phase with Warp |
+| Uptime | Tracked by Platform-Chain | Can use uptime proofs |
+| Registration | Direct Platform-Chain tx | Three-phase with Warp |
 
 ## Next Steps
 
@@ -485,6 +485,6 @@ func getBalance(
 
 ## Additional Resources
 
-- [avalanchego P-Chain Tests](https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm)
-- [Reward Calculator Tests](https://github.com/ava-labs/avalanchego/blob/master/vms/platformvm/reward/calculator_test.go)
-- [Staking Rewards E2E](https://github.com/ava-labs/avalanchego/blob/master/tests/e2e/p/staking_rewards.go)
+- [luxgo Platform-Chain Tests](https://github.com/luxfi/luxgo/tree/master/vms/platformvm)
+- [Reward Calculator Tests](https://github.com/luxfi/luxgo/blob/master/vms/platformvm/reward/calculator_test.go)
+- [Staking Rewards E2E](https://github.com/luxfi/luxgo/blob/master/tests/e2e/p/staking_rewards.go)

@@ -33,7 +33,7 @@ export async function GET(
   } catch (error) {
     return createOGResponse({
       title: 'Hackathons',
-      description: 'Join exciting blockchain hackathons and build the future on Avalanche',
+      description: 'Join exciting blockchain hackathons and build the future on Lux',
       path: 'hackathons',
       fonts
     });

@@ -1,6 +1,6 @@
 ---
 title: Deployer AllowList
-description: Control which addresses can deploy smart contracts on your Avalanche L1 blockchain.
+description: Control which addresses can deploy smart contracts on your Lux L1 blockchain.
 ---
 
 ## Overview
@@ -35,7 +35,7 @@ By enabling this feature, you can define which addresses are allowed to deploy s
 
 ## Interface
 
-The Contract Deployer Allowlist implements the [AllowList interface](/docs/avalanche-l1s/precompiles/allowlist-interface):
+The Contract Deployer Allowlist implements the [AllowList interface](/docs/lux-l1s/precompiles/allowlist-interface):
 
 ```solidity
 //SPDX-License-Identifier: MIT
@@ -63,12 +63,12 @@ interface IAllowList {
 
 ## Permissions Management
 
-The Deployer Allowlist uses the [AllowList interface](/docs/avalanche-l1s/precompiles/allowlist-interface) to manage permissions. This provides a consistent way to:
+The Deployer Allowlist uses the [AllowList interface](/docs/lux-l1s/precompiles/allowlist-interface) to manage permissions. This provides a consistent way to:
 - Assign and revoke deployment permissions
 - Manage admin and manager roles
 - Control who can deploy contracts
 
-For detailed information about the role-based permission system and available functions, see the [AllowList interface documentation](/docs/avalanche-l1s/precompiles/allowlist-interface).
+For detailed information about the role-based permission system and available functions, see the [AllowList interface documentation](/docs/lux-l1s/precompiles/allowlist-interface).
 
 ## Best Practices
 
@@ -91,11 +91,11 @@ For detailed information about the role-based permission system and available fu
 
 ## Implementation
 
-You can find the implementation in the [subnet-evm repository](https://github.com/ava-labs/subnet-evm/blob/master/precompile/contracts/deployerallowlist/contract.go).
+You can find the implementation in the [subnet-evm repository](https://github.com/luxfi/subnet-evm/blob/master/precompile/contracts/deployerallowlist/contract.go).
 
 ## Interacting with the Precompile
 
 For information on how to interact with this precompile, see:
-- [Interacting with Precompiles](/docs/avalanche-l1s/precompiles/interacting-with-precompiles)
+- [Interacting with Precompiles](/docs/lux-l1s/precompiles/interacting-with-precompiles)
 - [Deployer Allowlist Console](/console/l1-access-restrictions/deployer-allowlist)
 

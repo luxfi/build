@@ -124,11 +124,11 @@ export function AddChainModal() {
                 // Clear any previous RPC URL errors
                 form.clearErrors('rpcUrl');
                 
-                const { ethereumChainId, avalancheChainId } = await fetchChainId(rpcUrl);
+                const { ethereumChainId, luxChainId } = await fetchChainId(rpcUrl);
                 setValue('evmChainId', ethereumChainId);
-                setValue('chainId', avalancheChainId);
+                setValue('chainId', luxChainId);
 
-                const blockchainInfo = await getBlockchainInfo(avalancheChainId);
+                const blockchainInfo = await getBlockchainInfo(luxChainId);
                 setValue('subnetId', blockchainInfo.subnetId);
                 setValue('chainName', blockchainInfo.blockchainName || "");
                 setValue('isTestnet', blockchainInfo.isTestnet);
@@ -146,7 +146,7 @@ export function AddChainModal() {
                 }
 
                 // Check if chain already exists
-                const existingChain = checkChainExists(avalancheChainId, ethereumChainId);
+                const existingChain = checkChainExists(luxChainId, ethereumChainId);
                 if (existingChain) {
                     form.setError('root', { 
                         type: 'duplicate', 
@@ -265,7 +265,7 @@ export function AddChainModal() {
                 <DialogOverlay />
                 <DialogContent ref={modalContentRef}>
                     <DialogTitle>
-                        Add an existing Avalanche L1
+                        Add an existing Lux L1
                     </DialogTitle>
 
                     {(isFetchingChainData || logoUrl) && (
@@ -293,7 +293,7 @@ export function AddChainModal() {
                                     <div className="mt-3">
                                         <Input
                                             id="anyChainId"
-                                            label="Chain ID (EVM number or Avalanche base58 format)"
+                                            label="Chain ID (EVM number or Lux base58 format)"
                                             value={anyChainId}
                                             onChange={setAnyChainId}
                                             placeholder="e.g. 43114 or 2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5"
@@ -386,8 +386,8 @@ export function AddChainModal() {
                             control={control}
                             render={({ field }) => (
                                 <Input
-                                    id="avalancheChainId"
-                                    label="Avalanche Chain ID (base58)"
+                                    id="luxChainId"
+                                    label="Lux Chain ID (base58)"
                                     value={field.value}
                                     disabled={true}
                                 />

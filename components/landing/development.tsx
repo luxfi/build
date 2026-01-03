@@ -11,7 +11,7 @@ const development = [
     label: "Documentation",
     title: "Explore our <strong>Docs</strong>.",
     description:
-      "Find references for all Avalanche SDKs, APIs, and tools.",
+      "Find references for all Lux SDKs, APIs, and tools.",
     icon: Book,
     href: "/docs",
   },
@@ -29,7 +29,7 @@ const development = [
     label: "Faucet",
     title: "Free Testnet Tokens",
     description:
-      "Instant access to testnet tokens for seamless development and testing across multiple Avalanche L1s.",
+      "Instant access to testnet tokens for seamless development and testing across multiple Lux L1s.",
     icon: Droplets,
     href: "/console/primary-network/faucet"
   },

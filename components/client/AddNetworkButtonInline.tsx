@@ -15,32 +15,32 @@ interface NetworkConfig {
   blockExplorerUrls: string[];
 }
 
-const AVALANCHE_MAINNET: NetworkConfig = {
+const LUX_MAINNET: NetworkConfig = {
   chainId: '0xA86A',
-  chainName: 'Avalanche C-Chain',
+  chainName: 'Lux LUExchange-Chain',
   nativeCurrency: {
-    name: 'Avalanche',
-    symbol: 'AVAX',
+    name: 'Lux',
+    symbol: 'LUX',
     decimals: 18,
   },
-  rpcUrls: ['https://api.avax.network/ext/bc/C/rpc'],
-  blockExplorerUrls: ['https://subnets.avax.network/c-chain'],
+  rpcUrls: ['https://api.lux.network/ext/bc/C/rpc'],
+  blockExplorerUrls: ['https://subnets.lux.network/c-chain'],
 };
 
-const AVALANCHE_FUJI: NetworkConfig = {
+const LUX_FUJI: NetworkConfig = {
   chainId: '0xA869',
-  chainName: 'Avalanche Fuji Testnet',
+  chainName: 'Lux Testnet Testnet',
   nativeCurrency: {
-    name: 'Avalanche',
-    symbol: 'AVAX',
+    name: 'Lux',
+    symbol: 'LUX',
     decimals: 18,
   },
-  rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
-  blockExplorerUrls: ['https://subnets-test.avax.network/c-chain'],
+  rpcUrls: ['https://api.lux-test.network/ext/bc/C/rpc'],
+  blockExplorerUrls: ['https://subnets-test.lux.network/c-chain'],
 };
 
 interface AddNetworkButtonInlineProps {
-  network: 'mainnet' | 'fuji';
+  network: 'mainnet' | 'testnet';
 }
 
 export default function AddNetworkButtonInline({ network }: AddNetworkButtonInlineProps) {
@@ -55,7 +55,7 @@ export default function AddNetworkButtonInline({ network }: AddNetworkButtonInli
 
     setStatus('adding');
 
-    const config = network === 'mainnet' ? AVALANCHE_MAINNET : AVALANCHE_FUJI;
+    const config = network === 'mainnet' ? LUX_MAINNET : LUX_FUJI;
 
     try {
       await window.ethereum.request({

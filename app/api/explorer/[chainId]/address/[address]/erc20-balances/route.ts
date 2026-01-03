@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
-import type { Erc20TokenBalance } from "@avalanche-sdk/chainkit/models/components";
+import { Lux } from "@luxfi/core";
+import type { Erc20TokenBalance } from "@luxfi/core/models/components";
 
-// Initialize Avalanche SDK
-const avalanche = new Avalanche({
+// Initialize Lux SDK
+const lux = new Lux({
   network: "mainnet",
 });
 
@@ -42,7 +42,7 @@ export async function GET(
     }
 
     // Fetch ERC20 balances - returns a PageIterator
-    const iterator = await avalanche.data.evm.address.balances.listErc20({
+    const iterator = await lux.data.evm.address.balances.listErc20({
       address: address,
       chainId: chainId,
       currency: 'usd',

@@ -30,7 +30,7 @@ The easiest part of this tutorial, we will need to define the genesis state of o
 The next step is to modify `suites.go` and update the file so that precompile-evm can call the Hardhat tests for StringStore. Go to `precompile-evm/tests/precompile/solidity` and find `suites.go`. Currently, your file should look like the following:
 
 ```go title="suites.go"
-// Copyright (C) 2019-2023, Ava Labs, Inc. All rights reserved.
+// Copyright (C) 2019-2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 // Implements solidity tests.
 package solidity
@@ -39,7 +39,7 @@ import (
     "context"
     "time"
 
-    "github.com/ava-labs/subnet-evm/tests/utils"
+    "github.com/luxfi/subnet-evm/tests/utils"
     ginkgo "github.com/onsi/ginkgo/v2"
 )
 
@@ -67,7 +67,7 @@ var _ = ginkgo.Describe("[Precompiles]", ginkgo.Ordered, func() {
 If you view the comments generated, you will already see a general structure for how we can declare our tests for precompiles. Let's take this template and use it to declare the tests for StringStore!
 
 ```go title="suites.go"
-// Copyright (C) 2019-2023, Ava Labs, Inc. All rights reserved.
+// Copyright (C) 2019-2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 // Implements solidity tests.
 package solidity
@@ -76,7 +76,7 @@ import (
     "context"
     "time"
 
-    "github.com/ava-labs/subnet-evm/tests/utils"
+    "github.com/luxfi/subnet-evm/tests/utils"
     ginkgo "github.com/onsi/ginkgo/v2"
 )
 
@@ -171,16 +171,16 @@ To start, go to `precompile-evm/contracts/test` and create a new file called `St
 2. Deploy our testing contract so that we can call the test functions
 3. Tell Hardhat to execute said test functions
 
-To make our lives even easier, Avalanche L1-EVM (a library that Precompile-EVM leverages) has helper functions to call our test functions simply by specifying the names of the test functions. You can find the helper functions here: https://github.com/ava-labs/subnet-evm/blob/master/contracts/test/utils.ts.
+To make our lives even easier, Lux L1-EVM (a library that Precompile-EVM leverages) has helper functions to call our test functions simply by specifying the names of the test functions. You can find the helper functions here: https://github.com/luxfi/subnet-evm/blob/master/contracts/test/utils.ts.
 
 In the end, our testing file will look as follows:
 
 ```ts title="StringStore.ts"
-// (c) 2019-2022, Ava Labs, Inc. All rights reserved.
+// (c) 2019-2022, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 import { ethers } from "hardhat"
-import { test } from "@avalabs/subnet-evm-contracts"
+import { test } from "@luxfi/subnet-evm-contracts"
 import { factory } from "typescript"
 
 const STRINGSTORE_ADDRESS = "0x0300000000000000000000000000000000000005"
@@ -229,13 +229,13 @@ However, if you have multiple precompiles to test, set `GINKGO_LABEL_FILTER` equ
 
   2 passing (12s)
 
-  < Exit [It] StringStore - /Users/Rodrigo.Villar/go/src/github.com/ava-labs/precompile-evm/tests/precompile/solidity/suites.go:40 @ 07/19/23 15:37:03.574 (16.134s)
+  < Exit [It] StringStore - /Users/Rodrigo.Villar/go/src/github.com/luxfi/precompile-evm/tests/precompile/solidity/suites.go:40 @ 07/19/23 15:37:03.574 (16.134s)
 • [16.134 seconds]
 ------------------------------
 [AfterSuite] 
-/Users/Rodrigo.Villar/go/pkg/mod/github.com/ava-labs/subnet-evm@v0.5.2/tests/utils/command.go:85
-  > Enter [AfterSuite] TOP-LEVEL - /Users/Rodrigo.Villar/go/pkg/mod/github.com/ava-labs/subnet-evm@v0.5.2/tests/utils/command.go:85 @ 07/19/23 15:37:03.575
-  < Exit [AfterSuite] TOP-LEVEL - /Users/Rodrigo.Villar/go/pkg/mod/github.com/ava-labs/subnet-evm@v0.5.2/tests/utils/command.go:85 @ 07/19/23 15:37:03.575 (0s)
+/Users/Rodrigo.Villar/go/pkg/mod/github.com/luxfi/subnet-evm@v0.5.2/tests/utils/command.go:85
+  > Enter [AfterSuite] TOP-LEVEL - /Users/Rodrigo.Villar/go/pkg/mod/github.com/luxfi/subnet-evm@v0.5.2/tests/utils/command.go:85 @ 07/19/23 15:37:03.575
+  < Exit [AfterSuite] TOP-LEVEL - /Users/Rodrigo.Villar/go/pkg/mod/github.com/luxfi/subnet-evm@v0.5.2/tests/utils/command.go:85 @ 07/19/23 15:37:03.575 (0s)
 [AfterSuite] PASSED [0.000 seconds]
 ------------------------------
 

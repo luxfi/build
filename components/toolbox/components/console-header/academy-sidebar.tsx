@@ -41,7 +41,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { AvalancheLogo } from "./avalanche-logo";
+import { LuxLogo } from "./lux-logo";
 
 // Navigation data structure matching user specification
 const data = {
@@ -68,7 +68,7 @@ const data = {
           icon: Droplets,
         },
         {
-          title: "C/P-Chain Bridge",
+          title: "C/Platform-Chain Bridge",
           url: "/console/primary-network/c-p-bridge",
           icon: ArrowLeftRight,
         },
@@ -78,7 +78,7 @@ const data = {
           icon: ArrowUpDown,
         },
         {
-          title: "AVAX Unit Converter",
+          title: "LUX Unit Converter",
           url: "/console/primary-network/unit-converter",
           icon: Calculator,
         },
@@ -257,7 +257,7 @@ export function AcademySidebar({ ...props }: AcademySidebarProps) {
           href="/console"
           className="flex items-center gap-2 group transition-all duration-200 p-2"
         >
-          <AvalancheLogo className="size-7" fill="currentColor" />
+          <LuxLogo className="size-7" fill="currentColor" />
           <span className="font-large font-semibold">Builder Console</span>
         </Link>
       </SidebarHeader>

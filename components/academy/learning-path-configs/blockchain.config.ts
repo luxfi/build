@@ -37,7 +37,7 @@ export const blockchainLearningPaths: CourseNode[] = [
     {
         id: "x402-payment-infrastructure",
         name: "x402 Payments",
-        description: "Instant & permissionless HTTP-native payments on Avalanche",
+        description: "Instant & permissionless HTTP-native payments on Lux",
         slug: "blockchain/x402-payment-infrastructure",
         category: "Development",
         dependencies: ["intro-to-solidity"],
@@ -58,24 +58,24 @@ export const blockchainLearningPaths: CourseNode[] = [
 
 export const blockchainCategoryStyles = {
     "Fundamentals": {
-        gradient: "from-blue-500 to-blue-600",
+        gradient: "from-zinc-600 to-zinc-700",
         icon: BookOpen,
-        lightBg: "bg-blue-50",
-        darkBg: "dark:bg-blue-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Fundamentals"
     },
     "Development": {
-        gradient: "from-orange-500 to-orange-600",
+        gradient: "from-zinc-500 to-zinc-600",
         icon: Code,
-        lightBg: "bg-orange-50",
-        darkBg: "dark:bg-orange-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Development"
     },
     "Privacy": {
-        gradient: "from-indigo-500 to-indigo-600",
+        gradient: "from-zinc-700 to-zinc-800",
         icon: Shield,
-        lightBg: "bg-indigo-50",
-        darkBg: "dark:bg-indigo-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Privacy"
     },
 };

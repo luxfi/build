@@ -1,13 +1,13 @@
 ---
 title: Rewards Formula
-description: Learn about the rewards formula for the Avalanche Primary Network validator
+description: Learn about the rewards formula for the Lux Primary Network validator
 ---
 
 ## Primary Network Validator Rewards
 
-Consider a Primary Network validator which stakes a $Stake$ amount of `AVAX` for $StakingPeriod$ seconds.
+Consider a Primary Network validator which stakes a $Stake$ amount of `LUX` for $StakingPeriod$ seconds.
 
-The potential reward is calculated **at the beginning of the staking period**. At the beginning of the staking period there is a $Supply$ amount of `AVAX` in the network. The maximum amount of `AVAX` is $MaximumSupply$. At the end of its staking period, a responsive Primary Network validator receives a reward.
+The potential reward is calculated **at the beginning of the staking period**. At the beginning of the staking period there is a $Supply$ amount of `LUX` in the network. The maximum amount of `LUX` is $MaximumSupply$. At the end of its staking period, a responsive Primary Network validator receives a reward.
 
 $$
 Potential Reward = \left(MaximumSupply - Supply \right) \times \frac{Stake}{Supply} \times \frac{Staking Period}{Minting Period} \times EffectiveConsumptionRate
@@ -16,11 +16,11 @@ $$
 where,
 
 $$
-MaximumSupply - Supply = \text{the number of AVAX tokens left to emit in the network}
+MaximumSupply - Supply = \text{the number of LUX tokens left to emit in the network}
 $$
 
 $$
-\frac{Stake}{Supply} = \text{the individual's stake as a percentage of all available AVAX tokens in the network}
+\frac{Stake}{Supply} = \text{the individual's stake as a percentage of all available LUX tokens in the network}
 $$
 
 $$
@@ -92,18 +92,18 @@ It allows you to specify percentages up to 4 digital positions. To denominate yo
 
 For reference we list below the Primary Network parameters on Mainnet:
 
-- `AssetID = Avax`
-- `InitialSupply = 240_000_000 Avax`
-- `MaximumSupply = 720_000_000 Avax`.
+- `AssetID = Lux`
+- `InitialSupply = 240_000_000 Lux`
+- `MaximumSupply = 720_000_000 Lux`.
 - `MinConsumptionRate = 0.10 * reward.PercentDenominator`.
 - `MaxConsumptionRate = 0.12 * reward.PercentDenominator`.
 - `Minting Period = 365 * 24 * time.Hour`.
-- `MinValidatorStake = 2_000 Avax`.
-- `MaxValidatorStake = 3_000_000 Avax`.
+- `MinValidatorStake = 2_000 Lux`.
+- `MaxValidatorStake = 3_000_000 Lux`.
 - `MinStakeDuration = 2 * 7 * 24 * time.Hour`.
 - `MaxStakeDuration = 365 * 24 * time.Hour`.
 - `MinDelegationFee = 20000`, that is `2%`.
-- `MinDelegatorStake = 25 Avax`.
+- `MinDelegatorStake = 25 Lux`.
 - `MaxValidatorWeightFactor = 5`. This is a platformVM parameter rather than a genesis one, so it's shared across networks.
 - `UptimeRequirement = 0.8`, that is `80%`.
 

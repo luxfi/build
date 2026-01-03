@@ -30,7 +30,7 @@ export const menuSections: NavSection[] = [
     title: 'Academy',
     href: '/academy',
     items: [
-      { text: 'Avalanche L1 Academy', href: '/academy?path=avalanche-l1' },
+      { text: 'Lux L1 Academy', href: '/academy?path=lux-l1' },
       { text: 'Entrepreneur Academy', href: '/academy?path=entrepreneur' },
       { text: 'Blockchain Academy', href: '/academy?path=blockchain' },
     ],
@@ -61,7 +61,7 @@ export const menuSections: NavSection[] = [
     href: '/hackathons',
     items: [
       { text: 'Hackathons', href: '/hackathons' },
-      { text: 'Avalanche Calendar', href: 'https://lu.ma/calendar/cal-Igl2DB6quhzn7Z4', external: true },
+      { text: 'Lux Calendar', href: 'https://lu.ma/calendar/cal-Igl2DB6quhzn7Z4', external: true },
       { text: 'Community Driven Events', href: 'https://lu.ma/Team1?utm_source=builder_hub', external: true },
       { text: 'Campus Connect', href: '/university' },
     ],
@@ -73,7 +73,7 @@ export const menuSections: NavSection[] = [
       { text: 'Codebase', href: '/codebase' },
       { text: 'InfraBUIDL', href: '/grants/infrabuidl' },
       { text: 'InfraBUIDL (AI)', href: '/grants/infrabuidlai' },
-      { text: 'Retro9000', href: 'https://retro9000.avax.network', external: true },
+      { text: 'Retro9000', href: 'https://retro9000.lux.network', external: true },
       { text: 'Blizzard Fund', href: 'https://www.blizzard.fund/', external: true },
     ],
   },
@@ -90,8 +90,8 @@ export const menuSections: NavSection[] = [
     href: '/stats/overview',
     items: [
       { text: 'Playground', href: '/stats/playground' },
-      { text: 'Avalanche L1s', href: '/stats/overview' },
-      { text: 'C-Chain', href: '/stats/l1/c-chain' },
+      { text: 'Lux L1s', href: '/stats/overview' },
+      { text: 'LUExchange-Chain', href: '/stats/l1/c-chain' },
       { text: 'Validators', href: '/stats/validators' },
     ],
   },

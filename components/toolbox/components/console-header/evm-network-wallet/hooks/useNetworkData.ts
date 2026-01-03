@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { useWalletAddress, useBalances, useNetworkInfo, useWalletStore } from '@/components/toolbox/stores/walletStore'
 import { useL1List } from '@/components/toolbox/stores/l1ListStore'
-import { avalanche, avalancheFuji } from 'viem/chains'
+import { lux, luxTestnet } from 'viem/chains'
 import { balanceService } from '@/components/toolbox/services/balanceService'
 import { L1ListItem } from '@/components/toolbox/stores/l1ListStore'
 
@@ -42,10 +42,10 @@ export function useNetworkData() {
     let currentNet = (l1List || []).find((net: L1ListItem) => net.evmChainId === walletChainId)
 
     // If wallet is connected but we don't have a proper chainId or network found,
-    // default to C-Chain to avoid showing "No Network" during account switching
+    // default to LUExchange-Chain to avoid showing "No Network" during account switching
     if (!currentNet || !walletChainId || walletChainId === 0) {
       currentNet = (l1List || []).find((net: L1ListItem) =>
-        net.evmChainId === (isTestnet ? avalancheFuji.id : avalanche.id)
+        net.evmChainId === (isTestnet ? luxTestnet.id : lux.id)
       )
     }
 
@@ -60,7 +60,7 @@ export function useNetworkData() {
     }
 
     // Determine the appropriate balance based on network type
-    const isCChain = currentNet.evmChainId === avalanche.id || currentNet.evmChainId === avalancheFuji.id
+    const isCChain = currentNet.evmChainId === lux.id || currentNet.evmChainId === luxTestnet.id
     const balance = isCChain ? cChainBalance : (l1Balances[currentNet.evmChainId.toString()] || 0)
 
     return {
@@ -70,7 +70,7 @@ export function useNetworkData() {
   }, [l1List, walletChainId, isTestnet, cChainBalance, l1Balances, walletEVMAddress])
 
   const getNetworkBalance = (network: (typeof l1List)[0]) => {
-    const isCChain = network.evmChainId === avalanche.id || network.evmChainId === avalancheFuji.id
+    const isCChain = network.evmChainId === lux.id || network.evmChainId === luxTestnet.id
 
     if (isCChain) {
       return cChainBalance

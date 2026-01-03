@@ -13,7 +13,7 @@ interface Props {
   onRemove: (index: number) => void
   onUpdate: (index: number, updated: Partial<ConvertToL1Validator>) => void
   l1TotalInitializedWeight?: bigint | null
-  userPChainBalanceNavax?: bigint | null
+  userPChainBalanceNlux?: bigint | null
   hideConsensusWeight?: boolean
 }
 
@@ -25,13 +25,13 @@ export function ValidatorItem({
   onRemove,
   onUpdate,
   l1TotalInitializedWeight = null,
-  userPChainBalanceNavax = null,
+  userPChainBalanceNlux = null,
   hideConsensusWeight = false,
 }: Props) {
 
   let insufficientBalanceError: string | null = null
-  if (userPChainBalanceNavax !== null && validator.validatorBalance > userPChainBalanceNavax) {
-    insufficientBalanceError = `Validator balance (${(Number(validator.validatorBalance) / 1e9).toFixed(2)} AVAX) exceeds your P-Chain balance (${(Number(userPChainBalanceNavax) / 1e9).toFixed(2)} AVAX).`
+  if (userPChainBalanceNlux !== null && validator.validatorBalance > userPChainBalanceNlux) {
+    insufficientBalanceError = `Validator balance (${(Number(validator.validatorBalance) / 1e9).toFixed(2)} LUX) exceeds your Platform-Chain balance (${(Number(userPChainBalanceNlux) / 1e9).toFixed(2)} LUX).`
   }
 
   const hasWeightError = l1TotalInitializedWeight && l1TotalInitializedWeight > 0n && validator.validatorWeight > 0n &&
@@ -118,7 +118,7 @@ export function ValidatorItem({
             )}
             <div className="space-y-2">
               <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                Validator Balance (P-Chain AVAX)
+                Validator Balance (Platform-Chain LUX)
               </label>
               <input
                 type="number"
@@ -136,7 +136,7 @@ export function ValidatorItem({
                 )}
               />
               <p className="text-xs mt-0 mb-0 text-zinc-500 dark:text-zinc-400">
-                Will last for {getBalanceDurationEstimate(Number(validator.validatorBalance) / 1000000000)} with a fee of 1.33 AVAX per month.
+                Will last for {getBalanceDurationEstimate(Number(validator.validatorBalance) / 1000000000)} with a fee of 1.33 LUX per month.
               </p>
               {insufficientBalanceError && (
                 <p className="text-xs mt-1 text-red-500 dark:text-red-400">

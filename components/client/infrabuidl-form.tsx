@@ -96,14 +96,14 @@ export default function GrantApplicationForm({
       // Financial Overview defaults
       previous_funding: [],
       funding_details: "",
-      previous_avalanche_funding_grants: [],
+      previous_lux_funding_grants: [],
       funding_amount_codebase: "",
       funding_amount_infrabuidl: "",
       funding_amount_infrabuidl_ai: "",
       funding_amount_retro9000: "",
       funding_amount_blizzard: "",
       funding_amount_ava_labs: "",
-      funding_amount_other_avalanche: "",
+      funding_amount_other_lux: "",
 
       // Grant Budget Structure & Milestones defaults
       requested_funding_range_milestone: "",
@@ -130,20 +130,20 @@ export default function GrantApplicationForm({
       vc_fundraising_support_check: "",
       aethir_ai_gaming_fund_check: "",
 
-      // Contribution to the Avalanche Ecosystem defaults
+      // Contribution to the Lux Ecosystem defaults
       current_development_stage: "",
       project_work_duration: "",
       project_live_status: "",
       multichain_check: "",
       multichain_chains: "",
-      first_build_avalanche: "",
-      previous_avalanche_project_info: "",
-      avalanche_contribution: "",
-      avalanche_benefit_check: "",
-      avalanche_l1_project_benefited_1: "",
-      avalanche_l1_project_benefited_1_website: "",
-      avalanche_l1_project_benefited_2: "",
-      avalanche_l1_project_benefited_2_website: "",
+      first_build_lux: "",
+      previous_lux_project_info: "",
+      lux_contribution: "",
+      lux_benefit_check: "",
+      lux_l1_project_benefited_1: "",
+      lux_l1_project_benefited_1_website: "",
+      lux_l1_project_benefited_2: "",
+      lux_l1_project_benefited_2_website: "",
       similar_project_check: "",
       similar_project_name_1: "",
       similar_project_website_1: "",
@@ -154,7 +154,7 @@ export default function GrantApplicationForm({
       direct_competitor_1_website: "",
       direct_competitor_2: "",
       direct_competitor_2_website: "",
-      token_launch_avalanche_check: "",
+      token_launch_lux_check: "",
       token_launch_other: "",
       open_source_check: "",
 
@@ -204,8 +204,8 @@ export default function GrantApplicationForm({
 
       // Other defaults
       kyb_willingness: "",
-      avalanche_grant_source: "",
-      avalanche_grant_source_other: "",
+      lux_grant_source: "",
+      lux_grant_source_other: "",
       program_referral_check: "",
       program_referrer: "",
 
@@ -220,16 +220,16 @@ export default function GrantApplicationForm({
   const watchProjectType = form.watch("project_type");
   const watchApplicantJobRole = form.watch("applicant_job_role");
   const watchPreviousFunding = form.watch("previous_funding");
-  const watchPreviousAvalancheFunding = form.watch(
-    "previous_avalanche_funding_grants"
+  const watchPreviousLuxFunding = form.watch(
+    "previous_lux_funding_grants"
   );
   const watchMultichainCheck = form.watch("multichain_check");
-  const watchFirstBuildAvalanche = form.watch("first_build_avalanche");
-  const watchAvalancheBenefitCheck = form.watch("avalanche_benefit_check");
+  const watchFirstBuildLux = form.watch("first_build_lux");
+  const watchLuxBenefitCheck = form.watch("lux_benefit_check");
   const watchSimilarProjectCheck = form.watch("similar_project_check");
   const watchDirectCompetitorCheck = form.watch("direct_competitor_check");
-  const watchTokenLaunchCheck = form.watch("token_launch_avalanche_check");
-  const watchGrantSource = form.watch("avalanche_grant_source");
+  const watchTokenLaunchCheck = form.watch("token_launch_lux_check");
+  const watchGrantSource = form.watch("lux_grant_source");
   const watchReferralCheck = form.watch("program_referral_check");
 
   useEffect(() => {
@@ -250,8 +250,8 @@ export default function GrantApplicationForm({
     );
 
     setShowMultichainDetails(watchMultichainCheck === "Yes");
-    setShowPreviousProjectDetails(watchFirstBuildAvalanche === "No");
-    setShowBenefitDetails(watchAvalancheBenefitCheck === "Yes");
+    setShowPreviousProjectDetails(watchFirstBuildLux === "No");
+    setShowBenefitDetails(watchLuxBenefitCheck === "Yes");
     setShowSimilarProjects(watchSimilarProjectCheck === "Yes");
     setShowCompetitors(watchDirectCompetitorCheck === "Yes");
     setShowTokenLaunchDetails(watchTokenLaunchCheck === "No");
@@ -261,10 +261,10 @@ export default function GrantApplicationForm({
     watchProjectType,
     watchApplicantJobRole,
     watchPreviousFunding,
-    watchPreviousAvalancheFunding,
+    watchPreviousLuxFunding,
     watchMultichainCheck,
-    watchFirstBuildAvalanche,
-    watchAvalancheBenefitCheck,
+    watchFirstBuildLux,
+    watchLuxBenefitCheck,
     watchSimilarProjectCheck,
     watchDirectCompetitorCheck,
     watchTokenLaunchCheck,
@@ -623,7 +623,7 @@ export default function GrantApplicationForm({
                       <FormDescription>
                         Please tell us more about the project and clearly state
                         its primary objectives and key use cases. Explain how
-                        the solution enhances Avalanche's capabilities and why
+                        the solution enhances Lux's capabilities and why
                         it's well-suited for emerging market conditions.
                       </FormDescription>
                       <FormControl>
@@ -1201,14 +1201,14 @@ export default function GrantApplicationForm({
                   </div>
                 )}
 
-                {/* Previous Avalanche Funding/Grants */}
+                {/* Previous Lux Funding/Grants */}
                 <FormField
                   control={form.control}
-                  name="previous_avalanche_funding_grants"
+                  name="previous_lux_funding_grants"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="dark:text-gray-200 text-md">
-                        Previous Avalanche Funding/Grants{" "}
+                        Previous Lux Funding/Grants{" "}
                         <span className="text-red-500">*</span>
                       </FormLabel>
                       <div className="flex flex-col space-y-2">
@@ -1336,30 +1336,30 @@ export default function GrantApplicationForm({
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox
-                            id="ava-labs-investment"
+                            id="luxfi-investment"
                             checked={field.value.includes(
-                              "Ava Labs Investment"
+                              "Lux Network Investment"
                             )}
                             onCheckedChange={(checked) => {
                               const newValue = checked
-                                ? [...field.value, "Ava Labs Investment"]
+                                ? [...field.value, "Lux Network Investment"]
                                 : field.value.filter(
-                                    (v) => v !== "Ava Labs Investment"
+                                    (v) => v !== "Lux Network Investment"
                                   );
                               field.onChange(newValue);
                             }}
                             className="border-gray-300 dark:border-zinc-800 dark:bg-zinc-800"
                           />
                           <label
-                            htmlFor="ava-labs-investment"
+                            htmlFor="luxfi-investment"
                             className="text-sm font-medium leading-none"
                           >
-                            Ava Labs Investment
+                            Lux Network Investment
                           </label>
                         </div>
                         <div className="flex items-center space-x-2">
                           <Checkbox
-                            id="other-avalanche"
+                            id="other-lux"
                             checked={field.value.includes("Other")}
                             onCheckedChange={(checked) => {
                               const newValue = checked
@@ -1370,7 +1370,7 @@ export default function GrantApplicationForm({
                             className="border-gray-300 dark:border-zinc-800 dark:bg-zinc-800"
                           />
                           <label
-                            htmlFor="other-avalanche"
+                            htmlFor="other-lux"
                             className="text-sm font-medium leading-none"
                           >
                             Other
@@ -1382,15 +1382,15 @@ export default function GrantApplicationForm({
                   )}
                 />
 
-                {/* Funding Amount Inputs for selected Avalanche programs */}
-                {watchPreviousAvalancheFunding.some((funding) =>
+                {/* Funding Amount Inputs for selected Lux programs */}
+                {watchPreviousLuxFunding.some((funding) =>
                   [
                     "Codebase",
                     "infraBUIDL()",
                     "infraBUIDL(AI)",
                     "Retro9000",
                     "Blizzard",
-                    "Ava Labs Investment",
+                    "Lux Network Investment",
                     "Other",
                   ].includes(funding)
                 ) && (
@@ -1399,7 +1399,7 @@ export default function GrantApplicationForm({
                       Funding Amounts
                     </h4>
 
-                    {watchPreviousAvalancheFunding.includes("Codebase") && (
+                    {watchPreviousLuxFunding.includes("Codebase") && (
                       <FormField
                         control={form.control}
                         name="funding_amount_codebase"
@@ -1421,7 +1421,7 @@ export default function GrantApplicationForm({
                       />
                     )}
 
-                    {watchPreviousAvalancheFunding.includes("infraBUIDL()") && (
+                    {watchPreviousLuxFunding.includes("infraBUIDL()") && (
                       <FormField
                         control={form.control}
                         name="funding_amount_infrabuidl"
@@ -1443,7 +1443,7 @@ export default function GrantApplicationForm({
                       />
                     )}
 
-                    {watchPreviousAvalancheFunding.includes(
+                    {watchPreviousLuxFunding.includes(
                       "infraBUIDL(AI)"
                     ) && (
                       <FormField
@@ -1467,7 +1467,7 @@ export default function GrantApplicationForm({
                       />
                     )}
 
-                    {watchPreviousAvalancheFunding.includes("Retro9000") && (
+                    {watchPreviousLuxFunding.includes("Retro9000") && (
                       <FormField
                         control={form.control}
                         name="funding_amount_retro9000"
@@ -1489,7 +1489,7 @@ export default function GrantApplicationForm({
                       />
                     )}
 
-                    {watchPreviousAvalancheFunding.includes("Blizzard") && (
+                    {watchPreviousLuxFunding.includes("Blizzard") && (
                       <FormField
                         control={form.control}
                         name="funding_amount_blizzard"
@@ -1511,8 +1511,8 @@ export default function GrantApplicationForm({
                       />
                     )}
 
-                    {watchPreviousAvalancheFunding.includes(
-                      "Ava Labs Investment"
+                    {watchPreviousLuxFunding.includes(
+                      "Lux Network Investment"
                     ) && (
                       <FormField
                         control={form.control}
@@ -1520,7 +1520,7 @@ export default function GrantApplicationForm({
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="dark:text-gray-200 text-sm">
-                              Ava Labs Investment Amount
+                              Lux Network Investment Amount
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -1535,14 +1535,14 @@ export default function GrantApplicationForm({
                       />
                     )}
 
-                    {watchPreviousAvalancheFunding.includes("Other") && (
+                    {watchPreviousLuxFunding.includes("Other") && (
                       <FormField
                         control={form.control}
-                        name="funding_amount_other_avalanche"
+                        name="funding_amount_other_lux"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="dark:text-gray-200 text-sm">
-                              Other Avalanche Funding Amount
+                              Other Lux Funding Amount
                             </FormLabel>
                             <FormControl>
                               <Input
@@ -2290,12 +2290,12 @@ export default function GrantApplicationForm({
                           resource support through Aethir's Ecosystem Fund for
                           AI and gaming innovators? More information:{" "}
                           <a
-                            href="https://www.avax.network/blog/avalanche-foundation-partners-with-aethir-to-fast-track-infrabuidl-ai-grantees-into-100m-ecosystem-fund"
+                            href="https://www.lux.network/blog/lux-foundation-partners-with-aethir-to-fast-track-infrabuidl-ai-grantees-into-100m-ecosystem-fund"
                             className="text-blue-500 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            https://www.avax.network/blog/avalanche-foundation-partners-with-aethir-to-fast-track-infrabuidl-ai-grantees-into-100m-ecosystem-fund
+                            https://www.lux.network/blog/lux-foundation-partners-with-aethir-to-fast-track-infrabuidl-ai-grantees-into-100m-ecosystem-fund
                           </a>
                         </FormDescription>
                         <Select
@@ -2330,11 +2330,11 @@ export default function GrantApplicationForm({
               </div>
             </div>
 
-            {/* Contribution to the Avalanche Ecosystem */}
+            {/* Contribution to the Lux Ecosystem */}
             <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
-                  Contribution to the Avalanche Ecosystem
+                  Contribution to the Lux Ecosystem
                 </h2>
               </div>
 
@@ -2551,14 +2551,14 @@ export default function GrantApplicationForm({
                   />
                 )}
 
-                {/* Will this be your first time building in the Avalanche Ecosystem? */}
+                {/* Will this be your first time building in the Lux Ecosystem? */}
                 <FormField
                   control={form.control}
-                  name="first_build_avalanche"
+                  name="first_build_lux"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="dark:text-gray-200 text-md">
-                        Will this be your first time building in the Avalanche
+                        Will this be your first time building in the Lux
                         Ecosystem? <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
@@ -2589,7 +2589,7 @@ export default function GrantApplicationForm({
                 {showPreviousProjectDetails && (
                   <FormField
                     control={form.control}
-                    name="previous_avalanche_project_info"
+                    name="previous_lux_project_info"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="dark:text-gray-200 text-md">
@@ -2599,7 +2599,7 @@ export default function GrantApplicationForm({
                         <FormControl>
                           <Textarea
                             className="min-h-[100px] border-gray-300 dark:border-zinc-800 dark:bg-zinc-800 dark:text-gray-100"
-                            placeholder="Describe your previous Avalanche projects and experience"
+                            placeholder="Describe your previous Lux projects and experience"
                             {...field}
                           />
                         </FormControl>
@@ -2609,26 +2609,26 @@ export default function GrantApplicationForm({
                   />
                 )}
 
-                {/* Contribution to the Avalanche Ecosystem */}
+                {/* Contribution to the Lux Ecosystem */}
                 <FormField
                   control={form.control}
-                  name="avalanche_contribution"
+                  name="lux_contribution"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="dark:text-gray-200 text-md">
-                        Contribution to the Avalanche Ecosystem{" "}
+                        Contribution to the Lux Ecosystem{" "}
                         <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormDescription>
-                        Please explain how your project contributes to Avalanche
+                        Please explain how your project contributes to Lux
                         and your expected outcomes. Be specific about the
-                        outcomes you expect to see on the Avalanche Network as a
+                        outcomes you expect to see on the Lux Network as a
                         result of you potentially receiving this grant.
                       </FormDescription>
                       <FormControl>
                         <Textarea
                           className="min-h-[150px] border-gray-300 dark:border-zinc-800 dark:bg-zinc-800 dark:text-gray-100"
-                          placeholder="E.g., 10,000 new unique wallets on Avalanche in the first 6 months of launch."
+                          placeholder="E.g., 10,000 new unique wallets on Lux in the first 6 months of launch."
                           {...field}
                         />
                       </FormControl>
@@ -2637,14 +2637,14 @@ export default function GrantApplicationForm({
                   )}
                 />
 
-                {/* Would any existing Avalanche projects/L1s benefit from your proposal being implemented? */}
+                {/* Would any existing Lux projects/L1s benefit from your proposal being implemented? */}
                 <FormField
                   control={form.control}
-                  name="avalanche_benefit_check"
+                  name="lux_benefit_check"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="dark:text-gray-200 text-md">
-                        Would any existing Avalanche projects/L1s benefit from
+                        Would any existing Lux projects/L1s benefit from
                         your proposal being implemented?{" "}
                         <span className="text-red-500">*</span>
                       </FormLabel>
@@ -2660,16 +2660,16 @@ export default function GrantApplicationForm({
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem
                               value="Yes"
-                              id="avalanche-benefit-yes"
+                              id="lux-benefit-yes"
                             />
-                            <label htmlFor="avalanche-benefit-yes">Yes</label>
+                            <label htmlFor="lux-benefit-yes">Yes</label>
                           </div>
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem
                               value="No"
-                              id="avalanche-benefit-no"
+                              id="lux-benefit-no"
                             />
-                            <label htmlFor="avalanche-benefit-no">No</label>
+                            <label htmlFor="lux-benefit-no">No</label>
                           </div>
                         </RadioGroup>
                       </FormControl>
@@ -2684,7 +2684,7 @@ export default function GrantApplicationForm({
                     <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-gray-700">
                       <FormField
                         control={form.control}
-                        name="avalanche_l1_project_benefited_1"
+                        name="lux_l1_project_benefited_1"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="dark:text-gray-200 text-md">
@@ -2705,7 +2705,7 @@ export default function GrantApplicationForm({
 
                       <FormField
                         control={form.control}
-                        name="avalanche_l1_project_benefited_1_website"
+                        name="lux_l1_project_benefited_1_website"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="dark:text-gray-200 text-md">
@@ -2726,7 +2726,7 @@ export default function GrantApplicationForm({
 
                       <FormField
                         control={form.control}
-                        name="avalanche_l1_project_benefited_2"
+                        name="lux_l1_project_benefited_2"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="dark:text-gray-200 text-md">
@@ -2746,7 +2746,7 @@ export default function GrantApplicationForm({
 
                       <FormField
                         control={form.control}
-                        name="avalanche_l1_project_benefited_2_website"
+                        name="lux_l1_project_benefited_2_website"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="dark:text-gray-200 text-md">
@@ -3019,15 +3019,15 @@ export default function GrantApplicationForm({
                   </div>
                 )}
 
-                {/* Do you plan on launching your project's token on Avalanche? */}
+                {/* Do you plan on launching your project's token on Lux? */}
                 <FormField
                   control={form.control}
-                  name="token_launch_avalanche_check"
+                  name="token_launch_lux_check"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="dark:text-gray-200 text-md">
                         Do you plan on launching your project's token on
-                        Avalanche? <span className="text-red-500">*</span>
+                        Lux? <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
                         <RadioGroup
@@ -4124,7 +4124,7 @@ export default function GrantApplicationForm({
 
                 <FormField
                   control={form.control}
-                  name="avalanche_grant_source"
+                  name="lux_grant_source"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="dark:text-gray-200 text-md">
@@ -4145,16 +4145,16 @@ export default function GrantApplicationForm({
                         </FormControl>
                         <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
                           <SelectItem
-                            value="Avalanche Website"
+                            value="Lux Website"
                             className="dark:text-gray-200"
                           >
-                            Avalanche Website
+                            Lux Website
                           </SelectItem>
                           <SelectItem
-                            value="Avalanche Forum"
+                            value="Lux Forum"
                             className="dark:text-gray-200"
                           >
-                            Avalanche Forum
+                            Lux Forum
                           </SelectItem>
                           <SelectItem
                             value="Twitter/X"
@@ -4221,7 +4221,7 @@ export default function GrantApplicationForm({
                 {watchGrantSource === "Other" && (
                   <FormField
                     control={form.control}
-                    name="avalanche_grant_source_other"
+                    name="lux_grant_source_other"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="dark:text-gray-200 text-md">
@@ -4301,7 +4301,7 @@ export default function GrantApplicationForm({
                 {/* Legal Compliance */}
                 <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-                    The Avalanche Foundation needs the contact information you
+                    The Lux Foundation needs the contact information you
                     provide to us to contact you about our products and
                     services. You may unsubscribe from these communications at
                     any time. For information on how to unsubscribe, as well as
@@ -4328,11 +4328,11 @@ export default function GrantApplicationForm({
                         <div className="space-y-1 leading-none">
                           <FormLabel className="font-normal dark:text-gray-200">
                             By checking this box, you agree and authorize the
-                            Avalanche Foundation to utilize artificial
+                            Lux Foundation to utilize artificial
                             intelligence systems to process the information in
                             your application, any related material you provide
                             to us and any related communications between you and
-                            the Avalanche Foundation, in order to assess the
+                            the Lux Foundation, in order to assess the
                             eligibility and suitability of your application and
                             proposal. You can withdraw your consent at any time.
                             For more details on data processing and your rights,
@@ -4360,7 +4360,7 @@ export default function GrantApplicationForm({
                         <div className="space-y-1 leading-none">
                           <FormLabel className="font-normal dark:text-gray-200">
                             Check this box to stay up to date with all things
-                            Avalanche, including promotional emails about
+                            Lux, including promotional emails about
                             events, initiatives and programs. You can
                             unsubscribe anytime.
                           </FormLabel>

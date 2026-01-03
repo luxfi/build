@@ -67,26 +67,26 @@ export function SidebarActions({
   };
 
   const openInChatGPT = () => {
-    const mdxUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://build.avax.network'}${pagePath}`;
+    const mdxUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://build.lux.network'}${pagePath}`;
     const prompt = `Read ${mdxUrl}, I want to ask questions about it.`;
     const chatGPTUrl = `https://chat.openai.com/?q=${encodeURIComponent(prompt)}`;
     window.open(chatGPTUrl, '_blank', 'noopener,noreferrer');
   };
 
   const openInClaude = () => {
-    const mdxUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://build.avax.network'}${pagePath}`;
+    const mdxUrl = `${typeof window !== 'undefined' ? window.location.origin : 'https://build.lux.network'}${pagePath}`;
     const prompt = `Read ${mdxUrl}, I want to ask questions about it.`;
     const claudeUrl = `https://claude.ai/new?q=${encodeURIComponent(prompt)}`;
     window.open(claudeUrl, '_blank', 'noopener,noreferrer');
   };
 
   const reportIssueUrl = newGithubIssueUrl({
-    user: 'ava-labs',
-    repo: 'builders-hub',
+    user: 'luxfi',
+    repo: 'lux-build',
     title: `Update ${title} information`,
     body: `It appears that the information on this page might be outdated. Please review and update as needed.
 
-Page: [${pagePath}](https://build.avax.network${pagePath})
+Page: [${pagePath}](https://build.lux.network${pagePath})
 
 [Provide more details here...]`,
     labels: pageType === 'academy' ? ['outdated', 'Academy'] : ['outdated', 'Docs'],

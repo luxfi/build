@@ -16,7 +16,7 @@ export function AddToWalletButton({
   rpcUrl, 
   chainName, 
   chainId, 
-  tokenSymbol = "AVAX",
+  tokenSymbol = "LUX",
   className = "",
   variant = "default",
 }: AddToWalletButtonProps) {

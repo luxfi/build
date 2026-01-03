@@ -30,7 +30,7 @@ interface RpcBlock {
   hash: string;
   parentHash: string;
   timestamp: string;
-  timestampMilliseconds?: string; // Avalanche-specific: block timestamp in milliseconds (hex)
+  timestampMilliseconds?: string; // Lux-specific: block timestamp in milliseconds (hex)
   miner: string;
   transactions: RpcTransaction[];
   gasUsed: string;
@@ -161,7 +161,7 @@ export async function GET(
     // Extract transaction hashes for the response
     const transactionHashes = block.transactions.map(tx => tx.hash);
 
-    // Parse timestampMilliseconds for Avalanche (hex string to number)
+    // Parse timestampMilliseconds for Lux (hex string to number)
     const timestampMilliseconds = block.timestampMilliseconds 
       ? parseInt(block.timestampMilliseconds, 16) 
       : undefined;

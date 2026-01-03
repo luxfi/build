@@ -74,7 +74,7 @@ export default async function Submission({
           <h3 className='text-xl font-semibold mb-2'>Evaluation Criteria</h3>
           <p className='text-sm'>
             Projects will be judged on value proposition, technical complexity
-            and usage of Avalanche technologies
+            and usage of Lux technologies
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default async function Submission({
             Submission Process
           </h3>
           <p className='text-sm text-zinc-50'>
-            Submit your project through the Avalanche Builder Hub, add your
+            Submit your project through the Lux Lux Build, add your
             team members, and upload your GitHub repo, presentation slides along with any other file that support your submission.
           </p>
         </div>

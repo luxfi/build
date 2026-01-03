@@ -11,9 +11,9 @@ const grow = [
     label: "Community",
     title: "Join <strong>Team1 DAO</strong>.",
     description:
-      "Contribute to the Avalanche community initiatives, and get rewarded with exclusive paid bounties.",
+      "Contribute to the Lux community initiatives, and get rewarded with exclusive paid bounties.",
     icon: Users,
-    href: "https://www.avax.network/ambassador"
+    href: "https://www.lux.network/ambassador"
   },
   {
     id: 2,
@@ -22,14 +22,14 @@ const grow = [
     description:
       "Connect with our team at Summit, participate in sponsored hackathons, and organize workshops and meetups.",
     icon: Calendar,
-    href: "https://www.avalanchesummitemea.com/"
+    href: "https://www.luxsummitemea.com/"
   },
   {
     id: 3,
     label: "Discover",
-    title: "Try <strong>Avalanche</strong>.",
+    title: "Try <strong>Lux</strong>.",
     description:
-      "Discover and try out different applications and L1s in the Avalanche ecosystem.",
+      "Discover and try out different applications and L1s in the Lux ecosystem.",
     icon: Compass,
     href: "https://core.app/discover/"
   },
@@ -38,27 +38,27 @@ const grow = [
     label: "Support",
     title: "Academy <strong>Telegram</strong>.",
     description:
-      "Get direct technical support from our Developer Relations team while building on Avalanche.",
+      "Get direct technical support from our Developer Relations team while building on Lux.",
     icon: MessageCircle,
-    href: "https://t.me/avalancheacademy"
+    href: "https://t.me/luxacademy"
   },
   {
     id: 5,
     label: "Social",
     title: "<strong>X</strong>.",
     description:
-      "Follow the official Avalanche Developers handle on X for latest news and development updates.",
+      "Follow the official Lux Developers handle on X for latest news and development updates.",
     icon: Twitter,
-    href: "https://x.com/AvaxDevelopers"
+    href: "https://x.com/LuxDevelopers"
   },
   {
     id: 6,
     label: "Help",
-    title: "Avalanche <strong>Support</strong>.",
+    title: "Lux <strong>Support</strong>.",
     description:
-      "Get direct answers and support for everything related to Avalanche: Network Basics, Wallets, Explorers, Staking, etc.",
+      "Get direct answers and support for everything related to Lux: Network Basics, Wallets, Explorers, Staking, etc.",
     icon: HelpCircle,
-    href: "https://support.avax.network/"
+    href: "https://support.lux.network/"
   }
 ];
 

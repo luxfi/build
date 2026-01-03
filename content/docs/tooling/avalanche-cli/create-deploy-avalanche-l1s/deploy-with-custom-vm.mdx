@@ -1,9 +1,9 @@
 ---
 title: With Custom VM
-description: Learn how to create an Avalanche L1 with a custom virtual machine and deploy it locally.
+description: Learn how to create an Lux L1 with a custom virtual machine and deploy it locally.
 ---
 
-This tutorial walks through the process of creating an Avalanche L1 with a custom virtual machine and deploying it locally. Although the tutorial uses a fork of Subnet-EVM as an example, you can extend its lessons to support any custom VM binary.
+This tutorial walks through the process of creating an Lux L1 with a custom virtual machine and deploying it locally. Although the tutorial uses a fork of Subnet-EVM as an example, you can extend its lessons to support any custom VM binary.
 
 Fork Subnet-EVM[​](#fork-subnet-evm "Direct link to heading")
 -------------------------------------------------------------
@@ -15,20 +15,20 @@ Instead of building a custom VM from scratch, this tutorial starts with forking 
 First off, clone the Subnet-EVM repository into a directory of your choosing.
 
 ```bash
-git clone https://github.com/ava-labs/subnet-evm.git
+git clone https://github.com/luxfi/subnet-evm.git
 ```
 
 <Callout title="Note">
 The repository cloning method used is HTTPS, but SSH can be used too:
 
-`git clone git@github.com:ava-labs/subnet-evm.git`
+`git clone git@github.com:luxfi/subnet-evm.git`
 
 You can find more about SSH and how to use it [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh).
 </Callout>
 
 ### Modify and Build Subnet-EVM[​](#modify-and-build-subnet-evm "Direct link to heading")
 
-To prove you're running your custom binary and not the stock Subnet-EVM included with Avalanche-CLI, you need to modify the Subnet-EVM binary by making a minor change.
+To prove you're running your custom binary and not the stock Subnet-EVM included with Lux-CLI, you need to modify the Subnet-EVM binary by making a minor change.
 
 Navigate to the directory you cloned Subnet-EVM into and generate a new commit:
 
@@ -148,7 +148,7 @@ You can add your own predeployed contracts by running `forge build` and collecti
 }
 ```
 
-Open a text editor and copy the preceding text into a file called `custom_genesis.json`. For full breakdown of the genesis file, see the [Genesis File](/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1#genesis).
+Open a text editor and copy the preceding text into a file called `custom_genesis.json`. For full breakdown of the genesis file, see the [Genesis File](/docs/lux-l1s/evm-configuration/customize-lux-l1#genesis).
 
 <Callout title="Note">
 The `timestamp` field is the Unix timestamp of the genesis block. `0x677eb2d9` represents
@@ -156,13 +156,13 @@ the timestamp 1736356569 which is the time this tutorial was written. You should
 timestamp when you create your genesis file.
 </Callout>
 
-Create the Avalanche L1 Configuration[​](#create-the-avalanche-l1-configuration "Direct link to heading")
+Create the Lux L1 Configuration[​](#create-the-lux-l1-configuration "Direct link to heading")
 ---------------------------------------------------------------------------------------------
 
-Now that you have your binary, it's time to create the Avalanche L1 configuration. This tutorial uses `myblockchain` as it's Avalanche L1 name. Invoke the Avalanche L1 Creation Wizard with this command:
+Now that you have your binary, it's time to create the Lux L1 configuration. This tutorial uses `myblockchain` as it's Lux L1 name. Invoke the Lux L1 Creation Wizard with this command:
 
 ```bash
-avalanche blockchain create myblockchain
+lux blockchain create myblockchain
 ```
 
 ### Choose Your VM[​](#choose-your-vm "Direct link to heading")
@@ -189,7 +189,7 @@ Next, select the key that will be used to controller the PoA ValidatorManager co
 
 ```bash
 Which address do you want to enable as controller of ValidatorManager contract?:
-  ▸ Get address from an existing stored key (created from avalanche key create or avalanche key import)
+  ▸ Get address from an existing stored key (created from lux key create or lux key import)
     Custom
 ```
 This key can add, remove and change weight of the validator set.
@@ -205,8 +205,8 @@ Enter the path to the genesis file you created in this [step](#create-a-custom-g
 ### ICM Setup
 
 ```bash
-? Do you want to connect your blockchain with other blockchains or the C-Chain?:
-    Yes, I want to enable my blockchain to interoperate with other blockchains and the C-Chain
+? Do you want to connect your blockchain with other blockchains or the LUExchange-Chain?:
+    Yes, I want to enable my blockchain to interoperate with other blockchains and the LUExchange-Chain
   ▸ No, I want to run my blockchain isolated
     Explain the difference
 ```
@@ -231,21 +231,21 @@ Next, enter the path to your VM binary. This should be the path to the `custom_e
 If all worked successfully, the command prints:
 ```bash
 ✓ Successfully created blockchain configuration
-Run 'avalanche blockchain describe' to view all created addresses and what their roles are
+Run 'lux blockchain describe' to view all created addresses and what their roles are
 ```
 
 Now it's time to deploy it.
 
-Deploy the Avalanche L1 Locally[​](#deploy-the-avalanche-l1-locally "Direct link to heading")
+Deploy the Lux L1 Locally[​](#deploy-the-lux-l1-locally "Direct link to heading")
 ---------------------------------------------------------------------------------
 
-To deploy your Avalanche L1, run:
+To deploy your Lux L1, run:
 ```bash
-avalanche blockchain deploy myblockchain
+lux blockchain deploy myblockchain
 ```
 
 
-Make sure to substitute the name of your Avalanche L1 if you used a different one than `myblockchain`.
+Make sure to substitute the name of your Lux L1 if you used a different one than `myblockchain`.
 
 Next, select `Local Network`:
 
@@ -253,35 +253,35 @@ Next, select `Local Network`:
 Use the arrow keys to navigate: ↓ ↑ → ←
 ? Choose a network to deploy on:
   ▸ Local Network
-    Fuji
+    Testnet
     Mainnet
 ```
 
-This command boots a five node Avalanche network on your machine. It needs to download the latest versions of AvalancheGo and Subnet-EVM. The command may take a couple minutes to run.
+This command boots a five node Lux network on your machine. It needs to download the latest versions of LuxGo and Subnet-EVM. The command may take a couple minutes to run.
 
 If all works as expected, the command output should look something like this:
 
 ```bash
 Deploying [myblockchain] to Local Network
 
-Backend controller started, pid: 49158, output at: /Users/l1-dev/.avalanche-cli/runs/server_20250108_140532/avalanche-cli-backend.log
+Backend controller started, pid: 49158, output at: /Users/l1-dev/.lux-cli/runs/server_20250108_140532/lux-cli-backend.log
 
-Installing avalanchego-v1.12.1...
-avalanchego-v1.12.1 installation successful
-AvalancheGo path: /Users/l1-dev/.avalanche-cli/bin/avalanchego/avalanchego-v1.12.1/avalanchego
+Installing luxgo-v1.12.1...
+luxgo-v1.12.1 installation successful
+LuxGo path: /Users/l1-dev/.lux-cli/bin/luxgo/luxgo-v1.12.1/luxgo
 
 Booting Network. Wait until healthy...
 
-Node logs directory: /Users/l1-dev/.avalanche-cli/runs/network_20250108_140538/node<i>/logs
+Node logs directory: /Users/l1-dev/.lux-cli/runs/network_20250108_140538/node<i>/logs
 
 Network ready to use.
 
 Your blockchain control keys: [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p]
 Your subnet auth keys for chain creation: [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p]
-CreateSubnetTx fee: 0.000010278 AVAX
+CreateSubnetTx fee: 0.000010278 LUX
 Subnet has been created with ID: GEieSy2doZ96bpMo5CuHPaX1LvaxpKZ9C72L22j94t6YyUb6X
 Now creating blockchain...
-CreateChainTx fee: 0.000095896 AVAX
+CreateChainTx fee: 0.000095896 LUX
 +-------------------------------------------------------------------+
 |                         DEPLOYMENT RESULTS                        |
 +---------------+---------------------------------------------------+
@@ -293,7 +293,7 @@ CreateChainTx fee: 0.000095896 AVAX
 +---------------+---------------------------------------------------+
 | Blockchain ID | 9FrNVEPkVpQyWDECQhEPDuT9oK98EhWQdg7anypKujVt9uSVT |
 +---------------+                                                   |
-| P-Chain TXID  |                                                   |
+| Platform-Chain TXID  |                                                   |
 +---------------+---------------------------------------------------+
 
 Restarting node node2 to track subnet
@@ -306,17 +306,17 @@ Waiting for http://127.0.0.1:9650/ext/bc/9FrNVEPkVpQyWDECQhEPDuT9oK98EhWQdg7anyp
 
 Use the describe command to find your L1s RPC: 
 ```bash
-avalanche blockchain describe myblockchain
+lux blockchain describe myblockchain
 ```
 
-You can use the `RPC URL` to connect to and interact with your Avalanche L1.
+You can use the `RPC URL` to connect to and interact with your Lux L1.
 
-Interact with Your Avalanche L1[​](#interact-with-your-avalanche-l1 "Direct link to heading")
+Interact with Your Lux L1[​](#interact-with-your-lux-l1 "Direct link to heading")
 ---------------------------------------------------------------------------------
 
 ### Check the Version[​](#check-the-version "Direct link to heading")
 
-You can verify that your Avalanche L1 has deployed correctly by querying the local node to see what Avalanche L1s it's running. You need to use the [`getNodeVersion`](/docs/rpcs/other/info-rpc#infogetnodeversion) endpoint. Try running this curl command:
+You can verify that your Lux L1 has deployed correctly by querying the local node to see what Lux L1s it's running. You need to use the [`getNodeVersion`](/docs/rpcs/other/info-rpc#infogetnodeversion) endpoint. Try running this curl command:
 
 ```bash
 curl --location --request POST 'http://127.0.0.1:9650/ext/info' \
@@ -336,7 +336,7 @@ The command returns a list of all the VMs your local node is currently running a
 {
   "jsonrpc": "2.0",
   "result": {
-    "version": "avalanche/1.10.8",
+    "version": "lux/1.10.8",
     "databaseVersion": "v1.4.5",
     "rpcProtocolVersion": "27",
     "gitCommit": "e70a17d9d988b5067f3ef5c4a057f15ae1271ac4",
@@ -351,7 +351,7 @@ The command returns a list of all the VMs your local node is currently running a
 }
 ```
 
-Your results may be slightly different, but you can see that in addition to the X-Chain's `avm`, the C-Chain's `evm`, and the P-Chain's `platform` VM, the node is running the custom VM with commit `c0fe6506a40da466285f37dd0d3c044f494cce32`.
+Your results may be slightly different, but you can see that in addition to the Exchange-Chain's `avm`, the LUExchange-Chain's `evm`, and the Platform-Chain's `platform` VM, the node is running the custom VM with commit `c0fe6506a40da466285f37dd0d3c044f494cce32`.
 
 ### Check a Balance[​](#check-a-balance "Direct link to heading")
 

@@ -23,23 +23,23 @@ OutputParser.Register(&actions.GreetingResult{}, nil),
 
 It should look like this when complete:
 ```go title="vm/vm.go"
-// Copyright (C) 2024, Ava Labs, Inc. All rights reserved.
+// Copyright (C) 2024, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 package vm
 
 import (
-	"github.com/ava-labs/avalanchego/utils/wrappers"
+	"github.com/luxfi/luxgo/utils/wrappers"
 
-	"github.com/ava-labs/hypersdk-starter/actions"
-	"github.com/ava-labs/hypersdk-starter/consts"
-	"github.com/ava-labs/hypersdk-starter/storage"
-	"github.com/ava-labs/hypersdk/auth"
-	"github.com/ava-labs/hypersdk/chain"
-	"github.com/ava-labs/hypersdk/codec"
-	"github.com/ava-labs/hypersdk/genesis"
-	"github.com/ava-labs/hypersdk/vm"
-	"github.com/ava-labs/hypersdk/vm/defaultvm"
+	"github.com/luxfi/hypersdk-starter/actions"
+	"github.com/luxfi/hypersdk-starter/consts"
+	"github.com/luxfi/hypersdk-starter/storage"
+	"github.com/luxfi/hypersdk/auth"
+	"github.com/luxfi/hypersdk/chain"
+	"github.com/luxfi/hypersdk/codec"
+	"github.com/luxfi/hypersdk/genesis"
+	"github.com/luxfi/hypersdk/vm"
+	"github.com/luxfi/hypersdk/vm/defaultvm"
 )
 
 var (

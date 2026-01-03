@@ -1,6 +1,6 @@
 ---
 title: Quick Start
-description: Start your first temporary Avalanche network in minutes
+description: Start your first temporary Lux network in minutes
 ---
 
 This guide will help you create, interact with, and manage your first temporary network using tmpnet.
@@ -8,9 +8,9 @@ This guide will help you create, interact with, and manage your first temporary 
 ## Before You Start
 
 Make sure you've completed the [installation](/docs/tooling/tmpnet/installation) and have:
-- Built `avalanchego` and `tmpnetctl`
-- A shell in the avalanchego repo root
-- Either `direnv allow`'d the repo **or** can pass `--avalanchego-path`
+- Built `luxgo` and `tmpnetctl`
+- A shell in the luxgo repo root
+- Either `direnv allow`'d the repo **or** can pass `--luxgo-path`
 
 ## Start Your First Network
 
@@ -19,14 +19,14 @@ Make sure you've completed the [installation](/docs/tooling/tmpnet/installation)
 Start a 2-node network (default is 5):
 
 ```bash
-cd /path/to/avalanchego
+cd /path/to/luxgo
 
 # If you enabled direnv (.envrc sets paths)
 tmpnetctl start-network --node-count=2
 
-# Without direnv, pass the avalanchego path explicitly
+# Without direnv, pass the luxgo path explicitly
 ./bin/tmpnetctl start-network \
-  --avalanchego-path="$(pwd)/bin/avalanchego" \
+  --luxgo-path="$(pwd)/bin/luxgo" \
   --node-count=2
 ```
 
@@ -54,7 +54,7 @@ The network is now running with 2 validator nodes!
 If you've set up direnv:
 
 ```bash
-cd /path/to/avalanchego
+cd /path/to/luxgo
 direnv allow
 
 # Much simpler!
@@ -114,14 +114,14 @@ NodeID-BTtC98RhLA5mbctKczZQC2Rt6N9DziM4c/    # Node 2 directory
 
 ### Find Node API Endpoints
 
-Each node exposes API endpoints on dynamically allocated ports. When tmpnet starts a node with `--http-port=0`, the OS assigns an available port. AvalancheGo then writes the actual allocated port to `process.json` via the `--process-context-file` flag.
+Each node exposes API endpoints on dynamically allocated ports. When tmpnet starts a node with `--http-port=0`, the OS assigns an available port. LuxGo then writes the actual allocated port to `process.json` via the `--process-context-file` flag.
 
 <Callout type="info" title="How process.json is created">
-The `process.json` file is created by **avalanchego itself**, not by tmpnetctl. When tmpnet starts a node, it passes:
+The `process.json` file is created by **luxgo itself**, not by tmpnetctl. When tmpnet starts a node, it passes:
 - `--http-port=0` and `--staking-port=0` for dynamic port allocation
-- `--process-context-file=[node-dir]/process.json` to specify where avalanchego should write runtime info
+- `--process-context-file=[node-dir]/process.json` to specify where luxgo should write runtime info
 
-AvalancheGo then writes its PID, URI (with the actual allocated port), and staking address to this file once it starts.
+LuxGo then writes its PID, URI (with the actual allocated port), and staking address to this file once it starts.
 </Callout>
 
 ```bash
@@ -145,7 +145,7 @@ echo $NODE_URI
 
 ### Call Node RPCs
 
-Use the URI to call standard Avalanche APIs over HTTP:
+Use the URI to call standard Lux APIs over HTTP:
 
 ```bash
 # Health
@@ -158,7 +158,7 @@ curl -s -X POST --data '{
   "method": "info.getNodeID"
 }' -H 'content-type:application/json;' "$NODE_URI/ext/info" | jq
 
-# C-Chain RPC (replace with your chain ID if different)
+# LUExchange-Chain RPC (replace with your chain ID if different)
 CHAIN_ID=C
 curl -s -X POST --data '{
   "jsonrpc":"2.0",
@@ -218,7 +218,7 @@ curl -s -X POST --data '{
 
 ## Use Pre-funded Keys
 
-Every tmpnet network comes with **50 pre-funded test keys** ready for immediate use. These keys have large balances on all chains (X-Chain, P-Chain, and C-Chain).
+Every tmpnet network comes with **50 pre-funded test keys** ready for immediate use. These keys have large balances on all chains (Exchange-Chain, Platform-Chain, and LUExchange-Chain).
 
 ### View Pre-funded Keys
 
@@ -248,9 +248,9 @@ echo $TEST_KEY
 ### What Are These Keys Funded With?
 
 Each key has balances on:
-- **P-Chain** - For staking and subnet operations
-- **X-Chain** - For asset transfers
-- **C-Chain** - For EVM transactions (contract deployments, etc.)
+- **Platform-Chain** - For staking and subnet operations
+- **Exchange-Chain** - For asset transfers
+- **LUExchange-Chain** - For EVM transactions (contract deployments, etc.)
 
 You can use these keys immediately for transactions, contract deployments, staking operations, and validator management.
 
@@ -261,7 +261,7 @@ tmpnet networks work with standard EVM tools like Foundry. Here's how to connect
 ### Set Up Environment Variables
 
 ```bash
-# Get the first node's URI and construct the C-Chain RPC URL
+# Get the first node's URI and construct the LUExchange-Chain RPC URL
 NODE_URI=$(cat ~/.tmpnet/networks/latest/NodeID-*/process.json | jq -r '.uri' | head -1)
 export RPC_URL="${NODE_URI}/ext/bc/C/rpc"
 echo $RPC_URL
@@ -270,20 +270,20 @@ echo $RPC_URL
 
 ### The EWOQ Test Key
 
-Every tmpnet network includes the well-known EWOQ test key, pre-funded with AVAX:
+Every tmpnet network includes the well-known EWOQ test key, pre-funded with LUX:
 
 | Property | Value |
 |----------|-------|
 | Private Key (hex) | `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` |
 | Address | `0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC` |
-| C-Chain Balance | 50,000,000 AVAX |
+| LUExchange-Chain Balance | 50,000,000 LUX |
 
 ```bash
 export PRIVATE_KEY="56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027"
 ```
 
 <Callout type="warning" title="Test Key Only">
-The EWOQ key is publicly known. Never use it on Fuji or Mainnet—only for local development.
+The EWOQ key is publicly known. Never use it on Testnet or Mainnet—only for local development.
 </Callout>
 
 ### Common Cast Commands
@@ -298,7 +298,7 @@ cast chain-id --rpc-url $RPC_URL
 # Get latest block
 cast block-number --rpc-url $RPC_URL
 
-# Send AVAX to another address
+# Send LUX to another address
 cast send 0xYourAddress --value 1ether \
   --rpc-url $RPC_URL \
   --private-key $PRIVATE_KEY
@@ -389,7 +389,7 @@ This preserves all network data and configuration, restarting with the same gene
 ```bash
 # This creates a completely new network with new keys
 tmpnetctl start-network \
-  --avalanchego-path="$(pwd)/bin/avalanchego" \
+  --luxgo-path="$(pwd)/bin/luxgo" \
   --node-count=3
 ```
 
@@ -423,10 +423,10 @@ tail -50 ~/.tmpnet/networks/latest/NodeID-*/logs/main.log
 
 ```bash
 # View all node processes
-ps aux | grep avalanchego
+ps aux | grep luxgo
 
 # Count running nodes
-ps aux | grep avalanchego | grep -v grep | wc -l
+ps aux | grep luxgo | grep -v grep | wc -l
 ```
 
 ### Get All Node URIs at Once
@@ -471,16 +471,16 @@ cat ~/.tmpnet/networks/latest/NodeID-*/process.json | jq '{
 
 ### Network Won't Start
 
-**Error: `avalanchego binary not found`**
+**Error: `luxgo binary not found`**
 
 Solution:
 ```bash
 # Verify binary exists
-ls -lh ./bin/avalanchego
+ls -lh ./bin/luxgo
 
 # Use absolute path
 tmpnetctl start-network \
-  --avalanchego-path="$(pwd)/bin/avalanchego"
+  --luxgo-path="$(pwd)/bin/luxgo"
 ```
 
 **Error: `address already in use`**
@@ -488,7 +488,7 @@ tmpnetctl start-network \
 Solution:
 ```bash
 # Check for running nodes
-ps aux | grep avalanchego
+ps aux | grep luxgo
 
 # Stop existing network
 export TMPNET_NETWORK_DIR=~/.tmpnet/networks/latest
@@ -502,7 +502,7 @@ tmpnetctl stop-network
 Solution:
 ```bash
 # 1. Verify nodes are running
-ps aux | grep avalanchego
+ps aux | grep luxgo
 
 # 2. Check actual URIs
 cat ~/.tmpnet/networks/latest/NodeID-*/process.json | jq -r '.uri'
@@ -515,28 +515,28 @@ curl http://127.0.0.1:<actual-port>/ext/health
 
 **Issue:** `process.json` files don't exist in node directories, or ports in `flags.json` are all `0`
 
-This happens when running avalanchego manually without the `--process-context-file` flag.
+This happens when running luxgo manually without the `--process-context-file` flag.
 
 **Understanding the issue:**
 - `flags.json` showing `"http-port": "0"` is correct - this tells the OS to allocate a dynamic port
-- `process.json` is created by **avalanchego itself** when started with the `--process-context-file` flag
+- `process.json` is created by **luxgo itself** when started with the `--process-context-file` flag
 - tmpnetctl automatically passes this flag, but manual setups need to include it
 
-**Solution for manual avalanchego setups:**
+**Solution for manual luxgo setups:**
 ```bash
-# When starting avalanchego manually with dynamic ports, include:
-avalanchego \
+# When starting luxgo manually with dynamic ports, include:
+luxgo \
   --http-port=0 \
   --staking-port=0 \
   --process-context-file=/path/to/node/process.json \
   # ... other flags
 
-# AvalancheGo will write the actual allocated ports to process.json
+# LuxGo will write the actual allocated ports to process.json
 ```
 
 **If using tmpnetctl:** The `process.json` files should be created automatically. If they're missing, ensure:
 1. The network started successfully (check for "started network" in output)
-2. Nodes are still running (`ps aux | grep avalanchego`)
+2. Nodes are still running (`ps aux | grep luxgo`)
 3. You're looking in the correct network directory
 
 ### Command Not Found

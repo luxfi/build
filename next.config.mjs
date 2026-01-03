@@ -96,8 +96,8 @@ const config = {
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/evm-configuration/tokenomics',
-        destination: '/docs/avalanche-l1s/precompiles/native-minter',
+        source: '/docs/lux-l1s/evm-configuration/tokenomics',
+        destination: '/docs/lux-l1s/precompiles/native-minter',
         permanent: true,
       },
       {
@@ -111,58 +111,58 @@ const config = {
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/evm-configuration/permissions',
-        destination: '/docs/avalanche-l1s/precompiles/allowlist-interface',
+        source: '/docs/lux-l1s/evm-configuration/permissions',
+        destination: '/docs/lux-l1s/precompiles/allowlist-interface',
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/evm-configuration/allowlist',
-        destination: '/docs/avalanche-l1s/precompiles/allowlist-interface',
+        source: '/docs/lux-l1s/evm-configuration/allowlist',
+        destination: '/docs/lux-l1s/precompiles/allowlist-interface',
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/evm-configuration',
-        destination: '/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1',
+        source: '/docs/lux-l1s/evm-configuration',
+        destination: '/docs/lux-l1s/evm-configuration/customize-lux-l1',
         permanent: true,
       },
       {
         source: '/docs/subnets/overview',
-        destination: '/docs/avalanche-l1s',
+        destination: '/docs/lux-l1s',
         permanent: true,
       },
       {
         source: '/docs/subnets/subnet-evm',
-        destination: '/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1',
+        destination: '/docs/lux-l1s/evm-configuration/customize-lux-l1',
         permanent: true,
       },
       {
         source: '/docs/subnets/create-a-subnet',
-        destination: '/docs/tooling/avalanche-cli/create-avalanche-l1',
+        destination: '/docs/tooling/lux-cli/create-lux-l1',
         permanent: true,
       },
       {
         source: '/docs/subnets/create/genesis',
-        destination: '/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1',
+        destination: '/docs/lux-l1s/evm-configuration/customize-lux-l1',
         permanent: true,
       },
       {
         source: '/docs/subnets/security-considerations',
-        destination: '/docs/avalanche-l1s',
+        destination: '/docs/lux-l1s',
         permanent: true,
       },
       {
-        source: '/docs/api-reference/avalanche-sdk/interchain-sdk/getting-started',
-        destination: '/docs/tooling/avalanche-sdk/interchain/getting-started',
+        source: '/docs/api-reference/lux-sdk/interchain-sdk/getting-started',
+        destination: '/docs/tooling/lux-sdk/interchain/getting-started',
         permanent: true,
       },
       {
-        source: '/docs/avalanchego/tools/cli',
-        destination: '/docs/tooling/avalanche-cli',
+        source: '/docs/luxgo/tools/cli',
+        destination: '/docs/tooling/lux-cli',
         permanent: true,
       },
       {
         source: '/docs/overview/tokenomics',
-        destination: '/docs/primary-network/avax-token',
+        destination: '/docs/primary-network/lux-token',
         permanent: true,
       },
       {
@@ -172,47 +172,47 @@ const config = {
       },
       {
         source: '/docs/tooling/cross-chain/teleporter-local-network',
-        destination: '/docs/tooling/avalanche-cli/cross-chain/teleporter-local-network',
+        destination: '/docs/tooling/lux-cli/cross-chain/teleporter-local-network',
         permanent: true,
       },
       {
         source: '/docs/tooling/cross-chain',
-        destination: '/docs/tooling/avalanche-cli/cross-chain/teleporter-local-network',
+        destination: '/docs/tooling/lux-cli/cross-chain/teleporter-local-network',
         permanent: true,
       },
       {
-        source: '/docs/tooling/create-avalanche-l1',
-        destination: '/docs/tooling/avalanche-cli/create-avalanche-l1',
+        source: '/docs/tooling/create-lux-l1',
+        destination: '/docs/tooling/lux-cli/create-lux-l1',
         permanent: true,
       },
       {
-        source: '/docs/tooling/create-deploy-avalanche-l1s/deploy-with-custom-vm',
-        destination: '/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-with-custom-vm',
+        source: '/docs/tooling/create-deploy-lux-l1s/deploy-with-custom-vm',
+        destination: '/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-with-custom-vm',
         permanent: true,
       },
       {
-        source: '/docs/tooling/create-deploy-avalanche-l1s/deploy-locally',
-        destination: '/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-locally',
+        source: '/docs/tooling/create-deploy-lux-l1s/deploy-locally',
+        destination: '/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-locally',
         permanent: true,
       },
       {
-        source: '/docs/tooling/get-avalanche-cli',
-        destination: '/docs/tooling/avalanche-cli/get-avalanche-cli',
+        source: '/docs/tooling/get-lux-cli',
+        destination: '/docs/tooling/lux-cli/get-lux-cli',
         permanent: true,
       },
       {
-        source: '/docs/tooling/avalanche-go-installer',
-        destination: '/docs/nodes/run-a-node/using-install-script/installing-avalanche-go',
+        source: '/docs/tooling/lux-go-installer',
+        destination: '/docs/nodes/run-a-node/using-install-script/installing-lux-go',
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/upgrade/customize-avalanche-l1',
-        destination: '/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1',
+        source: '/docs/lux-l1s/upgrade/customize-lux-l1',
+        destination: '/docs/lux-l1s/evm-configuration/customize-lux-l1',
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/upgrade/durango-upgrade',
-        destination: '/docs/avalanche-l1s/upgrade/considerations',
+        source: '/docs/lux-l1s/upgrade/durango-upgrade',
+        destination: '/docs/lux-l1s/upgrade/considerations',
         permanent: true,
       },
       {
@@ -226,22 +226,22 @@ const config = {
         permanent: true,
       },
       {
-        source: '/docs/reference/avalanchego/p-chain/api',
+        source: '/docs/reference/luxgo/p-chain/api',
         destination: '/docs/rpcs/p-chain',
         permanent: true,
       },
       {
-        source: '/docs/reference/avalanchego/auth-api',
+        source: '/docs/reference/luxgo/auth-api',
         destination: '/docs/rpcs/other',
         permanent: true,
       },
       {
-        source: '/docs/apis/avalanchego/apis/issuing-api-calls',
+        source: '/docs/apis/luxgo/apis/issuing-api-calls',
         destination: '/docs/rpcs/other/guides/issuing-api-calls',
         permanent: true,
       },
       {
-        source: '/docs/apis/avalanchego/apis/x-chain',
+        source: '/docs/apis/luxgo/apis/x-chain',
         destination: '/docs/rpcs/x-chain',
         permanent: true,
       },
@@ -251,8 +251,8 @@ const config = {
         permanent: true,
       },
       {
-        source: '/docs/overview/getting-started/avax',
-        destination: '/docs/primary-network/avax-token',
+        source: '/docs/overview/getting-started/lux',
+        destination: '/docs/primary-network/lux-token',
         permanent: true,
       },
       {
@@ -267,41 +267,41 @@ const config = {
       },
       {
         source: '/docs/virtual-machines/evm-customization/deploying-precompile',
-        destination: '/docs/avalanche-l1s/precompiles/interacting-with-precompiles',
+        destination: '/docs/lux-l1s/precompiles/interacting-with-precompiles',
         permanent: true,
       },
       {
-        source: '/academy/avalanche-l1/interchain-messaging/08-securing-cross-chain-communication/01-securing-cross-chain-communication',
-        destination: '/academy/avalanche-l1/interchain-messaging',
+        source: '/academy/lux-l1/interchain-messaging/08-securing-cross-chain-communication/01-securing-cross-chain-communication',
+        destination: '/academy/lux-l1/interchain-messaging',
         permanent: true,
       },
       {
-        source: '/academy/avalanche-l1/multi-chain-architecture/04-independent-tokenomics/09-transaction-fees',
-        destination: '/academy/avalanche-l1/l1-native-tokenomics/05-fee-config/02-transaction-fees',
+        source: '/academy/lux-l1/multi-chain-architecture/04-independent-tokenomics/09-transaction-fees',
+        destination: '/academy/lux-l1/l1-native-tokenomics/05-fee-config/02-transaction-fees',
         permanent: true,
       },
       {
-        source: '/academy/avalanche-l1/multi-chain-architecture/03-avalanche-starter-kit/03-create-blockchain',
-        destination: '/academy/avalanche-l1/avalanche-fundamentals/04-creating-an-l1',
+        source: '/academy/lux-l1/multi-chain-architecture/03-lux-starter-kit/03-create-blockchain',
+        destination: '/academy/lux-l1/lux-fundamentals/04-creating-an-l1',
         permanent: true,
       },
       {
-        source: '/academy/avalanche-l1/multi-chain-architecture/06-permissioning-users/05-activate-tx-allowlist',
-        destination: '/academy/avalanche-l1/avalanche-fundamentals/08-permissioning-users/05-activate-tx-allowlist',
+        source: '/academy/lux-l1/multi-chain-architecture/06-permissioning-users/05-activate-tx-allowlist',
+        destination: '/academy/lux-l1/lux-fundamentals/08-permissioning-users/05-activate-tx-allowlist',
         permanent: true,
       },
       {
-        source: '/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/10-wrapped-native-tokens',
-        destination: '/academy/avalanche-l1/l1-native-tokenomics/01b-native-vs-erc20/09-wrapped-tokens',
+        source: '/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/10-wrapped-native-tokens',
+        destination: '/academy/lux-l1/l1-native-tokenomics/01b-native-vs-erc20/09-wrapped-tokens',
         permanent: true,
       },
       {
-        source: '/academy/avalanche-l1/avalanche-fundamentals/07-independent-tokenomics/09-transaction-fees',
-        destination: '/academy/avalanche-l1/l1-native-tokenomics/05-fee-config/02-transaction-fees',
+        source: '/academy/lux-l1/lux-fundamentals/07-independent-tokenomics/09-transaction-fees',
+        destination: '/academy/lux-l1/l1-native-tokenomics/05-fee-config/02-transaction-fees',
         permanent: true,
       },
       {
-        source: '/docs/dapps/end-to-end/fuji-workflow',
+        source: '/docs/dapps/end-to-end/testnet-workflow',
         destination: '/academy/blockchain/solidity-foundry/04-hello-world-part-1/01-intro',
         permanent: true,
       },
@@ -316,28 +316,28 @@ const config = {
         permanent: true,
       },
       {
-        source: '/docs/nodes/using-install-script/installing-avalanche-go',
-        destination: '/docs/nodes/run-a-node/using-install-script/installing-avalanche-go',
+        source: '/docs/nodes/using-install-script/installing-lux-go',
+        destination: '/docs/nodes/run-a-node/using-install-script/installing-lux-go',
         permanent: true,
       },
       {
         source: '/docs/tooling/maintain/troubleshooting',
-        destination: '/docs/tooling/avalanche-cli/maintain/troubleshooting',
+        destination: '/docs/tooling/lux-cli/maintain/troubleshooting',
         permanent: true,
       },
       {
-        source: '/docs/api-reference/avalanche-sdk/client-sdk/getting-started',
-        destination: '/docs/tooling/avalanche-sdk/client/getting-started',
+        source: '/docs/api-reference/lux-sdk/client-sdk/getting-started',
+        destination: '/docs/tooling/lux-sdk/client/getting-started',
         permanent: true,
       },
       {
-        source: '/docs/tooling/avalanche-postman/add-postman-collection',
-        destination: '/docs/tooling/avalanche-postman',
+        source: '/docs/tooling/lux-postman/add-postman-collection',
+        destination: '/docs/tooling/lux-postman',
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/validator-manager/add-validator',
-        destination: '/docs/tooling/avalanche-cli/maintain/add-validator-l1',
+        source: '/docs/lux-l1s/validator-manager/add-validator',
+        destination: '/docs/tooling/lux-cli/maintain/add-validator-l1',
         permanent: true,
       },
       {
@@ -412,7 +412,7 @@ const config = {
       },
       {
         source: '/docs/tooling',
-        destination: '/docs/tooling/avalanche-sdk',
+        destination: '/docs/tooling/lux-sdk',
         permanent: true,
       },
       {
@@ -451,8 +451,8 @@ const config = {
         permanent: false,
       },
       {
-        source: '/avalanche-sdk/:path*',
-        destination: '/docs/api-reference/avalanche-sdk/:path*',
+        source: '/lux-sdk/:path*',
+        destination: '/docs/api-reference/lux-sdk/:path*',
         permanent: false,
       },
       {
@@ -492,7 +492,7 @@ const config = {
       },
       {
         source: '/tools/l1-launcher',
-        destination: '/academy/avalanche-l1/avalanche-fundamentals/04-creating-an-l1/01-creating-an-l1',
+        destination: '/academy/lux-l1/lux-fundamentals/04-creating-an-l1/01-creating-an-l1',
         permanent: true,
       },
       {
@@ -512,109 +512,109 @@ const config = {
       },
       {
         source: '/docs/virtual-machines/default-precompiles/index',
-        destination: '/docs/avalanche-l1s/evm-configuration/evm-l1-customization#precompiles',
+        destination: '/docs/lux-l1s/evm-configuration/evm-l1-customization#precompiles',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/deployerallowlist',
-        destination: '/docs/avalanche-l1s/precompiles/deployer-allowlist',
+        destination: '/docs/lux-l1s/precompiles/deployer-allowlist',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/txallowlist',
-        destination: '/docs/avalanche-l1s/precompiles/transaction-allowlist',
+        destination: '/docs/lux-l1s/precompiles/transaction-allowlist',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/contractnativeminter',
-        destination: '/docs/avalanche-l1s/precompiles/native-minter',
+        destination: '/docs/lux-l1s/precompiles/native-minter',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/nativeminter',
-        destination: '/docs/avalanche-l1s/precompiles/native-minter',
+        destination: '/docs/lux-l1s/precompiles/native-minter',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/feemanager',
-        destination: '/docs/avalanche-l1s/precompiles/fee-manager',
+        destination: '/docs/lux-l1s/precompiles/fee-manager',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/rewardmanager',
-        destination: '/docs/avalanche-l1s/precompiles/reward-manager',
+        destination: '/docs/lux-l1s/precompiles/reward-manager',
         permanent: true,
       },
       {
         source: '/docs/virtual-machines/default-precompiles/warpmessenger',
-        destination: '/docs/avalanche-l1s/evm-configuration/warpmessenger',
+        destination: '/docs/lux-l1s/evm-configuration/warpmessenger',
         permanent: true,
       },
       {
-        source: '/docs/avalanche-l1s/default-precompiles/transaction-fees',
-        destination: '/docs/avalanche-l1s/evm-configuration/transaction-fees',
+        source: '/docs/lux-l1s/default-precompiles/transaction-fees',
+        destination: '/docs/lux-l1s/evm-configuration/transaction-fees',
         permanent: true,
       },
       {
         source: '/academy/interchain-messaging/10-running-a-relayer/01-running-a-relayer',
-        destination: '/academy/avalanche-l1/interchain-messaging/10-running-a-relayer/01-relayer-introduction',
+        destination: '/academy/lux-l1/interchain-messaging/10-running-a-relayer/01-relayer-introduction',
         permanent: true,
       },
       {
-        source: '/academy/interchain-messaging/10-running-a-relayer/02-control-the-avalanche-cli-relayer',
-        destination: '/academy/avalanche-l1/interchain-messaging/10-running-a-relayer/03-configure-and-run-the-relayer',
+        source: '/academy/interchain-messaging/10-running-a-relayer/02-control-the-lux-cli-relayer',
+        destination: '/academy/lux-l1/interchain-messaging/10-running-a-relayer/03-configure-and-run-the-relayer',
         permanent: true,
       }, {
         source: '/academy/interchain-messaging/10-running-a-relayer/03-install-relayer',
-        destination: '/academy/avalanche-l1/interchain-messaging/10-running-a-relayer/03-configure-and-run-the-relayer',
+        destination: '/academy/lux-l1/interchain-messaging/10-running-a-relayer/03-configure-and-run-the-relayer',
         permanent: true,
       }, {
         source: '/academy/interchain-messaging/10-running-a-relayer/05-multichain-relayer-config',
-        destination: '/academy/avalanche-l1/interchain-messaging/10-running-a-relayer/02-relayer-configuration#multichain-relayer-configuration',
+        destination: '/academy/lux-l1/interchain-messaging/10-running-a-relayer/02-relayer-configuration#multichain-relayer-configuration',
         permanent: true,
       }, {
         source: '/academy/interchain-messaging/10-running-a-relayer/06-analyze-relayer-logs',
-        destination: '/academy/avalanche-l1/interchain-messaging/10-running-a-relayer/03-configure-and-run-the-relayer',
+        destination: '/academy/lux-l1/interchain-messaging/10-running-a-relayer/03-configure-and-run-the-relayer',
         permanent: true,
       }, {
-        source: '/academy/interchain-messaging/03-avalanche-starter-kit/03-create-blockchain',
-        destination: '/academy/avalanche-l1/interchain-messaging/03-avalanche-starter-kit/04-networks',
+        source: '/academy/interchain-messaging/03-lux-starter-kit/03-create-blockchain',
+        destination: '/academy/lux-l1/interchain-messaging/03-lux-starter-kit/04-networks',
         permanent: true,
       }, {
-        source: '/academy/interchain-messaging/03-avalanche-starter-kit/06-pause-and-resume',
-        destination: '/academy/avalanche-l1/interchain-messaging/03-avalanche-starter-kit/04-networks',
+        source: '/academy/interchain-messaging/03-lux-starter-kit/06-pause-and-resume',
+        destination: '/academy/lux-l1/interchain-messaging/03-lux-starter-kit/04-networks',
         permanent: true,
       }, {
         source: '/docs/subnets/customize-a-subnet',
-        destination: '/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1',
+        destination: '/docs/lux-l1s/evm-configuration/customize-lux-l1',
         permanent: true,
       },       {
         source: '/docs/build/tutorials/platform/create-a-local-test-network',
-        destination: '/academy/avalanche-l1/avalanche-fundamentals',
+        destination: '/academy/lux-l1/lux-fundamentals',
         permanent: true,
       }, {
-        source: '/docs/tooling/guides/get-avalanche-cli',
-        destination: '/docs/tooling/avalanche-cli/get-avalanche-cli',
+        source: '/docs/tooling/guides/get-lux-cli',
+        destination: '/docs/tooling/lux-cli/get-lux-cli',
         permanent: true,
       }, {
         source: '/evm-l1s/validator-manager/poa-vs-pos',
-        destination: '/docs/avalanche-l1s/validator-manager/contract',
+        destination: '/docs/lux-l1s/validator-manager/contract',
         permanent: true,
       }, {
-        source: '/docs/avalanche-l1s/allowlist',
-        destination: '/docs/avalanche-l1s/precompiles/allowlist-interface',
+        source: '/docs/lux-l1s/allowlist',
+        destination: '/docs/lux-l1s/precompiles/allowlist-interface',
         permanent: true,
       }, {
         source: '/docs/virtual-machines/evm-customization/generating-your-precompile',
-        destination: '/docs/avalanche-l1s/custom-precompiles/create-precompile',
+        destination: '/docs/lux-l1s/custom-precompiles/create-precompile',
         permanent: true,
       }, {
         source: '/docs/virtual-machines/evm-customization/defining-precompile#event-file',
-        destination: '/docs/avalanche-l1s/custom-precompiles/defining-precompile#event-file',
+        destination: '/docs/lux-l1s/custom-precompiles/defining-precompile#event-file',
         permanent: true,
       }, {
         source: '/docs/virtual-machines/evm-customization/testing-your-precompile',
-        destination: '/docs/avalanche-l1s/custom-precompiles/executing-test-cases',
+        destination: '/docs/lux-l1s/custom-precompiles/executing-test-cases',
         permanent: true,
       }, {
         source: '/docs/nodes/run-a-node/manually#hardware-and-os-requirements',
@@ -622,50 +622,50 @@ const config = {
         permanent: true,
       }, {
         source: "/build/cross-chain/awm/deep-dive",
-        destination: "/docs/cross-chain/avalanche-warp-messaging/evm-integration#how-does-avalanche-warp-messaging-work",
+        destination: "/docs/cross-chain/lux-warp-messaging/evm-integration#how-does-lux-warp-messaging-work",
         permanent: true,
       }, {
         source: "/docs/virtual-machines/custom-precompiles#minting-native-coins",
-        destination: "/docs/avalanche-l1s/precompiles/native-minter",
+        destination: "/docs/lux-l1s/precompiles/native-minter",
         permanent: true,
       }, {
         source: "/docs/virtual-machines/evm-customization/introduction",
-        destination: "/docs/avalanche-l1s/evm-configuration/evm-l1-customization",
+        destination: "/docs/lux-l1s/evm-configuration/evm-l1-customization",
         permanent: true,
       }, {
         source: "/docs/virtual-machines/evm-customization/background-requirements",
-        destination: "/docs/avalanche-l1s/custom-precompiles/background-requirements",
+        destination: "/docs/lux-l1s/custom-precompiles/background-requirements",
         permanent: true,
       }, {
         source: "/docs/nodes/run-a-node/manually",
         destination: "/docs/nodes/run-a-node/from-source",
         permanent: true,
       }, {
-        source: "/docs/tooling/avalanchego-postman-collection/setup",
-        destination: "/docs/tooling/avalanche-postman",
+        source: "/docs/tooling/luxgo-postman-collection/setup",
+        destination: "/docs/tooling/lux-postman",
         permanent: true,
       }, {
-        source: "/docs/avalanche-l1s/deploy-a-avalanche-l1/fuji-testnet",
-        destination: "/docs/tooling/create-deploy-avalanche-l1s/deploy-on-fuji-testnet",
+        source: "/docs/lux-l1s/deploy-a-lux-l1/testnet-testnet",
+        destination: "/docs/tooling/create-deploy-lux-l1s/deploy-on-testnet-testnet",
         permanent: true,
       }, {
         source: "/academy/l1-validator-management",
-        destination: "/academy/avalanche-l1/permissioned-l1s",
+        destination: "/academy/lux-l1/permissioned-l1s",
         permanent: true,
       },
       {
         source: "/academy/l1-validator-management/:path*",
-        destination: "/academy/avalanche-l1/permissioned-l1s/:path*",
+        destination: "/academy/lux-l1/permissioned-l1s/:path*",
         permanent: true,
       },
       {
         source: "/academy/l1-tokenomics",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics",
+        destination: "/academy/lux-l1/l1-native-tokenomics",
         permanent: true,
       },
       {
         source: "/academy/l1-tokenomics/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics/:path*",
         permanent: true,
       },
       {
@@ -699,13 +699,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/academy/avalanche-fundamentals",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals",
+        source: "/academy/lux-fundamentals",
+        destination: "/academy/lux-l1/lux-fundamentals",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-fundamentals/:path*",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals/:path*",
+        source: "/academy/lux-fundamentals/:path*",
+        destination: "/academy/lux-l1/lux-fundamentals/:path*",
         permanent: true,
       },
       {
@@ -740,92 +740,92 @@ const config = {
       },
       {
         source: "/academy/customizing-evm",
-        destination: "/academy/avalanche-l1/customizing-evm",
+        destination: "/academy/lux-l1/customizing-evm",
         permanent: true,
       },
       {
         source: "/academy/customizing-evm/:path*",
-        destination: "/academy/avalanche-l1/customizing-evm/:path*",
+        destination: "/academy/lux-l1/customizing-evm/:path*",
         permanent: true,
       },
       {
         source: "/academy/interchain-messaging",
-        destination: "/academy/avalanche-l1/interchain-messaging",
+        destination: "/academy/lux-l1/interchain-messaging",
         permanent: true,
       },
       {
         source: "/academy/interchain-messaging/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging/:path*",
+        destination: "/academy/lux-l1/interchain-messaging/:path*",
         permanent: true,
       },
       {
         source: "/academy/interchain-token-transfer",
-        destination: "/academy/avalanche-l1/native-token-bridge",
+        destination: "/academy/lux-l1/native-token-bridge",
         permanent: true,
       },
       {
         source: "/academy/interchain-token-transfer/:path*",
-        destination: "/academy/avalanche-l1/native-token-bridge/:path*",
+        destination: "/academy/lux-l1/native-token-bridge/:path*",
         permanent: true,
       },
       {
         source: "/academy/icm-chainlink",
-        destination: "/academy/avalanche-l1/icm-chainlink",
+        destination: "/academy/lux-l1/icm-chainlink",
         permanent: true,
       },
       {
         source: "/academy/icm-chainlink/:path*",
-        destination: "/academy/avalanche-l1/icm-chainlink/:path*",
+        destination: "/academy/lux-l1/icm-chainlink/:path*",
         permanent: true,
       },
       {
         source: "/academy/permissioned-l1s",
-        destination: "/academy/avalanche-l1/permissioned-l1s",
+        destination: "/academy/lux-l1/permissioned-l1s",
         permanent: true,
       },
       {
         source: "/academy/permissioned-l1s/:path*",
-        destination: "/academy/avalanche-l1/permissioned-l1s/:path*",
+        destination: "/academy/lux-l1/permissioned-l1s/:path*",
         permanent: true,
       },
       {
         source: "/academy/l1-native-tokenomics",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics",
+        destination: "/academy/lux-l1/l1-native-tokenomics",
         permanent: true,
       },
       {
         source: "/academy/l1-native-tokenomics/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics/:path*",
         permanent: true,
       },
       {
         source: "/academy/permissionless-l1s",
-        destination: "/academy/avalanche-l1/permissionless-l1s",
+        destination: "/academy/lux-l1/permissionless-l1s",
         permanent: true,
       },
       {
         source: "/academy/permissionless-l1s/:path*",
-        destination: "/academy/avalanche-l1/permissionless-l1s/:path*",
+        destination: "/academy/lux-l1/permissionless-l1s/:path*",
         permanent: true,
       },
       {
         source: "/academy/multi-chain-architecture",
-        destination: "/academy/avalanche-l1/multi-chain-architecture",
+        destination: "/academy/lux-l1/multi-chain-architecture",
         permanent: true,
       },
       {
         source: "/academy/multi-chain-architecture/:path*",
-        destination: "/academy/avalanche-l1/multi-chain-architecture/:path*",
+        destination: "/academy/lux-l1/multi-chain-architecture/:path*",
         permanent: true,
       },
       {
         source: "/academy/avacloudapis",
-        destination: "/academy/avalanche-l1/avacloudapis",
+        destination: "/academy/lux-l1/avacloudapis",
         permanent: true,
       },
       {
         source: "/academy/avacloudapis/:path*",
-        destination: "/academy/avalanche-l1/avacloudapis/:path*",
+        destination: "/academy/lux-l1/avacloudapis/:path*",
         permanent: true,
       },
       {
@@ -849,33 +849,33 @@ const config = {
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/03-tokens/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/03-tokens/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/04-token-bridging/:path*",
-        destination: "/academy/avalanche-l1/erc20-bridge/01-token-bridging/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/04-token-bridging/:path*",
+        destination: "/academy/lux-l1/erc20-bridge/01-token-bridging/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/05-avalanche-interchain-token-transfer/:path*",
-        destination: "/academy/avalanche-l1/erc20-bridge/02-avalanche-interchain-token-transfer/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/05-lux-interchain-token-transfer/:path*",
+        destination: "/academy/lux-l1/erc20-bridge/02-lux-interchain-token-transfer/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/06-erc-20-to-erc-20-bridge/:path*",
-        destination: "/academy/avalanche-l1/erc20-bridge/03-erc-20-to-erc-20-bridge/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/06-erc-20-to-erc-20-bridge/:path*",
+        destination: "/academy/lux-l1/erc20-bridge/03-erc-20-to-erc-20-bridge/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/07-tokens-on-multiple-chains/:path*",
-        destination: "/academy/avalanche-l1/erc20-bridge/04-tokens-on-multiple-chains/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/07-tokens-on-multiple-chains/:path*",
+        destination: "/academy/lux-l1/erc20-bridge/04-tokens-on-multiple-chains/:path*",
         permanent: true,
       },
       {
         source: "/docs/dapps/smart-contract-dev/deploy-with-remix-ide",
-        destination: "/docs/avalanche-l1s/add-utility/deploy-smart-contract",
+        destination: "/docs/lux-l1s/add-utility/deploy-smart-contract",
         permanent: true,
       },
       {
@@ -889,18 +889,18 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/quick-start/networks/fuji-testnet",
+        source: "/docs/quick-start/networks/testnet-testnet",
         destination: "/docs/primary-network#c-chain-contract-chain",
         permanent: true,
       },
       {
         source: "/docs/quick-start/validator-manager",
-        destination: "/docs/avalanche-l1s/validator-manager/contract",
+        destination: "/docs/lux-l1s/validator-manager/contract",
         permanent: true,
       },
       {
-        source: "/docs/quick-start/avalanche-consensus",
-        destination: "/docs/primary-network/avalanche-consensus",
+        source: "/docs/quick-start/lux-consensus",
+        destination: "/docs/primary-network/lux-consensus",
         permanent: true,
       },
       {
@@ -908,20 +908,20 @@ const config = {
         destination: "/docs/primary-network",
         permanent: true,
       },
-      // AvalancheJS -> TypeScript SDK redirects
+      // LuxJS -> TypeScript SDK redirects
       {
-        source: "/docs/apis/avalanchejs/:path*",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/apis/luxjs/:path*",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
-        source: "/docs/avalanchejs/:path*",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/luxjs/:path*",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanchejs/:path*",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/tooling/luxjs/:path*",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       // Community tutorials -> main docs
@@ -932,48 +932,48 @@ const config = {
       },
       // Additional broken link redirects
       {
-        source: "/docs/build/tutorials/nodes-and-staking/staking-avax-by-validating-or-delegating-with-the-avalanche-wallet",
+        source: "/docs/build/tutorials/nodes-and-staking/staking-lux-by-validating-or-delegating-with-the-lux-wallet",
         destination: "/docs/primary-network/validate/how-to-stake",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/validator-manager/poa-vs-pos",
-        destination: "/docs/avalanche-l1s/validator-manager/contract",
+        source: "/docs/lux-l1s/validator-manager/poa-vs-pos",
+        destination: "/docs/lux-l1s/validator-manager/contract",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/02-avalanche-starter-kit/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging/03-avalanche-starter-kit/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/02-lux-starter-kit/:path*",
+        destination: "/academy/lux-l1/interchain-messaging/03-lux-starter-kit/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-messaging/09-avalanche-warp-messaging/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging/08-avalanche-warp-messaging/:path*",
+        source: "/academy/lux-l1/interchain-messaging/09-lux-warp-messaging/:path*",
+        destination: "/academy/lux-l1/interchain-messaging/08-lux-warp-messaging/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-messaging/10-running-a-relayer/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging/09-running-a-relayer/:path*",
+        source: "/academy/lux-l1/interchain-messaging/10-running-a-relayer/:path*",
+        destination: "/academy/lux-l1/interchain-messaging/09-running-a-relayer/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/erc20-bridge/03-erc-20-to-erc-20-bridge/05-transfer-tokens",
-        destination: "/academy/avalanche-l1/erc20-bridge/03-erc-20-to-erc-20-bridge/06-transfer-tokens",
+        source: "/academy/lux-l1/erc20-bridge/03-erc-20-to-erc-20-bridge/05-transfer-tokens",
+        destination: "/academy/lux-l1/erc20-bridge/03-erc-20-to-erc-20-bridge/06-transfer-tokens",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/03-transfer-native-tokens",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/04-transfer-native-token",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/03-transfer-native-tokens",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/04-transfer-native-token",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/06-distribution/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/07-token-distribution/:path*",
+        source: "/academy/lux-l1/l1-native-tokenomics/06-distribution/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics/07-token-distribution/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/06-permissioning-users/:path*",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals/08-permissioning-users/:path*",
+        source: "/academy/lux-l1/multi-chain-architecture/06-permissioning-users/:path*",
+        destination: "/academy/lux-l1/lux-fundamentals/08-permissioning-users/:path*",
         permanent: true,
       },
       {
@@ -988,7 +988,7 @@ const config = {
       },
       {
         source: "/docs/build/subnet",
-        destination: "/docs/avalanche-l1s",
+        destination: "/docs/lux-l1s",
         permanent: true,
       },
       {
@@ -997,13 +997,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/nodes/build/set-up-an-avalanche-node-with-google-cloud-platform",
+        source: "/docs/nodes/build/set-up-an-lux-node-with-google-cloud-platform",
         destination: "/docs/nodes/run-a-node/on-third-party-services/google-cloud",
         permanent: true,
       },
       {
         source: "/docs/nodes/build/set-up-node-with-installer",
-        destination: "/docs/nodes/run-a-node/using-install-script/installing-avalanche-go",
+        destination: "/docs/nodes/run-a-node/using-install-script/installing-lux-go",
         permanent: true,
       },
       {
@@ -1012,12 +1012,12 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/overview/what-is-avalanche",
+        source: "/docs/overview/what-is-lux",
         destination: "/docs/primary-network",
         permanent: true,
       },
       {
-        source: "/docs/reference/avalanchego/admin-api",
+        source: "/docs/reference/luxgo/admin-api",
         destination: "/docs/rpcs/other",
         permanent: true,
       },
@@ -1028,42 +1028,42 @@ const config = {
       },
       {
         source: "/docs/subnets/create-a-local-subnet",
-        destination: "/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-locally",
+        destination: "/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-locally",
         permanent: true,
       },
       {
         source: "/docs/subnets/deploy-a-gnosis-safe-on-your-evm",
-        destination: "/docs/avalanche-l1s/add-utility/deploy-smart-contract",
+        destination: "/docs/lux-l1s/add-utility/deploy-smart-contract",
         permanent: true,
       },
       {
         source: "/docs/subnets/deploy-a-smart-contract-on-your-evm",
-        destination: "/docs/avalanche-l1s/add-utility/deploy-smart-contract",
+        destination: "/docs/lux-l1s/add-utility/deploy-smart-contract",
         permanent: true,
       },
       {
         source: "/docs/subnets/upgrade/subnet-precompile-config",
-        destination: "/docs/tooling/avalanche-cli/upgrade/avalanche-l1-precompile-config",
+        destination: "/docs/tooling/lux-cli/upgrade/lux-l1-precompile-config",
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-public-network",
-        destination: "/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-on-fuji-testnet",
+        source: "/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-public-network",
+        destination: "/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-on-testnet-testnet",
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanche-js",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/tooling/lux-js",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
         source: "/docs/tooling/cross-chain/teleporter-token-bridge",
-        destination: "/docs/tooling/avalanche-cli/cross-chain/teleporter-token-bridge",
+        destination: "/docs/tooling/lux-cli/cross-chain/teleporter-token-bridge",
         permanent: true,
       },
       {
-        source: "/docs/tooling/maintain/delete-avalanche-l1",
-        destination: "/docs/tooling/avalanche-cli/maintain/delete-avalanche-l1",
+        source: "/docs/tooling/maintain/delete-lux-l1",
+        destination: "/docs/tooling/lux-cli/maintain/delete-lux-l1",
         permanent: true,
       },
       {
@@ -1078,43 +1078,43 @@ const config = {
       },
       {
         source: "/docs/virtual-machines/default-precompiles/allowlist",
-        destination: "/docs/avalanche-l1s/precompiles/allowlist-interface",
+        destination: "/docs/lux-l1s/precompiles/allowlist-interface",
         permanent: true,
       },
       {
         source: "/docs/virtual-machines/golang-vms/:path*",
-        destination: "/docs/avalanche-l1s/golang-vms/:path*",
+        destination: "/docs/lux-l1s/golang-vms/:path*",
         permanent: true,
       },
       // Additional redirects from user feedback
       {
-        source: "/academy/avalanche-l1/avalanche-fundamentals/04-creating-a-blockchain/:path*",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals/04-creating-an-l1/:path*",
+        source: "/academy/lux-l1/lux-fundamentals/04-creating-a-blockchain/:path*",
+        destination: "/academy/lux-l1/lux-fundamentals/04-creating-an-l1/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/01-intro/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging",
+        source: "/academy/lux-l1/interchain-token-transfer/01-intro/:path*",
+        destination: "/academy/lux-l1/interchain-messaging",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-basics/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-basics/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/03-avalanche-starter-kit/04-add-blockchain-to-wallet",
-        destination: "/academy/avalanche-l1/permissioned-l1s/03-create-an-L1/01-create-subnet",
+        source: "/academy/lux-l1/multi-chain-architecture/03-lux-starter-kit/04-add-blockchain-to-wallet",
+        destination: "/academy/lux-l1/permissioned-l1s/03-create-an-L1/01-create-subnet",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/05-customizability/:path*",
-        destination: "/academy/avalanche-l1/permissioned-l1s",
+        source: "/academy/lux-l1/multi-chain-architecture/05-customizability/:path*",
+        destination: "/academy/lux-l1/permissioned-l1s",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/07-permissioning-validators/:path*",
-        destination: "/academy/avalanche-l1/permissioned-l1s",
+        source: "/academy/lux-l1/multi-chain-architecture/07-permissioning-validators/:path*",
+        destination: "/academy/lux-l1/permissioned-l1s",
         permanent: true,
       },
       {
@@ -1138,13 +1138,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanche-ops",
+        source: "/docs/tooling/lux-ops",
         destination: "/docs",
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanche-sdk/client/accounts/methods/wallet-methods/wallet",
-        destination: "/docs/tooling/avalanche-sdk/interchain/icm",
+        source: "/docs/tooling/lux-sdk/client/accounts/methods/wallet-methods/wallet",
+        destination: "/docs/tooling/lux-sdk/interchain/icm",
         permanent: true,
       },
       // Spanish docs redirect - remove /es prefix
@@ -1155,53 +1155,53 @@ const config = {
       },
       // Additional broken link redirects - round 2
       {
-        source: "/docs/build/avalanche-cli/install",
-        destination: "/docs/tooling/avalanche-cli/get-avalanche-cli",
+        source: "/docs/build/lux-cli/install",
+        destination: "/docs/tooling/lux-cli/get-lux-cli",
         permanent: true,
       },
       {
         source: "/docs/virtual-machines/custom-precompiles",
-        destination: "/docs/avalanche-l1s/custom-precompiles",
+        destination: "/docs/lux-l1s/custom-precompiles",
         permanent: true,
       },
       {
-        source: "/docs/build/avalanchego/acps/:path*",
+        source: "/docs/build/luxgo/acps/:path*",
         destination: "/docs/acps/:path*",
         permanent: true,
       },
       {
-        source: "/docs/build/sdks/avalanchejs/:path*",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/build/sdks/luxjs/:path*",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/erc20-bridge/04-tokens-on-multiple-chains/03-deploy-token-remote",
-        destination: "/academy/avalanche-l1/erc20-bridge/04-tokens-on-multiple-chains/02-deploy-token-remote",
+        source: "/academy/lux-l1/erc20-bridge/04-tokens-on-multiple-chains/03-deploy-token-remote",
+        destination: "/academy/lux-l1/erc20-bridge/04-tokens-on-multiple-chains/02-deploy-token-remote",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-token-transfer/06-native-to-erc-20-bridge/:path*",
-        destination: "/academy/avalanche-l1/interchain-token-transfer/08-native-to-erc-20-bridge/:path*",
+        source: "/academy/lux-l1/interchain-token-transfer/06-native-to-erc-20-bridge/:path*",
+        destination: "/academy/lux-l1/interchain-token-transfer/08-native-to-erc-20-bridge/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/07-erc-20-tokens",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/05-erc20",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/07-erc-20-tokens",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/05-erc20",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/11-create-a-wrapped-native-token",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01b-native-vs-erc20/10-deploy-wrapped-tokens",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/11-create-a-wrapped-native-token",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01b-native-vs-erc20/10-deploy-wrapped-tokens",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/04-independent-tokenomics/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics",
+        source: "/academy/lux-l1/multi-chain-architecture/04-independent-tokenomics/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/05-interoperability/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging",
+        source: "/academy/lux-l1/multi-chain-architecture/05-interoperability/:path*",
+        destination: "/academy/lux-l1/interchain-messaging",
         permanent: true,
       },
       {
@@ -1210,28 +1210,28 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/api-reference/avalanche-sdk/interchain/ictt",
+        source: "/docs/api-reference/lux-sdk/interchain/ictt",
         destination: "/docs/cross-chain/interchain-token-transfer/overview",
         permanent: true,
       },
       {
-        source: "/docs/apis/avalanchego/public-api-server",
+        source: "/docs/apis/luxgo/public-api-server",
         destination: "/docs/rpcs",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/troubleshooting",
-        destination: "/docs/tooling/avalanche-cli/maintain/troubleshooting",
+        source: "/docs/lux-l1s/troubleshooting",
+        destination: "/docs/tooling/lux-cli/maintain/troubleshooting",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/validator-manager/custom-validator-manager",
-        destination: "/docs/avalanche-l1s/validator-manager/contract",
+        source: "/docs/lux-l1s/validator-manager/custom-validator-manager",
+        destination: "/docs/lux-l1s/validator-manager/contract",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/when-to-build-avalanche-l1",
-        destination: "/docs/avalanche-l1s",
+        source: "/docs/lux-l1s/when-to-build-lux-l1",
+        destination: "/docs/lux-l1s",
         permanent: true,
       },
       {
@@ -1240,8 +1240,8 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/build/tutorials/smart-contracts/deploy-a-smart-contract-on-avalanche-using-remix-and-metamask",
-        destination: "/docs/avalanche-l1s/add-utility/deploy-smart-contract",
+        source: "/docs/build/tutorials/smart-contracts/deploy-a-smart-contract-on-lux-using-remix-and-metamask",
+        destination: "/docs/lux-l1s/add-utility/deploy-smart-contract",
         permanent: true,
       },
       {
@@ -1255,13 +1255,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/reference/avalanchego/c-chain/txn-format",
+        source: "/docs/reference/luxgo/c-chain/txn-format",
         destination: "/docs/rpcs/c-chain/txn-format",
         permanent: true,
       },
       {
         source: "/docs/subnets/create-evm-subnet-config",
-        destination: "/docs/avalanche-l1s/evm-configuration/evm-l1-customization",
+        destination: "/docs/lux-l1s/evm-configuration/evm-l1-customization",
         permanent: true,
       },
       {
@@ -1270,23 +1270,23 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanchejs-guides/:path*",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/tooling/luxjs-guides/:path*",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
-        source: "/docs/tooling/create-avalanche-nodes/:path*",
-        destination: "/docs/tooling/avalanche-cli/create-avalanche-nodes/:path*",
+        source: "/docs/tooling/create-lux-nodes/:path*",
+        destination: "/docs/tooling/lux-cli/create-lux-nodes/:path*",
         permanent: true,
       },
       {
-        source: "/docs/tooling/create-deploy-avalanche-l1s/:path*",
-        destination: "/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/:path*",
+        source: "/docs/tooling/create-deploy-lux-l1s/:path*",
+        destination: "/docs/tooling/lux-cli/create-deploy-lux-l1s/:path*",
         permanent: true,
       },
       {
         source: "/docs/virtual-machines/default-precompiles/transactionallowlist",
-        destination: "/docs/avalanche-l1s/precompiles/transaction-allowlist",
+        destination: "/docs/lux-l1s/precompiles/transaction-allowlist",
         permanent: true,
       },
       // User-provided resolutions
@@ -1296,13 +1296,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanche-network-runner/:path*",
-        destination: "/docs/tooling/avalanche-cli",
+        source: "/docs/tooling/lux-network-runner/:path*",
+        destination: "/docs/tooling/lux-cli",
         permanent: true,
       },
       {
-        source: "/docs/api-reference/avalanche-sdk/chainkit-sdk/:path*",
-        destination: "/docs/tooling/avalanche-sdk/chainkit/getting-started",
+        source: "/docs/api-reference/lux-sdk/chainkit-sdk/:path*",
+        destination: "/docs/tooling/lux-sdk/chainkit/getting-started",
         permanent: true,
       },
       {
@@ -1317,37 +1317,37 @@ const config = {
       },
       {
         source: "/docs/build/vm/create/any-lang-vm",
-        destination: "/docs/avalanche-l1s/rust-vms/intro-avalanche-rs",
+        destination: "/docs/lux-l1s/rust-vms/intro-lux-rs",
         permanent: true,
       },
       {
         source: "/docs/build/vm/evm/fee-structure",
-        destination: "/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1",
+        destination: "/docs/lux-l1s/evm-configuration/customize-lux-l1",
         permanent: true,
       },
       {
         source: "/docs/subnets/elastic-subnets/:path*",
-        destination: "/docs/avalanche-l1s",
+        destination: "/docs/lux-l1s",
         permanent: true,
       },
       {
         source: "/docs/virtual-machines/rust-vms/:path*",
-        destination: "/docs/avalanche-l1s/rust-vms/:path*",
+        destination: "/docs/lux-l1s/rust-vms/:path*",
         permanent: true,
       },
       {
-        source: "/docs/tooling/avalanche-cli/create-wallet",
-        destination: "/docs/tooling/avalanche-cli",
+        source: "/docs/tooling/lux-cli/create-wallet",
+        destination: "/docs/tooling/lux-cli",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/add-utility/create-chain-bridge",
+        source: "/docs/lux-l1s/add-utility/create-chain-bridge",
         destination: "/docs/cross-chain/interchain-token-transfer/overview",
         permanent: true,
       },
       {
-        source: "/docs/deprecated/tutorials-contest/2022/avax-subnet-development",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals/04-creating-an-l1",
+        source: "/docs/deprecated/tutorials-contest/2022/lux-subnet-development",
+        destination: "/academy/lux-l1/lux-fundamentals/04-creating-an-l1",
         permanent: true,
       },
       {
@@ -1387,7 +1387,7 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/reference/avalanchego/keystore-api",
+        source: "/docs/reference/luxgo/keystore-api",
         destination: "/docs/rpcs/other",
         permanent: true,
       },
@@ -1397,78 +1397,78 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/tooling/guides/import-avalanche-l1",
-        destination: "/docs/tooling/avalanche-cli/guides/import-avalanche-l1",
+        source: "/docs/tooling/guides/import-lux-l1",
+        destination: "/docs/tooling/lux-cli/guides/import-lux-l1",
         permanent: true,
       },
       {
-        source: "/docs/tooling/maintain/view-avalanche-l1s",
-        destination: "/docs/tooling/avalanche-cli/maintain/view-avalanche-l1s",
+        source: "/docs/tooling/maintain/view-lux-l1s",
+        destination: "/docs/tooling/lux-cli/maintain/view-lux-l1s",
         permanent: true,
       },
       {
         source: "/docs/virtual-machines/evm-l1-customization",
-        destination: "/docs/avalanche-l1s/evm-configuration/evm-l1-customization",
+        destination: "/docs/lux-l1s/evm-configuration/evm-l1-customization",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/08-transfer-an-erc-20-token",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/05-erc20",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/08-transfer-an-erc-20-token",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/05-erc20",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/evm-configuration/transaction-fees",
-        destination: "/docs/avalanche-l1s/precompiles/fee-manager",
+        source: "/docs/lux-l1s/evm-configuration/transaction-fees",
+        destination: "/docs/lux-l1s/precompiles/fee-manager",
         permanent: true,
       },
       // BuilderKit redirect to SDK docs
       {
         source: "/builderkit",
-        destination: "/docs/tooling/avalanche-sdk",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
         source: "/docs/builderkit",
-        destination: "/docs/tooling/avalanche-sdk",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       // AWS one-click validator redirect
       {
-        source: "/docs/nodes/build/launch-an-avalanche-validator-on-aws-with-one-click",
+        source: "/docs/nodes/build/launch-an-lux-validator-on-aws-with-one-click",
         destination: "/docs/nodes/run-a-node/on-third-party-services/aws-marketplace",
         permanent: true,
       },
       // Academy tokenomics path fixes
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/02-native-tokens",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/03-native-tokens",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/02-native-tokens",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/03-native-tokens",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/02-native-tokens/:path*",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/02-custom-tokens/:path*",
+        source: "/academy/lux-l1/l1-native-tokenomics/02-native-tokens/:path*",
+        destination: "/academy/lux-l1/l1-native-tokenomics/02-custom-tokens/:path*",
         permanent: true,
       },
       // Multi-chain architecture starter kit networks redirect
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/03-avalanche-starter-kit/06-networks",
-        destination: "/academy/avalanche-l1/interchain-messaging/03-avalanche-starter-kit/04-networks",
+        source: "/academy/lux-l1/multi-chain-architecture/03-lux-starter-kit/06-networks",
+        destination: "/academy/lux-l1/interchain-messaging/03-lux-starter-kit/04-networks",
         permanent: true,
       },
       {
-        source: "/docs/apis/avalanchego/apis/subnet-evm",
+        source: "/docs/apis/luxgo/apis/subnet-evm",
         destination: "/docs/rpcs/subnet-evm",
         permanent: true,
       },
       {
-        source: "/docs/apis/avalanchego/apis/p-chain",
+        source: "/docs/apis/luxgo/apis/p-chain",
         destination: "/docs/rpcs/p-chain",
         permanent: true,
       },
       // SDK client methods redirect
       {
-        source: "/docs/api-reference/avalanche-sdk/client-sdk/methods/:path*",
-        destination: "/docs/tooling/avalanche-sdk/client/methods/:path*",
+        source: "/docs/api-reference/lux-sdk/client-sdk/methods/:path*",
+        destination: "/docs/tooling/lux-sdk/client/methods/:path*",
         permanent: true,
       },
       // APIs redirect to RPCs
@@ -1478,12 +1478,12 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/apis/avalanchego/apis/c-chain",
+        source: "/docs/apis/luxgo/apis/c-chain",
         destination: "/docs/rpcs/c-chain",
         permanent: true,
       },
       {
-        source: "/docs/apis/avalanchego/apis/:path*",
+        source: "/docs/apis/luxgo/apis/:path*",
         destination: "/docs/rpcs/:path*",
         permanent: true,
       },
@@ -1493,13 +1493,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1",
-        destination: "/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1",
+        source: "/docs/docs/lux-l1s/evm-configuration/customize-lux-l1",
+        destination: "/docs/lux-l1s/evm-configuration/customize-lux-l1",
         permanent: true,
       },
       {
-        source: "/docs/docs/avalanche-l1s/upgrade/precompile-upgrades",
-        destination: "/docs/avalanche-l1s/upgrade/precompile-upgrades",
+        source: "/docs/docs/lux-l1s/upgrade/precompile-upgrades",
+        destination: "/docs/lux-l1s/upgrade/precompile-upgrades",
         permanent: true,
       },
       {
@@ -1514,7 +1514,7 @@ const config = {
       },
       {
         source: "/docs/virtual-machines/evm-customization/executing-test-cases",
-        destination: "/docs/avalanche-l1s/custom-precompiles/executing-test-cases",
+        destination: "/docs/lux-l1s/custom-precompiles/executing-test-cases",
         permanent: true,
       },
       // Node config flags redirect
@@ -1532,7 +1532,7 @@ const config = {
       // Installer redirect
       {
         source: "/docs/nodes/run/with-installer",
-        destination: "/docs/nodes/run-a-node/using-install-script/installing-avalanche-go",
+        destination: "/docs/nodes/run-a-node/using-install-script/installing-lux-go",
         permanent: true,
       },
       // Stake redirect
@@ -1543,19 +1543,19 @@ const config = {
       },
       // SDK getting-started redirect
       {
-        source: "/docs/tooling/avalanche-sdk/getting-started",
-        destination: "/docs/tooling/avalanche-sdk/client/getting-started",
+        source: "/docs/tooling/lux-sdk/getting-started",
+        destination: "/docs/tooling/lux-sdk/client/getting-started",
         permanent: true,
       },
       // Virtual machines redirects
       {
         source: "/docs/virtual-machines/custom-precompiles/background-requirements",
-        destination: "/docs/avalanche-l1s/custom-precompiles/background-requirements",
+        destination: "/docs/lux-l1s/custom-precompiles/background-requirements",
         permanent: true,
       },
       {
         source: "/docs/virtual-machines/timestamp-vm/:path*",
-        destination: "/docs/avalanche-l1s/timestamp-vm/:path*",
+        destination: "/docs/lux-l1s/timestamp-vm/:path*",
         permanent: true,
       },
       {
@@ -1564,13 +1564,13 @@ const config = {
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/05-transfers-in-smart-contracts",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/05-erc20",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/05-transfers-in-smart-contracts",
+        destination: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/05-erc20",
         permanent: true,
       },
       {
-        source: "/docs/api-reference/avalanche-sdk/client-sdk/:path*",
-        destination: "/docs/tooling/avalanche-sdk/client/:path*",
+        source: "/docs/api-reference/lux-sdk/client-sdk/:path*",
+        destination: "/docs/tooling/lux-sdk/client/:path*",
         permanent: true,
       },
       {
@@ -1585,12 +1585,12 @@ const config = {
       },
       {
         source: "/stats/token",
-        destination: "/stats/avax-token",
+        destination: "/stats/lux-token",
         permanent: true,
       },
       {
         source: "/stats/tokens",
-        destination: "/stats/avax-token",
+        destination: "/stats/lux-token",
         permanent: true,
       },
       {
@@ -1599,73 +1599,73 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/overview/getting-started/avalanche-consensus",
-        destination: "/docs/primary-network/avalanche-consensus",
+        source: "/docs/overview/getting-started/lux-consensus",
+        destination: "/docs/primary-network/lux-consensus",
         permanent: true,
       },
       {
-        source: "/docs/quickstart/multisig-utxos-with-avalanchejs",
-        destination: "/docs/tooling/avalanche-sdk/client/methods/wallet-methods/wallet",
+        source: "/docs/quickstart/multisig-utxos-with-luxjs",
+        destination: "/docs/tooling/lux-sdk/client/methods/wallet-methods/wallet",
         permanent: true,
       },
       {
         source: "/docs/subnets/create-a-virtual-machine-vm",
-        destination: "/docs/avalanche-l1s/virtual-machines-index",
+        destination: "/docs/lux-l1s/virtual-machines-index",
         permanent: true,
       },
       {
         source: "/docs/tooling/transactions/:path*",
-        destination: "/docs/tooling/avalanche-cli/transactions/:path*",
+        destination: "/docs/tooling/lux-cli/transactions/:path*",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/avalanche-fundamentals/03-multi-chain-architecture-intro/04-setup-core",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals/03-multi-chain-architecture-intro/05-setup-core",
+        source: "/academy/lux-l1/lux-fundamentals/03-multi-chain-architecture-intro/04-setup-core",
+        destination: "/academy/lux-l1/lux-fundamentals/03-multi-chain-architecture-intro/05-setup-core",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/customizing-evm/05-evm-configuration/03-setup-chainid",
-        destination: "/academy/avalanche-l1/customizing-evm/05-genesis-configuration/03-setup-chainid",
+        source: "/academy/lux-l1/customizing-evm/05-evm-configuration/03-setup-chainid",
+        destination: "/academy/lux-l1/customizing-evm/05-genesis-configuration/03-setup-chainid",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/customizing-evm/05-evm-configuration/08-build-and-run-custom-genesis-blockchain",
-        destination: "/academy/avalanche-l1/customizing-evm/05-genesis-configuration/08-build-and-run-custom-genesis-blockchain",
+        source: "/academy/lux-l1/customizing-evm/05-evm-configuration/08-build-and-run-custom-genesis-blockchain",
+        destination: "/academy/lux-l1/customizing-evm/05-genesis-configuration/08-build-and-run-custom-genesis-blockchain",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/interchain-messaging/08-securing-cross-chain-communication/:path*",
-        destination: "/academy/avalanche-l1/interchain-messaging",
+        source: "/academy/lux-l1/interchain-messaging/08-securing-cross-chain-communication/:path*",
+        destination: "/academy/lux-l1/interchain-messaging",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/multi-chain-architecture/02-custom-blockchains/01-custom-blockchains",
-        destination: "/academy/avalanche-l1/avalanche-fundamentals/03-multi-chain-architecture-intro/04-custom-blockchains-vs-layer-2",
+        source: "/academy/lux-l1/multi-chain-architecture/02-custom-blockchains/01-custom-blockchains",
+        destination: "/academy/lux-l1/lux-fundamentals/03-multi-chain-architecture-intro/04-custom-blockchains-vs-layer-2",
         permanent: true,
       },
       {
-        source: "/docs/apis/avalanchego",
+        source: "/docs/apis/luxgo",
         destination: "/docs/rpcs",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/subnet-evm/genesis",
-        destination: "/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1",
+        source: "/docs/lux-l1s/subnet-evm/genesis",
+        destination: "/docs/lux-l1s/evm-configuration/customize-lux-l1",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/subnet-evm/permissioning/transaction-allow-list",
-        destination: "/docs/avalanche-l1s/precompiles/transaction-allowlist",
+        source: "/docs/lux-l1s/subnet-evm/permissioning/transaction-allow-list",
+        destination: "/docs/lux-l1s/precompiles/transaction-allowlist",
         permanent: true,
       },
       {
         source: "/docs/builderkit/:path*",
-        destination: "/docs/tooling/avalanche-sdk",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
-        source: "/docs/learn/avalanche-l1s",
-        destination: "/docs/avalanche-l1s",
+        source: "/docs/learn/lux-l1s",
+        destination: "/docs/lux-l1s",
         permanent: true,
       },
       {
@@ -1679,7 +1679,7 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/quickstart/avalanche-summit-fuji-quickstart",
+        source: "/docs/quickstart/lux-summit-testnet-quickstart",
         destination: "/docs/primary-network",
         permanent: true,
       },
@@ -1689,18 +1689,18 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/quickstart/transfer-avax-between-x-chain-and-c-chain",
-        destination: "/docs/tooling/avalanche-sdk/client/methods/wallet-methods/wallet",
+        source: "/docs/quickstart/transfer-lux-between-x-chain-and-c-chain",
+        destination: "/docs/tooling/lux-sdk/client/methods/wallet-methods/wallet",
         permanent: true,
       },
       {
-        source: "/docs/subnets/create-a-evm-blockchain-on-subnet-with-avalanchejs",
-        destination: "/docs/tooling/avalanche-sdk",
+        source: "/docs/subnets/create-a-evm-blockchain-on-subnet-with-luxjs",
+        destination: "/docs/tooling/lux-sdk",
         permanent: true,
       },
       {
         source: "/docs/subnets/create-a-vm-timestampvm",
-        destination: "/docs/avalanche-l1s/timestamp-vm/introduction",
+        destination: "/docs/lux-l1s/timestamp-vm/introduction",
         permanent: true,
       },
       {
@@ -1709,25 +1709,25 @@ const config = {
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/customizing-evm/05-evm-configuration/01-genesis-block",
-        destination: "/academy/avalanche-l1/customizing-evm/05-genesis-configuration/01-genesis-block",
+        source: "/academy/lux-l1/customizing-evm/05-evm-configuration/01-genesis-block",
+        destination: "/academy/lux-l1/customizing-evm/05-genesis-configuration/01-genesis-block",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals",
+        source: "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals",
         destination:
-          "/academy/avalanche-l1/l1-native-tokenomics/01-tokens-fundamentals/01-introduction",
+          "/academy/lux-l1/l1-native-tokenomics/01-tokens-fundamentals/01-introduction",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/02-custom-native-tokens",
+        source: "/academy/lux-l1/l1-native-tokenomics/02-custom-native-tokens",
         destination:
-          "/academy/avalanche-l1/l1-native-tokenomics/02-custom-tokens/01-introduction",
+          "/academy/lux-l1/l1-native-tokenomics/02-custom-tokens/01-introduction",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/10-governance/01-introduction",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/08-governance/01-introduction",
+        source: "/academy/lux-l1/l1-native-tokenomics/10-governance/01-introduction",
+        destination: "/academy/lux-l1/l1-native-tokenomics/08-governance/01-introduction",
         permanent: true,
       },
       {
@@ -1741,8 +1741,8 @@ const config = {
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1/customizing-evm/05-genesis-configuration/01-genesis-block",
-        destination: "/academy/avalanche-l1/customizing-evm/05-genesis-configuration/01-genesis-block",
+        source: "/docs/lux-l1/customizing-evm/05-genesis-configuration/01-genesis-block",
+        destination: "/academy/lux-l1/customizing-evm/05-genesis-configuration/01-genesis-block",
         permanent: true,
       },
       {
@@ -1757,11 +1757,11 @@ const config = {
       },
       {
         source: "/docs/quickstart/transaction-fees",
-        destination: "/docs/avalanche-l1s/precompiles/fee-manager",
+        destination: "/docs/lux-l1s/precompiles/fee-manager",
         permanent: true,
       },
       {
-        source: "/docs/quickstart/exchanges/integrate-exchange-with-avalanche",
+        source: "/docs/quickstart/exchanges/integrate-exchange-with-lux",
         destination: "/docs/primary-network/exchange-integration",
         permanent: true,
       },
@@ -1772,33 +1772,33 @@ const config = {
       },
       {
         source: "/docs/virtual-machines/evm-customization/precompile-overview",
-        destination: "/docs/avalanche-l1s/precompiles/allowlist-interface",
+        destination: "/docs/lux-l1s/precompiles/allowlist-interface",
         permanent: true,
       },
       {
-        source: "/docs/en/learners-tutorials/how-avalanche-handles-high-frequency-order-trading",
+        source: "/docs/en/learners-tutorials/how-lux-handles-high-frequency-order-trading",
         destination: "/docs/primary-network",
         permanent: true,
       },
       {
-        source: "/academy/avalanche-l1/l1-native-tokenomics/02-custom-tokens/02-configure-custom-native-token",
+        source: "/academy/lux-l1/l1-native-tokenomics/02-custom-tokens/02-configure-custom-native-token",
         destination:
-          "/academy/avalanche-l1/l1-native-tokenomics/02-custom-tokens/02-custom-native-vs-erc20-native",
+          "/academy/lux-l1/l1-native-tokenomics/02-custom-tokens/02-custom-native-vs-erc20-native",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1/l1-native-tokenomics/04-native-minter",
-        destination: "/academy/avalanche-l1/l1-native-tokenomics/04-native-minter/01-introduction",
+        source: "/docs/lux-l1/l1-native-tokenomics/04-native-minter",
+        destination: "/academy/lux-l1/l1-native-tokenomics/04-native-minter/01-introduction",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/add-utility/cross-chain-bridge",
+        source: "/docs/lux-l1s/add-utility/cross-chain-bridge",
         destination: "/docs/cross-chain/interchain-token-transfer/overview",
         permanent: true,
       },
       {
-        source: "/docs/avalanche-l1s/permissioned-l1s/03-create-an-l1/03-genesis-breakdown",
-        destination: "/academy/avalanche-l1/permissioned-l1s/03-create-an-L1/03-genesis-breakdown",
+        source: "/docs/lux-l1s/permissioned-l1s/03-create-an-l1/03-genesis-breakdown",
+        destination: "/academy/lux-l1/permissioned-l1s/03-create-an-L1/03-genesis-breakdown",
         permanent: true,
       },
       {

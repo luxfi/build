@@ -15,7 +15,7 @@ const features = [
     label: "Academy",
     title: "Start <strong>Learning</strong>.",
     description:
-      "Enroll in our free online courses to learn about Avalanche and earn certificates.",
+      "Enroll in our free online courses to learn about Lux and earn certificates.",
     icon: GraduationCap,
     href: "/academy"
   },

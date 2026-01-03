@@ -10,7 +10,7 @@ import { StatsBubbleNav } from "@/components/stats/stats-bubble.config";
 import { ICMMetric } from "@/types/stats";
 import Image from "next/image";
 import l1ChainsData from "@/constants/l1-chains.json";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { useTheme } from "next-themes";
 import { toPng } from "html-to-image";
 import Link from "next/link";
@@ -295,7 +295,7 @@ export default function ICMStatsPage() {
         chainName,
         count,
         logo: chain?.chainLogoURI || "",
-        color: chain?.color || "#E84142",
+        color: chain?.color || "#FFFFFF",
       };
     });
   };
@@ -340,7 +340,7 @@ export default function ICMStatsPage() {
       icon: MessageCircleMore,
       metricKey: "dailyMessageVolume" as const,
       description: "Total Interchain Messaging volume",
-      color: "#E84142",
+      color: "#FFFFFF",
       chartType: "bar" as const,
     },
   ];
@@ -645,9 +645,9 @@ export default function ICMStatsPage() {
             <div className="space-y-4 sm:space-y-6 flex-1">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                  <AvalancheLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#E84142"/>
+                  <LuxLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#FFFFFF"/>
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                 </div>
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -657,7 +657,7 @@ export default function ICMStatsPage() {
                 </div>
                 <div className="flex items-center gap-3 mt-3">
                   <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 max-w-2xl">
-                    Comprehensive analytics for Avalanche Interchain Messaging
+                    Comprehensive analytics for Lux Interchain Messaging
                     and Token Transfer activity across L1s
                   </p>
                 </div>
@@ -725,7 +725,7 @@ export default function ICMStatsPage() {
                 className="border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600"
               >
                 <a
-                  href="/academy/avalanche-l1/avalanche-fundamentals/interoperability/icm-icmContracts-and-ictt"
+                  href="/academy/lux-l1/lux-fundamentals/interoperability/icm-icmContracts-and-ictt"
                   className="flex items-center gap-2"
                 >
                   <BookOpen className="h-4 w-4" />
@@ -1026,7 +1026,7 @@ export default function ICMStatsPage() {
               Interchain Token Transfer (ICTT) Analytics
             </LinkableHeading>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Token transfer metrics across Avalanche L1s
+              Token transfer metrics across Lux L1s
             </p>
           </div>
 
@@ -1469,7 +1469,7 @@ function ChartCard({
                                 const chain = l1ChainsData.find(
                                   (c) => c.chainName === chainName
                                 );
-                                const chainColor = chain?.color || "#E84142";
+                                const chainColor = chain?.color || "#FFFFFF";
                                 const chainLogo = chain?.chainLogoURI || "";
 
                                 return (

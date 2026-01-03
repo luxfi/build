@@ -18,7 +18,7 @@ import { Input, Suggestion } from "@/components/toolbox/components/Input";
 import { EVMAddressInput } from "@/components/toolbox/components/EVMAddressInput";
 import { createPublicClient, http } from "viem";
 import { Note } from "@/components/toolbox/components/Note";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import ERC20TokenHomeABI from "@/contracts/icm-contracts/compiled/ERC20TokenHome.json";
 import ExampleERC20 from "@/contracts/icm-contracts/compiled/ExampleERC20.json";
 import SelectBlockchainId from "@/components/toolbox/components/SelectBlockchainId";

@@ -1,4 +1,4 @@
-# Avalanche Builder Hub
+# Lux Lux Build
 
 <div align="center">
   <img src="public/logo-white.png?raw=true">
@@ -6,12 +6,12 @@
 
 ## Overview
 
-This repository contains the contents for the Avalanche Builder Hub. It hosts the Docs, the
-Avalanche Academy and the integrations directory and is deployed at [https://build.avax.network](https://build.avax.network).
+This repository contains the contents for the Lux Lux Build. It hosts the Docs, the
+Lux Academy and the integrations directory and is deployed at [https://build.lux.network](https://build.lux.network).
 
 ## Contributing
 
-Contributing to the Avalanche Builder Hub is a great way to get involved with the Avalanche dev community!
+Contributing to the Lux Lux Build is a great way to get involved with the Lux dev community!
 Here's how to get started:
 
 ### Quick Fixes
@@ -29,8 +29,8 @@ repository. Simply:
 
 To propose new docs or large edits to our existing pages, follow the steps accordingly:
 
-- **Ava Labs Github Organization Members:** Clone the repo
-  `git clone https://github.com/ava-labs/builders-hub.git`
+- **Lux Network Github Organization Members:** Clone the repo
+  `git clone https://github.com/luxfi/lux-build.git`
 - **External Contributors:** Fork the repo via GitHub's GUI
 - Checkout to a new branch `git checkout -b <your-name/branch-name>`
 - Make changes on your branch
@@ -38,7 +38,7 @@ To propose new docs or large edits to our existing pages, follow the steps accor
 - **`yarn dev` to ensure the build passes**
 - `git commit -m "some commit message"`
 - `git push`
-- Head to [GitHub](https://github.com/ava-labs/builders-hub) and open a new pull request
+- Head to [GitHub](https://github.com/luxfi/lux-build) and open a new pull request
 
 ### Structure and Syntax
 
@@ -50,7 +50,7 @@ To propose new docs or large edits to our existing pages, follow the steps accor
 
 - All PRs should be made against the `master` branch.
 - Following a successful build, Vercel will deploy your branch where you can verify your changes.
-- Once your PR is merged into `master`, [https://build.avax.network/docs/](https://build.avax.network/docs/) will be updated with your changes.
+- Once your PR is merged into `master`, [https://build.lux.network/docs/](https://build.lux.network/docs/) will be updated with your changes.
 
 ### Installation
 
@@ -83,7 +83,7 @@ This command generates static content into the `.next` directory and can be rend
 
 ## New or Missing Content Requests
 
-_The information I am requesting is related to a specific project, i.e. AvalancheGo, AvalancheNetworkRunner, etc.:_
+_The information I am requesting is related to a specific project, i.e. LuxGo, LuxNetworkRunner, etc.:_
 
 - Please raise a **Missing Docs Issue** in the GitHub repository of that project and
   thoroughly detail your request. Include references to any existing pages relevant to your
@@ -91,15 +91,15 @@ _The information I am requesting is related to a specific project, i.e. Avalanch
 
 _The information I am requesting is explanatory in nature and does not currently exist:_
 
-- Please open a new [Issue](https://github.com/ava-labs/builders-hub/issues/new/choose)
+- Please open a new [Issue](https://github.com/luxfi/lux-build/issues/new/choose)
   in this repository and thoroughly detail your request according to the issue template.
   If urgent, please create a new ticket in the
-  [Dev Docs Improvement Proposals](https://github.com/orgs/ava-labs/projects/15/views/1)
+  [Dev Docs Improvement Proposals](https://github.com/orgs/luxfi/projects/15/views/1)
   dashboard.
 
 _Erroneous or missing information on documentation unrelated to a specific project needs
 editing:_
 
 - If you understand the issue enough to provide a correction, follow the steps
-  [here](https://github.com/ava-labs/builders-hub#quick-fixes).
-- If not, please raise an [Issue](https://github.com/ava-labs/builders-hub/issues/new/choose).
+  [here](https://github.com/luxfi/lux-build#quick-fixes).
+- If not, please raise an [Issue](https://github.com/luxfi/lux-build/issues/new/choose).

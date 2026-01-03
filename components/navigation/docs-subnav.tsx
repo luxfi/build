@@ -47,7 +47,7 @@ const tabs = [
   },
   {
     label: "Tools",
-    href: "/docs/tooling/avalanche-sdk",
+    href: "/docs/tooling/lux-sdk",
     items: toolingOptions,
     pathMatch: (path: string) => path.startsWith("/docs/tooling"),
   },

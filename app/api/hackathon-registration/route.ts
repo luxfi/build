@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     processedFormData["tooling_familiarity"] = Array.isArray(formData.tools) ? formData.tools.join(";") : formData.tools || "";
     //processedFormData["hackathon_event_id"] = formData.hackathon_id || "";
     processedFormData["founder_check"] = formData.founder_check ? "Yes" : "No";
-    processedFormData["avalanche_ecosystem_member"] = formData.avalanche_ecosystem_member ? "Yes" : "No";
+    processedFormData["lux_ecosystem_member"] = formData.lux_ecosystem_member ? "Yes" : "No";
 
     // Map boolean fields
     processedFormData["marketing_consent"] = formData.newsletter_subscription === true ? "Yes" : "No";
@@ -95,7 +95,7 @@ export async function POST(request: Request) {
     const hubspotPayload: HubspotPayload = {
       fields: fields,
       context: {
-        pageUri: request.headers.get('referer') || 'https://build.avax.network',
+        pageUri: request.headers.get('referer') || 'https://build.lux.network',
         pageName: 'Hackathon Registration'
       }
     };
@@ -105,12 +105,12 @@ export async function POST(request: Request) {
       hubspotPayload.legalConsentOptions = {
         consent: {
           consentToProcess: true,
-          text: "I agree to allow Avalanche Foundation to store and process my personal data for hackathon participation purposes.",
+          text: "I agree to allow Lux Foundation to store and process my personal data for hackathon participation purposes.",
           communications: [
             {
               value: formData.marketing_consent === true,
               subscriptionTypeId: 999,
-              text: "I would like to receive marketing emails from the Avalanche Foundation."
+              text: "I would like to receive marketing emails from the Lux Foundation."
             }
           ]
         }

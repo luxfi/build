@@ -12,14 +12,14 @@ export default function Page() {
           <div className="flex justify-center mb-6">
             <Image
               src="/codebase-black.svg"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="dark:hidden"
             />
             <Image
               src="/codebase-white.svg"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="hidden dark:block"
@@ -55,7 +55,7 @@ export default function Page() {
           >
             <div className="flex justify-center">
               <div className="inline-flex items-center rounded-full border border-purple-400/50 px-4 py-1.5 text-sm font-semibold text-purple-600 dark:text-purple-400 bg-purple-500/10">
-                Codebase by Avalanche™ Incubator
+                Codebase by Lux™ Incubator
               </div>
             </div>
 
@@ -75,7 +75,7 @@ export default function Page() {
               next season!
             </p>
             <div className="flex flex-col justify-center sm:flex-row gap-4 w-full">
-              <Link href="https://codebase.avax.network">
+              <Link href="https://codebase.lux.network">
                 <Button className="rounded-full border border-purple-400/50 px-4 py-1.5 text-sm font-semibold text-purple-600 dark:text-purple-400 bg-purple-500/10">
                   Learn More
                 </Button>
@@ -129,7 +129,7 @@ export default function Page() {
               </div>
 
               <p className="text-zinc-400 mb-6">
-                Our hackathons aim to harness the potential of Avalanche's
+                Our hackathons aim to harness the potential of Lux's
                 robust technology stack to address pressing issues and create
                 scalable, practical solutions
               </p>
@@ -175,19 +175,19 @@ export default function Page() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-semibold">
-                  Codebase by Avalanche™ Incubator
+                  Codebase by Lux™ Incubator
                 </h3>
               </div>
 
               <p className="text-zinc-400 mb-6">
-                The official Avalanche incubator that funds and supports web3
+                The official Lux incubator that funds and supports web3
                 founders as they shape the future with category-defining
                 projects
               </p>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <Link
-                  href="https://codebase.avax.network"
+                  href="https://codebase.lux.network"
                   className="flex items-center gap-2 underline font-medium"
                 >
                   Learn More
@@ -231,12 +231,12 @@ export default function Page() {
               <p className="text-zinc-400 mb-6">
                 Transforming the Web 2.0 "Hacker Home" into a Web3 powerhouse,
                 Innovation House connects global talent to collaborate and shape
-                the future of blockchain on Avalanche.
+                the future of blockchain on Lux.
               </p>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <Link
-                  href="https://innovationhouse.avax.network"
+                  href="https://innovationhouse.lux.network"
                   className="flex items-center gap-2 underline font-medium"
                 >
                   Learn More
@@ -249,7 +249,7 @@ export default function Page() {
         <section className="relative max-w-[1100px] mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl md:text-5xl mb-4">
-              Codebase by Avalanche™ has impact
+              Codebase by Lux™ has impact
             </h2>
             <p className="text-zinc-400 text-md mb-16 max-w-lg">
               Real products, real scale, real-world impact—see what our
@@ -290,7 +290,7 @@ export default function Page() {
                 </h3>
                 <p className="text-zinc-400 text-md">
                   Work directly with top founders, engineers, and investors from
-                  the Avalanche ecosystem and beyond.
+                  the Lux ecosystem and beyond.
                 </p>
               </div>
               <div className="p-6 lg:p-10 border border-zinc-300">
@@ -322,7 +322,7 @@ export default function Page() {
         <section className="relative max-w-[1100px] mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-2xl md:text-5xl mb-16">
-              What Sets Codebase by Avalanche™ Apart
+              What Sets Codebase by Lux™ Apart
             </h2>
 
             <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
@@ -355,7 +355,7 @@ export default function Page() {
                 <p className="text-zinc-400 text-md leading-relaxed">
                   Every touchpoint is built for builders in Web3. Get practical
                   help on token design, validator strategy, UX, and more from
-                  Ava Labs engineers and expert mentors.
+                  Lux Network engineers and expert mentors.
                 </p>
               </div>
 

@@ -14,11 +14,11 @@ export default async function Page() {
   // Generate asymmetric JWT for Glacier API
   const glacierJwt = await createGlacierJWT({
     sub: session.user.id,
-    iss: "https://build.avax.network/",
+    iss: "https://build.lux.network/",
     email: session.user.email!,
   });
 
-  const DATA_API_ENDPOINT = process.env.VERCEL_ENV === "production" ? 'https://data-api.avax.network/v1' : 'https://data-api-dev.avax.network/v1';
+  const DATA_API_ENDPOINT = process.env.VERCEL_ENV === "production" ? 'https://data-api.lux.network/v1' : 'https://data-api-dev.lux.network/v1';
 
 
   // Pass authenticated user data to the component

@@ -1,6 +1,6 @@
 {
   "title": "Architecture Reference",
-  "description": "Deep dive into AvalancheGo's internal architecture and components",
+  "description": "Deep dive into LuxGo's internal architecture and components",
   "pages": [
     "index",
     "core-components",

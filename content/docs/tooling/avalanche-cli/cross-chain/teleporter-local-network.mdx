@@ -1,26 +1,26 @@
 ---
 title: Teleporter on Local Network
-description: This how-to guide focuses on deploying Teleporter-enabled Avalanche L1s to a local Avalanche network.
+description: This how-to guide focuses on deploying Teleporter-enabled Lux L1s to a local Lux network.
 ---
 
-After this tutorial, you would have created and deployed two Avalanche L1s to the local network and have enabled them to cross-communicate with each other and with the local C-Chain (through Teleporter and the underlying Warp technology.)
+After this tutorial, you would have created and deployed two Lux L1s to the local network and have enabled them to cross-communicate with each other and with the local LUExchange-Chain (through Teleporter and the underlying Warp technology.)
 
 For more information on cross chain messaging through Teleporter and Warp, check:
 
 - [Cross Chain References](/docs/cross-chain)
 
-Note that currently only [Subnet-EVM](https://github.com/ava-labs/subnet-evm) and [Subnet-EVM-Based](/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1) virtual machines support Teleporter.
+Note that currently only [Subnet-EVM](https://github.com/luxfi/subnet-evm) and [Subnet-EVM-Based](/docs/lux-l1s/evm-configuration/customize-lux-l1) virtual machines support Teleporter.
 
 ## Prerequisites
 
-- [Avalanche-CLI installed](/docs/tooling/avalanche-cli)
+- [Lux-CLI installed](/docs/tooling/lux-cli)
 
-## Create Avalanche L1 Configurations
+## Create Lux L1 Configurations
 
-Let's create an Avalanche L1 called `<chain1>` with the latest Subnet-EVM version, a chain ID of 1, TOKEN1 as the token name, and with default Subnet-EVM parameters (more information regarding Avalanche L1 creation can be found [here](/docs/tooling/avalanche-cli#create-your-avalanche-l1-configuration)):
+Let's create an Lux L1 called `<chain1>` with the latest Subnet-EVM version, a chain ID of 1, TOKEN1 as the token name, and with default Subnet-EVM parameters (more information regarding Lux L1 creation can be found [here](/docs/tooling/lux-cli#create-your-lux-l1-configuration)):
 
 ```bash
-avalanche blockchain create <chain1> --evm --latest\
+lux blockchain create <chain1> --evm --latest\
     --evm-chain-id 1 --evm-token TOKEN1 --evm-defaults
 
 creating genesis for <blockchain chain1>
@@ -33,14 +33,14 @@ using latest teleporter version (v1.0.0)
 
 Notice that by default, Teleporter is enabled and a stored key is created to fund Teleporter related operations (that is deploy Teleporter smart contracts, fund Teleporter Relayer).
 
-To disable Teleporter in your Avalanche L1, use the flag `--teleporter=false` when creating the Avalanche L1.
+To disable Teleporter in your Lux L1, use the flag `--teleporter=false` when creating the Lux L1.
 
-To disable Relayer in your Avalanche L1, use the flag `--relayer=false` when creating the Avalanche L1.
+To disable Relayer in your Lux L1, use the flag `--relayer=false` when creating the Lux L1.
 
-Now let's create a second Avalanche L1 called `<chain2>`, with similar settings:
+Now let's create a second Lux L1 called `<chain2>`, with similar settings:
 
 ```bash
-avalanche blockchain create <chain2> --evm --latest\
+lux blockchain create <chain2> --evm --latest\
     --evm-chain-id 2 --evm-token TOKEN2 --evm-defaults
 
 creating genesis for <blockchain chain2>
@@ -51,19 +51,19 @@ using latest teleporter version (v1.0.0)
 ✓ Successfully created subnet configuration
 ```
 
-Deploy the Avalanche L1s to Local Network[​](#deploy-the-avalanche-l1s-to-local-network "Direct link to heading")
+Deploy the Lux L1s to Local Network[​](#deploy-the-lux-l1s-to-local-network "Direct link to heading")
 -----------------------------------------------------------------------------------------------------
 
 Let's deploy `<chain1>`:
 
 ```bash
-avalanche blockchain deploy <chain1> --local
+lux blockchain deploy <chain1> --local
 
 Deploying [<chain1>] to Local Network
-Backend controller started, pid: 149427, output at: ~/.avalanche-cli/runs/server_20240229_165923/avalanche-cli-backend.log
+Backend controller started, pid: 149427, output at: ~/.lux-cli/runs/server_20240229_165923/lux-cli-backend.log
 
 Booting Network. Wait until healthy...
-Node logs directory: ~/.avalanche-cli/runs/network_20240229_165923/node<i>/logs
+Node logs directory: ~/.lux-cli/runs/network_20240229_165923/node<i>/logs
 Network ready to use.
 
 Deploying Blockchain. Wait until network acknowledges...
@@ -102,16 +102,16 @@ Currency Symbol:  TOKEN1
 
 Notice some details here:
 
-- Two smart contracts are deployed to each Avalanche L1: Teleporter Messenger and Teleporter Registry
-- Both Teleporter smart contracts are also deployed to `C-Chain` in the Local Network
-- [AWM Teleporter Relayer](https://github.com/ava-labs/awm-relayer) is installed, configured and executed in background (A Relayer [listens](/docs/cross-chain/teleporter/overview#data-flow) for new messages being generated on a source Avalanche L1 and sends them to the destination Avalanche L1.)
+- Two smart contracts are deployed to each Lux L1: Teleporter Messenger and Teleporter Registry
+- Both Teleporter smart contracts are also deployed to `LUExchange-Chain` in the Local Network
+- [AWM Teleporter Relayer](https://github.com/luxfi/awm-relayer) is installed, configured and executed in background (A Relayer [listens](/docs/cross-chain/teleporter/overview#data-flow) for new messages being generated on a source Lux L1 and sends them to the destination Lux L1.)
 
-CLI configures the Relayer to enable every Avalanche L1 to send messages to all other Avalanche L1s. If you add more Avalanche L1s, the Relayer will be automatically reconfigured.
+CLI configures the Relayer to enable every Lux L1 to send messages to all other Lux L1s. If you add more Lux L1s, the Relayer will be automatically reconfigured.
 
-When deploying Avalanche L1 `<chain2>`, the two Teleporter contracts will not be deployed to C-Chain in Local Network as they have already been deployed when we deployed the first Avalanche L1.
+When deploying Lux L1 `<chain2>`, the two Teleporter contracts will not be deployed to LUExchange-Chain in Local Network as they have already been deployed when we deployed the first Lux L1.
 
 ```bash
-avalanche blockchain deploy <chain2> --local
+lux blockchain deploy <chain2> --local
 
 Deploying [<chain2>] to Local Network
 
@@ -161,22 +161,22 @@ Currency Symbol:  TOKEN2
 Verify Teleporter Is Successfully Set Up[​](#verify-teleporter-is-successfully-set-up "Direct link to heading")
 ---------------------------------------------------------------------------------------------------------------
 
-To verify that Teleporter is successfully, let's send a couple of cross messages (from C-Chain to chain1): 
+To verify that Teleporter is successfully, let's send a couple of cross messages (from LUExchange-Chain to chain1): 
 
 ```bash
-avalanche teleporter sendMsg C-Chain chain1 "Hello World" --local
+lux teleporter sendMsg LUExchange-Chain chain1 "Hello World" --local
 ```
 
 Results:
 ```bash
-Delivering message "this is a message" to source subnet "C-Chain"
+Delivering message "this is a message" to source subnet "LUExchange-Chain"
 Waiting for message to be received at destination subnet subnet "chain1"
 Message successfully Teleported!
 ```
 
 To verify that Teleporter is successfully deployed, let's send a couple of cross-chain messages (from chain2 to chain1): 
 ```bash
-avalanche teleporter sendMsg chain2 chain1 "Hello World" --local
+lux teleporter sendMsg chain2 chain1 "Hello World" --local
 ```
 
 Results:
@@ -188,14 +188,14 @@ Message successfully Teleported!
 
 You have Teleport-ed your first message in the Local Network!
 
-Relayer related logs can be found at `~/.avalanche-cli/runs/awm-relayer.log`, and Relayer configuration can be found at `~/.avalanche-cli/runs/awm-relayer-config.json`
+Relayer related logs can be found at `~/.lux-cli/runs/awm-relayer.log`, and Relayer configuration can be found at `~/.lux-cli/runs/awm-relayer-config.json`
 
 Obtaining Information on Teleporter Deploys[​](#obtaining-information-on-teleporter-deploys "Direct link to heading")
 ---------------------------------------------------------------------------------------------------------------------
 
-### Obtaining Avalanche L1 Information[​](#obtaining-avalanche-l1-information "Direct link to heading")
+### Obtaining Lux L1 Information[​](#obtaining-lux-l1-information "Direct link to heading")
 
-By executing `blockchain describe` on a Teleporter enabled Avalanche L1, the following relevant information can be found:
+By executing `blockchain describe` on a Teleporter enabled Lux L1, the following relevant information can be found:
 
 - Blockchain RPC URL
 - Blockchain ID in cb58 format
@@ -206,7 +206,7 @@ By executing `blockchain describe` on a Teleporter enabled Avalanche L1, the fol
 Let's get the information for `<chain1>`:
 
 ```bash
-avalanche blockchain describe <chain1>
+lux blockchain describe <chain1>
 
 
  _____       _        _ _
@@ -248,12 +248,12 @@ avalanche blockchain describe <chain1>
 ...
 ```
 
-### Obtaining C-Chain Information[​](#obtaining-c-chain-information "Direct link to heading")
+### Obtaining LUExchange-Chain Information[​](#obtaining-c-chain-information "Direct link to heading")
 
-Similar information can be found for C-Chain by using `primary describe`:
+Similar information can be found for LUExchange-Chain by using `primary describe`:
 
 ```bash
-avalanche primary describe --local
+lux primary describe --local
 
    _____       _____ _           _         _____
   / ____|     / ____| |         (_)       |  __ \
@@ -269,7 +269,7 @@ avalanche primary describe --local
 +------------------------------+--------------------------------------------------------------------+
 | EVM Chain ID                 | 43112                                                              |
 +------------------------------+--------------------------------------------------------------------+
-| TOKEN SYMBOL                 | AVAX                                                               |
+| TOKEN SYMBOL                 | LUX                                                               |
 +------------------------------+--------------------------------------------------------------------+
 | Address                      | 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC                         |
 +------------------------------+--------------------------------------------------------------------+
@@ -290,12 +290,12 @@ avalanche primary describe --local
 Controlling Relayer Execution[​](#controlling-relayer-execution "Direct link to heading")
 -----------------------------------------------------------------------------------------
 
-Besides having the option to not use a Relayer at Avalanche L1 creation time, the Relayer can be stopped and restarted on used request.
+Besides having the option to not use a Relayer at Lux L1 creation time, the Relayer can be stopped and restarted on used request.
 
 To stop the Relayer:
 
 ```bash
-avalanche interchain relayer stop --local
+lux interchain relayer stop --local
 
 ✓ Local AWM Relayer successfully stopped
 ```
@@ -303,10 +303,10 @@ avalanche interchain relayer stop --local
 To start it again:
 
 ```bash
-avalanche interchain relayer start --local
+lux interchain relayer start --local
 
 using latest awm-relayer version (v1.1.0)
 Executing AWM-Relayer...
 ✓ Local AWM Relayer successfully started
-Logs can be found at ~/.avalanche-cli/runs/awm-relayer.log
+Logs can be found at ~/.lux-cli/runs/awm-relayer.log
 ```

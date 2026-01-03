@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback, useRef, useMemo } from "react"
 import { Loader2, ArrowDownUp, Clock } from "lucide-react"
 import { Button } from "@/components/toolbox/components/Button"
 import { useWalletStore } from "@/components/toolbox/stores/walletStore"
-import { pvm, Utxo, TransferOutput, evm } from '@avalabs/avalanchejs'
+import { pvm, Utxo, TransferOutput, evm } from 'luxfi'
 import { getRPCEndpoint } from '@/components/toolbox/coreViem/utils/rpc'
 import { WalletRequirementsConfigKey } from "@/components/toolbox/hooks/useWalletRequirements"
 import { Success } from "@/components/toolbox/components/Success"
@@ -21,7 +21,7 @@ interface CrossChainTransferProps extends BaseConsoleToolProps {
 
 const metadata: ConsoleToolMetadata = {
     title: "Cross-Chain Transfer",
-    description: "Transfer AVAX between Platform (P) and Contract (C) chains.",
+    description: "Transfer LUX between Platform (P) and Contract (C) chains.",
     toolRequirements: [
         WalletRequirementsConfigKey.CoreWalletConnected
     ],
@@ -77,7 +77,7 @@ function CrossChainTransfer({
     const walletEVMAddress = useWalletStore((s) => s.walletEVMAddress);
     const coreEthAddress = useWalletStore((s) => s.coreEthAddress);
 
-    // Calculate total AVAX in UTXOs
+    // Calculate total LUX in UTXOs
     const totalCToPUtxoAmount = cToP_UTXOs.reduce((sum, utxo) => {
         return sum + Number(utxo.output.amt.value()) / 1_000_000_000;
     }, 0);
@@ -205,7 +205,7 @@ function CrossChainTransfer({
 
         const currentBalance = sourceChain === "c-chain" ? cChainBalance : pChainBalance;
         if (numericAmount > currentBalance) {
-            setError(`Amount exceeds available balance of ${currentBalance.toFixed(4)} AVAX.`);
+            setError(`Amount exceeds available balance of ${currentBalance.toFixed(4)} LUX.`);
             return false;
         }
 
@@ -223,7 +223,7 @@ function CrossChainTransfer({
 
         try {
             if (sourceChain === "c-chain") {
-                // C-Chain to P-Chain export using the evmExport function
+                // LUExchange-Chain to Platform-Chain export using the evmExport function
                 const txnRequest = await coreWalletClient.cChain.prepareExportTxn({
                     destinationChain: "P",
                     exportedOutput: {
@@ -235,15 +235,15 @@ function CrossChainTransfer({
                 const txnResponse = await coreWalletClient.sendXPTransaction(txnRequest);
                 await coreWalletClient.waitForTxn(txnResponse);
 
-                console.log("P-Chain Export transaction sent:", txnResponse);
+                console.log("Platform-Chain Export transaction sent:", txnResponse);
                 // Store the export transaction ID to trigger import
                 const txId = txnResponse.txHash;
                 setExportTxId(txId);
                 setCompletedExportTxId(txId);
                 setCompletedExportXPChain("C");
             } else {
-                // P-Chain to C-Chain export using the pvmExport function
-                console.log("Preparing P-Chain Export transaction", pChainAddress, amount);
+                // Platform-Chain to LUExchange-Chain export using the pvmExport function
+                console.log("Preparing Platform-Chain Export transaction", pChainAddress, amount);
                 const txnRequest = await coreWalletClient.pChain.prepareExportTxn({
                     exportedOutputs: [{
                         addresses: [coreEthAddress],
@@ -254,7 +254,7 @@ function CrossChainTransfer({
                 const txnResponse = await coreWalletClient.sendXPTransaction(txnRequest);
                 await coreWalletClient.waitForTxn(txnResponse);
 
-                console.log("P-Chain Export transaction sent:", txnResponse,);
+                console.log("Platform-Chain Export transaction sent:", txnResponse,);
                 const txId = txnResponse.txHash;
                 setExportTxId(txId);
                 setCompletedExportTxId(txId);
@@ -281,7 +281,7 @@ function CrossChainTransfer({
 
         try {
             if (destinationChain === "p-chain") {
-                // Import to P-Chain using pvmImport function
+                // Import to Platform-Chain using pvmImport function
                 const txnRequest = await coreWalletClient.pChain.prepareImportTxn({
                     sourceChain: "C",
                     importedOutput: {
@@ -290,18 +290,18 @@ function CrossChainTransfer({
                 });
                 const txnResponse = await coreWalletClient.sendXPTransaction(txnRequest);
                 await coreWalletClient.waitForTxn(txnResponse);
-                console.log("P-Chain Import transaction sent:", txnResponse.txHash);
+                console.log("Platform-Chain Import transaction sent:", txnResponse.txHash);
                 setImportTxId(String(txnResponse.txHash));
                 setCompletedImportXPChain("P");
             } else {
-                // Import to C-Chain using evmImportTx function
+                // Import to LUExchange-Chain using evmImportTx function
                 const txnRequest = await coreWalletClient.cChain.prepareImportTxn({
                     sourceChain: "P",
                     toAddress: walletEVMAddress as `0x${string}`,
                 });
                 const txnResponse = await coreWalletClient.sendXPTransaction(txnRequest);
                 await coreWalletClient.waitForTxn(txnResponse);
-                console.log("C-Chain Import transaction sent:", txnResponse.txHash);
+                console.log("LUExchange-Chain Import transaction sent:", txnResponse.txHash);
                 setImportTxId(String(txnResponse.txHash));
                 setCompletedImportXPChain("C");
             }
@@ -409,7 +409,7 @@ function CrossChainTransfer({
                         <StepIndicator stepNumber={2} title="Import" status={getStep2Status()} isLast />
                     </div>
                     <div className="text-center text-sm text-zinc-600 dark:text-zinc-400">
-                        Complete both transactions to transfer AVAX between chains
+                        Complete both transactions to transfer LUX between chains
                     </div>
                 </div>
 
@@ -419,7 +419,7 @@ function CrossChainTransfer({
                     title="Export from Source Chain"
                     description={completedExportTxId === "utxo-available"
                         ? `UTXOs already available for import (previous export detected)`
-                        : `Export ${amount} AVAX from ${sourceChain === "c-chain" ? "C-Chain" : "P-Chain"} to ${destinationChain === "p-chain" ? "P-Chain" : "C-Chain"}`}
+                        : `Export ${amount} LUX from ${sourceChain === "c-chain" ? "LUExchange-Chain" : "Platform-Chain"} to ${destinationChain === "p-chain" ? "Platform-Chain" : "LUExchange-Chain"}`}
                     status={getStep1Status()}
                     isExpanded={step1Expanded}
                     onToggle={() => setStep1Expanded(!step1Expanded)}
@@ -436,20 +436,20 @@ function CrossChainTransfer({
                                     <div className="rounded-full w-8 h-8 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
                                         {sourceChain === "c-chain" ? (
                                             <img
-                                                src="https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg"
-                                                alt="C-Chain Logo"
+                                                src="https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg"
+                                                alt="LUExchange-Chain Logo"
                                                 className="h-5 w-5"
                                             />
                                         ) : (
                                             <img
                                                 src="https://images.ctfassets.net/gcj8jwzm6086/42aMwoCLblHOklt6Msi6tm/1e64aa637a8cead39b2db96fe3225c18/pchain-square.svg"
-                                                alt="P-Chain Logo"
+                                                alt="Platform-Chain Logo"
                                                 className="h-5 w-5"
                                             />
                                         )}
                                     </div>
                                     <div className="text-left">
-                                        <div className="font-medium">Avalanche {sourceChain === "c-chain" ? "C-Chain" : "P-Chain"}</div>
+                                        <div className="font-medium">Lux {sourceChain === "c-chain" ? "LUExchange-Chain" : "Platform-Chain"}</div>
                                         <div className="text-sm text-zinc-500 dark:text-zinc-400">
                                             {sourceChain === "c-chain" ? "EVM-compatible chain for smart contracts" : "Native chain for staking & validators"}
                                         </div>
@@ -503,20 +503,20 @@ function CrossChainTransfer({
                                     <div className="rounded-full w-8 h-8 flex items-center justify-center bg-zinc-200 dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600">
                                         {destinationChain === "c-chain" ? (
                                             <img
-                                                src="https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg"
-                                                alt="C-Chain Logo"
+                                                src="https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg"
+                                                alt="LUExchange-Chain Logo"
                                                 className="h-5 w-5 opacity-60"
                                             />
                                         ) : (
                                             <img
                                                 src="https://images.ctfassets.net/gcj8jwzm6086/42aMwoCLblHOklt6Msi6tm/1e64aa637a8cead39b2db96fe3225c18/pchain-square.svg"
-                                                alt="P-Chain Logo"
+                                                alt="Platform-Chain Logo"
                                                 className="h-5 w-5 opacity-60"
                                             />
                                         )}
                                     </div>
                                     <div className="text-left">
-                                        <div className="font-medium">Avalanche {destinationChain === "c-chain" ? "C-Chain" : "P-Chain"}</div>
+                                        <div className="font-medium">Lux {destinationChain === "c-chain" ? "LUExchange-Chain" : "Platform-Chain"}</div>
                                         <div className="text-sm text-zinc-500 dark:text-zinc-500">
                                             {destinationChain === "c-chain" ? "EVM-compatible chain for smart contracts" : "Native chain for staking & validators"}
                                         </div>
@@ -538,9 +538,9 @@ function CrossChainTransfer({
                             {exportLoading ? (
                                 <span className="flex items-center justify-center">
                                     <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-                                    Exporting from {sourceChain === "c-chain" ? "C-Chain" : "P-Chain"}...
+                                    Exporting from {sourceChain === "c-chain" ? "LUExchange-Chain" : "Platform-Chain"}...
                                 </span>
-                            ) : `Export ${amount} AVAX`}
+                            ) : `Export ${amount} LUX`}
                         </Button>
                     )}
 
@@ -561,7 +561,7 @@ function CrossChainTransfer({
                 <StepCard
                     stepNumber={2}
                     title="Import to Destination Chain"
-                    description={`Import the exported AVAX to ${destinationChain === "p-chain" ? "P-Chain" : "C-Chain"} to complete the transfer`}
+                    description={`Import the exported LUX to ${destinationChain === "p-chain" ? "Platform-Chain" : "LUExchange-Chain"} to complete the transfer`}
                     status={getStep2Status()}
                     isExpanded={step2Expanded}
                     onToggle={() => setStep2Expanded(!step2Expanded)}
@@ -571,13 +571,13 @@ function CrossChainTransfer({
                     {availableUTXOs.length > 0 && !importTxId && (
                         <>
                             <div className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-                                {totalUtxoAmount.toFixed(6)} AVAX available to import to {destinationChain === "p-chain" ? "P-Chain" : "C-Chain"}
+                                {totalUtxoAmount.toFixed(6)} LUX available to import to {destinationChain === "p-chain" ? "Platform-Chain" : "LUExchange-Chain"}
                             </div>
 
                             <div className="space-y-2 mb-4">
                                 {availableUTXOs.map((utxo, index) => (
                                     <div key={index} className="text-sm font-mono text-zinc-700 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 p-3 rounded border border-zinc-200 dark:border-zinc-700">
-                                        {(Number(utxo.output.amt.value()) / 1_000_000_000).toFixed(6)} AVAX
+                                        {(Number(utxo.output.amt.value()) / 1_000_000_000).toFixed(6)} LUX
                                     </div>
                                 ))}
                             </div>
@@ -593,7 +593,7 @@ function CrossChainTransfer({
                                         <Loader2 className="h-4 w-4 mr-2 animate-spin" />
                                         Importing...
                                     </span>
-                                ) : `Import to ${destinationChain === "p-chain" ? "P-Chain" : "C-Chain"}`}
+                                ) : `Import to ${destinationChain === "p-chain" ? "Platform-Chain" : "LUExchange-Chain"}`}
                             </Button>
                         </>
                     )}
@@ -624,7 +624,7 @@ function CrossChainTransfer({
                 {/* Estimated Fees */}
                 <div className="flex justify-between items-center px-4 py-3 bg-zinc-100 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700">
                     <div className="font-medium text-zinc-900 dark:text-white">Estimated total fees</div>
-                    <div className="font-medium text-zinc-900 dark:text-white">~0.001 AVAX</div>
+                    <div className="font-medium text-zinc-900 dark:text-white">~0.001 LUX</div>
                 </div>
 
                 {/* Reset Button - Show after successful transfer */}

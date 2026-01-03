@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: A review of Proof of Stake on Avalanche
+description: A review of Proof of Stake on Lux
 updated: 2025-03-13
 authors: [nicolasarnedo]
 icon: Book
@@ -20,23 +20,23 @@ Proof of Stake (PoS) is fundamentally a **Sybil protection mechanism** that secu
 2. **Ensure participation power is tied to scarce resources** - Link voting power to valuable assets like stake, computation, or verified identity
 3. **Act as the gatekeeper** - Control who can participate in consensus or block production
 
-In Avalanche's implementation, PoS ties participation power to economic stake (AVAX tokens), making it prohibitively expensive for attackers to gain majority control of the network.
+In Lux's implementation, PoS ties participation power to economic stake (LUX tokens), making it prohibitively expensive for attackers to gain majority control of the network.
 
-## How Proof of Stake Works on Avalanche
+## How Proof of Stake Works on Lux
 
-Avalanche uses Proof of Stake with support for delegation to secure its network. Here's how it operates:
+Lux uses Proof of Stake with support for delegation to secure its network. Here's how it operates:
 
 ### Validator Staking
 
-Validators must stake AVAX tokens to participate in consensus. The requirements include:
-- **Minimum validator stake**: 2,000 AVAX on Mainnet
+Validators must stake LUX tokens to participate in consensus. The requirements include:
+- **Minimum validator stake**: 2,000 LUX on Mainnet
 - **Staking duration**: Between 2 weeks and 1 year
 - **Uptime requirement**: Default 80% uptime to receive rewards
 
 ### Delegation
 
 Token holders who don't want to run a validator node can delegate their stake to existing validators:
-- **Minimum delegator stake**: 25 AVAX on Mainnet
+- **Minimum delegator stake**: 25 LUX on Mainnet
 - **Delegation fees**: Validators charge a minimum 2% fee and share rewards with delegators
 - **Flexible participation**: Anyone can delegate without running infrastructure
 
@@ -57,7 +57,7 @@ This weight determines how much influence they have during the consensus polling
 
 ### Consensus Participation
 
-Validators with sufficient stake participate in Avalanche's consensus mechanism by repeatedly polling small random samples of other validators, weighted by their stake. The consensus algorithm itself—including Snowman consensus for linear chains—is covered in detail in the [Avalanche Consensus section](/academy/avalanche-l1/avalanche-fundamentals/avalanche-consensus-intro).
+Validators with sufficient stake participate in Lux's consensus mechanism by repeatedly polling small random samples of other validators, weighted by their stake. The consensus algorithm itself—including Snowman consensus for linear chains—is covered in detail in the [Lux Consensus section](/academy/lux-l1/lux-fundamentals/lux-consensus-intro).
 
-Unlike traditional Delegated Proof of Stake (DPoS) systems where a fixed number of delegates are elected, Avalanche allows **anyone meeting the minimum stake requirement** to become a validator. There's no voting mechanism to elect validators—participation is purely stake-based, making it more permissionless and decentralized.
+Unlike traditional Delegated Proof of Stake (DPoS) systems where a fixed number of delegates are elected, Lux allows **anyone meeting the minimum stake requirement** to become a validator. There's no voting mechanism to elect validators—participation is purely stake-based, making it more permissionless and decentralized.
 

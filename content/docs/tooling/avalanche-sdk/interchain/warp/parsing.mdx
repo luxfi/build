@@ -16,7 +16,7 @@ Parse a signed Warp message from hex.
 ### Example
 
 ```typescript
-import { WarpMessage } from "@avalanche-sdk/interchain/warp";
+import { WarpMessage } from "@lux-sdk/interchain/warp";
 
 const signedWarpMsgHex = "0x...";
 const warpMsg = WarpMessage.fromHex(signedWarpMsgHex);
@@ -41,7 +41,7 @@ Parse a Register L1 Validator message.
 ### Example
 
 ```typescript
-import { RegisterL1ValidatorMessage } from "@avalanche-sdk/interchain/warp";
+import { RegisterL1ValidatorMessage } from "@lux-sdk/interchain/warp";
 
 const msg = RegisterL1ValidatorMessage.fromHex(signedWarpMsgHex);
 console.log(msg.nodeID);
@@ -62,7 +62,7 @@ Parse an L1 Validator Weight message.
 ### Example
 
 ```typescript
-import { L1ValidatorWeightMessage } from "@avalanche-sdk/interchain/warp";
+import { L1ValidatorWeightMessage } from "@lux-sdk/interchain/warp";
 
 const msg = L1ValidatorWeightMessage.fromHex(signedWarpMsgHex);
 console.log(msg.nodeID);
@@ -93,7 +93,7 @@ Parse a Subnet to L1 Conversion message.
 ### Example
 
 ```typescript
-import { SubnetToL1ConversionMessage } from "@avalanche-sdk/interchain/warp";
+import { SubnetToL1ConversionMessage } from "@lux-sdk/interchain/warp";
 
 const msg = SubnetToL1ConversionMessage.fromHex(signedWarpMsgHex);
 console.log(msg.subnetID);

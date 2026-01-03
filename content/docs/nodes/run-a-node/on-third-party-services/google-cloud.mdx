@@ -1,6 +1,6 @@
 ---
 title: Google Cloud
-description: Learn how to run an Avalanche node on Google Cloud.
+description: Learn how to run an Lux node on Google Cloud.
 ---
 
 <Callout type="warn">
@@ -10,7 +10,7 @@ This document was written by a community member, some information may be outdate
 Introduction[​](#introduction "Direct link to heading")
 -------------------------------------------------------
 
-Google's Cloud Platform (GCP) is a scalable, trusted and reliable hosting platform. Google operates a significant amount of it's own global networking infrastructure. It's [fiber network](https://cloud.google.com/blog/products/networking/google-cloud-networking-in-depth-cloud-cdn) can provide highly stable and consistent global connectivity. In this article, we will leverage GCP to deploy a node on which Avalanche can installed via [terraform](https://www.terraform.io/). Leveraging `terraform` may seem like overkill, it should set you apart as an operator and administrator as it will enable you greater flexibility and provide the basis on which you can easily build further automation.
+Google's Cloud Platform (GCP) is a scalable, trusted and reliable hosting platform. Google operates a significant amount of it's own global networking infrastructure. It's [fiber network](https://cloud.google.com/blog/products/networking/google-cloud-networking-in-depth-cloud-cdn) can provide highly stable and consistent global connectivity. In this article, we will leverage GCP to deploy a node on which Lux can installed via [terraform](https://www.terraform.io/). Leveraging `terraform` may seem like overkill, it should set you apart as an operator and administrator as it will enable you greater flexibility and provide the basis on which you can easily build further automation.
 
 Conventions[​](#conventions "Direct link to heading")
 -----------------------------------------------------
@@ -46,9 +46,9 @@ We will deploy a single `Compute Network` object. This unit is where we will dep
 
 #### Public IP[​](#public-ip "Direct link to heading")
 
-Avalanche requires that a validator communicate outbound on the same public IP address that it advertises for other peers to connect to it on. Within GCP this precludes the possibility of us using a Cloud NAT Router for the outbound communications and requires us to bind the public IP that we provision to the interface of the machine. We will provision a single `EXTERNAL` static IPv4 `Compute Address`.
+Lux requires that a validator communicate outbound on the same public IP address that it advertises for other peers to connect to it on. Within GCP this precludes the possibility of us using a Cloud NAT Router for the outbound communications and requires us to bind the public IP that we provision to the interface of the machine. We will provision a single `EXTERNAL` static IPv4 `Compute Address`.
 
-#### Avalanche L1s[​](#avalanche-l1s "Direct link to heading")
+#### Lux L1s[​](#lux-l1s "Direct link to heading")
 
 For the purposes of this documentation we will deploy a single `Compute Subnetwork` in the US-EAST1 `Region` with a /24 address range giving us 254 IP addresses (not all usable but for the sake of generalized documentation).
 
@@ -71,7 +71,7 @@ We will deploy our instance into the `US-EAST1-B` `Zone`
 We will provision the following `Compute Firewall` rules:
 
 - IAP INGRESS for SSH (TCP 22) - this only allows GCP IAP sources inbound on SSH.
-- P2P INGRESS for AVAX Peers (TCP 9651)
+- P2P INGRESS for LUX Peers (TCP 9651)
 
 These are obviously just default ports and can be tailored to your needs as you desire.
 
@@ -86,7 +86,7 @@ You will get some free bucks to run a trial, the trial is feature complete but y
 
 ### Project[​](#project-1 "Direct link to heading")
 
-Login to the GCP `Cloud Console` and create a new `Project` in your organization. Let's use the name `my-avax-nodes` for the sake of this setup.
+Login to the GCP `Cloud Console` and create a new `Project` in your organization. Let's use the name `my-lux-nodes` for the sake of this setup.
 
 1.  ![Select Project Dropdown](/images/cloud1.png)
 
@@ -111,13 +111,13 @@ Depending upon how you intend to execute your terraform operations you may or ma
 
 ### Clone GitHub Repository[​](#clone-github-repository "Direct link to heading")
 
-I have provided a rudimentary terraform construct to provision a node on which to run Avalanche which can be found [here](https://github.com/meaghanfitzgerald/deprecated-avalanche-docs/tree/master/static/scripts). Documentation below assumes you are using this repository but if you have another terraform skeleton similar steps will apply.
+I have provided a rudimentary terraform construct to provision a node on which to run Lux which can be found [here](https://github.com/meaghanfitzgerald/deprecated-lux-docs/tree/master/static/scripts). Documentation below assumes you are using this repository but if you have another terraform skeleton similar steps will apply.
 
 ### Terraform Configuration[​](#terraform-configuration "Direct link to heading")
 
 1.  If running terraform locally, please [install](https://learn.hashicorp.com/tutorials/terraform/install-cli) it.
 2.  In this repository, navigate to the `terraform` directory.
-3.  Under the `projects` directory, rename the `my-avax-project` directory to match your GCP project name that you created (not required, but nice to be consistent)
+3.  Under the `projects` directory, rename the `my-lux-project` directory to match your GCP project name that you created (not required, but nice to be consistent)
 4.  Under the folder you just renamed locate the `terraform.tfvars` file.
 5.  Edit this file and populate it with the values which make sense for your context and save it.
 6.  Locate the `backend.tf` file in the same directory.
@@ -131,13 +131,13 @@ Terraform enables us to see what it would do if we were to run it without actual
 
 #### Plan[​](#plan "Direct link to heading")
 
-1.  In a terminal which is able to execute the `tf` binary, `cd` to the ~`my-avax-project` directory that you renamed in step 3 of `Terraform Configuration`.
+1.  In a terminal which is able to execute the `tf` binary, `cd` to the ~`my-lux-project` directory that you renamed in step 3 of `Terraform Configuration`.
 2.  Execute the command `tf plan`
 3.  You should see a JSON output to the stdout of the terminal which lays out the operations that terraform will execute to apply the intended state.
 
 #### Apply[​](#apply "Direct link to heading")
 
-1.  In a terminal which is able to execute the `tf` binary, `cd` to the ~`my-avax-project` directory that you renamed in step 3 of `Terraform Configuration`.
+1.  In a terminal which is able to execute the `tf` binary, `cd` to the ~`my-lux-project` directory that you renamed in step 3 of `Terraform Configuration`.
 2.  Execute the command `tf apply`
 
 If you want to ensure that terraform does **exactly** what you saw in the `apply` output, you can optionally request for the `plan` output to be saved to a file to feed to `apply`. This is generally considered best practice in highly fluid environments where rapid change is occurring from multiple sources.
@@ -145,4 +145,4 @@ If you want to ensure that terraform does **exactly** what you saw in the `apply
 Conclusion[​](#conclusion "Direct link to heading")
 ---------------------------------------------------
 
-Establishing CI/CD practices using tools such as GitHub and Terraform to manage your infrastructure assets is a great way to ensure base disaster recovery capabilities and to ensure you have a place to embed any ~tweaks you have to make operationally removing the potential to miss them when you have to scale from 1 node to 10. Having an automated pipeline also gives you a place to build a bigger house... what starts as your interest in building and managing a single AVAX node today can quickly change into you building an infrastructure operation for many different chains working with multiple different team members. I hope this may have inspired you to take a leap into automation in this context!
+Establishing CI/CD practices using tools such as GitHub and Terraform to manage your infrastructure assets is a great way to ensure base disaster recovery capabilities and to ensure you have a place to embed any ~tweaks you have to make operationally removing the potential to miss them when you have to scale from 1 node to 10. Having an automated pipeline also gives you a place to build a bigger house... what starts as your interest in building and managing a single LUX node today can quickly change into you building an infrastructure operation for many different chains working with multiple different team members. I hope this may have inspired you to take a leap into automation in this context!

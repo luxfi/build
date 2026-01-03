@@ -1,8 +1,8 @@
 import { createPublicClient } from "viem";
 import { http } from "viem";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 
-export async function fetchChainId(rpcUrl: string): Promise<{ ethereumChainId: number, avalancheChainId: string }> {
+export async function fetchChainId(rpcUrl: string): Promise<{ ethereumChainId: number, luxChainId: string }> {
     try {
         const publicClient = createPublicClient({
             transport: http(rpcUrl),
@@ -32,10 +32,10 @@ export async function fetchChainId(rpcUrl: string): Promise<{ ethereumChainId: n
 
         console.log('blockchainID', blockchainIDHex);
         const chainIdBytes = utils.hexToBuffer(blockchainIDHex);
-        const avalancheChainId = utils.base58check.encode(chainIdBytes);
+        const luxChainId = utils.base58check.encode(chainIdBytes);
 
 
-        return { ethereumChainId, avalancheChainId };
+        return { ethereumChainId, luxChainId };
     } catch (error) {
         console.error("Failed to fetch chain ID:", error);
         throw error;

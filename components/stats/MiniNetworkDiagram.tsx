@@ -217,7 +217,7 @@ export default function MiniNetworkDiagram({
         chainId: primaryChain.chainId,
         name: primaryChain.name,
         logo: primaryChain.logo,
-        color: primaryChain.color || '#e84142',
+        color: primaryChain.color || '#ffffff',
         x: centerX,
         y: centerY,
         vx: 0,

@@ -14,7 +14,7 @@
   :where(ul > li):not(
     :where([class~='not-prose'], [class~='not-prose'] *)
   )::marker {
-  color: #e84142;
+  color: #ffffff;
 }
 
 div.group\/accordion h3  {
@@ -179,84 +179,84 @@ svg.lucide.lucide-folder-open {
   background-color: #4bccff96;
 }
 
-.border-avax-red {
+.border-lux-red {
   --tw-border-opacity: 1;
-  border-color: #e84142;
+  border-color: #ffffff;
 }
 
-.bg-avax-red {
+.bg-lux-red {
   --tw-bg-opacity: 1;
-  background-color: #e84142;
+  background-color: #ffffff;
 }
 
-.text-avax-red {
+.text-lux-red {
   --tw-text-opacity: 1;
-  color: #e84142;
+  color: #ffffff;
 }
 
-/* Avax red opacity variants */
-.bg-avax-red\/5 {
+/* Lux red opacity variants */
+.bg-lux-red\/5 {
   background-color: rgba(232, 65, 66, 0.05);
 }
 
-.bg-avax-red\/10 {
+.bg-lux-red\/10 {
   background-color: rgba(232, 65, 66, 0.1);
 }
 
-.bg-avax-red\/20 {
+.bg-lux-red\/20 {
   background-color: rgba(232, 65, 66, 0.2);
 }
 
-.border-avax-red\/30 {
+.border-lux-red\/30 {
   border-color: rgba(232, 65, 66, 0.3);
 }
 
-.border-avax-red\/40 {
+.border-lux-red\/40 {
   border-color: rgba(232, 65, 66, 0.4);
 }
 
-.border-avax-red\/60 {
+.border-lux-red\/60 {
   border-color: rgba(232, 65, 66, 0.6);
 }
 
-.shadow-avax-red\/25 {
+.shadow-lux-red\/25 {
   --tw-shadow-color: rgba(232, 65, 66, 0.25);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
-.shadow-avax-red\/40 {
+.shadow-lux-red\/40 {
   --tw-shadow-color: rgba(232, 65, 66, 0.4);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
 /* Additional hover background variants */
-.hover\:bg-avax-red\/5:hover {
+.hover\:bg-lux-red\/5:hover {
   background-color: rgba(232, 65, 66, 0.05) !important;
 }
 
-.hover\:bg-avax-red\/10:hover {
+.hover\:bg-lux-red\/10:hover {
   background-color: rgba(232, 65, 66, 0.1) !important;
 }
 
-.hover\:shadow-avax-red\/25:hover {
+.hover\:shadow-lux-red\/25:hover {
   --tw-shadow-color: rgba(232, 65, 66, 0.25);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
-.group:hover .group-hover\:bg-avax-red\/10 {
+.group:hover .group-hover\:bg-lux-red\/10 {
   background-color: rgba(232, 65, 66, 0.1) !important;
 }
 
-.group:hover .group-hover\:bg-avax-red\/20 {
+.group:hover .group-hover\:bg-lux-red\/20 {
   background-color: rgba(232, 65, 66, 0.2) !important;
 }
 
-.border-avax-green {
+.border-lux-green {
   --tw-border-opacity: 1;
   border-color: #0b7f54;
 }
 
-.bg-avax-green {
+.bg-lux-green {
   --tw-bg-opacity: 1;
   background-color: #0b7f54;
 }

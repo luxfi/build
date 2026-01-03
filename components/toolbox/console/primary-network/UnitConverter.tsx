@@ -8,7 +8,7 @@ import { generateConsoleToolGitHubUrl } from "@/components/toolbox/utils/github-
 
 export default function UnitConverter() {
   const [amount, setAmount] = useState<string>("1.00");
-  const [selectedUnit, setSelectedUnit] = useState<string>("AVAX");
+  const [selectedUnit, setSelectedUnit] = useState<string>("LUX");
   const [results, setResults] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState<string | null>(null);
   const [criticalError, setCriticalError] = useState<Error | null>(null);
@@ -26,19 +26,19 @@ export default function UnitConverter() {
   const units = [
     {
       id: "wei",
-      label: "Wei (C-Chain) 10⁻¹⁸",
+      label: "Wei (LUExchange-Chain) 10⁻¹⁸",
       factor: BigInt("1"),
       exponent: -18,
     },
     {
-      id: "nAVAX",
-      label: "nAVAX (P-Chain) 10⁻⁹",
+      id: "nLUX",
+      label: "nLUX (Platform-Chain) 10⁻⁹",
       factor: BigInt("1000000000"),
       exponent: -9,
     },
     {
-      id: "AVAX",
-      label: "AVAX",
+      id: "LUX",
+      label: "LUX",
       factor: BigInt("1000000000000000000"),
       exponent: 0,
     },
@@ -116,7 +116,7 @@ export default function UnitConverter() {
 
   const handleReset = () => {
     setAmount("1.00");
-    setSelectedUnit("AVAX");
+    setSelectedUnit("LUX");
   };
 
   const handleCopy = (value: string, unitId: string) => {
@@ -131,28 +131,28 @@ export default function UnitConverter() {
 
   return (
     <Container
-      title="AVAX Unit Converter"
-      description="Convert between AVAX, P-Chain nAVAX, and C-Chain wei"
+      title="LUX Unit Converter"
+      description="Convert between LUX, Platform-Chain nLUX, and LUExchange-Chain wei"
       githubUrl={generateConsoleToolGitHubUrl(import.meta.url)}
     >
       <div className="space-y-4">
         <div className="p-4 bg-gray-50 dark:bg-zinc-800 rounded-lg space-y-2 border border-gray-100 dark:border-zinc-700">
           <p className="text-sm text-gray-700 dark:text-zinc-300">
-            Avalanche has different chains that use different base units for
-            AVAX:
+            Lux has different chains that use different base units for
+            LUX:
           </p>
           <ul className="text-sm text-gray-700 dark:text-zinc-300 list-disc pl-5 space-y-1">
             <li>
               <span className="text-blue-600 dark:text-blue-400 font-medium">
-                <strong>C-Chain</strong>
+                <strong>LUExchange-Chain</strong>
               </span>
               : Uses wei (10⁻¹⁸) as the base unit, similar to Ethereum
             </li>
             <li>
               <span className="text-red-600 dark:text-red-400 font-medium">
-                <strong>P-Chain</strong>
+                <strong>Platform-Chain</strong>
               </span>
-              : Uses nAVAX (10⁻⁹) as the base unit
+              : Uses nLUX (10⁻⁹) as the base unit
             </li>
           </ul>
           <p className="text-sm text-gray-700 dark:text-zinc-300 mt-2">
@@ -167,7 +167,7 @@ export default function UnitConverter() {
               <div className="w-44 flex-shrink-0 mr-3">
                 <span
                   className={`text-sm font-medium ${
-                    unit.id === "nAVAX"
+                    unit.id === "nLUX"
                       ? "text-red-600 dark:text-red-400"
                       : unit.id === "wei"
                       ? "text-blue-600 dark:text-blue-400"
@@ -188,7 +188,7 @@ export default function UnitConverter() {
                   step={unit.exponent < 0 ? 0.000000001 : 0.01}
                   className={`w-full rounded-md px-3 py-2.5 bg-white dark:bg-zinc-900 border 
                                         ${
-                                          unit.id === "nAVAX"
+                                          unit.id === "nLUX"
                                             ? "border-red-300 dark:border-red-700"
                                             : unit.id === "wei"
                                             ? "border-blue-300 dark:border-blue-700"
@@ -209,7 +209,7 @@ export default function UnitConverter() {
                   }
                   className={`flex items-center justify-center px-2 bg-white dark:bg-zinc-900 border 
                                         ${
-                                          unit.id === "nAVAX"
+                                          unit.id === "nLUX"
                                             ? "border-red-300 dark:border-red-700"
                                             : unit.id === "wei"
                                             ? "border-blue-300 dark:border-blue-700"

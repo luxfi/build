@@ -30,7 +30,7 @@ Approves the token home contract to spend tokens on the source chain.
 ```typescript
 const { txHash } = await ictt.approveToken({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   tokenHomeContract: tokenHomeAddress,
   tokenAddress: tokenAddress,
   amountInBaseUnit: 1000,
@@ -68,7 +68,7 @@ Sends tokens from the source chain to the destination chain.
 ```typescript
 const { txHash } = await ictt.sendToken({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   tokenHomeContract: tokenHomeAddress,
   tokenRemoteContract: tokenRemoteAddress,
@@ -80,15 +80,15 @@ const { txHash } = await ictt.sendToken({
 ## Complete Workflow
 
 ```typescript
-import { createICTTClient } from "@avalanche-sdk/interchain";
-import { avalancheFuji, dispatch } from "@avalanche-sdk/interchain/chains";
+import { createICTTClient } from "@lux-sdk/interchain";
+import { luxTestnet, dispatch } from "@lux-sdk/interchain/chains";
 
-const ictt = createICTTClient(avalancheFuji, dispatch);
+const ictt = createICTTClient(luxTestnet, dispatch);
 
 // 1. Deploy token
 const { contractAddress: tokenAddress } = await ictt.deployERC20Token({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   name: "My Token",
   symbol: "MTK",
   initialSupply: 1000000,
@@ -98,7 +98,7 @@ const { contractAddress: tokenAddress } = await ictt.deployERC20Token({
 const { contractAddress: tokenHomeAddress } =
   await ictt.deployTokenHomeContract({
     walletClient: wallet,
-    sourceChain: avalancheFuji,
+    sourceChain: luxTestnet,
     erc20TokenAddress: tokenAddress,
     minimumTeleporterVersion: 1,
   });
@@ -107,7 +107,7 @@ const { contractAddress: tokenHomeAddress } =
 const { contractAddress: tokenRemoteAddress } =
   await ictt.deployTokenRemoteContract({
     walletClient: wallet,
-    sourceChain: avalancheFuji,
+    sourceChain: luxTestnet,
     destinationChain: dispatch,
     tokenHomeContract: tokenHomeAddress,
   });
@@ -115,7 +115,7 @@ const { contractAddress: tokenRemoteAddress } =
 // 4. Register remote with home
 await ictt.registerRemoteWithHome({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   tokenRemoteContract: tokenRemoteAddress,
 });
@@ -123,7 +123,7 @@ await ictt.registerRemoteWithHome({
 // 5. Approve tokens
 await ictt.approveToken({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   tokenHomeContract: tokenHomeAddress,
   tokenAddress: tokenAddress,
   amountInBaseUnit: 1000,
@@ -132,7 +132,7 @@ await ictt.approveToken({
 // 6. Send tokens
 const { txHash } = await ictt.sendToken({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   tokenHomeContract: tokenHomeAddress,
   tokenRemoteContract: tokenRemoteAddress,

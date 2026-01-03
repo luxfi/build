@@ -1,13 +1,13 @@
 ---
 title: Interacting with Precompiles
-description: Learn how to interact with Avalanche L1 precompiles using the Builder Hub Developer Console or Remix IDE.
+description: Learn how to interact with Lux L1 precompiles using the Lux Build Developer Console or Remix IDE.
 ---
 
-This guide shows you how to interact with precompiled contracts on your Avalanche L1. For standard precompile implementations, we recommend using the **Builder Hub Developer Console** for the best experience. For custom implementations or advanced use cases, you can use **Remix IDE** with browser wallets.
+This guide shows you how to interact with precompiled contracts on your Lux L1. For standard precompile implementations, we recommend using the **Lux Build Developer Console** for the best experience. For custom implementations or advanced use cases, you can use **Remix IDE** with browser wallets.
 
-## Recommended: Using Builder Hub Developer Console
+## Recommended: Using Lux Build Developer Console
 
-The Builder Hub provides dedicated tools for interacting with standard Avalanche L1 precompiles. These tools offer:
+The Lux Build provides dedicated tools for interacting with standard Lux L1 precompiles. These tools offer:
 
 - ✅ **User-friendly interface** - No need to manually enter contract addresses or ABIs
 - ✅ **Built-in validation** - Prevents common configuration mistakes
@@ -41,7 +41,7 @@ The Builder Hub provides dedicated tools for interacting with standard Avalanche
 <Callout type="info">
 **Why use the Developer Console?**
 
-Using the Builder Hub console tools allows us to:
+Using the Lux Build console tools allows us to:
 - Provide better support for your L1
 - Track feature usage to improve the platform
 - Build your profile in our builders/developers database
@@ -85,7 +85,7 @@ Use Remix when:
 
 ### Prerequisites
 
-- Access to an Avalanche L1 where you have admin/manager rights for a precompile
+- Access to an Lux L1 where you have admin/manager rights for a precompile
 - [Core Browser Extension](https://core.app) or MetaMask
 - Private key for an admin/manager address on your L1
 - Your L1's RPC URL and Chain ID
@@ -144,13 +144,13 @@ You need to load the Solidity interfaces for the precompiles you want to interac
 From the Remix home screen, use **load from GitHub** to import:
 
 **Required for all precompiles:**
-- [IAllowList.sol](https://github.com/ava-labs/subnet-evm/blob/master/contracts/contracts/interfaces/IAllowList.sol)
+- [IAllowList.sol](https://github.com/luxfi/subnet-evm/blob/master/contracts/contracts/interfaces/IAllowList.sol)
 
 **Specific precompile interfaces:**
-- [IFeeManager.sol](https://github.com/ava-labs/subnet-evm/blob/master/contracts/contracts/interfaces/IFeeManager.sol) - For fee configuration
-- [INativeMinter.sol](https://github.com/ava-labs/subnet-evm/blob/master/contracts/contracts/interfaces/INativeMinter.sol) - For minting native tokens
-- [IAllowList.sol](https://github.com/ava-labs/subnet-evm/blob/master/contracts/contracts/interfaces/IAllowList.sol) - For transaction/deployer allowlists
-- [IRewardManager.sol](https://github.com/ava-labs/subnet-evm/blob/master/contracts/contracts/interfaces/IRewardManager.sol) - For block rewards
+- [IFeeManager.sol](https://github.com/luxfi/subnet-evm/blob/master/contracts/contracts/interfaces/IFeeManager.sol) - For fee configuration
+- [INativeMinter.sol](https://github.com/luxfi/subnet-evm/blob/master/contracts/contracts/interfaces/INativeMinter.sol) - For minting native tokens
+- [IAllowList.sol](https://github.com/luxfi/subnet-evm/blob/master/contracts/contracts/interfaces/IAllowList.sol) - For transaction/deployer allowlists
+- [IRewardManager.sol](https://github.com/luxfi/subnet-evm/blob/master/contracts/contracts/interfaces/IRewardManager.sol) - For block rewards
 
 ### Compile the Interface
 
@@ -293,7 +293,7 @@ When enabling precompiles via network upgrades:
 
 1. **Announce upgrades** well in advance on social media and Discord
 2. **Coordinate with validators** to ensure they update their nodes
-3. **Use upgrade.json** to schedule precompile activation (see [Precompile Upgrades](/docs/avalanche-l1s/upgrade/precompile-upgrades))
+3. **Use upgrade.json** to schedule precompile activation (see [Precompile Upgrades](/docs/lux-l1s/upgrade/precompile-upgrades))
 4. **Test the upgrade** on a testnet first
 5. **Monitor** the network after activation
 
@@ -317,7 +317,7 @@ When enabling precompiles via network upgrades:
 
 ## Additional Resources
 
-### Builder Hub Console Tools
+### Lux Build Console Tools
 - [Fee Manager Console](/console/l1-tokenomics/fee-manager) - Configure transaction fees
 - [Reward Manager Console](/console/l1-tokenomics/reward-manager) - Manage fee distribution
 - [Native Minter Console](/console/l1-tokenomics/native-minter) - Mint native tokens
@@ -325,25 +325,25 @@ When enabling precompiles via network upgrades:
 - [Transactor Allowlist Console](/console/l1-access-restrictions/transactor-allowlist) - Control transaction submission
 
 ### Documentation
-- [Precompile Configuration](/docs/avalanche-l1s/evm-configuration/evm-l1-customization) - Overview of precompiles
-- [Fee Manager](/docs/avalanche-l1s/precompiles/fee-manager) - Fee Manager details
-- [Reward Manager](/docs/avalanche-l1s/precompiles/reward-manager) - Reward Manager details
-- [Native Minter](/docs/avalanche-l1s/precompiles/native-minter) - Native Minter details
-- [Deployer AllowList](/docs/avalanche-l1s/precompiles/deployer-allowlist) - Deployer Allowlist details
-- [Transaction AllowList](/docs/avalanche-l1s/precompiles/transaction-allowlist) - Transaction Allowlist details
-- [Warp Messenger](/docs/avalanche-l1s/precompiles/warp-messenger) - Warp Messenger details
-- [Precompile Upgrades](/docs/avalanche-l1s/upgrade/precompile-upgrades) - Network upgrade process
-- [AllowList Interface](/docs/avalanche-l1s/precompiles/allowlist-interface) - Role-based access control
-- [Subnet-EVM Contracts](https://github.com/ava-labs/subnet-evm/tree/master/contracts/contracts/interfaces) - Precompile interfaces
+- [Precompile Configuration](/docs/lux-l1s/evm-configuration/evm-l1-customization) - Overview of precompiles
+- [Fee Manager](/docs/lux-l1s/precompiles/fee-manager) - Fee Manager details
+- [Reward Manager](/docs/lux-l1s/precompiles/reward-manager) - Reward Manager details
+- [Native Minter](/docs/lux-l1s/precompiles/native-minter) - Native Minter details
+- [Deployer AllowList](/docs/lux-l1s/precompiles/deployer-allowlist) - Deployer Allowlist details
+- [Transaction AllowList](/docs/lux-l1s/precompiles/transaction-allowlist) - Transaction Allowlist details
+- [Warp Messenger](/docs/lux-l1s/precompiles/warp-messenger) - Warp Messenger details
+- [Precompile Upgrades](/docs/lux-l1s/upgrade/precompile-upgrades) - Network upgrade process
+- [AllowList Interface](/docs/lux-l1s/precompiles/allowlist-interface) - Role-based access control
+- [Subnet-EVM Contracts](https://github.com/luxfi/subnet-evm/tree/master/contracts/contracts/interfaces) - Precompile interfaces
 
 ## Conclusion
 
-For standard Avalanche L1 precompiles, **we strongly recommend using the [Builder Hub Developer Console tools](/console)** for the best experience. These tools provide:
+For standard Lux L1 precompiles, **we strongly recommend using the [Lux Build Developer Console tools](/console)** for the best experience. These tools provide:
 
 - ✅ Guided workflows with validation
 - ✅ No need to manage contract addresses or ABIs manually  
-- ✅ Integration with your Builder Hub account
-- ✅ Support from the Builder Hub team
+- ✅ Integration with your Lux Build account
+- ✅ Support from the Lux Build team
 
 For custom implementations or advanced scenarios, the Remix IDE approach provides flexibility to interact with any contract at any address. This is useful for:
 

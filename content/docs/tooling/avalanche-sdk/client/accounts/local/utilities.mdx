@@ -5,60 +5,60 @@ icon: "hammer"
 
 ## Overview
 
-Account utilities provide validation, parsing, and helper functions for working with Avalanche accounts and addresses.
+Account utilities provide validation, parsing, and helper functions for working with Lux accounts and addresses.
 
 ## Account Validation
 
-### Parse Avalanche Account
+### Parse Lux Account
 
 ```typescript
-function parseAvalancheAccount(
-  account: Address | AvalancheAccount | undefined
-): AvalancheAccount | undefined;
+function parseLuxAccount(
+  account: Address | LuxAccount | undefined
+): LuxAccount | undefined;
 ```
 
 **Parameters:**
 
-- `account` (`Address | AvalancheAccount | undefined`): The account or address to parse. Can be an EVM address string, an existing `AvalancheAccount`, or `undefined`.
+- `account` (`Address | LuxAccount | undefined`): The account or address to parse. Can be an EVM address string, an existing `LuxAccount`, or `undefined`.
 
 **Returns:**
 
-- `AvalancheAccount | undefined`: Returns an `AvalancheAccount` when an address or account is provided, or `undefined` when the input is `undefined`.
+- `LuxAccount | undefined`: Returns an `LuxAccount` when an address or account is provided, or `undefined` when the input is `undefined`.
 
 **Behavior:**
 
 The function behaves differently based on the input type:
 
-1. **When an address string is passed**: Returns an `AvalancheAccount` with only `evmAccount` populated. The `xpAccount` property will be `undefined` because an address string alone doesn't contain the private key information needed to derive XP account details.
+1. **When an address string is passed**: Returns an `LuxAccount` with only `evmAccount` populated. The `xpAccount` property will be `undefined` because an address string alone doesn't contain the private key information needed to derive XP account details.
 
-2. **When an AvalancheAccount is passed**: Returns the account as-is without modification. This is useful for normalizing function parameters that accept both addresses and accounts.
+2. **When an LuxAccount is passed**: Returns the account as-is without modification. This is useful for normalizing function parameters that accept both addresses and accounts.
 
 3. **When undefined is passed**: Returns `undefined`. This allows for optional account parameters in functions.
 
 **Limitations:**
 
 - When parsing from an address string, the returned account will only have `evmAccount` populated. The `xpAccount` property will be `undefined`, which means:
-  - You cannot perform X-Chain or P-Chain operations that require signing (e.g., `account.xpAccount.signMessage()`)
-  - You can still use the account for read-only operations or C-Chain (EVM) operations
+  - You cannot perform Exchange-Chain or Platform-Chain operations that require signing (e.g., `account.xpAccount.signMessage()`)
+  - You can still use the account for read-only operations or LUExchange-Chain (EVM) operations
   - To get XP account functionality, you need to create an account from a private key or mnemonic or use a custom provider
 
 **Example:**
 
 ```typescript
-import { parseAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount, Address } from "@avalanche-sdk/client/accounts";
+import { parseLuxAccount } from "@lux-sdk/client/accounts";
+import type { LuxAccount, Address } from "@lux-sdk/client/accounts";
 
 // Parse from address string (only evmAccount populated)
 const address: Address = "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6";
-const account = parseAvalancheAccount(address);
-// account.xpAccount is undefined - can only use for C-Chain operations
+const account = parseLuxAccount(address);
+// account.xpAccount is undefined - can only use for LUExchange-Chain operations
 
 // Parse existing account (returns as-is)
-const fullAccount: AvalancheAccount = /* ... */;
-const normalized = parseAvalancheAccount(fullAccount); // Returns as-is
+const fullAccount: LuxAccount = /* ... */;
+const normalized = parseLuxAccount(fullAccount); // Returns as-is
 
 // Handle undefined
-const optional = parseAvalancheAccount(undefined); // Returns undefined
+const optional = parseLuxAccount(undefined); // Returns undefined
 ```
 
 ## Address Utilities
@@ -72,7 +72,7 @@ function privateKeyToXPAddress(privateKey: string, hrp: string): XPAddress;
 **Parameters:**
 
 - `privateKey` (`string`): The private key with `0x` prefix.
-- `hrp` (`string`): The human-readable prefix for the address. Use `"avax"` for mainnet or `"fuji"` for testnet.
+- `hrp` (`string`): The human-readable prefix for the address. Use `"lux"` for mainnet or `"testnet"` for testnet.
 
 **Returns:**
 
@@ -81,10 +81,10 @@ function privateKeyToXPAddress(privateKey: string, hrp: string): XPAddress;
 **Example:**
 
 ```typescript
-import { privateKeyToXPAddress } from "@avalanche-sdk/client/accounts";
+import { privateKeyToXPAddress } from "@lux-sdk/client/accounts";
 
-const mainnet = privateKeyToXPAddress("0x...", "avax");
-const testnet = privateKeyToXPAddress("0x...", "fuji");
+const mainnet = privateKeyToXPAddress("0x...", "lux");
+const testnet = privateKeyToXPAddress("0x...", "testnet");
 ```
 
 ### Public Key to XP Address
@@ -96,7 +96,7 @@ function publicKeyToXPAddress(publicKey: string, hrp: string): XPAddress;
 **Parameters:**
 
 - `publicKey` (`string`): The public key with `0x` prefix.
-- `hrp` (`string`): The human-readable prefix for the address. Use `"avax"` for mainnet or `"fuji"` for testnet.
+- `hrp` (`string`): The human-readable prefix for the address. Use `"lux"` for mainnet or `"testnet"` for testnet.
 
 **Returns:**
 
@@ -105,9 +105,9 @@ function publicKeyToXPAddress(publicKey: string, hrp: string): XPAddress;
 **Example:**
 
 ```typescript
-import { publicKeyToXPAddress } from "@avalanche-sdk/client/accounts";
+import { publicKeyToXPAddress } from "@lux-sdk/client/accounts";
 
-const xpAddress = publicKeyToXPAddress("0x...", "avax");
+const xpAddress = publicKeyToXPAddress("0x...", "lux");
 ```
 
 ### Private Key to XP Public Key
@@ -130,10 +130,10 @@ function privateKeyToXPPublicKey(privateKey: string): string;
 import {
   privateKeyToXPPublicKey,
   publicKeyToXPAddress,
-} from "@avalanche-sdk/client/accounts";
+} from "@lux-sdk/client/accounts";
 
 const publicKey = privateKeyToXPPublicKey("0x...");
-const xpAddress = publicKeyToXPAddress(publicKey, "avax");
+const xpAddress = publicKeyToXPAddress(publicKey, "lux");
 ```
 
 ## Message Signing
@@ -156,9 +156,9 @@ function xpSignMessage(message: string, privateKey: string): Promise<string>;
 **Example:**
 
 ```typescript
-import { xpSignMessage } from "@avalanche-sdk/client/accounts";
+import { xpSignMessage } from "@lux-sdk/client/accounts";
 
-const signature = await xpSignMessage("Hello Avalanche!", "0x...");
+const signature = await xpSignMessage("Hello Lux!", "0x...");
 // Returns base58-encoded signature (e.g., "2k5Jv...")
 ```
 
@@ -183,7 +183,7 @@ function xpSignTransaction(
 **Example:**
 
 ```typescript
-import { xpSignTransaction } from "@avalanche-sdk/client/accounts";
+import { xpSignTransaction } from "@lux-sdk/client/accounts";
 
 const signature = await xpSignTransaction("0x...", "0x...");
 // Returns hex-encoded signature (e.g., "0x1234...")
@@ -214,9 +214,9 @@ function xpVerifySignature(
 **Example:**
 
 ```typescript
-import { xpVerifySignature } from "@avalanche-sdk/client/accounts";
+import { xpVerifySignature } from "@lux-sdk/client/accounts";
 
-const isValid = xpVerifySignature("0x...", "Hello Avalanche!", "0x...");
+const isValid = xpVerifySignature("0x...", "Hello Lux!", "0x...");
 
 // For base58 signatures from xpSignMessage, use xpAccount.verify() instead
 ```
@@ -239,9 +239,9 @@ function xpRecoverPublicKey(message: string, signature: string): string;
 **Example:**
 
 ```typescript
-import { xpRecoverPublicKey } from "@avalanche-sdk/client/accounts";
+import { xpRecoverPublicKey } from "@lux-sdk/client/accounts";
 
-const publicKey = xpRecoverPublicKey("Hello Avalanche!", "0x...");
+const publicKey = xpRecoverPublicKey("Hello Lux!", "0x...");
 ```
 
 ## XP Account Creation
@@ -266,23 +266,23 @@ function privateKeyToXPAccount(privateKey: string): XPAccount;
   - `type` (`"local"`): The account type.
   - `source` (`"privateKey"`): The account source.
 
-**Note:** Creates an XP-only account from a private key. Lighter weight than `privateKeyToAvalancheAccount` since it skips EVM account initialization. Use this when you only need X-Chain or P-Chain operations.
+**Note:** Creates an XP-only account from a private key. Lighter weight than `privateKeyToLuxAccount` since it skips EVM account initialization. Use this when you only need Exchange-Chain or Platform-Chain operations.
 
 <Callout type="warning">
-  **Limitations**: No EVM account—can't use for C-Chain operations. If you need
-  both XP and EVM functionality, use `privateKeyToAvalancheAccount` instead.
+  **Limitations**: No EVM account—can't use for LUExchange-Chain operations. If you need
+  both XP and EVM functionality, use `privateKeyToLuxAccount` instead.
 </Callout>
 
 **Example:**
 
 ```typescript
-import { privateKeyToXPAccount } from "@avalanche-sdk/client/accounts";
+import { privateKeyToXPAccount } from "@lux-sdk/client/accounts";
 
 const xpAccount = privateKeyToXPAccount("0x...");
 
 // Sign message
-const signature = await xpAccount.signMessage("Hello Avalanche!");
-const isValid = xpAccount.verify("Hello Avalanche!", signature);
+const signature = await xpAccount.signMessage("Hello Lux!");
+const isValid = xpAccount.verify("Hello Lux!", signature);
 
 // Sign transaction
 const txSignature = await xpAccount.signTransaction("0x...");

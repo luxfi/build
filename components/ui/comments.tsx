@@ -23,7 +23,7 @@ const Comments: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.origin === 'https://academy.avax.network') {
+    if (typeof window !== 'undefined' && window.location.origin === 'https://academy.lux.network') {
       const updateGiscusTheme = (theme: 'light' | 'dark') => {
         const iframe = document.querySelector<HTMLIFrameElement>('.giscus-frame');
         if (iframe) {
@@ -33,7 +33,7 @@ const Comments: React.FC = () => {
 
       const script = document.createElement('script');
       script.src = "https://giscus.app/client.js";
-      script.setAttribute('data-repo', "ava-labs/avalanche-academy");
+      script.setAttribute('data-repo', "luxfi/lux-academy");
       script.setAttribute('data-repo-id', "R_kgDOMDfRrg");
       script.setAttribute('data-category', "Discussions");
       script.setAttribute('data-category-id', "DIC_kwDOMDfRrs4CiB5x");

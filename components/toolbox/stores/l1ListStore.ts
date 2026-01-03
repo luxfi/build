@@ -34,24 +34,24 @@ export type L1ListItem = {
     };
 };
 
-const l1ListInitialStateFuji = {
+const l1ListInitialStateTestnet = {
     l1List: [
         {
             id: "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
-            name: "C-Chain",
+            name: "LUExchange-Chain",
             description: "Smart contract development blockchain",
-            rpcUrl: "https://api.avax-test.network/ext/bc/C/rpc",
+            rpcUrl: "https://api.lux-test.network/ext/bc/C/rpc",
             evmChainId: 43113,
-            coinName: "AVAX",
+            coinName: "LUX",
             isTestnet: true,
             subnetId: "11111111111111111111111111111111LpoYY",
             wrappedTokenAddress: "0xd00ae08403B9bbb9124bB305C09058E32C39A48c",
             validatorManagerAddress: "",
-            logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg",
+            logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg",
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
             externalFaucetUrl: "https://core.app/tools/testnet-faucet",
-            explorerUrl: "https://subnets-test.avax.network/c-chain",
+            explorerUrl: "https://subnets-test.lux.network/c-chain",
             faucetThresholds: {
                 threshold: 0.2,
                 dripAmount: 0.5
@@ -65,7 +65,7 @@ const l1ListInitialStateFuji = {
             id: "98qnjenm7MBd8G2cPZoRvZrgJC33JGSAAKghsQ6eojbLCeRNp",
             name: "Echo",
             description: "Echo is a Testnet L1 for testing dApps utilizing ICM",
-            rpcUrl: "https://subnets.avax.network/echo/testnet/rpc",
+            rpcUrl: "https://subnets.lux.network/echo/testnet/rpc",
             evmChainId: 173750,
             coinName: "ECH",
             isTestnet: true,
@@ -76,7 +76,7 @@ const l1ListInitialStateFuji = {
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
             externalFaucetUrl: "https://core.app/tools/testnet-faucet",
-            explorerUrl: "https://subnets-test.avax.network/echo",
+            explorerUrl: "https://subnets-test.lux.network/echo",
             faucetThresholds: {
                 threshold: 1.0,
                 dripAmount: 2
@@ -90,7 +90,7 @@ const l1ListInitialStateFuji = {
             id: "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
             name: "Dispatch",
             description: "Dispatch is a Testnet L1 for testing dApps utilizing ICM",
-            rpcUrl: "https://subnets.avax.network/dispatch/testnet/rpc",
+            rpcUrl: "https://subnets.lux.network/dispatch/testnet/rpc",
             evmChainId: 779672,
             coinName: "DIS",
             isTestnet: true,
@@ -101,7 +101,7 @@ const l1ListInitialStateFuji = {
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
             externalFaucetUrl: "https://core.app/tools/testnet-faucet",
-            explorerUrl: "https://subnets-test.avax.network/dispatch",
+            explorerUrl: "https://subnets-test.lux.network/dispatch",
             faucetThresholds: {
                 threshold: 1.0,
                 dripAmount: 2
@@ -114,8 +114,8 @@ const l1ListInitialStateFuji = {
         {
             id: "2TTSLdR6uEM3R5Ukej3YThHSyPf6XCfppAsh5vAuzFA1rY5w7e",
             name: "Dexalot",
-            description: "Dexalot is a decentralized exchange (DEX) that operates on its own Avalanche L1, offering a central limit order book (CLOB) experience",
-            rpcUrl: "https://subnets.avax.network/dexalot/testnet/rpc",
+            description: "Dexalot is a decentralized exchange (DEX) that operates on its own Lux L1, offering a central limit order book (CLOB) experience",
+            rpcUrl: "https://subnets.lux.network/dexalot/testnet/rpc",
             evmChainId: 432201,
             coinName: "ALOT",
             isTestnet: true,
@@ -126,7 +126,7 @@ const l1ListInitialStateFuji = {
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
             externalFaucetUrl: "https://core.app/tools/testnet-faucet",
-            explorerUrl: "https://subnets-test.avax.network/dexalot",
+            explorerUrl: "https://subnets-test.lux.network/dexalot",
             faucetThresholds: {
                 threshold: 1.0,
                 dripAmount: 2
@@ -144,25 +144,25 @@ const l1ListInitialStateMainnet = {
     l1List: [
         {
             id: "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5",
-            name: "C-Chain",
-            description: "The C-Chain of the Mainnet is the EVM chain of the Primary Network.",
-            rpcUrl: "https://api.avax.network/ext/bc/C/rpc",
+            name: "LUExchange-Chain",
+            description: "The LUExchange-Chain of the Mainnet is the EVM chain of the Primary Network.",
+            rpcUrl: "https://api.lux.network/ext/bc/C/rpc",
             evmChainId: 43114,
-            coinName: "AVAX",
+            coinName: "LUX",
             isTestnet: false,
             subnetId: "11111111111111111111111111111111LpoYY",
             wrappedTokenAddress: "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
             validatorManagerAddress: "",
-            logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg",
+            logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg",
             wellKnownTeleporterRegistryAddress: "0x7C43605E14F391720e1b37E49C78C4b03A488d98",
             hasBuilderHubFaucet: false,
-            explorerUrl: "https://subnets.avax.network/c-chain"
+            explorerUrl: "https://subnets.lux.network/c-chain"
         }
     ] as L1ListItem[],
 }
 
 const defaultChainIds = [
-    ...l1ListInitialStateFuji.l1List.map((l1) => l1.id),
+    ...l1ListInitialStateTestnet.l1List.map((l1) => l1.id),
     ...l1ListInitialStateMainnet.l1List.map((l1) => l1.id),
 ]
 
@@ -176,7 +176,7 @@ export const getL1ListStore = (isTestnet: boolean) => {
         if (!testnetStoreSingleton) {
             testnetStoreSingleton = create(
                 persist(
-                    combine(l1ListInitialStateFuji, (set, get) => ({
+                    combine(l1ListInitialStateTestnet, (set, get) => ({
                         addL1: (l1: L1ListItem) => set((state) => ({ l1List: [...state.l1List, l1] })),
                         removeL1: (l1Id: string) => set((state) => ({ l1List: state.l1List.filter((l) => l.id !== l1Id) })),
                         setNativeCurrencyInfo: (chainId: number, info: { name: string; symbol: string; decimals: number }) => {
@@ -205,7 +205,7 @@ export const getL1ListStore = (isTestnet: boolean) => {
                         merge: (persisted: any, current: any) => {
                             if (!persisted?.l1List) return current;
                             const persistedIds = new Set(persisted.l1List.map((l: L1ListItem) => l.id));
-                            const missing = l1ListInitialStateFuji.l1List.filter(l => !persistedIds.has(l.id));
+                            const missing = l1ListInitialStateTestnet.l1List.filter(l => !persistedIds.has(l.id));
                             return { ...current, l1List: [...persisted.l1List, ...missing] };
                         },
                     },

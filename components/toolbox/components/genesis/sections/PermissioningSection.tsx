@@ -125,7 +125,7 @@ export const PermissioningSection = ({
             title="Permissioning"
             description={compact ? '' : 'Configure access controls for contract deployment and transactions.'}
             titleTooltip="Control who can interact with your blockchain. You can restrict contract deployment and transaction submission to specific addresses, creating a permissioned network."
-            titleTooltipLink={{ href: "/docs/avalanche-l1s/evm-configuration/permissions", text: "Learn more about permissions" }}
+            titleTooltipLink={{ href: "/docs/lux-l1s/evm-configuration/permissions", text: "Learn more about permissions" }}
             sectionId="permissioning"
             compact={compact}
         >

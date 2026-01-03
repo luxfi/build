@@ -49,7 +49,7 @@ const createRegisterSchema = (isOnline: boolean) => z.object({
   newsletter_subscription: z.boolean().default(false).optional(),
   prohibited_items: z.boolean().optional(),
   founder_check: z.boolean().optional(),
-  avalanche_ecosystem_member: z.boolean().optional(),
+  lux_ecosystem_member: z.boolean().optional(),
 });
 
 export const registerSchema = createRegisterSchema(false); // Default schema for TypeScript inference
@@ -100,7 +100,7 @@ export function RegisterForm({
     newsletter_subscription: false,
     prohibited_items: false,
     founder_check: false,
-    avalanche_ecosystem_member: false,
+    lux_ecosystem_member: false,
   });
 
   const form = useForm<RegisterFormValues>({
@@ -168,7 +168,7 @@ export function RegisterForm({
           newsletter_subscription: loadedData.newsletter_subscription || false,
           prohibited_items: !isOnlineHackathon ? (loadedData.prohibited_items || false) : false,
           founder_check: loadedData.founder_check || false,
-          avalanche_ecosystem_member: loadedData.avalanche_ecosystem_member || false,
+          lux_ecosystem_member: loadedData.lux_ecosystem_member || false,
         };
         hackathon_id = loadedData.hackathon_id;
         form.reset(parsedData);
@@ -266,7 +266,7 @@ export function RegisterForm({
       if (!data.terms_event_conditions) {
         errors.terms_event_conditions = {
           type: "custom",
-          message: "You must agree to participate in any Builder Hub events. Event Terms and Conditions."
+          message: "You must agree to participate in any Lux Build events. Event Terms and Conditions."
         };
       }
 
@@ -398,7 +398,7 @@ export function RegisterForm({
       if (!formValues.terms_event_conditions) {
         errors.terms_event_conditions = {
           type: "custom",
-          message: "You must agree to participate in any Builder Hub events. Event Terms and Conditions."
+          message: "You must agree to participate in any Lux Build events. Event Terms and Conditions."
         };
       }
 

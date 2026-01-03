@@ -126,7 +126,7 @@ function searchDocs(
 
 // MCP Server Info
 const SERVER_INFO = {
-  name: 'avalanche-docs',
+  name: 'lux-docs',
   version: '1.0.0',
   protocolVersion: '2024-11-05',
 };
@@ -134,8 +134,8 @@ const SERVER_INFO = {
 // Tool definitions following MCP spec
 const TOOLS = [
   {
-    name: 'avalanche_docs_search',
-    description: 'Search across Avalanche documentation, academy courses, integrations, and blog posts',
+    name: 'lux_docs_search',
+    description: 'Search across Lux documentation, academy courses, integrations, and blog posts',
     inputSchema: {
       type: 'object',
       properties: {
@@ -159,7 +159,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'avalanche_docs_fetch',
+    name: 'lux_docs_fetch',
     description: 'Fetch a specific documentation page as markdown',
     inputSchema: {
       type: 'object',
@@ -173,7 +173,7 @@ const TOOLS = [
     },
   },
   {
-    name: 'avalanche_docs_list_sections',
+    name: 'lux_docs_list_sections',
     description: 'List available documentation sections and their page counts',
     inputSchema: {
       type: 'object',
@@ -188,19 +188,19 @@ const RESOURCES = [
   {
     uri: 'docs://index',
     name: 'Documentation Index',
-    description: 'Index of all Avalanche documentation pages',
+    description: 'Index of all Lux documentation pages',
     mimeType: 'text/markdown',
   },
   {
     uri: 'academy://index',
     name: 'Academy Index',
-    description: 'Index of all Avalanche Academy courses',
+    description: 'Index of all Lux Academy courses',
     mimeType: 'text/markdown',
   },
   {
     uri: 'integrations://index',
     name: 'Integrations Index',
-    description: 'Index of all Avalanche integrations',
+    description: 'Index of all Lux integrations',
     mimeType: 'text/markdown',
   },
 ];
@@ -210,7 +210,7 @@ async function handleToolCall(name: string, args: Record<string, unknown>) {
   const startTime = Date.now();
 
   switch (name) {
-    case 'avalanche_docs_search': {
+    case 'lux_docs_search': {
       const query = args.query as string;
       const source = args.source as string | undefined;
       const limit = args.limit as number | undefined;
@@ -235,7 +235,7 @@ async function handleToolCall(name: string, args: Record<string, unknown>) {
       const formattedResults = results
         .map(
           (r) =>
-            `- [${r.title}](https://build.avax.network${r.url}) (${r.source})${r.description ? `\n  ${r.description}` : ''}`
+            `- [${r.title}](https://build.lux.network${r.url}) (${r.source})${r.description ? `\n  ${r.description}` : ''}`
         )
         .join('\n');
 
@@ -249,7 +249,7 @@ async function handleToolCall(name: string, args: Record<string, unknown>) {
       };
     }
 
-    case 'avalanche_docs_fetch': {
+    case 'lux_docs_fetch': {
       const url = args.url as string;
       const normalizedUrl = url.startsWith('/') ? url : `/${url}`;
 
@@ -274,7 +274,7 @@ async function handleToolCall(name: string, args: Record<string, unknown>) {
       };
     }
 
-    case 'avalanche_docs_list_sections': {
+    case 'lux_docs_list_sections': {
       const docPages = documentation.getPages();
       const academyPages = academy.getPages();
       const integrationPages = integration.getPages();
@@ -354,7 +354,7 @@ async function handleResourceRead(uri: string) {
           {
             uri,
             mimeType: 'text/markdown',
-            text: `# Avalanche Documentation Index\n\n${content}`,
+            text: `# Lux Documentation Index\n\n${content}`,
           },
         ],
       };
@@ -377,7 +377,7 @@ async function handleResourceRead(uri: string) {
           {
             uri,
             mimeType: 'text/markdown',
-            text: `# Avalanche Academy Courses\n\n${content}`,
+            text: `# Lux Academy Courses\n\n${content}`,
           },
         ],
       };
@@ -400,7 +400,7 @@ async function handleResourceRead(uri: string) {
           {
             uri,
             mimeType: 'text/markdown',
-            text: `# Avalanche Integrations\n\n${content}`,
+            text: `# Lux Integrations\n\n${content}`,
           },
         ],
       };
@@ -515,12 +515,12 @@ export async function GET() {
     name: SERVER_INFO.name,
     version: SERVER_INFO.version,
     protocolVersion: SERVER_INFO.protocolVersion,
-    description: 'MCP server for Avalanche documentation',
+    description: 'MCP server for Lux documentation',
     tools: TOOLS,
     resources: RESOURCES,
     endpoints: {
       rpc: '/api/mcp',
-      docs: 'https://build.avax.network',
+      docs: 'https://build.lux.network',
     },
   });
 }

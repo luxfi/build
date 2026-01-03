@@ -19,16 +19,16 @@ The following global parameters are available.
 Example
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114", // Sets chainId globally, will be used if not passed during method call.
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avalancheSDK.data.evm.blocks.get({
+  const result = await luxSDK.data.evm.blocks.get({
     blockId:
       "0x17533aeb5193378b9ff441d61728e7a2ebaf10f61fd5310759451627dfca2e7c",
     chainId: "<YOUR_CHAIN_ID>", // Override the globally set chain id.

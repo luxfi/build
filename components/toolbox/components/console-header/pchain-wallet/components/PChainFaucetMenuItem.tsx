@@ -74,7 +74,7 @@ export function PChainFaucetMenuItem() {
     notify(
       {
         type: "local",
-        name: "P-Chain AVAX Faucet Claim",
+        name: "Platform-Chain LUX Faucet Claim",
       },
       faucetPromise
     );
@@ -82,11 +82,11 @@ export function PChainFaucetMenuItem() {
     try {
       await faucetPromise;
     } catch (error) {
-      console.error("P-Chain token request error:", error);
+      console.error("Platform-Chain token request error:", error);
       const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
       if (errorMessage.includes("login") || errorMessage.includes("401")) {
         setAlertDialogTitle("Authentication Required");
-        setAlertDialogMessage("You need to be logged in to request free tokens from the P-Chain Faucet.");
+        setAlertDialogMessage("You need to be logged in to request free tokens from the Platform-Chain Faucet.");
         setIsLoginError(true);
         setIsAlertDialogOpen(true);
       } else {
@@ -111,7 +111,7 @@ export function PChainFaucetMenuItem() {
     if (isRequestingPTokens) return "Requesting...";
     if (isCheckingRateLimit) return "Checking...";
     if (!allowed && timeUntilReset) return `Faucet available in ${timeUntilReset}`;
-    return "Get AVAX from Faucet";
+    return "Get LUX from Faucet";
   };
 
   return (

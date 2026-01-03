@@ -10,7 +10,7 @@ import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-In this section, you’ll learn how to deploy your own **ICTT frontend** using the BuilderKit and pre-configured tokens and chains. Follow these steps to quickly set up and test your own ICTT frontends with Avalanche L1s.
+In this section, you’ll learn how to deploy your own **ICTT frontend** using the BuilderKit and pre-configured tokens and chains. Follow these steps to quickly set up and test your own ICTT frontends with Lux L1s.
 
 ---
 
@@ -22,12 +22,12 @@ In this section, you’ll learn how to deploy your own **ICTT frontend** using t
 Start by opening the repository on Github.
 
 <Link
-    href="https://github.com/ava-labs/avalanche-starter-kit"
+    href="https://github.com/luxfi/lux-starter-kit"
     className={cn(
     buttonVariants({ variant: 'default', className: 'mt-4' }),
     )}
     target='_blank'
->Open Avalanche Starter Kit</Link>
+>Open Lux Starter Kit</Link>
 </Step>
 
 <Step>
@@ -52,11 +52,11 @@ export const echo = defineChain({
     },
     rpcUrls: {
         default: {
-            http: ['https://subnets.avax.network/echo/testnet/rpc']
+            http: ['https://subnets.lux.network/echo/testnet/rpc']
         },
     },
     blockExplorers: {
-        default: { name: 'Explorer', url: 'https://subnets-test.avax.network/echo' },
+        default: { name: 'Explorer', url: 'https://subnets-test.lux.network/echo' },
     },
     iconUrl: "/chains/logo/173750.png"
 });
@@ -87,7 +87,7 @@ import { myblockchain } from './chains/definitions';
 After importing the chains, add them into the chains array:
 
 ```tsx
-export const CHAINS = [avalanche, avalancheFuji, echo, dispatch, myblockchain];
+export const CHAINS = [lux, luxTestnet, echo, dispatch, myblockchain];
 ```
 
 This array will hold the configuration of all the chains that will interact with your ICTT frontend.
@@ -175,6 +175,6 @@ yarn run dev
 ```
 
 You can now interact with the ICTT component. 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/interchain-token-transfer/site-running-IK70IqfXcCAYZBspWbomhiK601vB0e.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/interchain-token-transfer/site-running-IK70IqfXcCAYZBspWbomhiK601vB0e.png)
 </Step>
 </Steps>

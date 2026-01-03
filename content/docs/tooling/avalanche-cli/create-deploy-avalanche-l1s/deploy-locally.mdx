@@ -1,63 +1,63 @@
 ---
 title: On Local Network
-description: This guide shows you how to deploy an Avalanche L1 to a local Avalanche network.
+description: This guide shows you how to deploy an Lux L1 to a local Lux network.
 ---
 
-This how-to guide focuses on taking an already created Avalanche L1 configuration and deploying it to a local Avalanche network.
+This how-to guide focuses on taking an already created Lux L1 configuration and deploying it to a local Lux network.
 
 ## Prerequisites
 
-- [Avalanche-CLI installed](/docs/tooling/avalanche-cli)
-- You have [created an Avalanche L1 configuration](/docs/tooling/avalanche-cli#create-your-avalanche-l1-configuration)
+- [Lux-CLI installed](/docs/tooling/lux-cli)
+- You have [created an Lux L1 configuration](/docs/tooling/lux-cli#create-your-lux-l1-configuration)
 
-Deploying Avalanche L1s Locally[​](#deploying-avalanche-l1s-locally "Direct link to heading")
+Deploying Lux L1s Locally[​](#deploying-lux-l1s-locally "Direct link to heading")
 ---------------------------------------------------------------------------------
 
-In the following commands, make sure to substitute the name of your Avalanche L1 configuration for `<blockchainName>`.
+In the following commands, make sure to substitute the name of your Lux L1 configuration for `<blockchainName>`.
 
-To deploy your Avalanche L1, run:
+To deploy your Lux L1, run:
 
 ```bash
-avalanche blockchain deploy <blockchainName>
+lux blockchain deploy <blockchainName>
 ```
 
 and select `Local Network` to deploy on. Alternatively, you can bypass this prompt by providing the `--local` flag. For example:
 
 ```bash
-avalanche blockchain deploy <blockchainName> --local
+lux blockchain deploy <blockchainName> --local
 ```
 
 The command may take a couple minutes to run.
 
-Note: If you run `bash` on your shell and are running Avalanche-CLI on ARM64 on Mac, you will require Rosetta 2 to be able to deploy Avalanche L1s locally. You can download Rosetta 2 using `softwareupdate --install-rosetta` .
+Note: If you run `bash` on your shell and are running Lux-CLI on ARM64 on Mac, you will require Rosetta 2 to be able to deploy Lux L1s locally. You can download Rosetta 2 using `softwareupdate --install-rosetta` .
 
 ### Results[​](#results "Direct link to heading")
 
 If all works as expected, the command output should look something like this:
 
 ```bash
-> avalanche blockchain deploy myblockchain
+> lux blockchain deploy myblockchain
 
 ✔ Local Network
 Deploying [myblockchain] to Local Network
 
-AvalancheGo path: /Users/felipe.madero/.avalanche-cli/bin/avalanchego/avalanchego-v1.13.0/avalanchego
+LuxGo path: /Users/felipe.madero/.lux-cli/bin/luxgo/luxgo-v1.13.0/luxgo
 
 Booting Network. Wait until healthy...
 
-Node logs directory: /Users/felipe.madero/.avalanche-cli/runs/network_20250410_104205/<NodeID>/logs
+Node logs directory: /Users/felipe.madero/.lux-cli/runs/network_20250410_104205/<NodeID>/logs
 
 Network ready to use.
 
-Using [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p] to be set as a change owner for leftover AVAX
-AvalancheGo path: /Users/felipe.madero/.avalanche-cli/bin/avalanchego/avalanchego-v1.13.0/avalanchego
+Using [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p] to be set as a change owner for leftover LUX
+LuxGo path: /Users/felipe.madero/.lux-cli/bin/luxgo/luxgo-v1.13.0/luxgo
 
 ✓ Local cluster myblockchain-local-node-local-network not found. Creating...
-Starting local avalanchego node using root: /Users/felipe.madero/.avalanche-cli/local/myblockchain-local-node-local-network ...
+Starting local luxgo node using root: /Users/felipe.madero/.lux-cli/local/myblockchain-local-node-local-network ...
 ✓ Booting Network. Wait until healthy...
-✓ Avalanchego started and ready to use from /Users/felipe.madero/.avalanche-cli/local/myblockchain-local-node-local-network
+✓ Luxgo started and ready to use from /Users/felipe.madero/.lux-cli/local/myblockchain-local-node-local-network
 
-Node logs directory: /Users/felipe.madero/.avalanche-cli/local/myblockchain-local-node-local-network/<NodeID>/logs
+Node logs directory: /Users/felipe.madero/.lux-cli/local/myblockchain-local-node-local-network/<NodeID>/logs
 
 Network ready to use.
 
@@ -66,10 +66,10 @@ NodeID: NodeID-NuQc8BQ8mV9TVksgMtpyc57VnWzU2J6aN
 
 Your blockchain control keys: [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p]
 Your blockchain auth keys for chain creation: [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p]
-CreateSubnetTx fee: 0.000010278 AVAX
+CreateSubnetTx fee: 0.000010278 LUX
 Blockchain has been created with ID: 2W9boARgCWL25z6pMFNtkCfNA5v28VGg9PmBgUJfuKndEdhrvw
 Now creating blockchain...
-CreateChainTx fee: 0.000129564 AVAX
+CreateChainTx fee: 0.000129564 LUX
 +--------------------------------------------------------------------+
 |                         DEPLOYMENT RESULTS                         |
 +---------------+----------------------------------------------------+
@@ -81,10 +81,10 @@ CreateChainTx fee: 0.000129564 AVAX
 +---------------+----------------------------------------------------+
 | Blockchain ID | Yt9d8RRW9JcoqfvyefqJJMX14HawtBc28J9CQspQKPkdonp1y  |
 +---------------+                                                    |
-| P-Chain TXID  |                                                    |
+| Platform-Chain TXID  |                                                    |
 +---------------+----------------------------------------------------+
 Now calling ConvertSubnetToL1Tx...
-ConvertSubnetToL1Tx fee: 0.000036992 AVAX
+ConvertSubnetToL1Tx fee: 0.000036992 LUX
 ConvertSubnetToL1Tx ID: 2d2EE7AorEhfKLBtnDGnAtcDYMGfPbWnHYDpNDm3SopYg6VtpV
 Waiting for the Subnet to be converted into a sovereign L1 ... 100% [===============]
 
@@ -106,7 +106,7 @@ ICM Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a
 ICM Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
 ✓ ICM is successfully deployed
 
-Generating relayer config file at /Users/felipe.madero/.avalanche-cli/runs/network_20250410_104205/icm-relayer-config.json
+Generating relayer config file at /Users/felipe.madero/.lux-cli/runs/network_20250410_104205/icm-relayer-config.json
 Relayer version icm-relayer-v1.6.2
 Executing Relayer
 ✓ Relayer is successfully deployed
@@ -224,65 +224,65 @@ Executing Relayer
 ✓ L1 is successfully deployed on Local Network
 ```
 
-You can use the deployment details to connect to and interact with your Avalanche L1.
+You can use the deployment details to connect to and interact with your Lux L1.
 
-Deploying Avalanche L1s Locally[​](#deploying-avalanche-l1s-locally)
+Deploying Lux L1s Locally[​](#deploying-lux-l1s-locally)
 ---------------------------------------------------------------------------------
 
-To deploy your Avalanche L1, run:
+To deploy your Lux L1, run:
 
 ```bash
-avalanche blockchain deploy myblockchain
+lux blockchain deploy myblockchain
 ```
 
-Make sure to substitute the name of your Avalanche L1 if you used a different one than `myblockchain`.
+Make sure to substitute the name of your Lux L1 if you used a different one than `myblockchain`.
 
 ```bash
 ? Choose a network for the operation: 
   ▸ Local Network
     Devnet
     Etna Devnet
-    Fuji Testnet
+    Testnet Testnet
     Mainnet
 ```
 
 Next, select `Local Network`.
 
-This command boots a three node Avalanche network on your machine:
+This command boots a three node Lux network on your machine:
 
 - Two nodes to act as primary validators for the local network, that will validate the local P and C chains (unrelated to testnet/mainnet)..
 - One node to act as sovereign validator for the new L1 that is deployed into the local network.
 
-The command needs to download the latest versions of AvalancheGo and Subnet-EVM. It may take a couple minutes to run.
+The command needs to download the latest versions of LuxGo and Subnet-EVM. It may take a couple minutes to run.
 
-Note: If you run `bash` on your shell and are running Avalanche-CLI on ARM64 on Mac, you will require Rosetta 2 to be able to deploy Avalanche L1s locally. You can download Rosetta 2 using `softwareupdate --install-rosetta` .
+Note: If you run `bash` on your shell and are running Lux-CLI on ARM64 on Mac, you will require Rosetta 2 to be able to deploy Lux L1s locally. You can download Rosetta 2 using `softwareupdate --install-rosetta` .
 
 If all works as expected, the command output should look something like this:
 
 ```bash
-avalanche blockchain deploy myblockchain
+lux blockchain deploy myblockchain
 
 # output
 ✔ Local Network
 Deploying [myblockchain] to Local Network
 
-AvalancheGo path: /Users/felipe.madero/.avalanche-cli/bin/avalanchego/avalanchego-v1.13.0/avalanchego
+LuxGo path: /Users/felipe.madero/.lux-cli/bin/luxgo/luxgo-v1.13.0/luxgo
 
 Booting Network. Wait until healthy...
 
-Node logs directory: /Users/felipe.madero/.avalanche-cli/runs/network_20250410_104205/<NodeID>/logs
+Node logs directory: /Users/felipe.madero/.lux-cli/runs/network_20250410_104205/<NodeID>/logs
 
 Network ready to use.
 
-Using [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p] to be set as a change owner for leftover AVAX
-AvalancheGo path: /Users/felipe.madero/.avalanche-cli/bin/avalanchego/avalanchego-v1.13.0/avalanchego
+Using [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p] to be set as a change owner for leftover LUX
+LuxGo path: /Users/felipe.madero/.lux-cli/bin/luxgo/luxgo-v1.13.0/luxgo
 
 ✓ Local cluster myblockchain-local-node-local-network not found. Creating...
-Starting local avalanchego node using root: /Users/felipe.madero/.avalanche-cli/local/myblockchain-local-node-local-network ...
+Starting local luxgo node using root: /Users/felipe.madero/.lux-cli/local/myblockchain-local-node-local-network ...
 ✓ Booting Network. Wait until healthy...
-✓ Avalanchego started and ready to use from /Users/felipe.madero/.avalanche-cli/local/myblockchain-local-node-local-network
+✓ Luxgo started and ready to use from /Users/felipe.madero/.lux-cli/local/myblockchain-local-node-local-network
 
-Node logs directory: /Users/felipe.madero/.avalanche-cli/local/myblockchain-local-node-local-network/<NodeID>/logs
+Node logs directory: /Users/felipe.madero/.lux-cli/local/myblockchain-local-node-local-network/<NodeID>/logs
 
 Network ready to use.
 
@@ -291,10 +291,10 @@ NodeID: NodeID-NuQc8BQ8mV9TVksgMtpyc57VnWzU2J6aN
 
 Your blockchain control keys: [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p]
 Your blockchain auth keys for chain creation: [P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p]
-CreateSubnetTx fee: 0.000010278 AVAX
+CreateSubnetTx fee: 0.000010278 LUX
 Blockchain has been created with ID: 2W9boARgCWL25z6pMFNtkCfNA5v28VGg9PmBgUJfuKndEdhrvw
 Now creating blockchain...
-CreateChainTx fee: 0.000129564 AVAX
+CreateChainTx fee: 0.000129564 LUX
 +--------------------------------------------------------------------+
 |                         DEPLOYMENT RESULTS                         |
 +---------------+----------------------------------------------------+
@@ -306,10 +306,10 @@ CreateChainTx fee: 0.000129564 AVAX
 +---------------+----------------------------------------------------+
 | Blockchain ID | Yt9d8RRW9JcoqfvyefqJJMX14HawtBc28J9CQspQKPkdonp1y  |
 +---------------+                                                    |
-| P-Chain TXID  |                                                    |
+| Platform-Chain TXID  |                                                    |
 +---------------+----------------------------------------------------+
 Now calling ConvertSubnetToL1Tx...
-ConvertSubnetToL1Tx fee: 0.000036992 AVAX
+ConvertSubnetToL1Tx fee: 0.000036992 LUX
 ConvertSubnetToL1Tx ID: 2d2EE7AorEhfKLBtnDGnAtcDYMGfPbWnHYDpNDm3SopYg6VtpV
 Waiting for the Subnet to be converted into a sovereign L1 ... 100% [===============]
 
@@ -331,7 +331,7 @@ ICM Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a
 ICM Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
 ✓ ICM is successfully deployed
 
-Generating relayer config file at /Users/felipe.madero/.avalanche-cli/runs/network_20250410_104205/icm-relayer-config.json
+Generating relayer config file at /Users/felipe.madero/.lux-cli/runs/network_20250410_104205/icm-relayer-config.json
 Relayer version icm-relayer-v1.6.2
 Executing Relayer
 ✓ Relayer is successfully deployed
@@ -449,13 +449,13 @@ Executing Relayer
 ✓ L1 is successfully deployed on Local Network
 ```
 
-To manage the newly deployed local Avalanche network, see [the `avalanche network` command tree](/docs/tooling/cli-commands#avalanche-network).
+To manage the newly deployed local Lux network, see [the `lux network` command tree](/docs/tooling/cli-commands#lux-network).
 
-You can use the deployment details to connect to and interact with your Avalanche L1. Now it's time to interact with it.
+You can use the deployment details to connect to and interact with your Lux L1. Now it's time to interact with it.
 
-## Interacting with Your Avalanche L1
+## Interacting with Your Lux L1
 
-You can use the value provided by `Browser Extension connection details` to connect to your Avalanche L1 with Core, MetaMask, or any other wallet.
+You can use the value provided by `Browser Extension connection details` to connect to your Lux L1 with Core, MetaMask, or any other wallet.
 
 <Callout title="Note">
 To allow API calls from other machines, use `--http-host=0.0.0.0` in the config.
@@ -494,38 +494,38 @@ Next, rename the Core account to prevent confusion. On the `Imported` tab, click
 
 ![Rename Account](/images/deploy-subnet4.png)
 
-### Connect to the Avalanche L1[​](#connect-to-the-avalanche-l1)
+### Connect to the Lux L1[​](#connect-to-the-lux-l1)
 
-Next, you need to add your Avalanche L1 to Core's networks.
+Next, you need to add your Lux L1 to Core's networks.
 
 In the Core Extension click, `See All Networks` and then select the `+` icon in the top right.
 
 ![Add network](/images/deploy-subnet5.png)
 
-Enter your Avalanche L1's details, found in the output of your `avalanche blockchain deploy` [command](#deploying-avalanche-l1s-locally), into the form and click `Save`.
+Enter your Lux L1's details, found in the output of your `lux blockchain deploy` [command](#deploying-lux-l1s-locally), into the form and click `Save`.
 
 ![Add network 2](/images/deploy-subnet6.png)
 
-If all worked as expected, your balance should read 1 million tokens. Your Avalanche L1 is ready for action. You might want to try to [Deploy a Smart Contract on Your Subnet-EVM Using Remix and Core](/docs/avalanche-l1s/add-utility/deploy-smart-contract).
+If all worked as expected, your balance should read 1 million tokens. Your Lux L1 is ready for action. You might want to try to [Deploy a Smart Contract on Your Subnet-EVM Using Remix and Core](/docs/lux-l1s/add-utility/deploy-smart-contract).
 
-![Avalanche L1 in Core](/images/deploy-subnet7.png)
+![Lux L1 in Core](/images/deploy-subnet7.png)
 
-## Deploying Multiple Avalanche L1s[​](#deploying-multiple-avalanche-l1s "Direct link to heading")
+## Deploying Multiple Lux L1s[​](#deploying-multiple-lux-l1s "Direct link to heading")
 
-You may deploy multiple Avalanche L1s concurrently, but you can't deploy the same Avalanche L1 multiple times without resetting all deployed Avalanche L1 state.
+You may deploy multiple Lux L1s concurrently, but you can't deploy the same Lux L1 multiple times without resetting all deployed Lux L1 state.
 
-## Redeploying the Avalanche L1
+## Redeploying the Lux L1
 
-To redeploy the Avalanche L1, you first need to wipe the Avalanche L1 state. This permanently deletes all data from all locally deployed Avalanche L1s. To do so, run
+To redeploy the Lux L1, you first need to wipe the Lux L1 state. This permanently deletes all data from all locally deployed Lux L1s. To do so, run
 
 ```bash
-avalanche network clean
+lux network clean
 ```
 
-You are now free to redeploy your Avalanche L1 with
+You are now free to redeploy your Lux L1 with
 
 ```bash
-avalanche blockchain deploy <blockchainName> --local
+lux blockchain deploy <blockchainName> --local
 ```
 
 ## Stopping the Local Network
@@ -533,20 +533,20 @@ avalanche blockchain deploy <blockchainName> --local
 To gracefully stop a running local network while preserving state, run:
 
 ```bash
-avalanche network stop
+lux network stop
 
 # output
 Network stopped successfully.
 ```
 
-When restarted, all of your deployed Avalanche L1s resume where they left off.
+When restarted, all of your deployed Lux L1s resume where they left off.
 
 ### Resuming the Local Network
 
 To resume a stopped network, run:
 
 ```bash
-avalanche network start
+lux network start
 
 # output
 Starting previously deployed and stopped snapshot
@@ -572,12 +572,12 @@ The network resumes with the same state it paused with.
 
 ## Next Steps
 
-After you feel comfortable with this deployment flow, try deploying smart contracts on your chain with [Remix](https://remix.ethereum.org/), [Hardhat](https://hardhat.org/), or [Foundry](https://github.com/foundry-rs/foundry). You can also experiment with customizing your Avalanche L1 by addingprecompiles or adjusting the airdrop.
+After you feel comfortable with this deployment flow, try deploying smart contracts on your chain with [Remix](https://remix.ethereum.org/), [Hardhat](https://hardhat.org/), or [Foundry](https://github.com/foundry-rs/foundry). You can also experiment with customizing your Lux L1 by addingprecompiles or adjusting the airdrop.
 
-Once you've developed a stable Avalanche L1 you like, see [Create an EVM Avalanche L1 on Fuji Testnet](/docs/avalanche-l1s/evm-configuration/customize-avalanche-l1) to take your Avalanche L1 one step closer to production.
+Once you've developed a stable Lux L1 you like, see [Create an EVM Lux L1 on Testnet Testnet](/docs/lux-l1s/evm-configuration/customize-lux-l1) to take your Lux L1 one step closer to production.
 
 ## FAQ
 
-**How is the Avalanche L1 ID (SubnetID) determined upon creation?**
+**How is the Lux L1 ID (SubnetID) determined upon creation?**
 
-The Avalanche L1 ID (SubnetID) is the hash of the transaction that created the Avalanche L1.
+The Lux L1 ID (SubnetID) is the hash of the transaction that created the Lux L1.

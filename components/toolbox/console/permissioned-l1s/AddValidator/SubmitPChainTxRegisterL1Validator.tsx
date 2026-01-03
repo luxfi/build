@@ -3,14 +3,14 @@ import { useWalletStore } from '@/components/toolbox/stores/walletStore';
 import { Button } from '@/components/toolbox/components/Button';
 import { Input } from '@/components/toolbox/components/Input';
 import { Success } from '@/components/toolbox/components/Success';
-import { useAvalancheSDKChainkit } from '@/components/toolbox/stores/useAvalancheSDKChainkit';
+import { useLuxSDKChainkit } from '@/components/toolbox/stores/useLuxSDKChainkit';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
 import { Alert } from '@/components/toolbox/components/Alert';
 
 interface SubmitPChainTxRegisterL1ValidatorProps {
   subnetIdL1: string;
   validatorBalance?: string;
-  userPChainBalanceNavax?: bigint | null;
+  userPChainBalanceNlux?: bigint | null;
   blsProofOfPossession?: string;
   evmTxHash?: string;
   signingSubnetId: string;
@@ -21,7 +21,7 @@ interface SubmitPChainTxRegisterL1ValidatorProps {
 const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1ValidatorProps> = ({
   subnetIdL1,
   validatorBalance,
-  userPChainBalanceNavax,
+  userPChainBalanceNlux,
   blsProofOfPossession,
   evmTxHash,
   signingSubnetId,
@@ -29,7 +29,7 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
   onError,
 }) => {
   const { coreWalletClient, pChainAddress, publicClient } = useWalletStore();
-  const { aggregateSignature } = useAvalancheSDKChainkit();
+  const { aggregateSignature } = useLuxSDKChainkit();
   const { notify } = useConsoleNotifications();
   const [evmTxHashState, setEvmTxHashState] = useState(evmTxHash || '');
   const [isProcessing, setIsProcessing] = useState(false);
@@ -180,14 +180,14 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
       onError("Unsigned warp message not found. Check the transaction hash.");
       return;
     }
-    if (typeof window === 'undefined' || !window.avalanche) {
+    if (typeof window === 'undefined' || !window.lux) {
       setErrorState("Core wallet not found. Please ensure Core is installed and active.");
       onError("Core wallet not found. Please ensure Core is installed and active.");
       return;
     }
     if (!pChainAddress) {
-      setErrorState("P-Chain address is missing from wallet. Please connect your wallet properly.");
-      onError("P-Chain address is missing from wallet. Please connect your wallet properly.");
+      setErrorState("Platform-Chain address is missing from wallet. Please connect your wallet properly.");
+      onError("Platform-Chain address is missing from wallet. Please connect your wallet properly.");
       return;
     }
 
@@ -207,7 +207,7 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
 
       setSignedWarpMessage(signedMessage);
 
-      // Submit to P-Chain using registerL1Validator with all required parameters
+      // Submit to Platform-Chain using registerL1Validator with all required parameters
       const registerL1ValidatorPromise = coreWalletClient.registerL1Validator({
         balance: validatorBalance.trim(),
         blsProofOfPossession: blsProofOfPossession.trim(),
@@ -216,7 +216,7 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
       notify('registerL1Validator', registerL1ValidatorPromise);
 
       const pChainTxId = await registerL1ValidatorPromise;
-      setTxSuccess(`P-Chain transaction successful! ID: ${pChainTxId}`);
+      setTxSuccess(`Platform-Chain transaction successful! ID: ${pChainTxId}`);
       onSuccess(pChainTxId);
     } catch (err: any) {
       let message = '';
@@ -252,9 +252,9 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
         message = 'Transaction nonce error. Please try again.';
       }
 
-      console.error('P-Chain transaction error:', err);
-      setErrorState(`P-Chain transaction failed: ${message}`);
-      onError(`P-Chain transaction failed: ${message}`);
+      console.error('Platform-Chain transaction error:', err);
+      setErrorState(`Platform-Chain transaction failed: ${message}`);
+      onError(`Platform-Chain transaction failed: ${message}`);
     } finally {
       setIsProcessing(false);
     }
@@ -297,11 +297,11 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
           </h3>
           <div className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
             {validatorBalance && (
-              <p><span className="font-medium">Initial AVAX Balance:</span> {validatorBalance} AVAX</p>
+              <p><span className="font-medium">Initial LUX Balance:</span> {validatorBalance} LUX</p>
             )}
-            {userPChainBalanceNavax && validatorBalance && BigInt(Number(validatorBalance) * 1e9) > userPChainBalanceNavax && (
+            {userPChainBalanceNlux && validatorBalance && BigInt(Number(validatorBalance) * 1e9) > userPChainBalanceNlux && (
               <p className="text-xs mt-1 text-red-500 dark:text-red-400">
-                Validator balance ({validatorBalance} AVAX) exceeds your P-Chain balance ({(Number(userPChainBalanceNavax) / 1e9).toFixed(2)} AVAX).
+                Validator balance ({validatorBalance} LUX) exceeds your Platform-Chain balance ({(Number(userPChainBalanceNlux) / 1e9).toFixed(2)} LUX).
               </p>
             )}
             {blsProofOfPossession && (
@@ -315,7 +315,7 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
         onClick={handleSubmitPChainTx}
         disabled={isProcessing || !evmTxHashState.trim() || !validatorBalance || !blsProofOfPossession || !unsignedWarpMessage || txSuccess !== null}
       >
-        {isProcessing ? 'Processing...' : 'Sign & Submit to P-Chain'}
+        {isProcessing ? 'Processing...' : 'Sign & Submit to Platform-Chain'}
       </Button>
 
       {error && (
@@ -325,7 +325,7 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
       {txSuccess && (
         <Success
           label="Transaction Hash"
-          value={txSuccess.replace('P-Chain transaction successful! ID: ', '')}
+          value={txSuccess.replace('Platform-Chain transaction successful! ID: ', '')}
         />
       )}
     </div>

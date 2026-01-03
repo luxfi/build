@@ -1,10 +1,10 @@
 ---
 title: Deploy Custom VM
-description: This page demonstrates how to deploy a custom VM into cloud-based validators using Avalanche-CLI.
+description: This page demonstrates how to deploy a custom VM into cloud-based validators using Lux-CLI.
 ---
 
 <Callout title="Note">
-Currently, only Fuji network and Devnets are supported.
+Currently, only Testnet network and Devnets are supported.
 </Callout>
 
 <Callout type="warn">
@@ -15,20 +15,20 @@ ALPHA WARNING: This command is currently in experimental mode. Proceed at your o
 
 Before we begin, you will need to have:
 
-- Created a cloud server node as described [here](/docs/tooling/avalanche-cli/create-avalanche-nodes/run-validators-aws)
+- Created a cloud server node as described [here](/docs/tooling/lux-cli/create-lux-nodes/run-validators-aws)
 - Created a Custom VM, as described [here](/docs/primary-network/virtual-machines).
-- (Ignore for Devnet) Set up a key to be able to pay for transaction Fees, as described [here](/docs/tooling/avalanche-cli/create-deploy-avalanche-l1s/deploy-on-fuji-testnet).
+- (Ignore for Devnet) Set up a key to be able to pay for transaction Fees, as described [here](/docs/tooling/lux-cli/create-deploy-lux-l1s/deploy-on-testnet-testnet).
 
 Currently, only AWS & GCP cloud services are supported.
 
 Deploying the VM[​](#deploying-the-vm "Direct link to heading")
 ---------------------------------------------------------------
 
-We will be deploying the [MorpheusVM](https://github.com/ava-labs/hypersdk/tree/main/examples/morpheusvm) example built with the HyperSDK.
+We will be deploying the [MorpheusVM](https://github.com/luxfi/hypersdk/tree/main/examples/morpheusvm) example built with the HyperSDK.
 
 The following settings will be used:
 
-- Repo url: `https://github.com/ava-labs/hypersdk/`
+- Repo url: `https://github.com/luxfi/hypersdk/`
 - Branch Name: `vryx-poc`
 - Build Script: `examples/morpheusvm/scripts/build.sh`
 
@@ -38,7 +38,7 @@ The CLI needs a public repo url in order to be able to download and install the 
 
 ### Genesis File[​](#genesis-file "Direct link to heading")
 
-The following contents will serve as the chain genesis. They were generated using `morpheus-cli` as shown [here](https://github.com/ava-labs/hypersdk/blob/main/examples/morpheusvm/scripts/run.sh).
+The following contents will serve as the chain genesis. They were generated using `morpheus-cli` as shown [here](https://github.com/luxfi/hypersdk/blob/main/examples/morpheusvm/scripts/run.sh).
 
 Save it into a file with path `<genesisPath>` (for example `~/morpheusvm_genesis.json`):
 
@@ -82,13 +82,13 @@ Save it into a file with path `<genesisPath>` (for example `~/morpheusvm_genesis
 }
 ```
 
-Create the Avalanche L1[​](#create-the-avalanche-l1 "Direct link to heading")
+Create the Lux L1[​](#create-the-lux-l1 "Direct link to heading")
 -----------------------------------------------------------------
 
-Let's create an Avalanche L1 called `<blockchainName>`, with custom VM binary and genesis.
+Let's create an Lux L1 called `<blockchainName>`, with custom VM binary and genesis.
 
 ```bash
-avalanche blockchain create <blockchainName>
+lux blockchain create <blockchainName>
 ```
 
 Choose custom
@@ -109,7 +109,7 @@ Provide path to genesis:
 Provide the source code repo url:
 
 ```bash
-✗ Source code repository URL: https://github.com/ava-labs/hypersdk/
+✗ Source code repository URL: https://github.com/luxfi/hypersdk/
 ```
 
 Set the branch and finally set the build script:
@@ -118,7 +118,7 @@ Set the branch and finally set the build script:
 ✗ Build script: examples/morpheusvm/scripts/build.sh
 ```
 
-CLI will generate a locally compiled binary, and then create the Avalanche L1.
+CLI will generate a locally compiled binary, and then create the Lux L1.
 
 ```bash
 Cloning into ...
@@ -126,21 +126,21 @@ Cloning into ...
 Successfully created subnet configuration
 ```
 
-## Deploy Avalanche L1
+## Deploy Lux L1
 
-For this example, we will deploy the Avalanche L1 and blockchain on Fuji. Run:
+For this example, we will deploy the Lux L1 and blockchain on Testnet. Run:
 
 ```bash
-avalanche blockchain deploy <blockchainName>
+lux blockchain deploy <blockchainName>
 ```
 
-Choose Fuji:
+Choose Testnet:
 
 ```bash
 Use the arrow keys to navigate: ↓ ↑ → ←
 ? Choose a network to deploy on:
     Local Network
-  ▸ Fuji
+  ▸ Testnet
     Mainnet
 ```
 
@@ -161,7 +161,7 @@ Use the arrow keys to navigate: ↓ ↑ → ←
   ▸ <keyName>
 ```
 
-Use the same key as the control key for the Avalanche L1:
+Use the same key as the control key for the Lux L1:
 
 ```bash
 Use the arrow keys to navigate: ↓ ↑ → ←
@@ -171,11 +171,11 @@ Use the arrow keys to navigate: ↓ ↑ → ←
     Custom list
 ```
 
-The successfully creation of our Avalanche L1 and blockchain is confirmed by the following output:
+The successfully creation of our Lux L1 and blockchain is confirmed by the following output:
 
 ```bash
-Your Subnet's control keys: [P-fuji1dlwux652lkflgz79g3nsphjzvl6t35xhmunfk1]
-Your subnet auth keys for chain creation: [P-fuji1dlwux652lkflgz79g3nsphjzvl6t35xhmunfk1]
+Your Subnet's control keys: [P-testnet1dlwux652lkflgz79g3nsphjzvl6t35xhmunfk1]
+Your subnet auth keys for chain creation: [P-testnet1dlwux652lkflgz79g3nsphjzvl6t35xhmunfk1]
 Subnet has been created with ID: RU72cWmBmcXber6ZBPT7R5scFFuVSoFRudcS3vayf3L535ZE3
 Now creating blockchain...
 +--------------------+----------------------------------------------------+
@@ -189,26 +189,26 @@ Now creating blockchain...
 +--------------------+----------------------------------------------------+
 | Blockchain ID      | 2aDgZRYcSBsNoLCsC8qQH6iw3kUSF5DbRHM4sGEqVKwMSfBDRf |
 +--------------------+                                                    +
-| P-Chain TXID       |                                                    |
+| Platform-Chain TXID       |                                                    |
 +--------------------+----------------------------------------------------+
 ```
 
 Set the Config Files[​](#set-the-config-files "Direct link to heading")
 -----------------------------------------------------------------------
 
-Avalanche-CLI supports uploading the full set of configuration files for a blockchain:
+Lux-CLI supports uploading the full set of configuration files for a blockchain:
 
 - Genesis File
 - Blockchain Config
-- Avalanche L1 Config
+- Lux L1 Config
 - Network Upgrades
-- AvalancheGo Config
+- LuxGo Config
 
 The following example uses all of them, but the user can decide to provide a subset of those.
 
-### AvalancheGo Flags[​](#avalanchego-flags "Direct link to heading")
+### LuxGo Flags[​](#luxgo-flags "Direct link to heading")
 
-Save the following content (as defined [here](https://github.com/ava-labs/hypersdk/blob/vryx-poc/examples/morpheusvm/tests/e2e/e2e_test.go))
+Save the following content (as defined [here](https://github.com/luxfi/hypersdk/blob/vryx-poc/examples/morpheusvm/tests/e2e/e2e_test.go))
 into a file with path `<avagoFlagsPath>` (for example `~/morpheusvm_avago.json`):
 
 ```json
@@ -241,10 +241,10 @@ into a file with path `<avagoFlagsPath>` (for example `~/morpheusvm_avago.json`)
 }
 ```
 
-Then set the Avalanche L1 to use it by executing:
+Then set the Lux L1 to use it by executing:
 
 ```bash
-avalanche blockchain configure blockchainName
+lux blockchain configure blockchainName
 ```
 
 Select node-config.json:
@@ -258,7 +258,7 @@ Use the arrow keys to navigate: ↓ ↑ → ←
     per-node-chain.json
 ```
 
-Provide the path to the AvalancheGo config file:
+Provide the path to the LuxGo config file:
 
 ```bash
 ✗ Enter the path to your configuration file: <avagoFlagsPath>
@@ -271,13 +271,13 @@ Use the arrow keys to navigate: ↓ ↑ → ←
 ? Would you like to provide the chain.json file as well?:
   ▸ No
     Yes
-File ~/.avalanche-cli/subnets/blockchainName/node-config.json successfully written
+File ~/.lux-cli/subnets/blockchainName/node-config.json successfully written
 ```
 
 ### Blockchain Config[​](#blockchain-config "Direct link to heading")
 
-`morpheus-cli` as shown [here](https://github.com/ava-labs/hypersdk/blob/vryx-poc/examples/morpheusvm/scripts/run.sh).
-Save the following content (generated by this [script](https://github.com/ava-labs/hypersdk/blob/vryx-poc/examples/morpheusvm/scripts/run.sh))
+`morpheus-cli` as shown [here](https://github.com/luxfi/hypersdk/blob/vryx-poc/examples/morpheusvm/scripts/run.sh).
+Save the following content (generated by this [script](https://github.com/luxfi/hypersdk/blob/vryx-poc/examples/morpheusvm/scripts/run.sh))
 in a known file path (for example `~/morpheusvm_chain.json`):
 
 ```json
@@ -304,10 +304,10 @@ in a known file path (for example `~/morpheusvm_chain.json`):
 }
 ```
 
-Then set the Avalanche L1 to use it by executing:
+Then set the Lux L1 to use it by executing:
 
 ```bash
-avalanche blockchain configure blockchainName
+lux blockchain configure blockchainName
 ```
 
 Select chain.json:
@@ -334,12 +334,12 @@ Use the arrow keys to navigate: ↓ ↑ → ←
 ? Would you like to provide the subnet.json file as well?:
   ▸ No
     Yes
-File ~/.avalanche-cli/subnets/blockchainName/chain.json successfully written
+File ~/.lux-cli/subnets/blockchainName/chain.json successfully written
 ```
 
-### Avalanche L1 Config[​](#avalanche-l1-config "Direct link to heading")
+### Lux L1 Config[​](#lux-l1-config "Direct link to heading")
 
-Save the following content (generated by this [script](https://github.com/ava-labs/hypersdk/blob/vryx-poc/examples/morpheusvm/scripts/run.sh))
+Save the following content (generated by this [script](https://github.com/luxfi/hypersdk/blob/vryx-poc/examples/morpheusvm/scripts/run.sh))
 in a known path (for example `~/morpheusvm_subnet.json`):
 
 ```json
@@ -349,10 +349,10 @@ in a known path (for example `~/morpheusvm_subnet.json`):
 }
 ```
 
-Then set the Avalanche L1 to use it by executing:
+Then set the Lux L1 to use it by executing:
 
 ```bash
-avalanche blockchain configure blockchainName
+lux blockchain configure blockchainName
 ```
 
 Select `subnet.json`:
@@ -366,7 +366,7 @@ Use the arrow keys to navigate: ↓ ↑ → ←
     per-node-chain.json
 ```
 
-Provide the path to the Avalanche L1 config file:
+Provide the path to the Lux L1 config file:
 
 ```bash
 ✗ Enter the path to your configuration file: ~/morpheusvm_subnet.json
@@ -379,17 +379,17 @@ Use the arrow keys to navigate: ↓ ↑ → ←
 ? Would you like to provide the chain.json file as well?:
   ▸ No
     Yes
-File ~/.avalanche-cli/subnets/blockchainName/subnet.json successfully written
+File ~/.lux-cli/subnets/blockchainName/subnet.json successfully written
 ```
 
 ### Network Upgrades[​](#network-upgrades "Direct link to heading")
 
 Save the following content (currently with no network upgrades) in a known path (for example `~/morpheusvm_upgrades.json`):
 
-Then set the Avalanche L1 to use it by executing:
+Then set the Lux L1 to use it by executing:
 
 ```bash
-avalanche blockchain upgrade import blockchainName
+lux blockchain upgrade import blockchainName
 ```
 
 Provide the path to the network upgrades file:
@@ -404,7 +404,7 @@ Deploy Our Custom VM[​](#deploy-our-custom-vm "Direct link to heading")
 To deploy our Custom VM, run:
 
 ```bash
-avalanche node sync <clusterName> <blockchainName>
+lux node sync <clusterName> <blockchainName>
 ```
 
 ```bash
@@ -413,4 +413,4 @@ Node(s) successfully started syncing with Subnet!
 
 Your custom VM is successfully deployed!
 
-You can also use `avalanche node update blockchain <blockchainName>` to reinstall the binary when the branch is updated, or update the config files.
+You can also use `lux node update blockchain <blockchainName>` to reinstall the binary when the branch is updated, or update the config files.

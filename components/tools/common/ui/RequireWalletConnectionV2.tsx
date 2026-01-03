@@ -3,17 +3,17 @@ import Pre from './Pre';
 import { AddEthereumChainParameter, Chain, createWalletClient, custom } from 'viem';
 import { deduplicateEthRequestAccounts } from './deduplicateEthRequestAccounts';
 
-// Fuji Testnet configuration
-export const fujiConfig: Chain = {
+// Testnet Testnet configuration
+export const testnetConfig: Chain = {
     id: 43113,
-    name: 'Avalanche Fuji Testnet',
+    name: 'Lux Testnet Testnet',
     nativeCurrency: {
-        name: 'Avalanche',
-        symbol: 'AVAX',
+        name: 'Lux',
+        symbol: 'LUX',
         decimals: 18
     },
     rpcUrls: {
-        default: { http: ['https://api.avax-test.network/ext/bc/C/rpc'] },//hardcoded, do not change
+        default: { http: ['https://api.lux-test.network/ext/bc/C/rpc'] },//hardcoded, do not change
     },
     blockExplorers: {
         default: { name: 'Snowtrace', url: 'https://testnet.snowtrace.io/' }
@@ -41,11 +41,11 @@ export default function RequireWalletConnection({ children, chain, onConnection,
 
             // Check if wallet is installed
             setConnectionStatus('no_wallet_installed');
-            if (!window.avalanche) return;
+            if (!window.lux) return;
 
             // Check if connected to the correct chain
             setConnectionStatus('wrong_chain');
-            const chainId = await window.avalanche.request({ method: 'eth_chainId', params: [] });
+            const chainId = await window.lux.request({ method: 'eth_chainId', params: [] });
             if (chainId !== `0x${chain.id.toString(16)}`) return;
 
             // Check if account can be accessed
@@ -59,7 +59,7 @@ export default function RequireWalletConnection({ children, chain, onConnection,
 
             // Check if RPC endpoint is reachable
             setConnectionStatus('rpc_error');
-            await window.avalanche.request({
+            await window.lux.request({
                 method: 'eth_blockNumber',
                 params: []
             });
@@ -78,8 +78,8 @@ export default function RequireWalletConnection({ children, chain, onConnection,
     useEffect(() => {
         checkConnection();
 
-        if (window.avalanche) {
-            const provider = window.avalanche!;
+        if (window.lux) {
+            const provider = window.lux!;
             provider.on('chainChanged', checkConnection);
             provider.on('accountsChanged', checkConnection);
 
@@ -91,14 +91,14 @@ export default function RequireWalletConnection({ children, chain, onConnection,
     }, []);
 
     const switchChain = async () => {
-        if (!window.avalanche) {
+        if (!window.lux) {
             setConnectionStatus('no_wallet_installed');
             return;
         }
 
         const walletClient = createWalletClient({
             chain,
-            transport: custom(window.avalanche)
+            transport: custom(window.lux)
         });
 
         const rpcChainPayload: AddEthereumChainParameter = {

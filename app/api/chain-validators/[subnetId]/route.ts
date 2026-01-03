@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 import { MAINNET_VALIDATOR_DISCOVERY_URL } from "@/constants/validator-discovery";
 
 const PAGE_SIZE = 100;
@@ -65,7 +65,7 @@ async function fetchValidatorVersions(): Promise<Map<string, string>> {
     const versionMap = new Map<string, string>();
 
     for (const validator of data) {
-      versionMap.set(validator.nodeId, validator.version?.replace("avalanchego/", "") || "Unknown");
+      versionMap.set(validator.nodeId, validator.version?.replace("luxgo/", "") || "Unknown");
     }
 
     versionCacheStore.set('mainnet', { data: versionMap, timestamp: now });
@@ -77,7 +77,7 @@ async function fetchValidatorVersions(): Promise<Map<string, string>> {
 }
 
 async function fetchAllValidators(subnetId: string, versionMap: Map<string, string>): Promise<ValidatorData[]> {
-  const avalanche = new Avalanche({ network: "mainnet" });
+  const lux = new Lux({ network: "mainnet" });
   const validators: ValidatorData[] = [];
   
   try {
@@ -86,7 +86,7 @@ async function fetchAllValidators(subnetId: string, versionMap: Map<string, stri
     let result;
     if (isPrimaryNetwork) {
       // Use listValidators for Primary Network
-      result = await avalanche.data.primaryNetwork.listValidators({
+      result = await lux.data.primaryNetwork.listValidators({
         pageSize: PAGE_SIZE,
         validationStatus: "active",
         subnetId: subnetId,
@@ -94,7 +94,7 @@ async function fetchAllValidators(subnetId: string, versionMap: Map<string, stri
       });
     } else {
       // Use listL1Validators for L1 subnets
-      result = await avalanche.data.primaryNetwork.listL1Validators({
+      result = await lux.data.primaryNetwork.listL1Validators({
         pageSize: PAGE_SIZE,
         subnetId: subnetId,
         network: "mainnet",

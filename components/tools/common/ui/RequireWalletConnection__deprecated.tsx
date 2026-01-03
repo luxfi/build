@@ -14,15 +14,15 @@ export interface ChainConfig {
     isTestnet: boolean;
 }
 
-export const fujiConfig: ChainConfig = {
+export const testnetConfig: ChainConfig = {
     chainId: '0xa869',
-    chainName: 'Avalanche Fuji Testnet',
+    chainName: 'Lux Testnet Testnet',
     nativeCurrency: {
-        name: 'Avalanche',
-        symbol: 'AVAX',
+        name: 'Lux',
+        symbol: 'LUX',
         decimals: 18
     },
-    rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
+    rpcUrls: ['https://api.lux-test.network/ext/bc/C/rpc'],
     blockExplorerUrls: ['https://testnet.snowtrace.io/'],
     isTestnet: true
 };
@@ -67,7 +67,7 @@ export default function RequireWalletConnection({ children, chainConfig, require
             const chainId = await window.ethereum.request({ method: 'eth_chainId' });
             if (chainId !== chainConfig.chainId) return;
 
-            if (!window.avalanche) {
+            if (!window.lux) {
                 setError('No wallet detected');
                 return;
             }

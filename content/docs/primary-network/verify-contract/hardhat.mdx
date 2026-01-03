@@ -5,12 +5,12 @@ description: Learn how to verify a smart contract using Hardhat.
 
 {/*
   EVM Version Warning - TEMPORARY
-  Remove this section when Avalanche adds Pectra support (after SAE implementation)
+  Remove this section when Lux adds Pectra support (after SAE implementation)
   Last reviewed: December 2025
 */}
 
 <Callout type="warn" title="Solidity Compiler EVM Version">
-Avalanche C-Chain and Subnet-EVM currently support the **Cancun** EVM version and do not yet support newer hardforks like **Pectra**. Since Solidity v0.8.30 changed its default target to Pectra, you must explicitly set `evmVersion` to `cancun` in your Hardhat config.
+Lux LUExchange-Chain and Subnet-EVM currently support the **Cancun** EVM version and do not yet support newer hardforks like **Pectra**. Since Solidity v0.8.30 changed its default target to Pectra, you must explicitly set `evmVersion` to `cancun` in your Hardhat config.
 
 See the [sample configuration](#verifying-with-hardhat-verify) below which includes the required `evmVersion: "cancun"` setting.
 </Callout>
@@ -44,7 +44,7 @@ Ensure you have Postman or any other API platform installed on your computer (or
 
 Here is the API call URL to use for a POST request: `https://api.snowtrace.io/api?module=contract&action=verifysourcecode`
 
-Please note that this URL is specifically configured for verifying contracts on the Avalanche C-Chain Mainnet. If you intend to verify on the Fuji Testnet, use: `https://api-testnet.snowtrace.io/api?module=contract&action=verifysourcecode`
+Please note that this URL is specifically configured for verifying contracts on the Lux LUExchange-Chain Mainnet. If you intend to verify on the Testnet Testnet, use: `https://api-testnet.snowtrace.io/api?module=contract&action=verifysourcecode`
 
 Here's the body of the API call with the required parameters:
 
@@ -91,7 +91,7 @@ import "hardhat-gas-reporter"
 import "@nomiclabs/hardhat-etherscan"
 import { MNEMONIC, APIKEY } from "./.env.json"
 
-// When using the hardhat network, you may choose to fork Fuji or Avalanche Mainnet
+// When using the hardhat network, you may choose to fork Testnet or Lux Mainnet
 // This will allow you to debug contracts using the hardhat network while keeping the current network state
 // To enable forking, turn one of these booleans on, and then run your tasks/scripts using ``--network hardhat``
 // For more information go to the hardhat guide
@@ -101,11 +101,11 @@ const FORK_FUJI = false
 const FORK_MAINNET = false
 const forkingData = FORK_FUJI
   ? {
-      url: "https://api.avax-test.network/ext/bc/C/rpc",
+      url: "https://api.lux-test.network/ext/bc/C/rpc",
     }
   : FORK_MAINNET
   ? {
-      url: "https://api.avax.network/ext/bc/C/rpc",
+      url: "https://api.lux.network/ext/bc/C/rpc",
     }
   : undefined
 
@@ -122,7 +122,7 @@ task(
 
 task(
   "balances",
-  "Prints the list of AVAX account balances",
+  "Prints the list of LUX account balances",
   async (args, hre): Promise<void> => {
     const accounts: SignerWithAddress[] = await hre.ethers.getSigners()
     for (const account of accounts) {
@@ -141,7 +141,7 @@ export default {
   solidity: {
     version: "0.8.30",
     settings: {
-      evmVersion: "cancun", // Required for Avalanche
+      evmVersion: "cancun", // Required for Lux
       optimizer: {
         enabled: true,
         runs: 200,
@@ -153,17 +153,17 @@ export default {
       gasPrice: 225000000000,
       chainId: 43114, //Only specify a chainId if we are not forking
       // forking: {
-      //   url: 'https://api.avax.network/ext/bc/C/rpc',
+      //   url: 'https://api.lux.network/ext/bc/C/rpc',
       // },
     },
-    fuji: {
-      url: "https://api.avax-test.network/ext/bc/C/rpc",
+    testnet: {
+      url: "https://api.lux-test.network/ext/bc/C/rpc",
       gasPrice: 225000000000,
       chainId: 43113,
       accounts: { mnemonic: MNEMONIC },
     },
     mainnet: {
-      url: "https://api.avax.network/ext/bc/C/rpc",
+      url: "https://api.lux.network/ext/bc/C/rpc",
       gasPrice: 225000000000,
       chainId: 43114,
       accounts: { mnemonic: MNEMONIC },
@@ -181,7 +181,7 @@ npx hardhat verify <contract address> <arguments> --network <network>
 Example:
 
 ```bash
-npx hardhat verify 0x3972c87769886C4f1Ff3a8b52bc57738E82192D5 MockNFT Mock ipfs://QmQ2RFEmZaMds8bRjZCTJxo4DusvcBdLTS6XuDbhp5BZjY 100 --network fuji
+npx hardhat verify 0x3972c87769886C4f1Ff3a8b52bc57738E82192D5 MockNFT Mock ipfs://QmQ2RFEmZaMds8bRjZCTJxo4DusvcBdLTS6XuDbhp5BZjY 100 --network testnet
 ```
 
 You can also verify contracts programmatically via script. Example:
@@ -214,7 +214,7 @@ main()
 First create your script, then execute it via hardhat by running the following:
 
 ```bash
-npx hardhat run scripts/verify.ts --network fuji
+npx hardhat run scripts/verify.ts --network testnet
 ```
 
 Verifying via terminal will not allow you to pass an array as an argument, however, you can do this when verifying via script by including the array in your _Constructor Arguments_. Example: 

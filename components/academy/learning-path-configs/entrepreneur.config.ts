@@ -4,7 +4,7 @@ import type { CourseNode } from '../learning-tree';
 export const entrepreneurLearningPaths: CourseNode[] = [
     // Foundation Layer
     {
-        id: "avalanche-foundation",
+        id: "lux-foundation",
         name: "Level 1: Foundations of a Web3 Venture",
         description: "Establishing essential blockchain and business fundamentals.",
         slug: "entrepreneur/foundations-web3-venture",
@@ -15,34 +15,34 @@ export const entrepreneurLearningPaths: CourseNode[] = [
 
     // Second Layer  
     {
-        id: "avalanche-gtm",
+        id: "lux-gtm",
         name: "Level 2: Go-To-Market Strategist",
         description: "Master go-to-market strategies for Web3 products and services.",
         slug: "entrepreneur/go-to-market",
         category: "Business Strategy",
-        dependencies: ["avalanche-foundation"],
+        dependencies: ["lux-foundation"],
         position: { x: 30, y: 250 },
         mobileOrder: 2
     },
     {
-        id: "avalanche-web3-community-architect",
+        id: "lux-web3-community-architect",
         name: "Level 3: Web3 Community Architect",
         description: "Learn to build and manage thriving Web3 communities.",
         slug: "entrepreneur/web3-community-architect",
         category: "Community",
-        dependencies: ["avalanche-foundation"],
+        dependencies: ["lux-foundation"],
         position: { x: 70, y: 250 },
         mobileOrder: 3
     },
 
     // Third Layer
     {
-        id: "avalanche-fundraising",
+        id: "lux-fundraising",
         name: "Level 4: Fundraising & Finance Pro",
         description: "Master fundraising strategies and financial management in Web3.",
         slug: "entrepreneur/fundraising-finance",
         category: "Finance",
-        dependencies: ["avalanche-web3-community-architect", "avalanche-gtm"],
+        dependencies: ["lux-web3-community-architect", "lux-gtm"],
         position: { x: 50, y: 500 },
         mobileOrder: 4
     }
@@ -50,31 +50,31 @@ export const entrepreneurLearningPaths: CourseNode[] = [
 
 export const entrepreneurCategoryStyles = {
     "Fundamentals": {
-        gradient: "from-blue-500 to-blue-600",
+        gradient: "from-zinc-600 to-zinc-700",
         icon: BookOpen,
-        lightBg: "bg-blue-50",
-        darkBg: "dark:bg-blue-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Fundamentals"
     },
     "Community": {
-        gradient: "from-purple-500 to-purple-600",
+        gradient: "from-zinc-500 to-zinc-600",
         icon: Users,
-        lightBg: "bg-purple-50",
-        darkBg: "dark:bg-purple-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Community"
     },
     "Business Strategy": {
-        gradient: "from-emerald-500 to-emerald-600",
+        gradient: "from-zinc-700 to-zinc-800",
         icon: Lightbulb,
-        lightBg: "bg-emerald-50",
-        darkBg: "dark:bg-emerald-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Business Strategy"
     },
     "Finance": {
-        gradient: "from-yellow-500 to-yellow-600",
+        gradient: "from-zinc-500 to-zinc-600",
         icon: Coins,
-        lightBg: "bg-yellow-50",
-        darkBg: "dark:bg-yellow-950",
+        lightBg: "bg-zinc-50",
+        darkBg: "dark:bg-zinc-900",
         label: "Finance"
     }
 };

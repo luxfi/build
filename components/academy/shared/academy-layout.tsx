@@ -49,7 +49,7 @@ export function AcademyLayout({
 
     const normalizePathType = (value: string | null): AcademyPathType | null => {
         if (!value) return null;
-        if (value === 'avalanche' || value === 'avalanche-l1') return 'avalanche';
+        if (value === 'lux' || value === 'lux-l1') return 'lux';
         if (value === 'blockchain' || value === 'entrepreneur') return value;
         return null;
     };

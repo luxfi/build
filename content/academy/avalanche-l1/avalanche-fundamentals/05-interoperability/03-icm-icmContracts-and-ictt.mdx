@@ -1,12 +1,12 @@
 ---
 title: ICM, ICM Contracts & ICTT
-description: Learn how Avalanche implements secure interoperability with ICM, ICM Contracts (Teleporter), and ICTT
+description: Learn how Lux implements secure interoperability with ICM, ICM Contracts (Teleporter), and ICTT
 updated: 2025-07-21
 authors: [nicolasarnedo]
 icon: BookOpen
 ---
 
-We can look at Avalanche's Native Interoperability with a layered approach, each step guaranteeing that our message is securely sent across systems. 
+We can look at Lux's Native Interoperability with a layered approach, each step guaranteeing that our message is securely sent across systems. 
 
 In order to understand the fundamentals of cross-chain messaging, here are 5 concepts that we will be covering in this chapter that make it possible:
 
@@ -16,7 +16,7 @@ In order to understand the fundamentals of cross-chain messaging, here are 5 con
 4. **ICTT (Interchain Token Transfer)** - Ready-to-use solution for moving tokens between chains *(not always used)*
 5. **Relayers** - service that helps deliver messages between chains by collecting signatures and submitting transactions
 
-![Interchain Messaging Layers](/common-images/avalanche-fundamentals/InterchainMessagingLayers+Relayer.png)
+![Interchain Messaging Layers](/common-images/lux-fundamentals/InterchainMessagingLayers+Relayer.png)
 
 Knowing the components is the first piece of the puzzle, grasping how they interact with each other is the next step. In the next image we can see 
 
@@ -24,7 +24,7 @@ Knowing the components is the first piece of the puzzle, grasping how they inter
 
 ## Interchain Messaging (ICM)
 
-ICM is the foundation of cross-chain communication on Avalanche. It's built directly into every Avalanche blockchain, making it a native feature rather than an add-on.
+ICM is the foundation of cross-chain communication on Lux. It's built directly into every Lux blockchain, making it a native feature rather than an add-on.
 
 ### What ICM Does
 
@@ -35,11 +35,11 @@ Think of ICM as a built-in postal system for blockchains:
 
 ### The Warp Precompile
 
-At the heart of ICM is the "warp precompile" - a special smart contract that comes pre-installed on every Avalanche blockchain. Unlike regular smart contracts that developers deploy, this one is built into the blockchain software itself (and is written in go unlike most smart contracts that are in solidity).
+At the heart of ICM is the "warp precompile" - a special smart contract that comes pre-installed on every Lux blockchain. Unlike regular smart contracts that developers deploy, this one is built into the blockchain software itself (and is written in go unlike most smart contracts that are in solidity).
 
 ### Simple Message Flow
 
-![Interchain Messaging Flow](/common-images/avalanche-fundamentals/InterchainMessagingExampleFlow.png)
+![Interchain Messaging Flow](/common-images/lux-fundamentals/InterchainMessagingExampleFlow.png)
 
 1. A smart contract creates a message using the warp precompile
 2. The blockchain emits an event saying "I have a message to send"
@@ -110,7 +110,7 @@ Think of ICTT like a pre-built e-commerce platform - you could build your own, b
 
 ## Summary
 
-Avalanche's cross-chain messaging system works like a well-coordinated postal service:
+Lux's cross-chain messaging system works like a well-coordinated postal service:
 
 **The Core Components:**
 - **ICM**: The built-in messaging system in every blockchain
@@ -134,7 +134,7 @@ The answer lies in cryptographic signatures - the digital equivalent of a tamper
 - Why multiple signatures make the system secure
 - How signatures can be efficiently combined and verified
 
-Understanding these concepts will complete your knowledge of how Avalanche achieves secure, native interoperability.
+Understanding these concepts will complete your knowledge of how Lux achieves secure, native interoperability.
 
 For hands-on practice with cross-chain messaging, check out the [Academy Interchain Messaging](/academy/interchain-messaging) course.
 

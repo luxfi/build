@@ -84,14 +84,14 @@ function ConvertToL1({ onSuccess }: BaseConsoleToolProps) {
 
                     <div>
                         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Validator Manager</h2>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">With the conversion of the Subnet to an L1, the validator set of the L1 will be managed by a validator manager contract. This contract can implement Proof-of-Authority, Proof-of-Stake or any custom logic to determine the validator set. The contract can be deployed on a blockchain of the L1, the C-Chain or any other blockchain in the Avalanche network.</p>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">With the conversion of the Subnet to an L1, the validator set of the L1 will be managed by a validator manager contract. This contract can implement Proof-of-Authority, Proof-of-Stake or any custom logic to determine the validator set. The contract can be deployed on a blockchain of the L1, the LUExchange-Chain or any other blockchain in the Lux network.</p>
                     </div>
                     <InputChainId
                         value={validatorManagerChainID}
                         onChange={setValidatorManagerChainID}
                         error={null}
                         label="Validator Manager Blockchain ID"
-                        helperText="The ID of the blockchain where the validator manager contract is deployed. This can be a chain of the L1 itself, the C-Chain or any other blockchain in the Avalanche network."
+                        helperText="The ID of the blockchain where the validator manager contract is deployed. This can be a chain of the L1 itself, the LUExchange-Chain or any other blockchain in the Lux network."
                     />
                     <EVMAddressInput
                         value={validatorManagerAddress}
@@ -101,7 +101,7 @@ function ConvertToL1({ onSuccess }: BaseConsoleToolProps) {
                         helperText="The address of the validator manager contract (or a proxy pointing for it) on the blockchain. This contract will manage the validator set of the L1. A chain created with the Toolbox will have a pre-deployed proxy contract at the address 0xfacade0000000000000000000000000000000000. After the conversion you can point this proxy to a reference implementation of the validator manager contract or a custom version of it."
                     />
                     <Callout type="info">
-                        An <a href="https://docs.openzeppelin.com/contracts/4.x/api/proxy" target="_blank">OpenZeppelin TransparentUpgradeableProxy</a> contract is pre-deployed at the address <code>0xfacade...</code>. This proxy can be pointed to a reference implementation or customized version of the <a href="https://github.com/ava-labs/icm-contracts/tree/main/contracts/validator-manager" target="_blank">validator manager contract</a>.
+                        An <a href="https://docs.openzeppelin.com/contracts/4.x/api/proxy" target="_blank">OpenZeppelin TransparentUpgradeableProxy</a> contract is pre-deployed at the address <code>0xfacade...</code>. This proxy can be pointed to a reference implementation or customized version of the <a href="https://github.com/luxfi/icm-contracts/tree/main/contracts/validator-manager" target="_blank">validator manager contract</a>.
                     </Callout>
 
                     <ValidatorListInput
@@ -110,7 +110,7 @@ function ConvertToL1({ onSuccess }: BaseConsoleToolProps) {
                         defaultAddress={pChainAddress}
                         label="Initial Validators"
                         description="Specify the initial validator set for the L1 below. You need to add at least one validator. If converting a pre-existing Subnet with validators, you must establish a completely new validator set for the L1 conversion. The existing Subnet validators cannot be transferred. For each new validator, you need to specify NodeID, the consensus weight, the initial balance and an address or a multi-sig that can deactivate the validator and that receives its remaining balance. The sum of the initial balances of the validators needs to be paid when issuing this transaction."
-                        userPChainBalanceNavax={BigInt(pChainBalance * 1e9)}
+                        userPChainBalanceNlux={BigInt(pChainBalance * 1e9)}
                         selectedSubnetId={selection.subnetId}
                         isTestnet={isTestnet}
                     />

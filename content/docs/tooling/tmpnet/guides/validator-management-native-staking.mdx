@@ -1,6 +1,6 @@
 ---
 title: Testing Native Token Staking
-description: Test complete validator lifecycle with native token staking on Avalanche L1s
+description: Test complete validator lifecycle with native token staking on Lux L1s
 ---
 
 This guide covers testing native token staking validators on L1s, including the complete lifecycle: registration, delegation, rewards, and removal.
@@ -9,7 +9,7 @@ This guide covers testing native token staking validators on L1s, including the 
 
 ## Overview
 
-Native token staking allows validators to stake the L1's native currency (like AVAX) to secure the network. This guide covers:
+Native token staking allows validators to stake the L1's native currency (like LUX) to secure the network. This guide covers:
 
 - Deploying a native staking manager
 - Registering validators with stake
@@ -36,11 +36,11 @@ import (
     "testing"
     "time"
 
-    "github.com/ava-labs/avalanchego/ids"
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    "github.com/ava-labs/avalanchego/units"
-    nativestaking "github.com/ava-labs/icm-contracts/abi-bindings/go/validator-manager/NativeTokenStakingManager"
+    "github.com/luxfi/luxgo/ids"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    "github.com/luxfi/luxgo/units"
+    nativestaking "github.com/luxfi/icm-contracts/abi-bindings/go/validator-manager/NativeTokenStakingManager"
     "github.com/ethereum/go-ethereum/common"
     "github.com/ethereum/go-ethereum/crypto"
     "github.com/onsi/ginkgo/v2"
@@ -98,7 +98,7 @@ var _ = ginkgo.Describe("[Native Token Staking]", func() {
                 network,
                 l1Info,
                 stakingManagerAddress,
-                100*units.Avax,
+                100*units.Lux,
                 fundedKey,
             )
 
@@ -108,7 +108,7 @@ var _ = ginkgo.Describe("[Native Token Staking]", func() {
                 l1Info,
                 stakingManagerAddress,
                 validationID,
-                50*units.Avax,
+                50*units.Lux,
                 fundedKey,
             )
 
@@ -146,8 +146,8 @@ var _ = ginkgo.Describe("[Native Token Staking]", func() {
 The registration process has three phases:
 
 1. **Initialize** - Submit registration on L1
-2. **P-Chain** - Register on P-Chain with Warp message
-3. **Complete** - Finalize with P-Chain acknowledgment
+2. **Platform-Chain** - Register on Platform-Chain with Warp message
+3. **Complete** - Finalize with Platform-Chain acknowledgment
 
 ```go
 func registerValidator(
@@ -180,7 +180,7 @@ func registerValidator(
     // Extract registration details from event
     validationID, warpMessage := extractRegistrationInfo(registrationReceipt)
 
-    // Step 2: Register on P-Chain
+    // Step 2: Register on Platform-Chain
     registerOnPChain(
         ctx,
         network,
@@ -191,7 +191,7 @@ func registerValidator(
         senderKey,
     )
 
-    // Step 3: Complete registration with P-Chain proof
+    // Step 3: Complete registration with Platform-Chain proof
     completeRegistration(
         ctx,
         network,
@@ -269,7 +269,7 @@ func initializeValidatorRegistration(
 }
 ```
 
-### Register on P-Chain
+### Register on Platform-Chain
 
 ```go
 func registerOnPChain(
@@ -282,7 +282,7 @@ func registerOnPChain(
     senderKey *ecdsa.PrivateKey,
 ) {
 
-    // Get P-Chain wallet
+    // Get Platform-Chain wallet
     pWallet := network.GetPChainWallet(senderKey)
 
     // Issue RegisterL1ValidatorTx
@@ -293,7 +293,7 @@ func registerOnPChain(
     )
     Expect(err).NotTo(HaveOccurred())
 
-    // Wait for P-Chain acceptance
+    // Wait for Platform-Chain acceptance
     Eventually(func() bool {
         status, err := pWallet.GetTxStatus(ctx, txID)
         if err != nil {
@@ -316,16 +316,16 @@ func completeRegistration(
     senderKey *ecdsa.PrivateKey,
 ) {
 
-    // Get P-Chain info
+    // Get Platform-Chain info
     pChainInfo := getPChainInfo(network)
 
-    // Query P-Chain for registration message
+    // Query Platform-Chain for registration message
     unsignedMessage := createL1ValidatorRegistrationMessage(
         validationID,
         true, // valid
     )
 
-    // Sign with P-Chain validators
+    // Sign with Platform-Chain validators
     aggregator := NewSignatureAggregator(
         pChainInfo.NodeURIs[0],
         []ids.ID{constants.PrimaryNetworkID},
@@ -514,7 +514,7 @@ func removeValidator(
         senderKey,
     )
 
-    // Step 2: Complete with uptime proof from P-Chain
+    // Step 2: Complete with uptime proof from Platform-Chain
     completeEndValidationWithUptime(
         ctx,
         network,
@@ -547,7 +547,7 @@ func completeEndValidationWithUptime(
         uptimePercentage,
     )
 
-    // Sign with P-Chain validators
+    // Sign with Platform-Chain validators
     pChainInfo := getPChainInfo(network)
     aggregator := NewSignatureAggregator(
         pChainInfo.NodeURIs[0],
@@ -659,17 +659,17 @@ ginkgo.It("should reject expired registration",
             l1Info,
             stakingManagerAddress,
             validatorInput,
-            100*units.Avax,
+            100*units.Lux,
             fundedKey,
         )
 
         validationID, warpMessage := extractRegistrationInfo(receipt)
 
-        // Try to register on P-Chain - should fail due to expiry
+        // Try to register on Platform-Chain - should fail due to expiry
         pWallet := network.GetPChainWallet(fundedKey)
 
         _, err := pWallet.IssueRegisterL1ValidatorTx(
-            100*units.Avax,
+            100*units.Lux,
             node.NodePoP.ProofOfPossession,
             warpMessage,
         )
@@ -731,7 +731,7 @@ func checkDelegationRewards(
 
 1. **Always complete registration**: Don't leave validators in pending state
 2. **Test minimum/maximum stakes**: Verify contract validation works
-3. **Handle P-Chain delays**: P-Chain operations can be slow, use appropriate timeouts
+3. **Handle Platform-Chain delays**: Platform-Chain operations can be slow, use appropriate timeouts
 4. **Verify uptime calculations**: Test different uptime percentages
 5. **Clean up validators**: Remove test validators in AfterEach/AfterSuite
 6. **Test delegation limits**: Verify maximum delegators per validator

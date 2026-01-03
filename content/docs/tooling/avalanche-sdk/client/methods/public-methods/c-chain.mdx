@@ -1,19 +1,19 @@
 ---
-title: C-Chain Methods
-description: Complete reference for C-Chain (Contract Chain) methods and EVM compatibility
+title: LUExchange-Chain Methods
+description: Complete reference for LUExchange-Chain (Contract Chain) methods and EVM compatibility
 ---
 
 ## Overview
 
-The C-Chain (Contract Chain) is Avalanche's instance of the Ethereum Virtual Machine (EVM), providing full Ethereum compatibility with additional Avalanche-specific features like cross-chain atomic transactions and UTXO management.
+The LUExchange-Chain (Contract Chain) is Lux's instance of the Ethereum Virtual Machine (EVM), providing full Ethereum compatibility with additional Lux-specific features like cross-chain atomic transactions and UTXO management.
 
-**Note:** The Avalanche Client SDK fully extends [viem](https://viem.sh), meaning all standard EVM methods are also available. See the [viem documentation](https://viem.sh/docs) for complete EVM method reference.
+**Note:** The Lux Client SDK fully extends [viem](https://viem.sh), meaning all standard EVM methods are also available. See the [viem documentation](https://viem.sh/docs) for complete EVM method reference.
 
 ## Atomic Transaction Operations
 
 ### getAtomicTx
 
-Get an atomic transaction by its ID. Atomic transactions enable cross-chain transfers between the C-Chain and other Avalanche chains (P-Chain, X-Chain).
+Get an atomic transaction by its ID. Atomic transactions enable cross-chain transfers between the LUExchange-Chain and other Lux chains (Platform-Chain, Exchange-Chain).
 
 **Function Signature:**
 
@@ -58,11 +58,11 @@ interface GetAtomicTxReturnType {
 **Example:**
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -76,7 +76,7 @@ console.log("Block height:", atomicTx.blockHeight);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#avaxgetatomictx)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#luxgetatomictx)
 - [getAtomicTxStatus](#getatomictxstatus) - Get transaction status
 
 ---
@@ -145,7 +145,7 @@ if (status.status === "Accepted") {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#avaxgetatomictxstatus)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#luxgetatomictxstatus)
 - [getAtomicTx](#getatomictx) - Get transaction details
 
 ---
@@ -154,7 +154,7 @@ if (status.status === "Accepted") {
 
 ### getUTXOs
 
-Get the UTXOs (Unspent Transaction Outputs) for a set of addresses. UTXOs represent unspent native AVAX on the C-Chain from imported transactions.
+Get the UTXOs (Unspent Transaction Outputs) for a set of addresses. UTXOs represent unspent native LUX on the LUExchange-Chain from imported transactions.
 
 **Function Signature:**
 
@@ -186,7 +186,7 @@ interface GetUTXOsReturnType {
 
 | Name          | Type                                | Required | Description                                  |
 | ------------- | ----------------------------------- | -------- | -------------------------------------------- |
-| `addresses`   | `string[]`                          | Yes      | Array of C-Chain addresses                   |
+| `addresses`   | `string[]`                          | Yes      | Array of LUExchange-Chain addresses                   |
 | `limit`       | `number`                            | No       | Maximum number of UTXOs to return (max 1024) |
 | `startIndex`  | `{ address: string; utxo: string }` | No       | Pagination cursor for next page              |
 | `sourceChain` | `string`                            | No       | Source chain ID for filtering UTXOs          |
@@ -209,7 +209,7 @@ interface GetUTXOsReturnType {
 **Example:**
 
 ```typescript
-// Get UTXOs from X-Chain
+// Get UTXOs from Exchange-Chain
 const utxos = await client.cChain.getUTXOs({
   addresses: ["0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6"],
   limit: 100,
@@ -231,8 +231,8 @@ if (utxos.endIndex) {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#avaxgetutxos)
-- [C-Chain Wallet Methods](../wallet-methods/c-chain-wallet) - Atomic transaction operations
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#luxgetutxos)
+- [LUExchange-Chain Wallet Methods](../wallet-methods/c-chain-wallet) - Atomic transaction operations
 
 ---
 
@@ -240,7 +240,7 @@ if (utxos.endIndex) {
 
 ### issueTx
 
-Issue a transaction to the C-Chain. Submits a signed transaction for processing.
+Issue a transaction to the LUExchange-Chain. Submits a signed transaction for processing.
 
 **Function Signature:**
 
@@ -289,7 +289,7 @@ console.log("Transaction ID:", txID.txID);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#avaxissuetx)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#luxissuetx)
 
 ---
 
@@ -299,7 +299,7 @@ These methods are available for node administration and debugging. They require 
 
 ### setLogLevel
 
-Set the log level for the C-Chain node.
+Set the log level for the LUExchange-Chain node.
 
 **Function Signature:**
 
@@ -333,7 +333,7 @@ await client.cChain.setLogLevel({
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#adminsetloglevel)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#adminsetloglevel)
 
 ---
 
@@ -365,7 +365,7 @@ await client.cChain.startCPUProfiler();
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#adminstartcpuprofiler)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#adminstartcpuprofiler)
 - [stopCPUProfiler](#stopcpuprofiler) - Stop the CPU profiler
 
 ---
@@ -398,14 +398,14 @@ await client.cChain.stopCPUProfiler();
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#adminstopcpuprofiler)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#adminstopcpuprofiler)
 - [startCPUProfiler](#startcpuprofiler) - Start the CPU profiler
 
 ---
 
 ### memoryProfile
 
-Get the memory profile of the C-Chain node.
+Get the memory profile of the LUExchange-Chain node.
 
 **Function Signature:**
 
@@ -431,7 +431,7 @@ await client.cChain.memoryProfile();
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#adminmemoryprofile)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#adminmemoryprofile)
 
 ---
 
@@ -463,13 +463,13 @@ await client.cChain.lockProfile();
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/c-chain#adminlockprofile)
+- [API Reference](https://build.lux.network/docs/rpcs/c-chain#adminlockprofile)
 
 ---
 
 ## Standard EVM Methods
 
-The C-Chain client extends viem's Public Client, providing access to all standard Ethereum methods. Here are some commonly used methods:
+The LUExchange-Chain client extends viem's Public Client, providing access to all standard Ethereum methods. Here are some commonly used methods:
 
 ### Block Operations
 
@@ -564,7 +564,7 @@ const { request } = await client.simulateContract({
 
 ## Next Steps
 
-- **[C-Chain Wallet Methods](../wallet-methods/c-chain-wallet)** - Atomic transaction operations
+- **[LUExchange-Chain Wallet Methods](../wallet-methods/c-chain-wallet)** - Atomic transaction operations
 - **[Wallet Client](../../clients/wallet-client)** - Complete wallet operations
 - **[Account Management](../../accounts)** - Account types and management
 - **[Viem Documentation](https://viem.sh/docs)** - Complete EVM method reference

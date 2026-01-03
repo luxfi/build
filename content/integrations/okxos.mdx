@@ -1,7 +1,7 @@
 ---
 title: OKX OS
 category: Wallets and Account Abstraction
-available: ["C-Chain"]
+available: ["LUExchange-Chain"]
 description: A comprehensive onchain infrastructure suite for building and scaling applications.
 logo: /images/okx.png
 developer: OKX
@@ -37,9 +37,9 @@ For detailed documentation and guides, please visit the [OKX OS Documentation](h
 - Developing blockchain games with in-game asset management across 100+ chains.
 - Accessing comprehensive onchain data APIs for actionable insights.
 
-### Building an On-Chain Data Dashboard for Avalanche C-Chain
+### Building an On-Chain Data Dashboard for Lux LUExchange-Chain
 
-This guide walks you through setting up a dashboard to track wallet assets and transactions on the Avalanche C-Chain. You'll use OKX OS's Wallet API to fetch and display this data.
+This guide walks you through setting up a dashboard to track wallet assets and transactions on the Lux LUExchange-Chain. You'll use OKX OS's Wallet API to fetch and display this data.
 
 #### Prerequisites
 - [Node.js](https://nodejs.org/) installed on your system
@@ -60,8 +60,8 @@ This guide walks you through setting up a dashboard to track wallet assets and t
 Run the following commands to create a new directory and initialize a Node.js project with default settings and required dependencies:
 
 ```bash
-mkdir avalanche-dashboard
-cd avalanche-dashboard
+mkdir lux-dashboard
+cd lux-dashboard
 npm init -y
 npm install crypto-js
 ```
@@ -73,7 +73,7 @@ touch createAccount.js getAssets.js getTx.js
 
 ## Create Wallet Account
 
-You'll start by creating an account to track your Avalanche addresses with a simple Node.js script that interacts with the OKX Wallet API.
+You'll start by creating an account to track your Lux addresses with a simple Node.js script that interacts with the OKX Wallet API.
 
 In the `createAccount.js` file:
    
@@ -257,7 +257,7 @@ Last Updated: 10/24/2024, 7:23:20 PM
 
 Token Assets:
 
-Token: AVAX
+Token: LUX
 Chain: 43114
 Balance: 882338.9729422927
 -----------------------------
@@ -282,7 +282,7 @@ Balance: 500000
 
 ## View Transaction Details
 
-Finally, you can set up transaction viewing. This script provides detailed information about any transaction on the Avalanche C-Chain.
+Finally, you can set up transaction viewing. This script provides detailed information about any transaction on the Lux LUExchange-Chain.
 
 In your `getTx.js` file:
 

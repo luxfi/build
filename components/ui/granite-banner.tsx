@@ -130,7 +130,7 @@ export function GraniteBanner() {
       {activated ? (
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-center px-2">
           <span className="text-sm sm:text-base">
-            Avalanche Network <strong>Granite upgrade</strong> activated.
+            Lux Network <strong>Granite upgrade</strong> activated.
           </span>
           <span className="hidden sm:inline">•</span>
           <Link href="/blog/granite-upgrade" className="text-sm sm:text-base underline underline-offset-4 hover:text-fd-primary transition-colors">
@@ -149,7 +149,7 @@ export function GraniteBanner() {
 
           <div className="hidden lg:flex flex-row items-center justify-center gap-2 text-center">
             <span>
-              Avalanche Network <strong>Granite upgrade</strong> released. All Mainnet
+              Lux Network <strong>Granite upgrade</strong> released. All Mainnet
               nodes must upgrade by <strong>11 AM ET, November 19, 2025</strong>
             </span>
             <span className="flex items-center gap-2">

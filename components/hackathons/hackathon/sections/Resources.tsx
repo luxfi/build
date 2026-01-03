@@ -44,7 +44,7 @@ function Resources({ hackathon }: { hackathon: HackathonHeader }) {
         ))}
       </div>
       {/* <p className="text-lg text-gray-600 dark:text-gray-300 mt-8">
-        Need deeper insights? Access the full set of Avalanche documentation,
+        Need deeper insights? Access the full set of Lux documentation,
         tools, and developer guides.
       </p>
 

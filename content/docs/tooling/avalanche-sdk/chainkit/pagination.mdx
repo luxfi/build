@@ -8,16 +8,16 @@ Some of the endpoints in this SDK support pagination. To use pagination, you mak
 Here's an example of one such pagination call:
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avalancheSDK.metrics.chains.list({
+  const result = await luxSDK.metrics.chains.list({
     network: "mainnet",
   });
 

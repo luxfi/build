@@ -37,7 +37,7 @@ export const useAutomatedFaucet = () => {
   const l1List = useL1List();
   const { 
     claimEVMTokens, 
-    claimPChainAVAX, 
+    claimPChainLUX, 
     getChainsWithFaucet 
   } = useTestnetFaucet();
   
@@ -143,7 +143,7 @@ export const useAutomatedFaucet = () => {
       // Trigger fireworks animation
       triggerFireworks();
       
-      const chainNames = isPChain ? ['P-Chain'] : successfulClaims.map(r => {
+      const chainNames = isPChain ? ['Platform-Chain'] : successfulClaims.map(r => {
         const chain = l1List.find((c: L1ListItem) => c.evmChainId === r.chainId);
         return chain?.name || `Chain ${r.chainId}`;
       });
@@ -269,7 +269,7 @@ export const useAutomatedFaucet = () => {
       if (pChainAddress && !checkSufficientPChainBalance() && !isChainRateLimited('pchain')) {
         try {
           const result = await retryOperation(
-            () => claimPChainAVAX(true),
+            () => claimPChainLUX(true),
             2 // max only 2 retries
           );
           results.push(result);
@@ -326,7 +326,7 @@ export const useAutomatedFaucet = () => {
     isLoading,
     getChainsWithFaucet,
     claimEVMTokens,
-    claimPChainAVAX,
+    claimPChainLUX,
     checkSufficientPChainBalance,
     showAutomatedDripSuccess,
     fetchRateLimits,

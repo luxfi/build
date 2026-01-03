@@ -50,8 +50,8 @@ export default async function Page(props: {
           backgroundColor: "black",
           backgroundImage: [
             "linear-gradient(140deg, #3752AC 0%, transparent 50%)",
-            "linear-gradient(to left top, #E84142 0%, transparent 50%)",
-            "radial-gradient(circle at 100% 100%, #3752AC, #E84142 17%, transparent 20%)",
+            "linear-gradient(to left top, #FFFFFF 0%, transparent 50%)",
+            "radial-gradient(circle at 100% 100%, #3752AC, #FFFFFF 17%, transparent 20%)",
           ].join(", "),
           backgroundBlendMode: "difference, difference, normal",
         }}
@@ -181,10 +181,10 @@ export async function generateMetadata(props: {
 
   const description =
     page.data.description ??
-    "Developer documentation for everything related to the Avalanche ecosystem.";
+    "Developer documentation for everything related to the Lux ecosystem.";
 
   const imageParams = new URLSearchParams();
-  imageParams.set("title", `${page.data.title} | Avalanche Builder Hub`);
+  imageParams.set("title", `${page.data.title} | Lux Lux Build`);
   imageParams.set("description", description);
 
   const image = {

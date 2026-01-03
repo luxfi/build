@@ -10,21 +10,21 @@ const ecosystem = [
     id: 1,
     title: "Join <strong>Team1 DAO</strong>.",
     description:
-      "Contribute to the Avalanche community initiatives, and get rewarded with exclusive paid bounties.",
-    href: "https://www.avax.network/ambassador"
+      "Contribute to the Lux community initiatives, and get rewarded with exclusive paid bounties.",
+    href: "https://www.lux.network/ambassador"
   },
   {
     id: 2,
     title: "Check our <strong>Events</strong>.",
     description:
       "Connect with our team at Summit, participate in sponsored hackathons, and organize workshops and meetups.",
-    href: "https://www.avalanchesummitemea.com/"
+    href: "https://www.luxsummitemea.com/"
   },
   {
     id: 3,
-    title: "Try <strong>Avalanche</strong>.",
+    title: "Try <strong>Lux</strong>.",
     description:
-      "Discover and try out different applications and L1s in the Avalanche ecosystem.",
+      "Discover and try out different applications and L1s in the Lux ecosystem.",
     href: "https://core.app/discover/"
   }
 ];

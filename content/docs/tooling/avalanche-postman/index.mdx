@@ -1,20 +1,20 @@
 ---
 title: Installing Postman Collection
-description: Installing Postman collection for Avalanche APIs
+description: Installing Postman collection for Lux APIs
 ---
 
-We have made a Postman collection for Avalanche, that includes all the public API calls that are available on an [AvalancheGo instance](https://github.com/ava-labs/avalanchego/releases/), including environment variables, allowing developers to quickly issue commands to a node and see the response, without having to copy and paste long and complicated `curl` commands.
+We have made a Postman collection for Lux, that includes all the public API calls that are available on an [LuxGo instance](https://github.com/luxfi/luxgo/releases/), including environment variables, allowing developers to quickly issue commands to a node and see the response, without having to copy and paste long and complicated `curl` commands.
 
-[Link to GitHub](https://github.com/ava-labs/avalanche-postman-collection/)
+[Link to GitHub](https://github.com/luxfi/lux-postman-collection/)
 
 What Is Postman?[​](#what-is-postman "Direct link to heading")
 --------------------------------------------------------------
 
 Postman is a free tool used by developers to quickly and easily send REST, SOAP, and GraphQL requests and test APIs. It is available as both an online tool and an application for Linux, MacOS and Windows. Postman allows you to quickly issue API calls and see the responses in a nicely formatted, searchable form.
 
-Along with the API collection, there is also the example Avalanche environment for Postman, that defines common variables such as IP address of the node, Avalanche addresses and similar common elements of the queries, so you don't have to enter them multiple times.
+Along with the API collection, there is also the example Lux environment for Postman, that defines common variables such as IP address of the node, Lux addresses and similar common elements of the queries, so you don't have to enter them multiple times.
 
-Combined, they will allow you to easily keep tabs on an Avalanche node, check on its state and do quick queries to find out details about its operation.
+Combined, they will allow you to easily keep tabs on an Lux node, check on its state and do quick queries to find out details about its operation.
 
 Setup[​](#setup "Direct link to heading")
 -----------------------------------------
@@ -40,10 +40,10 @@ We're ready to import the collection. On the top-left corner of the Workspaces t
 There, in the URL input field paste the link below to the collection:
 
 ```bash
-https://raw.githubusercontent.com/ava-labs/avalanche-postman-collection/master/Avalanche.postman_collection.json
+https://raw.githubusercontent.com/luxfi/lux-postman-collection/master/Lux.postman_collection.json
 ```
 
-Postman will recognize the format of the file content and offer to import the file as a collection. Complete the import. Now you will have Avalanche collection in your Workspace.
+Postman will recognize the format of the file content and offer to import the file as a collection. Complete the import. Now you will have Lux collection in your Workspace.
 
 ![Collection content](/images/postman4.png)
 
@@ -52,7 +52,7 @@ Postman will recognize the format of the file content and offer to import the fi
 Next, we have to import the environment variables. Again, on the top-left corner of the Workspaces tab select `Import` and switch to `Link` tab. This time, paste the link below to the environment JSON:
 
 ```bash
-https://raw.githubusercontent.com/ava-labs/avalanche-postman-collection/master/Example-Avalanche-Environment.postman_environment.json
+https://raw.githubusercontent.com/luxfi/lux-postman-collection/master/Example-Lux-Environment.postman_environment.json
 ```
 
 Postman will recognize the format of the file:
@@ -61,7 +61,7 @@ Postman will recognize the format of the file:
 
 Import it to your workspace. Now, we will need to edit that environment to suit the actual parameters of your particular installation. These are the parameters that differ from the defaults in the imported file.
 
-Select the Environments tab, choose the Avalanche environment which was just added. You can directly edit any values here:
+Select the Environments tab, choose the Lux environment which was just added. You can directly edit any values here:
 
 ![Environment content](/images/postman6.png)
 
@@ -72,11 +72,11 @@ Now we sorted everything out, and we're ready to query the node.
 Conclusion[​](#conclusion "Direct link to heading")
 ---------------------------------------------------
 
-If you have completed the tutorial, you are now able to quickly [issue API calls](/docs/tooling/avalanche-postman/making-api-calls) to your node without messing with the curl commands in the terminal. This allows you to quickly see the state of your node, track changes or double-check the health or liveness of your node.
+If you have completed the tutorial, you are now able to quickly [issue API calls](/docs/tooling/lux-postman/making-api-calls) to your node without messing with the curl commands in the terminal. This allows you to quickly see the state of your node, track changes or double-check the health or liveness of your node.
 
 Contributing[​](#contributing "Direct link to heading")
 -------------------------------------------------------
 
-We're hoping to continuously keep this collection up-to-date with the [Avalanche APIs](/docs/rpcs/p-chain). If you're able to help improve the Avalanche Postman Collection in any way, first create a feature branch by branching off of `master`, next make the improvements on your feature branch and lastly create a [pull request](https://github.com/ava-labs/builders-hub/pulls) to merge your work back in to `master`.
+We're hoping to continuously keep this collection up-to-date with the [Lux APIs](/docs/rpcs/p-chain). If you're able to help improve the Lux Postman Collection in any way, first create a feature branch by branching off of `master`, next make the improvements on your feature branch and lastly create a [pull request](https://github.com/luxfi/lux-build/pulls) to merge your work back in to `master`.
 
 If you have any other questions or suggestions, come [talk to us](https://chat.avalabs.org/).

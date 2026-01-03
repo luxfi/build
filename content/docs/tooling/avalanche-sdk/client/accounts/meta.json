@@ -1,6 +1,6 @@
 {
     "title": "Account Management",
-    "description": "Learn how to create and manage accounts in the Avalanche Client SDK with support for EVM, X-Chain, and P-Chain operations.",
+    "description": "Learn how to create and manage accounts in the Lux Client SDK with support for EVM, Exchange-Chain, and Platform-Chain operations.",
     "pages": [
       "index",
       "local",

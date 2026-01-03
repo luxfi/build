@@ -21,7 +21,7 @@ Content-Type: application/json
   "accepts": [
     {
       "scheme": "exact",
-      "network": "avalanche-fuji",
+      "network": "lux-testnet",
       "maxAmountRequired": "10000",
       "resource": "/api/premium-data",
       "description": "Real-time market analysis",
@@ -79,11 +79,11 @@ The protocol is designed to be extensible, allowing new schemes to be added as p
 
 ### Network Identifiers
 
-Standard network identifiers for Avalanche and other chains:
+Standard network identifiers for Lux and other chains:
 
 ```javascript
-"network": "avalanche-c-chain" // Avalanche C-Chain Mainnet
-"network": "avalanche-fuji"    // Avalanche Fuji Testnet
+"network": "lux-c-chain" // Lux LUExchange-Chain Mainnet
+"network": "lux-testnet"    // Lux Testnet Testnet
 "network": "base-sepolia"      // Base Sepolia Testnet
 ```
 
@@ -105,10 +105,10 @@ Amounts are always strings representing **base units** (smallest denomination).<
 The `asset` field contains the smart contract address of the payment token:
 
 ```javascript
-// USDC on Avalanche Fuji testnet
+// USDC on Lux Testnet testnet
 "asset": "0x5425890298aed601595a70AB815c96711a31Bc65"
 
-// USDC on Avalanche C-Chain mainnet
+// USDC on Lux LUExchange-Chain mainnet
 "asset": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E"
 
 // USDC on Base Sepolia testnet
@@ -127,7 +127,7 @@ Servers can offer multiple payment options (different networks or tokens):
   "accepts": [
     {
       "scheme": "exact",
-      "network": "avalanche-fuji",
+      "network": "lux-testnet",
       "maxAmountRequired": "10000",
       "payTo": "0x742d35...",
       "asset": "0x5425890...",

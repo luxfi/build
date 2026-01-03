@@ -143,11 +143,11 @@ export function generateGenesis({ evmChainId, tokenAllocations, txAllowlistConfi
         const wrappedTokenName = `Wrapped ${tokenName}`;
         const wrappedTokenSymbol = `W${tokenSymbol}`;
 
-        // Encode name: e.g. "Wrapped AVAX" (dynamic length)
+        // Encode name: e.g. "Wrapped LUX" (dynamic length)
         // Format: [data][length*2] in hex
         const nameHex = "0x" + Buffer.from(wrappedTokenName, 'utf8').toString('hex').padEnd(62, '0') + (wrappedTokenName.length * 2).toString(16).padStart(2, '0');
 
-        // Encode symbol: e.g. "WAVAX" (dynamic length)
+        // Encode symbol: e.g. "WLUX" (dynamic length)
         // Format: [data][length*2] in hex
         const symbolHex = "0x" + Buffer.from(wrappedTokenSymbol, 'utf8').toString('hex').padEnd(62, '0') + (wrappedTokenSymbol.length * 2).toString(16).padStart(2, '0');
 

@@ -14,16 +14,16 @@ This SDK supports the following security scheme globally:
 The ChainKit SDK can be used without an API key, but rate limits will be lower. Adding an API key allows for higher rate limits. To get an API key, create one via [Builder Console](/console/utilities/data-api-keys) and securely store it. Whether or not you use an API key, you can still interact with the SDK effectively, but the API key provides performance benefits for higher request volumes.
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avalancheSDK.metrics.healthCheck();
+  const result = await luxSDK.metrics.healthCheck();
 
   // Handle the result
   console.log(result);

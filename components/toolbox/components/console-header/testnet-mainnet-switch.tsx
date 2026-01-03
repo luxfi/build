@@ -1,7 +1,7 @@
 'use client'
 
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
-import { avalanche, avalancheFuji } from "viem/chains";
+import { lux, luxTestnet } from "viem/chains";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useWalletSwitch } from "../../hooks/useWalletSwitch";
@@ -23,10 +23,10 @@ export function TestnetMainnetSwitch() {
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="w-30">
-      <DropdownMenuItem onClick={() => safelySwitch(avalancheFuji.id, true)} >
+      <DropdownMenuItem onClick={() => safelySwitch(luxTestnet.id, true)} >
         Testnet
       </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => safelySwitch(avalanche.id, false)} >
+      <DropdownMenuItem onClick={() => safelySwitch(lux.id, false)} >
         Mainnet
       </DropdownMenuItem>
     </DropdownMenuContent>

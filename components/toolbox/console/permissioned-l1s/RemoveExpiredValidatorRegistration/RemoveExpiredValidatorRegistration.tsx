@@ -12,7 +12,7 @@ import { useWalletStore } from "@/components/toolbox/stores/walletStore"
 import { useValidatorManagerDetails } from "@/components/toolbox/hooks/useValidatorManagerDetails"
 import ValidatorManagerABI from "@/contracts/icm-contracts/compiled/ValidatorManager.json"
 import PoAManagerABI from "@/contracts/icm-contracts/compiled/PoAManager.json"
-import { useAvalancheSDKChainkit } from "@/components/toolbox/stores/useAvalancheSDKChainkit"
+import { useLuxSDKChainkit } from "@/components/toolbox/stores/useLuxSDKChainkit"
 import { cb58ToHex } from "@/components/toolbox/console/utilities/format-converter/FormatConverter"
 import { GetRegistrationJustification } from "@/components/toolbox/console/permissioned-l1s/ValidatorManager/justification"
 import { packL1ValidatorRegistration } from "@/components/toolbox/coreViem/utils/convertWarp"
@@ -30,7 +30,7 @@ type ParsedInitiatedRegistration = {
 
 const RemoveExpiredValidatorRegistration: React.FC = () => {
   const [subnetId, setSubnetId] = useState<string>(useCreateChainStore()((s) => s.subnetId) || "")
-  const { publicClient, coreWalletClient, avalancheNetworkID } = useWalletStore()
+  const { publicClient, coreWalletClient, luxNetworkID } = useWalletStore()
   const viemChain = useViemChainStore()
   const { notify } = useConsoleNotifications();
   const [isLoading, setIsLoading] = useState(false)
@@ -49,8 +49,8 @@ const RemoveExpiredValidatorRegistration: React.FC = () => {
     evmTxHash?: string | null
   }>>({})
 
-  const {listL1Validators } = useAvalancheSDKChainkit()
-  const { aggregateSignature } = useAvalancheSDKChainkit()
+  const {listL1Validators } = useLuxSDKChainkit()
+  const { aggregateSignature } = useLuxSDKChainkit()
 
   const {
     validatorManagerAddress,
@@ -334,7 +334,7 @@ const RemoveExpiredValidatorRegistration: React.FC = () => {
       const removeValidatorMessage = packL1ValidatorRegistration(
         validationIDBytes,
         false,
-        avalancheNetworkID,
+        luxNetworkID,
         "11111111111111111111111111111111LpoYY"
       )
       const signaturePromise = aggregateSignature({
@@ -393,7 +393,7 @@ const RemoveExpiredValidatorRegistration: React.FC = () => {
     <Container
       title="Remove Expired Validator Registration"
       description="Fetch InitiatedValidatorRegistration logs and show only expired PendingAdded registrations."
-      githubUrl="https://github.com/ava-labs/builders-hub/edit/master/components/toolbox/console/permissioned-l1s/RemoveExpiredValidatorRegistration/RemoveExpiredValidatorRegistration.tsx"
+      githubUrl="https://github.com/luxfi/lux-build/edit/master/components/toolbox/console/permissioned-l1s/RemoveExpiredValidatorRegistration/RemoveExpiredValidatorRegistration.tsx"
     >
       <div className="space-y-6">
         {error && (

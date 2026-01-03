@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils"
 import { ArrowUpRight, Loader2, Copy, CheckCircle2, ArrowRight } from "lucide-react"
 import { useState, useEffect } from "react"
 import { createPublicClient, http, formatEther } from 'viem';
-import { avalancheFuji } from 'viem/chains';
+import { luxTestnet } from 'viem/chains';
 import { newPrivateKey } from '../common/utils/wallet';
 import { transferCToP, getAddresses } from './helper';
-import { pvm, utils, Context, addTxSignatures } from "@avalabs/avalanchejs";
+import { pvm, utils, Context, addTxSignatures } from "luxfi";
 
 export default function ValidatorBalanceUI() {
   const [currentStep, setCurrentStep] = useState(1)
@@ -41,7 +41,7 @@ export default function ValidatorBalanceUI() {
 
     const checkCChainBalance = async () => {
       const client = createPublicClient({
-        chain: avalancheFuji,
+        chain: luxTestnet,
         transport: http()
       })
 
@@ -54,7 +54,7 @@ export default function ValidatorBalanceUI() {
           setCurrentStep(2)
         }
       } catch (error) {
-        console.error('Failed to get C-Chain balance:', error)
+        console.error('Failed to get LUExchange-Chain balance:', error)
       }
     }
 
@@ -72,8 +72,8 @@ export default function ValidatorBalanceUI() {
   }
 
   const increaseBalanceTx = async (sourcePrivateKey: string, validationId: string, amount: string) => {
-    const pvmApi = new pvm.PVMApi('https://api.avax-test.network')
-    const context = await Context.getContextFromURI('https://api.avax-test.network')
+    const pvmApi = new pvm.PVMApi('https://api.lux-test.network')
+    const context = await Context.getContextFromURI('https://api.lux-test.network')
     const addresses = getAddresses(sourcePrivateKey)
     const feeState = await pvmApi.getFeeState()
     
@@ -82,11 +82,11 @@ export default function ValidatorBalanceUI() {
       throw new Error('No UTXOs found for P-chain transfer')
     }
 
-    const amountNAvax = BigInt(Math.floor(Number(amount) * 1e9))
+    const amountNLux = BigInt(Math.floor(Number(amount) * 1e9))
 
     const unsignedTx = pvm.e.newIncreaseL1ValidatorBalanceTx(
       {
-        balance: amountNAvax,
+        balance: amountNLux,
         feeState,
         fromAddressesBytes: [utils.bech32ToBytes(addresses.P)],
         utxos,
@@ -174,13 +174,13 @@ export default function ValidatorBalanceUI() {
         <div className={cn("space-y-4", currentStep !== 1 && "opacity-50")}>
           <div className="flex items-center space-x-2">
             <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-medium">1</div>
-            <h4 className="font-medium text-zinc-900 dark:text-zinc-100">Fund Temporary C-Chain Address</h4>
+            <h4 className="font-medium text-zinc-900 dark:text-zinc-100">Fund Temporary LUExchange-Chain Address</h4>
           </div>
         <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-4 space-y-3">
         <div className="flex justify-between items-center">
         <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">Address</span>
         <span className="text-sm font-bold text-indigo-700 dark:text-indigo-300">
-            Balance: {formatEther(cChainBalance)} AVAX
+            Balance: {formatEther(cChainBalance)} LUX
         </span>
         </div>
         <div className="flex items-center gap-3 bg-white dark:bg-zinc-800 rounded p-3">
@@ -209,11 +209,11 @@ export default function ValidatorBalanceUI() {
             </div>
             <div className="space-y-2">
               <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300" htmlFor="transferAmount">
-                Amount to Transfer (AVAX)
+                Amount to Transfer (LUX)
               </label>
               <div className="relative">
                 <input id="transferAmount" type="number" value={transferAmount} onChange={(e) => setTransferAmount(e.target.value)} step="0.0001" min="0" className="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-3 py-2 pr-12 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" placeholder="0.000" disabled={currentStep !== 2} />
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-400 pointer-events-none">AVAX</span>
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 dark:text-zinc-400 pointer-events-none">LUX</span>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@ export default function ValidatorBalanceUI() {
               </>
             ) : (
               <>
-                Transfer {transferAmount || "0"} AVAX to Validator
+                Transfer {transferAmount || "0"} LUX to Validator
                 <ArrowUpRight className="w-5 h-5" />
               </>
             )}
@@ -266,7 +266,7 @@ export default function ValidatorBalanceUI() {
             <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-green-700 dark:text-green-300">Amount</span>
-                <span className="text-sm font-bold text-green-700 dark:text-green-300">{transferAmount} AVAX</span>
+                <span className="text-sm font-bold text-green-700 dark:text-green-300">{transferAmount} LUX</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-green-700 dark:text-green-300">Validator ID</span>
@@ -280,7 +280,7 @@ export default function ValidatorBalanceUI() {
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium text-green-700 dark:text-green-300">Transaction</span>
                   <a
-                    href={`https://subnets-test.avax.network/p-chain/tx/${validatorTxId}`}
+                    href={`https://subnets-test.lux.network/p-chain/tx/${validatorTxId}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 flex items-center gap-1"

@@ -20,7 +20,7 @@ const quickLinks = [
   {
     id: 1,
     title: "Faucet",
-    description: "Get testnet AVAX",
+    description: "Get testnet LUX",
     icon: Droplet,
     href: "/console/primary-network/faucet"
   },
@@ -41,49 +41,49 @@ const quickLinks = [
   {
     id: 4,
     title: "RPC References",
-    description: "Explore the RPC Methods for the C-Chain, P-Chain, and X-Chain.",
+    description: "Explore the RPC Methods for the LUExchange-Chain, Platform-Chain, and Exchange-Chain.",
     icon: ArrowLeftRight,
     href: "/docs/rpcs/c-chain"
   },
   {
     id: 5,
     title: "API References",
-    description: "Avalanche Data, Metrics, and Webhook APIs",
+    description: "Lux Data, Metrics, and Webhook APIs",
     icon: BookOpen,
     href: "/docs/api-reference"
   },
   {
     id: 6,
-    title: "Avalanche Fundamentals",
-    description: "Learn about the basics of Avalanche.",
+    title: "Lux Fundamentals",
+    description: "Learn about the basics of Lux.",
     icon: Triangle,
-    href: "/academy/avalanche-fundamentals"
+    href: "/academy/lux-fundamentals"
   },
   {
     id: 7,
     title: "Network Stats",
-    description: "View the latest metrics for the Avalanche Network.",
+    description: "View the latest metrics for the Lux Network.",
     icon: ActivityIcon,
     href: "/stats/overview"
   },
   {
     id: 8,
     title: "ACPs",
-    description: "Explore Avalanche's Community Proposals (ACPs) for network improvements and best practices.",
+    description: "Explore Lux's Community Proposals (ACPs) for network improvements and best practices.",
     icon: GitBranch,
     href: "/docs/acps"
   },
   {
     id: 9,
     title: "Integrations",
-    description: "Explore the integrations with Avalanche.",
+    description: "Explore the integrations with Lux.",
     icon: PackageIcon,
     href: "/integrations"
   },
   {
     id: 10,
     title: "Developer Tools",
-    description: "Explore the developer tools for Avalanche.",
+    description: "Explore the developer tools for Lux.",
     icon: CodeIcon,
     href: "/docs/tooling"
   },

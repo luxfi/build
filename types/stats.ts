@@ -108,7 +108,7 @@ export const STATS_CONFIG = {
     'week': 'week', 
     'month': 'month'
   }, // active addresses intervals for different views
-  AVALANCHE_GENESIS_TIMESTAMP: 1600646400,
+  LUX_GENESIS_TIMESTAMP: 1600646400,
   DATA_OFFSET_DAYS: 1,
 } as const;
 

@@ -11,7 +11,7 @@ import poaManagerAbi from '@/contracts/icm-contracts/compiled/PoAManager.json';
 import { GetRegistrationJustification } from '@/components/toolbox/console/permissioned-l1s/ValidatorManager/justification';
 import { packL1ValidatorWeightMessage } from '@/components/toolbox/coreViem/utils/convertWarp';
 import { packWarpIntoAccessList } from '@/components/toolbox/console/permissioned-l1s/ValidatorManager/packWarp';
-import { useAvalancheSDKChainkit } from '@/components/toolbox/stores/useAvalancheSDKChainkit';
+import { useLuxSDKChainkit } from '@/components/toolbox/stores/useLuxSDKChainkit';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
 
 interface CompleteChangeWeightProps {
@@ -39,8 +39,8 @@ const CompleteChangeWeight: React.FC<CompleteChangeWeightProps> = ({
   isLoadingOwnership,
   ownerType,
 }) => {
-  const { coreWalletClient, publicClient, avalancheNetworkID, walletEVMAddress } = useWalletStore();
-  const { aggregateSignature } = useAvalancheSDKChainkit();
+  const { coreWalletClient, publicClient, luxNetworkID, walletEVMAddress } = useWalletStore();
+  const { aggregateSignature } = useLuxSDKChainkit();
   const { notify } = useConsoleNotifications();
   const viemChain = useViemChainStore();
   const [pChainTxId, setPChainTxId] = useState(initialPChainTxId || '');
@@ -73,8 +73,8 @@ const CompleteChangeWeight: React.FC<CompleteChangeWeightProps> = ({
     setSuccessMessage(null);
 
     if (!pChainTxId.trim()) {
-      setErrorState("P-Chain transaction ID is required.");
-      onError("P-Chain transaction ID is required.");
+      setErrorState("Platform-Chain transaction ID is required.");
+      onError("Platform-Chain transaction ID is required.");
       return;
     }
     if (!subnetIdL1) {
@@ -105,7 +105,7 @@ const CompleteChangeWeight: React.FC<CompleteChangeWeightProps> = ({
 
     setIsProcessing(true);
     try {
-      // Step 1: Extract L1ValidatorWeightMessage from P-Chain transaction
+      // Step 1: Extract L1ValidatorWeightMessage from Platform-Chain transaction
       const weightMessageData = await coreWalletClient.extractL1ValidatorWeightMessage({
         txId: pChainTxId
       });
@@ -127,7 +127,7 @@ const CompleteChangeWeight: React.FC<CompleteChangeWeightProps> = ({
         throw new Error("No justification logs found for this validation ID");
       }
 
-      // Step 3: Create P-Chain warp signature using the extracted weight message data
+      // Step 3: Create Platform-Chain warp signature using the extracted weight message data
       const warpValidationID = hexToBytes(weightMessageData.validationID as `0x${string}`);
       const warpNonce = weightMessageData.nonce;
       const warpWeight = weightMessageData.weight;
@@ -138,8 +138,8 @@ const CompleteChangeWeight: React.FC<CompleteChangeWeightProps> = ({
           nonce: warpNonce,
           weight: warpWeight,
         },
-        avalancheNetworkID,
-        "11111111111111111111111111111111LpoYY" // always use P-Chain ID
+        luxNetworkID,
+        "11111111111111111111111111111111LpoYY" // always use Platform-Chain ID
       );
 
       const aggregateSignaturePromise = aggregateSignature({
@@ -208,10 +208,10 @@ const CompleteChangeWeight: React.FC<CompleteChangeWeightProps> = ({
       )}
 
       <Input
-        label="P-Chain SetL1ValidatorWeightTx ID"
+        label="Platform-Chain SetL1ValidatorWeightTx ID"
         value={pChainTxId}
         onChange={setPChainTxId}
-        placeholder="Enter the P-Chain SetL1ValidatorWeightTx ID from step 3"
+        placeholder="Enter the Platform-Chain SetL1ValidatorWeightTx ID from step 3"
         disabled={isProcessing}
       />
 

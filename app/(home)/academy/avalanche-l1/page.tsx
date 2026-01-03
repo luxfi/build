@@ -4,22 +4,22 @@ import { BookOpen, ArrowRight, ExternalLink } from "lucide-react";
 import { createMetadata } from "@/utils/metadata";
 import { blog } from "@/lib/source";
 import { AcademyLayout } from "@/components/academy/shared/academy-layout";
-import { avalancheDeveloperAcademyLandingPageConfig } from "./config";
+import { luxDeveloperAcademyLandingPageConfig } from "./config";
 import { entrepreneurAcademyLandingPageConfig } from "../entrepreneur/config";
 import type { AcademyPathType } from "@/components/academy/shared/academy-types";
 import { Suspense } from "react";
 
 export const metadata: Metadata = createMetadata({
-  title: "Avalanche L1 Academy",
+  title: "Lux L1 Academy",
   description:
-    "Learn Avalanche L1 development with courses designed for builders launching custom blockchains",
+    "Learn Lux L1 development with courses designed for builders launching custom blockchains",
   openGraph: {
-    url: "/academy/avalanche-l1",
+    url: "/academy/lux-l1",
     images: {
       url: "/api/og/academy",
       width: 1200,
       height: 630,
-      alt: "Avalanche L1 Academy",
+      alt: "Lux L1 Academy",
     },
   },
   twitter: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = createMetadata({
       url: "/api/og/academy",
       width: 1200,
       height: 630,
-      alt: "Avalanche L1 Academy",
+      alt: "Lux L1 Academy",
     },
   },
 });
@@ -39,10 +39,10 @@ type PageProps = {
 };
 
 const isPathType = (value: string | undefined): value is AcademyPathType => {
-  return value === "avalanche" || value === "blockchain" || value === "entrepreneur";
+  return value === "lux" || value === "blockchain" || value === "entrepreneur";
 };
 
-export default async function AvalancheAcademyPage({ searchParams }: PageProps): Promise<React.ReactElement> {
+export default async function LuxAcademyPage({ searchParams }: PageProps): Promise<React.ReactElement> {
   const resolvedSearchParams = await searchParams;
   // Get all guides server-side
   const blogPages = [...blog.getPages()]
@@ -135,10 +135,10 @@ export default async function AvalancheAcademyPage({ searchParams }: PageProps):
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-zinc-600 dark:text-zinc-400">Loading...</div></div>}>
       <AcademyLayout
-        config={avalancheDeveloperAcademyLandingPageConfig}
+        config={luxDeveloperAcademyLandingPageConfig}
         blogs={blogs}
         blogsByPath={{
-          avalanche: blogs,
+          lux: blogs,
           blockchain: blogs,
           entrepreneur: entrepreneurBlogsFromConfig.length > 0 ? entrepreneurBlogsFromConfig : blogs,
         }}

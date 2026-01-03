@@ -35,7 +35,7 @@ export default function RegisterFormStep1({ user }: Step1Props) {
           Step 1: Personal Information
         </h3>
         <p className="text-zinc-600">
-          Provide your personal details to create your Builder Hub profile.
+          Provide your personal details to create your Lux Build profile.
         </p>
         <div className="w-full h-px bg-zinc-300 mt-2" />
       </div>
@@ -217,10 +217,10 @@ export default function RegisterFormStep1({ user }: Step1Props) {
           )}
         />
 
-        {/* Avalanche Ecosystem Member */}
+        {/* Lux Ecosystem Member */}
         <FormField
           control={form.control}
-          name="avalanche_ecosystem_member"
+          name="lux_ecosystem_member"
           render={({ field }) => (
             <FormItem className="flex items-center space-x-3">
               <FormControl>
@@ -232,7 +232,7 @@ export default function RegisterFormStep1({ user }: Step1Props) {
               </FormControl>
               <div className="flex-1">
                 <FormLabel className="text-base font-medium cursor-pointer">
-                  Consider yourself an Avalanche ecosystem member?
+                  Consider yourself an Lux ecosystem member?
                 </FormLabel>
               </div>
             </FormItem>

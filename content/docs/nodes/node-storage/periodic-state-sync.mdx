@@ -20,12 +20,12 @@ If you don't have access to a separate machine, you can also do a [state sync sn
 
 This works because your validator identity is determined by cryptographic keys in the staking directory, not the database.
 
-Your validator identity consists of three key files in `~/.avalanchego/staking/`:
+Your validator identity consists of three key files in `~/.luxgo/staking/`:
 - **staker.crt** - TLS certificate (determines your Node ID)
 - **staker.key** - TLS private key (for encrypted P2P communication)
 - **signer.key** - BLS signing key (for consensus signatures)
 
-These files define your validator identity. The Node ID shown on the P-Chain is cryptographically derived from `staker.crt`, so copying these files transfers your complete validator identity.
+These files define your validator identity. The Node ID shown on the Platform-Chain is cryptographically derived from `staker.crt`, so copying these files transfers your complete validator identity.
 
 ![Node Replacement Process](/images/State_sync_new_node.png)
 
@@ -57,15 +57,15 @@ curl -X POST --data '{
 <Step>
 ## Provision a new server with the same or better specs than your current validator
 
-Don't copy the database at `~/.avalanchego/db/`. The new node sync a smaller fresh, synced database
+Don't copy the database at `~/.luxgo/db/`. The new node sync a smaller fresh, synced database
 from the other nodes.
 </Step>
 
 <Step>
-## Install and configure AvalancheGo
+## Install and configure LuxGo
 
 Follow the instructions to set up a new node. If you have custom configuration in
-`~/.avalanchego/configs/`, copy those as well to maintain the same node behavior. Make sure that you
+`~/.luxgo/configs/`, copy those as well to maintain the same node behavior. Make sure that you
 are not manually deactivating state sync in that config file.
 </Step>
 
@@ -103,7 +103,7 @@ during this window, but won't be penalized as long as you're back online before 
 Backup the new server's auto-generated keys (optional but recommended):
 ```bash
 # On new server
-mv ~/.avalanchego/staking ~/.avalanchego/staking.backup
+mv ~/.luxgo/staking ~/.luxgo/staking.backup
 ```
 </Step>
 
@@ -114,10 +114,10 @@ Copy the staking directory from your old validator to the new server
 
 ```bash
 # From your old validator, copy to new server
-scp -r ~/.avalanchego/staking/ user@new-server:~/.avalanchego/
+scp -r ~/.luxgo/staking/ user@new-server:~/.luxgo/
 
 # Or use rsync for better control:
-rsync -avz ~/.avalanchego/staking/ user@new-server:~/.avalanchego/staking/
+rsync -avz ~/.luxgo/staking/ user@new-server:~/.luxgo/staking/
 ```
 </Step>
 
@@ -126,11 +126,11 @@ rsync -avz ~/.avalanchego/staking/ user@new-server:~/.avalanchego/staking/
 
 ```bash
 # On new server
-chmod 700 ~/.avalanchego/staking
-chmod 400 ~/.avalanchego/staking/staker.key
-chmod 400 ~/.avalanchego/staking/staker.crt
-chmod 400 ~/.avalanchego/staking/signer.key
-chown -R avalanche:avalanche ~/.avalanchego/staking  # If using avalanche user
+chmod 700 ~/.luxgo/staking
+chmod 400 ~/.luxgo/staking/staker.key
+chmod 400 ~/.luxgo/staking/staker.crt
+chmod 400 ~/.luxgo/staking/signer.key
+chown -R lux:lux ~/.luxgo/staking  # If using lux user
 ```
 </Step>
 

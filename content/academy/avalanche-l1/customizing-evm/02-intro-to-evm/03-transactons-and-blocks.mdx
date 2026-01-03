@@ -13,10 +13,10 @@ In the EVM, a transaction is the smallest unit of work that can be included in a
 Transactions can either transfer Ether or invoke smart contracts. Each transaction includes the following components:
 
 - **Nonce**: A unique value set by the sender to ensure the transaction is processed only once, preventing replay attacks.
-- **Gas Price**: The amount the sender is willing to pay per unit of gas, typically measured in `nanoAvax` (1 `nAvax` = 1/(10^9) Avax). It consists of three parts:
-  - **Base Gas Fee**: The minimum `nAvax` required per unit of gas.
-  - **Maximum Priority Gas Fee**: Additional `nAvax` the sender is willing to pay on top of the base fee.
-  - **Maximum Total Gas Fee**: The maximum `nAvax` the sender is willing to spend per unit of gas. If the sum of the base gas fee and the priority gas fee exceeds this amount, the gas price paid will be capped at the maximum total gas fee.
+- **Gas Price**: The amount the sender is willing to pay per unit of gas, typically measured in `nanoLux` (1 `nLux` = 1/(10^9) Lux). It consists of three parts:
+  - **Base Gas Fee**: The minimum `nLux` required per unit of gas.
+  - **Maximum Priority Gas Fee**: Additional `nLux` the sender is willing to pay on top of the base fee.
+  - **Maximum Total Gas Fee**: The maximum `nLux` the sender is willing to spend per unit of gas. If the sum of the base gas fee and the priority gas fee exceeds this amount, the gas price paid will be capped at the maximum total gas fee.
 - **Gas Limit**: The maximum amount of gas units the sender is willing to pay for executing the transaction. If this limit is reached, the transaction fails, preventing indefinite execution.
 - **To**: The recipient's Ethereum address or the target smart contract.
 - **V, R, S**: Cryptographic data used to create the sender's signature.

@@ -44,18 +44,18 @@ In order to enable offline pruning, you need to stop the node.
 </Step>
 
 <Step>
-## Finding the C-Chain Config File
+## Finding the LUExchange-Chain Config File
 
-In order to enable offline pruning, you need to update the C-Chain config file to include the parameters `offline-pruning-enabled` and `offline-pruning-data-directory`.
+In order to enable offline pruning, you need to update the LUExchange-Chain config file to include the parameters `offline-pruning-enabled` and `offline-pruning-data-directory`.
 
-The default location of the C-Chain config file is `~/.avalanchego/configs/chains/C/config.json`.
+The default location of the LUExchange-Chain config file is `~/.luxgo/configs/chains/C/config.json`.
 **Please note that by default, this file does not exist. You would need to create it manually.** 
 </Step>
 
 <Step>
 ## Configure Offline Pruning
 
-In order to enable offline pruning, update the C-Chain config file to include the following parameters:
+In order to enable offline pruning, update the LUExchange-Chain config file to include the following parameters:
 
 ```json
 {
@@ -70,9 +70,9 @@ This will set `/home/ubuntu/offline-pruning` as the directory to be used by the 
 <Step>
 ## Restart the Node
 
-Now that the C-Chain config file has been updated, you can restart your node.
+Now that the LUExchange-Chain config file has been updated, you can restart your node.
 
-Once AvalancheGo starts the C-Chain, you can expect to see update logs from the offline pruner:
+Once LuxGo starts the LUExchange-Chain, you can expect to see update logs from the offline pruner:
 
 ```bash
 INFO [02-09|00:20:15.625] Iterating state snapshot                 accounts=297,231 slots=6,669,708 elapsed=16.001s eta=1m29.03s
@@ -92,7 +92,7 @@ operation cannot be cancelled).
 <Step>
 ## Disable Offline Pruning
 
-In order to ensure that users do not mistakenly leave offline pruning enabled for the long term (which could result in an hour of downtime on each restart), we have added a manual protection which requires that after an offline pruning session, the node must be started with offline pruning disabled at least once before it will start with offline pruning enabled again. Therefore, once the bloom filter has been committed to disk, you should update the C-Chain config file to include the following parameters:
+In order to ensure that users do not mistakenly leave offline pruning enabled for the long term (which could result in an hour of downtime on each restart), we have added a manual protection which requires that after an offline pruning session, the node must be started with offline pruning disabled at least once before it will start with offline pruning enabled again. Therefore, once the bloom filter has been committed to disk, you should update the LUExchange-Chain config file to include the following parameters:
 
 ```json
 {

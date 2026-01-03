@@ -1,6 +1,6 @@
 {
   "title": "Guides",
-  "description": "Task-focused guides for testing Avalanche L1s with tmpnet and Ginkgo",
+  "description": "Task-focused guides for testing Lux L1s with tmpnet and Ginkgo",
   "pages": [
     "getting-started",
     "runtimes",

@@ -86,8 +86,8 @@ export function useAddToWallet(): UseAddToWalletReturn {
               chainName: chainName || "Unknown Chain",
               rpcUrls: [rpcUrl],
               nativeCurrency: nativeCurrency || {
-                name: "AVAX",
-                symbol: "AVAX",
+                name: "LUX",
+                symbol: "LUX",
                 decimals: 18,
               },
               blockExplorerUrls: blockExplorerUrl ? [blockExplorerUrl] : undefined,

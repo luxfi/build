@@ -5,14 +5,14 @@ import IntegrationsClient from './page.client';
 
 export const metadata: Metadata = createMetadata({
   title: 'Integrations',
-  description: 'Discover best-in-class integrations for your Avalanche L1',
+  description: 'Discover best-in-class integrations for your Lux L1',
   openGraph: {
     url: '/integrations',
     images: {
       url: '/api/og/integrations',
       width: 1200,
       height: 630,
-      alt: 'Integrations with Avalanche',
+      alt: 'Integrations with Lux',
     },
   },
   twitter: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = createMetadata({
       url: '/api/og/integrations',
       width: 1200,
       height: 630,
-      alt: 'Integrations with Avalanche',
+      alt: 'Integrations with Lux',
     },
   },
 });

@@ -14,7 +14,7 @@ Validators can reach a consensus by following a set of steps called a consensus 
 
 Consensus is needed to agree on the order of state changes in a blockchain. This allows the validators to decide between two conflicting states.
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/avalanche-fundamentals/1-aWL9i9BFicUEF7ntMjBFuUejfadAUS.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/lux-fundamentals/1-aWL9i9BFicUEF7ntMjBFuUejfadAUS.png)
 
 <Quiz quizId="102"/>
 
@@ -22,22 +22,22 @@ Consensus is needed to agree on the order of state changes in a blockchain. This
 
 A Double Spending Attack is when a user attempts to spend more crypto than they own by creating multiple transactions that reference the same funds.
 
-Let's look at an Example: Alice owns 5 AVAX
+Let's look at an Example: Alice owns 5 LUX
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/avalanche-fundamentals/2-2fU6eqsUiCq76Sy04VEfvD5rLo3eVc.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/lux-fundamentals/2-2fU6eqsUiCq76Sy04VEfvD5rLo3eVc.png)
 
 Now Alice issues two transactions at the same time to different validators:
 
-1. Send 5 AVAX to Bob
-2. Send 5 AVAX to Charly
+1. Send 5 LUX to Bob
+2. Send 5 LUX to Charly
 
 It is important that there is only a limited notion of time in blockchain systems. Even if Alice does not issue these transactions at the exact same time, validators cannot identify which was issued first.
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/avalanche-fundamentals/3-8GHqtWHuf44Nilsugj6yC9sC0BFsZh.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/lux-fundamentals/3-8GHqtWHuf44Nilsugj6yC9sC0BFsZh.png)
 
-Each of the transaction in itself is valid. Alice owns 5 AVAX and should be able to send them to whomever she wants. However, she should only be able to send the amount she actually owns.
+Each of the transaction in itself is valid. Alice owns 5 LUX and should be able to send them to whomever she wants. However, she should only be able to send the amount she actually owns.
 
-![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/avalanche-fundamentals/4-GeSctGjJKsmXFWvwMpZmYpDcGquZcg.png)
+![](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/lux-fundamentals/4-GeSctGjJKsmXFWvwMpZmYpDcGquZcg.png)
 
 Therefore, validators have to collectively come to consensus on which of the two conflicting transactions will be included in the blockchain first, and therefore be accepted by all validators as the next state. To illustrate, we will color the validators preferring Charlie yellow and the validators preferring Bob blue.
 

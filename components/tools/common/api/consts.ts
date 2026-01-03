@@ -1,2 +1,2 @@
-const pChainEndpoint = "https://api.avax-test.network/ext/bc/P";
+const pChainEndpoint = "https://api.lux-test.network/ext/bc/P";
 export { pChainEndpoint };

@@ -177,15 +177,15 @@ export function ValidatorWorldMap() {
   };
 
   const formatStaked = (staked: string) => {
-    // Convert to AVAX by dividing by 10^9
+    // Convert to LUX by dividing by 10^9
     const rawAmount = parseFloat(staked);
-    const avaxAmount = rawAmount / 1e9;
+    const luxAmount = rawAmount / 1e9;
 
-    if (avaxAmount >= 1e6) return `${(avaxAmount / 1e6).toFixed(1)}M`;
-    if (avaxAmount >= 1e3) return `${(avaxAmount / 1e3).toFixed(1)}K`;
-    if (avaxAmount >= 100) return `${avaxAmount.toFixed(0)}`;
-    if (avaxAmount >= 1) return `${avaxAmount.toFixed(1)}`;
-    return avaxAmount.toFixed(3);
+    if (luxAmount >= 1e6) return `${(luxAmount / 1e6).toFixed(1)}M`;
+    if (luxAmount >= 1e3) return `${(luxAmount / 1e3).toFixed(1)}K`;
+    if (luxAmount >= 100) return `${luxAmount.toFixed(0)}`;
+    if (luxAmount >= 1) return `${luxAmount.toFixed(1)}`;
+    return luxAmount.toFixed(3);
   };
 
   const getMarkerSize = (country: CountryData, maxValue: number) => {
@@ -233,7 +233,7 @@ export function ValidatorWorldMap() {
             Global Validator Distribution
           </CardTitle>
           <CardDescription>
-            Geographic distribution of Avalanche Primary Network validators
+            Geographic distribution of Lux Primary Network validators
             worldwide
           </CardDescription>
         </CardHeader>
@@ -253,7 +253,7 @@ export function ValidatorWorldMap() {
             Global Validator Distribution
           </CardTitle>
           <CardDescription>
-            Geographic distribution of Avalanche Primary Network validators
+            Geographic distribution of Lux Primary Network validators
             worldwide
           </CardDescription>
         </CardHeader>
@@ -316,7 +316,7 @@ export function ValidatorWorldMap() {
               Global Validator Distribution
             </CardTitle>
             <CardDescription>
-              Geographic distribution of Avalanche Primary Network validators
+              Geographic distribution of Lux Primary Network validators
               worldwide
             </CardDescription>
           </div>
@@ -396,7 +396,7 @@ export function ValidatorWorldMap() {
                     <div className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">
                       {visualMode === "validators"
                         ? `${country.validators.toLocaleString()}`
-                        : `${formatStaked(country.totalStaked)} AVAX`}
+                        : `${formatStaked(country.totalStaked)} LUX`}
                     </div>
                     <div className="text-xs text-neutral-500 dark:text-neutral-400">
                       {country.percentage.toFixed(1)}% share

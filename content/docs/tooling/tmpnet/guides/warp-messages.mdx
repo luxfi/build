@@ -3,7 +3,7 @@ title: Warp Message Construction
 description: Learn how to construct, sign, and verify Warp messages for cross-chain communication
 ---
 
-Warp messages enable secure cross-chain communication on Avalanche. This guide covers constructing unsigned messages, aggregating signatures, and verifying signed messages.
+Warp messages enable secure cross-chain communication on Lux. This guide covers constructing unsigned messages, aggregating signatures, and verifying signed messages.
 
 ## Overview
 
@@ -23,7 +23,7 @@ func ExtractWarpMessageFromLogs(
     ctx context.Context,
     receipt *types.Receipt,
     source L1TestInfo,
-) *avalancheWarp.UnsignedMessage {
+) *luxWarp.UnsignedMessage {
 
     // Find SendWarpMessage log
     var warpMessageBytes []byte
@@ -38,7 +38,7 @@ func ExtractWarpMessageFromLogs(
     Expect(warpMessageBytes).NotTo(BeEmpty())
 
     // Parse unsigned message
-    unsignedMessage, err := avalancheWarp.ParseUnsignedMessage(warpMessageBytes)
+    unsignedMessage, err := luxWarp.ParseUnsignedMessage(warpMessageBytes)
     Expect(err).NotTo(HaveOccurred())
 
     return unsignedMessage
@@ -80,11 +80,11 @@ func (a *SignatureAggregator) Shutdown() {
 
 ```go
 func (a *SignatureAggregator) CreateSignedMessage(
-    unsignedMessage *avalancheWarp.UnsignedMessage,
+    unsignedMessage *luxWarp.UnsignedMessage,
     justification []byte,
     subnetID ids.ID,
     quorumNum uint64,
-) (*avalancheWarp.Message, error) {
+) (*luxWarp.Message, error) {
 
     signedMessage, err := a.client.AggregateSignatures(
         context.Background(),
@@ -108,7 +108,7 @@ func ConstructSignedWarpMessage(
     destination L1TestInfo,
     justification []byte,
     aggregator *SignatureAggregator,
-) *avalancheWarp.Message {
+) *luxWarp.Message {
 
     // Step 1: Extract unsigned message
     unsignedMessage := ExtractWarpMessageFromLogs(ctx, sourceReceipt, source)

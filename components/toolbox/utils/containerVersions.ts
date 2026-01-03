@@ -1,8 +1,8 @@
 import versionsData from '@/scripts/versions.json';
 
 export type ContainerVersions = {
-    'avaplatform/avalanchego': string;
-    'avaplatform/subnet-evm_avalanchego': string;
+    'avaplatform/luxgo': string;
+    'avaplatform/subnet-evm_luxgo': string;
     'avaplatform/icm-relayer': string;
 };
 

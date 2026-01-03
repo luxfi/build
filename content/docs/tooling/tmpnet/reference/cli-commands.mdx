@@ -29,8 +29,8 @@ tmpnetctl start-network [flags]
 
 | Flag | Type | Description | Default |
 |------|------|-------------|---------|
-| `--avalanchego-path` | string | Path to avalanchego binary | `$AVALANCHEGO_PATH` (required) |
-| `--plugin-dir` | string | Directory containing VM plugins | `$AVAGO_PLUGIN_DIR` or `~/.avalanchego/plugins` |
+| `--luxgo-path` | string | Path to luxgo binary | `$LUXGO_PATH` (required) |
+| `--plugin-dir` | string | Directory containing VM plugins | `$AVAGO_PLUGIN_DIR` or `~/.luxgo/plugins` |
 | `--node-count` | int | Number of validator nodes | `5` |
 | `--network-owner` | string | Owner identifier for the network | `tmpnet-owner` |
 | `--root-dir` | string | Root directory for networks | `~/.tmpnet/networks` |
@@ -39,14 +39,14 @@ tmpnetctl start-network [flags]
 
 ```bash
 # Start default 5-node network
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego
+tmpnetctl start-network --luxgo-path=./bin/luxgo
 
 # Start 3-node network
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego --node-count=3
+tmpnetctl start-network --luxgo-path=./bin/luxgo --node-count=3
 
 # Custom plugin directory
 tmpnetctl start-network \
-  --avalanchego-path=./bin/avalanchego \
+  --luxgo-path=./bin/luxgo \
   --plugin-dir=/custom/plugins
 ```
 
@@ -350,7 +350,7 @@ Complete workflow for creating and using a network:
 ./scripts/build_tmpnetctl.sh
 
 # Start network
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego
+tmpnetctl start-network --luxgo-path=./bin/luxgo
 
 # Configure shell
 export TMPNET_NETWORK_DIR=~/.tmpnet/networks/latest
@@ -367,11 +367,11 @@ Simplify commands with direnv:
 
 ```bash
 # Enable direnv
-cd avalanchego
+cd luxgo
 direnv allow
 
 # Now you can use simplified commands
-tmpnetctl start-network        # No --avalanchego-path needed
+tmpnetctl start-network        # No --luxgo-path needed
 tmpnetctl stop-network
 tmpnetctl restart-network
 ```
@@ -396,7 +396,7 @@ tmpnetctl start-metrics-collector
 tmpnetctl start-logs-collector
 
 # Create/destroy networks as needed
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego
+tmpnetctl start-network --luxgo-path=./bin/luxgo
 # ... test ...
 tmpnetctl stop-network
 
@@ -412,11 +412,11 @@ Manage multiple networks:
 
 ```bash
 # Start first network
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego
+tmpnetctl start-network --luxgo-path=./bin/luxgo
 NETWORK1=~/.tmpnet/networks/latest
 
 # Start second network
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego
+tmpnetctl start-network --luxgo-path=./bin/luxgo
 NETWORK2=~/.tmpnet/networks/latest
 
 # Target specific networks
@@ -434,11 +434,11 @@ Add to your `.bashrc` or `.zshrc`:
 # Set default network to latest
 export TMPNET_NETWORK_DIR=~/.tmpnet/networks/latest
 
-# Set avalanchego path
-export AVALANCHEGO_PATH=~/avalanchego/bin/avalanchego
+# Set luxgo path
+export LUXGO_PATH=~/luxgo/bin/luxgo
 
 # Add tmpnetctl to PATH (if not using direnv)
-export PATH=$PATH:~/avalanchego/bin
+export PATH=$PATH:~/luxgo/bin
 ```
 
 ### Monitoring Environment
@@ -485,9 +485,9 @@ Error: network directory not found: /path/to/network
 
 **Binary not found:**
 ```
-Error: avalanchego binary not found: /path/to/avalanchego
+Error: luxgo binary not found: /path/to/luxgo
 ```
-**Solution:** Verify `--avalanchego-path` points to a valid binary
+**Solution:** Verify `--luxgo-path` points to a valid binary
 
 **Port already in use:**
 ```
@@ -506,4 +506,4 @@ Error: PROMETHEUS_URL environment variable not set
 - [Configuration Reference](/docs/tooling/tmpnet/reference/configuration)
 - [Quick Start Guide](/docs/tooling/tmpnet/quick-start)
 - [Monitoring Guide](/docs/tooling/tmpnet/guides/monitoring)
-- [Full README](https://github.com/ava-labs/avalanchego/blob/master/tests/fixture/tmpnet/README.md)
+- [Full README](https://github.com/luxfi/luxgo/blob/master/tests/fixture/tmpnet/README.md)

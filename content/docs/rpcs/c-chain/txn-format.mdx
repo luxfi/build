@@ -4,7 +4,7 @@ title: Transaction Format
 
 This page is meant to be the single source of truth for how we serialize atomic
 transactions in `Coreth`. This document uses the [primitive serialization](/docs/rpcs/other/standards/serialization-primitives) format for packing and
-[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-avalanche-virtual-machine)
+[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-lux-virtual-machine)
 for cryptographic user identification.
 
 ## Codec ID
@@ -29,8 +29,8 @@ Input type that specifies an EVM account to deduct the funds from as part of an 
 An EVM Input contains an `address`, `amount`, `assetID`, and `nonce`.
 
 - **`Address`** is the EVM address from which to transfer funds.
-- **`Amount`** is the amount of the asset to be transferred (specified in nAVAX
-  for AVAX and the smallest denomination for all other assets).
+- **`Amount`** is the amount of the asset to be transferred (specified in nLUX
+  for LUX and the smallest denomination for all other assets).
 - **`AssetID`** is the ID of the asset to transfer.
 - **`Nonce`** is the nonce of the EVM account exporting funds.
 
@@ -176,7 +176,7 @@ Let's make a transferable input:
 ## SECP256K1 Transfer Input
 
 A
-[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-avalanche-virtual-machine)
+[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-lux-virtual-machine)
 transfer input allows for spending an unspent secp256k1 transfer output.
 
 ### What SECP256K1 Transfer Input Contains
@@ -261,8 +261,8 @@ Output type specifying a state change to be applied to an EVM account as part of
 An EVM Output contains an `address`, `amount`, and `assetID`.
 
 - **`Address`** is the EVM address that will receive the funds.
-- **`Amount`** is the amount of the asset to be transferred (specified in nAVAX
-  for AVAX and the smallest denomination for all other assets).
+- **`Amount`** is the amount of the asset to be transferred (specified in nLUX
+  for LUX and the smallest denomination for all other assets).
 - **`AssetID`** is the ID of the asset to transfer.
 
 ### Gantt EVM Output Specification
@@ -387,7 +387,7 @@ Let's make a transferable output:
 ## SECP256K1 Transfer Output
 
 A
-[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-avalanche-virtual-machine)
+[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-lux-virtual-machine)
 transfer output allows for sending a quantity of an asset to a collection of
 addresses after a specified Unix time.
 
@@ -489,8 +489,8 @@ ExportTx is a transaction to export funds from Coreth to a different chain.
 An ExportTx contains an `typeID`, `networkID`, `blockchainID`, `destinationChain`, `inputs`, and `exportedOutputs`.
 
 - **`typeID`** is an int that the type for an ExportTx. The typeID for an exportTx is 1.
-- **`networkID`** is an int that defines which Avalanche network this
-  transaction is meant to be issued to. This could refer to Mainnet, Fuji, etc.
+- **`networkID`** is an int that defines which Lux network this
+  transaction is meant to be issued to. This could refer to Mainnet, Testnet, etc.
   and is different than the EVM's network ID.
 - **`blockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to.
 - **`destinationChain`** is a 32-byte array that defines which blockchain this
@@ -598,8 +598,8 @@ An ImportTx contains an `typeID`, `networkID`, `blockchainID`,
 `destinationChain`, `importedInputs`, and `Outs`.
 
 - **`typeID`** is an int that the type for an ImportTx. The typeID for an `ImportTx` is 0.
-- **`networkID`** is an int that defines which Avalanche network this
-  transaction is meant to be issued to. This could refer to Mainnet, Fuji, etc.
+- **`networkID`** is an int that defines which Lux network this
+  transaction is meant to be issued to. This could refer to Mainnet, Testnet, etc.
   and is different than the EVM's network ID.
 - **`blockchainID`** is a 32-byte array that defines which blockchain this transaction was issued to.
 - **`sourceChain`** is a 32-byte array that defines which blockchain from which to import funds.
@@ -705,7 +705,7 @@ inputs.
 ## SECP256K1 Credential
 
 A
-[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-avalanche-virtual-machine)
+[secp256k1](/docs/rpcs/other/standards/cryptographic-primitives#cryptography-in-the-lux-virtual-machine)
 credential contains a list of 65-byte recoverable signatures.
 
 ### What SECP256K1 Credential Contains

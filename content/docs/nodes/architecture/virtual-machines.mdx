@@ -1,9 +1,9 @@
 ---
 title: Virtual Machines
-description: Understand how Virtual Machines (VMs) define blockchain behavior in AvalancheGo, including the VM interface and built-in VMs.
+description: Understand how Virtual Machines (VMs) define blockchain behavior in LuxGo, including the VM interface and built-in VMs.
 ---
 
-A Virtual Machine (VM) defines the application-level logic of a blockchain. In AvalancheGo, VMs are decoupled from consensus, allowing developers to create custom blockchain behavior while reusing the battle-tested consensus layer.
+A Virtual Machine (VM) defines the application-level logic of a blockchain. In LuxGo, VMs are decoupled from consensus, allowing developers to create custom blockchain behavior while reusing the battle-tested consensus layer.
 
 ## What is a Virtual Machine?
 
@@ -25,7 +25,7 @@ VMs are reusable. Multiple blockchains can run the same VM, each with independen
 
 <Mermaid chart={`
 graph TB
-    subgraph AvalancheGo_Node["AvalancheGo Node"]
+    subgraph LuxGo_Node["LuxGo Node"]
         CE[Consensus Engine]
 
         subgraph Virtual_Machine["Virtual Machine"]
@@ -52,7 +52,7 @@ graph TB
 
 ## Core VM Interface
 
-Every VM must implement the [`ChainVM`](https://github.com/ava-labs/avalanchego/blob/master/snow/engine/snowman/block/vm.go) interface for linear chain consensus:
+Every VM must implement the [`ChainVM`](https://github.com/luxfi/luxgo/blob/master/snow/engine/snowman/block/vm.go) interface for linear chain consensus:
 
 ```go title="snow/engine/snowman/block/vm.go"
 type ChainVM interface {
@@ -76,7 +76,7 @@ type ChainVM interface {
 
 ### Base VM Interface
 
-The foundation interface that all VMs implement ([source](https://github.com/ava-labs/avalanchego/blob/master/snow/engine/common/vm.go)):
+The foundation interface that all VMs implement ([source](https://github.com/luxfi/luxgo/blob/master/snow/engine/common/vm.go)):
 
 ```go title="snow/engine/common/vm.go"
 type VM interface {
@@ -106,7 +106,7 @@ type VM interface {
 
 ## Block Interface
 
-Blocks are the fundamental unit of consensus ([source](https://github.com/ava-labs/avalanchego/blob/master/snow/consensus/snowman/block.go)):
+Blocks are the fundamental unit of consensus ([source](https://github.com/luxfi/luxgo/blob/master/snow/consensus/snowman/block.go)):
 
 ```go title="snow/consensus/snowman/block.go"
 type Block interface {
@@ -155,9 +155,9 @@ const (
 
 ## Built-in Virtual Machines
 
-### Platform VM (P-Chain)
+### Platform VM (Platform-Chain)
 
-The Platform VM ([`vms/platformvm`](https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm)) manages the Avalanche network itself:
+The Platform VM ([`vms/platformvm`](https://github.com/luxfi/luxgo/tree/master/vms/platformvm)) manages the Lux network itself:
 
 ```go title="vms/platformvm/vm.go"
 type VM struct {
@@ -194,22 +194,22 @@ type VM struct {
 | `AddPermissionlessDelegatorTx` | Delegate to permissionless validator | Banff |
 | `TransformSubnetTx` | Convert subnet to permissionless | Banff |
 | `TransferSubnetOwnershipTx` | Transfer subnet ownership | Durango |
-| `ConvertSubnetToL1Tx` | Convert subnet to Avalanche L1 | Etna |
+| `ConvertSubnetToL1Tx` | Convert subnet to Lux L1 | Etna |
 | `RegisterL1ValidatorTx` | Register validator on L1 | Etna |
 | `SetL1ValidatorWeightTx` | Set L1 validator weight | Etna |
 | `IncreaseL1ValidatorBalanceTx` | Add balance to L1 validator | Etna |
 | `DisableL1ValidatorTx` | Disable an L1 validator | Etna |
 
 <Callout type="info">
-The **Etna upgrade** introduced 5 new transaction types for managing Avalanche L1s. These enable converting subnets to sovereign L1s with their own validator management.
+The **Etna upgrade** introduced 5 new transaction types for managing Lux L1s. These enable converting subnets to sovereign L1s with their own validator management.
 </Callout>
 
-### AVM (X-Chain)
+### AVM (Exchange-Chain)
 
-The AVM ([`vms/avm`](https://github.com/ava-labs/avalanchego/tree/master/vms/avm)) handles asset creation and transfers using the UTXO model:
+The AVM ([`vms/avm`](https://github.com/luxfi/luxgo/tree/master/vms/avm)) handles asset creation and transfers using the UTXO model:
 
 <Callout type="info">
-The X-Chain was linearized in the **Cortina upgrade** (April 2023). It now uses Snowman consensus like the P-Chain and C-Chain, rather than the legacy Avalanche DAG consensus. The AVM implements the `LinearizableVMWithEngine` interface to support this transition.
+The Exchange-Chain was linearized in the **Cortina upgrade** (April 2023). It now uses Snowman consensus like the Platform-Chain and LUExchange-Chain, rather than the legacy Lux DAG consensus. The AVM implements the `LinearizableVMWithEngine` interface to support this transition.
 </Callout>
 
 ```go title="vms/avm/vm.go"
@@ -224,7 +224,7 @@ type VM struct {
 ```
 
 **Features:**
-- **Multi-Asset Support**: Native AVAX and custom assets
+- **Multi-Asset Support**: Native LUX and custom assets
 - **UTXO Model**: Bitcoin-style transaction inputs/outputs
 - **Snowman Consensus**: Linear chain consensus (linearized from DAG in Cortina upgrade)
 - **Feature Extensions (Fxs)**: Pluggable transaction types
@@ -242,12 +242,12 @@ type VM struct {
 | `ImportTx` | Import from other chains |
 | `ExportTx` | Export to other chains |
 
-### Coreth (C-Chain)
+### Coreth (LUExchange-Chain)
 
-Coreth is the EVM implementation for the C-Chain:
+Coreth is the EVM implementation for the LUExchange-Chain:
 
 <Callout>
-Coreth is **grafted** into the AvalancheGo repository at `graft/coreth/`. The standalone [`ava-labs/coreth`](https://github.com/ava-labs/coreth) repository has been archived and is now read-only. All active development occurs within the AvalancheGo monorepo.
+Coreth is **grafted** into the LuxGo repository at `graft/coreth/`. The standalone [`luxfi/coreth`](https://github.com/luxfi/coreth) repository has been archived and is now read-only. All active development occurs within the LuxGo monorepo.
 </Callout>
 
 **Features:**
@@ -255,12 +255,12 @@ Coreth is **grafted** into the AvalancheGo repository at `graft/coreth/`. The st
 - Supports Solidity smart contracts
 - Web3 JSON-RPC API (`eth`, `personal`, `txpool`, `debug` namespaces)
 - EIP-1559 dynamic fees
-- Atomic transactions with other Avalanche chains (via shared memory)
+- Atomic transactions with other Lux chains (via shared memory)
 - Support for Ethereum upgrades through Cancun
 
 ### ProposerVM (Snowman++)
 
-The ProposerVM ([`vms/proposervm`](https://github.com/ava-labs/avalanchego/tree/master/vms/proposervm)) wraps other VMs to add Snowman++ proposer windows:
+The ProposerVM ([`vms/proposervm`](https://github.com/luxfi/luxgo/tree/master/vms/proposervm)) wraps other VMs to add Snowman++ proposer windows:
 
 ```go title="vms/proposervm/vm.go"
 type VM struct {
@@ -281,11 +281,11 @@ type VM struct {
 3. Only the active proposer can build during its slot; after the final slot any validator may build.
 4. The wrapper enforces proposer signatures/timestamps before issuing to consensus.
 
-Snowman++ is enabled on all Primary Network chains (P-Chain, C-Chain, X-Chain) to pace block production without sacrificing liveness.
+Snowman++ is enabled on all Primary Network chains (Platform-Chain, LUExchange-Chain, Exchange-Chain) to pace block production without sacrificing liveness.
 
 ## Custom VMs
 
-You can build custom VMs that run on Avalanche L1s. There are two approaches:
+You can build custom VMs that run on Lux L1s. There are two approaches:
 
 ### 1. Native Go VM
 
@@ -326,11 +326,11 @@ func (vm *MyVM) BuildBlock(ctx context.Context) (snowman.Block, error) {
 
 ### 2. RPC VM (Any Language)
 
-Use the [`rpcchainvm`](https://github.com/ava-labs/avalanchego/tree/master/vms/rpcchainvm) interface to build VMs in any language:
+Use the [`rpcchainvm`](https://github.com/luxfi/luxgo/tree/master/vms/rpcchainvm) interface to build VMs in any language:
 
 <Mermaid chart={`
 graph LR
-    subgraph AvalancheGo["AvalancheGo"]
+    subgraph LuxGo["LuxGo"]
         Client[RPCChainVM Client]
     end
 
@@ -375,12 +375,12 @@ func (n *Node) initVMs() error {
         &coreth.Factory{})
 
     // Plugin VMs are discovered from the plugins directory
-    // (default: ~/.avalanchego/plugins/)
+    // (default: ~/.luxgo/plugins/)
 }
 ```
 
 **Plugin Discovery:**
-1. VMs are placed in `~/.avalanchego/plugins/`
+1. VMs are placed in `~/.luxgo/plugins/`
 2. Filename is the VM ID (e.g., `srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy`)
 3. Node discovers and loads plugins at startup
 
@@ -388,7 +388,7 @@ func (n *Node) initVMs() error {
 
 Each chain can have custom VM configuration:
 
-```json title="~/.avalanchego/configs/chains/{chainID}/config.json"
+```json title="~/.luxgo/configs/chains/{chainID}/config.json"
 {
   "pruning-enabled": true,
   "state-sync-enabled": true,
@@ -397,7 +397,7 @@ Each chain can have custom VM configuration:
 ```
 
 **Chain-Specific Configs:**
-- Stored in `~/.avalanchego/configs/chains/{chainID}/`
+- Stored in `~/.luxgo/configs/chains/{chainID}/`
 - `config.json`: VM configuration
 - `upgrade.json`: Upgrade coordination
 
@@ -455,7 +455,7 @@ func (vm *VM) CreateHandlers(ctx context.Context) (map[string]http.Handler, erro
   <Card title="Networking" href="/docs/nodes/architecture/networking">
     Learn how VMs communicate over the network
   </Card>
-  <Card title="Build a Custom VM" href="/docs/avalanche-l1s/build-custom-vm">
+  <Card title="Build a Custom VM" href="/docs/lux-l1s/build-custom-vm">
     Start building your own Virtual Machine
   </Card>
 </Cards>

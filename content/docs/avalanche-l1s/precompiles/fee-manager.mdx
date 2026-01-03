@@ -1,6 +1,6 @@
 ---
 title: Fee Manager
-description: Configure dynamic fee parameters and gas costs for your Avalanche L1 blockchain.
+description: Configure dynamic fee parameters and gas costs for your Lux L1 blockchain.
 ---
 
 ## Overview
@@ -109,7 +109,7 @@ interface IFeeManager {
 
 ## Access Control and Additional Features
 
-The FeeManager precompile uses the [AllowList interface](/docs/avalanche-l1s/precompiles/allowlist-interface) to restrict access to its functionality.
+The FeeManager precompile uses the [AllowList interface](/docs/lux-l1s/precompiles/allowlist-interface) to restrict access to its functionality.
 
 In addition to the AllowList interface, the FeeManager adds the following capabilities:
 
@@ -136,11 +136,11 @@ You can also get the fee configuration at a block with the `eth_feeConfig` RPC m
 
 ## Implementation
 
-You can find the Fee Manager implementation in the [subnet-evm repository](https://github.com/ava-labs/subnet-evm/blob/master/precompile/contracts/feemanager/contract.go).
+You can find the Fee Manager implementation in the [subnet-evm repository](https://github.com/luxfi/subnet-evm/blob/master/precompile/contracts/feemanager/contract.go).
 
 ## Interacting with the Precompile
 
 For information on how to interact with this precompile, see:
-- [Interacting with Precompiles](/docs/avalanche-l1s/precompiles/interacting-with-precompiles)
+- [Interacting with Precompiles](/docs/lux-l1s/precompiles/interacting-with-precompiles)
 - [Fee Manager Console](/console/l1-tokenomics/fee-manager)
 

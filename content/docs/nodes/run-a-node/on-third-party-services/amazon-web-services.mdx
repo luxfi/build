@@ -6,7 +6,7 @@ description: Learn how to run a node on Amazon Web Services.
 Introduction[​](#introduction "Direct link to heading")
 -------------------------------------------------------
 
-This tutorial will guide you through setting up an Avalanche node on [Amazon Web Services (AWS)](https://aws.amazon.com/). Cloud services like AWS are a good way to ensure that your node is highly secure, available, and accessible.
+This tutorial will guide you through setting up an Lux node on [Amazon Web Services (AWS)](https://aws.amazon.com/). Cloud services like AWS are a good way to ensure that your node is highly secure, available, and accessible.
 
 To get started, you'll need:
 
@@ -35,7 +35,7 @@ Select **Create key pair** to launch the key pair creation wizard.
 
 ![Select "Create key pair."](/images/amazon3.png)
 
-Name your key `avalanche`. If your local machine has MacOS or Linux, select the `pem` file format. If it's Windows, use the `ppk` file format. Optionally, you can add tags for the key pair to assist with tracking.
+Name your key `lux`. If your local machine has MacOS or Linux, select the `pem` file format. If it's Windows, use the `ppk` file format. Optionally, you can add tags for the key pair to assist with tracking.
 
 ![Create a key pair that will later be assigned to your EC2 instance.](/images/amazon4.png)
 
@@ -58,7 +58,7 @@ You'll need to specify what inbound traffic is allowed. Allow SSH traffic from y
 
 ![Your inbound and outbound rules should look like this.](/images/amazon8.png)
 
-Add a tag to the new security group with key `Name` and value`Avalanche Security Group`. This will enable us to know what this security group is when we see it in the list of security groups.
+Add a tag to the new security group with key `Name` and value`Lux Security Group`. This will enable us to know what this security group is when we see it in the list of security groups.
 
 ![Tag the security group so you can identify it later.](/images/amazon9.png)
 
@@ -75,7 +75,7 @@ Select **Ubuntu 20.04 LTS (HVM), SSD Volume Type** for the operating system.
 
 ![Select Ubuntu 20.04 LTS.](/images/amazon11.png)
 
-Next, choose your instance type. This defines the hardware specifications of the cloud instance. In this tutorial we set up a **c5.2xlarge**. This should be more than powerful enough since Avalanche is a lightweight consensus protocol. To create a c5.2xlarge instance, select the **Compute-optimized** option from the filter drop-down menu.
+Next, choose your instance type. This defines the hardware specifications of the cloud instance. In this tutorial we set up a **c5.2xlarge**. This should be more than powerful enough since Lux is a lightweight consensus protocol. To create a c5.2xlarge instance, select the **Compute-optimized** option from the filter drop-down menu.
 
 ![Filter by compute optimized.](/images/amazon12.png)
 
@@ -94,7 +94,7 @@ When setting up a node as a validator, it is crucial to select the appropriate A
 
 - For a minimal stake, start with a compute-optimized instance such as c6, c6i, c6a, c7 and similar.
 - Use a 2xlarge instance size for the minimal stake configuration.
-- As the staked amount increases, choose larger instance sizes to accommodate the additional workload. For every order of magnitude increase in stake, move up one instance size. For example, for a 20k AVAX stake, a 4xlarge instance is suitable.
+- As the staked amount increases, choose larger instance sizes to accommodate the additional workload. For every order of magnitude increase in stake, move up one instance size. For example, for a 20k LUX stake, a 4xlarge instance is suitable.
 </Callout>
 
 ### Optional: Using Reserved Instances[​](#optional-using-reserved-instances "Direct link to heading")
@@ -109,13 +109,13 @@ Click the **Next: Add Storage** button in the bottom right corner of the screen.
 
 You need to add space to your instance's disk. You should start with at least 700GB of disk space. Although upgrades to reduce disk usage are always in development, on average the database will continually grow, so you need to constantly monitor disk usage on the node and increase disk space if needed.
 
-Note that the image below shows 100GB as disk size, which was appropriate at the time the screenshot was taken. You should check the current [recommended disk space size](https://github.com/ava-labs/avalanchego#installation) before entering the actual value here.
+Note that the image below shows 100GB as disk size, which was appropriate at the time the screenshot was taken. You should check the current [recommended disk space size](https://github.com/luxfi/luxgo#installation) before entering the actual value here.
 
 ![Select disk size.](/images/amazon15.png)
 
-Click **Next: Add Tags** in the bottom right corner of the screen to add tags to the instance. Tags enable us to associate metadata with our instance. Add a tag with key `Name` and value `My Avalanche Node`. This will make it clear what this instance is on your list of EC2 instances.
+Click **Next: Add Tags** in the bottom right corner of the screen to add tags to the instance. Tags enable us to associate metadata with our instance. Add a tag with key `Name` and value `My Lux Node`. This will make it clear what this instance is on your list of EC2 instances.
 
-![Add a tag with key "Name" and value "My Avalanche Node."](/images/amazon16.png)
+![Add a tag with key "Name" and value "My Lux Node."](/images/amazon16.png)
 
 Now assign the security group created earlier to the instance. Choose **Select an existing security group** and choose the security group created earlier.
 
@@ -123,7 +123,7 @@ Now assign the security group created earlier to the instance. Choose **Select a
 
 Finally, click **Review and Launch** in the bottom right. A review page will show the details of the instance you're about to launch. Review those, and if all looks good, click the blue **Launch** button in the bottom right corner of the screen.
 
-You'll be asked to select a key pair for this instance. Select **Choose an existing key pair** and then select the `avalanche` key pair you made earlier in the tutorial. Check the box acknowledging that you have access to the `.pem` or `.ppk` file created earlier (make sure you've backed it up!) and then click **Launch Instances**.
+You'll be asked to select a key pair for this instance. Select **Choose an existing key pair** and then select the `lux` key pair you made earlier in the tutorial. Check the box acknowledging that you have access to the `.pem` or `.ppk` file created earlier (make sure you've backed it up!) and then click **Launch Instances**.
 
 ![Use the key pair created earlier.](/images/amazon18.png)
 
@@ -153,7 +153,7 @@ Select the instance you just created. This will associate the new Elastic IP wit
 
 ![Assign the Elastic IP to your EC2 instance.](/images/amazon24.png)
 
-Set Up AvalancheGo[​](#set-up-avalanchego "Direct link to heading")
+Set Up LuxGo[​](#set-up-luxgo "Direct link to heading")
 -------------------------------------------------------------------
 
 Go back to the EC2 Dashboard and select `Running Instances`.
@@ -175,7 +175,7 @@ Move the `.pem` file to `$HOME/.ssh` (where `.pem` files generally live) with:
 Add it to the SSH agent so that we can use it to SSH into your EC2 instance, and mark it as read-only.
 
 ```bash
-ssh-add ~/.ssh/avalanche.pem; chmod 400 ~/.ssh/avalanche.pem
+ssh-add ~/.ssh/lux.pem; chmod 400 ~/.ssh/lux.pem
 ```
 
 SSH into the instance. (Remember to replace `PUBLICIP` with the public IP field from earlier.)
@@ -196,9 +196,9 @@ sudo apt update; sudo apt upgrade -y; sudo reboot
 
 This also reboots the instance. Wait 5 minutes, then log in again by running this command on your local machine:
 
-You're logged into the EC2 instance again. Now we'll need to set up our Avalanche node. To do this, follow the [Set Up Avalanche Node With Installer](/docs/nodes/run-a-node/using-install-script/installing-avalanche-go) tutorial which automates the installation process. You will need the `PUBLICIP` we set up earlier.
+You're logged into the EC2 instance again. Now we'll need to set up our Lux node. To do this, follow the [Set Up Lux Node With Installer](/docs/nodes/run-a-node/using-install-script/installing-lux-go) tutorial which automates the installation process. You will need the `PUBLICIP` we set up earlier.
 
-Your AvalancheGo node should now be running and in the process of bootstrapping, which can take a few hours. To check if it's done, you can issue an API call using `curl`. If you're making the request from the EC2 instance, the request is:
+Your LuxGo node should now be running and in the process of bootstrapping, which can take a few hours. To check if it's done, you can issue an API call using `curl`. If you're making the request from the EC2 instance, the request is:
 
 ```bash
 curl -X POST --data '{
@@ -223,7 +223,7 @@ Once the node is finished bootstrapping, the response will be:
 }
 ```
 
-You can continue on, even if AvalancheGo isn't done bootstrapping.
+You can continue on, even if LuxGo isn't done bootstrapping.
 
 In order to make your node a validator, you'll need its node ID. To get it, run:
 
@@ -243,11 +243,11 @@ The response contains the node ID.
 
 In the above example the node ID is`NodeID-DznHmm3o7RkmpLkWMn9NqafH66mqunXbM`. Copy your node ID for later. Your node ID is not a secret, so you can just paste it into a text editor.
 
-AvalancheGo has other APIs, such as the [Health API](/docs/rpcs/other/health-rpc), that may be used to interact with the node. Some APIs are disabled by default. To enable such APIs, modify the ExecStart section of `/etc/systemd/system/avalanchego.service` (created during the installation process) to include flags that enable these endpoints. Don't manually enable any APIs unless you have a reason to.
+LuxGo has other APIs, such as the [Health API](/docs/rpcs/other/health-rpc), that may be used to interact with the node. Some APIs are disabled by default. To enable such APIs, modify the ExecStart section of `/etc/systemd/system/luxgo.service` (created during the installation process) to include flags that enable these endpoints. Don't manually enable any APIs unless you have a reason to.
 
 ![Some APIs are disabled by default.](/images/amazon29.png)
 
-Back up the node's staking key and certificate in case the EC2 instance is corrupted or otherwise unavailable. The node's ID is derived from its staking key and certificate. If you lose your staking key or certificate then your node will get a new node ID, which could cause you to become ineligible for a staking reward if your node is a validator. **It is very strongly advised that you copy your node's staking key and certificate**. The first time you run a node, it will generate a new staking key/certificate pair and store them in directory `/home/ubuntu/.avalanchego/staking`.
+Back up the node's staking key and certificate in case the EC2 instance is corrupted or otherwise unavailable. The node's ID is derived from its staking key and certificate. If you lose your staking key or certificate then your node will get a new node ID, which could cause you to become ineligible for a staking reward if your node is a validator. **It is very strongly advised that you copy your node's staking key and certificate**. The first time you run a node, it will generate a new staking key/certificate pair and store them in directory `/home/ubuntu/.luxgo/staking`.
 
 Exit out of the SSH instance by running:
 
@@ -256,20 +256,20 @@ Now you're no longer connected to the EC2 instance; you're back on your local ma
 To copy the staking key and certificate to your machine, run the following command. As always, replace `PUBLICIP`.
 
 ```bash
-scp -r ubuntu@PUBLICIP:/home/ubuntu/.avalanchego/staking ~/aws_avalanche_backup
+scp -r ubuntu@PUBLICIP:/home/ubuntu/.luxgo/staking ~/aws_lux_backup
 ```
 
-Now your staking key and certificate are in directory `~/aws_avalanche_backup` . **The contents of this directory are secret.** You should hold this directory on storage not connected to the internet (like an external hard drive.)
+Now your staking key and certificate are in directory `~/aws_lux_backup` . **The contents of this directory are secret.** You should hold this directory on storage not connected to the internet (like an external hard drive.)
 
 ### Upgrading Your Node[​](#upgrading-your-node "Direct link to heading")
 
-AvalancheGo is an ongoing project and there are regular version upgrades. Most upgrades are recommended but not required. Advance notice will be given for upgrades that are not backwards compatible. To update your node to the latest version, SSH into your AWS instance as before and run the installer script again.
+LuxGo is an ongoing project and there are regular version upgrades. Most upgrades are recommended but not required. Advance notice will be given for upgrades that are not backwards compatible. To update your node to the latest version, SSH into your AWS instance as before and run the installer script again.
 
 ```bash
-./avalanchego-installer.sh
+./luxgo-installer.sh
 ```
 
-Your machine is now running the newest AvalancheGo version. To see the status of the AvalancheGo service, run `sudo systemctl status avalanchego.`
+Your machine is now running the newest LuxGo version. To see the status of the LuxGo service, run `sudo systemctl status luxgo.`
 
 Increase Volume Size[​](#increase-volume-size "Direct link to heading")
 -----------------------------------------------------------------------
@@ -282,4 +282,4 @@ If you need to increase the volume size, follow these instructions from AWS:
 Wrap Up[​](#wrap-up "Direct link to heading")
 ---------------------------------------------
 
-That's it! You now have an AvalancheGo node running on an AWS EC2 instance. We recommend setting up [node monitoring](/docs/nodes/maintain/monitoring)for your AvalancheGo node. We also recommend setting up AWS billing alerts so you're not surprised when the bill arrives. If you have feedback on this tutorial, or anything else, send us a message on [Discord](https://chat.avalabs.org/).
+That's it! You now have an LuxGo node running on an AWS EC2 instance. We recommend setting up [node monitoring](/docs/nodes/maintain/monitoring)for your LuxGo node. We also recommend setting up AWS billing alerts so you're not surprised when the bill arrives. If you have feedback on this tutorial, or anything else, send us a message on [Discord](https://chat.avalabs.org/).

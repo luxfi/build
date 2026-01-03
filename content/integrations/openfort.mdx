@@ -1,7 +1,7 @@
 ---
 title: Openfort
 category: Wallets and Account Abstraction
-available: ["C-Chain", "All Avalanche L1s"]
+available: ["LUExchange-Chain", "All Lux L1s"]
 description: "Create secure embedded wallets with seamless authentication flows and gas sponsorship capabilities."
 logo: /images/openfort.png
 developer: Openfort
@@ -77,12 +77,12 @@ const authResponse = await openfort.logInWithEmailPassword({
 const provider = await openfort.getProvider();
 await provider.request({ 
   method: 'wallet_switchEthereumChain',
-  params: [{ chainId: `0x${avalancheChain.id.toString(16)}` }]
+  params: [{ chainId: `0x${luxChain.id.toString(16)}` }]
 });
 
 // Create a gas sponsorship policy (server-side)
 const policy = await openfortServer.policies.create({
-  chainId: 43114, // Avalanche C-Chain
+  chainId: 43114, // Lux LUExchange-Chain
   name: "Gas Sponsorship Policy",
   strategy: {
     sponsorSchema: "pay_for_user"

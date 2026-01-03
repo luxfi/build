@@ -15,11 +15,11 @@ export function ReportIssueButton({
 }: ReportIssueButtonProps) {
   const pathname = usePathname();
   const handleReportIssue = () => {
-    const currentUrl = `https://build.avax.network${pathname}`;
+    const currentUrl = `https://build.lux.network${pathname}`;
     const issueTitle = toolTitle ? `Issue with ${toolTitle}` : `Issue on "${currentUrl}"`;
     const issueUrl = newGithubIssueUrl({
-      user: "ava-labs",
-      repo: "builders-hub",
+      user: "luxfi",
+      repo: "lux-build",
       title: issueTitle,
       body: `**Tool:** ${toolTitle || "Unknown"}\n**Page URL:** ${currentUrl}\n\n<!-- Please describe the issue you encountered below -->`,
       labels: ["Console"],

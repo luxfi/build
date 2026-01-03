@@ -1,43 +1,43 @@
 ---
-title: P-Chain Client
+title: Platform-Chain Client
 ---
 
 ## Overview
 
-The P-Chain (Platform Chain) Client provides an interface for interacting with Avalanche's Platform Chain, which is responsible for coordinating validators, managing subnets, creating blockchains, and handling staking operations.
+The Platform-Chain (Platform Chain) Client provides an interface for interacting with Lux's Platform Chain, which is responsible for coordinating validators, managing subnets, creating blockchains, and handling staking operations.
 
-**When to use:** Use the P-Chain Client for validator operations, staking, subnet management, and blockchain creation.
+**When to use:** Use the Platform-Chain Client for validator operations, staking, subnet management, and blockchain creation.
 
 ## Installation & Setup
 
-For setup instructions, see the [Getting Started](/avalanche-sdk/client-sdk/getting-started) guide.
+For setup instructions, see the [Getting Started](/lux-sdk/client-sdk/getting-started) guide.
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
 const pChainClient = client.pChain;
 ```
 
-Or create a standalone P-Chain client:
+Or create a standalone Platform-Chain client:
 
 ```typescript
-import { createPChainClient } from "@avalanche-sdk/client";
+import { createPChainClient } from "@lux-sdk/client";
 
 const pChainClient = createPChainClient({
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 ```
 
 ## Available Methods
 
-The P-Chain Client provides methods for:
+The Platform-Chain Client provides methods for:
 
 - **Balance Operations**: `getBalance`, `getUTXOs`
 - **Validator Operations**: `getCurrentValidators`, `getValidatorsAt`, `sampleValidators`, `getL1Validator`
@@ -50,7 +50,7 @@ The P-Chain Client provides methods for:
 - **Supply Operations**: `getCurrentSupply`
 - **Reward Operations**: `getRewardUTXOs`
 
-For complete method documentation with signatures, parameters, and examples, see the [P-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/p-chain).
+For complete method documentation with signatures, parameters, and examples, see the [Platform-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/p-chain).
 
 ## Common Use Cases
 
@@ -149,13 +149,13 @@ console.log("Fee capacity:", feeState.capacity);
 For transaction operations (preparing and sending transactions), use the wallet client:
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount("0x...");
-const walletClient = createAvalancheWalletClient({
+const account = privateKeyToLuxAccount("0x...");
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -173,12 +173,12 @@ const txID = await walletClient.sendXPTransaction(baseTxn);
 console.log("Transaction sent:", txID);
 ```
 
-For complete wallet operations documentation, see [P-Chain Wallet Methods](/avalanche-sdk/client-sdk/methods/wallet-methods/p-chain-wallet).
+For complete wallet operations documentation, see [Platform-Chain Wallet Methods](/lux-sdk/client-sdk/methods/wallet-methods/p-chain-wallet).
 
 ## Next Steps
 
-- **[P-Chain Methods Reference](/avalanche-sdk/client-sdk/methods/public-methods/p-chain)** - Complete method documentation
-- **[P-Chain Wallet Methods](/avalanche-sdk/client-sdk/methods/wallet-methods/p-chain-wallet)** - Transaction preparation and signing
-- **[Wallet Client](/avalanche-sdk/client-sdk/clients/wallet-client)** - Complete wallet operations
-- **[X-Chain Client](/avalanche-sdk/client-sdk/clients/x-chain-client)** - Asset transfers
-- **[C-Chain Client](/avalanche-sdk/client-sdk/clients/c-chain-client)** - EVM operations
+- **[Platform-Chain Methods Reference](/lux-sdk/client-sdk/methods/public-methods/p-chain)** - Complete method documentation
+- **[Platform-Chain Wallet Methods](/lux-sdk/client-sdk/methods/wallet-methods/p-chain-wallet)** - Transaction preparation and signing
+- **[Wallet Client](/lux-sdk/client-sdk/clients/wallet-client)** - Complete wallet operations
+- **[Exchange-Chain Client](/lux-sdk/client-sdk/clients/x-chain-client)** - Asset transfers
+- **[LUExchange-Chain Client](/lux-sdk/client-sdk/clients/c-chain-client)** - EVM operations

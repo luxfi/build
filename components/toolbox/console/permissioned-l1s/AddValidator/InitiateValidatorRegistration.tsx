@@ -8,7 +8,7 @@ import validatorManagerAbi from '@/contracts/icm-contracts/compiled/ValidatorMan
 import { Success } from '@/components/toolbox/components/Success';
 import { parseNodeID } from '@/components/toolbox/coreViem/utils/ids';
 import { fromBytes } from 'viem';
-import { utils } from '@avalabs/avalanchejs';
+import { utils } from 'luxfi';
 import { MultisigOption } from '@/components/toolbox/components/MultisigOption';
 import { getValidationIdHex } from '@/components/toolbox/coreViem/hooks/getValidationID';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
@@ -118,7 +118,7 @@ const InitiateValidatorRegistration: React.FC<InitiateValidatorRegistrationProps
       const validator = validators[0];
       const [account] = await coreWalletClient.requestAddresses();
 
-      // Process P-Chain Addresses
+      // Process Platform-Chain Addresses
       const pChainRemainingBalanceOwnerAddressesHex = validator.remainingBalanceOwner.addresses.map(address => {
         const addressBytes = utils.bech32ToBytes(address);
         return fromBytes(addressBytes, "hex");
@@ -181,7 +181,7 @@ const InitiateValidatorRegistration: React.FC<InitiateValidatorRegistrationProps
           validationId: validationIdHex,
           weight: validator.validatorWeight.toString(),
           unsignedWarpMessage: unsignedWarpMessage,
-          validatorBalance: (Number(validator.validatorBalance) / 1e9).toString(), // Convert from nAVAX to AVAX
+          validatorBalance: (Number(validator.validatorBalance) / 1e9).toString(), // Convert from nLUX to LUX
           blsProofOfPossession: validator.nodePOP.proofOfPossession,
         });
 
@@ -229,7 +229,7 @@ const InitiateValidatorRegistration: React.FC<InitiateValidatorRegistrationProps
             validationId: validationId,
             weight: validator.validatorWeight.toString(),
             unsignedWarpMessage: unsignedWarpMessage,
-            validatorBalance: (Number(validator.validatorBalance) / 1e9).toString(), // Convert from nAVAX to AVAX
+            validatorBalance: (Number(validator.validatorBalance) / 1e9).toString(), // Convert from nLUX to LUX
             blsProofOfPossession: validator.nodePOP.proofOfPossession,
           });
 
@@ -312,7 +312,7 @@ const InitiateValidatorRegistration: React.FC<InitiateValidatorRegistrationProps
 
     const validator = validators[0];
     
-    // Process all P-Chain addresses for multisig
+    // Process all Platform-Chain addresses for multisig
     const pChainRemainingBalanceOwnerAddressesHex = validator.remainingBalanceOwner.addresses.map(address => {
       const addressBytes = utils.bech32ToBytes(address);
       return fromBytes(addressBytes, "hex");

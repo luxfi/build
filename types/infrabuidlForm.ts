@@ -23,14 +23,14 @@ export const formSchema = z.object({
   // Financial Overview
   previous_funding: z.array(z.string()).min(1, "At least one funding option must be selected"),
   funding_details: z.string().optional(),
-  previous_avalanche_funding_grants: z.array(z.string()).min(1, "At least one option must be selected"),
+  previous_lux_funding_grants: z.array(z.string()).min(1, "At least one option must be selected"),
   funding_amount_codebase: z.string().optional(),
   funding_amount_infrabuidl: z.string().optional(),
   funding_amount_infrabuidl_ai: z.string().optional(),
   funding_amount_retro9000: z.string().optional(),
   funding_amount_blizzard: z.string().optional(),
   funding_amount_ava_labs: z.string().optional(),
-  funding_amount_other_avalanche: z.string().optional(),
+  funding_amount_other_lux: z.string().optional(),
   
   // Grant Budget Structure & Milestones
   requested_funding_range_milestone: z.string().min(1, "Funding range is required"),
@@ -65,20 +65,20 @@ export const formSchema = z.object({
   vc_fundraising_support_check: z.string().min(1, "Please select an option"),
   aethir_ai_gaming_fund_check: z.string().min(1, "Please select an option"),
   
-  // Contribution to the Avalanche Ecosystem
+  // Contribution to the Lux Ecosystem
   current_development_stage: z.string().min(1, "Development stage is required"),
   project_work_duration: z.string().min(1, "Work duration is required"),
   project_live_status: z.string().min(1, "Project live status is required"),
   multichain_check: z.string().min(1, "Please select an option"),
   multichain_chains: z.string().optional(),
-  first_build_avalanche: z.string().min(1, "Please select an option"),
-  previous_avalanche_project_info: z.string().optional(),
-  avalanche_contribution: z.string().min(10, "Please provide more details about your contribution"),
-  avalanche_benefit_check: z.string().min(1, "Please select an option"),
-  avalanche_l1_project_benefited_1: z.string().optional(),
-  avalanche_l1_project_benefited_1_website: z.string().optional(),
-  avalanche_l1_project_benefited_2: z.string().optional(),
-  avalanche_l1_project_benefited_2_website: z.string().optional(),
+  first_build_lux: z.string().min(1, "Please select an option"),
+  previous_lux_project_info: z.string().optional(),
+  lux_contribution: z.string().min(10, "Please provide more details about your contribution"),
+  lux_benefit_check: z.string().min(1, "Please select an option"),
+  lux_l1_project_benefited_1: z.string().optional(),
+  lux_l1_project_benefited_1_website: z.string().optional(),
+  lux_l1_project_benefited_2: z.string().optional(),
+  lux_l1_project_benefited_2_website: z.string().optional(),
   similar_project_check: z.string().min(1, "Please select an option"),
   similar_project_name_1: z.string().optional(),
   similar_project_website_1: z.string().optional(),
@@ -89,7 +89,7 @@ export const formSchema = z.object({
   direct_competitor_1_website: z.string().optional(),
   direct_competitor_2: z.string().optional(),
   direct_competitor_2_website: z.string().optional(),
-  token_launch_avalanche_check: z.string().min(1, "Please select an option"),
+  token_launch_lux_check: z.string().min(1, "Please select an option"),
   token_launch_other: z.string().optional(),
   open_source_check: z.string().min(1, "Please select an option"),
   
@@ -138,8 +138,8 @@ export const formSchema = z.object({
   
   // Other
   kyb_willingness: z.string().min(1, "Please select an option"),
-  avalanche_grant_source: z.string().min(1, "Please select an option"),
-  avalanche_grant_source_other: z.string().optional(),
+  lux_grant_source: z.string().min(1, "Please select an option"),
+  lux_grant_source_other: z.string().optional(),
   program_referral_check: z.string().min(1, "Please select an option"),
   program_referrer: z.string().optional(),
   

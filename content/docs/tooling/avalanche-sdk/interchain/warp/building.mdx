@@ -19,7 +19,7 @@ Build unsigned Warp messages for signing and broadcasting.
 ### Example
 
 ```typescript
-import { RegisterL1ValidatorMessage } from "@avalanche-sdk/interchain/warp";
+import { RegisterL1ValidatorMessage } from "@lux-sdk/interchain/warp";
 
 const msg = RegisterL1ValidatorMessage.fromValues(
   "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
@@ -42,7 +42,7 @@ const hex = msg.toHex();
 ### Example
 
 ```typescript
-import { L1ValidatorWeightMessage } from "@avalanche-sdk/interchain/warp";
+import { L1ValidatorWeightMessage } from "@lux-sdk/interchain/warp";
 
 const msg = L1ValidatorWeightMessage.fromValues(
   "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
@@ -70,7 +70,7 @@ Build AddressedCall payload from a message.
 import {
   AddressedCall,
   L1ValidatorWeightMessage,
-} from "@avalanche-sdk/interchain/warp";
+} from "@lux-sdk/interchain/warp";
 
 const msg = L1ValidatorWeightMessage.fromValues(
   "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
@@ -102,7 +102,7 @@ import {
   AddressedCall,
   L1ValidatorWeightMessage,
   WarpUnsignedMessage,
-} from "@avalanche-sdk/interchain/warp";
+} from "@lux-sdk/interchain/warp";
 
 // Build message
 const msg = L1ValidatorWeightMessage.fromValues(

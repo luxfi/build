@@ -15,7 +15,7 @@ export async function aggregateSignatures({
   quorumPercentage,
   signingSubnetId,
 }: AggregateSignaturesParams): Promise<string> {
-  const endpoint = 'https://glacier-api-dev.avax.network/v1/signatureAggregator/aggregateSignatures'; // notice the dev endpoint
+  const endpoint = 'https://glacier-api-dev.lux.network/v1/signatureAggregator/aggregateSignatures'; // notice the dev endpoint
   
   const requestBody: AggregateSignaturesParams = {
     message,

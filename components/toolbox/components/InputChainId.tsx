@@ -6,14 +6,14 @@ import { useMemo } from "react";
 // Primary network chain IDs
 const PRIMARY_NETWORK_CHAIN_IDS = [
     "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5", // Mainnet
-    "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp" // Fuji
+    "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp" // Testnet
 ];
 
 export default function InputChainId({ 
     value, 
     onChange, 
     error, 
-    label = "Avalanche Blockchain ID",
+    label = "Lux Blockchain ID",
     hidePrimaryNetwork = false,
     helperText
 }: { 

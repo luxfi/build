@@ -11,7 +11,7 @@ import poaManagerAbi from '@/contracts/icm-contracts/compiled/PoAManager.json';
 import { GetRegistrationJustification } from '../ValidatorManager/justification';
 import { packL1ValidatorRegistration } from '@/components/toolbox/coreViem/utils/convertWarp';
 import { packWarpIntoAccessList } from '../ValidatorManager/packWarp';
-import { useAvalancheSDKChainkit } from '@/components/toolbox/stores/useAvalancheSDKChainkit';
+import { useLuxSDKChainkit } from '@/components/toolbox/stores/useLuxSDKChainkit';
 import useConsoleNotifications from '@/hooks/useConsoleNotifications';
 
 interface CompleteValidatorRemovalProps {
@@ -46,8 +46,8 @@ const CompleteValidatorRemoval: React.FC<CompleteValidatorRemovalProps> = ({
   isLoadingOwnership,
   ownerType,
 }) => {
-  const { coreWalletClient, publicClient, avalancheNetworkID, walletEVMAddress } = useWalletStore();
-  const { aggregateSignature } = useAvalancheSDKChainkit();
+  const { coreWalletClient, publicClient, luxNetworkID, walletEVMAddress } = useWalletStore();
+  const { aggregateSignature } = useLuxSDKChainkit();
   const viemChain = useViemChainStore();
   const [pChainTxId, setPChainTxId] = useState(initialPChainTxId || '');
   const { notify } = useConsoleNotifications();
@@ -79,8 +79,8 @@ const CompleteValidatorRemoval: React.FC<CompleteValidatorRemovalProps> = ({
     setSuccessMessage(null);
 
     if (!pChainTxId.trim()) {
-      setErrorState("P-Chain transaction ID is required.");
-      onError("P-Chain transaction ID is required.");
+      setErrorState("Platform-Chain transaction ID is required.");
+      onError("Platform-Chain transaction ID is required.");
       return;
     }
     if (!subnetIdL1) {
@@ -111,7 +111,7 @@ const CompleteValidatorRemoval: React.FC<CompleteValidatorRemovalProps> = ({
 
     setIsProcessing(true);
     try {
-      // Step 1: Extract L1ValidatorWeightMessage from P-Chain transaction
+      // Step 1: Extract L1ValidatorWeightMessage from Platform-Chain transaction
       const weightMessageData = await coreWalletClient.extractL1ValidatorWeightMessage({
         txId: pChainTxId
       });
@@ -133,13 +133,13 @@ const CompleteValidatorRemoval: React.FC<CompleteValidatorRemovalProps> = ({
         throw new Error("No justification logs found for this validation ID");
       }
 
-      // Step 3: Create P-Chain warp signature for validator removal
+      // Step 3: Create Platform-Chain warp signature for validator removal
       const validationIDBytes = hexToBytes(weightMessageData.validationID as `0x${string}`);
       const removeValidatorMessage = packL1ValidatorRegistration(
         validationIDBytes,
         false, // false for removal
-        avalancheNetworkID,
-        "11111111111111111111111111111111LpoYY" // always use P-Chain ID
+        luxNetworkID,
+        "11111111111111111111111111111111LpoYY" // always use Platform-Chain ID
       );
 
       const aggregateSignaturePromise = aggregateSignature({
@@ -209,10 +209,10 @@ const CompleteValidatorRemoval: React.FC<CompleteValidatorRemovalProps> = ({
       )}
 
       <Input
-        label="P-Chain SetL1ValidatorWeightTx ID"
+        label="Platform-Chain SetL1ValidatorWeightTx ID"
         value={pChainTxId}
         onChange={setPChainTxId}
-        placeholder="Enter the P-Chain SetL1ValidatorWeightTx ID from step 3"
+        placeholder="Enter the Platform-Chain SetL1ValidatorWeightTx ID from step 3"
         disabled={isProcessing}
       />
 

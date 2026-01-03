@@ -14,9 +14,9 @@ const DISPLAY_DURATION = 3500; // Show each academy name for 4 seconds
 
 // Complete academy titles: [prefix, prefixIsRed, suffix, suffixIsRed]
 const academyTitles: [string, boolean, string, boolean][] = [
-    ['Avalanche L1', true, 'Developer', false],
+    ['Lux L1', true, 'Developer', false],
     ['Blockchain', true, 'Developer', false],
-    ['Avalanche', false, 'Entrepreneur', true],
+    ['Lux', false, 'Entrepreneur', true],
 ];
 
 function RotatingAcademyTitle() {
@@ -52,7 +52,7 @@ function RotatingAcademyTitle() {
                 <span
                     className={`font-bold tracking-tight whitespace-nowrap ${
                         prefixIsRed
-                            ? 'bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent'
+                            ? 'bg-gradient-to-r from-zinc-700 to-zinc-600 dark:from-zinc-300 dark:to-zinc-400 bg-clip-text text-transparent'
                             : 'text-zinc-900 dark:text-white'
                     }`}
                 >
@@ -61,7 +61,7 @@ function RotatingAcademyTitle() {
                 <span
                     className={`font-bold tracking-tight whitespace-nowrap ${
                         suffixIsRed
-                            ? 'bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent'
+                            ? 'bg-gradient-to-r from-zinc-700 to-zinc-600 dark:from-zinc-300 dark:to-zinc-400 bg-clip-text text-transparent'
                             : 'text-zinc-900 dark:text-white'
                     }`}
                 >

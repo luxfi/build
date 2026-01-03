@@ -14,15 +14,15 @@ interface ChainConfig {
     isTestnet: boolean;
 }
 
-export const fujiConfig: ChainConfig = {
+export const testnetConfig: ChainConfig = {
     chainId: '0xa869',
-    chainName: 'Avalanche Fuji Testnet',
+    chainName: 'Lux Testnet Testnet',
     nativeCurrency: {
-        name: 'Avalanche',
-        symbol: 'AVAX',
+        name: 'Lux',
+        symbol: 'LUX',
         decimals: 18
     },
-    rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
+    rpcUrls: ['https://api.lux-test.network/ext/bc/C/rpc'],
     blockExplorerUrls: ['https://testnet.snowtrace.io/'],
     isTestnet: true
 };
@@ -40,7 +40,7 @@ export default function SwitchChain({ children, chainConfig }: Props) {
 
     // Check if user is connected and on the right chain
     const checkConnection = async () => {
-        if (!window.avalanche) {
+        if (!window.lux) {
             setChainStatus('wrong_chain');
             return;
         }
@@ -58,7 +58,7 @@ export default function SwitchChain({ children, chainConfig }: Props) {
             setIsConnected(true);
 
             // Check chain
-            const chainId = await window.avalanche.request<string>({
+            const chainId = await window.lux.request<string>({
                 method: 'eth_chainId',
                 params: []
             });
@@ -78,8 +78,8 @@ export default function SwitchChain({ children, chainConfig }: Props) {
     useEffect(() => {
         checkConnection();
 
-        if (window.avalanche) {
-            const provider = window.avalanche!;
+        if (window.lux) {
+            const provider = window.lux!;
             provider.on('chainChanged', checkConnection);
             provider.on('accountsChanged', checkConnection);
 
@@ -91,15 +91,15 @@ export default function SwitchChain({ children, chainConfig }: Props) {
     }, []);
 
     const switchChain = async () => {
-        if (!window.avalanche) return;
+        if (!window.lux) return;
 
         try {
 
-            await window.avalanche.request({
+            await window.lux.request({
                 method: 'wallet_addEthereumChain',
                 params: [chainConfig]
             });
-            await window.avalanche.request({
+            await window.lux.request({
                 method: 'wallet_switchEthereumChain',
                 params: [{ chainId: chainConfig.chainId }],
             });

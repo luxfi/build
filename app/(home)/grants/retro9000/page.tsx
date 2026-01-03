@@ -21,14 +21,14 @@ export default function ContactPage() {
             <div className="relative">
               <Image
                 src="/logo-black.png"
-                alt="Avalanche Logo"
+                alt="Lux Logo"
                 width={240}
                 height={60}
                 className="dark:hidden"
               />
               <Image
                 src="/logo-white.png"
-                alt="Avalanche Logo"
+                alt="Lux Logo"
                 width={240}
                 height={60}
                 className="hidden dark:block"
@@ -44,7 +44,7 @@ export default function ContactPage() {
               </span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Apply for funding to build innovative projects on Avalanche. Join
+              Apply for funding to build innovative projects on Lux. Join
               our ecosystem and help shape the future of decentralized
               applications.
             </p>

@@ -77,7 +77,7 @@ export async function POST(request: Request) {
     } = {
       fields: fields,
       context: {
-        pageUri: request.headers.get('referer') || 'https://build.avax.network',
+        pageUri: request.headers.get('referer') || 'https://build.lux.network',
         pageName: 'Validator Email Collection'
       }
     };
@@ -86,12 +86,12 @@ export async function POST(request: Request) {
       hubspotPayload.legalConsentOptions = {
         consent: {
           consentToProcess: true,
-          text: "I agree to allow Avalanche Foundation to store and process my personal data.",
+          text: "I agree to allow Lux Foundation to store and process my personal data.",
           communications: [
             {
               value: formData.marketing_consent === true,
               subscriptionTypeId: 999,
-              text: "I agree to receive marketing communications from Avalanche Foundation."
+              text: "I agree to receive marketing communications from Lux Foundation."
             }
           ]
         }

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type AcademyPathType = 'avalanche' | 'entrepreneur' | 'blockchain';
+export type AcademyPathType = 'lux' | 'entrepreneur' | 'blockchain';
 
 type BlogFeature = {
     title: string;

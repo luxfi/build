@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { L1BubbleNav } from "@/components/stats/l1-bubble.config";
 import { MobileSocialLinks } from "@/components/stats/MobileSocialLinks";
 import { useExplorer } from "@/components/explorer/ExplorerContext";
@@ -205,9 +205,9 @@ export function ExplorerLayout({
                 <div className="space-y-4 sm:space-y-6 flex-1">
                   <div>
                     <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                      <AvalancheLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#E84142" />
+                      <LuxLogo className="w-4 h-4 sm:w-5 sm:h-5" fill="#FFFFFF" />
                       <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                        Avalanche Ecosystem
+                        Lux Ecosystem
                       </p>
                     </div>
                     <div className="flex items-center gap-3 sm:gap-4">

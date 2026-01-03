@@ -10,14 +10,14 @@ export async function GET(
   const { searchParams } = request.nextUrl;
   const rawTitle = searchParams.get('title');
   // Remove the suffix if present
-  const title = rawTitle?.replace(/\s*\|\s*Avalanche Builder Hub$/, '');
+  const title = rawTitle?.replace(/\s*\|\s*Lux Lux Build$/, '');
   const description = searchParams.get('description');
 
   const fonts = await loadFonts();
 
   return createOGResponse({
     title: title ?? 'Documentation',
-    description: description ?? 'Developer documentation for everything related to the Avalanche ecosystem',
+    description: description ?? 'Developer documentation for everything related to the Lux ecosystem',
     path: 'docs',
     fonts
   });

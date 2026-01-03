@@ -1,17 +1,17 @@
 ---
-title: P-Chain Methods
-description: Complete reference for P-Chain (Platform Chain) methods
+title: Platform-Chain Methods
+description: Complete reference for Platform-Chain (Platform Chain) methods
 ---
 
 ## Overview
 
-The P-Chain (Platform Chain) is Avalanche's coordinating chain responsible for managing validators, delegators, subnets, and blockchains. This reference covers all read-only P-Chain operations available through the Avalanche Client SDK.
+The Platform-Chain (Platform Chain) is Lux's coordinating chain responsible for managing validators, delegators, subnets, and blockchains. This reference covers all read-only Platform-Chain operations available through the Lux Client SDK.
 
 ## Balance Operations
 
 ### getBalance
 
-Get the balance of AVAX controlled by a given address.
+Get the balance of LUX controlled by a given address.
 
 **Function Signature:**
 
@@ -40,7 +40,7 @@ interface GetBalanceReturnType {
 
 | Name        | Type       | Required | Description                         |
 | ----------- | ---------- | -------- | ----------------------------------- |
-| `addresses` | `string[]` | Yes      | Array of P-Chain addresses to query |
+| `addresses` | `string[]` | Yes      | Array of Platform-Chain addresses to query |
 
 **Returns:**
 
@@ -61,11 +61,11 @@ interface GetBalanceReturnType {
 **Example:**
 
 ```typescript
-import { createAvalancheClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const client = createAvalancheClient({
-  chain: avalanche,
+const client = createLuxClient({
+  chain: lux,
   transport: { type: "http" },
 });
 
@@ -80,7 +80,7 @@ console.log("Locked stakeable:", balance.lockedStakeable);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetbalance)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetbalance)
 - [getUTXOs](#getutxos) - Get UTXOs for addresses
 
 ---
@@ -121,8 +121,8 @@ interface GetUTXOsReturnType {
 
 | Name          | Type                                | Required | Description                                     |
 | ------------- | ----------------------------------- | -------- | ----------------------------------------------- |
-| `addresses`   | `string[]`                          | Yes      | Array of P-Chain addresses                      |
-| `sourceChain` | `string`                            | No       | Source chain ID (e.g., "X" for X-Chain)         |
+| `addresses`   | `string[]`                          | Yes      | Array of Platform-Chain addresses                      |
+| `sourceChain` | `string`                            | No       | Source chain ID (e.g., "X" for Exchange-Chain)         |
 | `limit`       | `number`                            | No       | Maximum number of UTXOs to return               |
 | `startIndex`  | `{ address: string; utxo: string }` | No       | Pagination cursor for next page                 |
 | `encoding`    | `"hex"`                             | No       | Encoding format (can only be "hex" if provided) |
@@ -167,7 +167,7 @@ if (utxos.endIndex) {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetutxos)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetutxos)
 - [getBalance](#getbalance) - Get balance summary
 
 ---
@@ -279,7 +279,7 @@ const specificValidators = await client.pChain.getCurrentValidators({
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetcurrentvalidators)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetcurrentvalidators)
 - [getValidatorsAt](#getvalidatorsat) - Get validators at specific height
 - [getAllValidatorsAt](#getallvalidatorsat) - Get all validators at height
 - [sampleValidators](#samplevalidators) - Sample validators
@@ -339,7 +339,7 @@ console.log("Validators at height:", validators.validators);
 
 **Links:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetvalidatorsat)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetvalidatorsat)
 - [Related: getCurrentValidators](#getcurrentvalidators) - Get current validators
 - [Related: getAllValidatorsAt](#getallvalidatorsat) - Get all validators at height
 - [Related: getHeight](#getheight) - Get current height
@@ -380,7 +380,7 @@ interface GetAllValidatorsAtReturnType {
 
 | Name     | Type                   | Required | Description                                        |
 | -------- | ---------------------- | -------- | -------------------------------------------------- |
-| `height` | `number \| "proposed"` | Yes      | P-Chain height or "proposed" for proposervm height |
+| `height` | `number \| "proposed"` | Yes      | Platform-Chain height or "proposed" for proposervm height |
 
 **Returns:**
 
@@ -394,7 +394,7 @@ interface GetAllValidatorsAtReturnType {
 | --------------- | -------- | ------------------------------------------------ |
 | `validatorSets` | `object` | Map of Subnet IDs to their validator information |
 
-**Note:** The public API (api.avax.network) only supports height within 1000 blocks from the P-Chain tip.
+**Note:** The public API (api.lux.network) only supports height within 1000 blocks from the Platform-Chain tip.
 
 **Example:**
 
@@ -419,7 +419,7 @@ Object.entries(validators.validatorSets).forEach(([subnetID, set]) => {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetallvalidatorsat)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetallvalidatorsat)
 - [getCurrentValidators](#getcurrentvalidators) - Get current validators
 - [getValidatorsAt](#getvalidatorsat) - Get validators at height for specific subnet
 
@@ -480,7 +480,7 @@ console.log("Sampled validators:", sampled.validators);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformsamplevalidators)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformsamplevalidators)
 - [getCurrentValidators](#getcurrentvalidators) - Get all current validators
 
 ---
@@ -515,18 +515,18 @@ No parameters required.
 
 | Property | Type     | Description                  |
 | -------- | -------- | ---------------------------- |
-| `height` | `number` | Current P-Chain block height |
+| `height` | `number` | Current Platform-Chain block height |
 
 **Example:**
 
 ```typescript
 const height = await client.pChain.getHeight();
-console.log("Current P-Chain height:", height.height);
+console.log("Current Platform-Chain height:", height.height);
 ```
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetheight)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetheight)
 - [getBlockByHeight](#getblockbyheight) - Get block by height
 - [getProposedHeight](#getproposedheight) - Get proposed height
 
@@ -587,7 +587,7 @@ console.log("Block data:", block.block);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetblockbyheight)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetblockbyheight)
 - [getBlock](#getblock) - Get block by ID
 - [getHeight](#getheight) - Get current height
 
@@ -646,7 +646,7 @@ console.log("Block:", block.block);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetblock)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetblock)
 - [getBlockByHeight](#getblockbyheight) - Get block by height
 
 ---
@@ -676,7 +676,7 @@ interface GetStakeReturnType {
 
 | Name        | Type       | Required | Description       |
 | ----------- | ---------- | -------- | ----------------- |
-| `addresses` | `string[]` | Yes      | P-Chain addresses |
+| `addresses` | `string[]` | Yes      | Platform-Chain addresses |
 | `subnetID`  | `string`   | Yes      | Subnet ID         |
 
 **Returns:**
@@ -704,7 +704,7 @@ console.log("Stake amount:", stake.stakeAmount);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetstake)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetstake)
 - [getTotalStake](#gettotalstake) - Get total subnet stake
 - [getMinStake](#getminstake) - Get minimum stake requirements
 
@@ -763,7 +763,7 @@ console.log("Total weight:", totalStake.weight);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgettotalstake)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgettotalstake)
 - [getStake](#getstake) - Get stake for addresses
 - [getMinStake](#getminstake) - Get minimum stake
 
@@ -822,7 +822,7 @@ console.log("Min delegator stake:", minStake.minDelegatorStake);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetminstake)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetminstake)
 - [getTotalStake](#gettotalstake) - Get total subnet stake
 
 ---
@@ -893,7 +893,7 @@ console.log("Threshold:", subnet.threshold);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetsubnet)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetsubnet)
 - [getSubnets](#getsubnets) - Get multiple subnets
 
 ---
@@ -959,7 +959,7 @@ subnets.subnets.forEach((subnet) => {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetsubnets)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetsubnets)
 - [getSubnet](#getsubnet) - Get single subnet
 
 ---
@@ -1014,7 +1014,7 @@ console.log("Staking asset ID:", stakingAsset.assetID);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetstakingassetid)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetstakingassetid)
 - [getSubnet](#getsubnet) - Get subnet information
 
 ---
@@ -1023,7 +1023,7 @@ console.log("Staking asset ID:", stakingAsset.assetID);
 
 ### getBlockchains
 
-Get all the blockchains that exist (excluding the P-Chain).
+Get all the blockchains that exist (excluding the Platform-Chain).
 
 **Function Signature:**
 
@@ -1073,7 +1073,7 @@ blockchains.blockchains.forEach((blockchain) => {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetblockchains)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetblockchains)
 - [getBlockchainStatus](#getblockchainstatus) - Get blockchain status
 
 ---
@@ -1136,7 +1136,7 @@ console.log("Blockchain status:", status.status);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetblockchainstatus)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetblockchainstatus)
 - [getBlockchains](#getblockchains) - Get all blockchains
 
 ---
@@ -1196,7 +1196,7 @@ console.log("Transaction:", tx);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgettx)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgettx)
 - [getTxStatus](#gettxstatus) - Get transaction status
 - [issueTx](#issuetx) - Issue a transaction
 
@@ -1264,7 +1264,7 @@ if (txStatus.reason) {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgettxstatus)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgettxstatus)
 - [getTx](#gettx) - Get transaction details
 - [issueTx](#issuetx) - Issue a transaction
 
@@ -1321,7 +1321,7 @@ console.log("Transaction issued:", txID.txID);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformissuetx)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformissuetx)
 - [getTx](#gettx) - Get transaction details
 - [getTxStatus](#gettxstatus) - Get transaction status
 
@@ -1331,7 +1331,7 @@ console.log("Transaction issued:", txID.txID);
 
 ### getProposedHeight
 
-Get the proposed height of the P-Chain.
+Get the proposed height of the Platform-Chain.
 
 **Function Signature:**
 
@@ -1357,7 +1357,7 @@ No parameters required.
 
 | Property | Type     | Description                   |
 | -------- | -------- | ----------------------------- |
-| `height` | `number` | Proposed P-Chain block height |
+| `height` | `number` | Proposed Platform-Chain block height |
 
 **Example:**
 
@@ -1368,14 +1368,14 @@ console.log("Proposed height:", proposedHeight.height);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetproposedheight)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetproposedheight)
 - [getHeight](#getheight) - Get current accepted height
 
 ---
 
 ### getTimestamp
 
-Get the current timestamp of the P-Chain.
+Get the current timestamp of the Platform-Chain.
 
 **Function Signature:**
 
@@ -1412,7 +1412,7 @@ console.log("Current timestamp:", timestamp.timestamp);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgettimestamp)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgettimestamp)
 - [getHeight](#getheight) - Get current height
 
 ---
@@ -1421,7 +1421,7 @@ console.log("Current timestamp:", timestamp.timestamp);
 
 ### getFeeConfig
 
-Get the fee configuration for the P-Chain.
+Get the fee configuration for the Platform-Chain.
 
 **Function Signature:**
 
@@ -1477,14 +1477,14 @@ console.log("Min price:", feeConfig.minPrice);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetfeeconfig)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetfeeconfig)
 - [getFeeState](#getfeestate) - Get current fee state
 
 ---
 
 ### getFeeState
 
-Get the current fee state of the P-Chain.
+Get the current fee state of the Platform-Chain.
 
 **Function Signature:**
 
@@ -1531,7 +1531,7 @@ console.log("Timestamp:", feeState.timestamp);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetfeestate)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetfeestate)
 - [getFeeConfig](#getfeeconfig) - Get fee configuration
 
 ---
@@ -1540,7 +1540,7 @@ console.log("Timestamp:", feeState.timestamp);
 
 ### getCurrentSupply
 
-Get the current supply of AVAX tokens.
+Get the current supply of LUX tokens.
 
 **Function Signature:**
 
@@ -1592,7 +1592,7 @@ console.log("Subnet supply:", subnetSupply.supply);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetcurrentsupply)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetcurrentsupply)
 - [getBalance](#getbalance) - Get address balance
 
 ---
@@ -1657,7 +1657,7 @@ console.log("UTXOs:", rewardUTXOs.utxos);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetrewardutxos)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetrewardutxos)
 - [getUTXOs](#getutxos) - Get UTXOs for addresses
 
 ---
@@ -1743,7 +1743,7 @@ console.log("Start time:", validator.startTime);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformgetl1validator)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformgetl1validator)
 - [getCurrentValidators](#getcurrentvalidators) - Get current validators
 
 ---
@@ -1800,7 +1800,7 @@ console.log("Validated by subnet:", validatedBy.subnetID);
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformvalidatedby)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformvalidatedby)
 - [validates](#validates) - Get blockchains validated by subnet
 
 ---
@@ -1856,11 +1856,11 @@ validates.blockchainIDs.forEach((blockchainID) => {
 
 **Related:**
 
-- [API Reference](https://build.avax.network/docs/rpcs/p-chain#platformvalidates)
+- [API Reference](https://build.lux.network/docs/rpcs/p-chain#platformvalidates)
 - [validatedBy](#validatedby) - Get subnet validating blockchain
 
 ## Next Steps
 
-- **[P-Chain Wallet Methods](../wallet-methods/p-chain-wallet)** - Transaction preparation and signing
+- **[Platform-Chain Wallet Methods](../wallet-methods/p-chain-wallet)** - Transaction preparation and signing
 - **[Wallet Client](../../clients/wallet-client)** - Complete wallet operations
 - **[Account Management](../../accounts)** - Account types and management

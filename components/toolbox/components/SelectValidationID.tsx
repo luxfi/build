@@ -1,9 +1,9 @@
 import { Input, type Suggestion } from "./Input";
 import { useMemo, useState, useEffect } from "react";
 import { cb58ToHex, hexToCB58 } from "../console/utilities/format-converter/FormatConverter";
-import { L1ValidatorDetailsFull } from "@avalabs/avacloud-sdk/models/components";
-import { formatAvaxBalance } from "../coreViem/utils/format";
-import { useAvalancheSDKChainkit } from "../stores/useAvalancheSDKChainkit";
+import { L1ValidatorDetailsFull } from "@luxfi/avacloud-sdk/models/components";
+import { formatLuxBalance } from "../coreViem/utils/format";
+import { useLuxSDKChainkit } from "../stores/useLuxSDKChainkit";
 
 export type ValidationSelection = {
   validationId: string;
@@ -56,7 +56,7 @@ export default function SelectValidationID({
   format?: "cb58" | "hex"
 }) {
   //const { listL1Validators } = useAvaCloudSDK();
-  const { listL1Validators } = useAvalancheSDKChainkit();
+  const { listL1Validators } = useLuxSDKChainkit();
   const [validators, setValidators] = useState<L1ValidatorDetailsFull[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [validationIdToNodeId, setValidationIdToNodeId] = useState<Record<string, string>>({});
@@ -126,7 +126,7 @@ export default function SelectValidationID({
         // Use full node ID
         const nodeId = validator.nodeId;
         const weightDisplay = validator.weight.toLocaleString();
-        const balanceDisplay = formatAvaxBalance(validator.remainingBalance);
+        const balanceDisplay = formatLuxBalance(validator.remainingBalance);
         const isSelected = nodeId === selectedNodeId;
 
         // Add just one version based on the format prop

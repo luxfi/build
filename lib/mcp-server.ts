@@ -1,8 +1,8 @@
 /**
- * MCP Server utilities for Avalanche documentation
+ * MCP Server utilities for Lux documentation
  *
  * This module provides helper functions for the MCP (Model Context Protocol) server
- * that enables AI assistants to search and fetch Avalanche documentation.
+ * that enables AI assistants to search and fetch Lux documentation.
  */
 
 import { documentation, academy, integration, blog } from '@/lib/source';
@@ -172,9 +172,9 @@ export function clearCache() {
  * MCP Server configuration
  */
 export const MCP_SERVER_CONFIG = {
-  name: 'avalanche-docs',
+  name: 'lux-docs',
   version: '1.0.0',
   protocolVersion: '2024-11-05',
-  description: 'MCP server for Avalanche documentation',
-  baseUrl: 'https://build.avax.network',
+  description: 'MCP server for Lux documentation',
+  baseUrl: 'https://build.lux.network',
 };

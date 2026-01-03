@@ -1,5 +1,5 @@
 import { useMemo, useCallback } from "react";
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 import { useWalletStore } from "./walletStore";
 
 // Types for signature aggregation
@@ -28,22 +28,22 @@ interface GetSubnetByIdParams {
 }
 
 /**
- * Custom hook for interacting with the Avalanche SDK
- * Replaces useAvaCloudSDK with the new avalanche-sdk-typescript implementation
+ * Custom hook for interacting with the Lux SDK
+ * Replaces useAvaCloudSDK with the new lux-sdk-typescript implementation
  */
-export const useAvalancheSDKChainkit = (customNetwork?: "mainnet" | "fuji") => {
+export const useLuxSDKChainkit = (customNetwork?: "mainnet" | "testnet") => {
     const { isTestnet } = useWalletStore();
 
-    // Determine network name - follow the same pattern as existing avalanche-sdk usage
+    // Determine network name - follow the same pattern as existing lux-sdk usage
     const networkName = useMemo(() => {
         if (customNetwork) return customNetwork;
         // return getNetworkName()
-        return isTestnet ? "fuji" : "mainnet";
+        return isTestnet ? "testnet" : "mainnet";
     }, [customNetwork, isTestnet]); // [customNetwork, getNetworkName]);
 
-    // Create SDK instance using avalanche-sdk-typescript
+    // Create SDK instance using lux-sdk-typescript
     const sdk = useMemo(() => {
-        return new Avalanche({
+        return new Lux({
             network: networkName,
         });
     }, [networkName]);

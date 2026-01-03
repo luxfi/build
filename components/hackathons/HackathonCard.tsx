@@ -29,9 +29,9 @@ export default function HackathonCard({
           src={
             hackathon.small_banner?.trim().length > 0
               ? hackathon.small_banner
-              : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/hackathon-mock-dgUJCbkFtJZtWgg7zxIAATwEnCntMt.png"
+              : "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/hackathon-mock-dgUJCbkFtJZtWgg7zxIAATwEnCntMt.png"
           }
-          alt="Avalanche Logo"
+          alt="Lux Logo"
           className="rounded-l-md hidden md:block h-full"
           width={200}
           height={280}

@@ -1,16 +1,16 @@
 ---
 title: Metrics API
-description: Access real-time and historical metrics for Avalanche networks
+description: Access real-time and historical metrics for Lux networks
 icon: ChartLine
 ---
 
 ### What is the Metrics API?
 
-The Metrics API equips web3 developers with a robust suite of tools to access and analyze on-chain activity across Avalanche’s primary network, Avalanche L1s, and other supported EVM chains. This API delivers comprehensive metrics and analytics, enabling you to seamlessly integrate historical data on transactions, gas consumption, throughput, staking, and more into your applications.
+The Metrics API equips web3 developers with a robust suite of tools to access and analyze on-chain activity across Lux’s primary network, Lux L1s, and other supported EVM chains. This API delivers comprehensive metrics and analytics, enabling you to seamlessly integrate historical data on transactions, gas consumption, throughput, staking, and more into your applications.
 
-The Metrics API, along with the [Data API](/docs/api-reference/data-api) are the driving force behind every graph you see on the [Avalanche Explorer](https://explorer.avax.network/). From transaction trends to staking insights, the visualizations and data presented are all powered by these APIs, offering real-time and historical insights that are essential for building sophisticated, data-driven blockchain products..
+The Metrics API, along with the [Data API](/docs/api-reference/data-api) are the driving force behind every graph you see on the [Lux Explorer](https://explorer.lux.network/). From transaction trends to staking insights, the visualizations and data presented are all powered by these APIs, offering real-time and historical insights that are essential for building sophisticated, data-driven blockchain products..
 
-<img src="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=08e429fcecc76e4dbb0145c1e6f70091" data-og-width="2740" width="2740" data-og-height="1712" height="1712" data-path="images/avalanche-explorer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?w=280&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=6efd803862ca61ccc7cd7f8fa1b9224f 280w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?w=560&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=437286118598cac1ccef8bd14e067386 560w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?w=840&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=55300c3beff337df77b4d32c6af3dbcc 840w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?w=1100&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=d23700079e91c34daa139dea5925d36d 1100w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?w=1650&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=3f64292ba88b83f5bcc9208c7a245bef 1650w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/avalanche-explorer.png?w=2500&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=6e2318fbd7684a8bf630fc0aa9a1dfc2 2500w" />
+<img src="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=08e429fcecc76e4dbb0145c1e6f70091" data-og-width="2740" width="2740" data-og-height="1712" height="1712" data-path="images/lux-explorer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?w=280&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=6efd803862ca61ccc7cd7f8fa1b9224f 280w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?w=560&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=437286118598cac1ccef8bd14e067386 560w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?w=840&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=55300c3beff337df77b4d32c6af3dbcc 840w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?w=1100&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=d23700079e91c34daa139dea5925d36d 1100w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?w=1650&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=3f64292ba88b83f5bcc9208c7a245bef 1650w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/lux-explorer.png?w=2500&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=6e2318fbd7684a8bf630fc0aa9a1dfc2 2500w" />
 
 ### Features
 
@@ -20,7 +20,7 @@ The Metrics API, along with the [Data API](/docs/api-reference/data-api) are the
 * **Blockchains and Subnets:** Get information about supported blockchains, including EVM Chain IDs, blockchain IDs, and subnet associations, facilitating multi-chain analytics.
 * **Composite Queries:** Perform advanced queries by combining different metric types and conditions, enabling detailed and customizable data retrieval.
 
-The Metrics API is designed to provide developers with powerful tools to analyze and monitor on-chain activity across Avalanche’s primary network, Avalanche L1s, and other supported EVM chains. Below is an overview of the key features available:
+The Metrics API is designed to provide developers with powerful tools to analyze and monitor on-chain activity across Lux’s primary network, Lux L1s, and other supported EVM chains. Below is an overview of the key features available:
 
 ### Chain Throughput Metrics
 
@@ -72,4 +72,4 @@ The Metrics API is designed to provide developers with powerful tools to analyze
 * **Custom Metrics Combinations**: Combine multiple metrics and apply logical operators to perform sophisticated queries, enabling deep insights and tailored analytics.
 * **Paginated Results:** Handle large datasets efficiently with paginated responses, ensuring seamless data retrieval in your applications.
 
-The Metrics API equips developers with the tools needed to build robust analytics, monitoring, and reporting solutions, leveraging the full power of multi-chain data across the Avalanche ecosystem and beyond.
+The Metrics API equips developers with the tools needed to build robust analytics, monitoring, and reporting solutions, leveraging the full power of multi-chain data across the Lux ecosystem and beyond.

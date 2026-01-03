@@ -6,7 +6,7 @@ icon: Rocket
 
 ### ChainKit SDK
 
-The ChainKit SDK provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche L1s, and Ethereum. With the Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata.
+The ChainKit SDK provides web3 application developers with multi-chain data related to Lux's primary network, Lux L1s, and Ethereum. With the Data API, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata.
 
 <Callout>
   **Migration Notice**: This SDK was previously known as the AvaCloud SDK. We
@@ -27,14 +27,14 @@ The ChainKit SDK provides web3 application developers with multi-chain data rela
   srcSet="https://mintcdn.com/avalabs-47ea3976/5tYvr4aERqS4CNLz/images/chainkit-SDK.jpg?w=280&fit=max&auto=format&n=5tYvr4aERqS4CNLz&q=85&s=17f99881ded8ce13a0df4784eb730562 280w, https://mintcdn.com/avalabs-47ea3976/5tYvr4aERqS4CNLz/images/chainkit-SDK.jpg?w=560&fit=max&auto=format&n=5tYvr4aERqS4CNLz&q=85&s=b64c64345a3586c1d73a1acdad757bb0 560w, https://mintcdn.com/avalabs-47ea3976/5tYvr4aERqS4CNLz/images/chainkit-SDK.jpg?w=840&fit=max&auto=format&n=5tYvr4aERqS4CNLz&q=85&s=606d74291aa14a9c98a169450b00ec9e 840w, https://mintcdn.com/avalabs-47ea3976/5tYvr4aERqS4CNLz/images/chainkit-SDK.jpg?w=1100&fit=max&auto=format&n=5tYvr4aERqS4CNLz&q=85&s=8cb8cb94c1851512eae03c1deaa71985 1100w, https://mintcdn.com/avalabs-47ea3976/5tYvr4aERqS4CNLz/images/chainkit-SDK.jpg?w=1650&fit=max&auto=format&n=5tYvr4aERqS4CNLz&q=85&s=855ca27fa8e66c64006f3d4623a7d8f6 1650w, https://mintcdn.com/avalabs-47ea3976/5tYvr4aERqS4CNLz/images/chainkit-SDK.jpg?w=2500&fit=max&auto=format&n=5tYvr4aERqS4CNLz&q=85&s=97d501a7bedbfc7c909e4b6b706bafe8 2500w"
 />
 
-The SDK is currently available in TypeScript, with more languages coming soon. If you are interested in a language that is not listed, please reach out to us in the [#avalanche-sdk](https://discord.com/channels/578992315641626624/1416238478915665961) channel in the [Avalanche Discord](https://discord.gg/avax).
+The SDK is currently available in TypeScript, with more languages coming soon. If you are interested in a language that is not listed, please reach out to us in the [#lux-sdk](https://discord.com/channels/578992315641626624/1416238478915665961) channel in the [Lux Discord](https://discord.gg/lux).
 
 <Cards>
   <Card title="NPM Package">
-    [https://www.npmjs.com/package/@avalanche-sdk/chainkit](https://www.npmjs.com/package/@avalanche-sdk/chainkit)
+    [https://www.npmjs.com/package/@lux-sdk/chainkit](https://www.npmjs.com/package/@lux-sdk/chainkit)
   </Card>
   <Card title="GitHub Repository">
-    [https://github.com/ava-labs/avalanche-sdk-typescript](https://github.com/ava-labs/avalanche-sdk-typescript)
+    [https://github.com/luxfi/lux-sdk-typescript](https://github.com/luxfi/lux-sdk-typescript)
   </Card>
 </Cards>
 
@@ -44,21 +44,21 @@ The SDK is currently available in TypeScript, with more languages coming soon. I
 <Tab value="npm">
 
 ```bash
-npm install @avalanche-sdk/client
+npm install @lux-sdk/client
 ```
 
 </Tab>
 <Tab value="yarn">
 
 ```bash
-yarn add @avalanche-sdk/client
+yarn add @lux-sdk/client
 ```
 
 </Tab>
 <Tab value="bun">
 
 ```bash
-bun add @avalanche-sdk/client
+bun add @lux-sdk/client
 ```
 
 </Tab>
@@ -67,16 +67,16 @@ bun add @avalanche-sdk/client
 ### SDK Example Usage
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@lux-sdk/chainkit";
 
-const avalancheSDK = new Avalanche({
+const luxSDK = new Lux({
   apiKey: "<YOUR_API_KEY_HERE>",
   chainId: "43114",
   network: "mainnet",
 });
 
 async function run() {
-  const result = await avalancheSDK.metrics.healthCheck();
+  const result = await luxSDK.metrics.healthCheck();
 
   // Handle the result
   console.log(result);

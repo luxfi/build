@@ -1,6 +1,6 @@
 async function checkCoreWallet(): Promise<boolean> {
     try {
-        if (!window.avalanche) {
+        if (!window.lux) {
             throw new Error("Core wallet is not installed.");
         }
         return true;
@@ -13,13 +13,13 @@ async function checkCoreWallet(): Promise<boolean> {
 export { checkCoreWallet }
 
 
-// Returns the P-Chain address of the active account ex: 'P-fuji1...' or 'P-avax1...'
+// Returns the Platform-Chain address of the active account ex: 'P-testnet1...' or 'P-lux1...'
 const fetchPChainAddressForActiveAccount = async (): Promise<string> => {
     try {
-        if (!window.avalanche) throw new Error('Core wallet not found');
+        if (!window.lux) throw new Error('Core wallet not found');
 
-        const response = await window.avalanche.request<{ addressPVM: string }[]>({
-            method: 'avalanche_getAccounts',
+        const response = await window.lux.request<{ addressPVM: string }[]>({
+            method: 'lux_getAccounts',
             params: []
         });
         const activeAccountIndex = response.findIndex((account: any) => account.active === true);
@@ -27,7 +27,7 @@ const fetchPChainAddressForActiveAccount = async (): Promise<string> => {
         return pChainAddress as string;
 
     } catch (error) {
-        console.error('Error fetching avalanche accounts, is Core wallet installed?:', error);
+        console.error('Error fetching lux accounts, is Core wallet installed?:', error);
         throw error;
     }
 };

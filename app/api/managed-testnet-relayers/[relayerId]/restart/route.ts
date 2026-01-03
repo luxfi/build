@@ -73,7 +73,7 @@ async function handleRestartRelayer(relayerId: string, request: NextRequest): Pr
 
   } catch (hubError) {
     console.error('[Relayers] Restart request failed:', hubError);
-    return jsonError(503, 'Builder Hub was unreachable.', hubError);
+    return jsonError(503, 'Lux Build was unreachable.', hubError);
   }
 }
 

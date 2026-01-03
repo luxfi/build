@@ -1,16 +1,16 @@
 ---
-title: View Avalanche L1s
-description: CLI commands for viewing avalanche-l1s.
+title: View Lux L1s
+description: CLI commands for viewing lux-l1s.
 ---
 
-## List Avalanche L1 Configurations
+## List Lux L1 Configurations
 
-You can list the Avalanche L1s you've created with: `avalanche blockchain list`
+You can list the Lux L1s you've created with: `lux blockchain list`
 
 Example:
 
 ```bash
-> avalanche blockchain list
+> lux blockchain list
 +--------------+--------------+----------+---------------------------------------------------+------------+------------+-----------+
 |    SUBNET    |    CHAIN     | CHAINID  |                       VMID                        |    TYPE    | VM VERSION | FROM REPO |
 +--------------+--------------+----------+---------------------------------------------------+------------+------------+-----------+
@@ -18,10 +18,10 @@ Example:
 +--------------+--------------+----------+---------------------------------------------------+------------+------------+-----------+
 ```
 
-To see detailed information about your deployed Avalanche L1s, add the `--deployed` flag:
+To see detailed information about your deployed Lux L1s, add the `--deployed` flag:
 
 ```bash
-> avalanche blockchain list --deployed
+> lux blockchain list --deployed
 +--------------+--------------+---------------------------------------------------+---------------+----------------+---------+
 |    SUBNET    |    CHAIN     |                       VM ID                       | LOCAL NETWORK | FUJI (TESTNET) | MAINNET |
 +--------------+--------------+---------------------------------------------------+---------------+----------------+---------+
@@ -30,14 +30,14 @@ To see detailed information about your deployed Avalanche L1s, add the `--deploy
 
 ```bash
 
-## Describe Avalanche L1 Configurations
+## Describe Lux L1 Configurations
 
-To see the details of a specific configuration, run: `avalanche blockchain describe <blockchainName>`
+To see the details of a specific configuration, run: `lux blockchain describe <blockchainName>`
 
 Example:
 
 ```bash
-> avalanche blockchain describe myblockchain
+> lux blockchain describe myblockchain
 
 +---------------------------------------------------------------------------------------------------------------------------------+
 |                                                           MYBLOCKCHAIN                                                          |
@@ -137,12 +137,12 @@ Example:
 
 ## Viewing a Genesis File
 
-If you'd like to see the raw genesis file, supply the `--genesis` flag to the describe command: `avalanche blockchain describe <blockchainName> --genesis`
+If you'd like to see the raw genesis file, supply the `--genesis` flag to the describe command: `lux blockchain describe <blockchainName> --genesis`
 
 Example:
 
 ```bash
-> avalanche blockchain describe myblockchain --genesis
+> lux blockchain describe myblockchain --genesis
 
 {
     "config": {

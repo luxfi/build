@@ -1,8 +1,8 @@
 ---
 title: Ultravioleta DAO
 category: x402
-available: ["C-Chain"]
-description: Ultravioleta DAO offers the x402 protocol, a payment infrastructure that enables monetization of AI agents and APIs on Avalanche.
+available: ["LUExchange-Chain"]
+description: Ultravioleta DAO offers the x402 protocol, a payment infrastructure that enables monetization of AI agents and APIs on Lux.
 logo: /images/ultravioletadao.png
 developer: Ultravioleta DAO
 website: https://ultravioletadao.xyz
@@ -11,9 +11,9 @@ documentation: https://facilitator.ultravioletadao.xyz
 
 ## Overview
 
-Ultravioleta DAO, a leading Web3 DAO in Latin America, offers the x402 protocol - a payment infrastructure that enables monetization of AI agents and APIs on Avalanche. The protocol solves a critical challenge: autonomous agents cannot operate without gas money. The x402 facilitator acts as a payment intermediary that verifies transactions, covers gas fees, and settles payments on-chain, allowing agents and services to operate autonomously using USDC payments.
+Ultravioleta DAO, a leading Web3 DAO in Latin America, offers the x402 protocol - a payment infrastructure that enables monetization of AI agents and APIs on Lux. The protocol solves a critical challenge: autonomous agents cannot operate without gas money. The x402 facilitator acts as a payment intermediary that verifies transactions, covers gas fees, and settles payments on-chain, allowing agents and services to operate autonomously using USDC payments.
 
-The facilitator is available on both Avalanche C-Chain (Mainnet) and Avalanche Fuji (Testnet), enabling developers to test their integrations before deploying to production.
+The facilitator is available on both Lux LUExchange-Chain (Mainnet) and Lux Testnet (Testnet), enabling developers to test their integrations before deploying to production.
 
 ## What is x402?
 
@@ -26,7 +26,7 @@ x402 is an HTTP-based payment protocol built on the standard HTTP 402 "Payment R
 
 ## Features
 
-- **Gasless Payments**: Clients don't need AVAX for gas fees - the facilitator sponsors all transactions
+- **Gasless Payments**: Clients don't need LUX for gas fees - the facilitator sponsors all transactions
 - **Stablecoin Settlement**: Payments settled in USDC for predictable pricing
 - **Cryptographic Security**: EIP-712 signatures ensure payment authenticity and prevent replay attacks
 - **Stateless Verification**: All payment verification happens on-chain without requiring databases
@@ -56,7 +56,7 @@ app.use(paymentMiddleware(
   {
     "/api/service": {
       price: "$0.01",
-      network: "avalanche-c-chain",  // or "avalanche-fuji" for testnet
+      network: "lux-c-chain",  // or "lux-testnet" for testnet
       config: {
         description: "Access to your API service"
       }
@@ -83,7 +83,7 @@ import { X402Client } from "x402-client";
 const client = new X402Client({
   privateKey: process.env.CLIENT_PRIVATE_KEY,
   facilitatorUrl: 'https://facilitator.ultravioletadao.xyz',
-  network: 'avalanche-c-chain'  // or 'avalanche-fuji' for testnet
+  network: 'lux-c-chain'  // or 'lux-testnet' for testnet
 });
 
 // Make a paid request
@@ -106,24 +106,24 @@ Build trustless marketplaces where autonomous agents buy and sell services from 
 ### Token-Gated Services
 Provide access to premium services, data feeds, or computational resources based on per-use payments rather than upfront subscriptions.
 
-## Avalanche Integration
+## Lux Integration
 
-The x402 facilitator is optimized for Avalanche deployment on both mainnet and testnet:
+The x402 facilitator is optimized for Lux deployment on both mainnet and testnet:
 
-### Avalanche C-Chain (Mainnet)
+### Lux LUExchange-Chain (Mainnet)
 - **Chain ID**: 43114
-- **Native Token**: AVAX (used by facilitator for gas fees)
+- **Native Token**: LUX (used by facilitator for gas fees)
 - **Payment Token**: USDC
 - **Finality**: Sub-second transaction finality for fast payment confirmation
 - **EVM Compatibility**: Full support for ERC-3009 meta-transactions
 
-### Avalanche Fuji (Testnet)
+### Lux Testnet (Testnet)
 - **Chain ID**: 43113
-- **Native Token**: AVAX (used by facilitator for gas fees)
+- **Native Token**: LUX (used by facilitator for gas fees)
 - **Payment Token**: USDC
 - **Purpose**: Test your integration before deploying to mainnet
 
-The facilitator maintains a hot wallet funded with AVAX to sponsor gas fees for all USDC payment settlements. Clients only need USDC in their wallets - no AVAX required.
+The facilitator maintains a hot wallet funded with LUX to sponsor gas fees for all USDC payment settlements. Clients only need USDC in their wallets - no LUX required.
 
 ## How It Works
 
@@ -133,7 +133,7 @@ The facilitator maintains a hot wallet funded with AVAX to sponsor gas fees for 
 4. **Settlement**: Facilitator submits `transferWithAuthorization()` transaction, paying gas fees
 5. **Response**: Once settled, merchant receives confirmation and responds to client
 
-All settlements happen on Avalanche using the ERC-3009 standard, ensuring cryptographic security and on-chain auditability.
+All settlements happen on Lux using the ERC-3009 standard, ensuring cryptographic security and on-chain auditability.
 
 ## Documentation
 
@@ -145,4 +145,4 @@ Ultravioleta DAO is a leading Web3 DAO in Latin America, focused on building dec
 
 ## Conclusion
 
-Ultravioleta DAO's x402 facilitator provides production-ready payment infrastructure for building autonomous agent economies and monetized APIs on Avalanche. By abstracting away gas fee management and providing a simple HTTP protocol for payments, it enables developers to focus on building valuable services while maintaining security through cryptographic signatures and on-chain settlement. Start testing on Fuji testnet today, then deploy to C-Chain mainnet when ready.
+Ultravioleta DAO's x402 facilitator provides production-ready payment infrastructure for building autonomous agent economies and monetized APIs on Lux. By abstracting away gas fee management and providing a simple HTTP protocol for payments, it enables developers to focus on building valuable services while maintaining security through cryptographic signatures and on-chain settlement. Start testing on Testnet testnet today, then deploy to LUExchange-Chain mainnet when ready.

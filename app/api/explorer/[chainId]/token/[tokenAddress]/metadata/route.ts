@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 
-const avalanche = new Avalanche({
+const lux = new Lux({
   network: "mainnet",
 });
 
@@ -23,7 +23,7 @@ export async function GET(
     }
 
     try {
-      const result = await avalanche.data.evm.contracts.getMetadata({
+      const result = await lux.data.evm.contracts.getMetadata({
         address: tokenAddress,
         chainId: chainId,
       });

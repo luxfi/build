@@ -144,14 +144,14 @@ export default function ValidatorsForm() {
             <div className="relative">
               <Image
                 src="/logo-black.png"
-                alt="Avalanche Logo"
+                alt="Lux Logo"
                 width={240}
                 height={60}
                 className="dark:hidden"
               />
               <Image
                 src="/logo-white.png"
-                alt="Avalanche Logo"
+                alt="Lux Logo"
                 width={240}
                 height={60}
                 className="hidden dark:block"
@@ -392,10 +392,10 @@ export default function ValidatorsForm() {
                                 Primary Network
                               </SelectItem>
                               <SelectItem
-                                value="avalanche-l1"
+                                value="lux-l1"
                                 className="text-slate-700 dark:text-slate-300 py-3"
                               >
-                                Avalanche L1
+                                Lux L1
                               </SelectItem>
                               <SelectItem
                                 value="RPC Provider"
@@ -430,7 +430,7 @@ export default function ValidatorsForm() {
                           Consent & Privacy
                         </h2>
                         <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                          The Avalanche Foundation needs the contact information
+                          The Lux Foundation needs the contact information
                           you provide to us to contact you about our products
                           and services. You may unsubscribe from these
                           communications at any time. For information on how to
@@ -439,7 +439,7 @@ export default function ValidatorsForm() {
                           our{" "}
                           <a
                             className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline font-medium transition-colors"
-                            href="https://www.avax.network/privacy-policy"
+                            href="https://www.lux.network/privacy-policy"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -493,7 +493,7 @@ export default function ValidatorsForm() {
                           </FormControl>
                           <div className="space-y-2 leading-none">
                             <FormLabel className="font-medium text-slate-700 dark:text-slate-300 text-base cursor-pointer">
-                              I would also like to sign up for the Avalanche
+                              I would also like to sign up for the Lux
                               Foundation's email list and understand I may
                               unsubscribe at any time
                             </FormLabel>

@@ -8,7 +8,7 @@ icon: Terminal
 
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Go ahead and deploy the sender contract on the C-Chain. 
+Go ahead and deploy the sender contract on the LUExchange-Chain. 
 
 <Steps>
 <Step>
@@ -16,7 +16,7 @@ Go ahead and deploy the sender contract on the C-Chain.
 ### Deploy the Sender Contract
 
 ```bash
-forge create --rpc-url fuji-c --private-key $PK contracts/interchain-messaging/send-roundtrip/senderOnCChain.sol:SenderOnCChain --broadcast
+forge create --rpc-url testnet-c --private-key $PK contracts/interchain-messaging/send-roundtrip/senderOnCChain.sol:SenderOnCChain --broadcast
 ```
 ```
 [⠊] Compiling...

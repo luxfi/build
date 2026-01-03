@@ -1,22 +1,22 @@
 ---
-title: Deploy a DApp on the C-Chain with Foundry
-description: This guide shows how to deploy and interact with smart contracts using foundry on a local Avalanche Network and the Fuji C-Chain.
+title: Deploy a DApp on the LUExchange-Chain with Foundry
+description: This guide shows how to deploy and interact with smart contracts using foundry on a local Lux Network and the Testnet LUExchange-Chain.
 date: 2024-05-26
 authors: [ashngmi, martin_eckardt]
-topics: [solidity, foundry, Avalanche Starter Kit]
+topics: [solidity, foundry, Lux Starter Kit]
 ---
 
 Foundry toolchain is a smart contract development toolchain written in Rust. It manages your dependencies, compiles your project, runs tests, deploys, and lets you interact with the chain from the command-line.
 
 # Recommended Knowledge
 
-- Basic understanding of Solidity and Avalanche.
-- You are familiar with Avalanche Smart Contract Quickstart.
-- Basic understanding of the Avalanche's architecture
+- Basic understanding of Solidity and Lux.
+- You are familiar with Lux Smart Contract Quickstart.
+- Basic understanding of the Lux's architecture
 
-# Run Avalanche Starter Kit
+# Run Lux Starter Kit
 
-import SetUp from "@/content/common/avalanche-starter-kit/set-up.mdx";
+import SetUp from "@/content/common/lux-starter-kit/set-up.mdx";
 
 import defaultMdxComponents from "fumadocs-ui/mdx";
 
@@ -49,15 +49,15 @@ cast wallet new
 
 # Fund Your Account
 
-**Option 1 (Recommended):** Create a [Builder Hub account](https://build.avax.network/login) and connect your wallet to receive testnet AVAX automatically.
+**Option 1 (Recommended):** Create a [Lux Build account](https://build.lux.network/login) and connect your wallet to receive testnet LUX automatically.
 
-**Option 2:** Use the [Avalanche Testnet Faucet](https://core.app/tools/testnet-faucet/?subnet=c&token=c) with code `avalanche-academy25`
+**Option 2:** Use the [Lux Testnet Faucet](https://core.app/tools/testnet-faucet/?subnet=c&token=c) with code `lux-academy25`
 
 # Deploy the Smart Contract
 
-With foundry's `forge` command, you can deploy your smart contract to the Fuji C-Chain.
+With foundry's `forge` command, you can deploy your smart contract to the Testnet LUExchange-Chain.
 
 ```shell
-forge create --rpc-url fuji-c --private-key <private-key> src/MyContract.sol:MyContract
+forge create --rpc-url testnet-c --private-key <private-key> src/MyContract.sol:MyContract
 ```
 

@@ -11,13 +11,13 @@ The Metrics API does not require authentication, making it straightforward to in
 You can interact with the Metrics API by sending HTTP GET requests to the provided endpoints. Below is an example of a simple `curl` request.
 
 ```bash
-curl -H "Content-Type: Application/json" "https://metrics.avax.network/v1/avg_tps/{chainId}"
+curl -H "Content-Type: Application/json" "https://metrics.lux.network/v1/avg_tps/{chainId}"
 ```
 
 In the above request Replace `chainId` with the specific chain ID you want to query. For example, to retrieve the average transactions per second (TPS) for a specific chain (in this case, chain ID 43114), you can use the following endpoint:
 
 ```bash
-curl "https://metrics.avax.network/v1/avg_tps/43114"
+curl "https://metrics.lux.network/v1/avg_tps/43114"
 ```
 
 The API will return a JSON response containing the average TPS for the specified chain over a series of timestamps and `lastRun` is a timestamp indicating when the last data point was updated:
@@ -85,7 +85,7 @@ To retrieve the next set of results, include the nextPageToken in your subsequen
 
 ```bash
 curl -H "Content-Type: Application/json" \
-  "https://metrics.avax.network/v1/avg_tps/{chainId}?pageToken=3d22deea-ea64-4d30-8a1e-c2a353b67e90"
+  "https://metrics.lux.network/v1/avg_tps/{chainId}?pageToken=3d22deea-ea64-4d30-8a1e-c2a353b67e90"
 ```
 
 ### Pagination Details
@@ -114,6 +114,6 @@ You can explore the full API definitions and interact with the endpoints in the 
 
 <Cards cols={1}>
   <Card title="Swagger API Reference">
-    [https://metrics.avax.network/api](https://metrics.avax.network/api)
+    [https://metrics.lux.network/api](https://metrics.lux.network/api)
   </Card>
 </Cards>

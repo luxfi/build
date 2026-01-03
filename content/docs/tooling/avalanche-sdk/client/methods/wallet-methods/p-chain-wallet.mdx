@@ -1,17 +1,17 @@
 ---
-title: P-Chain Wallet Methods
-description: Complete reference for P-Chain transaction preparation methods
+title: Platform-Chain Wallet Methods
+description: Complete reference for Platform-Chain transaction preparation methods
 ---
 
 ## Overview
 
-The P-Chain Wallet Methods provide transaction preparation capabilities for the Platform Chain. These methods allow you to create unsigned transactions for various operations including base transfers, validator operations, delegator operations, subnet management, and cross-chain transfers.
+The Platform-Chain Wallet Methods provide transaction preparation capabilities for the Platform Chain. These methods allow you to create unsigned transactions for various operations including base transfers, validator operations, delegator operations, subnet management, and cross-chain transfers.
 
 **Access:** `walletClient.pChain`
 
 ## prepareBaseTxn
 
-Prepare a base P-Chain transaction for transferring AVAX.
+Prepare a base Platform-Chain transaction for transferring LUX.
 
 **Function Signature:**
 
@@ -62,7 +62,7 @@ interface PrepareBaseTxnReturnType {
 | Name        | Type       | Required | Description                                                        |
 | ----------- | ---------- | -------- | ------------------------------------------------------------------ |
 | `addresses` | `string[]` | Yes      | Addresses who can sign the consuming of this UTXO                  |
-| `amount`    | `bigint`   | Yes      | Amount in nano AVAX                                                |
+| `amount`    | `bigint`   | Yes      | Amount in nano LUX                                                |
 | `assetId`   | `string`   | No       | Asset ID of the UTXO                                               |
 | `locktime`  | `bigint`   | No       | Timestamp in seconds after which this UTXO can be consumed         |
 | `threshold` | `number`   | No       | Threshold of `addresses`' signatures required to consume this UTXO |
@@ -84,24 +84,24 @@ interface PrepareBaseTxnReturnType {
 **Example:**
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { lux } from "@lux-sdk/client/chains";
+import { luxToNanoLux } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
 const unsignedTx = await walletClient.pChain.prepareBaseTxn({
   outputs: [
     {
-      addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
-      amount: avaxToNanoAvax(1),
+      addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+      amount: luxToNanoLux(1),
     },
   ],
 });
@@ -140,7 +140,7 @@ function prepareAddPermissionlessValidatorTxn(
 
 interface PrepareAddPermissionlessValidatorTxnParameters {
   nodeId: string;
-  stakeInAvax: bigint;
+  stakeInLux: bigint;
   end: bigint;
   rewardAddresses: string[];
   delegatorRewardAddresses: string[];
@@ -169,7 +169,7 @@ interface PrepareAddPermissionlessValidatorTxnReturnType {
 | Name                        | Type       | Required | Description                                                                       |
 | --------------------------- | ---------- | -------- | --------------------------------------------------------------------------------- |
 | `nodeId`                    | `string`   | Yes      | Node ID of the validator being added                                              |
-| `stakeInAvax`               | `bigint`   | Yes      | Amount of AVAX to stake (in nano AVAX)                                            |
+| `stakeInLux`               | `bigint`   | Yes      | Amount of LUX to stake (in nano LUX)                                            |
 | `end`                       | `bigint`   | Yes      | Unix time in seconds when validator will be removed                               |
 | `rewardAddresses`           | `string[]` | Yes      | Addresses which will receive validator rewards                                    |
 | `delegatorRewardAddresses`  | `string[]` | Yes      | Addresses which will receive delegator fee rewards                                |
@@ -202,15 +202,15 @@ interface PrepareAddPermissionlessValidatorTxnReturnType {
 **Example:**
 
 ```typescript
-import { avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { luxToNanoLux } from "@lux-sdk/client/utils";
 
 const validatorTx =
   await walletClient.pChain.prepareAddPermissionlessValidatorTxn({
     nodeId: "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
-    stakeInAvax: avaxToNanoAvax(2000),
+    stakeInLux: luxToNanoLux(2000),
     end: BigInt(1716441600),
-    rewardAddresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
-    delegatorRewardAddresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+    rewardAddresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+    delegatorRewardAddresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
     delegatorRewardPercentage: 2.5,
     threshold: 1,
   });
@@ -247,7 +247,7 @@ function prepareAddPermissionlessDelegatorTxn(
 
 interface PrepareAddPermissionlessDelegatorTxnParameters {
   nodeId: string;
-  stakeInAvax: bigint;
+  stakeInLux: bigint;
   end: bigint;
   rewardAddresses: string[];
   threshold?: number;
@@ -272,7 +272,7 @@ interface PrepareAddPermissionlessDelegatorTxnReturnType {
 | Name              | Type       | Required | Description                                                      |
 | ----------------- | ---------- | -------- | ---------------------------------------------------------------- |
 | `nodeId`          | `string`   | Yes      | Node ID of the validator to delegate to                          |
-| `stakeInAvax`     | `bigint`   | Yes      | Amount of AVAX to stake (in nano AVAX)                           |
+| `stakeInLux`     | `bigint`   | Yes      | Amount of LUX to stake (in nano LUX)                           |
 | `end`             | `bigint`   | Yes      | Unix time in seconds when delegation stops                       |
 | `rewardAddresses` | `string[]` | Yes      | Addresses which will receive rewards                             |
 | `threshold`       | `number`   | No       | Number of signatures required to spend reward UTXO (default: 1)  |
@@ -304,9 +304,9 @@ interface PrepareAddPermissionlessDelegatorTxnReturnType {
 const delegatorTx =
   await walletClient.pChain.prepareAddPermissionlessDelegatorTxn({
     nodeId: "NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg",
-    stakeInAvax: avaxToNanoAvax(25),
+    stakeInLux: luxToNanoLux(25),
     end: BigInt(1716441600),
-    rewardAddresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+    rewardAddresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
     threshold: 1,
   });
 ```
@@ -319,7 +319,7 @@ const delegatorTx =
 
 ## prepareExportTxn
 
-Prepare a transaction to export AVAX from P-Chain to another chain.
+Prepare a transaction to export LUX from Platform-Chain to another chain.
 
 **Function Signature:**
 
@@ -381,7 +381,7 @@ const exportTx = await walletClient.pChain.prepareExportTxn({
   exportedOutputs: [
     {
       addresses: [account.getEVMAddress()],
-      amount: avaxToNanoAvax(0.001),
+      amount: luxToNanoLux(0.001),
     },
   ],
 });
@@ -400,14 +400,14 @@ const { txHash } = await walletClient.sendXPTransaction({
 
 **Related:**
 
-- [prepareImportTxn](#prepareimporttxn) - Import to P-Chain
+- [prepareImportTxn](#prepareimporttxn) - Import to Platform-Chain
 - [Wallet send method](./wallet#send) - Simplified cross-chain transfers
 
 ---
 
 ## prepareImportTxn
 
-Prepare a transaction to import AVAX from another chain to P-Chain.
+Prepare a transaction to import LUX from another chain to Platform-Chain.
 
 **Function Signature:**
 
@@ -479,7 +479,7 @@ interface PrepareImportTxnReturnType {
 const importTx = await walletClient.pChain.prepareImportTxn({
   sourceChain: "C",
   importedOutput: {
-    addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+    addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
     threshold: 1,
   },
 });
@@ -498,7 +498,7 @@ const { txHash } = await walletClient.sendXPTransaction({
 
 **Related:**
 
-- [prepareExportTxn](#prepareexporttxn) - Export from P-Chain
+- [prepareExportTxn](#prepareexporttxn) - Export from Platform-Chain
 
 ---
 
@@ -740,8 +740,8 @@ interface PrepareCreateSubnetTxnReturnType {
 const createSubnetTx = await walletClient.pChain.prepareCreateSubnetTxn({
   subnetOwners: {
     addresses: [
-      "P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz",
-      "P-fuji1y8zrxh9cvdny0e8n8n4n7h4q4h4q4h4q4h4q4h",
+      "P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz",
+      "P-testnet1y8zrxh9cvdny0e8n8n4n7h4q4h4q4h4q4h4q4h",
     ],
     threshold: 2,
   },
@@ -874,7 +874,7 @@ interface L1Validator {
     proofOfPossession: string;
   };
   weight: bigint;
-  initialBalanceInAvax: bigint;
+  initialBalanceInLux: bigint;
   remainingBalanceOwner: PChainOwnerJSON;
   deactivationOwner: PChainOwnerJSON;
 }
@@ -912,7 +912,7 @@ interface PrepareConvertSubnetToL1TxnReturnType {
 | `nodePoP.publicKey`         | `string`          | Public key of the validator                                              |
 | `nodePoP.proofOfPossession` | `string`          | Proof of possession of the public key                                    |
 | `weight`                    | `bigint`          | Weight of the validator on the L1 used during consensus participation    |
-| `initialBalanceInAvax`      | `bigint`          | Initial balance in nano AVAX required for paying contiguous fee          |
+| `initialBalanceInLux`      | `bigint`          | Initial balance in nano LUX required for paying contiguous fee          |
 | `remainingBalanceOwner`     | `PChainOwnerJSON` | Owner information for remaining balance if validator is removed/disabled |
 | `deactivationOwner`         | `PChainOwnerJSON` | Owner information which can remove or disable the validator              |
 
@@ -948,13 +948,13 @@ const convertSubnetToL1Tx =
           proofOfPossession: "0x...",
         },
         weight: BigInt(1000000),
-        initialBalanceInAvax: avaxToNanoAvax(1000),
+        initialBalanceInLux: luxToNanoLux(1000),
         remainingBalanceOwner: {
-          addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+          addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
           threshold: 1,
         },
         deactivationOwner: {
-          addresses: ["P-fuji19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
+          addresses: ["P-testnet19fc97zn3mzmwr827j4d3n45refkksgms4y2yzz"],
           threshold: 1,
         },
       },
@@ -977,7 +977,7 @@ function prepareRegisterL1ValidatorTxn(
 ): Promise<PrepareRegisterL1ValidatorTxnReturnType>;
 
 interface PrepareRegisterL1ValidatorTxnParameters {
-  initialBalanceInAvax: bigint;
+  initialBalanceInLux: bigint;
   blsSignature: string;
   message: string;
   fromAddresses?: string[];
@@ -999,7 +999,7 @@ interface PrepareRegisterL1ValidatorTxnReturnType {
 
 | Name                   | Type       | Required | Description                                                                                  |
 | ---------------------- | ---------- | -------- | -------------------------------------------------------------------------------------------- |
-| `initialBalanceInAvax` | `bigint`   | Yes      | Initial balance in nano AVAX required for paying contiguous fee                              |
+| `initialBalanceInLux` | `bigint`   | Yes      | Initial balance in nano LUX required for paying contiguous fee                              |
 | `blsSignature`         | `string`   | Yes      | BLS signature of the validator                                                               |
 | `message`              | `string`   | Yes      | Signed warp message hex with `AddressedCall` payload containing `RegisterL1ValidatorMessage` |
 | `fromAddresses`        | `string[]` | No       | Addresses to send funds from                                                                 |
@@ -1028,7 +1028,7 @@ interface PrepareRegisterL1ValidatorTxnReturnType {
 ```typescript
 const registerL1ValidatorTx =
   await walletClient.pChain.prepareRegisterL1ValidatorTxn({
-    initialBalanceInAvax: avaxToNanoAvax(1000),
+    initialBalanceInLux: luxToNanoLux(1000),
     blsSignature: "0x...",
     message: "0x...",
   });
@@ -1185,7 +1185,7 @@ function prepareIncreaseL1ValidatorBalanceTxn(
 ): Promise<PrepareIncreaseL1ValidatorBalanceTxnReturnType>;
 
 interface PrepareIncreaseL1ValidatorBalanceTxnParameters {
-  balanceInAvax: bigint;
+  balanceInLux: bigint;
   validationId: string;
   fromAddresses?: string[];
   changeAddresses?: string[];
@@ -1206,7 +1206,7 @@ interface PrepareIncreaseL1ValidatorBalanceTxnReturnType {
 
 | Name              | Type       | Required | Description                                              |
 | ----------------- | ---------- | -------- | -------------------------------------------------------- |
-| `balanceInAvax`   | `bigint`   | Yes      | Amount of AVAX to increase the balance by (in nano AVAX) |
+| `balanceInLux`   | `bigint`   | Yes      | Amount of LUX to increase the balance by (in nano LUX) |
 | `validationId`    | `string`   | Yes      | Validation ID of the L1 validator                        |
 | `fromAddresses`   | `string[]` | No       | Addresses to send funds from                             |
 | `changeAddresses` | `string[]` | No       | Addresses to receive change                              |
@@ -1234,7 +1234,7 @@ interface PrepareIncreaseL1ValidatorBalanceTxnReturnType {
 ```typescript
 const increaseL1ValidatorBalanceTx =
   await walletClient.pChain.prepareIncreaseL1ValidatorBalanceTxn({
-    balanceInAvax: avaxToNanoAvax(500),
+    balanceInLux: luxToNanoLux(500),
     validationId: "0x...",
   });
 ```
@@ -1244,6 +1244,6 @@ const increaseL1ValidatorBalanceTx =
 ## Next Steps
 
 - **[Wallet Methods](./wallet)** - General wallet operations
-- **[X-Chain Wallet Methods](./x-chain-wallet)** - X-Chain transaction preparation
-- **[C-Chain Wallet Methods](./c-chain-wallet)** - C-Chain atomic transactions
+- **[Exchange-Chain Wallet Methods](./x-chain-wallet)** - Exchange-Chain transaction preparation
+- **[LUExchange-Chain Wallet Methods](./c-chain-wallet)** - LUExchange-Chain atomic transactions
 - **[Account Management](../accounts)** - Account types and management

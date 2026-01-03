@@ -103,7 +103,7 @@ We need to pay for the fees of transactions that manipulate the state (deploying
 Do not send any funds on any public blockchain to the ewoq address. The funds will most likely be lost immediately.
 </Callout>
 
-When you create an Avalanche L1 you will be offered an option to configure the initial token allocation. The second option will allocate 1m tokens to that address so you can easily deploy all contracts and pay for the transactions from that address:
+When you create an Lux L1 you will be offered an option to configure the initial token allocation. The second option will allocate 1m tokens to that address so you can easily deploy all contracts and pay for the transactions from that address:
 
 ```bash
 ? How would you like to distribute funds: 
@@ -113,13 +113,13 @@ When you create an Avalanche L1 you will be offered an option to configure the i
     Go back to previous step
 ```
 
-The private key for the ewoq address is already stored in the environment variable $PK in the Avalanche Starter Kit. Therefore, we can easily access it by using the following flag for the transactions:
+The private key for the ewoq address is already stored in the environment variable $PK in the Lux Starter Kit. Therefore, we can easily access it by using the following flag for the transactions:
 
 ```bash
 --private-key $PK
 ```
 
-This address is obviously not suitable for any production use, since the private key is publicly known. We will look into how we can manage key for the deployment to the Fuji Testnet and the Mainnet later in this course.
+This address is obviously not suitable for any production use, since the private key is publicly known. We will look into how we can manage key for the deployment to the Testnet Testnet and the Mainnet later in this course.
 
 
 ## RPC URLs
@@ -130,30 +130,30 @@ To issue our transactions, we need to send them to an RPC server. You can put th
 --rpc-url local-c
 ```
 
-These aliases are defined in the foundry.toml file in the root of the Avalanche Starter Kit.
+These aliases are defined in the foundry.toml file in the root of the Lux Starter Kit.
 
 ```toml
 [profile.default]
-evm_version = "cancun"  # Required for Avalanche (Pectra not yet supported)
+evm_version = "cancun"  # Required for Lux (Pectra not yet supported)
 
 [rpc_endpoints]
 local-c = "http://localhost:9650/ext/bc/C/rpc"
 myblockchain = "http://localhost:9650/ext/bc/myblockchain/rpc"
-fuji-c = "https://api.avax-test.network/ext/bc/C/rpc"
-dispatch = "https://subnets.avax.network/dispatch/testnet/rpc"
+testnet-c = "https://api.lux-test.network/ext/bc/C/rpc"
+dispatch = "https://subnets.lux.network/dispatch/testnet/rpc"
 ```
 
-> **EVM Version Required**: The `evm_version = "cancun"` setting is required when deploying to Avalanche. Solidity v0.8.30+ defaults to Pectra, which uses opcodes not yet supported on Avalanche. Without this setting, your contracts may fail to deploy or behave unexpectedly.
+> **EVM Version Required**: The `evm_version = "cancun"` setting is required when deploying to Lux. Solidity v0.8.30+ defaults to Pectra, which uses opcodes not yet supported on Lux. Without this setting, your contracts may fail to deploy or behave unexpectedly.
 
 The RPC URLs defined by default are the following:
-- **local-c:** The C-Chain of your local Avalanche network
-- **myblockchain:** An Avalanche L1 on your local Avalanche network called myblockchain
-- **fuji-c:** The C-Chain of the Fuji Testnet
-- **dispatch:** An Avalanche L1 on the Fuji Testnet called Dispatch. It was specifically created for testing Avalanche Interchain Messaging dApps. 
+- **local-c:** The LUExchange-Chain of your local Lux network
+- **myblockchain:** An Lux L1 on your local Lux network called myblockchain
+- **testnet-c:** The LUExchange-Chain of the Testnet Testnet
+- **dispatch:** An Lux L1 on the Testnet Testnet called Dispatch. It was specifically created for testing Lux Interchain Messaging dApps. 
 
 The ability to use an RPC with the name of our L1 comes from the alias API in our nodes. You can read more about it [here](/docs/api-reference/admin-api#methods).
 
-Feel free to add more RPC URLs to Avalanche L1s you create. You can also add more aliases for the RPC URLs to make it easier for you to send transactions to them.
+Feel free to add more RPC URLs to Lux L1s you create. You can also add more aliases for the RPC URLs to make it easier for you to send transactions to them.
 
 ## Learn more about Foundry
 

@@ -11,16 +11,16 @@ export const metricsApi = createOpenAPI({
 });
 
 export const pChainApi = createOpenAPI({
-  // P-Chain RPC API
+  // Platform-Chain RPC API
   input: ['./public/openapi/platformvm.yaml'],
 });
 
 export const cChainApi = createOpenAPI({
-  // C-Chain RPC API
+  // LUExchange-Chain RPC API
   input: ['./public/openapi/coreth.yaml'],
 });
 
 export const xChainApi = createOpenAPI({
-  // X-Chain RPC API
+  // Exchange-Chain RPC API
   input: ['./public/openapi/xchain.yaml'],
 });

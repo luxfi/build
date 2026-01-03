@@ -1,15 +1,15 @@
 ---
 title: Networking Layer
-description: Understanding AvalancheGo's P2P networking, peer management, and message protocols.
+description: Understanding LuxGo's P2P networking, peer management, and message protocols.
 ---
 
-AvalancheGo uses a custom peer-to-peer (P2P) networking layer designed for high-throughput consensus messaging. This page covers the network architecture, peer management, and message protocols.
+LuxGo uses a custom peer-to-peer (P2P) networking layer designed for high-throughput consensus messaging. This page covers the network architecture, peer management, and message protocols.
 
 ## Network Overview
 
 <Mermaid chart={`
 graph TB
-    subgraph AvalancheGo_Node["AvalancheGo Node"]
+    subgraph LuxGo_Node["LuxGo Node"]
         NM[Network Manager]
         PM[Peer Manager]
         Router[Message Router]
@@ -22,9 +22,9 @@ graph TB
     end
 
     subgraph Chains["Chains"]
-        PC[P-Chain Handler]
-        CC[C-Chain Handler]
-        XC[X-Chain Handler]
+        PC[Platform-Chain Handler]
+        CC[LUExchange-Chain Handler]
+        XC[Exchange-Chain Handler]
     end
 
     P1 & P2 & P3 <--> PM
@@ -35,7 +35,7 @@ graph TB
 
 ## Network Interface
 
-The core network interface ([`network/network.go`](https://github.com/ava-labs/avalanchego/blob/master/network/network.go)) handles all P2P operations:
+The core network interface ([`network/network.go`](https://github.com/luxfi/luxgo/blob/master/network/network.go)) handles all P2P operations:
 
 ```go title="network/network.go"
 type Network interface {
@@ -65,7 +65,7 @@ type Network interface {
 
 ## Peer Discovery
 
-AvalancheGo discovers peers through multiple mechanisms:
+LuxGo discovers peers through multiple mechanisms:
 
 ### Bootstrap Nodes
 
@@ -154,7 +154,7 @@ stateDiagram-v2
 
 ### Message Types
 
-Messages are defined using Protocol Buffers ([`proto/p2p/p2p.proto`](https://github.com/ava-labs/avalanchego/blob/master/proto/p2p/p2p.proto)):
+Messages are defined using Protocol Buffers ([`proto/p2p/p2p.proto`](https://github.com/luxfi/luxgo/blob/master/proto/p2p/p2p.proto)):
 
 ```protobuf title="proto/p2p/p2p.proto"
 message Message {
@@ -239,7 +239,7 @@ Inbound app traffic is delivered to the VM's `AppRequest`/`AppResponse`/`AppGoss
 
 ## Message Routing
 
-The router ([`snow/networking/router`](https://github.com/ava-labs/avalanchego/tree/master/snow/networking/router)) directs messages to appropriate handlers:
+The router ([`snow/networking/router`](https://github.com/luxfi/luxgo/tree/master/snow/networking/router)) directs messages to appropriate handlers:
 
 ```go title="snow/networking/router/router.go"
 type Router interface {
@@ -271,7 +271,7 @@ type Handler interface {
 
 ### Inbound Throttling
 
-Protects nodes from message floods ([`network/throttling`](https://github.com/ava-labs/avalanchego/tree/master/network/throttling)):
+Protects nodes from message floods ([`network/throttling`](https://github.com/luxfi/luxgo/tree/master/network/throttling)):
 
 ```go title="network/throttling/inbound_msg_throttler.go"
 type InboundMsgThrottler interface {
@@ -329,7 +329,7 @@ type PeerInfo struct {
 
 ### Benchlisting
 
-Misbehaving peers are temporarily blacklisted ([`snow/networking/benchlist`](https://github.com/ava-labs/avalanchego/tree/master/snow/networking/benchlist)):
+Misbehaving peers are temporarily blacklisted ([`snow/networking/benchlist`](https://github.com/luxfi/luxgo/tree/master/snow/networking/benchlist)):
 
 ```go title="snow/networking/benchlist/benchlist.go"
 type Benchlist interface {
@@ -473,7 +473,7 @@ curl localhost:9650/ext/health
 
 <Cards>
   <Card title="Run a Node" href="/docs/nodes/run-a-node">
-    Set up and configure your own AvalancheGo node
+    Set up and configure your own LuxGo node
   </Card>
   <Card title="Node Configuration" href="/docs/nodes/configure/configs-flags">
     Full reference for network configuration options

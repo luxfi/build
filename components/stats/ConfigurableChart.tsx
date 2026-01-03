@@ -12,7 +12,7 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { toPng } from "html-to-image";
 import { ChartWatermark } from "@/components/stats/ChartWatermark";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 
 // Types
 interface TimeSeriesDataPoint {
@@ -146,13 +146,13 @@ const AVAILABLE_METRICS = [
   { id: "dailyRewards", name: "Daily Rewards" },
   { id: "cumulativeRewards", name: "Cumulative Rewards" },
   // Primary Network specific metrics
-  { id: "cChainFeesDaily", name: "C-Chain Fees" },
-  { id: "pChainFeesDaily", name: "P-Chain Fees" },
-  { id: "xChainFeesDaily", name: "X-Chain Fees" },
+  { id: "cChainFeesDaily", name: "LUExchange-Chain Fees" },
+  { id: "pChainFeesDaily", name: "Platform-Chain Fees" },
+  { id: "xChainFeesDaily", name: "Exchange-Chain Fees" },
   { id: "validatorFeesDaily", name: "Validator Fees" },
-  { id: "cumulativeCChainFees", name: "Cumulative C-Chain Fees" },
-  { id: "cumulativePChainFees", name: "Cumulative P-Chain Fees" },
-  { id: "cumulativeXChainFees", name: "Cumulative X-Chain Fees" },
+  { id: "cumulativeCChainFees", name: "Cumulative LUExchange-Chain Fees" },
+  { id: "cumulativePChainFees", name: "Cumulative Platform-Chain Fees" },
+  { id: "cumulativeXChainFees", name: "Cumulative Exchange-Chain Fees" },
   { id: "cumulativeValidatorFees", name: "Cumulative Validator Fees" },
   { id: "totalBurnDaily", name: "Burn" },
   { id: "cumulativeBurn", name: "Cumulative Burn" },
@@ -172,7 +172,7 @@ const PRIMARY_NETWORK_ONLY_METRICS = [
 const PRIMARY_NETWORK_OPTION = {
   chainId: "primary",
   chainName: "Primary Network",
-  chainLogoURI: "", // Will use Avalanche logo
+  chainLogoURI: "", // Will use Lux logo
 };
 
 export default function ConfigurableChart({
@@ -751,7 +751,7 @@ export default function ConfigurableChart({
     // Special handling for "All Chains" option
     const isAllChains = chainId === "all";
     const chain = isAllChains ? null : l1ChainsData.find((c) => c.chainId === chainId);
-    const chainColor = isAllChains ? "#E84142" : (chain?.color || DEFAULT_COLORS[0]);
+    const chainColor = isAllChains ? "#FFFFFF" : (chain?.color || DEFAULT_COLORS[0]);
 
     const seriesId = `${chainId}-${selectedMetric}`;
     const existingSeries = dataSeries.find((s) => s.id === seriesId);
@@ -820,15 +820,15 @@ export default function ConfigurableChart({
     chainId: "all",
     chainName: "All Chains",
     chainLogoURI: "",
-    color: "#E84142", // Avalanche red
+    color: "#FFFFFF", // Lux red
   };
 
-  // Avalanche C-Chain option for Avalanche-only metrics
-  const AVALANCHE_CCHAIN_OPTION = {
+  // Lux LUExchange-Chain option for Lux-only metrics
+  const LUX_CCHAIN_OPTION = {
     chainId: "43114",
-    chainName: "Avalanche C-Chain",
+    chainName: "Lux LUExchange-Chain",
     chainLogoURI: "",
-    color: "#E84142", // Avalanche red
+    color: "#FFFFFF", // Lux red
   };
 
   // Check if selected metric is Primary Network only
@@ -1175,7 +1175,7 @@ export default function ConfigurableChart({
                       <>
                         {series.chainId === "all" || series.chainId === "43114" || series.chainId === "primary" ? (
                           <div className="relative h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 flex items-center justify-center">
-                            <AvalancheLogo className="h-4 w-4 sm:h-5 sm:w-5" fill="#E84142" />
+                            <LuxLogo className="h-4 w-4 sm:h-5 sm:w-5" fill="#FFFFFF" />
                           </div>
                         ) : chain?.chainLogoURI && (
                           <div className="relative h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 rounded-full overflow-hidden ring-1 ring-gray-200 dark:ring-neutral-700">
@@ -1418,7 +1418,7 @@ export default function ConfigurableChart({
                         const seriesId = `${chain.chainId}-${selectedMetric}`;
                         const isAdded = dataSeries.some((s) => s.id === seriesId);
                         const isAllChains = chain.chainId === "all";
-                        const isAvalancheCChain = chain.chainId === "43114";
+                        const isLuxCChain = chain.chainId === "43114";
                         const isPrimaryNetwork = chain.chainId === "primary";
                         const isLastAllChains = isAllChains && index < filteredChains.length - 1 && filteredChains[index + 1].chainId !== "all";
                         
@@ -1430,9 +1430,9 @@ export default function ConfigurableChart({
                               }
                               className="w-full px-4 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center gap-2 text-sm"
                             >
-                              {isAllChains || isAvalancheCChain || isPrimaryNetwork ? (
+                              {isAllChains || isLuxCChain || isPrimaryNetwork ? (
                                 <div className="relative h-5 w-5 flex-shrink-0 flex items-center justify-center">
-                                  <AvalancheLogo className="h-5 w-5" fill="#E84142" />
+                                  <LuxLogo className="h-5 w-5" fill="#FFFFFF" />
                                 </div>
                               ) : chain.chainLogoURI ? (
                                 <div className="relative h-5 w-5 flex-shrink-0">

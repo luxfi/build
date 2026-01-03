@@ -1,6 +1,6 @@
 ---
 title: Making Your First x402 Payment
-description: Experience the complete x402 payment flow by making your first test payment on Avalanche Fuji.
+description: Experience the complete x402 payment flow by making your first test payment on Lux Testnet.
 updated: 2025-12-04
 authors: [Federico Nardelli]
 icon: Coins
@@ -23,12 +23,12 @@ With the starter kit running at `http://localhost:3000`:
 
 1. Click **"Connect Wallet"**
 2. Select Core Wallet
-3. Ensure you're on **Avalanche Fuji Testnet**
+3. Ensure you're on **Lux Testnet Testnet**
 4. Approve the connection
 5. Your wallet address should display
 
 Your wallet needs:
-- Fuji USDC (payment token)
+- Testnet USDC (payment token)
 
 If missing, return [here](/academy/blockchain/x402-payment-infrastructure/05-hands-on-implementation/01-environment-setup#step-7-get-test-usdc) for faucet instructions.
 
@@ -81,8 +81,8 @@ The response body shows payment requirements:
 **Key Fields**:
 - `maxAmountRequired`: "10000" = $0.01 USDC (6 decimals)
 - `payTo`: Merchant wallet receiving payment
-- `asset`: USDC contract address on Fuji
-- `network`: "avalanche-fuji"
+- `asset`: USDC contract address on Testnet
+- `network`: "lux-testnet"
 
 This tells the client exactly what payment is required.
 

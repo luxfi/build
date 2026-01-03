@@ -14,7 +14,7 @@ type Tree = DocsLayoutProps['tree'];
 interface AcademyDocsLayoutWrapperProps {
     children: ReactNode;
     defaultTree: Tree;
-    avalancheTree: Tree;
+    luxTree: Tree;
     blockchainTree: Tree;
     entrepreneurTree: Tree;
 }
@@ -22,7 +22,7 @@ interface AcademyDocsLayoutWrapperProps {
 export function AcademyDocsLayoutWrapper({
     children,
     defaultTree,
-    avalancheTree,
+    luxTree,
     blockchainTree,
     entrepreneurTree,
 }: AcademyDocsLayoutWrapperProps) {
@@ -35,11 +35,11 @@ export function AcademyDocsLayoutWrapper({
         if (pathname.startsWith('/academy/blockchain')) {
             return blockchainTree ?? defaultTree;
         }
-        if (pathname === '/academy' || pathname.startsWith('/academy/avalanche-l1')) {
-            return avalancheTree ?? defaultTree;
+        if (pathname === '/academy' || pathname.startsWith('/academy/lux-l1')) {
+            return luxTree ?? defaultTree;
         }
         return defaultTree;
-    }, [pathname, defaultTree, avalancheTree, blockchainTree, entrepreneurTree]);
+    }, [pathname, defaultTree, luxTree, blockchainTree, entrepreneurTree]);
 
     const academyOptions: DocsLayoutProps = useMemo(
         () => ({

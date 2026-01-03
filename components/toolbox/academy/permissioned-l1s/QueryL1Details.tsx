@@ -32,7 +32,7 @@ export default function QueryL1Details() {
   }
 
   return (
-    <Container title="Subnet Details" description="Query the data of the Subnet from the P-Chain using the Avalanche API">
+    <Container title="Subnet Details" description="Query the data of the Subnet from the Platform-Chain using the Lux API">
       <div className="relative z-0">
         {/* Background gradient effect - blue for both light and dark mode */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-transparent dark:from-blue-900/10 dark:to-cyan-900/5 pointer-events-none"></div>
@@ -149,7 +149,7 @@ export default function QueryL1Details() {
                                   {selection.subnet.l1ValidatorManagerDetails.contractAddress}
                                 </p>
                                 <a
-                                  href={`https://subnets.avax.network/c-chain/address/${selection.subnet.l1ValidatorManagerDetails.contractAddress}`}
+                                  href={`https://subnets.lux.network/c-chain/address/${selection.subnet.l1ValidatorManagerDetails.contractAddress}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="ml-1 p-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
@@ -163,13 +163,13 @@ export default function QueryL1Details() {
 
                         {selection.subnet.l1ConversionTransactionHash && (
                           <div className="mb-2">
-                            <span className="text-zinc-500 dark:text-zinc-400 text-xs">L1 Conversion P-Chain Transaction ID:</span>
+                            <span className="text-zinc-500 dark:text-zinc-400 text-xs">L1 Conversion Platform-Chain Transaction ID:</span>
                             <div className="flex items-center mt-1">
                               <p className="font-mono text-xs text-zinc-900 dark:text-zinc-100 truncate">
                                 {selection.subnet.l1ConversionTransactionHash}
                               </p>
                               <a
-                                href={`https://subnets.avax.network/p-chain/tx/${selection.subnet.l1ConversionTransactionHash}`}
+                                href={`https://subnets.lux.network/p-chain/tx/${selection.subnet.l1ConversionTransactionHash}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="ml-1 p-1 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"

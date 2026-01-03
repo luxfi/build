@@ -1,16 +1,16 @@
 ---
 title: Core Components
-description: Deep dive into AvalancheGo's package structure, startup flow, and how components interact.
+description: Deep dive into LuxGo's package structure, startup flow, and how components interact.
 ---
 
-This page provides a detailed overview of AvalancheGo's internal architecture, including the main packages, startup sequence, and how components communicate.
+This page provides a detailed overview of LuxGo's internal architecture, including the main packages, startup sequence, and how components communicate.
 
 ## Package Structure
 
-AvalancheGo is organized into well-defined packages, each responsible for specific functionality (top-level folders only):
+LuxGo is organized into well-defined packages, each responsible for specific functionality (top-level folders only):
 
 ```
-avalanchego/
+luxgo/
 ├── main/            # CLI entry point
 ├── app/             # Process lifecycle (signals, shutdown)
 ├── config/          # Flags/env/config parsing
@@ -21,7 +21,7 @@ avalanchego/
 ├── network/         # P2P stack
 ├── message/         # Message codecs
 ├── database/        # LevelDB/Pebble/memdb backends
-├── graft/           # Grafted Coreth (C-Chain EVM)
+├── graft/           # Grafted Coreth (LUExchange-Chain EVM)
 ├── subnets/         # Subnet configs and validator utilities
 ├── staking/         # TLS/BLS staking keys and POP
 ├── upgrade/         # Network upgrade rules
@@ -32,7 +32,7 @@ avalanchego/
 
 ## Startup Flow
 
-When you run AvalancheGo, the following initialization sequence occurs:
+When you run LuxGo, the following initialization sequence occurs:
 
 <Mermaid chart={`
 sequenceDiagram
@@ -56,7 +56,7 @@ sequenceDiagram
 
 ### 1. Configuration Parsing
 
-[View source on GitHub](https://github.com/ava-labs/avalanchego/blob/master/main/main.go)
+[View source on GitHub](https://github.com/luxfi/luxgo/blob/master/main/main.go)
 
 ```go title="main/main.go"
 func main() {
@@ -103,13 +103,13 @@ func main() {
 ```
 
 The configuration system supports:
-- **Command-line flags**: `--network-id=fuji`, `--http-port=9650`
-- **Config file**: Pass `--config-file=/path/to/file`. The installer writes `~/.avalanchego/configs/node.json`; source builds do not create a default file.
+- **Command-line flags**: `--network-id=testnet`, `--http-port=9650`
+- **Config file**: Pass `--config-file=/path/to/file`. The installer writes `~/.luxgo/configs/node.json`; source builds do not create a default file.
 - **Environment variables**: Prefixed with `AVAGO_`
 
 ### 2. Node Initialization
 
-The `Node` struct in [`node/node.go`](https://github.com/ava-labs/avalanchego/blob/master/node/node.go) orchestrates all components:
+The `Node` struct in [`node/node.go`](https://github.com/luxfi/luxgo/blob/master/node/node.go) orchestrates all components:
 
 ```go title="node/node.go"
 type Node struct {
@@ -172,7 +172,7 @@ n.VMManager.RegisterFactory(ctx, constants.EVMID, &coreth.Factory{})
 
 ### Chain Creation
 
-When a new chain needs to be created (e.g., during P-Chain bootstrap):
+When a new chain needs to be created (e.g., during Platform-Chain bootstrap):
 
 ```go
 type ChainParameters struct {
@@ -181,7 +181,7 @@ type ChainParameters struct {
     GenesisData []byte      // Genesis state
     VMID        ids.ID      // Which VM to run
     FxIDs       []ids.ID    // Feature extensions
-    CustomBeacons validators.Manager // Optional: bootstrap peers for P-Chain
+    CustomBeacons validators.Manager // Optional: bootstrap peers for Platform-Chain
 }
 ```
 
@@ -201,16 +201,16 @@ func (vm *VM) CreateHandlers(ctx context.Context) (map[string]http.Handler, erro
 
 ## Chain Manager
 
-The Chain Manager ([`chains/manager.go`](https://github.com/ava-labs/avalanchego/blob/master/chains/manager.go)) is responsible for:
+The Chain Manager ([`chains/manager.go`](https://github.com/luxfi/luxgo/blob/master/chains/manager.go)) is responsible for:
 
-1. **Creating chains** when requested by the P-Chain
+1. **Creating chains** when requested by the Platform-Chain
 2. **Managing chain lifecycle** (start, stop, restart)
 3. **Handling bootstrapping** and state sync
 4. **Routing messages** between chains and the network
 
 ```go title="chains/manager.go"
 type Manager interface {
-    // Queue a chain to be created after P-Chain bootstraps
+    // Queue a chain to be created after Platform-Chain bootstraps
     QueueChainCreation(ChainParameters)
 
     // Check if a chain has finished bootstrapping
@@ -240,7 +240,7 @@ stateDiagram-v2
 
 ## Database Layer
 
-AvalancheGo supports multiple database backends:
+LuxGo supports multiple database backends:
 
 ### Database Backends
 
@@ -292,7 +292,7 @@ sequenceDiagram
 
 ## Health Checks
 
-AvalancheGo exposes health checks at `/ext/health`:
+LuxGo exposes health checks at `/ext/health`:
 
 ```go
 type Checker interface {
@@ -314,23 +314,23 @@ Prometheus metrics are exposed at `/ext/metrics`:
 ```go
 // Example metrics namespaces
 const (
-    networkNamespace = "avalanche_network"
-    dbNamespace      = "avalanche_db"
-    consensusNS      = "avalanche_snowman"
+    networkNamespace = "lux_network"
+    dbNamespace      = "lux_db"
+    consensusNS      = "lux_snowman"
 )
 ```
 
 Key metrics include:
-- `avalanche_network_peers`: Connected peer count
-- `avalanche_db_*`: Database operations
-- `avalanche_snowman_*`: Consensus metrics
-- `avalanche_api_*`: API request metrics
+- `lux_network_peers`: Connected peer count
+- `lux_db_*`: Database operations
+- `lux_snowman_*`: Consensus metrics
+- `lux_api_*`: API request metrics
 
 ## Next Steps
 
 <Cards>
   <Card title="Consensus Protocols" href="/docs/nodes/architecture/consensus">
-    Learn how Snowman and Avalanche consensus work
+    Learn how Snowman and Lux consensus work
   </Card>
   <Card title="Virtual Machines" href="/docs/nodes/architecture/virtual-machines">
     Understand VM architecture and interfaces

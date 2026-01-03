@@ -11,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { buildBlockUrl, buildTxUrl, buildAddressUrl } from "@/utils/eip3091";
 import { useExplorer } from "@/components/explorer/ExplorerContext";
 import { formatTokenValue } from "@/utils/formatTokenValue";
-import { formatPrice, formatAvaxPrice } from "@/utils/formatPrice";
+import { formatPrice, formatLuxPrice } from "@/utils/formatPrice";
 import l1ChainsData from "@/constants/l1-chains.json";
 import { ChainChip, ChainInfo } from "@/components/stats/ChainChip";
 import { getL1ListStore, L1ListItem } from "@/components/toolbox/stores/l1ListStore";
@@ -78,7 +78,7 @@ interface Block {
   gasLimit: string;
   baseFeePerGas?: string;
   gasFee?: string; // Gas fee in native token
-  timestampMilliseconds?: number; // Avalanche-specific: block timestamp in milliseconds
+  timestampMilliseconds?: number; // Lux-specific: block timestamp in milliseconds
 }
 
 interface Transaction {
@@ -100,7 +100,7 @@ interface ExplorerStats {
   latestBlock: number;
   totalTransactions: number;
   avgBlockTime?: number; // Average block time in seconds
-  avgBlockTimeMs?: number; // Average block time in milliseconds (Avalanche-specific)
+  avgBlockTimeMs?: number; // Average block time in milliseconds (Lux-specific)
   avgBlockTimeBlockSpan?: number; // Number of blocks used to calculate avgBlockTime
   gasPrice: string;
   lastFinalizedBlock?: number;
@@ -114,7 +114,7 @@ interface TransactionHistoryPoint {
 
 interface PriceData {
   price: number;
-  priceInAvax?: number;
+  priceInLux?: number;
   change24h: number;
   marketCap: number;
   volume24h: number;
@@ -644,7 +644,7 @@ export default function L1ExplorerPage({
   const INITIAL_BLOCKS_COUNT = 10;
   const MIN_BLOCKS_FOR_BPS = INITIAL_BLOCKS_COUNT * 2;
   
-  const avalancheBlocksPerSecond = useMemo(() => {
+  const luxBlocksPerSecond = useMemo(() => {
     // Need at least MIN_BLOCKS_FOR_BPS blocks with timestampMilliseconds for accurate calculation
     const blocksWithTime = accumulatedBlocks.filter(b => b.timestampMilliseconds !== undefined);
     if (blocksWithTime.length < MIN_BLOCKS_FOR_BPS) return null;
@@ -755,9 +755,9 @@ export default function L1ExplorerPage({
                       <span className="text-base font-bold text-zinc-900 dark:text-white">
                         {formatPrice(data.price.price)}
                       </span>
-                      {data.price.priceInAvax && (
+                      {data.price.priceInLux && (
                         <span className="text-[11px] text-zinc-500">
-                          @ {formatAvaxPrice(data.price.priceInAvax)} AVAX
+                          @ {formatLuxPrice(data.price.priceInLux)} LUX
                         </span>
                       )}
                       <span className={`text-[11px] ${data.price.change24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
@@ -854,13 +854,13 @@ export default function L1ExplorerPage({
                     <span className="text-base font-bold text-zinc-900 dark:text-white">
                       <AnimatedBlockNumber value={data?.stats.latestBlock || 0} />
                     </span>
-                    {/* Show blocks/sec for Avalanche C-Chain */}
+                    {/* Show blocks/sec for Lux LUExchange-Chain */}
                     {(
-                      avalancheBlocksPerSecond !== null ? (
+                      luxBlocksPerSecond !== null ? (
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <span className="text-[11px] text-zinc-500 cursor-help border-b border-dashed border-zinc-400 dark:border-zinc-500">
-                              ({avalancheBlocksPerSecond} blks/s)
+                              ({luxBlocksPerSecond} blks/s)
                             </span>
                           </TooltipTrigger>
                           <TooltipContent>
@@ -909,7 +909,7 @@ export default function L1ExplorerPage({
                     </div>
                     <div className="text-base font-bold text-zinc-900 dark:text-white">
                       {data.stats.avgBlockTimeMs !== undefined ? (
-                        // Show millisecond precision for Avalanche
+                        // Show millisecond precision for Lux
                         `${data.stats.avgBlockTimeMs.toFixed(2)} ms`
                       ) : (
                         // Show second precision for other chains

@@ -23,7 +23,7 @@ export async function generateMetadata({
 
   if (!currentChain) {
     return {
-      title: `Chain Not Found | Avalanche L1`,
+      title: `Chain Not Found | Lux L1`,
       description: `Chain data not available.`,
     };
   }

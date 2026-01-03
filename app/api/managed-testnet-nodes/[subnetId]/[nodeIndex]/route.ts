@@ -42,7 +42,7 @@ async function handleGetNode(subnetId: string, nodeIndex: number): Promise<NextR
 
 /**
  * DELETE /api/managed-testnet-nodes/[subnetId]/[nodeIndex]
- * Deletes a node from the external Builder Hub first, then marks the DB record as terminated.
+ * Deletes a node from the external Lux Build first, then marks the DB record as terminated.
  */
 async function handleDeleteNode(subnetId: string, nodeIndex: number): Promise<NextResponse> {
   const auth = await getUserId();
@@ -65,10 +65,10 @@ async function handleDeleteNode(subnetId: string, nodeIndex: number): Promise<Ne
       }
     });
 
-    // Attempt to delete from Builder Hub (even if no local record) then, if local exists, mark terminated
+    // Attempt to delete from Lux Build (even if no local record) then, if local exists, mark terminated
     const password = process.env.MANAGED_TESTNET_NODE_SERVICE_PASSWORD;
     if (!password) {
-      return jsonError(503, 'Builder Hub service is not configured');
+      return jsonError(503, 'Lux Build service is not configured');
     }
     
     try {
@@ -96,8 +96,8 @@ async function handleDeleteNode(subnetId: string, nodeIndex: number): Promise<Ne
           success: true,
           deletedExternally: response.status !== 404,
           message: response.status === 404
-            ? 'Node was already deleted / expired in Builder Hub. It is now removed from your account.'
-            : 'Node deleted in Builder Hub and removed from your account.',
+            ? 'Node was already deleted / expired in Lux Build. It is now removed from your account.'
+            : 'Node deleted in Lux Build and removed from your account.',
           node: nodeRegistration ? {
             subnet_id: subnetId,
             node_index: nodeIndex,
@@ -106,12 +106,12 @@ async function handleDeleteNode(subnetId: string, nodeIndex: number): Promise<Ne
         });
       }
 
-      const message = await extractServiceErrorMessage(response) || 'Failed to delete node from Builder Hub.';
+      const message = await extractServiceErrorMessage(response) || 'Failed to delete node from Lux Build.';
       return jsonError(502, message);
 
     } catch (hubError) {
-      console.error('Builder Hub request failed:', hubError);
-      return jsonError(503, 'Builder Hub was unreachable.', hubError);
+      console.error('Lux Build request failed:', hubError);
+      return jsonError(503, 'Lux Build was unreachable.', hubError);
     }
 
   } catch (error) {

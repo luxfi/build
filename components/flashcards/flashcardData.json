@@ -130,18 +130,18 @@
             },
             {
                 "term": "Ecosystem Fit",
-                "definition": "How well your project addresses a specific gap or need in the Avalanche ecosystem",
-                "example": "Building privacy solutions that enable real-world business transactions on Avalanche"
+                "definition": "How well your project addresses a specific gap or need in the Lux ecosystem",
+                "example": "Building privacy solutions that enable real-world business transactions on Lux"
             },
             {
                 "term": "Proof of Shipping",
                 "definition": "Evidence that demonstrates your ability to execute and deliver on your roadmap",
-                "example": "A working prototype on Fuji testnet that shows core functionality"
+                "example": "A working prototype on Testnet testnet that shows core functionality"
             },
             {
                 "term": "Grant Hunting",
                 "definition": "Applying for grants across multiple ecosystems without customization or commitment",
-                "example": "Submitting identical proposals to Avalanche, Solana, and Ethereum without blockchain-specific considerations"
+                "example": "Submitting identical proposals to Lux, Solana, and Ethereum without blockchain-specific considerations"
             },
             {
                 "term": "Business Development Support",
@@ -254,7 +254,7 @@
             {
                 "term": "Iterative Content Process",
                 "definition": "Testing content ideas on a small scale before expanding",
-                "example": "Avalanche tested a simple 'Triangle adoption' post to gauge community response before launching a full campaign"
+                "example": "Lux tested a simple 'Triangle adoption' post to gauge community response before launching a full campaign"
             },
             {
                 "term": "Event Planning Compass",

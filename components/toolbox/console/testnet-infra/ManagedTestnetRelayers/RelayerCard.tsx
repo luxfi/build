@@ -84,9 +84,9 @@ export default function RelayerCard({
 
     // Helper to get chain info from L1 list or fallback
     const getChainInfo = (config: typeof relayer.configs[0]) => {
-        // First check if it's C-Chain
-        if (config.rpcUrl.includes('avax-test.network') || config.subnetId === '11111111111111111111111111111111LpoYY') {
-            return { name: 'C-Chain (Fuji)', coinName: 'AVAX' };
+        // First check if it's LUExchange-Chain
+        if (config.rpcUrl.includes('lux-test.network') || config.subnetId === '11111111111111111111111111111111LpoYY') {
+            return { name: 'LUExchange-Chain (Testnet)', coinName: 'LUX' };
         }
         
         // Look up in L1 list by blockchain ID
@@ -154,7 +154,7 @@ export default function RelayerCard({
             // Get chain info for the transaction
             const chainInfo = getChainInfo(config);
             const l1 = l1List.find((item: L1ListItem) => item.id === config.blockchainId);
-            const evmChainId = l1?.evmChainId || (config.rpcUrl.includes('avax-test.network') ? 43113 : parseInt(config.blockchainId.slice(0, 8), 16));
+            const evmChainId = l1?.evmChainId || (config.rpcUrl.includes('lux-test.network') ? 43113 : parseInt(config.blockchainId.slice(0, 8), 16));
 
             const viemChain: Chain = {
                 id: evmChainId,

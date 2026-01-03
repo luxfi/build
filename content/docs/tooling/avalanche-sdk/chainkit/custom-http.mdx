@@ -11,8 +11,8 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be us
 The following example shows how to use the `beforeRequest` hook to to add a custom header and a timeout to requests and how to use the `requestError` hook to log errors:
 
 ```javascript
-import { Avalanche } from "@avalanche-sdk/chainkit";
-import { HTTPClient } from "@avalanche-sdk/chainkit/lib/http";
+import { Lux } from "@lux-sdk/chainkit";
+import { HTTPClient } from "@lux-sdk/chainkit/lib/http";
 
 const httpClient = new HTTPClient({
   // fetcher takes a function that has the same signature as native `fetch`.
@@ -38,5 +38,5 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Avalanche({ httpClient });
+const sdk = new Lux({ httpClient });
 ```

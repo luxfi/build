@@ -10,22 +10,22 @@ const support = [
     id: 1,
     title: "Academy <strong>Telegram</strong>.",
     description:
-      "Get direct technical support from our Developer Relations team while building on Avalanche.",
-    href: "https://t.me/avalancheacademy"
+      "Get direct technical support from our Developer Relations team while building on Lux.",
+    href: "https://t.me/luxacademy"
   },
   {
     id: 2,
     title: "<strong>X</strong>.",
     description:
-      "Follow the official Avalanche Developers handle on X for latest news and development updates.",
-    href: "https://x.com/AvaxDevelopers"
+      "Follow the official Lux Developers handle on X for latest news and development updates.",
+    href: "https://x.com/LuxDevelopers"
   },
   {
     id: 3,
-    title: "Avalanche <strong>Support</strong>.",
+    title: "Lux <strong>Support</strong>.",
     description:
-      "Get direct answers and support for everything related to Avalanche: Network Basics, Wallets, Explorers, Staking, etc.",
-    href: "https://support.avax.network/"
+      "Get direct answers and support for everything related to Lux: Network Basics, Wallets, Explorers, Staking, etc.",
+    href: "https://support.lux.network/"
   }
 ];
 

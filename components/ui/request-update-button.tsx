@@ -21,12 +21,12 @@ const RequestUpdateButton: React.FC<RequestUpdateButtonProps> = ({
   className,
 }) => {
   const issueUrl = newGithubIssueUrl({
-    user: 'ava-labs',
-    repo: 'builders-hub',
+    user: 'luxfi',
+    repo: 'lux-build',
     title: title || `Outdated Information on ${pagePath || 'this page'}`,
     body: `It appears that the information on this page might be outdated. Please review and update as needed.
 
-Page: [${pagePath || 'Unknown'}](https://docs.avax.network${pagePath})
+Page: [${pagePath || 'Unknown'}](https://docs.lux.network${pagePath})
 
 [Provide more details here...]`,
     labels: ['outdated', 'Docs'],

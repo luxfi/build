@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { StatsBubbleNav } from "@/components/stats/stats-bubble.config";
 import l1ChainsData from "@/constants/l1-chains.json";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import NetworkDiagram, {
   ChainCosmosData,
   ICMFlowRoute,
@@ -253,7 +253,7 @@ interface OverviewMetrics {
   last_updated: number;
 }
 
-interface AvaxSupplyData {
+interface LuxSupplyData {
   totalPBurned: string;
   totalCBurned: string;
   totalXBurned: string;
@@ -262,7 +262,7 @@ interface AvaxSupplyData {
 
 type SortDirection = "asc" | "desc";
 
-export default function AvalancheMetrics() {
+export default function LuxMetrics() {
   const { resolvedTheme } = useTheme();
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
@@ -283,7 +283,7 @@ export default function AvalancheMetrics() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
   const categoryDropdownRef = useRef<HTMLDivElement>(null);
-  const [avaxSupplyData, setAvaxSupplyData] = useState<AvaxSupplyData | null>(null);
+  const [luxSupplyData, setLuxSupplyData] = useState<LuxSupplyData | null>(null);
 
   // Table view state
   const [tableView, setTableView] = useState<TableView>("summary");
@@ -296,20 +296,20 @@ export default function AvalancheMetrics() {
     setIsMounted(true);
   }, []);
 
-  // Fetch AVAX supply data for burned amounts and L1 validator fees
+  // Fetch LUX supply data for burned amounts and L1 validator fees
   useEffect(() => {
-    const fetchAvaxSupply = async () => {
+    const fetchLuxSupply = async () => {
       try {
-        const response = await fetch("/api/avax-supply");
+        const response = await fetch("/api/lux-supply");
         if (response.ok) {
           const data = await response.json();
-          setAvaxSupplyData(data);
+          setLuxSupplyData(data);
         }
       } catch (err) {
-        console.error("Error fetching AVAX supply data:", err);
+        console.error("Error fetching LUX supply data:", err);
       }
     };
-    fetchAvaxSupply();
+    fetchLuxSupply();
   }, []);
 
   // Fetch validator stats when switching to validators view
@@ -900,7 +900,7 @@ export default function AvalancheMetrics() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
       {/* Hero - Clean typographic approach */}
       <div className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
-        {/* Avalanche gradient decoration */}
+        {/* Lux gradient decoration */}
         <div
           className="absolute top-0 right-0 w-2/3 h-full pointer-events-none"
           style={{
@@ -924,12 +924,12 @@ export default function AvalancheMetrics() {
           <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-8">
             <div>
               <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                <AvalancheLogo
+                <LuxLogo
                   className="w-5 h-5 sm:w-6 sm:h-6"
                   fill="currentColor"
                 />
                 <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                  Avalanche Ecosystem
+                  Lux Ecosystem
                 </p>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
@@ -952,7 +952,7 @@ export default function AvalancheMetrics() {
                 size="sm"
                 onClick={() =>
                   window.open(
-                    "https://github.com/ava-labs/builders-hub/blob/master/constants/l1-chains.json",
+                    "https://github.com/luxfi/lux-build/blob/master/constants/l1-chains.json",
                     "_blank"
                   )
                 }
@@ -1075,13 +1075,13 @@ export default function AvalancheMetrics() {
                 Validation Fees:
               </span>
               <div className="flex items-center gap-1">
-                <AvalancheLogo
+                <LuxLogo
                   className="w-3 h-3 sm:w-4 sm:h-4"
                   fill="currentColor"
                 />
                 <span className="text-xs sm:text-sm font-medium text-zinc-900 dark:text-white">
-                  {avaxSupplyData
-                    ? Math.round(parseFloat(avaxSupplyData.l1ValidatorFees)).toLocaleString()
+                  {luxSupplyData
+                    ? Math.round(parseFloat(luxSupplyData.l1ValidatorFees)).toLocaleString()
                     : "—"}
                 </span>
               </div>
@@ -1092,16 +1092,16 @@ export default function AvalancheMetrics() {
                 Fees Burned:
               </span>
               <div className="flex items-center gap-1">
-                <AvalancheLogo
+                <LuxLogo
                   className="w-3 h-3 sm:w-4 sm:h-4"
                   fill="currentColor"
                 />
                 <span className="text-xs sm:text-sm font-medium text-zinc-900 dark:text-white">
-                  {avaxSupplyData
+                  {luxSupplyData
                     ? Math.round(
-                        parseFloat(avaxSupplyData.totalPBurned) +
-                        parseFloat(avaxSupplyData.totalCBurned) +
-                        parseFloat(avaxSupplyData.totalXBurned)
+                        parseFloat(luxSupplyData.totalPBurned) +
+                        parseFloat(luxSupplyData.totalCBurned) +
+                        parseFloat(luxSupplyData.totalXBurned)
                       ).toLocaleString()
                     : "—"}
                 </span>

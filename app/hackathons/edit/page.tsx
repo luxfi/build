@@ -1221,7 +1221,7 @@ const HackathonsEdit = () => {
     const imageFields = ['banner', 'icon', 'small_banner'];
     for (const field of imageFields) {
       if (processedData[field] && processedData[field].startsWith('data:image/')) {
-        const fileName = `builders-hub/hackathon-images/${processedData.title.toLowerCase().replace(/ /g, '-')}/${processedData.title}-${field}-${Date.now()}.${processedData[field].split(';')[0].split('/')[1]}`;
+        const fileName = `lux-build/hackathon-images/${processedData.title.toLowerCase().replace(/ /g, '-')}/${processedData.title}-${field}-${Date.now()}.${processedData[field].split(';')[0].split('/')[1]}`;
         try {
           console.log({fileName})
           processedData[field] = await uploadBase64ToVercel(processedData[field], fileName);
@@ -1236,7 +1236,7 @@ const HackathonsEdit = () => {
       for (let i = 0; i < processedData.content.speakers.length; i++) {
         const speaker = processedData.content.speakers[i];
         if (speaker.picture && speaker.picture.startsWith('data:image/')) {
-          const fileName = `builders-hub/hackathon-images/${processedData.title.toLowerCase().replace(/ /g, '-')}/speaker-${i}-${Date.now()}.${speaker.picture.split(';')[0].split('/')[1]}`;
+          const fileName = `lux-build/hackathon-images/${processedData.title.toLowerCase().replace(/ /g, '-')}/speaker-${i}-${Date.now()}.${speaker.picture.split(';')[0].split('/')[1]}`;
           try {
             processedData.content.speakers[i].picture = await uploadBase64ToVercel(speaker.picture, fileName);
             console.log(`Uploaded speaker ${i} picture to Vercel storage:`, processedData.content.speakers[i].picture);
@@ -1445,13 +1445,13 @@ const HackathonsEdit = () => {
 
   const loadMockData = () => {
     setFormDataMain({
-      title: "Avalanche 2025",
-      description: "Build the future of Web3 on Avalanche. Join us for an exciting hackathon where we will create innovative blockchain solutions.",
+      title: "Lux 2025",
+      description: "Build the future of Web3 on Lux. Join us for an exciting hackathon where we will create innovative blockchain solutions.",
       location: "Virtual & In-Person Events Worldwide",
       total_prizes: 10000,
-      tags: ["Blockchain", "Web3", "DeFi", "NFT", "Avalanche"],
+      tags: ["Blockchain", "Web3", "DeFi", "NFT", "Lux"],
       participants: 100,
-      organizers: "Avalanche Foundation & Partners",
+      organizers: "Lux Foundation & Partners",
       is_public: false
     });
 
@@ -1459,9 +1459,9 @@ const HackathonsEdit = () => {
       start_date: "2025-10-15T09:00",
       end_date: "2025-10-17T18:00",
       timezone: "America/New_York",
-      banner: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/Avalanche%20Chile/bannerchilehor.png",
-      icon: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/Avalanche%20Chile/bannerchilehor.png",
-      small_banner: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/Avalanche%20Chile/bannerchile.png"
+      banner: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/Lux%20Chile/bannerchilehor.png",
+      icon: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/Lux%20Chile/bannerchilehor.png",
+      small_banner: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/Lux%20Chile/bannerchile.png"
     });
 
     setFormDataContent({
@@ -1470,15 +1470,15 @@ const HackathonsEdit = () => {
           icon: "wrench",
           logo: "wrench",
           name: "DeFi Innovation",
-          partner: "Avalanche",
-          description: "<b>DeFi Innovation:</b> Build the next generation of decentralized finance protocols. Create lending platforms, DEXs, yield farming strategies, or novel DeFi primitives that leverage Avalanche's high-speed, low-cost infrastructure.",
-          short_description: "Build innovative DeFi protocols and applications on Avalanche."
+          partner: "Lux",
+          description: "<b>DeFi Innovation:</b> Build the next generation of decentralized finance protocols. Create lending platforms, DEXs, yield farming strategies, or novel DeFi primitives that leverage Lux's high-speed, low-cost infrastructure.",
+          short_description: "Build innovative DeFi protocols and applications on Lux."
         },
         {
           icon: "shield",
           logo: "shield", 
           name: "Security & Privacy",
-          partner: "Avalanche",
+          partner: "Lux",
           description: "<b>Security & Privacy:</b> Develop cutting-edge security solutions and privacy-preserving technologies. Build secure wallets, privacy protocols, or tools that enhance the security and privacy of blockchain applications.",
           short_description: "Create security solutions and privacy-preserving technologies."
         },
@@ -1486,9 +1486,9 @@ const HackathonsEdit = () => {
           icon: "gamepad2",
           logo: "gamepad2",
           name: "Gaming & NFTs",
-          partner: "Avalanche",
+          partner: "Lux",
           description: "<b>Gaming & NFTs:</b> Revolutionize gaming with blockchain technology. Create play-to-earn games, NFT marketplaces, gaming infrastructure, or tools that bridge traditional gaming with Web3.",
-          short_description: "Build gaming applications and NFT platforms on Avalanche."
+          short_description: "Build gaming applications and NFT platforms on Lux."
         }
       ],
       schedule: [
@@ -1498,7 +1498,7 @@ const HackathonsEdit = () => {
           name: "Opening Ceremony & Keynote",
           category: "Registration",
           location: "Main Stage",
-          description: "Welcome to Avalanche Hackathon 2025! Join us for an inspiring opening ceremony with keynote speakers from the Avalanche ecosystem.",
+          description: "Welcome to Lux Hackathon 2025! Join us for an inspiring opening ceremony with keynote speakers from the Lux ecosystem.",
           duration: 60
         },
         {
@@ -1513,10 +1513,10 @@ const HackathonsEdit = () => {
         {
           url: null,
           date: "2025-10-15T14:00",
-          name: "Technical Workshop: Building on Avalanche",
+          name: "Technical Workshop: Building on Lux",
           category: "Workshop",
           location: "Workshop Room A",
-          description: "Learn the fundamentals of building on Avalanche, including smart contract development and deployment.",
+          description: "Learn the fundamentals of building on Lux, including smart contract development and deployment.",
           duration: 120
         },
         {
@@ -1534,7 +1534,7 @@ const HackathonsEdit = () => {
           name: "Project Presentations",
           category: "Judging",
           location: "Main Stage",
-          description: "Present your projects to judges and the community. Showcase your innovative solutions built on Avalanche.",
+          description: "Present your projects to judges and the community. Showcase your innovative solutions built on Lux.",
           duration: 240
         }
       ],
@@ -1543,33 +1543,33 @@ const HackathonsEdit = () => {
           icon: "Megaphone",
           name: "Dr. Emin Gün Sirer",
           category: "Keynote Speaker",
-          picture: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/2259ff3def815083bf765c53d57327dc-1657109283036.jpg"
+          picture: "https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/2259ff3def815083bf765c53d57327dc-1657109283036.jpg"
         }
       ],
       resources: [
         {
           icon: "BookOpen",
-          link: "https://docs.avax.network",
-          title: "Avalanche Documentation",
-          description: "Complete guide to building on Avalanche"
+          link: "https://docs.lux.network",
+          title: "Lux Documentation",
+          description: "Complete guide to building on Lux"
         },
         {
           icon: "Github",
-          link: "https://github.com/ava-labs",
-          title: "Avalanche GitHub",
+          link: "https://github.com/luxfi",
+          title: "Lux GitHub",
           description: "Open source repositories and examples"
         },
         {
           icon: "MessageCircle",
-          link: "https://discord.gg/avalancheavax",
-          title: "Avalanche Discord",
+          link: "https://discord.gg/luxlux",
+          title: "Lux Discord",
           description: "Join the community for support and discussions"
         }
       ],
       address: "Virtual Event - Join from anywhere in the world!",
       partners: [],
-      tracks_text: "# 🚀 Avalanche Hackathon 2025\n\n## Welcome to the Future of Web3\n\nJoin us for an incredible 48-hour hackathon where developers, designers, and entrepreneurs come together to build the next generation of blockchain applications on **Avalanche**.\n\n### 🎯 What We're Looking For\n\n- **Innovation**: Breakthrough ideas that push the boundaries of what's possible\n- **Technical Excellence**: Well-architected, secure, and scalable solutions\n- **User Experience**: Applications that are intuitive and accessible to everyone\n- **Real-World Impact**: Solutions that solve actual problems and create value\n\n### 🏆 Prizes & Recognition\n\n- **1st Place**: $25,000 + Incubation Program\n- **2nd Place**: $15,000 + Mentorship\n- **3rd Place**: $10,000 + Community Support\n- **Special Tracks**: Additional prizes for DeFi, Gaming, and Security innovations\n\n### 🤝 Community & Support\n\nOur team of mentors, technical experts, and community members will be available throughout the hackathon to help you succeed. Don't hesitate to reach out for guidance, technical support, or just to chat about your ideas!\n\n---\n\n**Ready to build the future? Let's make it happen together!** 🚀",
-      speakers_text: "Students will have access to the Avalanche Academy curriculum, as well as Avalanche documentation and the Avalanche faucet.",
+      tracks_text: "# 🚀 Lux Hackathon 2025\n\n## Welcome to the Future of Web3\n\nJoin us for an incredible 48-hour hackathon where developers, designers, and entrepreneurs come together to build the next generation of blockchain applications on **Lux**.\n\n### 🎯 What We're Looking For\n\n- **Innovation**: Breakthrough ideas that push the boundaries of what's possible\n- **Technical Excellence**: Well-architected, secure, and scalable solutions\n- **User Experience**: Applications that are intuitive and accessible to everyone\n- **Real-World Impact**: Solutions that solve actual problems and create value\n\n### 🏆 Prizes & Recognition\n\n- **1st Place**: $25,000 + Incubation Program\n- **2nd Place**: $15,000 + Mentorship\n- **3rd Place**: $10,000 + Community Support\n- **Special Tracks**: Additional prizes for DeFi, Gaming, and Security innovations\n\n### 🤝 Community & Support\n\nOur team of mentors, technical experts, and community members will be available throughout the hackathon to help you succeed. Don't hesitate to reach out for guidance, technical support, or just to chat about your ideas!\n\n---\n\n**Ready to build the future? Let's make it happen together!** 🚀",
+      speakers_text: "Students will have access to the Lux Academy curriculum, as well as Lux documentation and the Lux faucet.",
       join_custom_link: "",
       join_custom_text: "Join now",
       judging_guidelines: "Projects will be evaluated based on innovation, technical implementation, user experience, and potential impact.",
@@ -1754,7 +1754,7 @@ const HackathonsEdit = () => {
                   <Input
                     type="text"
                     name="title"
-                    placeholder="e.g., Avalanche Hackathon 2025, Build on Avalanche"
+                    placeholder="e.g., Lux Hackathon 2025, Build on Lux"
                     value={formDataMain.title}
                     onChange={(e) => {
                       setFormDataMain(prev => ({ ...prev, title: e.target.value }));
@@ -2077,7 +2077,7 @@ const HackathonsEdit = () => {
                   <Input
                     type="text"
                     name="organizers"
-                    placeholder="e.g., Avalanche Foundation, DevRel Team"
+                    placeholder="e.g., Lux Foundation, DevRel Team"
                     value={formDataMain.organizers || ''}
                     onChange={(e) => {
                       setFormDataMain(prev => ({ ...prev, organizers: e.target.value }));

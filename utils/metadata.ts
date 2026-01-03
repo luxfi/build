@@ -6,9 +6,9 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://build.avax.network',
+      url: 'https://lux.build',
       images: '/logo.png',
-      siteName: 'Avalanche Builder Hub',
+      siteName: 'Lux Build',
       ...override.openGraph,
     },
     twitter: {
@@ -24,4 +24,4 @@ export function createMetadata(override: Metadata): Metadata {
 export const baseUrl =
   process.env.NODE_ENV === 'development'
     ? new URL('http://localhost:3000')
-    : new URL(`https://${process.env.VERCEL_URL!}`);
+    : new URL(`https://${process.env.VERCEL_URL ?? 'lux.build'}`);

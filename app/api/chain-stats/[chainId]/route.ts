@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 import { TimeSeriesDataPoint, TimeSeriesMetric, ICMDataPoint, ICMMetric, STATS_CONFIG, getTimestampsFromTimeRange, createTimeSeriesMetric, createICMMetric } from "@/types/stats";
 
 export const dynamic = 'force-dynamic';
@@ -8,7 +8,7 @@ const REQUEST_TIMEOUT_MS = 8000;
 const CACHE_CONTROL_HEADER = 'public, max-age=14400, s-maxage=14400, stale-while-revalidate=86400';
 const getRlToken = () => process.env.METRICS_BYPASS_TOKEN || '';
 
-const avalanche = new Avalanche({ network: "mainnet" });
+const lux = new Lux({ network: "mainnet" });
 
 interface ChainMetrics {
   activeAddresses: {
@@ -103,7 +103,7 @@ async function getTimeSeriesData(
     params.chainId = chainId === "all" ? "mainnet" : chainId;
     if (rlToken) params.rltoken = rlToken;
     
-    const result = await avalanche.metrics.chains.getMetrics(params);
+    const result = await lux.metrics.chains.getMetrics(params);
 
     for await (const page of result) {
       if (!page?.result?.results || !Array.isArray(page.result.results)) {
@@ -162,7 +162,7 @@ async function getActiveAddressesData(
     params.chainId = chainId === "all" ? "mainnet" : chainId;
     if (rlToken) params.rltoken = rlToken;
     
-    const result = await avalanche.metrics.chains.getMetrics(params);
+    const result = await lux.metrics.chains.getMetrics(params);
     
     for await (const page of result) {
       if (!page?.result?.results || !Array.isArray(page.result.results)) {
@@ -186,11 +186,11 @@ async function getActiveAddressesData(
 }
 
 // Metabase endpoint URL for reward distribution (returns both daily and cumulative)
-// Only available for Avalanche C-Chain (43114)
-const REWARDS_URL = 'https://ava-labs-inc.metabaseapp.com/api/public/dashboard/3e895234-4c31-40f7-a3ee-4656f6caf535/dashcard/6788/card/5464?parameters=%5B%7B%22type%22%3A%22string%2F%3D%22%2C%22value%22%3Anull%2C%22id%22%3A%22b87e50a4%22%2C%22target%22%3A%5B%22variable%22%2C%5B%22template-tag%22%2C%22address%22%5D%5D%7D%2C%7B%22type%22%3A%22string%2F%3D%22%2C%22value%22%3Anull%2C%22id%22%3A%2242440d5%22%2C%22target%22%3A%5B%22variable%22%2C%5B%22template-tag%22%2C%22Node_ID%22%5D%5D%7D%2C%7B%22type%22%3A%22string%2F%3D%22%2C%22value%22%3Anull%2C%22id%22%3A%22ccdf28e0%22%2C%22target%22%3A%5B%22dimension%22%2C%5B%22template-tag%22%2C%22Reward_Type%22%5D%2C%7B%22stage-number%22%3A0%7D%5D%7D%5D';
+// Only available for Lux LUExchange-Chain (43114)
+const REWARDS_URL = 'https://luxfi-inc.metabaseapp.com/api/public/dashboard/3e895234-4c31-40f7-a3ee-4656f6caf535/dashcard/6788/card/5464?parameters=%5B%7B%22type%22%3A%22string%2F%3D%22%2C%22value%22%3Anull%2C%22id%22%3A%22b87e50a4%22%2C%22target%22%3A%5B%22variable%22%2C%5B%22template-tag%22%2C%22address%22%5D%5D%7D%2C%7B%22type%22%3A%22string%2F%3D%22%2C%22value%22%3Anull%2C%22id%22%3A%2242440d5%22%2C%22target%22%3A%5B%22variable%22%2C%5B%22template-tag%22%2C%22Node_ID%22%5D%5D%7D%2C%7B%22type%22%3A%22string%2F%3D%22%2C%22value%22%3Anull%2C%22id%22%3A%22ccdf28e0%22%2C%22target%22%3A%5B%22dimension%22%2C%5B%22template-tag%22%2C%22Reward_Type%22%5D%2C%7B%22stage-number%22%3A0%7D%5D%7D%5D';
 
 // Metabase endpoint URL for Primary Network emissions/burn/fees data
-const PRIMARY_NETWORK_FEES_URL = 'https://ava-labs-inc.metabaseapp.com/api/public/dashboard/38ea69a5-e373-4258-9db6-8425fcba3a1a/dashcard/9955/card/13502?parameters=%5B%5D';
+const PRIMARY_NETWORK_FEES_URL = 'https://luxfi-inc.metabaseapp.com/api/public/dashboard/38ea69a5-e373-4258-9db6-8425fcba3a1a/dashcard/9955/card/13502?parameters=%5B%5D';
 
 interface RewardsData {
   daily: TimeSeriesDataPoint[];
@@ -630,7 +630,7 @@ function createResponse(
     'Cache-Control': CACHE_CONTROL_HEADER, 
     'X-Data-Source': meta.source 
   };
-  if (meta.chainId) headers['X-Chain-Id'] = meta.chainId;
+  if (meta.chainId) headers['Exchange-Chain-Id'] = meta.chainId;
   if (meta.timeRange) headers['X-Time-Range'] = meta.timeRange;
   if (meta.cacheAge !== undefined) headers['X-Cache-Age'] = `${Math.round(meta.cacheAge / 1000)}s`;
   if (meta.fetchTime !== undefined) headers['X-Fetch-Time'] = `${meta.fetchTime}ms`;

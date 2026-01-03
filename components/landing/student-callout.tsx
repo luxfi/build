@@ -27,7 +27,7 @@ export default function StudentCallout() {
 
                             <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
                                 Join thousands of students learning to build on blockchain. Get exclusive access to
-                                student resources, workshops, and opportunities to connect with the Avalanche Builder community.
+                                student resources, workshops, and opportunities to connect with the Lux Builder community.
                             </p>
 
                             <Link href="/students">

@@ -12,7 +12,7 @@ import ToolboxMdxWrapper from "@/components/toolbox/academy/wrapper/ToolboxMdxWr
 import ConvertSubnetToL1 from "@/components/toolbox/console/layer-1/create/ConvertSubnetToL1.tsx"
 import CreateChain from "@/components/toolbox/console/layer-1/create/CreateChain";
 import CreateManagedTestnetNode from "@/components/toolbox/console/testnet-infra/ManagedTestnetNodes/CreateManagedTestnetNode";
-import AvalancheGoDocker from "@/components/toolbox/console/layer-1/AvalancheGoDockerL1";
+import LuxGoDocker from "@/components/toolbox/console/layer-1/LuxGoDockerL1";
 
 This section provides a streamlined walkthrough for creating a new L1 from scratch.  
 
@@ -53,7 +53,7 @@ For production environments or extended testing periods, you should use Docker t
 <Accordion title="Docker Setup Guide (Optional)">
 
 <ToolboxMdxWrapper walletMode="testnet-mainnet">
-    <AvalancheGoDocker />
+    <LuxGoDocker />
 </ToolboxMdxWrapper>
 
 </Accordion>
@@ -67,7 +67,7 @@ For production environments or extended testing periods, you should use Docker t
 Once your subnet is running with a validator, convert it to a sovereign L1. This process:
 
 - **Establishes Sovereignty**: Your blockchain becomes independent
-- **Transfers Authority**: Validator management shifts from P-Chain to your Validator Manager Contract
+- **Transfers Authority**: Validator management shifts from Platform-Chain to your Validator Manager Contract
 - **Is Irreversible**: Once converted, you cannot revert to subnet status
 
 #### Key Conversion Parameters

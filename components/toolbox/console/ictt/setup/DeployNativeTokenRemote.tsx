@@ -11,7 +11,7 @@ import { Input, Suggestion } from "@/components/toolbox/components/Input";
 import { EVMAddressInput } from "@/components/toolbox/components/EVMAddressInput";
 import { createPublicClient, http } from "viem";
 import { Note } from "@/components/toolbox/components/Note";
-import { utils } from "@avalabs/avalanchejs";
+import { utils } from "luxfi";
 import ERC20TokenHomeABI from "@/contracts/icm-contracts/compiled/ERC20TokenHome.json";
 import ExampleERC20 from "@/contracts/icm-contracts/compiled/ExampleERC20.json";
 import SelectBlockchainId from "@/components/toolbox/components/SelectBlockchainId";
@@ -226,7 +226,7 @@ function DeployNativeTokenRemote() {
             configKey="contractNativeMinterConfig"
             precompileName="Native Minter"
             errorMessage="The Native Minter precompile is not activated on this chain. The NativeTokenRemote contract requires the Native Minter precompile to be active in order to mint incoming bridged tokens."
-            docsLink="https://build.avax.network/docs/avalanche-l1s/upgrade/customize-avalanche-l1#network-upgrades-enabledisable-precompiles"
+            docsLink="https://build.lux.network/docs/lux-l1s/upgrade/customize-lux-l1#network-upgrades-enabledisable-precompiles"
             docsLinkText="Learn how to activate the Native Minter precompile"
         >
 

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Avalanche } from "@avalanche-sdk/chainkit";
+import { Lux } from "@luxfi/core";
 
 export const dynamic = 'force-dynamic';
 
@@ -28,10 +28,10 @@ let pendingRequest: Promise<ValidatorData[]> | null = null;
 let isRevalidating = false;
 
 async function fetchAllValidators(): Promise<ValidatorData[]> {
-  const avalanche = new Avalanche({ network: "mainnet" });
+  const lux = new Lux({ network: "mainnet" });
   const validators: ValidatorData[] = [];
   
-  const result = await avalanche.data.primaryNetwork.listValidators({
+  const result = await lux.data.primaryNetwork.listValidators({
     pageSize: PAGE_SIZE,
     validationStatus: "active",
     subnetId: "11111111111111111111111111111111LpoYY",

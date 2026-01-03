@@ -42,7 +42,7 @@ export default function AcademySplash() {
     <div className="flex flex-col px-4 mb-20">
       <div className="flex items-center gap-3 mb-6 mx-auto max-w-7xl w-full">
         <h2 className="text-sm font-medium tracking-wider text-zinc-500 dark:text-zinc-400 uppercase">
-          Avalanche Academy
+          Lux Academy
         </h2>
       </div>
       

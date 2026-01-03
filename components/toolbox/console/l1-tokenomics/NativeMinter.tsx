@@ -21,7 +21,7 @@ const DEFAULT_NATIVE_MINTER_ADDRESS =
 
 const metadata: ConsoleToolMetadata = {
   title: "Native Minter",
-  description: "Mint native tokens (AVAX) to any address on your L1",
+  description: "Mint native tokens (LUX) to any address on your L1",
   toolRequirements: [
     WalletRequirementsConfigKey.EVMChainBalance
   ],

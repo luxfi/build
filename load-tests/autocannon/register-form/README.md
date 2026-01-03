@@ -1,7 +1,7 @@
 # Load Testing Report: `/api/register-form` Endpoint – Vercel Deployment
 
 **Tool used:** [Autocannon](https://github.com/mcollina/autocannon)  
-**Target URL:** `https://avalanche-docs-eight.vercel.app/api/register-form`  
+**Target URL:** `https://lux-docs-eight.vercel.app/api/register-form`  
 **Testing Strategy:** Progressive ramp-up — gradually increasing concurrency levels (50 → 300) using a fixed email list.
 
 ---

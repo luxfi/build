@@ -1,17 +1,17 @@
 ---
-title: C-Chain Wallet Methods
-description: Complete reference for C-Chain atomic transaction methods
+title: LUExchange-Chain Wallet Methods
+description: Complete reference for LUExchange-Chain atomic transaction methods
 ---
 
 ## Overview
 
-The C-Chain Wallet Methods provide transaction preparation capabilities for atomic cross-chain transfers between the C-Chain and other Avalanche chains (P-Chain and X-Chain). These methods handle the export and import of native AVAX via atomic transactions.
+The LUExchange-Chain Wallet Methods provide transaction preparation capabilities for atomic cross-chain transfers between the LUExchange-Chain and other Lux chains (Platform-Chain and Exchange-Chain). These methods handle the export and import of native LUX via atomic transactions.
 
 **Access:** `walletClient.cChain`
 
 ## prepareExportTxn
 
-Prepare a transaction to export AVAX from C-Chain to another chain (P-Chain or X-Chain).
+Prepare a transaction to export LUX from LUExchange-Chain to another chain (Platform-Chain or Exchange-Chain).
 
 **Function Signature:**
 
@@ -43,7 +43,7 @@ interface PrepareExportTxnReturnType {
 
 | Name               | Type         | Required | Description                                         |
 | ------------------ | ------------ | -------- | --------------------------------------------------- |
-| `destinationChain` | `"P" \| "X"` | Yes      | Chain alias to export funds to (P-Chain or X-Chain) |
+| `destinationChain` | `"P" \| "X"` | Yes      | Chain alias to export funds to (Platform-Chain or Exchange-Chain) |
 | `fromAddress`      | `string`     | Yes      | EVM address to export funds from                    |
 | `exportedOutput`   | `object`     | Yes      | Consolidated exported output (UTXO)                 |
 | `context`          | `Context`    | No       | Optional context for the transaction                |
@@ -53,7 +53,7 @@ interface PrepareExportTxnReturnType {
 | Name        | Type       | Required | Description                                                        |
 | ----------- | ---------- | -------- | ------------------------------------------------------------------ |
 | `addresses` | `string[]` | Yes      | Addresses who can sign the consuming of this UTXO                  |
-| `amount`    | `bigint`   | Yes      | Amount in nano AVAX held by this exported output                   |
+| `amount`    | `bigint`   | Yes      | Amount in nano LUX held by this exported output                   |
 | `locktime`  | `bigint`   | No       | Timestamp in seconds after which this UTXO can be consumed         |
 | `threshold` | `number`   | No       | Threshold of `addresses`' signatures required to consume this UTXO |
 
@@ -74,26 +74,26 @@ interface PrepareExportTxnReturnType {
 **Example:**
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { lux } from "@lux-sdk/client/chains";
+import { luxToNanoLux } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
-// Export from C-Chain to P-Chain
+// Export from LUExchange-Chain to Platform-Chain
 const exportTx = await walletClient.cChain.prepareExportTxn({
   destinationChain: "P",
   fromAddress: account.getEVMAddress(),
   exportedOutput: {
     addresses: [account.getXPAddress("P")],
-    amount: avaxToNanoAvax(0.001),
+    amount: luxToNanoLux(0.001),
   },
 });
 
@@ -108,7 +108,7 @@ console.log("Export transaction hash:", txHash);
 
 **Related:**
 
-- [prepareImportTxn](#prepareimporttxn) - Import to C-Chain
+- [prepareImportTxn](#prepareimporttxn) - Import to LUExchange-Chain
 - [Wallet send method](./wallet#send) - Simplified cross-chain transfers
 - [getAtomicTxStatus](../public-methods/c-chain#getatomictxstatus) - Check transaction status
 
@@ -116,7 +116,7 @@ console.log("Export transaction hash:", txHash);
 
 ## prepareImportTxn
 
-Prepare a transaction to import AVAX from another chain (P-Chain or X-Chain) to C-Chain.
+Prepare a transaction to import LUX from another chain (Platform-Chain or Exchange-Chain) to LUExchange-Chain.
 
 **Function Signature:**
 
@@ -126,7 +126,7 @@ function prepareImportTxn(
 ): Promise<PrepareImportTxnReturnType>;
 
 interface PrepareImportTxnParameters {
-  account?: AvalancheAccount | Address | undefined;
+  account?: LuxAccount | Address | undefined;
   sourceChain: "P" | "X";
   toAddress: string;
   fromAddresses?: string[];
@@ -145,8 +145,8 @@ interface PrepareImportTxnReturnType {
 
 | Name            | Type                          | Required | Description                                                                     |
 | --------------- | ----------------------------- | -------- | ------------------------------------------------------------------------------- |
-| `account`       | `AvalancheAccount \| Address` | No       | Account to use for the transaction                                              |
-| `sourceChain`   | `"P" \| "X"`                  | Yes      | Chain alias to import funds from (P-Chain or X-Chain)                           |
+| `account`       | `LuxAccount \| Address` | No       | Account to use for the transaction                                              |
+| `sourceChain`   | `"P" \| "X"`                  | Yes      | Chain alias to import funds from (Platform-Chain or Exchange-Chain)                           |
 | `toAddress`     | `string`                      | Yes      | EVM address to import funds to                                                  |
 | `fromAddresses` | `string[]`                    | No       | Addresses to import funds from (auto-fetched if not provided)                   |
 | `utxos`         | `Utxo[]`                      | No       | UTXOs to use as inputs (must be in atomic memory, auto-fetched if not provided) |
@@ -186,36 +186,36 @@ console.log("Import transaction hash:", txHash);
 
 **Related:**
 
-- [prepareExportTxn](#prepareexporttxn) - Export from C-Chain
+- [prepareExportTxn](#prepareexporttxn) - Export from LUExchange-Chain
 - [getAtomicTxStatus](../public-methods/c-chain#getatomictxstatus) - Check transaction status
 
 ---
 
 ## Complete Cross-Chain Transfer Workflow
 
-### Export from C-Chain to P-Chain
+### Export from LUExchange-Chain to Platform-Chain
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import { avalanche } from "@avalanche-sdk/client/chains";
-import { avaxToNanoAvax } from "@avalanche-sdk/client/utils";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import { lux } from "@lux-sdk/client/chains";
+import { luxToNanoLux } from "@lux-sdk/client/utils";
 
-const account = privateKeyToAvalancheAccount("0x...");
+const account = privateKeyToLuxAccount("0x...");
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
-// 1. Export from C-Chain
+// 1. Export from LUExchange-Chain
 const exportTx = await walletClient.cChain.prepareExportTxn({
   destinationChain: "P",
   fromAddress: account.getEVMAddress(),
   exportedOutput: {
     addresses: [account.getXPAddress("P")],
-    amount: avaxToNanoAvax(1.0),
+    amount: luxToNanoLux(1.0),
   },
 });
 
@@ -233,7 +233,7 @@ await walletClient.waitForTxn({
 
 console.log("Export completed:", exportTxHash);
 
-// 4. Import to P-Chain
+// 4. Import to Platform-Chain
 const importTx = await walletClient.pChain.prepareImportTxn({
   sourceChain: "C",
   toAddresses: [account.getXPAddress("P")],
@@ -252,6 +252,6 @@ console.log("Import completed:", importTxHash);
 ## Next Steps
 
 - **[Wallet Methods](./wallet)** - General wallet operations
-- **[P-Chain Wallet Methods](./p-chain-wallet)** - P-Chain transaction preparation
-- **[X-Chain Wallet Methods](./x-chain-wallet)** - X-Chain transaction preparation
+- **[Platform-Chain Wallet Methods](./p-chain-wallet)** - Platform-Chain transaction preparation
+- **[Exchange-Chain Wallet Methods](./x-chain-wallet)** - Exchange-Chain transaction preparation
 - **[Account Management](../accounts)** - Account types and management

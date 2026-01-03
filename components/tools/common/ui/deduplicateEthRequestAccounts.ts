@@ -5,10 +5,10 @@ export const deduplicateEthRequestAccounts = async () => {
         return requestPromise;
     }
 
-    if (!window.avalanche) {
-        throw new Error('No Avalanche provider found');
+    if (!window.lux) {
+        throw new Error('No Lux provider found');
     }
 
-    requestPromise = window.avalanche.request<string[]>({ method: 'eth_requestAccounts' })
+    requestPromise = window.lux.request<string[]>({ method: 'eth_requestAccounts' })
     return requestPromise;
 }

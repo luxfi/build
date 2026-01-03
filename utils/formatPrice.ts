@@ -43,10 +43,10 @@ export function formatPrice(num: number): string {
 }
 
 /**
- * Format AVAX price with compact notation for very small numbers
+ * Format LUX price with compact notation for very small numbers
  * Uses superscript notation like 0⁴5 for 0.00005
  */
-export function formatAvaxPrice(num: number): string {
+export function formatLuxPrice(num: number): string {
   if (num >= 0.0001) return num.toFixed(4);
   if (num >= 0.00001) return num.toFixed(6);
   

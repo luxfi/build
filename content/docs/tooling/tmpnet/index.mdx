@@ -1,9 +1,9 @@
 ---
 title: Overview
-description: Create and manage temporary Avalanche networks for local development and testing
+description: Create and manage temporary Lux networks for local development and testing
 ---
 
-tmpnet creates temporary Avalanche networks on your local machine. You get a complete multi-node network with consensus, P2P communication, and pre-funded test keys—everything you need to test custom VMs, L1s, and applications before deploying to testnet or mainnet.
+tmpnet creates temporary Lux networks on your local machine. You get a complete multi-node network with consensus, P2P communication, and pre-funded test keys—everything you need to test custom VMs, L1s, and applications before deploying to testnet or mainnet.
 
 Networks run as native processes (no Docker needed). All configuration lives on disk at `~/.tmpnet/networks/`, making it easy to inspect state, share configs, or debug issues.
 
@@ -12,7 +12,7 @@ Networks run as native processes (no Docker needed). All configuration lives on 
 | Feature | Description |
 |---------|-------------|
 | **Multi-node networks** | Spin up 2-50 validator nodes in under a minute |
-| **Pre-funded keys** | 50 keys with AVAX balances on P, X, and C-Chain |
+| **Pre-funded keys** | 50 keys with LUX balances on P, X, and LUExchange-Chain |
 | **Custom VMs** | Deploy and test your Virtual Machines |
 | **Subnets** | Create subnets with specific validator sets |
 | **Monitoring** | Prometheus metrics and Promtail logs out of the box |
@@ -22,7 +22,7 @@ Networks run as native processes (no Docker needed). All configuration lives on 
 
 | Scenario | What You Can Test |
 |----------|-------------------|
-| **L1 Development** | Run your L1 with multiple validators locally before deploying to Fuji |
+| **L1 Development** | Run your L1 with multiple validators locally before deploying to Testnet |
 | **Custom VMs** | Test VM behavior with real consensus across multiple nodes |
 | **Staking Operations** | Add validators, test delegation, verify rewards distribution |
 | **Subnet Testing** | Create subnets, manage validators, test cross-subnet messaging |
@@ -32,7 +32,7 @@ Networks run as native processes (no Docker needed). All configuration lives on 
 
 ```bash
 # Start a 5-node network
-tmpnetctl start-network --avalanchego-path=./bin/avalanchego
+tmpnetctl start-network --luxgo-path=./bin/luxgo
 
 # Network is running at ~/.tmpnet/networks/latest
 # Get node URIs
@@ -65,7 +65,7 @@ Both `tmpnetctl` and your Go code can manage the same networks because everythin
 
 <Cards>
   <Card title="Installation" href="/docs/tooling/tmpnet/installation">
-    Build tmpnet and avalanchego
+    Build tmpnet and luxgo
   </Card>
   <Card title="Quick Start" href="/docs/tooling/tmpnet/quick-start">
     Create your first network
@@ -80,7 +80,7 @@ Both `tmpnetctl` and your Go code can manage the same networks because everythin
 
 ## Support & Resources
 
-- [GitHub Repository](https://github.com/ava-labs/avalanchego/tree/master/tests/fixture/tmpnet)
-- [Full README](https://github.com/ava-labs/avalanchego/blob/master/tests/fixture/tmpnet/README.md)
+- [GitHub Repository](https://github.com/luxfi/luxgo/tree/master/tests/fixture/tmpnet)
+- [Full README](https://github.com/luxfi/luxgo/blob/master/tests/fixture/tmpnet/README.md)
 - [Discord Community](https://chat.avalabs.org/)
-- [Documentation](https://docs.avax.network/)
+- [Documentation](https://docs.lux.network/)

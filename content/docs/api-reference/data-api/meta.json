@@ -1,6 +1,6 @@
 {
   "title": "Data API",
-  "description": "Glacier Data API for Avalanche blockchain data",
+  "description": "Glacier Data API for Lux blockchain data",
   "icon": "Database",
   "root": true,
   "pages": [
@@ -32,6 +32,6 @@
     "---Utilities---",
     "operations",
     "data-api-usage-metrics",
-    "avax-supply"
+    "lux-supply"
   ]
 }

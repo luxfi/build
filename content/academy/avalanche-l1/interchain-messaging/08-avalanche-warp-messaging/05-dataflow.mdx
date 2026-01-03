@@ -15,7 +15,7 @@ Looking at the bigger picture, the data flow of an interchain message can be des
 <Step>
  
 ### Message Initialization
-Cross-Chain dApp initiating the message calls the Interchain Messaging Contract on the source Avalanche L1
+Cross-Chain dApp initiating the message calls the Interchain Messaging Contract on the source Lux L1
  
 </Step>
  
@@ -29,14 +29,14 @@ The Interchain Messaging contracts interacts with the AWM precompile of the EVM
 <Step>
  
 ### Message Relaying
-An AWM Relayer relays the message to the destination Chain. It periodically checks the source Avalanche L1 for outgoing messages and delivers these by calling the Interchain Messaging contract on the destination Avalanche L1.
+An AWM Relayer relays the message to the destination Chain. It periodically checks the source Lux L1 for outgoing messages and delivers these by calling the Interchain Messaging contract on the destination Lux L1.
  
 </Step>
 
 <Step>
  
 ### Signature Verification
-The Interchain Messaging contract on the destination chain interacts with AWM to verify the signature of the message and whether it has been signed by a sufficiently large stake share of the source Avalanche L1's validator set.
+The Interchain Messaging contract on the destination chain interacts with AWM to verify the signature of the message and whether it has been signed by a sufficiently large stake share of the source Lux L1's validator set.
  
 </Step>
 

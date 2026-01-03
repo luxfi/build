@@ -101,7 +101,7 @@ const CHAIN_LOGOS: Record<
         logo: chainData?.chainLogoURI || "",
         name: chainData?.chainName || slug,
         position,
-        color: chainData?.color || "#E84142",
+        color: chainData?.color || "#FFFFFF",
       },
     ];
   })
@@ -109,7 +109,7 @@ const CHAIN_LOGOS: Record<
 
 const getChainColorByPosition = (position: string): string => {
   const chain = Object.values(CHAIN_LOGOS).find((c) => c.position === position);
-  return chain?.color || "#E84142";
+  return chain?.color || "#FFFFFF";
 };
 
 interface ChainConnection {
@@ -126,7 +126,7 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     from: "p-400-0",
     to: "p-300-328.701-r",
     messageCount: 15000,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "Dexalot",
   },
   {
@@ -134,13 +134,13 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 14000,
     fromChain: "Dexalot",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
   {
     from: "p-400-0",
     to: "p-300-328.701-l",
     messageCount: 12000,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "Coqnet",
   },
   {
@@ -148,13 +148,13 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 11000,
     fromChain: "Coqnet",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
   {
     from: "p-400-0",
     to: "p-200-235.355-r",
     messageCount: 10000,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "CX",
   },
   {
@@ -162,13 +162,13 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 9500,
     fromChain: "CX",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
   {
     from: "p-400-0",
     to: "p-200-235.355-l",
     messageCount: 9000,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "Henesys",
   },
   {
@@ -176,13 +176,13 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 8500,
     fromChain: "Henesys",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
   {
     from: "p-400-0",
     to: "p-500-328.701-l",
     messageCount: 7000,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "Artery",
   },
   {
@@ -190,13 +190,13 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 6500,
     fromChain: "Artery",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
   {
     from: "p-400-0",
     to: "p-100-123.097-l",
     messageCount: 5500,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "Gunzilla",
   },
   {
@@ -204,13 +204,13 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 5000,
     fromChain: "Gunzilla",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
   {
     from: "p-400-0",
     to: "p-600-235.355-l",
     messageCount: 4500,
-    fromChain: "C-Chain",
+    fromChain: "LUExchange-Chain",
     toChain: "Lamina1",
   },
   {
@@ -218,7 +218,7 @@ const CHAIN_CONNECTIONS: ChainConnection[] = [
     to: "p-400-0",
     messageCount: 4000,
     fromChain: "Lamina1",
-    toChain: "C-Chain",
+    toChain: "LUExchange-Chain",
   },
 ];
 
@@ -450,13 +450,13 @@ export function ICMGlobe() {
                   </div>
                 </foreignObject>
               ) : (
-                <circle r="14" className="fill-[#E84142]" />
+                <circle r="14" className="fill-[#FFFFFF]" />
               )}
 
               {hoveredMarker === point.id && (
                 <motion.circle
                   r="30"
-                  className="fill-none stroke-[#E84142]"
+                  className="fill-none stroke-[#FFFFFF]"
                   strokeWidth="2"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}

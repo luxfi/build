@@ -8,7 +8,7 @@ icon: Terminal
 
 ## Introduction
 
-In this lesson, you'll set up everything needed to start building with x402. We'll walk through cloning the starter kit, configuring credentials, and running your first local x402-enabled application on Avalanche Fuji testnet.
+In this lesson, you'll set up everything needed to start building with x402. We'll walk through cloning the starter kit, configuring credentials, and running your first local x402-enabled application on Lux Testnet testnet.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Ensure you have the following installed:
 
 - **Code Editor**: [VS Code](https://code.visualstudio.com/) recommended
 
-- **Wallet**: [Core Wallet](https://core.app/) recommended for Avalanche
+- **Wallet**: [Core Wallet](https://core.app/) recommended for Lux
 
 ## Step 1: Clone the x402 Starter Kit
 
@@ -31,7 +31,7 @@ Start by downloading the starter kit repository:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ava-labs/x402-starter-kit.git
+git clone https://github.com/luxfi/x402-starter-kit.git
 
 # Navigate into the directory
 cd x402-starter-kit
@@ -107,10 +107,10 @@ The Thirdweb facilitator requires an ERC4337 Smart Account (not a regular EOA wa
 
 1. In your Thirdweb dashboard, navigate to **Wallets** → **Server Wallets** → *Wallets*
 2. Click the toggle **"Show ERC4337 Smart Account"**
-3. Choose **"Avalanche Fuji Testnet"** as the network
+3. Choose **"Lux Testnet Testnet"** as the network
 4. Copy the wallet address
 
-![ERC4337 SmartAccount ThirdWeb](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/course-images/x402-payment-infrastructure/ERC4337_SmartAccount_ThirdWeb.png)
+![ERC4337 SmartAccount ThirdWeb](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/course-images/x402-payment-infrastructure/ERC4337_SmartAccount_ThirdWeb.png)
 
 **Immediately paste this into your `.env.local` file:**
 
@@ -120,16 +120,16 @@ THIRDWEB_SERVER_WALLET_ADDRESS=...
 
 ## Step 5: Configure Your Wallet
 
-Core Wallet comes with Avalanche Fuji pre-configured:
+Core Wallet comes with Lux Testnet pre-configured:
 
 1. Open Core Wallet
 2. Turn on **Testnet Mode** in Settings → Advanced
 
-Alternatively, add Fuji manually to any other wallet:
-- Network Name: Avalanche Fuji C-Chain
-- RPC URL: `https://api.avax-test.network/ext/bc/C/rpc`
+Alternatively, add Testnet manually to any other wallet:
+- Network Name: Lux Testnet LUExchange-Chain
+- RPC URL: `https://api.lux-test.network/ext/bc/C/rpc`
 - Chain ID: `43113`
-- Symbol: `AVAX`
+- Symbol: `LUX`
 - Explorer: `https://testnet.snowtrace.io/`
 
 ## Step 6: Setup Merchant Wallet Address
@@ -145,13 +145,13 @@ MERCHANT_WALLET_ADDRESS=0xMerchantWalletAddressHere
 Get test USDC for making test payments:
 
 1. Visit [Circle's USDC Faucet](https://faucet.circle.com/)
-2. Select "Avalanche Fuji" network
+2. Select "Lux Testnet" network
 3. Enter your wallet address
 4. Request tokens
 
-Fuji USDC Contract: `0x5425890298aed601595a70AB815c96711a31Bc65`
+Testnet USDC Contract: `0x5425890298aed601595a70AB815c96711a31Bc65`
 
-You don't need test AVAX because the facilitator will pay the gas fee.
+You don't need test LUX because the facilitator will pay the gas fee.
 
 ## Step 8: Verify Your Configuration
 
@@ -192,5 +192,5 @@ If you see this interface, your environment is correctly configured!
 ## Additional Resources
 
 - [Thirdweb Documentation](https://portal.thirdweb.com/payments/x402/facilitator)
-- [x402 Starter Kit Repository](https://github.com/ava-labs/x402-starter-kit)
+- [x402 Starter Kit Repository](https://github.com/luxfi/x402-starter-kit)
 - [ERC4337 Standard](https://eips.ethereum.org/EIPS/eip-4337)

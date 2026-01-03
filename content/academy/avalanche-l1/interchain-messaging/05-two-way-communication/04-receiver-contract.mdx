@@ -14,7 +14,7 @@ The receiver contract now has two tasks:
 Therefore, we need to change the receiver contract to be able to send a message back. We will need to instantiate a `TeleporterMessenger` and call the `sendCrossChainMessage()` function. 
 
 ```solidity title="contracts/interchain-messaging/send-roundtrip/receiverOnDispatch.sol"
-// (c) 2023, Ava Labs, Inc. All rights reserved.
+// (c) 2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 // SPDX-License-Identifier: Ecosystem
@@ -38,7 +38,7 @@ contract ReceiverOnDispatch is ITeleporterReceiver {
 
         messenger.sendCrossChainMessage( // [!code highlight:9]
             TeleporterMessageInput({
-                // Blockchain ID of C-Chain
+                // Blockchain ID of LUExchange-Chain
                 destinationBlockchainID: sourceBlockchainID,
                 destinationAddress: originSenderAddress,
                 feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),

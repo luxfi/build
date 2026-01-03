@@ -61,7 +61,7 @@ export default function BlockchainAcademyPage(): React.ReactElement {
         config={blockchainAcademyLandingPageConfig}
         blogs={blogs}
         blogsByPath={{
-          avalanche: blogs,
+          lux: blogs,
           blockchain: blogs,
           entrepreneur: blogs,
         }}

@@ -3,14 +3,14 @@ import { createMetadata } from '@/utils/metadata';
 
 export const metadata: Metadata = createMetadata({
   title: 'Grants',
-  description: 'Explore grants and other funding opportunities for builders in the Avalanche ecosystem',
+  description: 'Explore grants and other funding opportunities for builders in the Lux ecosystem',
   openGraph: {
     url: '/grants',
     images: {
       url: '/api/og/grants',
       width: 1200,
       height: 630,
-      alt: 'Avalanche Grants',
+      alt: 'Lux Grants',
     },
   },
   twitter: {
@@ -18,7 +18,7 @@ export const metadata: Metadata = createMetadata({
       url: '/api/og/grants',
       width: 1200,
       height: 630,
-      alt: 'Avalanche Grants',
+      alt: 'Lux Grants',
     },
   },
 });

@@ -7,18 +7,18 @@ icon: Terminal
 ---
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-We will deploy two Avalanche Interchain Token Transfer contracts. One on the source chain (which is C-chain in our case) and another on the destination chain (Echo in our case).
+We will deploy two Lux Interchain Token Transfer contracts. One on the source chain (which is C-chain in our case) and another on the destination chain (Echo in our case).
 
 <Steps>
 <Step>
 ### Deploy ERC20Home Contract
 
-Since we're covering an ERC20 > ERC20 bridge, make sure to set the Transferrer type to "ERC20" and input the ERC20 token address you previously deployed in the token address field. Then deploy the ERC20Home contract on the Fuji testnet using our toolbox:
+Since we're covering an ERC20 > ERC20 bridge, make sure to set the Transferrer type to "ERC20" and input the ERC20 token address you previously deployed in the token address field. Then deploy the ERC20Home contract on the Testnet testnet using our toolbox:
 
 <Callout>
 Make sure you have:
 1. Deployed your ERC-20 token (from [Deploy ERC-20 Token](/academy/interchain-token-transfer/06-erc-20-to-erc-20-bridge/02-deploy-erc-20-token))
-2. Have enough test AVAX for gas fees
+2. Have enough test LUX for gas fees
 </Callout>
 
 <ToolboxMdxWrapper enforceChainId={43113}>

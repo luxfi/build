@@ -1,5 +1,5 @@
 import { useWalletStore } from '@/components/toolbox/stores/walletStore'
-import { networkIDs } from '@avalabs/avalanchejs'
+import { networkIDs } from 'luxfi'
 import { useChainTokenTracker } from '@/hooks/useChainTokenTracker'
 import { useL1List, type L1ListItem } from '@/components/toolbox/stores/l1ListStore'
 
@@ -8,7 +8,7 @@ export function useNetworkActions() {
     updateL1Balance,
     updateCChainBalance,
     updateAllBalances,
-    setAvalancheNetworkID,
+    setLuxNetworkID,
     setIsTestnet,
     isTestnet,
     walletEVMAddress,
@@ -22,19 +22,19 @@ export function useNetworkActions() {
     try {
       if (network.isTestnet !== isTestnet) {
         setIsTestnet(network.isTestnet)
-        setAvalancheNetworkID(
-          network.isTestnet ? networkIDs.FujiID : networkIDs.MainnetID
+        setLuxNetworkID(
+          network.isTestnet ? networkIDs.TestnetID : networkIDs.MainnetID
         )
       }
 
-      if (window.avalanche?.request && network.evmChainId) {
+      if (window.lux?.request && network.evmChainId) {
         try {
-          await window.avalanche.request({
+          await window.lux.request({
             method: 'wallet_switchEthereumChain',
             params: [{ chainId: `0x${network.evmChainId.toString(16)}` }],
           })
 
-          // Determine if this is C-Chain for appropriate balance update
+          // Determine if this is LUExchange-Chain for appropriate balance update
           const isCChain = network.evmChainId === 43114 || network.evmChainId === 43113
           
           setTimeout(() => {

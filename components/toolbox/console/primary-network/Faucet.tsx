@@ -56,7 +56,7 @@ function EVMFaucetCard({ chain }: { chain: L1ListItem }) {
 
 const metadata: ConsoleToolMetadata = {
   title: "Testnet Faucet",
-  description: "Request free test tokens for Fuji testnet and Avalanche L1s",
+  description: "Request free test tokens for Testnet testnet and Lux L1s",
   toolRequirements: [
     WalletRequirementsConfigKey.TestnetRequired,
     AccountRequirementsConfigKey.UserLoggedIn,
@@ -91,7 +91,7 @@ function Faucet({ onSuccess }: BaseConsoleToolProps) {
     <div className="max-w-4xl mx-auto not-prose">
       {/* Primary Chains */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-        {/* C-Chain */}
+        {/* LUExchange-Chain */}
         <div>
           <h2 className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
             Contract Chain
@@ -104,20 +104,20 @@ function Faucet({ onSuccess }: BaseConsoleToolProps) {
                   cChain?.logoUrl ||
                   "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142caa/cchain-square.svg"
                 }
-                alt="C-Chain"
+                alt="LUExchange-Chain"
                 className="w-10 h-10 shrink-0"
               />
               <div className="flex-1 min-w-0 space-y-0.5">
                 <div className="flex items-baseline justify-between gap-2">
                   <h3 className="font-medium text-zinc-900 dark:text-white leading-tight">
-                    C-Chain
+                    LUExchange-Chain
                   </h3>
                   <span className="shrink-0">
                     <span className="font-mono font-semibold text-zinc-900 dark:text-white">
                       {cChain?.faucetThresholds?.dripAmount || 0.5}
                     </span>
                     <span className="text-sm text-zinc-500 ml-1">
-                      {cChain?.coinName || "AVAX"}
+                      {cChain?.coinName || "LUX"}
                     </span>
                   </span>
                 </div>
@@ -143,7 +143,7 @@ function Faucet({ onSuccess }: BaseConsoleToolProps) {
           </div>
         </div>
 
-        {/* P-Chain */}
+        {/* Platform-Chain */}
         <div>
           <h2 className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
             Platform Chain
@@ -153,19 +153,19 @@ function Faucet({ onSuccess }: BaseConsoleToolProps) {
             <div className="flex items-center gap-3 mb-8">
               <img
                 src="https://images.ctfassets.net/gcj8jwzm6086/42aMwoCLblHOklt6Msi6tm/1e64aa637a8cead39b2db96fe3225c18/pchain-square.svg"
-                alt="P-Chain"
+                alt="Platform-Chain"
                 className="w-10 h-10 shrink-0"
               />
               <div className="flex-1 min-w-0 space-y-0.5">
                 <div className="flex items-baseline justify-between gap-2">
                   <h3 className="font-medium text-zinc-900 dark:text-white leading-tight">
-                    P-Chain
+                    Platform-Chain
                   </h3>
                   <span className="shrink-0">
                     <span className="font-mono font-semibold text-zinc-900 dark:text-white">
                       0.5
                     </span>
-                    <span className="text-sm text-zinc-500 ml-1">AVAX</span>
+                    <span className="text-sm text-zinc-500 ml-1">LUX</span>
                   </span>
                 </div>
                 <div className="flex items-baseline justify-between gap-2">
@@ -188,11 +188,11 @@ function Faucet({ onSuccess }: BaseConsoleToolProps) {
         </div>
       </div>
 
-      {/* Avalanche L1s */}
+      {/* Lux L1s */}
       {otherEVMChains.length > 0 && (
         <div className="mb-8">
           <h2 className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
-            Avalanche L1s
+            Lux L1s
           </h2>
 
           <div className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 overflow-hidden">

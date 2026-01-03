@@ -40,18 +40,18 @@ export async function POST(request: Request) {
         }
       ],
       context: {
-        pageUri: request.headers.get('referer') || 'https://build.avax.network',
+        pageUri: request.headers.get('referer') || 'https://build.lux.network',
         pageName: 'Newsletter Signup'
       },
       legalConsentOptions: {
         consent: {
           consentToProcess: true,
-          text: "I agree to allow Ava Labs to store and process my personal data.",
+          text: "I agree to allow Lux Network to store and process my personal data.",
           communications: [
             {
               value: true,
               subscriptionTypeId: 999,
-              text: "I agree to receive marketing communications from Ava Labs."
+              text: "I agree to receive marketing communications from Lux Network."
             }
           ]
         }

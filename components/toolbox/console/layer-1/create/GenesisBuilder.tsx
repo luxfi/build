@@ -342,7 +342,7 @@ function GenesisBuilderInner({
     // Calculate genesis size in bytes and KiB
     const genesisSizeBytes = genesisData ? new Blob([genesisData]).size : 0;
     const genesisSizeKiB = genesisSizeBytes / 1024;
-    const maxSizeKiB = 64; // P-Chain transaction limit
+    const maxSizeKiB = 64; // Platform-Chain transaction limit
 
     // Handler for token allocations
     const handleTokenAllocationsChange = useCallback((newAllocations: AllocationEntry[]) => {

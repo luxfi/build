@@ -6,11 +6,11 @@ icon: Rocket
 
 The Metrics API is designed to be simple and accessible, requiring no authentication to get started. Just choose your endpoint, make your query, and instantly access on-chain data and analytics to power your applications.
 
-The following query retrieves the daily count of active addresses on the Avalanche C-Chain(43114) over the course of one month (from August 1, 2024 12:00:00 AM to August 31, 2024 12:00:00 AM), providing insights into user activity on the chain for each day during that period. With this data you can use JavaScript visualization tools like Chart.js, D3.js, Highcharts, Plotly.js, or Recharts to create interactive and insightful visual representations.
+The following query retrieves the daily count of active addresses on the Lux LUExchange-Chain(43114) over the course of one month (from August 1, 2024 12:00:00 AM to August 31, 2024 12:00:00 AM), providing insights into user activity on the chain for each day during that period. With this data you can use JavaScript visualization tools like Chart.js, D3.js, Highcharts, Plotly.js, or Recharts to create interactive and insightful visual representations.
 
 ```bash
 curl --request GET \
-  --url 'https://metrics.avax.network/v2/chains/43114/metrics/activeAddresses?startTimestamp=1722470400&endTimestamp=1725062400&timeInterval=day&pageSize=31'
+  --url 'https://metrics.lux.network/v2/chains/43114/metrics/activeAddresses?startTimestamp=1722470400&endTimestamp=1725062400&timeInterval=day&pageSize=31'
 ```
 
 Response:

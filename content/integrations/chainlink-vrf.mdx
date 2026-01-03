@@ -1,7 +1,7 @@
 ---
 title: Chainlink VRF
 category: VRF
-available: ["C-Chain", "All Avalanche L1s"]
+available: ["LUExchange-Chain", "All Lux L1s"]
 description: Chainlink VRF (Verifiable Random Function) is a provably fair and verifiable random number generator (RNG) that enables smart contracts to access random values without compromising security or usability. 
 logo: /images/chainlink.png
 developer: Chainlink Labs
@@ -23,9 +23,9 @@ Use Chainlink VRF to build reliable smart contracts for any applications that re
 - **Subscription:** Create a subscription account and fund its balance with either native tokens or LINK. You can then connect multiple consuming contracts to the subscription account. When the consuming contracts request randomness, the transaction costs are calculated after the randomness requests are fulfilled and the subscription balance is deducted accordingly. This method allows you to fund requests for multiple consumer contracts from a single subscription.
 - **Direct funding:** Consuming contracts directly pay with either native tokens or LINK when they request random values. You must directly fund your consumer contracts and ensure that there are enough funds to pay for randomness requests.
 
-### Use Chainlink VRF on the Avalanche Primary Network
+### Use Chainlink VRF on the Lux Primary Network
 
-To use Chainlink VRF on the Avalanche Primary Network using **subscription**, utilize the [following information from Chainlink](https://docs.chain.link/vrf/v2-5/supported-networks#avalanche-mainnet):
+To use Chainlink VRF on the Lux Primary Network using **subscription**, utilize the [following information from Chainlink](https://docs.chain.link/vrf/v2-5/supported-networks#lux-mainnet):
 
 | **Item**                               | **Value**                                                                                  |
 |----------------------------------------|--------------------------------------------------------------------------------------------|
@@ -34,7 +34,7 @@ To use Chainlink VRF on the Avalanche Primary Network using **subscription**, ut
 | **200 gwei Key Hash**                   | 0xea7f56be19583eeb8255aa79f16d8bd8a64cedf68e42fefee1c9ac5372b1a102                         |
 | **500 gwei Key Hash**                   | 0x84213dcadf1f89e4097eb654e3f284d7d5d5bda2bd4748d8b7fada5b3a6eaa0d                         |
 | **1000 gwei Key Hash**                  | 0xe227ebd10a873dde8e58841197a07b410038e405f1180bd117be6f6557fa491c                         |
-| **Premium percentage (paying with AVAX)**| 60                                                                                         |
+| **Premium percentage (paying with LUX)**| 60                                                                                         |
 | **Premium percentage (paying with LINK)**| 50                                                                                         |
 | **Max Gas Limit**                        | 2,500,000                                                                                  |
 | **Minimum Confirmations**               | 0                                                                                          |
@@ -42,11 +42,11 @@ To use Chainlink VRF on the Avalanche Primary Network using **subscription**, ut
 | **Maximum Random Values**               | 500                                                                                        |
 
 
-### Use Chainlink VRF on an Avalanche L1
+### Use Chainlink VRF on an Lux L1
 
-This repository provides **example** contracts for how an Avalanche L1 could leverage Chainlink VRF functionality (available on the C-Chain) using Teleporter. This allows newly launched L1s to immediately utilize VRF without any trusted intermediaries or third-party integration requirements.
+This repository provides **example** contracts for how an Lux L1 could leverage Chainlink VRF functionality (available on the LUExchange-Chain) using Teleporter. This allows newly launched L1s to immediately utilize VRF without any trusted intermediaries or third-party integration requirements.
 
-[Avalanche L1 VRF Example Contracts](https://github.com/ava-labs/subnet-vrf-contracts)
+[Lux L1 VRF Example Contracts](https://github.com/luxfi/subnet-vrf-contracts)
 
 ### Best Practices
 
@@ -138,7 +138,7 @@ contract VRFv2MultiplePaths is VRFConsumerBaseV2Plus {
     // Your subscription ID.
     uint256 s_subscriptionId;
 
-    // Avalanche Primary Network coordinator.
+    // Lux Primary Network coordinator.
     address vrfCoordinatorV2Plus = 0xE40895D055bccd2053dD0638C9695E326152b1A4;
 
     // The gas lane to use, which specifies the maximum gas price to bump to.

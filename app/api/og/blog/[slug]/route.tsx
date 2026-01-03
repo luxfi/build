@@ -11,7 +11,7 @@ export async function GET(
   const { slug } = await params;
   const { searchParams } = request.nextUrl;
   const rawTitle = searchParams.get('title');
-  const title = rawTitle?.replace(/\s*\|\s*Avalanche Builder Hub$/, '');
+  const title = rawTitle?.replace(/\s*\|\s*Lux Lux Build$/, '');
   const description = searchParams.get('description');
   const fonts = await loadFonts();
 

@@ -1,13 +1,13 @@
 ---
 title: CubeSigner Remote BLS Signing
-description: Learn how to use CubeSigner for secure hardware-backed BLS key management with AvalancheGo validators.
+description: Learn how to use CubeSigner for secure hardware-backed BLS key management with LuxGo validators.
 ---
 
-The CubeSigner sidecar enables AvalancheGo validators to use hardware-backed remote signing for BLS keys instead of storing them locally. This guide walks you through setting up and configuring the CubeSigner sidecar for enhanced security.
+The CubeSigner sidecar enables LuxGo validators to use hardware-backed remote signing for BLS keys instead of storing them locally. This guide walks you through setting up and configuring the CubeSigner sidecar for enhanced security.
 
 ## Introduction
 
-By default, AvalancheGo nodes store their BLS signing keys locally in a `signer.key` file. While functional, this approach has security limitations:
+By default, LuxGo nodes store their BLS signing keys locally in a `signer.key` file. While functional, this approach has security limitations:
 
 - Keys stored on disk are vulnerable to theft or compromise
 - Lost or corrupted keys mean permanent loss of validator identity and staking rewards
@@ -27,10 +27,10 @@ The CubeSigner sidecar solves these problems by delegating all BLS signing opera
 
 Before you begin, ensure you have:
 
-- **AvalancheGo v1.13.4 or later**: The `--staking-rpc-signer-endpoint` flag was added in the Fortuna.4 release
+- **LuxGo v1.13.4 or later**: The `--staking-rpc-signer-endpoint` flag was added in the Fortuna.4 release
 - **Cubist Account**: Sign up at [cubist.dev](https://cubist.dev/) for CubeSigner access
 - **CubeSigner CLI**: Install the `cs` command-line tool ([installation guide](https://docs.cubist.dev/))
-- **Shell Access**: Ability to configure and restart your AvalancheGo node
+- **Shell Access**: Ability to configure and restart your LuxGo node
 
 <Callout type="warn">
 The CubeSigner sidecar is an advanced configuration for production validators. Make sure you understand the setup process before implementing on mainnet.
@@ -38,10 +38,10 @@ The CubeSigner sidecar is an advanced configuration for production validators. M
 
 ## Architecture Overview
 
-The CubeSigner sidecar acts as a gRPC proxy between AvalancheGo and the CubeSigner API:
+The CubeSigner sidecar acts as a gRPC proxy between LuxGo and the CubeSigner API:
 
 ```
-AvalancheGo Node
+LuxGo Node
        ↓
   gRPC Request (localhost:50051)
        ↓
@@ -53,10 +53,10 @@ CubeSigner API (AWS Nitro Enclaves)
        ↓
   BLS Signature
        ↓
-Returns to AvalancheGo
+Returns to LuxGo
 ```
 
-The sidecar implements AvalancheGo's `signer.proto` gRPC interface, translating node signing requests into CubeSigner API calls. All cryptographic operations happen inside CubeSigner's secure enclaves.
+The sidecar implements LuxGo's `signer.proto` gRPC interface, translating node signing requests into CubeSigner API calls. All cryptographic operations happen inside CubeSigner's secure enclaves.
 
 ## Step 1: Set Up CubeSigner
 
@@ -65,21 +65,21 @@ The sidecar implements AvalancheGo's `signer.proto` gRPC interface, translating 
 First, create a CubeSigner role for your BLS signing operations:
 
 ```bash
-cs role create --role-name avalanche-bls-signer
+cs role create --role-name lux-bls-signer
 ```
 
 This command returns a role ID. Save this ID, as you'll need it in subsequent steps.
 
 ### Generate a BLS Key
 
-Create a new BLS key for Avalanche ICM (Interchain Messaging):
+Create a new BLS key for Lux ICM (Interchain Messaging):
 
 ```bash
 cs keys create --key-type=bls-ava-icm
 ```
 
 <Callout type="info">
-CubeSigner uses the key type `bls-ava-icm` specifically for Avalanche BLS signing operations. This ensures the correct signing algorithm is used.
+CubeSigner uses the key type `bls-ava-icm` specifically for Lux BLS signing operations. This ensures the correct signing algorithm is used.
 </Callout>
 
 The command outputs a key ID in the format `Key#BlsAvaIcm_0x...`. Copy this key ID.
@@ -95,7 +95,7 @@ cs key set-policy --key-id <KEY_ID> --policy '"AllowRawBlobSigning"'
 Replace `<KEY_ID>` with the key ID from the previous step.
 
 <Callout type="warn" title="Important">
-The `AllowRawBlobSigning` policy is required for AvalancheGo to sign messages. Without this policy, signing requests will be rejected.
+The `AllowRawBlobSigning` policy is required for LuxGo to sign messages. Without this policy, signing requests will be rejected.
 </Callout>
 
 ### Associate Key with Role
@@ -159,7 +159,7 @@ If you prefer to build from source:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ava-labs/cube-signer-sidecar.git
+git clone https://github.com/luxfi/cube-signer-sidecar.git
 cd cube-signer-sidecar
 
 # Build the binary
@@ -201,16 +201,16 @@ Use with:
 ./cube-signer-sidecar start --config-file config.json
 ```
 
-## Step 3: Configure AvalancheGo
+## Step 3: Configure LuxGo
 
-Once the sidecar is running, configure AvalancheGo to use it for BLS signing.
+Once the sidecar is running, configure LuxGo to use it for BLS signing.
 
 ### Add the Signer Endpoint Flag
 
-Update your AvalancheGo startup command to include the `--staking-rpc-signer-endpoint` flag:
+Update your LuxGo startup command to include the `--staking-rpc-signer-endpoint` flag:
 
 ```bash
-avalanchego \
+luxgo \
   --staking-rpc-signer-endpoint=127.0.0.1:50051 \
   [other flags...]
 ```
@@ -221,7 +221,7 @@ If your sidecar is running on a different machine, replace `127.0.0.1` with the 
 
 ### Using a Configuration File
 
-Alternatively, add the setting to your AvalancheGo configuration JSON:
+Alternatively, add the setting to your LuxGo configuration JSON:
 
 ```json
 {
@@ -231,29 +231,29 @@ Alternatively, add the setting to your AvalancheGo configuration JSON:
 
 ### Using Systemd
 
-If you run AvalancheGo as a systemd service, edit the service file:
+If you run LuxGo as a systemd service, edit the service file:
 
 ```bash
-sudo systemctl edit avalanchego
+sudo systemctl edit luxgo
 ```
 
 Add the flag to the `ExecStart` line or add an environment variable:
 
 ```ini
 [Service]
-Environment="AVALANCHEGO_STAKING_RPC_SIGNER_ENDPOINT=127.0.0.1:50051"
+Environment="LUXGO_STAKING_RPC_SIGNER_ENDPOINT=127.0.0.1:50051"
 ```
 
 Then restart the service:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart avalanchego
+sudo systemctl restart luxgo
 ```
 
 ## Verifying the Setup
 
-After starting both the sidecar and AvalancheGo, verify the configuration is working correctly.
+After starting both the sidecar and LuxGo, verify the configuration is working correctly.
 
 ### Check Sidecar Logs
 
@@ -263,11 +263,11 @@ If running via Docker:
 docker logs cube-signer-sidecar
 ```
 
-You should see log messages indicating the gRPC server is running and receiving requests from AvalancheGo.
+You should see log messages indicating the gRPC server is running and receiving requests from LuxGo.
 
 ### Verify Node BLS Key
 
-Call the AvalancheGo Info API to confirm your node is using the CubeSigner BLS key:
+Call the LuxGo Info API to confirm your node is using the CubeSigner BLS key:
 
 ```bash
 curl -X POST --data '{
@@ -297,10 +297,10 @@ The `publicKey` value should match the BLS key you created in CubeSigner.
 
 ### Monitor Node Logs
 
-Check AvalancheGo logs to ensure there are no signing errors:
+Check LuxGo logs to ensure there are no signing errors:
 
 ```bash
-sudo journalctl -u avalanchego -f
+sudo journalctl -u luxgo -f
 ```
 
 Look for successful connection messages to the RPC signer endpoint. Any signing failures will appear as errors in these logs.
@@ -314,7 +314,7 @@ When using the CubeSigner sidecar, follow these security best practices:
 - **Restrict File Permissions**: Set `token.json` to read-only for the user running the sidecar:
   ```bash
   chmod 600 token.json
-  chown avalanchego:avalanchego token.json
+  chown luxgo:luxgo token.json
   ```
 - **Never Commit Tokens**: Add `token.json` to `.gitignore` to prevent accidental commits
 - **Rotate Regularly**: Generate new tokens periodically and update your configuration
@@ -322,8 +322,8 @@ When using the CubeSigner sidecar, follow these security best practices:
 
 ### Network Security
 
-- **Isolate the Sidecar**: Run the sidecar on the same machine as AvalancheGo or on a private network
-- **Firewall Rules**: Restrict access to port 50051 to only the AvalancheGo process
+- **Isolate the Sidecar**: Run the sidecar on the same machine as LuxGo or on a private network
+- **Firewall Rules**: Restrict access to port 50051 to only the LuxGo process
 - **TLS for Remote Connections**: The sidecar serves plaintext gRPC only; if you need TLS, place it behind a terminating reverse proxy or tunnel traffic over a private/secure network.
 
 ### Key Management
@@ -340,7 +340,7 @@ If someone gains access to your `token.json` file, they can sign messages on beh
 
 ### Connection Refused Errors
 
-**Problem**: AvalancheGo logs show "connection refused" when trying to reach the sidecar.
+**Problem**: LuxGo logs show "connection refused" when trying to reach the sidecar.
 
 **Solution**:
 - Verify the sidecar is running: `docker ps` or check the process
@@ -376,14 +376,14 @@ If someone gains access to your `token.json` file, they can sign messages on beh
   ```
 - Restart the sidecar after policy changes
 
-### AvalancheGo Won't Start
+### LuxGo Won't Start
 
-**Problem**: AvalancheGo fails to start after adding the `--staking-rpc-signer-endpoint` flag.
+**Problem**: LuxGo fails to start after adding the `--staking-rpc-signer-endpoint` flag.
 
 **Solution**:
-- Verify you're running AvalancheGo v1.13.4 or later: `avalanchego --version`
+- Verify you're running LuxGo v1.13.4 or later: `luxgo --version`
 - Remove any existing `signer.key` file (it conflicts with remote signing)
-- Check the sidecar is reachable before starting AvalancheGo
+- Check the sidecar is reachable before starting LuxGo
 
 ## Migration from Local BLS Keys
 
@@ -408,12 +408,12 @@ Traditional backups are simpler but lack the security benefits of hardware-backe
 ## Next Steps
 
 - [Monitor your node](/docs/nodes/maintain/monitoring) to ensure signing operations are working correctly
-- [Upgrade AvalancheGo](/docs/nodes/maintain/upgrade) when new versions are released
-- [Learn about Avalanche L1 validators](/docs/avalanche-l1s) if you're validating additional Subnets
+- [Upgrade LuxGo](/docs/nodes/maintain/upgrade) when new versions are released
+- [Learn about Lux L1 validators](/docs/lux-l1s) if you're validating additional Subnets
 
 ## Resources
 
 - [CubeSigner Documentation](https://docs.cubist.dev/)
 - [CubeSigner for Validators](https://cubist.dev/cubesigner-hardware-backed-remote-signing-for-validator-infrastructure)
-- [cube-signer-sidecar GitHub Repository](https://github.com/ava-labs/cube-signer-sidecar)
-- [AvalancheGo Release Notes (v1.13.4)](https://github.com/ava-labs/avalanchego/releases/tag/v1.13.4)
+- [cube-signer-sidecar GitHub Repository](https://github.com/luxfi/cube-signer-sidecar)
+- [LuxGo Release Notes (v1.13.4)](https://github.com/luxfi/luxgo/releases/tag/v1.13.4)

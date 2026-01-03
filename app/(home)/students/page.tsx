@@ -22,27 +22,27 @@ export default function ContactPage() {
           <div className="flex justify-center mb-6">
             <Image
               src="/logo-black.png"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="dark:hidden"
             />
             <Image
               src="/logo-white.png"
-              alt="Avalanche Logo"
+              alt="Lux Logo"
               width={200}
               height={50}
               className="hidden dark:block"
             />
           </div>
           <h1 className="text-4xl md:text-7xl font-bold tracking-tighter">
-            Avalanche
+            Lux
             <span className="block pb-1 text-[#EB4C50]">
               For Students
             </span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Discover opportunities for students to explore blockchain technology, access educational resources, and join our community of builders on Avalanche.
+            Discover opportunities for students to explore blockchain technology, access educational resources, and join our community of builders on Lux.
           </p>
         </section>
 
@@ -86,11 +86,11 @@ export default function ContactPage() {
           <div className="relative px-6 py-12 text-center space-y-6 rounded-3xl border border-yellow-500/30 backdrop-blur-xs shadow-2xl">
             <h2 className="text-3xl font-bold">Learn With Academy</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Kickstart your Avalanche development journey with Academy courses. Learn to build dApps, smart contracts, and more with expert-led tutorials designed specifically for students.
+              Kickstart your Lux development journey with Academy courses. Learn to build dApps, smart contracts, and more with expert-led tutorials designed specifically for students.
             </p>
             <Link href="/academy">
               <Button className="rounded-full px-8 py-6 bg-red-500 hover:bg-red-600 transition-all duration-300 shadow-lg hover:shadow-xl text-white">
-                Explore Avalanche Academy<ArrowRight color="white" className="ml-2 h-5 w-5" />
+                Explore Lux Academy<ArrowRight color="white" className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>

@@ -93,8 +93,8 @@ export const useConsoleLog = (autoFetch: boolean = false) => {
   // Helper function to get explorer URL
   const getExplorerUrl = (id: string, type: 'tx' | 'address', network: string, chain: string = 'P'): string => {
     const base = network === 'mainnet' 
-      ? 'https://subnets.avax.network' 
-      : 'https://subnets-test.avax.network';
+      ? 'https://subnets.lux.network' 
+      : 'https://subnets-test.lux.network';
     
     if (chain === 'P') {
       return `${base}/p-chain/${type}/${id}`;

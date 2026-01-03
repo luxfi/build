@@ -306,7 +306,7 @@ export function JsonPreviewPanel({
     const statusText = !isValidJson
         ? 'Awaiting configuration'
         : percent >= 90
-            ? 'Approaching P-Chain limit'
+            ? 'Approaching Platform-Chain limit'
             : percent >= 75
                 ? 'Consider optimizing'
                 : 'Within safe limits';

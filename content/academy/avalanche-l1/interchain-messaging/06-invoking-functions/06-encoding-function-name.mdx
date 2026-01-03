@@ -177,7 +177,7 @@ Deploy the sender and receiver contracts and try out the `add` and `concatenate`
 ### Deploy the Sender Contract
 
 ```bash
-forge create --rpc-url fuji-c --private-key $PK contracts/interchain-messaging/invoking-functions/CalculatorSenderOnCChain.sol:CalculatorSenderOnCChain --broadcast
+forge create --rpc-url testnet-c --private-key $PK contracts/interchain-messaging/invoking-functions/CalculatorSenderOnCChain.sol:CalculatorSenderOnCChain --broadcast
 ```
 ```
 [⠃] Compiling...
@@ -204,7 +204,7 @@ export SENDER_ADDRESS={your-sender-address}
 ### Deploy the Receiver Contract:
 
 ```bash
-forge create --rpc-url fuji-dispatch --private-key $PK contracts/interchain-messaging/invoking-functions/CalculatorReceiverOnDispatch.sol:CalculatorReceiverOnDispatch --broadcast
+forge create --rpc-url testnet-dispatch --private-key $PK contracts/interchain-messaging/invoking-functions/CalculatorReceiverOnDispatch.sol:CalculatorReceiverOnDispatch --broadcast
 ```
 ```
 [⠊] Compiling...
@@ -232,7 +232,7 @@ export RECEIVER_ADDRESS={your-receiver-address}
 Now you can call the `sendAddMessage` and `sendConcatenateMessage` functions on the sender contract and see the results on the receiver contract. 
 
 ```bash
-cast send --rpc-url fuji-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint, uint)" $RECEIVER_ADDRESS 1 2
+cast send --rpc-url testnet-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint, uint)" $RECEIVER_ADDRESS 1 2
 ```
 
 </Step>
@@ -241,7 +241,7 @@ cast send --rpc-url fuji-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(add
 ### Verify the Result:
 
 ```bash
-cast call --rpc-url fuji-dispatch $RECEIVER_ADDRESS "result_num()(uint)"
+cast call --rpc-url testnet-dispatch $RECEIVER_ADDRESS "result_num()(uint)"
 ```
 
 </Step>

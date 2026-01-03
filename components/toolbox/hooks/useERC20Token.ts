@@ -29,14 +29,14 @@ export function useERC20Token(tokenAddress: string | null, abi: any): ERC20Token
   const { coreWalletClient, walletEVMAddress } = useWalletStore();
   const viemChain = useViemChainStore();
   const { notify } = useConsoleNotifications();
-  const { avalancheWalletClient } = useWallet();
+  const { luxWalletClient } = useWallet();
 
-  const isReady = Boolean(tokenAddress && avalancheWalletClient && viemChain);
+  const isReady = Boolean(tokenAddress && luxWalletClient && viemChain);
 
   const allowance = async (owner: string, spender: string): Promise<string> => {
-    if (!avalancheWalletClient || !tokenAddress) throw new Error('Contract not ready');
+    if (!luxWalletClient || !tokenAddress) throw new Error('Contract not ready');
     
-    const allowanceAmount = await readContract(avalancheWalletClient as any, {
+    const allowanceAmount = await readContract(luxWalletClient as any, {
       address: tokenAddress as `0x${string}`,
       abi: abi,
       functionName: 'allowance',
@@ -47,9 +47,9 @@ export function useERC20Token(tokenAddress: string | null, abi: any): ERC20Token
   };
 
   const balanceOf = async (account: string): Promise<string> => {
-    if (!avalancheWalletClient || !tokenAddress) throw new Error('Contract not ready');
+    if (!luxWalletClient || !tokenAddress) throw new Error('Contract not ready');
     
-    const balance = await readContract(avalancheWalletClient as any, {
+    const balance = await readContract(luxWalletClient as any, {
       address: tokenAddress as `0x${string}`,
       abi: abi,
       functionName: 'balanceOf',
@@ -60,9 +60,9 @@ export function useERC20Token(tokenAddress: string | null, abi: any): ERC20Token
   };
 
   const totalSupply = async (): Promise<string> => {
-    if (!avalancheWalletClient || !tokenAddress) throw new Error('Contract not ready');
+    if (!luxWalletClient || !tokenAddress) throw new Error('Contract not ready');
     
-    const supply = await readContract(avalancheWalletClient as any, {
+    const supply = await readContract(luxWalletClient as any, {
       address: tokenAddress as `0x${string}`,
       abi: abi,
       functionName: 'totalSupply',
@@ -73,9 +73,9 @@ export function useERC20Token(tokenAddress: string | null, abi: any): ERC20Token
   };
 
   const name = async (): Promise<string> => {
-    if (!avalancheWalletClient || !tokenAddress) throw new Error('Contract not ready');
+    if (!luxWalletClient || !tokenAddress) throw new Error('Contract not ready');
     
-    return await readContract(avalancheWalletClient as any, {
+    return await readContract(luxWalletClient as any, {
       address: tokenAddress as `0x${string}`,
       abi: abi,
       functionName: 'name',
@@ -84,9 +84,9 @@ export function useERC20Token(tokenAddress: string | null, abi: any): ERC20Token
   };
 
   const symbol = async (): Promise<string> => {
-    if (!avalancheWalletClient || !tokenAddress) throw new Error('Contract not ready');
+    if (!luxWalletClient || !tokenAddress) throw new Error('Contract not ready');
     
-    return await readContract(avalancheWalletClient as any, {
+    return await readContract(luxWalletClient as any, {
       address: tokenAddress as `0x${string}`,
       abi: abi,
       functionName: 'symbol',
@@ -95,9 +95,9 @@ export function useERC20Token(tokenAddress: string | null, abi: any): ERC20Token
   };
 
   const decimals = async (): Promise<number> => {
-    if (!avalancheWalletClient || !tokenAddress) throw new Error('Contract not ready');
+    if (!luxWalletClient || !tokenAddress) throw new Error('Contract not ready');
     
-    return await readContract(avalancheWalletClient as any, {
+    return await readContract(luxWalletClient as any, {
       address: tokenAddress as `0x${string}`,
       abi: abi,
       functionName: 'decimals',

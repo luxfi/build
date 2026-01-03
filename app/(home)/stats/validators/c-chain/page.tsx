@@ -74,7 +74,7 @@ import {
   VersionCount,
   L1Chain,
 } from "@/types/stats";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { ChartWatermark } from "@/components/stats/ChartWatermark";
 import { StatsBreadcrumb } from "@/components/navigation/StatsBreadcrumb";
 import { ChainIdChips } from "@/components/ui/copyable-id-chip";
@@ -236,20 +236,20 @@ export default function CChainValidatorMetrics() {
       typeof weight === "string" ? Number.parseFloat(weight) : weight;
     if (isNaN(numValue)) return "N/A";
 
-    const avaxValue = numValue / 1e9;
+    const luxValue = numValue / 1e9;
 
-    if (avaxValue >= 1e12) {
-      return `${(avaxValue / 1e12).toFixed(2)}T AVAX`;
-    } else if (avaxValue >= 1e9) {
-      return `${(avaxValue / 1e9).toFixed(2)}B AVAX`;
-    } else if (avaxValue >= 1e6) {
-      return `${(avaxValue / 1e6).toFixed(2)}M AVAX`;
-    } else if (avaxValue >= 1e3) {
-      return `${(avaxValue / 1e3).toFixed(2)}K AVAX`;
+    if (luxValue >= 1e12) {
+      return `${(luxValue / 1e12).toFixed(2)}T LUX`;
+    } else if (luxValue >= 1e9) {
+      return `${(luxValue / 1e9).toFixed(2)}B LUX`;
+    } else if (luxValue >= 1e6) {
+      return `${(luxValue / 1e6).toFixed(2)}M LUX`;
+    } else if (luxValue >= 1e3) {
+      return `${(luxValue / 1e3).toFixed(2)}K LUX`;
     }
-    return `${avaxValue.toLocaleString(undefined, {
+    return `${luxValue.toLocaleString(undefined, {
       maximumFractionDigits: 2,
-    })} AVAX`;
+    })} LUX`;
   };
 
   const formatWeightForAxis = (weight: number | string): string => {
@@ -258,18 +258,18 @@ export default function CChainValidatorMetrics() {
       typeof weight === "string" ? Number.parseFloat(weight) : weight;
     if (isNaN(numValue)) return "N/A";
 
-    const avaxValue = numValue / 1e9;
+    const luxValue = numValue / 1e9;
 
-    if (avaxValue >= 1e12) {
-      return `${(avaxValue / 1e12).toFixed(2)}T`;
-    } else if (avaxValue >= 1e9) {
-      return `${(avaxValue / 1e9).toFixed(2)}B`;
-    } else if (avaxValue >= 1e6) {
-      return `${(avaxValue / 1e6).toFixed(2)}M`;
-    } else if (avaxValue >= 1e3) {
-      return `${(avaxValue / 1e3).toFixed(2)}K`;
+    if (luxValue >= 1e12) {
+      return `${(luxValue / 1e12).toFixed(2)}T`;
+    } else if (luxValue >= 1e9) {
+      return `${(luxValue / 1e9).toFixed(2)}B`;
+    } else if (luxValue >= 1e6) {
+      return `${(luxValue / 1e6).toFixed(2)}M`;
+    } else if (luxValue >= 1e3) {
+      return `${(luxValue / 1e3).toFixed(2)}K`;
     }
-    return avaxValue.toLocaleString(undefined, {
+    return luxValue.toLocaleString(undefined, {
       maximumFractionDigits: 2,
     });
   };
@@ -445,7 +445,7 @@ export default function CChainValidatorMetrics() {
   const getPieChartData = () => {
     if (!validatorVersions.length) return [];
 
-    // Use Avalanche red color palette
+    // Use Lux red color palette
     return validatorVersions.map((version, index) => ({
       version: version.version,
       count: version.count,
@@ -463,7 +463,7 @@ export default function CChainValidatorMetrics() {
       },
     };
 
-    // Use Avalanche red color palette
+    // Use Lux red color palette
     validatorVersions.forEach((version, index) => {
       config[version.version] = {
         label: version.version,
@@ -496,17 +496,17 @@ export default function CChainValidatorMetrics() {
   const getTotalWeight = (): string => {
     const validatorWeight = metrics?.validator_weight?.current_value ? Number(metrics.validator_weight.current_value) : 0;
     const delegatorWeight = metrics?.delegator_weight?.current_value ? Number(metrics.delegator_weight.current_value) : 0;
-    const totalWeightInAvax = (validatorWeight + delegatorWeight) / 1e9;
-    return formatLargeNumber(totalWeightInAvax);
+    const totalWeightInLux = (validatorWeight + delegatorWeight) / 1e9;
+    return formatLargeNumber(totalWeightInLux);
   };
 
-  // C-Chain config from l1-chains.json
+  // LUExchange-Chain config from l1-chains.json
   const cChainData = (l1ChainsData as L1Chain[]).find(c => c.slug === "c-chain");
   const chainConfig = {
-    chainLogoURI: cChainData?.chainLogoURI || "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg",
+    chainLogoURI: cChainData?.chainLogoURI || "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg",
     color: cChainData?.color || "#E57373",
     category: "Primary Network",
-    description: cChainData?.description || "Real-time insights into the Avalanche C-Chain performance and validator distribution",
+    description: cChainData?.description || "Real-time insights into the Lux LUExchange-Chain performance and validator distribution",
     website: cChainData?.website,
     socials: cChainData?.socials,
     explorers: cChainData?.explorers || [],
@@ -538,7 +538,7 @@ export default function CChainValidatorMetrics() {
       icon: HandCoins,
       metricKey: "delegator_count" as const,
       description: "Number of active delegators on the Primary Network",
-      color: "#E84142",
+      color: "#FFFFFF",
       chartType: "bar" as const,
     },
     {
@@ -546,7 +546,7 @@ export default function CChainValidatorMetrics() {
       icon: Landmark,
       metricKey: "delegator_weight" as const,
       description: "Total delegated amount across validators",
-      color: "#E84142",
+      color: "#FFFFFF",
       chartType: "area" as const,
     },
   ];
@@ -592,10 +592,10 @@ export default function CChainValidatorMetrics() {
   // Format stake for validators table
   const formatValidatorStake = (stake: string): string => {
     const stakeNum = parseFloat(stake);
-    const avaxValue = stakeNum / 1e9;
-    if (avaxValue >= 1e6) return `${(avaxValue / 1e6).toFixed(2)}M`;
-    if (avaxValue >= 1e3) return `${(avaxValue / 1e3).toFixed(2)}K`;
-    return avaxValue.toFixed(2);
+    const luxValue = stakeNum / 1e9;
+    if (luxValue >= 1e6) return `${(luxValue / 1e6).toFixed(2)}M`;
+    if (luxValue >= 1e3) return `${(luxValue / 1e3).toFixed(2)}K`;
+    return luxValue.toFixed(2);
   };
 
   // Handle column sorting
@@ -761,7 +761,7 @@ export default function CChainValidatorMetrics() {
         <L1BubbleNav
           chainSlug="c-chain"
           themeColor="#E57373"
-          rpcUrl="https://api.avax.network/ext/bc/C/rpc"
+          rpcUrl="https://api.lux.network/ext/bc/C/rpc"
         />
       </div>
     );
@@ -783,7 +783,7 @@ export default function CChainValidatorMetrics() {
         <L1BubbleNav
           chainSlug="c-chain"
           themeColor="#E57373"
-          rpcUrl="https://api.avax.network/ext/bc/C/rpc"
+          rpcUrl="https://api.lux.network/ext/bc/C/rpc"
         />
       </div>
     );
@@ -806,7 +806,7 @@ export default function CChainValidatorMetrics() {
           <StatsBreadcrumb
             showValidators
             chainSlug="c-chain"
-            chainName="Avalanche C-Chain"
+            chainName="Lux LUExchange-Chain"
             chainLogoURI={chainConfig.chainLogoURI}
             themeColor={chainConfig.color}
           />
@@ -815,22 +815,22 @@ export default function CChainValidatorMetrics() {
             <div className="space-y-4 sm:space-y-6 flex-1">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                  <AvalancheLogo
+                  <LuxLogo
                     className="w-4 h-4 sm:w-5 sm:h-5"
-                    fill="#E84142"
+                    fill="#FFFFFF"
                   />
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                 </div>
                 <div className="flex items-center gap-3 sm:gap-4">
                   <img
                     src={chainConfig.chainLogoURI}
-                    alt="C-Chain logo"
+                    alt="LUExchange-Chain logo"
                     className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain rounded-xl"
                   />
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                    C-Chain Validators
+                    LUExchange-Chain Validators
                   </h1>
                 </div>
                 {/* Blockchain ID and Subnet ID chips + Add to Wallet */}
@@ -844,9 +844,9 @@ export default function CChainValidatorMetrics() {
                         <div className="flex-shrink-0">
                           <AddToWalletButton 
                             rpcUrl={chainConfig.rpcUrl}
-                            chainName="Avalanche C-Chain"
+                            chainName="Lux LUExchange-Chain"
                             chainId={43114}
-                            tokenSymbol="AVAX"
+                            tokenSymbol="LUX"
                           />
                         </div>
                       )}
@@ -1161,7 +1161,7 @@ export default function CChainValidatorMetrics() {
                       <div className="flex items-center gap-2">
                         <div
                           className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: "#E84142" }}
+                          style={{ backgroundColor: "#FFFFFF" }}
                         />
                         <span>
                           Cumulative Validator Weight Percentage by Rank
@@ -1259,7 +1259,7 @@ export default function CChainValidatorMetrics() {
                           yAxisId="left"
                           type="monotone"
                           dataKey="cumulativePercentage"
-                          stroke="#E84142"
+                          stroke="#FFFFFF"
                           strokeWidth={2}
                           dot={false}
                           name="Cumulative %"
@@ -1302,7 +1302,7 @@ export default function CChainValidatorMetrics() {
                       <div className="flex items-center gap-2">
                         <div
                           className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: "#E84142" }}
+                          style={{ backgroundColor: "#FFFFFF" }}
                         />
                         <span>Cumulative Stake Percentage by Rank</span>
                       </div>
@@ -1323,7 +1323,7 @@ export default function CChainValidatorMetrics() {
                         <XAxis
                           dataKey="rank"
                           label={{
-                            value: "Validator Rank by AVAX Staked",
+                            value: "Validator Rank by LUX Staked",
                             position: "insideBottom",
                             offset: -10,
                           }}
@@ -1398,7 +1398,7 @@ export default function CChainValidatorMetrics() {
                           yAxisId="left"
                           type="monotone"
                           dataKey="cumulativePercentage"
-                          stroke="#E84142"
+                          stroke="#FFFFFF"
                           strokeWidth={2}
                           dot={false}
                           name="Cumulative %"
@@ -1421,11 +1421,11 @@ export default function CChainValidatorMetrics() {
                     <div className="flex items-center gap-2 sm:gap-3">
                       <div
                         className="rounded-full p-2 sm:p-3 flex items-center justify-center"
-                        style={{ backgroundColor: "#E8414220" }}
+                        style={{ backgroundColor: "#FFFFFF20" }}
                       >
                         <Users
                           className="h-5 w-5 sm:h-6 sm:w-6"
-                          style={{ color: "#E84142" }}
+                          style={{ color: "#FFFFFF" }}
                         />
                       </div>
                       <div>
@@ -1443,7 +1443,7 @@ export default function CChainValidatorMetrics() {
                       <div className="flex items-center gap-2">
                         <div
                           className="w-3 h-3 rounded-full"
-                          style={{ backgroundColor: "#E84142" }}
+                          style={{ backgroundColor: "#FFFFFF" }}
                         />
                         <span>
                           Cumulative Delegator Stake Percentage by Rank
@@ -1541,7 +1541,7 @@ export default function CChainValidatorMetrics() {
                           yAxisId="left"
                           type="monotone"
                           dataKey="cumulativePercentage"
-                          stroke="#E84142"
+                          stroke="#FFFFFF"
                           strokeWidth={2}
                           dot={false}
                           name="Cumulative %"
@@ -1562,11 +1562,11 @@ export default function CChainValidatorMetrics() {
                     <div className="flex items-center gap-2 sm:gap-3">
                       <div
                         className="rounded-full p-2 sm:p-3 flex items-center justify-center"
-                        style={{ backgroundColor: "#E8414220" }}
+                        style={{ backgroundColor: "#FFFFFF20" }}
                       >
                         <Percent
                           className="h-5 w-5 sm:h-6 sm:w-6"
-                          style={{ color: "#E84142" }}
+                          style={{ color: "#FFFFFF" }}
                         />
                       </div>
                       <div>
@@ -1630,7 +1630,7 @@ export default function CChainValidatorMetrics() {
                           tickFormatter={formatStake}
                         />
                         <Tooltip
-                          cursor={{ fill: "#e8414220" }}
+                          cursor={{ fill: "#ffffff20" }}
                           content={({ active, payload }) => {
                             if (!active || !payload?.length) return null;
                             const data = payload[0].payload;
@@ -1653,7 +1653,7 @@ export default function CChainValidatorMetrics() {
                         />
                         <Bar
                           dataKey="totalWeight"
-                          fill="#e84142"
+                          fill="#ffffff"
                           barSize={6}
                           radius={[4, 4, 0, 0]}
                         />
@@ -1672,7 +1672,7 @@ export default function CChainValidatorMetrics() {
               Software Versions
             </LinkableHeading>
             <p className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-base text-left">
-              Distribution of AvalancheGo versions across validators
+              Distribution of LuxGo versions across validators
             </p>
           </div>
 
@@ -1778,7 +1778,7 @@ export default function CChainValidatorMetrics() {
                                         undefined,
                                         { maximumFractionDigits: 0 }
                                       )}{" "}
-                                      AVAX ({data.stakingPercentage.toFixed(1)}
+                                      LUX ({data.stakingPercentage.toFixed(1)}
                                       %)
                                     </span>
                                   </div>
@@ -2030,7 +2030,7 @@ export default function CChainValidatorMetrics() {
                             </td>
                             <td className="border-r border-slate-100 dark:border-neutral-800 px-4 py-2 text-right font-mono text-sm">
                               {formatValidatorStake(validator.amountStaked)}{" "}
-                              AVAX
+                              LUX
                             </td>
                             <td className="border-r border-slate-100 dark:border-neutral-800 px-4 py-2 text-right text-sm">
                               {parseFloat(validator.delegationFee).toFixed(1)}%
@@ -2040,7 +2040,7 @@ export default function CChainValidatorMetrics() {
                             </td>
                             <td className="px-4 py-2 text-right font-mono text-sm">
                               {formatValidatorStake(validator.amountDelegated)}{" "}
-                              AVAX
+                              LUX
                             </td>
                           </tr>
                         ))
@@ -2071,7 +2071,7 @@ export default function CChainValidatorMetrics() {
       <L1BubbleNav
         chainSlug="c-chain"
         themeColor="#E57373"
-        rpcUrl="https://api.avax.network/ext/bc/C/rpc"
+        rpcUrl="https://api.lux.network/ext/bc/C/rpc"
       />
     </div>
   );
@@ -2745,7 +2745,7 @@ function DailyRewardsChartCard({
   const downloadCSV = () => {
     if (!displayData || displayData.length === 0) return;
 
-    const headers = ["Date", "Daily Rewards (AVAX)", "Moving Average (AVAX)"];
+    const headers = ["Date", "Daily Rewards (LUX)", "Moving Average (LUX)"];
     const rows = displayData.map((point: any) => 
       [point.day, point.value, point.ma || ""].join(",")
     );
@@ -2868,7 +2868,7 @@ function DailyRewardsChartCard({
           {/* Current Values and Legend */}
           <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4 pl-2 sm:pl-4 flex-wrap">
             <div className="text-md sm:text-base font-mono">
-              {formatValue(typeof currentValue === 'string' ? parseFloat(currentValue) : currentValue)} AVAX
+              {formatValue(typeof currentValue === 'string' ? parseFloat(currentValue) : currentValue)} LUX
             </div>
             {dailyChange.change > 0 && (
               <div
@@ -2937,10 +2937,10 @@ function DailyRewardsChartCard({
                             </div>
                             <div className="text-xs">
                               {period === "D" ? "Daily" : period === "W" ? "Weekly" : period === "M" ? "Monthly" : period === "Q" ? "Quarterly" : "Yearly"}:{" "}
-                              {formatValue(payload[0].payload.value)} AVAX
+                              {formatValue(payload[0].payload.value)} LUX
                             </div>
                             <div className="text-xs" style={{ color: "#22c55e" }}>
-                              {maConfig.label}: {formatValue(payload[0].payload.ma)} AVAX
+                              {maConfig.label}: {formatValue(payload[0].payload.ma)} LUX
                             </div>
                           </div>
                         </div>
@@ -3183,7 +3183,7 @@ function TotalWeightStackedChartCard({
   const downloadCSV = () => {
     if (!displayData || displayData.length === 0) return;
 
-    const headers = ["Date", "Staked (nAVAX)", "Delegated (nAVAX)", "Total (nAVAX)"];
+    const headers = ["Date", "Staked (nLUX)", "Delegated (nLUX)", "Total (nLUX)"];
     const rows = displayData.map((point) => 
       [point.day, point.staked, point.delegated, point.total].join(",")
     );
@@ -3201,21 +3201,21 @@ function TotalWeightStackedChartCard({
   };
 
   const formatWeight = (value: number): string => {
-    const avaxValue = value / 1e9;
-    if (avaxValue >= 1e12) return `${(avaxValue / 1e12).toFixed(2)}T`;
-    if (avaxValue >= 1e9) return `${(avaxValue / 1e9).toFixed(2)}B`;
-    if (avaxValue >= 1e6) return `${(avaxValue / 1e6).toFixed(2)}M`;
-    if (avaxValue >= 1e3) return `${(avaxValue / 1e3).toFixed(2)}K`;
-    return avaxValue.toFixed(2);
+    const luxValue = value / 1e9;
+    if (luxValue >= 1e12) return `${(luxValue / 1e12).toFixed(2)}T`;
+    if (luxValue >= 1e9) return `${(luxValue / 1e9).toFixed(2)}B`;
+    if (luxValue >= 1e6) return `${(luxValue / 1e6).toFixed(2)}M`;
+    if (luxValue >= 1e3) return `${(luxValue / 1e3).toFixed(2)}K`;
+    return luxValue.toFixed(2);
   };
 
   const formatWeightFull = (value: number): string => {
-    const avaxValue = value / 1e9;
-    if (avaxValue >= 1e12) return `${(avaxValue / 1e12).toFixed(2)}T AVAX`;
-    if (avaxValue >= 1e9) return `${(avaxValue / 1e9).toFixed(2)}B AVAX`;
-    if (avaxValue >= 1e6) return `${(avaxValue / 1e6).toFixed(2)}M AVAX`;
-    if (avaxValue >= 1e3) return `${(avaxValue / 1e3).toFixed(2)}K AVAX`;
-    return `${avaxValue.toFixed(2)} AVAX`;
+    const luxValue = value / 1e9;
+    if (luxValue >= 1e12) return `${(luxValue / 1e12).toFixed(2)}T LUX`;
+    if (luxValue >= 1e9) return `${(luxValue / 1e9).toFixed(2)}B LUX`;
+    if (luxValue >= 1e6) return `${(luxValue / 1e6).toFixed(2)}M LUX`;
+    if (luxValue >= 1e3) return `${(luxValue / 1e3).toFixed(2)}K LUX`;
+    return `${luxValue.toFixed(2)} LUX`;
   };
 
   const formatXAxis = (value: string) => {
@@ -3580,7 +3580,7 @@ function CumulativeRewardsChartCard({
   const downloadCSV = () => {
     if (!displayData || displayData.length === 0) return;
 
-    const headers = ["Date", "Cumulative Rewards (AVAX)"];
+    const headers = ["Date", "Cumulative Rewards (LUX)"];
     const rows = displayData.map((point: any) => [point.day, point.value].join(","));
 
     const csvContent = [headers.join(","), ...rows].join("\n");
@@ -3701,7 +3701,7 @@ function CumulativeRewardsChartCard({
           {/* Current Value */}
           <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4 pl-2 sm:pl-4 flex-wrap">
             <div className="text-md sm:text-base font-mono">
-              Total: {formatValue(typeof currentValue === 'string' ? parseFloat(currentValue) : currentValue)} AVAX
+              Total: {formatValue(typeof currentValue === 'string' ? parseFloat(currentValue) : currentValue)} LUX
             </div>
           </div>
 
@@ -3745,7 +3745,7 @@ function CumulativeRewardsChartCard({
                               {formatTooltipDate(payload[0].payload.day)}
                             </div>
                             <div className="text-xs">
-                              Total: {formatValue(payload[0].payload.value)} AVAX
+                              Total: {formatValue(payload[0].payload.value)} LUX
                             </div>
                           </div>
                         </div>

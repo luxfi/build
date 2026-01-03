@@ -5,31 +5,31 @@ icon: "tree"
 
 ## Overview
 
-HD Key Accounts create Avalanche accounts from hierarchical deterministic (HD) keys with custom derivation paths. This allows for advanced key management and multiple account generation from a single seed.
+HD Key Accounts create Lux accounts from hierarchical deterministic (HD) keys with custom derivation paths. This allows for advanced key management and multiple account generation from a single seed.
 
 ## Creating HD Key Accounts
 
 ### Basic Usage
 
 ```typescript
-import { hdKeyToAvalancheAccount, HDKey } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { hdKeyToLuxAccount, HDKey } from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
 const seed: Uint8Array = new Uint8Array(64); // Your seed
 const hdKey: HDKey = HDKey.fromMasterSeed(seed);
 
-const account: AvalancheAccount = hdKeyToAvalancheAccount(hdKey);
+const account: LuxAccount = hdKeyToLuxAccount(hdKey);
 ```
 
 ### Parameters
 
 - **`hdKey: HDKey`** - The HD key instance (required)
-- **`options?: HDKeyToAvalancheAccountOptions`** - Custom derivation path options (optional)
+- **`options?: HDKeyToLuxAccountOptions`** - Custom derivation path options (optional)
 
 ### Options
 
 ```typescript
-interface HDKeyToAvalancheAccountOptions {
+interface HDKeyToLuxAccountOptions {
   accountIndex?: number; // Account index (default: 0)
   addressIndex?: number; // Address index (default: 0)
   changeIndex?: number; // Change index (default: 0)
@@ -45,15 +45,15 @@ interface HDKeyToAvalancheAccountOptions {
 
 ### Default Derivation Paths
 
-HD Key accounts use BIP-44 derivation paths to generate deterministic keys from a seed. By default, the SDK uses separate paths for EVM (C-Chain) and XP (X/P-Chain) accounts:
+HD Key accounts use BIP-44 derivation paths to generate deterministic keys from a seed. By default, the SDK uses separate paths for EVM (LUExchange-Chain) and XP (X/Platform-Chain) accounts:
 
-**EVM (C-Chain) Path:**
+**EVM (LUExchange-Chain) Path:**
 
 ```
 m/44'/60'/{accountIndex}'/{changeIndex}/{addressIndex}
 ```
 
-**XP (X/P-Chain) Path:**
+**XP (X/Platform-Chain) Path:**
 
 ```
 m/44'/9000'/{xpAccountIndex}'/{xpChangeIndex}/{xpAddressIndex}
@@ -64,8 +64,8 @@ m/44'/9000'/{xpAccountIndex}'/{xpChangeIndex}/{xpAddressIndex}
 - `m` - Master key
 - `44'` - BIP-44 purpose (hardened)
 - `60'` (EVM) or `9000'` (XP) - Coin type (hardened)
-  - `60` is the standard Ethereum coin type (used for C-Chain)
-  - `9000` is the Avalanche coin type (used for X/P-Chain)
+  - `60` is the standard Ethereum coin type (used for LUExchange-Chain)
+  - `9000` is the Lux coin type (used for X/Platform-Chain)
 - `{accountIndex}'` - Account index (hardened, default: 0)
 - `{changeIndex}` - Change index (default: 0)
   - `0` is typically used for external addresses
@@ -105,16 +105,16 @@ The following table shows how different index combinations affect the derivation
 When you provide a custom `path` or `xpPath`, it completely replaces the default path calculation for EVM and XP accounts:
 
 ```typescript
-import { hdKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
-import type { AvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { hdKeyToLuxAccount } from "@lux-sdk/client/accounts";
+import type { LuxAccount } from "@lux-sdk/client/accounts";
 
 // ⚠️ WARNING: This path will be used for EVM accounts
-const account: AvalancheAccount = hdKeyToAvalancheAccount(hdKey, {
+const account: LuxAccount = hdKeyToLuxAccount(hdKey, {
   path: "m/44'/60'/0'/0/0", // EVM will use this path
 });
 
 // ⚠️ WARNING: This path will be used for XP accounts
-const account: AvalancheAccount = hdKeyToAvalancheAccount(hdKey, {
+const account: LuxAccount = hdKeyToLuxAccount(hdKey, {
   xpPath: "m/44'/60'/0'/0/0", // XP Account will use this path
 });
 
@@ -138,25 +138,25 @@ const account: AvalancheAccount = hdKeyToAvalancheAccount(hdKey, {
 ### Examples
 
 ```typescript
-import { hdKeyToAvalancheAccount, HDKey } from "@avalanche-sdk/client/accounts";
+import { hdKeyToLuxAccount, HDKey } from "@lux-sdk/client/accounts";
 
 const hdKey = HDKey.fromMasterSeed(seed);
 
 // Default paths (EVM: m/44'/60'/0'/0/0, XP: m/44'/9000'/0'/0/0)
-const account = hdKeyToAvalancheAccount(hdKey);
+const account = hdKeyToLuxAccount(hdKey);
 
 // Different indices
-const account1 = hdKeyToAvalancheAccount(hdKey, { accountIndex: 1 });
-const account2 = hdKeyToAvalancheAccount(hdKey, { addressIndex: 1 });
+const account1 = hdKeyToLuxAccount(hdKey, { accountIndex: 1 });
+const account2 = hdKeyToLuxAccount(hdKey, { addressIndex: 1 });
 
 // Separate EVM and XP indices
-const account3 = hdKeyToAvalancheAccount(hdKey, {
+const account3 = hdKeyToLuxAccount(hdKey, {
   accountIndex: 0, // EVM
   xpAccountIndex: 2, // XP
 });
 
 // Custom path (⚠️ applies to both EVM and XP)
-const account4 = hdKeyToAvalancheAccount(hdKey, {
+const account4 = hdKeyToLuxAccount(hdKey, {
   path: "m/44'/60'/0'/0/0",
 });
 ```
@@ -166,30 +166,30 @@ const account4 = hdKeyToAvalancheAccount(hdKey, {
 Generate multiple accounts from the same HD key:
 
 ```typescript
-import { hdKeyToAvalancheAccount, HDKey } from "@avalanche-sdk/client/accounts";
+import { hdKeyToLuxAccount, HDKey } from "@lux-sdk/client/accounts";
 
 const hdKey = HDKey.fromMasterSeed(seed);
 
-const account1 = hdKeyToAvalancheAccount(hdKey, { addressIndex: 0 });
-const account2 = hdKeyToAvalancheAccount(hdKey, { addressIndex: 1 });
-const account3 = hdKeyToAvalancheAccount(hdKey, { addressIndex: 2 });
+const account1 = hdKeyToLuxAccount(hdKey, { addressIndex: 0 });
+const account2 = hdKeyToLuxAccount(hdKey, { addressIndex: 1 });
+const account3 = hdKeyToLuxAccount(hdKey, { addressIndex: 2 });
 ```
 
 ## Using with Wallet Client
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalanche } from "@avalanche-sdk/client/chains";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { lux } from "@lux-sdk/client/chains";
 
-const walletClient = createAvalancheWalletClient({
+const walletClient = createLuxWalletClient({
   account,
-  chain: avalanche,
+  chain: lux,
   transport: { type: "http" },
 });
 
 const txHash = await walletClient.send({
   to: "0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6",
-  amount: avaxToWei(0.001),
+  amount: luxToWei(0.001),
 });
 ```
 

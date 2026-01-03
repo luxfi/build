@@ -172,8 +172,8 @@ export default function HackathonPage() {
         'Develop platforms to manage memberships and validator node groups.'
       ],
       resources: [
-        { name: 'Avalanche Validator Guide', url: 'https://build.avax.network/docs/nodes' },
-        { name: 'Governance Models', url: 'https://github.com/ava-labs/icm-contracts/tree/main/contracts/governance' }
+        { name: 'Lux Validator Guide', url: 'https://build.lux.network/docs/nodes' },
+        { name: 'Governance Models', url: 'https://github.com/luxfi/icm-contracts/tree/main/contracts/governance' }
       ]
     },
     {
@@ -189,8 +189,8 @@ export default function HackathonPage() {
         'Utilize modular frameworks to modify transaction logic.'
       ],
       resources: [
-        { name: 'Customize the EVM:', url: 'https://academy.avax.network/course/customizing-evm' },
-        { name: 'Custom VM with HyperSDK:', url: 'https://github.com/ava-labs/hypersdk' }
+        { name: 'Customize the EVM:', url: 'https://academy.lux.network/course/customizing-evm' },
+        { name: 'Custom VM with HyperSDK:', url: 'https://github.com/luxfi/hypersdk' }
       ]
     },
     {
@@ -201,20 +201,20 @@ export default function HackathonPage() {
       color: 'border-green-500 text-green-700',
       icon: <Zap size={24} className="text-green-500" />,
       examples: [
-        'Create DeFi, SocialFi, or Gaming dApps that operate across multiple Avalanche L1s and other blockchains.',
+        'Create DeFi, SocialFi, or Gaming dApps that operate across multiple Lux L1s and other blockchains.',
         'Develop applications utilizing staking, governance, or NFTs with cross-chain functionality.',
         'Integrate seamless user experiences with multi-network infrastructures.'
       ],
       resources: [
-        { name: 'InterChain Messaging', url: 'https://academy.avax.network/course/interchain-messaging' },
-        { name: 'InterChain Token Transfer', url: 'https://academy.avax.network/course/interchain-token-transfer' },
-        { name: 'Cross-Chain Communication', url: 'https://build.avax.network/docs/build/avalanchego/cross-chain' }
+        { name: 'InterChain Messaging', url: 'https://academy.lux.network/course/interchain-messaging' },
+        { name: 'InterChain Token Transfer', url: 'https://academy.lux.network/course/interchain-token-transfer' },
+        { name: 'Cross-Chain Communication', url: 'https://build.lux.network/docs/build/luxgo/cross-chain' }
       ]
     },
     {
       id: 'tooling',
       title: 'Developer Tooling',
-      description: "Leverage Avalanche's technology by creating developer tools that simplify building and deploying applications on Avalanche.",
+      description: "Leverage Lux's technology by creating developer tools that simplify building and deploying applications on Lux.",
       difficulty: 'Intermediate',
       color: 'border-purple-500 text-purple-700',
       icon: <Code size={24} className="text-purple-500" />,
@@ -224,25 +224,25 @@ export default function HackathonPage() {
         'Create dashboards for network monitoring and analytics.'
       ],
       resources: [
-        { name: 'Avalanche SDK', url: 'https://github.com/ava-labs/avalanchejs' },
-        { name: 'Developer Tools', url: 'https://build.avax.network/docs/tools' }
+        { name: 'Lux SDK', url: 'https://github.com/luxfi/luxjs' },
+        { name: 'Developer Tools', url: 'https://build.lux.network/docs/tools' }
         ]
     },
     {
-      id: 'ai-agents-avalanche',
-      title: 'AI Agents for Avalanche',
-      description: "Develop intelligent AI agents that interact with the Avalanche blockchain to automate tasks, analyze data, and enhance user experiences within decentralized ecosystems.",
+      id: 'ai-agents-lux',
+      title: 'AI Agents for Lux',
+      description: "Develop intelligent AI agents that interact with the Lux blockchain to automate tasks, analyze data, and enhance user experiences within decentralized ecosystems.",
       difficulty: 'Advanced',
       color: 'border-red-500 text-red-700',
       icon: <Network size={24} className="text-red-500" />,
       examples: [
-        'Create an agent that monitors Avalanche smart contracts and alerts users to significant events.',
+        'Create an agent that monitors Lux smart contracts and alerts users to significant events.',
         'Build an AI agent that analyzes transaction data for trends and insights.',
         'Develop agents that assist with wallet management and automate staking or bridging processes.'
       ],
       resources: [
-        { name: 'AvalancheJS', url: 'https://github.com/ava-labs/avalanchejs' },
-        { name: 'Avalanche Developer Documentation', url: 'https://build.avax.network/docs/' }
+        { name: 'LuxJS', url: 'https://github.com/luxfi/luxjs' },
+        { name: 'Lux Developer Documentation', url: 'https://build.lux.network/docs/' }
       ]
     },
   ];
@@ -252,10 +252,10 @@ export default function HackathonPage() {
       <div className="py-12 sm:py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto w-full lg:mx-0">
-          <img src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/builders-hub/hackathon-images/AvalancheSummit_London_HackathonLogo_Blue-LGHoUkeODPaagguBk0Fe1MM2ZbOBc9.png" alt="Summit London Logo" className="mx-auto h-32 w-auto" />
+          <img src="https://qizat5l3bwvomkny.public.blob.vercel-storage.com/lux-build/hackathon-images/LuxSummit_London_HackathonLogo_Blue-LGHoUkeODPaagguBk0Fe1MM2ZbOBc9.png" alt="Summit London Logo" className="mx-auto h-32 w-auto" />
          <p className="mt-12 text-center text-lg leading-8 text-muted-foreground">
-            At Avalanche, we believe in the power of technology to transform industries and solve real-world problems.
-            This hackathon aims to harness the potential of Avalanche's robust technology stack to address pressing issues and create scalable, practical solutions. 
+            At Lux, we believe in the power of technology to transform industries and solve real-world problems.
+            This hackathon aims to harness the potential of Lux's robust technology stack to address pressing issues and create scalable, practical solutions. 
           </p>
           <div className="mt-8 text-center">
             <p className="text-lg font-semibold">Date: May 23-25, 2025</p>
@@ -266,7 +266,7 @@ export default function HackathonPage() {
           </div>
         </div>
           <div className="flex items-center max-w-xl p-4 mx-auto mt-4 text-sm rounded-lg group" style={{ justifyContent: "center" }}>
-            <Link href="https://lu.ma/avalanchesummitlondonhackathon?utm_source=builder_hub" className={buttonVariants({ size: 'lg', variant: 'default' })}>
+            <Link href="https://lu.ma/luxsummitlondonhackathon?utm_source=builder_hub" className={buttonVariants({ size: 'lg', variant: 'default' })}>
               Register Here! →
             </Link>
           </div>
@@ -289,7 +289,7 @@ export default function HackathonPage() {
               <div className="mb-6">
                 <p className="text-lg text-gray-600 dark:text-gray-400">
                   Top participants may earn a spot in the{" "}
-                  <Link href="https://codebase.avax.network/" passHref>
+                  <Link href="https://codebase.lux.network/" passHref>
                     <strong className="text-yellow-500 hover:underline">
                     Codebase Incubator Program
                     </strong>
@@ -331,7 +331,7 @@ export default function HackathonPage() {
           <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Partner and Sponsors</h2>
             
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              Are you a project looking for developers to test your product and enhance the Avalanche Ecosystem?{" "}
+              Are you a project looking for developers to test your product and enhance the Lux Ecosystem?{" "}
               <Link href="https://share.hsforms.com/1kflciOGOQuCDSGGMWdpWSw4h8ew" passHref>
                 <strong className="text-yellow-500 hover:underline">
                 Apply as Sponsor
@@ -349,14 +349,14 @@ export default function HackathonPage() {
               <div className="p-6">
                 <Users className="h-6 w-6 text-blue-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Technical Mentorship</h3>
-                <p className="text-gray-600 dark:text-gray-400">The DevRel team at Ava Labs will be available to guide teams on various technologies throughout the hackathon.</p>
+                <p className="text-gray-600 dark:text-gray-400">The DevRel team at Lux Network will be available to guide teams on various technologies throughout the hackathon.</p>
               </div>
             </Card>
             <Card>
               <div className="p-6">
                 <Book className="h-6 w-6 text-green-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Workshops</h3>
-                <p className="text-gray-600 dark:text-gray-400">Attend hands-on workshops on Avalanche technologies, cross-chain communication, blockchain customization, and data visualization.</p>
+                <p className="text-gray-600 dark:text-gray-400">Attend hands-on workshops on Lux technologies, cross-chain communication, blockchain customization, and data visualization.</p>
               </div>
             </Card>
             <Card>
@@ -365,18 +365,18 @@ export default function HackathonPage() {
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Developer Resources</h3>
                 <ul className="space-y-3 text-gray-600 dark:text-gray-400">
                   <li>
-                    <Link href="https://build.avax.network/docs" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-                      Avalanche Docs
+                    <Link href="https://build.lux.network/docs" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                      Lux Docs
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://academy.avax.network" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-                      Avalanche Academy
+                    <Link href="https://academy.lux.network" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                      Lux Academy
                     </Link>
                   </li>
                   <li>
                     <Link href="https://core.app/tools/testnet-faucet/?subnet=c&token=c" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-                      Avalanche Faucet
+                      Lux Faucet
                     </Link>
                   </li>
                 </ul>

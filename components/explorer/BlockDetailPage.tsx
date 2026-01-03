@@ -17,7 +17,7 @@ interface BlockDetail {
   hash: string;
   parentHash: string;
   timestamp: string;
-  timestampMilliseconds?: number; // Avalanche-specific: block timestamp in milliseconds
+  timestampMilliseconds?: number; // Lux-specific: block timestamp in milliseconds
   miner: string;
   transactionCount: number;
   transactions: string[];
@@ -93,7 +93,7 @@ function formatTimestamp(timestamp: string): string {
   return `${timeAgo} (${formatted})`;
 }
 
-// Format timestamp with millisecond precision (for Avalanche timestampMilliseconds per ACP-226)
+// Format timestamp with millisecond precision (for Lux timestampMilliseconds per ACP-226)
 function formatTimestampWithMs(timestampMs: number): string {
   const date = new Date(timestampMs);
   const timeAgo = formatTimeAgo(date);
@@ -364,7 +364,7 @@ export default function BlockDetailPage({
                 }
               />
 
-              {/* Timestamp (milliseconds - Avalanche per ACP-226) */}
+              {/* Timestamp (milliseconds - Lux per ACP-226) */}
               {block?.timestampMilliseconds && (
                 <DetailRow
                   icon={<Clock className="w-4 h-4" />}
@@ -374,7 +374,7 @@ export default function BlockDetailPage({
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <a
-                            href="https://build.avax.network/docs/acps/226-dynamic-minimum-block-times#timestampmilliseconds"
+                            href="https://build.lux.network/docs/acps/226-dynamic-minimum-block-times#timestampmilliseconds"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-0.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors ml-1"

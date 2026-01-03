@@ -1,23 +1,23 @@
 # Explorer External API Calls Documentation
 
-This document lists all external API calls made within the explorer scope, including Glacier (Avalanche SDK), CoinGecko, Dune Analytics, Sourcify, Solokhin, and direct RPC calls.
+This document lists all external API calls made within the explorer scope, including Glacier (Lux SDK), CoinGecko, Dune Analytics, Sourcify, Solokhin, and direct RPC calls.
 
 ---
 
-## 1. Avalanche SDK (Glacier API)
+## 1. Lux SDK (Glacier API)
 
-All Glacier API calls use the `@avalanche-sdk/chainkit` SDK and authenticate automatically.
+All Glacier API calls use the `@lux-sdk/chainkit` SDK and authenticate automatically.
 
 | File | Method | Purpose | Parameters |
 |------|--------|---------|------------|
-| `app/api/explorer/[chainId]/route.ts` | `avalanche.data.evm.chains.get()` | Check if chain is supported by Glacier | `chainId` |
-| `app/api/explorer/[chainId]/address/[address]/route.ts` | `avalanche.data.evm.contracts.getMetadata()` | Get contract metadata (name, symbol, logo, etc.) | `address`, `chainId` |
-| `app/api/explorer/[chainId]/address/[address]/route.ts` | `avalanche.data.evm.address.chains.list()` | Get multichain address info (all chains where address exists) | `address` |
-| `app/api/explorer/[chainId]/address/[address]/route.ts` | `avalanche.data.evm.address.transactions.list()` | Get address transactions with pagination (includes ERC-20, ERC-721, ERC-1155, internal txns) | `address`, `chainId`, `sortOrder: 'desc'`, `pageSize: 25`, `pageToken` |
-| `app/api/explorer/[chainId]/address/[address]/erc20-balances/route.ts` | `avalanche.data.evm.address.balances.listErc20()` | Get ERC-20 token balances (paginated) | `address`, `chainId`, `currency: 'usd'`, `filterSpamTokens: true`, `pageSize: 200`, `pageToken` |
-| `app/api/explorer/[chainId]/token/[tokenAddress]/metadata/route.ts` | `avalanche.data.evm.contracts.getMetadata()` | Get token metadata (logo URI, name, symbol) | `address`, `chainId` |
+| `app/api/explorer/[chainId]/route.ts` | `lux.data.evm.chains.get()` | Check if chain is supported by Glacier | `chainId` |
+| `app/api/explorer/[chainId]/address/[address]/route.ts` | `lux.data.evm.contracts.getMetadata()` | Get contract metadata (name, symbol, logo, etc.) | `address`, `chainId` |
+| `app/api/explorer/[chainId]/address/[address]/route.ts` | `lux.data.evm.address.chains.list()` | Get multichain address info (all chains where address exists) | `address` |
+| `app/api/explorer/[chainId]/address/[address]/route.ts` | `lux.data.evm.address.transactions.list()` | Get address transactions with pagination (includes ERC-20, ERC-721, ERC-1155, internal txns) | `address`, `chainId`, `sortOrder: 'desc'`, `pageSize: 25`, `pageToken` |
+| `app/api/explorer/[chainId]/address/[address]/erc20-balances/route.ts` | `lux.data.evm.address.balances.listErc20()` | Get ERC-20 token balances (paginated) | `address`, `chainId`, `currency: 'usd'`, `filterSpamTokens: true`, `pageSize: 200`, `pageToken` |
+| `app/api/explorer/[chainId]/token/[tokenAddress]/metadata/route.ts` | `lux.data.evm.contracts.getMetadata()` | Get token metadata (logo URI, name, symbol) | `address`, `chainId` |
 
-**Base URL**: `https://data-api.avax.network`  
+**Base URL**: `https://data-api.lux.network`  
 **Authentication**: Automatic via SDK  
 **Rate Limits**: None (authenticated service)
 
@@ -25,11 +25,11 @@ All Glacier API calls use the `@avalanche-sdk/chainkit` SDK and authenticate aut
 
 ## 2. CoinGecko API
 
-Used for fetching token prices and AVAX price data.
+Used for fetching token prices and LUX price data.
 
 | File | Endpoint | Purpose | Parameters |
 |------|----------|---------|------------|
-| `app/api/explorer/[chainId]/route.ts` | `api.coingecko.com/api/v3/simple/price?ids=avalanche-2&vs_currencies=usd` | Get AVAX price in USD | None |
+| `app/api/explorer/[chainId]/route.ts` | `api.coingecko.com/api/v3/simple/price?ids=lux-2&vs_currencies=usd` | Get LUX price in USD | None |
 | `app/api/explorer/[chainId]/route.ts` | `api.coingecko.com/api/v3/coins/${coingeckoId}?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false` | Get token price data (USD, market cap, 24h change, etc.) | `coingeckoId` (from chain config) |
 
 **Base URL**: `https://api.coingecko.com/api/v3`  
@@ -201,7 +201,7 @@ These are internal API endpoints called by frontend components (not external API
 
 | Service | Total Calls | Rate Limited? | Cached? |
 |---------|-------------|---------------|---------|
-| **Glacier (Avalanche SDK)** | 6 | No | No (but SDK may cache) |
+| **Glacier (Lux SDK)** | 6 | No | No (but SDK may cache) |
 | **CoinGecko** | 2 | Yes | Yes (60s in-memory) |
 | **Dune Analytics** | 3 | Yes | Yes (1 hour labels / 5 min pending) |
 | **Sourcify** | 4 (client-side) | No | No (client fetches per page load) |

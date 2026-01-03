@@ -40,13 +40,13 @@ The fees are configured in the `chainConfig` in the `feeConfig` field:
 
 ### `gasLimit`
 
-Sets the maximum amount of gas consumed per block. This restriction caps the computational capacity of a single block and thereby limits the maximum gas usage allowed for any single transaction. For reference, the C-Chain value is set to 15,000,000.
+Sets the maximum amount of gas consumed per block. This restriction caps the computational capacity of a single block and thereby limits the maximum gas usage allowed for any single transaction. For reference, the LUExchange-Chain value is set to 15,000,000.
 
-You might notice that the `gasLimit` field appears twice. This is because Avalanche introduced its own fee configuration under the `feeConfig` key while maintaining compatibility with the standard EVM configuration. Ensure that both fields have the same decimal and hexadecimal equivalent values.
+You might notice that the `gasLimit` field appears twice. This is because Lux introduced its own fee configuration under the `feeConfig` key while maintaining compatibility with the standard EVM configuration. Ensure that both fields have the same decimal and hexadecimal equivalent values.
 
 ### `targetBlockRate`
 
-Specifies the target rate of block production in seconds. For instance, a target of 2 aims to produce a block every 2 seconds. If blocks are produced faster than this rate, it signals that more blocks are being issued to the network than anticipated, leading to an increase in base fees. For C-Chain, this value is set to 2.
+Specifies the target rate of block production in seconds. For instance, a target of 2 aims to produce a block every 2 seconds. If blocks are produced faster than this rate, it signals that more blocks are being issued to the network than anticipated, leading to an increase in base fees. For LUExchange-Chain, this value is set to 2.
 
 ### `minBaseFee`
 
@@ -58,11 +58,11 @@ Indicates the targeted amount of gas (including block gas cost) to be consumed w
 
 ### `baseFeeChangeDenominator`
 
-Determines how much to adjust the base fee based on the difference between actual and target utilization. A larger denominator results in a slower-changing base fee, while a smaller denominator allows for quicker adjustments. For C-Chain, this value is set to 36, meaning the base fee changes by a factor of 1/36 of the parent block's base fee.
+Determines how much to adjust the base fee based on the difference between actual and target utilization. A larger denominator results in a slower-changing base fee, while a smaller denominator allows for quicker adjustments. For LUExchange-Chain, this value is set to 36, meaning the base fee changes by a factor of 1/36 of the parent block's base fee.
 
 ### `minBlockGasCost`
 
-Sets the minimum amount of gas charged for the production of a block. In the C-Chain, this value is set to 0.
+Sets the minimum amount of gas charged for the production of a block. In the LUExchange-Chain, this value is set to 0.
 
 ### `maxBlockGasCost`
 

@@ -79,7 +79,7 @@ function General({
               <FormControl>
                 <Input
                   className='bg-transparent w-full'
-                  placeholder='E.g., Avalanche Builder Hackathon'
+                  placeholder='E.g., Lux Builder Hackathon'
                   {...field}
                   value={field.value?? ''}
                 />

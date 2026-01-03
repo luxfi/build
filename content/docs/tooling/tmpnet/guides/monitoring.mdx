@@ -163,7 +163,7 @@ The emitted links will use your custom Grafana instance.
 Start collectors from Go code:
 
 ```go
-import "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
+import "github.com/luxfi/luxgo/tests/fixture/tmpnet"
 
 // Start Prometheus
 err := tmpnet.StartPrometheus(
@@ -255,25 +255,25 @@ is_ephemeral_node="false"
 
 ## Common Metrics
 
-tmpnet collects standard AvalancheGo metrics:
+tmpnet collects standard LuxGo metrics:
 
 ### Node Health
-- `avalanche_network_peers` - Number of connected peers
-- `avalanche_P_vm_blks_accepted` - Accepted blocks on P-Chain
-- `avalanche_health_checks_failing` - Failing health checks
+- `lux_network_peers` - Number of connected peers
+- `lux_P_vm_blks_accepted` - Accepted blocks on Platform-Chain
+- `lux_health_checks_failing` - Failing health checks
 
 ### Network Activity
-- `avalanche_network_msgs_sent` - Messages sent
-- `avalanche_network_msgs_received` - Messages received
-- `avalanche_network_bandwidth_throttler_inbound_acquired_bytes` - Inbound bandwidth
+- `lux_network_msgs_sent` - Messages sent
+- `lux_network_msgs_received` - Messages received
+- `lux_network_bandwidth_throttler_inbound_acquired_bytes` - Inbound bandwidth
 
 ### Consensus
-- `avalanche_snowman_polls_successful` - Successful consensus polls
-- `avalanche_snowman_polls_failed` - Failed consensus polls
-- `avalanche_P_blks_processing` - Blocks currently processing
+- `lux_snowman_polls_successful` - Successful consensus polls
+- `lux_snowman_polls_failed` - Failed consensus polls
+- `lux_P_blks_processing` - Blocks currently processing
 
 ### Performance
-- `avalanche_P_vm_blks_processing_time` - Block processing time
+- `lux_P_vm_blks_processing_time` - Block processing time
 - `go_goroutines` - Number of goroutines
 - `go_memstats_alloc_bytes` - Memory allocated
 
@@ -454,13 +454,13 @@ Create custom Grafana dashboards using tmpnet labels:
 
 ```
 # Panel: Network Message Rate
-rate(avalanche_network_msgs_sent{network_uuid="$network_uuid"}[1m])
+rate(lux_network_msgs_sent{network_uuid="$network_uuid"}[1m])
 
-# Panel: Block Processing Time (P-Chain)
-histogram_quantile(0.99, rate(avalanche_P_vm_blks_processing_time_bucket[5m]))
+# Panel: Block Processing Time (Platform-Chain)
+histogram_quantile(0.99, rate(lux_P_vm_blks_processing_time_bucket[5m]))
 
 # Panel: Active Validators
-avalanche_P_vm_validators_count{network_uuid="$network_uuid"}
+lux_P_vm_validators_count{network_uuid="$network_uuid"}
 ```
 
 ### Alerting
@@ -469,13 +469,13 @@ Set up alerts based on network behavior:
 
 ```
 # Alert when nodes disconnect
-avalanche_network_peers < 4
+lux_network_peers < 4
 
 # Alert on high block processing time
-histogram_quantile(0.99, rate(avalanche_P_vm_blks_processing_time_bucket[5m])) > 1000
+histogram_quantile(0.99, rate(lux_P_vm_blks_processing_time_bucket[5m])) > 1000
 
 # Alert on failed health checks
-avalanche_health_checks_failing > 0
+lux_health_checks_failing > 0
 ```
 
 ### Metric Retention
@@ -497,5 +497,5 @@ Metrics are retained according to your Prometheus backend configuration. For lon
 
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [Grafana Loki Documentation](https://grafana.com/docs/loki/)
-- [AvalancheGo Metrics](/docs/nodes/metrics)
-- [Full tmpnet README - Monitoring Section](https://github.com/ava-labs/avalanchego/blob/master/tests/fixture/tmpnet/README.md#monitoring)
+- [LuxGo Metrics](/docs/nodes/metrics)
+- [Full tmpnet README - Monitoring Section](https://github.com/luxfi/luxgo/blob/master/tests/fixture/tmpnet/README.md#monitoring)

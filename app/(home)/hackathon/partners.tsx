@@ -145,22 +145,22 @@ const PartnerTracks: React.FC = () => {
       id: 'chainlink',
       name: 'Chainlink',
       prize: '$20,000 in Prizes',
-      description: "Two tracks focused on Chainlink enabled Avalanche L1s and On-chain Finance on Avalanche. Leverage Chainlink's powerful oracle network to build innovative solutions on Avalanche.",
+      description: "Two tracks focused on Chainlink enabled Lux L1s and On-chain Finance on Lux. Leverage Chainlink's powerful oracle network to build innovative solutions on Lux.",
       tracks: [
         {
-          name: '1: Chainlink-enabled Avalanche L1s',
+          name: '1: Chainlink-enabled Lux L1s',
           bounty: '$10,000 ($2,000 to the 5 best projects)',
-          description: "Build a decentralized application on an Avalanche L1 that makes use of a Chainlink service on Fuji, which is then brought onto the L1 using Avalanche Teleporter. Explore the possibilities of cross-chain communication and data transfer using Chainlink's advanced protocols.",
+          description: "Build a decentralized application on an Lux L1 that makes use of a Chainlink service on Testnet, which is then brought onto the L1 using Lux Teleporter. Explore the possibilities of cross-chain communication and data transfer using Chainlink's advanced protocols.",
           examples: [
-            'Deploy a game on an Avalanche L1 that stores its native assets as NFTs on Ethereum Sepolia for maximum censorship resistance. Use Chainlink CCIP to facilitate communications between Ethereum and Avalanche Fuji. Implement Teleporter for communication between Fuji and Avalanche L1.',
-            'Develop a DeFi protocol that combines liquidity across multiple blockchain ecosystems into an Avalanche L1. Utilize Chainlink CCIP for secure cross-chain data and asset transfers. Implement Teleporter for efficient communication between chains.',
-            'Create a SocialFi app on an Avalanche L1 that integrates with Web2 social platforms. Use Chainlink Functions on Fuji to connect to platforms like TikTok and Instagram. Fetch and analyze social metrics and analytic data to provide valuable insights to users.'
+            'Deploy a game on an Lux L1 that stores its native assets as NFTs on Ethereum Sepolia for maximum censorship resistance. Use Chainlink CCIP to facilitate communications between Ethereum and Lux Testnet. Implement Teleporter for communication between Testnet and Lux L1.',
+            'Develop a DeFi protocol that combines liquidity across multiple blockchain ecosystems into an Lux L1. Utilize Chainlink CCIP for secure cross-chain data and asset transfers. Implement Teleporter for efficient communication between chains.',
+            'Create a SocialFi app on an Lux L1 that integrates with Web2 social platforms. Use Chainlink Functions on Testnet to connect to platforms like TikTok and Instagram. Fetch and analyze social metrics and analytic data to provide valuable insights to users.'
           ]
         },
         {
-          name: '2: Onchain Finance on Avalanche',
+          name: '2: Onchain Finance on Lux',
           bounty: '$10,000 ($2,000 to the 5 best projects)',
-          description: "Build innovative financial products and services that leverage the strengths of both Avalanche and Chainlink.\n\n 1. Tokenization or RWA protocol: Develop a protocol that brings real-world assets on-chain to the Avalanche ecosystem. Utilize Chainlink products like Functions and CCIP for secure and efficient data transfer and asset representation.\n\n2. Advanced financial instruments: Create cutting-edge perpetuals, options, or prediction markets on Avalanche. Combine Chainlink's high-speed Data Streams with Avalanche's rapid 1-second finality for ultra-responsive financial products."
+          description: "Build innovative financial products and services that leverage the strengths of both Lux and Chainlink.\n\n 1. Tokenization or RWA protocol: Develop a protocol that brings real-world assets on-chain to the Lux ecosystem. Utilize Chainlink products like Functions and CCIP for secure and efficient data transfer and asset representation.\n\n2. Advanced financial instruments: Create cutting-edge perpetuals, options, or prediction markets on Lux. Combine Chainlink's high-speed Data Streams with Lux's rapid 1-second finality for ultra-responsive financial products."
         }
       ],
       eligibilityRequirements: [

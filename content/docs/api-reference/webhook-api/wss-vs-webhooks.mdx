@@ -4,14 +4,14 @@ description: WebSockets vs Webhooks for the Webhook API
 icon: GitCompare
 ---
 
-Reacting to real-time events from Avalanche smart contracts allows for immediate responses and automation, improving user experience and streamlining application functionality. It ensures that applications stay synchronized with the blockchain state.
+Reacting to real-time events from Lux smart contracts allows for immediate responses and automation, improving user experience and streamlining application functionality. It ensures that applications stay synchronized with the blockchain state.
 
 There are two primary methods for receiving these on-chain events:
 
 * **WebSockets**, using libraries like Ethers.js or Viem
 * **Webhooks**, which send structured event data directly to your app via HTTP POST.
 
-Both approaches enable real-time interactions, but they differ drastically in their reliability, ease of implementation, and long-term maintainability. In this post, we break down why Webhooks are the better, more resilient choice for most Avalanche developers.
+Both approaches enable real-time interactions, but they differ drastically in their reliability, ease of implementation, and long-term maintainability. In this post, we break down why Webhooks are the better, more resilient choice for most Lux developers.
 
 ## Architecture Overview
 
@@ -19,7 +19,7 @@ The diagram below compares the two models side-by-side:
 <img src="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=bd1fc923c99a1a26bb714cc16bd2894a" alt="wss_vs_webhooks" data-og-width="3968" width="3968" data-og-height="2452" height="2452" data-path="images/wss_vs_webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?w=280&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=5b0ad33c8f800b1f34d6e7efe4247620 280w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?w=560&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=0ec85d4d7acdd3562d3ea22b8404bec8 560w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?w=840&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=88baf84f807b5a021c8d4c647638914c 840w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?w=1100&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=b8c5dbe183dba6503bab65585619b3ad 1100w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?w=1650&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=880cd9dd1c8ac1cee9918967c0843b93 1650w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/wss_vs_webhooks.png?w=2500&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=8269d5dea94c0284a683fda9d6815e85 2500w" />
 **WebSockets**
 
-* The app connects to the Avalanche RPC API over WSS to receive raw log data.
+* The app connects to the Lux RPC API over WSS to receive raw log data.
 * It must decode logs, manage connection state, and store data locally.
 * On disconnection, it must re-sync via an external Data API or using standard `eth_*` RPC calls (e.g., `eth_getLogs`, `eth_getBlockByNumber`).
 
@@ -41,7 +41,7 @@ WebSockets allow you to subscribe to events using methods like eth\_subscribe. T
 
 ```javascript
 import { createPublicClient, webSocket, formatUnits } from 'viem';
-import { avalancheFuji } from 'viem/chains';
+import { luxTestnet } from 'viem/chains';
 import { usdcAbi } from './usdc-abi.mjs'; // Ensure this includes the Transfer event
 
 // Your wallet address (case-insensitive comparison)
@@ -49,13 +49,13 @@ const MY_WALLET = '0x8ae323046633A07FB162043f28Cea39FFc23B50A'.toLowerCase(); //
 
 async function monitorTransfers() {
     try {
-        // USDC.e contract address on Avalanche Fuji
+        // USDC.e contract address on Lux Testnet
         const usdcAddress = '0x5425890298aed601595a70AB815c96711a31Bc65';
 
-        // Set up the WebSocket client for Avalanche Fuji
+        // Set up the WebSocket client for Lux Testnet
         const client = createPublicClient({
-            chain: avalancheFuji,
-            transport: webSocket('wss://api.avax-test.network/ext/bc/C/ws'),
+            chain: luxTestnet,
+            transport: webSocket('wss://api.lux-test.network/ext/bc/C/ws'),
         });
 
         // Watch for Transfer events on the USDC contract
@@ -84,7 +84,7 @@ async function monitorTransfers() {
             },
         });
 
-        console.log('Monitoring USDC Transfer events on Fuji...');
+        console.log('Monitoring USDC Transfer events on Testnet...');
     } catch (error) {
         console.error('Error setting up transfer monitoring:', error.message);
     }
@@ -164,6 +164,6 @@ If we compare using a table:
 
 ## Summary
 
-* WebSockets offer real-time access to Avalanche data, but come with complexity: raw logs, reconnect logic, re-sync handling, and decoding responsibilities.
+* WebSockets offer real-time access to Lux data, but come with complexity: raw logs, reconnect logic, re-sync handling, and decoding responsibilities.
 * Webhooks flip the model: the data comes to you, pre-processed and reliable. You focus on your product logic instead of infrastructure.
-* If you want to ship faster, operate more reliably, and reduce overhead, Webhooks are the better path forward for Avalanche event monitoring.
+* If you want to ship faster, operate more reliably, and reduce overhead, Webhooks are the better path forward for Lux event monitoring.

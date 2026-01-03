@@ -1,7 +1,7 @@
 # Load Testing Report: `/api/project` Endpoint – Vercel Deployment
 
 **Tool used:** [Autocannon](https://github.com/mcollina/autocannon)  
-**Target URL:** `https://avalanche-docs-eight.vercel.app/api/project`  
+**Target URL:** `https://lux-docs-eight.vercel.app/api/project`  
 **Testing Strategy:** Progressive ramp-up — gradually increasing concurrency levels (50 → 300) to evaluate performance under load.
 
 ---

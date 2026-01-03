@@ -1,8 +1,8 @@
 {
   "title": "Miscellaneous Guides",
-  "description": "General guides for Avalanche CLI.",
+  "description": "General guides for Lux CLI.",
   "pages": [
-    "import-avalanche-l1",
+    "import-lux-l1",
     "run-with-docker"
   ]
 }

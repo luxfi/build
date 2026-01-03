@@ -9,12 +9,12 @@ Chain configurations define the blockchain networks for interchain operations. E
 
 ## Available Chains
 
-### avalancheFuji
+### luxTestnet
 
-Avalanche Fuji testnet configuration.
+Lux Testnet testnet configuration.
 
 ```typescript
-import { avalancheFuji } from "@avalanche-sdk/interchain/chains";
+import { luxTestnet } from "@lux-sdk/interchain/chains";
 ```
 
 ### dispatch
@@ -22,7 +22,7 @@ import { avalancheFuji } from "@avalanche-sdk/interchain/chains";
 Dispatch subnet configuration.
 
 ```typescript
-import { dispatch } from "@avalanche-sdk/interchain/chains";
+import { dispatch } from "@lux-sdk/interchain/chains";
 ```
 
 ## ChainConfig Type
@@ -53,14 +53,14 @@ interface ChainConfig {
 ## Using Chains
 
 ```typescript
-import { createICMClient } from "@avalanche-sdk/interchain";
-import { avalancheFuji, dispatch } from "@avalanche-sdk/interchain/chains";
+import { createICMClient } from "@lux-sdk/interchain";
+import { luxTestnet, dispatch } from "@lux-sdk/interchain/chains";
 
-const icm = createICMClient(wallet, avalancheFuji, dispatch);
+const icm = createICMClient(wallet, luxTestnet, dispatch);
 
 // Or specify per call
 await icm.sendMsg({
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   message: "Hello!",
 });
@@ -72,11 +72,11 @@ You can define custom chains for interchain operations by extending the base cha
 
 ### Defining a Custom Chain
 
-Use `defineChain` from `@avalanche-sdk/client` to create a chain configuration, then cast it to `ChainConfig` to add interchain contract addresses:
+Use `defineChain` from `@lux-sdk/client` to create a chain configuration, then cast it to `ChainConfig` to add interchain contract addresses:
 
 ```typescript
-import { defineChain } from "@avalanche-sdk/client";
-import type { ChainConfig } from "@avalanche-sdk/interchain/chains";
+import { defineChain } from "@lux-sdk/client";
+import type { ChainConfig } from "@lux-sdk/interchain/chains";
 
 export const myCustomChain = defineChain({
   id: 12345, // Your chain ID
@@ -116,7 +116,7 @@ export const myCustomChain = defineChain({
 | `network`             | `string` | Network identifier (used for wallet connections) |
 | `nativeCurrency`      | `object` | Native token configuration                       |
 | `rpcUrls`             | `object` | RPC endpoint URLs                                |
-| `blockchainId`        | `string` | Avalanche blockchain ID (hex-encoded)            |
+| `blockchainId`        | `string` | Lux blockchain ID (hex-encoded)            |
 | `interchainContracts` | `object` | Teleporter contract addresses                    |
 
 ### Interchain Contracts
@@ -131,8 +131,8 @@ These contracts enable cross-chain messaging and token transfers. Ensure they ar
 ### Example: Custom Subnet Chain
 
 ```typescript
-import { defineChain } from "@avalanche-sdk/client";
-import type { ChainConfig } from "@avalanche-sdk/interchain/chains";
+import { defineChain } from "@lux-sdk/client";
+import type { ChainConfig } from "@lux-sdk/interchain/chains";
 
 export const mySubnet = defineChain({
   id: 54321,
@@ -140,18 +140,18 @@ export const mySubnet = defineChain({
   network: "my-subnet",
   nativeCurrency: {
     decimals: 18,
-    name: "Avalanche",
-    symbol: "AVAX",
+    name: "Lux",
+    symbol: "LUX",
   },
   rpcUrls: {
     default: {
-      http: ["https://subnets.avax.network/mysubnet/mainnet/rpc"],
+      http: ["https://subnets.lux.network/mysubnet/mainnet/rpc"],
     },
   },
   blockExplorers: {
     default: {
       name: "Subnet Explorer",
-      url: "https://subnets.avax.network/mysubnet",
+      url: "https://subnets.lux.network/mysubnet",
     },
   },
   blockchainId: "0x1234567890abcdef1234567890abcdef12345678",
@@ -167,17 +167,17 @@ export const mySubnet = defineChain({
 Once defined, use your custom chain with ICM and ICTT clients:
 
 ```typescript
-import { createICMClient } from "@avalanche-sdk/interchain";
+import { createICMClient } from "@lux-sdk/interchain";
 import { myCustomChain } from "./chains/myCustomChain";
-import { avalancheFuji } from "@avalanche-sdk/interchain/chains";
+import { luxTestnet } from "@lux-sdk/interchain/chains";
 
-const icm = createICMClient(wallet, avalancheFuji, myCustomChain);
+const icm = createICMClient(wallet, luxTestnet, myCustomChain);
 
 // Send message to custom chain
 await icm.sendMsg({
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: myCustomChain,
-  message: "Hello from Fuji to My Custom Chain!",
+  message: "Hello from Testnet to My Custom Chain!",
 });
 ```
 

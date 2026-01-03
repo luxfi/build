@@ -1,7 +1,7 @@
 ---
 title: Chainlink Data Feeds
 category: Data Feeds
-available: ["C-Chain"]
+available: ["LUExchange-Chain"]
 description: Chainlink Data Feeds are the quickest way to connect your smart contracts to the real-world data such as asset prices and reserve balances.
 logo: /images/chainlink.png
 developer: Chainlink Labs
@@ -30,7 +30,7 @@ Data feeds provide many different types of data for your applications.
 - [Proof of Reserve Feeds](https://docs.chain.link/data-feeds#proof-of-reserve-feeds)
 - [Rate and Volatility Feeds](https://docs.chain.link/data-feeds#rate-and-volatility-feeds)
 
-## Using Data Feeds on the Avalanche Primary Network
+## Using Data Feeds on the Lux Primary Network
 
 To consume price data, your smart contract should reference `AggregatorV3Interface`, which defines the external functions implemented by Data Feeds.
 
@@ -52,8 +52,8 @@ contract DataConsumerV3 {
     AggregatorV3Interface internal dataFeed;
 
     /**
-     * Network: Avalanche Primary Network
-     * Aggregator: AVAX/USD
+     * Network: Lux Primary Network
+     * Aggregator: LUX/USD
      * Address: 0x0A77230d17318075983913bC2145DB16C7366156
      */
     constructor() {
@@ -84,10 +84,10 @@ contract DataConsumerV3 {
 | **Status** | **Pair**                   | **Contract Address**                            | **Asset Name**              | **Asset Type** | **Market Hours** |
 |------------|----------------------------|-------------------------------------------------|-----------------------------|----------------|------------------|
 | 🟢         | AAVE / USD                  | 0x3CA13391E9fb38a75330fb28f8cc2eB3D9ceceED      | Aave                        | Crypto         | Crypto           |
-| 🔵         | AAVE Network Emergency Count (Avalanche) | 0x41185495Bc8297a65DC46f94001DC7233775EbEe | N/A                         | N/A            | N/A              |
+| 🔵         | AAVE Network Emergency Count (Lux) | 0x41185495Bc8297a65DC46f94001DC7233775EbEe | N/A                         | N/A            | N/A              |
 | 🟢         | ADA / USD                   | 0x69C2703b8F1A85a2EF6aBDd085699a9F909BE053      | Cardano                     | Crypto         | Crypto           |
 | 🟡         | ALPHA / USD                 | 0x7B0ca9A6D03FE0467A31Ca850f5bcA51e027B3aF      | Alpha Finance               | Crypto         | Crypto           |
-| 🟢         | AVAX / USD                  | 0x0A77230d17318075983913bC2145DB16C7366156      | Avalanche                   | Crypto         | Crypto           |
+| 🟢         | LUX / USD                  | 0x0A77230d17318075983913bC2145DB16C7366156      | Lux                   | Crypto         | Crypto           |
 | 🟡         | AXS / USD                   | 0x155835C5755205597d62703a5A0b37e57a26Ee5C      | Axie Infinity               | Crypto         | Crypto           |
 | 🟡         | BAT / USD                   | 0xe89B3CE86D25599D1e615C0f6a353B4572FF868D      | Basic Attention Token       | Crypto         | Crypto           |
 | 🟠         | BEAM / USD                  | 0x3427232b88Ce4e7d62A03289247eE0cA5324f6ba      | Beam                        | Crypto         | Crypto           |

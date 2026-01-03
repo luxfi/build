@@ -15,20 +15,20 @@ interface CaseCardProps {
 
 function CaseCard({ title, company, description, icon, link }: CaseCardProps) {
   const content = (
-    <div className="group bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-avax-red/40 hover:border-avax-red hover:bg-avax-red/10 hover:-translate-y-2">
+    <div className="group bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-lux-red/40 hover:border-lux-red hover:bg-lux-red/10 hover:-translate-y-2">
       <div className="flex items-start gap-4 mb-6">
-        <div className="w-12 h-12 rounded-xl bg-avax-red/20 flex items-center justify-center text-white text-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
+        <div className="w-12 h-12 rounded-xl bg-lux-red/20 flex items-center justify-center text-white text-xl transition-all duration-300 group-hover:scale-110 flex-shrink-0">
           {icon}
         </div>
         <div className="flex-1">
           <h3 className="text-lg font-semibold mb-2">{title}</h3>
-          <div className="text-avax-red font-semibold text-xs uppercase tracking-widest opacity-90">
+          <div className="text-lux-red font-semibold text-xs uppercase tracking-widest opacity-90">
             {company}
           </div>
         </div>
       </div>
       <p className="text-muted-foreground text-sm mb-6">{description}</p>
-      <div className="inline-flex items-center gap-2 text-avax-red font-medium text-sm transition-all duration-300 group-hover:gap-3">
+      <div className="inline-flex items-center gap-2 text-lux-red font-medium text-sm transition-all duration-300 group-hover:gap-3">
         Learn More{" "}
         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </div>
@@ -75,7 +75,7 @@ function MetricCard({
       }`}
     >
       {featured && (
-        <div className="absolute top-0 left-0 right-0 h-1 bg-avax-red rounded-t-2xl" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-lux-red rounded-t-2xl" />
       )}
       <div className="text-3xl mb-5 transition-transform duration-300 group-hover:scale-110">
         {icon}
@@ -98,20 +98,20 @@ interface AdvantageCardProps {
 
 function AdvantageCard({ title, description, spec, icon }: AdvantageCardProps) {
   return (
-    <div className="group p-8 border border-border rounded-2xl bg-card transition-all duration-300 hover:border-avax-red hover:-translate-y-1 hover:shadow-xl hover:shadow-avax-red/40 hover:bg-avax-red/10">
-      <div className="w-14 h-14 bg-foreground/5 rounded-xl flex items-center justify-center text-xl mb-6 transition-all duration-300 group-hover:bg-avax-red/10 group-hover:text-avax-red group-hover:scale-110">
+    <div className="group p-8 border border-border rounded-2xl bg-card transition-all duration-300 hover:border-lux-red hover:-translate-y-1 hover:shadow-xl hover:shadow-lux-red/40 hover:bg-lux-red/10">
+      <div className="w-14 h-14 bg-foreground/5 rounded-xl flex items-center justify-center text-xl mb-6 transition-all duration-300 group-hover:bg-lux-red/10 group-hover:text-lux-red group-hover:scale-110">
         {icon}
       </div>
       <h3 className="text-base font-semibold mb-3">{title}</h3>
       <p className="text-muted-foreground text-sm mb-5">{description}</p>
-      <div className="text-avax-red font-semibold text-xs uppercase tracking-widest opacity-90">
+      <div className="text-lux-red font-semibold text-xs uppercase tracking-widest opacity-90">
         {spec}
       </div>
     </div>
   );
 }
 
-export default function AvalancheForBuildersPage() {
+export default function LuxForBuildersPage() {
   return (
     <>
       <HeroBackground />
@@ -119,14 +119,14 @@ export default function AvalancheForBuildersPage() {
         <div className="container relative max-w-7xl mx-auto px-6 py-8 lg:py-20">
           {/* Hero Section */}
           <section className="text-center space-y-8 pt-16 pb-32 lg:pt-24 lg:pb-40">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-avax-red/10 border border-avax-red/20 text-sm font-medium mb-6 text-avax-red">
-              <span className="w-2 h-2 rounded-full bg-avax-red animate-pulse" />
-              Avalanche For Builders
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lux-red/10 border border-lux-red/20 text-sm font-medium mb-6 text-lux-red">
+              <span className="w-2 h-2 rounded-full bg-lux-red animate-pulse" />
+              Lux For Builders
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] text-balance max-w-5xl mx-auto">
               Get Funded to{" "}
-              <span className="text-avax-red">Build the Future</span>
+              <span className="text-lux-red">Build the Future</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground font-medium leading-relaxed max-w-3xl mx-auto text-balance">
@@ -148,21 +148,21 @@ export default function AvalancheForBuildersPage() {
               >
                 <Button
                   size="lg"
-                  className="bg-avax-red hover:bg-avax-red/90 text-white px-8 h-12 rounded-xl font-medium text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-avax-red/25"
+                  className="bg-lux-red hover:bg-lux-red/90 text-white px-8 h-12 rounded-xl font-medium text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-lux-red/25"
                 >
                   Submit Your Project
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link
-                href="https://build.avax.network/grants"
+                href="https://build.lux.network/grants"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-border hover:bg-muted hover:border-avax-red/40 px-8 h-12 rounded-xl font-medium text-sm transition-all duration-200 bg-transparent"
+                  className="border-border hover:bg-muted hover:border-lux-red/40 px-8 h-12 rounded-xl font-medium text-sm transition-all duration-200 bg-transparent"
                 >
                   View All Programs
                 </Button>
@@ -177,7 +177,7 @@ export default function AvalancheForBuildersPage() {
                 Momentum is Everything
               </h2>
               <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
-                September 2025 proves it: builders who choose Avalanche see
+                September 2025 proves it: builders who choose Lux see
                 explosive growth and real adoption
               </p>
             </div>
@@ -193,21 +193,21 @@ export default function AvalancheForBuildersPage() {
               <MetricCard
                 title="Stablecoin Transfers"
                 number="$2.8B"
-                description="Monthly stablecoin transfer volume across Avalanche ecosystem"
+                description="Monthly stablecoin transfer volume across Lux ecosystem"
                 icon={<DollarSign />}
                 gradientIndex={1}
               />
               <MetricCard
                 title="Active L1 Chains"
                 number="127"
-                description="Custom Layer 1 blockchains actively running on Avalanche"
+                description="Custom Layer 1 blockchains actively running on Lux"
                 icon={<LinkIcon />}
                 gradientIndex={2}
               />
               <MetricCard
                 title="BTC Volume"
                 number="$420M"
-                description="Bitcoin trading volume on Avalanche DEXs in September"
+                description="Bitcoin trading volume on Lux DEXs in September"
                 icon={<Bitcoin />}
                 gradientIndex={3}
               />
@@ -215,7 +215,7 @@ export default function AvalancheForBuildersPage() {
 
             <div className="text-center max-w-4xl mx-auto p-8 bg-gradient-to-br from-violet-50/60 to-purple-100/60 border border-violet-200/40 rounded-2xl dark:from-violet-950/20 dark:to-purple-950/30 dark:border-violet-800/30">
               <p className="text-foreground/90 text-sm md:text-base leading-relaxed text-pretty">
-                Smart builders recognize momentum when they see it. Avalanche
+                Smart builders recognize momentum when they see it. Lux
                 isn't just growing - it's becoming the platform where serious
                 projects get built, funded, and adopted at scale.
               </p>
@@ -249,19 +249,19 @@ export default function AvalancheForBuildersPage() {
               <CaseCard
                 title="Web3 Gaming Evolution"
                 company="Undead Blocks"
-                description="Zombie-themed Web3 FPS relaunching on Avalanche with new maps, tournaments, and token migration, partnering with BlackHole for seamless DeFi integration."
+                description="Zombie-themed Web3 FPS relaunching on Lux with new maps, tournaments, and token migration, partnering with BlackHole for seamless DeFi integration."
                 icon="🧟"
               />
               <CaseCard
                 title="Enterprise Real Estate SaaS"
                 company="Balcony Technology"
-                description="$240B in real estate tokenized across New Jersey municipalities. Custom Avalanche L1 reduces deed settlement from 90 days to 1 day, recovering millions in lost revenue."
+                description="$240B in real estate tokenized across New Jersey municipalities. Custom Lux L1 reduces deed settlement from 90 days to 1 day, recovering millions in lost revenue."
                 icon="🏢"
               />
               <CaseCard
                 title="K-Pop Fan Engagement"
                 company="Titan Content"
-                description="2GATHR app on custom Avalanche L1 connecting K-pop fans with artists through missions, content, and digital collectibles, reaching millions of users."
+                description="2GATHR app on custom Lux L1 connecting K-pop fans with artists through missions, content, and digital collectibles, reaching millions of users."
                 icon="🎵"
               />
               <CaseCard
@@ -283,7 +283,7 @@ export default function AvalancheForBuildersPage() {
           <section className="py-20 lg:py-28">
             <div className="text-center space-y-4 mb-16">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-                Why Top Builders Choose Avalanche
+                Why Top Builders Choose Lux
               </h2>
               <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
                 The only blockchain that doesn't force you to compromise between
@@ -351,7 +351,7 @@ export default function AvalancheForBuildersPage() {
                 >
                   <Button
                     size="lg"
-                    className="bg-avax-red hover:bg-avax-red/90 text-white px-10 h-14 rounded-xl font-medium text-base transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-avax-red/25"
+                    className="bg-lux-red hover:bg-lux-red/90 text-white px-10 h-14 rounded-xl font-medium text-base transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-lux-red/25"
                   >
                     Submit Your Project Now
                     <ArrowRight className="ml-2 h-5 w-5" />

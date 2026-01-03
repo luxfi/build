@@ -11,7 +11,7 @@ icon: Terminal
 Now that we have an ERC20 token deployed and some of those tokens in our account to incentivize our relayer, let's include the incentive in our Sender contract.
 
 ```solidity title="contracts/interchain-messaging/incentivize-relayer/senderWithFees.sol"
-// (c) 2023, Ava Labs, Inc. All rights reserved.
+// (c) 2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 // SPDX-License-Identifier: Ecosystem
@@ -50,7 +50,7 @@ contract SenderWithFeesOnCChain {
 Notice, our contract implementing Fees now needs to include the functionality we described in the fee flow section:
 
 - Import `IERC20` and create the fee contract interface instance 
-- 📜The Cross-Avalanche L1 dApp transfers the ERC20 fee amount to the control of the Cross-Chain dApp contract.
-- 📜Cross-Avalanche L1 dApp needs to implement the approval for the Interchain Messaging contract of these ERC20 tokens.
+- 📜The Cross-Lux L1 dApp transfers the ERC20 fee amount to the control of the Cross-Chain dApp contract.
+- 📜Cross-Lux L1 dApp needs to implement the approval for the Interchain Messaging contract of these ERC20 tokens.
 - Include the `TeleporterFeeInfo` struct in the message. 
 

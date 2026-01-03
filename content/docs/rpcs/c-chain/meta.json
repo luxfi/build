@@ -1,5 +1,5 @@
 {
-  "title": "C-Chain",
+  "title": "LUExchange-Chain",
   "description": "Contract Chain RPC methods",
   "icon": "Code",
   "root": true,
@@ -13,7 +13,7 @@
     "personal",
     "txpool",
     "debug",
-    "avalanche",
+    "lux",
     "warp"   
   ]
 }

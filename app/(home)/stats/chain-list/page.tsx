@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import l1ChainsData from "@/constants/l1-chains.json";
 import { L1Chain } from "@/types/stats";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import { CategoryChip } from "@/components/stats/CategoryChip";
 import { SearchInputWithClear } from "@/components/stats/SearchInputWithClear";
 import { AddToWalletButton } from "@/components/ui/add-to-wallet-button";
@@ -254,7 +254,7 @@ export default function ChainListPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
       {/* Hero Section */}
       <div className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
-        {/* Avalanche gradient decoration */}
+        {/* Lux gradient decoration */}
         <div 
           className="absolute top-0 right-0 w-2/3 h-full pointer-events-none"
           style={{
@@ -279,16 +279,16 @@ export default function ChainListPage() {
             <div className="space-y-4 sm:space-y-6 flex-1">
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                  <AvalancheLogo className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" />
+                  <LuxLogo className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" />
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">
                   Chain List
                 </h1>
                 <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 mt-2 max-w-2xl">
-                  Discover and connect to Avalanche L1 chains. Add networks to your wallet with one click.
+                  Discover and connect to Lux L1 chains. Add networks to your wallet with one click.
                 </p>
               </div>
 
@@ -334,7 +334,7 @@ export default function ChainListPage() {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => window.open("https://github.com/ava-labs/builders-hub/blob/master/constants/l1-chains.json", "_blank")}
+              onClick={() => window.open("https://github.com/luxfi/lux-build/blob/master/constants/l1-chains.json", "_blank")}
               className="w-full sm:w-auto mt-2 gap-2 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600"
             >
               Submit L1

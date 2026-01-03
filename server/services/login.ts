@@ -21,7 +21,7 @@ export async function sendOTP(email: string) {
 
   const from = {
     email: process.env.EMAIL_FROM as string,
-    name: "Avalanche Builder's Hub"
+    name: "Lux Builder's Hub"
   };
 
   if (process.env.NODE_ENV === 'development') {
@@ -53,8 +53,8 @@ export async function sendOTP(email: string) {
       <p style="font-size: 12px; color: #A1A1AA;">If you did not request this, you can ignore this email.</p>
 
       <div style="margin-top: 20px;">
-        <img src="https://build.avax.network/logo-black.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;">
-        <p style="font-size: 12px; color: #A1A1AA;">Avalanche Builder's Hub © 2025</p>
+        <img src="https://build.lux.network/logo-black.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;">
+        <p style="font-size: 12px; color: #A1A1AA;">Lux Builder's Hub © 2025</p>
       </div>
     </div>
   `,

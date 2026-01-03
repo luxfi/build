@@ -48,7 +48,7 @@ POST /facilitator/register
   "businessName": "Premium API Service",
   "website": "https://api.example.com",
   "acceptedCurrencies": ["USDC", "USDT"],
-  "chains": ["avalanche-fuji", "base-sepolia"]
+  "chains": ["lux-testnet", "base-sepolia"]
 }
 
 // Response
@@ -113,11 +113,11 @@ POST /facilitator/verify-payment
   "expectedAmount": "0.01",
   "expectedCurrency": "USDC",
   "expectedRecipient": "0x742d35...",
-  "chain": "avalanche-c-chain"
+  "chain": "lux-c-chain"
 }
 
 // Facilitator queries blockchain
-const tx = await avalancheClient.getTransaction("0x8f3d...");
+const tx = await luxClient.getTransaction("0x8f3d...");
 
 // Verification checks
 - Transaction exists on chain
@@ -176,7 +176,7 @@ const tx = await usdcContract.transfer(
 ```
 
 **Submission Benefits**:
-- Users don't need AVAX for gas
+- Users don't need LUX for gas
 - Optimized gas prices
 - Better UX for non-crypto users
 - Batched transactions possible
@@ -203,7 +203,7 @@ POST /facilitator/withdraw-balance
 {
   "merchantAddress": "0x742d35...",
   "currency": "USDC",
-  "chain": "avalanche-c-chain"
+  "chain": "lux-c-chain"
 }
 
 // Response
@@ -226,7 +226,7 @@ The facilitator sits between merchants and the blockchain, handling the complex 
 5. **Facilitator → Merchant**: Payment confirmation returned to merchant
 6. **Merchant → Client**: Content delivered to client with X-PAYMENT-RESPONSE header
 
-This entire flow completes in ~2 seconds on Avalanche.
+This entire flow completes in ~2 seconds on Lux.
 
 ### Multi-Chain Support
 
@@ -237,8 +237,8 @@ Facilitators often support multiple blockchains:
 {
   "chains": [
     {
-      "id": "avalanche-c-chain",
-      "rpcUrl": "https://api.avax.network/ext/bc/C/rpc",
+      "id": "lux-c-chain",
+      "rpcUrl": "https://api.lux.network/ext/bc/C/rpc",
       "usdcAddress": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
       "confirmations": 1,
       "averageBlockTime": "2s"
@@ -262,7 +262,7 @@ Facilitators charge minimal fees compared to traditional payment processors:
 
 **Typical Fee Structure**:
 - Small percentage fee (~0.1-0.5% of transaction)
-- Plus blockchain gas costs (~\$0.001 on Avalanche with current network conditions)
+- Plus blockchain gas costs (~\$0.001 on Lux with current network conditions)
 - No monthly fees or minimums
 - No chargebacks or disputes
 
@@ -299,4 +299,4 @@ Facilitators are essential infrastructure in the x402 ecosystem, handling paymen
 
 Facilitators charge minimal fees (~0.1-0.5% + gas) compared to traditional payment processors (2.9% + $0.30), making micropayments economically viable for the first time.
 
-**Next**: Learn about [Blockchain Settlement](./06-blockchain-settlement) to understand how payments are finalized on-chain, or explore [available facilitators on Avalanche](/academy/blockchain/x402-payment-infrastructure/04-x402-on-avalanche/03-facilitators) for implementation options.
+**Next**: Learn about [Blockchain Settlement](./06-blockchain-settlement) to understand how payments are finalized on-chain, or explore [available facilitators on Lux](/academy/blockchain/x402-payment-infrastructure/04-x402-on-lux/03-facilitators) for implementation options.

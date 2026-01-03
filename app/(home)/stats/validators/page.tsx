@@ -21,7 +21,7 @@ import {
 import { StatsBubbleNav } from "@/components/stats/stats-bubble.config";
 import { SortIcon } from "@/components/stats/SortIcon";
 import { type SubnetStats } from "@/types/validator-stats";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import l1ChainsData from "@/constants/l1-chains.json";
 import {
   compareVersions,
@@ -41,7 +41,7 @@ type SortColumn =
   | "isL1"
   | "totalStake";
 type SortDirection = "asc" | "desc";
-type Network = "mainnet" | "fuji";
+type Network = "mainnet" | "testnet";
 
 export default function ValidatorStatsPage() {
   const { resolvedTheme } = useTheme();
@@ -185,8 +185,8 @@ export default function ValidatorStatsPage() {
 
   const formatStake = (stakeString: string): string => {
     const stake = BigInt(stakeString);
-    const avax = Number(stake) / 1e9; // Convert nAVAX to AVAX
-    return formatNumber(avax);
+    const lux = Number(stake) / 1e9; // Convert nLUX to LUX
+    return formatNumber(lux);
   };
 
   const filteredData = data.filter((subnet) => {
@@ -496,7 +496,7 @@ export default function ValidatorStatsPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
       {/* Hero - Clean typographic approach */}
       <div className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
-        {/* Avalanche gradient decoration */}
+        {/* Lux gradient decoration */}
         <div 
           className="absolute top-0 right-0 w-2/3 h-full pointer-events-none"
           style={{
@@ -524,12 +524,12 @@ export default function ValidatorStatsPage() {
 
               <div>
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                  <AvalancheLogo
+                  <LuxLogo
                     className="w-5 h-5 sm:w-6 sm:h-6"
                     fill="currentColor"
                   />
                   <p className="text-xs sm:text-sm font-medium text-red-600 dark:text-red-500 tracking-wide uppercase">
-                    Avalanche Ecosystem
+                    Lux Ecosystem
                   </p>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white">

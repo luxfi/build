@@ -1,7 +1,7 @@
 ---
 title: Chronicle
 category: Oracles
-available: ["C-Chain"]
+available: ["LUExchange-Chain"]
 description: Chronicle Oracles enable you to access verifiable data onchain.
 logo: /images/chronicle.png
 developer: Chronicle Labs
@@ -11,7 +11,7 @@ documentation: https://docs.chroniclelabs.org/
 
 ## Overview
 [Chronicle Protocol](https://chroniclelabs.org/) is a novel Oracle solution that overcomes the current limitations of transferring data onchain by developing scalable, cost-efficient, decentralized, and verifiable Oracles.
-For the data feeds addresses, please check out the [Chronicle Dashboard](https://chroniclelabs.org/dashboard) under **Oracles** section. Select either **Mainnets** or **Testnets**, then **Avalanche C-Chain Oracles**.
+For the data feeds addresses, please check out the [Chronicle Dashboard](https://chroniclelabs.org/dashboard) under **Oracles** section. Select either **Mainnets** or **Testnets**, then **Lux LUExchange-Chain Oracles**.
 
 ### Data Feeds Types
 Chronicle provides two categories of Oracles: [DeFi Oracles](https://docs.chroniclelabs.org/Products/DeFiOracle/) and [Verified Asset Oracles (VAO)](https://docs.chroniclelabs.org/Products/DeFiOracle/).
@@ -25,12 +25,12 @@ DeFi Oracles include:
 
 ### Check the Chronicle Oracles on the Chronicle Dashboard
 
-- [Avalanche C-Chain Oracles](https://chroniclelabs.org/dashboard/oracles#blockchain=AVAX)
-- [Avalanche Fuji Testnet Oracles](https://chroniclelabs.org/dashboard/oracles#testnet=true&blockchain=FUJI)
+- [Lux LUExchange-Chain Oracles](https://chroniclelabs.org/dashboard/oracles#blockchain=LUX)
+- [Lux Testnet Testnet Oracles](https://chroniclelabs.org/dashboard/oracles#testnet=true&blockchain=FUJI)
 
-## Using Chronicle DeFi Oracles on Avalanche Fuji Testnet
+## Using Chronicle DeFi Oracles on Lux Testnet Testnet
 
-The following example showcases how to integrate the AVAX/USD oracle on Avalanche Fuji Testnet.
+The following example showcases how to integrate the LUX/USD oracle on Lux Testnet Testnet.
 
 Chronicle contracts are read-protected by a whitelist, meaning you won't be able to read them onchain without your address being added to the whitelist. 
 On the Testnet networks, users can add themselves to the whitelist through the SelfKisser contract; a process playfully referred to as "kissing" themselves. 
@@ -46,14 +46,14 @@ pragma solidity ^0.8.16;
  * @title OracleReader
  * @notice A simple contract to read from Chronicle oracles
  * @dev To see the full repository, visit https://github.com/chronicleprotocol/OracleReader-Example.
- * @dev Addresses in this contract are hardcoded for Avalanche Fuji Testnet.
+ * @dev Addresses in this contract are hardcoded for Lux Testnet Testnet.
  * For other supported networks, check the https://chroniclelabs.org/dashboard/oracles.
  */
 contract OracleReader {
     /**
     * @notice The Chronicle oracle to read from.
-    * Chronicle_AVAX_USD - 0x8b3328b27436263e0BfE7597a0D97B1BEE9cC576
-    * Network: Avalanche Fuji Testnet
+    * Chronicle_LUX_USD - 0x8b3328b27436263e0BfE7597a0D97B1BEE9cC576
+    * Network: Lux Testnet Testnet
     */
 
     IChronicle public chronicle = IChronicle(address(0x8b3328b27436263e0BfE7597a0D97B1BEE9cC576));
@@ -61,7 +61,7 @@ contract OracleReader {
     /**
     * @notice The SelfKisser granting access to Chronicle oracles.
     * SelfKisser_1:0x371A53bB4203Ad5D7e60e220BaC1876FF3Ddda5B
-    * Network: Avalanche Fuji Testnet
+    * Network: Lux Testnet Testnet
     */
     ISelfKisser public selfKisser = ISelfKisser(address(0x371A53bB4203Ad5D7e60e220BaC1876FF3Ddda5B));
 

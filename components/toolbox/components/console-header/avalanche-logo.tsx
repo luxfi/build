@@ -1,4 +1,4 @@
-export function AvalancheLogo(
+export function LuxLogo(
 	props: React.SVGProps<SVGSVGElement>
 ) {
 	return (

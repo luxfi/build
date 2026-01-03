@@ -5,7 +5,7 @@ description: Helper functions for transactions, events, and common testing opera
 
 This guide covers utility patterns for working with transactions, events, and common operations in tmpnet tests.
 
-> Pattern guide only. The snippets mirror helpers used in icm-services (for example `tests/contracts/lib/icm-contracts/lib/subnet-evm/tests/utils`) and avalanchego e2e utilities. Copy from those source files for runnable code; adjust imports/types to your project.
+> Pattern guide only. The snippets mirror helpers used in icm-services (for example `tests/contracts/lib/icm-contracts/lib/subnet-evm/tests/utils`) and luxgo e2e utilities. Copy from those source files for runnable code; adjust imports/types to your project.
 
 ## Transaction Management
 
@@ -232,7 +232,7 @@ func CreatePredicateTx(
     ctx context.Context,
     l1 L1TestInfo,
     contractAddress common.Address,
-    signedWarpMessage *avalancheWarp.Message,
+    signedWarpMessage *luxWarp.Message,
     senderKey *ecdsa.PrivateKey,
     gasLimit uint64,
     callData []byte,

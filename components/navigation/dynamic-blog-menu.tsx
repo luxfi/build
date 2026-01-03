@@ -18,7 +18,7 @@ const staticBlogItems = [
     icon: <BookOpen />,
     text: 'Latest Articles',
     description:
-      'Read the latest guides, tutorials, and insights from the Avalanche ecosystem.',
+      'Read the latest guides, tutorials, and insights from the Lux ecosystem.',
     url: '/guides',
   },
   {

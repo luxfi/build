@@ -1,9 +1,9 @@
 ---
 title: Testing Cross-Chain Messaging
-description: Test Teleporter cross-chain messaging between Avalanche L1s
+description: Test Teleporter cross-chain messaging between Lux L1s
 ---
 
-This guide shows how to test cross-chain messaging using Teleporter, Avalanche's native cross-chain communication protocol. Learn the complete flow from sending messages to relaying and verifying delivery.
+This guide shows how to test cross-chain messaging using Teleporter, Lux's native cross-chain communication protocol. Learn the complete flow from sending messages to relaying and verifying delivery.
 
 ## Overview
 
@@ -35,9 +35,9 @@ import (
     "testing"
     "time"
 
-    "github.com/ava-labs/avalanchego/tests/fixture/e2e"
-    "github.com/ava-labs/avalanchego/tests/fixture/tmpnet"
-    teleportermessenger "github.com/ava-labs/teleporter/abi-bindings/go/teleporter/TeleporterMessenger"
+    "github.com/luxfi/luxgo/tests/fixture/e2e"
+    "github.com/luxfi/luxgo/tests/fixture/tmpnet"
+    teleportermessenger "github.com/luxfi/teleporter/abi-bindings/go/teleporter/TeleporterMessenger"
     "github.com/ethereum/go-ethereum/common"
     "github.com/ethereum/go-ethereum/crypto"
     "github.com/onsi/ginkgo/v2"
@@ -192,7 +192,7 @@ func constructWarpMessage(
     destination L1TestInfo,
     receipt *types.Receipt,
     aggregator *SignatureAggregator,
-) *avalancheWarp.Message {
+) *luxWarp.Message {
 
     // Extract unsigned Warp message from logs
     unsignedMessage := extractWarpMessageFromLogs(ctx, receipt, source)
@@ -509,11 +509,11 @@ func NewSignatureAggregator(
 }
 
 func (a *SignatureAggregator) CreateSignedMessage(
-    unsignedMessage *avalancheWarp.UnsignedMessage,
+    unsignedMessage *luxWarp.UnsignedMessage,
     justification []byte,
     subnetID ids.ID,
     quorumNum uint64,
-) (*avalancheWarp.Message, error) {
+) (*luxWarp.Message, error) {
 
     signedMessage, err := a.client.CreateSignedMessage(
         unsignedMessage,
@@ -644,6 +644,6 @@ func verifyReceiptReceived(
 
 ## Additional Resources
 
-- [Teleporter Documentation](https://github.com/ava-labs/teleporter)
-- [ICM Services Tests](https://github.com/ava-labs/icm-services/tree/main/tests)
-- [Warp Messaging](https://docs.avax.network/cross-chain)
+- [Teleporter Documentation](https://github.com/luxfi/teleporter)
+- [ICM Services Tests](https://github.com/luxfi/icm-services/tree/main/tests)
+- [Warp Messaging](https://docs.lux.network/cross-chain)

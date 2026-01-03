@@ -11,9 +11,9 @@ import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-The Avalanche Starter Kit contains everything you need to get started quickly with Avalanche. The kit provides a self-contained environment with Foundry so you can follow the course without the need of installing anything else other than launching the environment.
+The Lux Starter Kit contains everything you need to get started quickly with Lux. The kit provides a self-contained environment with Foundry so you can follow the course without the need of installing anything else other than launching the environment.
 
-In this course we will run the Avalanche Starter Kit in a hosted environment on Github. This is the quickest way to get started.
+In this course we will run the Lux Starter Kit in a hosted environment on Github. This is the quickest way to get started.
 
 <Steps>
 <Step>
@@ -29,12 +29,12 @@ Wait a few minutes for the environment to build. You must be logged into GitHub 
 Alternatively, you can clone the repository:
 
 <Link
-    href="https://github.com/ava-labs/avalanche-starter-kit/tree/interchain-messaging"
+    href="https://github.com/luxfi/lux-starter-kit/tree/interchain-messaging"
     className={cn(
     buttonVariants({ variant: 'default', className: 'mt-4' }),
     )}
     target='_blank'
->Open Avalanche Starter Kit</Link>
+>Open Lux Starter Kit</Link>
 
 </Step>
 <Step>
@@ -62,7 +62,7 @@ export FOUNDRY_DISABLE_NIGHTLY_WARNING=1
 
 <Callout type="warn" title="If you created your wallet account with gmail or any other auth provider you will not have a private key" />
 
-2. Get your [wallet credentials](https://support.avax.network/en/articles/8832783-core-extension-how-do-i-export-my-private-key):
+2. Get your [wallet credentials](https://support.lux.network/en/articles/8832783-core-extension-how-do-i-export-my-private-key):
    - Open Core wallet
    - Click your account name (top right)
    - Select "View Private Key"
@@ -92,7 +92,7 @@ PK=your_private_key_here
 FUNDED_ADDRESS=your_funded_address_here
 
 # Teleporter and chain configuration
-# Fuji C-Chain, Dispatch & Echo have the same address, but this might no be the case for other L1s
+# Testnet LUExchange-Chain, Dispatch & Echo have the same address, but this might no be the case for other L1s
 TELEPORTER_REGISTRY_FUJI_DISPATCH=0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228
 TELEPORTER_REGISTRY_FUJI_C_CHAIN=0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228
 

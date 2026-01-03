@@ -42,7 +42,7 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
   const pChainBalance = useWalletStore((s) => s.balances.pChain);
   const { coreWalletClient } = useConnectedWallet()
 
-  // Fetch P-Chain balance periodically
+  // Fetch Platform-Chain balance periodically
   useEffect(() => {
     if (pChainAddress) {
       updatePChainBalance()
@@ -71,7 +71,7 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
       return;
     }
     if (amountNumber > pChainBalance) {
-      setError("Amount exceeds available P-Chain balance.")
+      setError("Amount exceeds available Platform-Chain balance.")
       return;
     }
 
@@ -84,7 +84,7 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
     try {
       const txHash = await coreWalletClient.increaseL1ValidatorBalance({
         validationId: validatorSelection.validationId,
-        balanceInAvax: amountNumber,
+        balanceInLux: amountNumber,
       })
 
       console.log("Validator balance increase transaction sent:", txHash)
@@ -134,7 +134,7 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
               <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Amount Increased</span>
-                  <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{amount} AVAX</span>
+                  <span className="text-sm font-bold text-blue-700 dark:text-blue-300">{amount} LUX</span>
                 </div>
                 {subnetId && (
                   <div className="flex justify-between items-center">
@@ -156,7 +156,7 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Transaction</span>
                     <a
-                      href={`https://${isTestnet ? "subnets-test" : "subnets"}.avax.network/p-chain/tx/${validatorTxId}`}
+                      href={`https://${isTestnet ? "subnets-test" : "subnets"}.lux.network/p-chain/tx/${validatorTxId}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm font-semibold text-red-500 hover:text-red-400 dark:text-red-400 dark:hover:text-red-300 flex items-center gap-1"
@@ -209,17 +209,17 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
                     className="pointer-events-none px-3"
                     stickLeft
                   >
-                    AVAX
+                    LUX
                   </Button>}
                 />
 
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                    Available P-Chain Balance
+                    Available Platform-Chain Balance
                   </label>
                   <div className="flex items-center gap-2 p-3 rounded-md border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/50">
                     <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-                      {pChainBalance.toFixed(4)} <span className="text-sm text-zinc-500 dark:text-zinc-400">AVAX</span>
+                      {pChainBalance.toFixed(4)} <span className="text-sm text-zinc-500 dark:text-zinc-400">LUX</span>
                     </span>
                     <span
                       role="button"
@@ -238,7 +238,7 @@ function ValidatorBalanceIncrease({ onSuccess }: BaseConsoleToolProps) {
               </div>
 
               <Alert variant="error">
-                This action will use AVAX from your P-Chain address ({pChainAddress ? `${pChainAddress.substring(0, 10)}...${pChainAddress.substring(pChainAddress.length - 4)}` : 'Loading...'}) to increase the balance of the specified L1 validator. Ensure the Validation ID is correct.
+                This action will use LUX from your Platform-Chain address ({pChainAddress ? `${pChainAddress.substring(0, 10)}...${pChainAddress.substring(pChainAddress.length - 4)}` : 'Loading...'}) to increase the balance of the specified L1 validator. Ensure the Validation ID is correct.
               </Alert>
 
               {error && !error.toLowerCase().includes("amount") && !error.toLowerCase().includes("balance") && !error.toLowerCase().includes("utxo") && !error.toLowerCase().includes("validation") && !error.toLowerCase().includes("subnet") && (

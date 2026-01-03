@@ -7,7 +7,7 @@ icon: Terminal
 ---
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Lets start by deploying our sender contract on C-Chain. It will be responsible for calling the the TeleporterMessenger contract, encoding our message and sending it to the destination chain. 
+Lets start by deploying our sender contract on LUExchange-Chain. It will be responsible for calling the the TeleporterMessenger contract, encoding our message and sending it to the destination chain. 
 
 <Steps>
 <Step>
@@ -16,7 +16,7 @@ Lets start by deploying our sender contract on C-Chain. It will be responsible f
 The following contract is located inside `contracts/interchain-messaging/send-receive` directory. Read through the contract below and and understand what is happening:
 
 ```solidity title="contracts/interchain-messaging/send-receive/senderOnCChain.sol"
-// (c) 2023, Ava Labs, Inc. All rights reserved.
+// (c) 2023, Lux Network, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
 // SPDX-License-Identifier: Ecosystem
@@ -64,7 +64,7 @@ The key things to understand:
 To deploy a contract using Foundry use the following command:
 
 ```bash
-forge create --rpc-url fuji-c --private-key $PK --broadcast contracts/interchain-messaging/send-receive/senderOnCChain.sol:SenderOnCChain
+forge create --rpc-url testnet-c --private-key $PK --broadcast contracts/interchain-messaging/send-receive/senderOnCChain.sol:SenderOnCChain
 ```
 ```
 [⠊] Compiling...

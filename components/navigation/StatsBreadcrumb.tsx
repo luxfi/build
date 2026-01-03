@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { BarChart3, ChevronRight, Compass, Globe, ChevronDown, Plus, Users, Home, Search, X } from "lucide-react";
-import { AvalancheLogo } from "@/components/navigation/avalanche-logo";
+import { LuxLogo } from "@/components/navigation/lux-logo";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -332,7 +332,7 @@ export function StatsBreadcrumb({
                 <DropdownMenuTrigger asChild>
                   <button className="inline-flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer whitespace-nowrap flex-shrink-0">
                     {chainSlug === 'all' || chainSlug === 'all-chains' || chainSlug === 'network-metrics' ? (
-                      <AvalancheLogo className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" fill="#E84142" />
+                      <LuxLogo className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" fill="#FFFFFF" />
                     ) : (
                       <ChainLogo src={chainLogoURI} name={chainName} size="md" />
                     )}
@@ -378,7 +378,7 @@ export function StatsBreadcrumb({
                         className="cursor-pointer"
                       >
                         <div className="flex items-center gap-2 w-full">
-                          <AvalancheLogo className="w-4 h-4" fill="#E84142" />
+                          <LuxLogo className="w-4 h-4" fill="#FFFFFF" />
                           <span className={chainSlug === 'all' || chainSlug === 'all-chains' || chainSlug === 'network-metrics' ? "font-medium" : ""}>
                             All Chains
                           </span>
@@ -455,7 +455,7 @@ export function StatsBreadcrumb({
             ) : (
               <span className="inline-flex items-center gap-1 sm:gap-1.5 font-medium text-zinc-900 dark:text-zinc-100 whitespace-nowrap flex-shrink-0">
                 {chainSlug === 'all' || chainSlug === 'all-chains' || chainSlug === 'network-metrics' ? (
-                  <AvalancheLogo className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" fill="#E84142" />
+                  <LuxLogo className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" fill="#FFFFFF" />
                 ) : (
                   <ChainLogo src={chainLogoURI} name={chainName} size="md" />
                 )}

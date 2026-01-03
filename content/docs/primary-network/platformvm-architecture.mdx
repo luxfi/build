@@ -1,27 +1,27 @@
 ---
 title: PlatformVM Architecture
-description: How the P-Chain manages validators, staking, and Avalanche L1 creation inside AvalancheGo.
+description: How the Platform-Chain manages validators, staking, and Lux L1 creation inside LuxGo.
 ---
 
-PlatformVM (P-Chain) runs on Snowman++ and controls validators, staking rewards, subnet membership, and chain creation. Source lives in [`vms/platformvm`](https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm) and its block/tx types in [`vms/platformvm/txs`](https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm/txs).
+PlatformVM (Platform-Chain) runs on Snowman++ and controls validators, staking rewards, subnet membership, and chain creation. Source lives in [`vms/platformvm`](https://github.com/luxfi/luxgo/tree/master/vms/platformvm) and its block/tx types in [`vms/platformvm/txs`](https://github.com/luxfi/luxgo/tree/master/vms/platformvm/txs).
 
 At a glance:
 - Snowman++ engine drives PlatformVM block production; mempool feeds Standard/Proposal/Atomic blocks.
 - Validator registry, subnet membership, warp signing, and atomic UTXOs are persisted in the node database.
-- P-Chain APIs expose validator state, subnet/chain creation, staking ops, and block fetch.
+- Platform-Chain APIs expose validator state, subnet/chain creation, staking ops, and block fetch.
 
 ## Responsibilities
 
 - **Validator registry & staking**: Tracks Primary Network validators and delegators, uptime, staking rewards, and validator fees.
 - **Subnet/L1 orchestration**: Creates Subnets and chains (`CreateSubnetTx`, `CreateChainTx`), maintains Subnet validator sets (including permissionless add/remove).
-- **Warp messaging**: Signs warp messages for cross-chain communication on Avalanche L1s.
-- **Atomic transfers**: Handles import/export of AVAX to/from other chains via shared memory.
+- **Warp messaging**: Signs warp messages for cross-chain communication on Lux L1s.
+- **Atomic transfers**: Handles import/export of LUX to/from other chains via shared memory.
 
 ## Consensus & Blocks
 
 - Uses **Snowman++** via the ProposerVM (single proposer windows with fallback).
-- Blocks are built by [`vms/platformvm/block/builder`](https://github.com/ava-labs/avalanchego/tree/master/vms/platformvm/block/builder); block types include **Standard**, **Proposal** (with **Commit/Abort** options), and **Atomic** blocks.
-- State sync is supported for faster bootstrap; bootstrapping peers can be overridden via `CustomBeacons` in the P-Chain `ChainParameters`.
+- Blocks are built by [`vms/platformvm/block/builder`](https://github.com/luxfi/luxgo/tree/master/vms/platformvm/block/builder); block types include **Standard**, **Proposal** (with **Commit/Abort** options), and **Atomic** blocks.
+- State sync is supported for faster bootstrap; bootstrapping peers can be overridden via `CustomBeacons` in the Platform-Chain `ChainParameters`.
 
 ## Key Transaction Types
 
@@ -32,11 +32,11 @@ At a glance:
 | `AddPermissionlessValidatorTx` / `AddPermissionlessDelegatorTx` | Permissionless validation on Subnets that allow it |
 | `CreateSubnetTx` | Create a new Subnet and owner controls |
 | `CreateChainTx` | Launch a new blockchain (VM + genesis) on a Subnet |
-| `ImportTx` / `ExportTx` | Move AVAX to/from other chains via atomic UTXOs |
+| `ImportTx` / `ExportTx` | Move LUX to/from other chains via atomic UTXOs |
 | `RewardValidatorTx` | Mint rewards after successful staking periods |
 | `TransformSubnetTx` | Legacy subnet transform (disabled post-Etna) |
 
-## P-Chain APIs
+## Platform-Chain APIs
 
 - Exposed at `/ext/bc/P` with namespaces such as `platform.getBlock`, `platform.getCurrentValidators`, `platform.issueTx`, `platform.getSubnets`, `platform.getBlockchains`.
 - Health and metrics are surfaced via the node-level `/ext/health` and `/ext/metrics`.
@@ -45,14 +45,14 @@ At a glance:
 
 Default chain config location:
 
-```json title="~/.avalanchego/configs/chains/P/config.json"
+```json title="~/.luxgo/configs/chains/P/config.json"
 {
   "state-sync-enabled": true,
   "pruning-enabled": true
 }
 ```
 
-- Subnet and chain aliases can be set in `~/.avalanchego/configs/chains/aliases.json`.
+- Subnet and chain aliases can be set in `~/.luxgo/configs/chains/aliases.json`.
 - Upgrade rules and Subnet parameters are read from the chain config and network upgrade settings (`upgrade/`).
 
 ## Developer Tips

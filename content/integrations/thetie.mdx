@@ -1,8 +1,8 @@
 ---
 title: The TIE
 category: Analytics & Data
-available: ["C-Chain"]
-description: "The TIE provides real-time and historical data APIs for Avalanche, offering sentiment analysis, trading signals, and on-chain metrics through their SigDev Terminal."
+available: ["LUExchange-Chain"]
+description: "The TIE provides real-time and historical data APIs for Lux, offering sentiment analysis, trading signals, and on-chain metrics through their SigDev Terminal."
 logo: /images/thetie.jpg
 developer: The TIE
 website: https://thetie.io/
@@ -11,7 +11,7 @@ documentation: https://docs.thetie.io/
 
 ## Overview
 
-The TIE's SigDev platform provides developers with access to comprehensive crypto data APIs including Avalanche-specific metrics, sentiment analysis, and on-chain data. Their SDK enables integration of both real-time and historical data for applications built on Avalanche.
+The TIE's SigDev platform provides developers with access to comprehensive crypto data APIs including Lux-specific metrics, sentiment analysis, and on-chain data. Their SDK enables integration of both real-time and historical data for applications built on Lux.
 
 ## Features
 
@@ -51,9 +51,9 @@ from thetie import TieClient
 
 client = TieClient(api_key='your-api-key')
 
-# Fetch Avalanche metrics
-avalanche_data = client.get_metrics(
-    asset='AVAX',
+# Fetch Lux metrics
+lux_data = client.get_metrics(
+    asset='LUX',
     metrics=['price', 'volume', 'sentiment'],
     interval='1h'
 )
@@ -75,4 +75,4 @@ The TIE enables:
 
 ## Conclusion
 
-The TIE provides robust data infrastructure for developers building on Avalanche, offering comprehensive APIs and SDKs for accessing market, social, and on-chain data. Their tools enable developers to integrate sophisticated data analytics into their applications with reliable and scalable access to multiple data types. 
+The TIE provides robust data infrastructure for developers building on Lux, offering comprehensive APIs and SDKs for accessing market, social, and on-chain data. Their tools enable developers to integrate sophisticated data analytics into their applications with reliable and scalable access to multiple data types. 

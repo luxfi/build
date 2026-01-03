@@ -1,12 +1,12 @@
 ---
 title: Webhooks API
-description: Real-time notifications for blockchain events on Avalanche networks
+description: Real-time notifications for blockchain events on Lux networks
 icon: Webhook
 ---
 
 ### What is the Webhooks API?
 
-The Webhooks API lets you monitor real-time events on the Avalanche ecosystem, including the C-chain, L1s, and the Platform Chain (P/X chains). By subscribing to specific events, you can receive instant notifications for on-chain occurrences without continuously polling the network.
+The Webhooks API lets you monitor real-time events on the Lux ecosystem, including the C-chain, L1s, and the Platform Chain (P/X chains). By subscribing to specific events, you can receive instant notifications for on-chain occurrences without continuously polling the network.
 
 <img src="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=ee45e3165b9c7c74f85bf87bc248702e" alt="webhooks" data-og-width="3450" width="3450" data-og-height="2234" height="2234" data-path="images/webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?w=280&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=5465ea56e0c0016d54166ef1ad2a069f 280w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?w=560&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=9a236a383ca3cbf91a637920decef275 560w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?w=840&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=104ba846be582735450055d716f68486 840w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?w=1100&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=b2334bc28c374a56e5318bafa43649b9 1100w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?w=1650&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=d45a14d32938b38a1537eeba5201457e 1650w, https://mintcdn.com/avalabs-47ea3976/0zR1yC86HIu3y3oi/images/webhooks.png?w=2500&fit=max&auto=format&n=0zR1yC86HIu3y3oi&q=85&s=f99ee41e46f2051dbb28befe65bab9bb 2500w" />
 
@@ -19,14 +19,14 @@ The Webhooks API lets you monitor real-time events on the Avalanche ecosystem, i
   * **C-chain:** Mainnet and testnet, covering smart contract events, NFT transfers, and wallet-to-wallet transactions.
   * **Platform Chain (P and X chains):** Address and validator events, staking activities, and other platform-level transactions.
 
-By supporting both the C-chain and the Platform Chain, you can monitor an even wider range of Avalanche activities.
+By supporting both the C-chain and the Platform Chain, you can monitor an even wider range of Lux activities.
 
 ### Use cases
 
 * **NFT marketplace transactions**: Get alerts for NFT minting, transfers, auctions, bids, sales, and other interactions within NFT marketplaces.
 * **Wallet notifications**: Receive alerts when an address performs actions such as sending, receiving, swapping, or burning assets.
 * **DeFi activities**: Receive notifications for various DeFi activities such as liquidity provisioning, yield farming, borrowing, lending, and liquidations.
-* **Staking rewards:** Get real-time notifications when a validator stakes, receives delegation, or earns staking rewards on the P-Chain, enabling seamless monitoring of validator earnings and participation.
+* **Staking rewards:** Get real-time notifications when a validator stakes, receives delegation, or earns staking rewards on the Platform-Chain, enabling seamless monitoring of validator earnings and participation.
 
 ## APIs for continuous polling vs. Webhooks for events data
 
@@ -52,13 +52,13 @@ Continuous polling is a method where your application repeatedly sends requests 
 
 ### Webhook subscription
 
-Webhooks are an event-driven alternative where your application subscribes to specific events, and the Avalanche service notifies you instantly when those events occur. It’s like signing up for a delivery alert—when the package (event) arrives, you get a text message right away, instead of checking the tracking site repeatedly.
+Webhooks are an event-driven alternative where your application subscribes to specific events, and the Lux service notifies you instantly when those events occur. It’s like signing up for a delivery alert—when the package (event) arrives, you get a text message right away, instead of checking the tracking site repeatedly.
 
 * Your app registers a webhook specifying an endpoint (e.g., `https://your-app.com/webhooks/transactions`) and the event type (e.g., `address_activity`).
 * When a new transaction occurs we send a POST request to your endpoint with the transaction details.
 * Your app receives the data only when something happens, with no need to ask repeatedly.
 
-**Benefits of Avalanche webhooks**
+**Benefits of Lux webhooks**
 
 * **Real-Time updates:** Notifications arrive the moment a transaction is processed, eliminating delays inherent in polling. This is ideal for applications needing immediate responses, like alerting users or triggering automated actions.
 * **Efficiency:** Your app doesn’t waste resources making requests when there’s no new data. Data flows only when events occur. This reduces server load, bandwidth usage, and API call quotas.
@@ -81,7 +81,7 @@ The Event structure always begins with the following parameters:
 **Parameters:**
 
 * `webhookId`: Unique identifier for the webhook in your account.
-* `eventType`: The event that caused the webhook to be triggered. In the future, there will be multiple types of events, for the time being only the address\_activity event is supported. The address\_activity event gets triggered whenever the specified addresses participate in a token or AVAX transaction.
+* `eventType`: The event that caused the webhook to be triggered. In the future, there will be multiple types of events, for the time being only the address\_activity event is supported. The address\_activity event gets triggered whenever the specified addresses participate in a token or LUX transaction.
 * `messageId`: Unique identifier per event sent.
 * `event`: Event payload. It contains details about the transaction, logs, and traces. By default logs and internal transactions are not included, if you want to include them use `"includeLogs": true`, and `"includeInternalTxs": true`.
 
@@ -127,8 +127,8 @@ The address activity webhook allows you to track any interaction with an address
           "logIndex": 2,
           "erc20Token": {
             "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
             "valueWithDecimals": "0.030576074978046448"
           }
@@ -159,8 +159,8 @@ The address activity webhook allows you to track any interaction with an address
           "logIndex": 4,
           "erc20Token": {
             "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
-            "name": "Wrapped AVAX",
-            "symbol": "WAVAX",
+            "name": "Wrapped LUX",
+            "symbol": "WLUX",
             "decimals": 18,
             "valueWithDecimals": "0.030576074978046448"
           }

@@ -1,8 +1,8 @@
 ---
 title: x402-rs
 category: x402
-available: ["C-Chain"]
-description: A Rust-based implementation of the x402 protocol for accepting blockchain payments through HTTP on Avalanche.
+available: ["LUExchange-Chain"]
+description: A Rust-based implementation of the x402 protocol for accepting blockchain payments through HTTP on Lux.
 logo: /images/x402-rs.png
 developer: x402-rs
 website: https://github.com/x402-rs/x402-rs
@@ -11,7 +11,7 @@ documentation: https://github.com/x402-rs/x402-rs
 
 ## Overview
 
-x402-rs is a Rust-based implementation of the x402 protocol that enables blockchain payments directly through HTTP using the native `402 Payment Required` status code on Avalanche's C-Chain.
+x402-rs is a Rust-based implementation of the x402 protocol that enables blockchain payments directly through HTTP using the native `402 Payment Required` status code on Lux's LUExchange-Chain.
 
 The x402 protocol allows servers to declare payment requirements for specific routes. Clients send cryptographically signed payment payloads, and facilitators verify and settle payments on-chain.
 
@@ -41,11 +41,11 @@ docker run --env-file .env -p 8080:8080 x402-rs
 
 ### Protect Axum Routes
 
-Use `x402-axum` to gate your routes behind on-chain payments on Avalanche:
+Use `x402-axum` to gate your routes behind on-chain payments on Lux:
 
 ```rust
 let x402 = X402Middleware::try_from("https://x402.org/facilitator/").unwrap();
-let usdc = USDCDeployment::by_network(Network::AvalancheFuji);
+let usdc = USDCDeployment::by_network(Network::LuxTestnet);
 
 let app = Router::new().route("/paid-content", get(handler).layer( 
         x402.with_price_tag(usdc.amount("0.025").pay_to("0xYourAddress").unwrap())
@@ -57,7 +57,7 @@ See the [x402-axum crate documentation](https://docs.rs/x402-axum) for more deta
 
 ### Send x402 Payments
 
-Use `x402-reqwest` to send payments on Avalanche:
+Use `x402-reqwest` to send payments on Lux:
 
 ```rust
 use x402_reqwest::X402ClientExt;
@@ -66,8 +66,8 @@ let signer: PrivateKeySigner = "0x...".parse()?; // never hardcode real keys!
 
 let client = reqwest::Client::new()
     .with_payments(signer)
-    .prefer(USDCDeployment::by_network(Network::Avalanche))
-    .max(USDCDeployment::by_network(Network::Avalanche).amount("1.00")?)
+    .prefer(USDCDeployment::by_network(Network::Lux))
+    .max(USDCDeployment::by_network(Network::Lux).amount("1.00")?)
     .build();
 
 let res = client
@@ -98,8 +98,8 @@ Create a `.env` file or set environment variables directly:
 ```bash
 HOST=0.0.0.0
 PORT=8080
-RPC_URL_AVALANCHE_FUJI=https://api.avax-test.network/ext/bc/C/rpc
-RPC_URL_AVALANCHE=https://api.avax.network/ext/bc/C/rpc
+RPC_URL_LUX_FUJI=https://api.lux-test.network/ext/bc/C/rpc
+RPC_URL_LUX=https://api.lux.network/ext/bc/C/rpc
 SIGNER_TYPE=private-key
 EVM_PRIVATE_KEY=0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef
 RUST_LOG=info
@@ -107,8 +107,8 @@ RUST_LOG=info
 
 **Important:** The supported networks are determined by which RPC URLs you provide:
 
-- If you set only `RPC_URL_AVALANCHE_FUJI`, then only Avalanche Fuji testnet is supported
-- If you set both `RPC_URL_AVALANCHE_FUJI` and `RPC_URL_AVALANCHE`, then both testnet and mainnet are supported
+- If you set only `RPC_URL_LUX_FUJI`, then only Lux Testnet testnet is supported
+- If you set both `RPC_URL_LUX_FUJI` and `RPC_URL_LUX`, then both testnet and mainnet are supported
 - If an RPC URL for a network is missing, that network will not be available for settlement or verification
 
 ### Environment Variables
@@ -120,8 +120,8 @@ Available configuration variables:
 - `PORT`: HTTP server port (default: `8080`)
 - `SIGNER_TYPE` (required): Type of signer to use. Only `private-key` is supported now
 - `EVM_PRIVATE_KEY` (required): Private key in hex for EVM networks
-- `RPC_URL_AVALANCHE_FUJI`: Ethereum RPC endpoint for Avalanche Fuji testnet
-- `RPC_URL_AVALANCHE`: Ethereum RPC endpoint for Avalanche C-Chain mainnet
+- `RPC_URL_LUX_FUJI`: Ethereum RPC endpoint for Lux Testnet testnet
+- `RPC_URL_LUX`: Ethereum RPC endpoint for Lux LUExchange-Chain mainnet
 
 ### Docker Deployment
 
@@ -173,7 +173,7 @@ app.use(paymentMiddleware(
   {
     "/protected-route": {
       price: "$0.10",
-      network: "avalanche-fuji",
+      network: "lux-testnet",
       config: {
         description: "Access to premium content",
       }
@@ -199,7 +199,7 @@ serve({
 
 ```rust
 let x402 = X402Middleware::try_from("http://your-validator.url/").unwrap();  // 👈 Your self-hosted Facilitator
-let usdc = USDCDeployment::by_network(Network::AvalancheFuji);
+let usdc = USDCDeployment::by_network(Network::LuxTestnet);
 
 let app = Router::new().route("/paid-content", get(handler).layer( 
         x402.with_price_tag(usdc.amount("0.025").pay_to("0xYourAddress").unwrap())
@@ -225,16 +225,16 @@ OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 
 The service automatically detects and initializes exporters if `OTEL_EXPORTER_OTLP_*` variables are provided.
 
-## Avalanche C-Chain Support
+## Lux LUExchange-Chain Support
 
-The facilitator supports Avalanche C-Chain through these environment variables:
+The facilitator supports Lux LUExchange-Chain through these environment variables:
 
 | Network                   | Environment Variable      | Notes                            |
 | ------------------------- | ------------------------- | -------------------------------- |
-| Avalanche Fuji Testnet    | RPC_URL_AVALANCHE_FUJI   | Recommended for testing          |
-| Avalanche C-Chain Mainnet | RPC_URL_AVALANCHE        | Production mainnet               |
+| Lux Testnet Testnet    | RPC_URL_LUX_FUJI   | Recommended for testing          |
+| Lux LUExchange-Chain Mainnet | RPC_URL_LUX        | Production mainnet               |
 
-**Tip:** For initial development and testing, start with Avalanche Fuji testnet only.
+**Tip:** For initial development and testing, start with Lux Testnet testnet only.
 
 ## Development
 
@@ -258,16 +258,16 @@ cargo run
 ## Use Cases
 
 ### Payment-Gated APIs
-Protect your API endpoints with automatic on-chain payment verification on Avalanche.
+Protect your API endpoints with automatic on-chain payment verification on Lux.
 
 ### Micropayment Services
-Enable micropayments for content, data, or compute resources with Avalanche's low fees.
+Enable micropayments for content, data, or compute resources with Lux's low fees.
 
 ### AI Agent Monetization
-Allow AI agents to charge for services on a pay-per-use basis using Avalanche's fast finality.
+Allow AI agents to charge for services on a pay-per-use basis using Lux's fast finality.
 
 ### Rust-Native dApps
-Build Rust-based decentralized applications with built-in payment capabilities on Avalanche.
+Build Rust-based decentralized applications with built-in payment capabilities on Lux.
 
 ## Documentation
 
@@ -277,5 +277,5 @@ Build Rust-based decentralized applications with built-in payment capabilities o
 
 ## Conclusion
 
-x402-rs provides a production-ready Rust implementation of the x402 protocol for Avalanche's C-Chain. With its facilitator service, Axum middleware, and client libraries, it makes it easy to build payment-gated services in Rust. Whether you're protecting API endpoints, enabling micropayments, or building AI agent monetization, x402-rs delivers the tools you need with Rust's performance and safety guarantees on Avalanche.
+x402-rs provides a production-ready Rust implementation of the x402 protocol for Lux's LUExchange-Chain. With its facilitator service, Axum middleware, and client libraries, it makes it easy to build payment-gated services in Rust. Whether you're protecting API endpoints, enabling micropayments, or building AI agent monetization, x402-rs delivers the tools you need with Rust's performance and safety guarantees on Lux.
 

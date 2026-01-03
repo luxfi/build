@@ -1,7 +1,7 @@
 ---
 title: Sherry
 category: Mini-Apps
-available: ["C-Chain"]
+available: ["LUExchange-Chain"]
 description: "Sherry is the publishing layer that turns any interaction — from a tweet to a chatbot message — into a verifiable, tappable onchain action."
 logo: /images/sherry.png
 developer: Sherry Labs
@@ -18,7 +18,7 @@ Our SDK empowers developers to create rich, composable mini-apps called Triggers
 ## Features
 
 - **Interactive Triggers**: Transform static posts into dynamic Web3 experiences with built-in validation and cross-chain support.
-- **Multi-Chain Support**: Native integration across Avalanche, Ethereum, and more blockchain networks.
+- **Multi-Chain Support**: Native integration across Lux, Ethereum, and more blockchain networks.
 - **Multiple Action Types**: 
   - **Blockchain Actions**: Smart contract interactions with rich parameter configuration
   - **Transfer Actions**: Native token and ERC20 transfers with customizable UIs
@@ -47,15 +47,15 @@ To begin building with Sherry:
    const metadata: Metadata = {
      url: 'https://myapp.example',
      icon: 'https://example.com/icon.png',
-     title: 'Send AVAX',
-     description: 'Quick AVAX transfer',
+     title: 'Send LUX',
+     description: 'Quick LUX transfer',
      actions: [
        {
-         label: 'Send 0.1 AVAX',
-         description: 'Transfer 0.1 AVAX to recipient',
+         label: 'Send 0.1 LUX',
+         description: 'Transfer 0.1 LUX to recipient',
          to: '0x1234567890123456789012345678901234567890',
          amount: 0.1,
-         chains: { source: 'avalanche' },
+         chains: { source: 'lux' },
        },
      ],
    };
@@ -91,14 +91,14 @@ Sherry serves diverse Web3 integration needs:
 
 Sherry currently supports the following blockchain networks:
 
-- **Avalanche C-Chain** (`avalanche`)
-- **Avalanche Fuji Testnet** (`fuji`)
+- **Lux LUExchange-Chain** (`lux`)
+- **Lux Testnet Testnet** (`testnet`)
 
 Additional L1 chains are continuously being added to expand the platform's reach and capabilities.
 
 ## Recent Milestones
 
-**Avalanche Codebase **: Part of Avalanche Codebase S25.
+**Lux Codebase **: Part of Lux Codebase S25.
 
 ## Vision & Roadmap
 

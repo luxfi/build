@@ -75,21 +75,21 @@ export async function POST(request: Request) {
       "media_kit": ["2-44649732/media_kit"],
 
       "previous_funding": ["2-44649732/previous_funding", "2-44649732/previous_funding_"],
-      "funding_amount_self_funding": ["2-43176573/previous_funding_non_avalanche_self_funding"],
-      "funding_amount_family_friends": ["2-43176573/previous_funding_non_avalanche_family_friends"],
-      "funding_amount_grant": ["2-43176573/previous_funding_non_avalanche_grant"],
-      "funding_amount_angel": ["2-43176573/previous_funding_non_avalanche_angel_investment"],
-      "funding_amount_pre_seed": ["2-43176573/previous_funding_non_avalanche_pre_seed"],
-      "funding_amount_seed": ["2-43176573/previous_funding_non_avalanche_seed"],
-      "funding_amount_series_a": ["2-43176573/previous_funding_non_avalanche_series_a"],
-      "previous_avalanche_funding_grants": ["2-44649732/previous_avalanche_funding_grants"],
+      "funding_amount_self_funding": ["2-43176573/previous_funding_non_lux_self_funding"],
+      "funding_amount_family_friends": ["2-43176573/previous_funding_non_lux_family_friends"],
+      "funding_amount_grant": ["2-43176573/previous_funding_non_lux_grant"],
+      "funding_amount_angel": ["2-43176573/previous_funding_non_lux_angel_investment"],
+      "funding_amount_pre_seed": ["2-43176573/previous_funding_non_lux_pre_seed"],
+      "funding_amount_seed": ["2-43176573/previous_funding_non_lux_seed"],
+      "funding_amount_series_a": ["2-43176573/previous_funding_non_lux_series_a"],
+      "previous_lux_funding_grants": ["2-44649732/previous_lux_funding_grants"],
       "funding_amount_codebase": ["2-44649732/previous_funding_amount_codebase"],
       "funding_amount_infrabuidl": ["2-44649732/previous_funding_amount_infrabuidl"],
       "funding_amount_infrabuidl_ai": ["2-44649732/previous_funding_amount_infrabuidl_ai"],
       "funding_amount_retro9000": ["funding_amount_retro9000"],
       "funding_amount_blizzard": ["2-44649732/previous_funding_amount_blizzard"],
       "funding_amount_avalabs": ["2-44649732/previous_funding_amount_ava_labs"],
-      "funding_amount_other_avalanche": ["2-44649732/previous_funding_amount_entity_other"],
+      "funding_amount_other_lux": ["2-44649732/previous_funding_amount_entity_other"],
       "requested_funding_range": ["2-44649732/requested_funding_range"],
 
       "eligibility_and_metrics": ["2-44649732/retro9000_eligibility"],
@@ -104,14 +104,14 @@ export async function POST(request: Request) {
       "project_live_status": ["2-44649732/project_live_status"],
       "multichain_check": ["2-44649732/multichain_check"],
       "multichain_chains": ["2-44649732/multichain_chains"],
-      "first_build_avalanche": ["2-44649732/first_build_avalanche"],
-      "previous_avalanche_project_info": ["2-44649732/previous_avalanche_project_info"],
-      "avalanche_contribution": ["2-44649732/avalanche_contribution"],
-      "avalanche_benefit_check": ["2-44649732/avalanche_benefit_check"],
-      "avalanche_l1_project_benefited_1_name": ["2-44649732/avalanche_l1_project_benefited_1"],
-      "avalanche_l1_project_benefited_1_website": ["2-44649732/avalanche_l1_project_benefited_1_website"],
-      "avalanche_l1_project_benefited_2_name": ["avalanche_l1_project_benefited_2_name"],
-      "avalanche_l1_project_benefited_2_website": ["avalanche_l1_project_benefited_2_website"],
+      "first_build_lux": ["2-44649732/first_build_lux"],
+      "previous_lux_project_info": ["2-44649732/previous_lux_project_info"],
+      "lux_contribution": ["2-44649732/lux_contribution"],
+      "lux_benefit_check": ["2-44649732/lux_benefit_check"],
+      "lux_l1_project_benefited_1_name": ["2-44649732/lux_l1_project_benefited_1"],
+      "lux_l1_project_benefited_1_website": ["2-44649732/lux_l1_project_benefited_1_website"],
+      "lux_l1_project_benefited_2_name": ["lux_l1_project_benefited_2_name"],
+      "lux_l1_project_benefited_2_website": ["lux_l1_project_benefited_2_website"],
       "similar_project_check": ["2-44649732/similar_project_check"],
       "similar_project_name_1": ["2-44649732/similar_project_name_1"],
       "similar_project_website_1": ["2-44649732/similar_project_website_1"],
@@ -122,7 +122,7 @@ export async function POST(request: Request) {
       "direct_competitor_1_website": ["2-44649732/direct_competitor_1_website"],
       "direct_competitor_2_name": ["direct_competitor_2_name"],
       "direct_competitor_2_website": ["direct_competitor_2_website"],
-      "token_launch_avalanche_check": ["2-44649732/token_launch_avalanche_check"],
+      "token_launch_lux_check": ["2-44649732/token_launch_lux_check"],
       "token_launch_other_explanation": ["2-44649732/token_launch_other"],
       "open_source_check": ["2-44649732/open_source_check"],
 
@@ -148,8 +148,8 @@ export async function POST(request: Request) {
       "team_member_2_other": ["team_member_2_other"],
       "team_member_2_bio": ["team_member_2_bio"],
 
-      "avalanche_grant_source": ["2-44649732/avalanche_grant_source"],
-      "avalanche_grant_source_other": ["avalanche_grant_source_other"],
+      "lux_grant_source": ["2-44649732/lux_grant_source"],
+      "lux_grant_source_other": ["lux_grant_source_other"],
       "program_referral_check": ["2-44649732/program_referral_check"],
       "program_referrer": ["2-44649732/program_referrer"],
 
@@ -195,27 +195,27 @@ export async function POST(request: Request) {
     
     const additionalRequiredFields = [
       { name: "2-44649732/previous_funding_amount_infrabuidl", value: "0" },
-      { name: "2-43176573/previous_funding_non_avalanche_angel_investment", value: "0" },
+      { name: "2-43176573/previous_funding_non_lux_angel_investment", value: "0" },
       { name: "2-44649732/token_launch_other", value: "N/A" },
       { name: "2-44649732/similar_project_name_1", value: "N/A" },
       { name: "2-44649732/similar_project_website_1", value: "N/A" },
       { name: "2-44649732/direct_competitor_1", value: "N/A" },
       { name: "2-44649732/previous_funding_amount_entity_other", value: "0" },
-      { name: "2-43176573/previous_funding_non_avalanche_pre_seed", value: "0" },
+      { name: "2-43176573/previous_funding_non_lux_pre_seed", value: "0" },
       { name: "2-44649732/applicant_job_role_other", value: "N/A" },
-      { name: "2-44649732/avalanche_l1_project_benefited_1", value: "N/A" },
+      { name: "2-44649732/lux_l1_project_benefited_1", value: "N/A" },
       { name: "2-44649732/previous_funding_amount_blizzard", value: "0" },
-      { name: "2-44649732/previous_avalanche_project_info", value: "N/A" },
+      { name: "2-44649732/previous_lux_project_info", value: "N/A" },
       { name: "2-44649732/previous_funding_amount_infrabuidl_ai", value: "0" },
       { name: "2-44649732/direct_competitor_1_website", value: "N/A" },
-      { name: "2-43176573/previous_funding_non_avalanche_seed", value: "0" },
+      { name: "2-43176573/previous_funding_non_lux_seed", value: "0" },
       { name: "2-44649732/program_referrer", value: "N/A" },
-      { name: "2-43176573/previous_funding_non_avalanche_grant", value: "0" },
-      { name: "2-44649732/avalanche_l1_project_benefited_1_website", value: "N/A" },
+      { name: "2-43176573/previous_funding_non_lux_grant", value: "0" },
+      { name: "2-44649732/lux_l1_project_benefited_1_website", value: "N/A" },
       { name: "2-44649732/previous_funding_amount_ava_labs", value: "0" },
-      { name: "2-43176573/previous_funding_non_avalanche_series_a", value: "0" },
-      { name: "2-43176573/previous_funding_non_avalanche_self_funding", value: "0" },
-      { name: "2-43176573/previous_funding_non_avalanche_family_friends", value: "0" }
+      { name: "2-43176573/previous_funding_non_lux_series_a", value: "0" },
+      { name: "2-43176573/previous_funding_non_lux_self_funding", value: "0" },
+      { name: "2-43176573/previous_funding_non_lux_family_friends", value: "0" }
     ];
     
     additionalRequiredFields.forEach(field => {
@@ -262,7 +262,7 @@ export async function POST(request: Request) {
     } = {
       fields: fields,
       context: {
-        pageUri: request.headers.get('referer') || 'https://build.avax.network',
+        pageUri: request.headers.get('referer') || 'https://build.lux.network',
         pageName: 'Retro9000 Grant Application'
       }
     };
@@ -271,12 +271,12 @@ export async function POST(request: Request) {
       hubspotPayload.legalConsentOptions = {
         consent: {
           consentToProcess: true,
-          text: "I agree to allow Avalanche Foundation to store and process my personal data.",
+          text: "I agree to allow Lux Foundation to store and process my personal data.",
           communications: [
             {
               value: formData.marketing_consent === true,
               subscriptionTypeId: 999,
-              text: "I agree to receive marketing communications from Avalanche Foundation."
+              text: "I agree to receive marketing communications from Lux Foundation."
             }
           ]
         }

@@ -71,11 +71,11 @@ function validatePaymentSignature(payload) {
   const { signature, authorization } = payload.payload;
   const { network } = payload;
 
-  // EIP-712 domain for USDC on Avalanche Fuji
+  // EIP-712 domain for USDC on Lux Testnet
   const domain = {
     name: "USD Coin",
     version: "2",
-    chainId: 43113,  // Avalanche Fuji
+    chainId: 43113,  // Lux Testnet
     verifyingContract: "0x5425890298aed601595a70AB815c96711a31Bc65"
   };
 

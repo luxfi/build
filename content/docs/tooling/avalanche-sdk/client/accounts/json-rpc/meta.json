@@ -1,5 +1,5 @@
 {
   "title": "JSON-RPC Accounts",
-  "description": "Learn how to use JSON-RPC accounts with browser wallets like MetaMask and Core in the Avalanche Client SDK.",
+  "description": "Learn how to use JSON-RPC accounts with browser wallets like MetaMask and Core in the Lux Client SDK.",
   "pages": ["index"]
 }

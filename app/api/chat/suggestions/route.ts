@@ -47,7 +47,7 @@ function extractKeywords(text: string): string[] {
   // Common technical terms and concepts
   const technicalTerms = [
     'deploy', 'create', 'build', 'install', 'setup', 'configure',
-    'avalanche', 'subnet', 'l1', 'chain', 'contract', 'token', 'wallet', 'node',
+    'lux', 'subnet', 'l1', 'chain', 'contract', 'token', 'wallet', 'node',
     'validator', 'stake', 'delegate', 'teleporter', 'icm', 'ictt',
     'evm', 'rpc', 'api', 'endpoint', 'network', 'testnet', 'mainnet',
     'bridge', 'cross-chain', 'interchain', 'message', 'transfer',
@@ -64,10 +64,10 @@ function extractKeywords(text: string): string[] {
   });
   
   // Extract URLs and convert to topics
-  const urlMatches = text.match(/https:\/\/build\.avax\.network\/([^)\s]+)/g);
+  const urlMatches = text.match(/https:\/\/build\.lux\.network\/([^)\s]+)/g);
   if (urlMatches) {
     urlMatches.forEach(url => {
-      const pathParts = url.split('/').slice(3); // Remove https://build.avax.network
+      const pathParts = url.split('/').slice(3); // Remove https://build.lux.network
       pathParts.forEach(part => {
         if (part && part.length > 3) {
           keywords.add(part.replace(/-/g, ' '));
@@ -145,7 +145,7 @@ function generateSuggestionsFromContent(keywords: string[], sections: Array<{ ti
         'What tools can I use to test before deployment?'
       ],
       'smart': [
-        'What are the deployment costs on Avalanche?',
+        'What are the deployment costs on Lux?',
         'How do I interact with my deployed contract?',
         'What security checks should I do before deployment?',
         'Can I deploy the same contract to multiple chains?'
@@ -181,13 +181,13 @@ function generateSuggestionsFromContent(keywords: string[], sections: Array<{ ti
     },
     'token': {
       'bridge': [
-        'Which bridges support Avalanche?',
+        'Which bridges support Lux?',
         'How long do bridge transfers take?',
         'What are bridge fees?',
         'Is bridging safe?'
       ],
       'create': [
-        'What token standards does Avalanche support?',
+        'What token standards does Lux support?',
         'How do I add liquidity for my token?',
         'How can I list my token on exchanges?',
         'What are tokenomics best practices?'

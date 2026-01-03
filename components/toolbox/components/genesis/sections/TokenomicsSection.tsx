@@ -104,7 +104,7 @@ export const TokenomicsSection = ({
             title="Tokenomics"
             description={compact ? '' : 'Configure your blockchain\'s native token economics.'}
             titleTooltip="Configure your blockchain's native token economics including initial distribution and minting permissions."
-            titleTooltipLink={{ href: "/docs/avalanche-l1s/evm-configuration/tokenomics", text: "Learn more about tokenomics" }}
+            titleTooltipLink={{ href: "/docs/lux-l1s/evm-configuration/tokenomics", text: "Learn more about tokenomics" }}
             sectionId="tokenomics"
             compact={compact}
         >

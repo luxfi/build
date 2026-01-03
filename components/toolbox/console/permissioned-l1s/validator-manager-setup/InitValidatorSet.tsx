@@ -12,10 +12,10 @@ import ValidatorManagerABI from "@/contracts/icm-contracts/compiled/ValidatorMan
 
 import { Button } from "@/components/toolbox/components/Button";
 import { Input } from "@/components/toolbox/components/Input";
-import { utils } from '@avalabs/avalanchejs';
+import { utils } from 'luxfi';
 import { DynamicCodeBlock } from 'fumadocs-ui/components/dynamic-codeblock';
 import { getSubnetInfo } from '@/components/toolbox/coreViem/utils/glacier';
-import { useAvalancheSDKChainkit } from "@/components/toolbox/stores/useAvalancheSDKChainkit";
+import { useLuxSDKChainkit } from "@/components/toolbox/stores/useLuxSDKChainkit";
 import { WalletRequirementsConfigKey } from "@/components/toolbox/hooks/useWalletRequirements";
 import { BaseConsoleToolProps, ConsoleToolMetadata, withConsoleToolMetadata } from "../../../components/WithConsoleToolMetadata";
 import { useConnectedWallet } from "@/components/toolbox/contexts/ConnectedWalletContext";
@@ -40,7 +40,7 @@ function InitValidatorSet({ onSuccess }: BaseConsoleToolProps) {
     const viemChain = useViemChainStore();
     const { publicClient, walletEVMAddress } = useWalletStore();
     const { coreWalletClient } = useConnectedWallet();
-    const { aggregateSignature } = useAvalancheSDKChainkit();
+    const { aggregateSignature } = useLuxSDKChainkit();
     const [isInitializing, setIsInitializing] = useState(false);
     const [txHash, setTxHash] = useState<string | null>(null);
     const [simulationWentThrough, _] = useState(false);
@@ -183,7 +183,7 @@ function InitValidatorSet({ onSuccess }: BaseConsoleToolProps) {
                 <Steps>
                     <Step>
                         <h2 className="text-lg font-semibold">Step 1: Aggregate Signature of Conversion Data</h2>
-                        <p>Enter the P-Chain Transaction ID of the ConvertSubnetToL1Tx of the L1 this Validator Manager it is for. It is needed to fetch the conversion data containing the initial validator set. This validator set will be set up in the validator manager contract so the consensus weight of these validators can be changed or they can be removed entirely if desired.</p>
+                        <p>Enter the Platform-Chain Transaction ID of the ConvertSubnetToL1Tx of the L1 this Validator Manager it is for. It is needed to fetch the conversion data containing the initial validator set. This validator set will be set up in the validator manager contract so the consensus weight of these validators can be changed or they can be removed entirely if desired.</p>
                         <div className="space-y-4">
                             <Input
                                 label="Conversion Tx ID"

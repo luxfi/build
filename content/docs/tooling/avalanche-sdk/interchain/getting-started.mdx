@@ -8,15 +8,15 @@ icon: rocket
 
 <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
   <Tab value="npm">
-    npm install @avalanche-sdk/interchain @avalanche-sdk/client
+    npm install @lux-sdk/interchain @lux-sdk/client
   </Tab>
   <Tab value="pnpm">
-    pnpm add @avalanche-sdk/interchain @avalanche-sdk/client
+    pnpm add @lux-sdk/interchain @lux-sdk/client
   </Tab>
   <Tab value="yarn">
-    yarn add @avalanche-sdk/interchain @avalanche-sdk/client
+    yarn add @lux-sdk/interchain @lux-sdk/client
   </Tab>
-  <Tab value="bun">bun add @avalanche-sdk/interchain @avalanche-sdk/client</Tab>
+  <Tab value="bun">bun add @lux-sdk/interchain @lux-sdk/client</Tab>
 </Tabs>
 
 ## Setup
@@ -24,14 +24,14 @@ icon: rocket
 ### 1. Create Wallet Client
 
 ```typescript
-import { createAvalancheWalletClient } from "@avalanche-sdk/client";
-import { avalancheFuji } from "@avalanche-sdk/client/chains";
-import { privateKeyToAvalancheAccount } from "@avalanche-sdk/client/accounts";
+import { createLuxWalletClient } from "@lux-sdk/client";
+import { luxTestnet } from "@lux-sdk/client/chains";
+import { privateKeyToLuxAccount } from "@lux-sdk/client/accounts";
 
-const account = privateKeyToAvalancheAccount("0x...");
-const wallet = createAvalancheWalletClient({
+const account = privateKeyToLuxAccount("0x...");
+const wallet = createLuxWalletClient({
   account,
-  chain: avalancheFuji,
+  chain: luxTestnet,
   transport: { type: "http" },
 });
 ```
@@ -39,10 +39,10 @@ const wallet = createAvalancheWalletClient({
 ### 2. Initialize ICM Client
 
 ```typescript
-import { createICMClient } from "@avalanche-sdk/interchain";
-import { avalancheFuji, dispatch } from "@avalanche-sdk/interchain/chains";
+import { createICMClient } from "@lux-sdk/interchain";
+import { luxTestnet, dispatch } from "@lux-sdk/interchain/chains";
 
-const icm = createICMClient(wallet, avalancheFuji, dispatch);
+const icm = createICMClient(wallet, luxTestnet, dispatch);
 ```
 
 ## Send Your First Message
@@ -50,9 +50,9 @@ const icm = createICMClient(wallet, avalancheFuji, dispatch);
 ```typescript
 async function sendMessage() {
   const hash = await icm.sendMsg({
-    sourceChain: avalancheFuji,
+    sourceChain: luxTestnet,
     destinationChain: dispatch,
-    message: "Hello from Avalanche!",
+    message: "Hello from Lux!",
   });
 
   console.log("Message sent:", hash);
@@ -62,14 +62,14 @@ async function sendMessage() {
 ## Send Your First Token Transfer
 
 ```typescript
-import { createICTTClient } from "@avalanche-sdk/interchain";
+import { createICTTClient } from "@lux-sdk/interchain";
 
-const ictt = createICTTClient(avalancheFuji, dispatch);
+const ictt = createICTTClient(luxTestnet, dispatch);
 
 // Deploy token and contracts (one-time setup)
 const { contractAddress: tokenAddress } = await ictt.deployERC20Token({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   name: "My Token",
   symbol: "MTK",
   initialSupply: 1000000,
@@ -78,7 +78,7 @@ const { contractAddress: tokenAddress } = await ictt.deployERC20Token({
 // Send tokens
 const { txHash } = await ictt.sendToken({
   walletClient: wallet,
-  sourceChain: avalancheFuji,
+  sourceChain: luxTestnet,
   destinationChain: dispatch,
   tokenHomeContract: "0x...",
   tokenRemoteContract: "0x...",
@@ -89,6 +89,6 @@ const { txHash } = await ictt.sendToken({
 
 ## Next Steps
 
-- Learn about [Interchain Messaging](/avalanche-sdk/interchain/icm)
-- Explore [Token Transfers](/avalanche-sdk/interchain/ictt)
-- Understand [Warp Messages](/avalanche-sdk/interchain/warp)
+- Learn about [Interchain Messaging](/lux-sdk/interchain/icm)
+- Explore [Token Transfers](/lux-sdk/interchain/ictt)
+- Understand [Warp Messages](/lux-sdk/interchain/warp)
