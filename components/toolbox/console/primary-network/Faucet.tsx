@@ -210,7 +210,7 @@ function Faucet({ onSuccess }: BaseConsoleToolProps) {
         <span>Test tokens only</span>
         <span>•</span>
         <a
-          href="https://core.app/tools/testnet-faucet/"
+          href="/console/primary-network/faucet"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-zinc-900 dark:hover:text-white transition-colors underline"

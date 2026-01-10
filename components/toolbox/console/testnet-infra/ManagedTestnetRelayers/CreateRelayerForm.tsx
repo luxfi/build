@@ -80,7 +80,7 @@ export default function CreateRelayerForm({
     };
 
     return (
-        <div className="rounded-lg border border-gray-200 dark:border-gray-700 p-6 mb-6 not-prose">
+        <div className="rounded-lg border border-gray-200 dark:border-neutral-800 p-6 mb-6 not-prose">
             <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold">Create New Relayer</h3>
                 <Button

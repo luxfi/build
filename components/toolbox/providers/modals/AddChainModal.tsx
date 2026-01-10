@@ -286,7 +286,7 @@ export function AddChainModal() {
                                     onClick={() => setShowLookup(!showLookup)}
                                     className="text-blue-500 border-b border-dashed border-blue-500 hover:text-blue-700 focus:outline-none"
                                 >
-                                    {showLookup ? "Hide lookup form" : "Lookup from Core Wallet"}
+                                    {showLookup ? "Hide lookup form" : "Lookup from Lux Wallet"}
                                 </button>
 
                                 {showLookup && (

@@ -230,7 +230,7 @@ export default function BubbleNavigation({
     >
       <nav
         className={cn(
-          "bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border border-gray-200 dark:border-gray-700 rounded-full p-3 shadow-lg",
+          "bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border border-gray-200 dark:border-neutral-800 rounded-full p-3 shadow-lg",
           config.buttonScale
         )}
       >
@@ -259,7 +259,7 @@ export default function BubbleNavigation({
                         config.darkTextColor ? "text-white " + config.darkTextColor : "text-white dark:text-white",
                         "shadow-lg"
                       )
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100",
+                    : "bg-gray-100 dark:bg-neutral-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100",
                   "focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900",
                   config.focusRingColor,
                   "whitespace-nowrap text-sm font-medium"

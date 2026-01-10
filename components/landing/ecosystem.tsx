@@ -25,7 +25,7 @@ const ecosystem = [
     title: "Try <strong>Lux</strong>.",
     description:
       "Discover and try out different applications and L1s in the Lux ecosystem.",
-    href: "https://core.app/discover/"
+    href: "https://explorer.lux.network"
   }
 ];
 

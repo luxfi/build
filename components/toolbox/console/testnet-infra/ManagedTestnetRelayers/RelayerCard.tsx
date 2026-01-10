@@ -169,7 +169,7 @@ export default function RelayerCard({
                 },
             };
 
-            // Switch chain in Core wallet
+            // Switch chain in Lux Wallet
             await coreWalletClient.switchChain({ id: evmChainId });
 
             const publicClient = createPublicClient({
@@ -219,7 +219,7 @@ export default function RelayerCard({
 
     const getHealthStatus = () => {
         if (!relayer.health) {
-            return { label: 'Unreachable', color: 'text-gray-500 bg-gray-50 border-gray-300 dark:bg-gray-800 dark:border-gray-600' };
+            return { label: 'Unreachable', color: 'text-gray-500 bg-gray-50 border-gray-300 dark:bg-neutral-900 dark:border-gray-600' };
         }
         if (relayer.health.status === 'up') {
             return { label: 'Healthy', color: 'text-green-700 bg-green-50 border-green-300 dark:bg-green-900/20 dark:border-green-700' };
@@ -248,9 +248,9 @@ export default function RelayerCard({
     const healthStatus = getHealthStatus();
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors min-w-0">
+        <div className="bg-white dark:bg-neutral-900 rounded-lg border border-gray-200 dark:border-neutral-800 hover:border-gray-300 dark:hover:border-gray-600 transition-colors min-w-0">
             {/* Relayer Header */}
-            <div className="p-4 border-b border-gray-100 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-100 dark:border-neutral-800">
                 <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3 flex-1 min-w-0">
                         <div className="min-w-0 flex-1">
@@ -372,7 +372,7 @@ export default function RelayerCard({
                 </div>
 
                 {/* Primary Actions */}
-                <div className="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-gray-700 pt-3">
+                <div className="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-neutral-800 pt-3">
                     <Button
                         onClick={() => onRestartRelayer(relayer)}
                         variant="secondary"

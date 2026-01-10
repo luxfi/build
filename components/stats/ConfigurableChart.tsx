@@ -1026,10 +1026,10 @@ export default function ConfigurableChart({
   };
 
   return (
-    <Card className="border-gray-200 dark:border-gray-700 py-0" ref={chartContainerRef}>
+    <Card className="border-gray-200 dark:border-neutral-800 py-0" ref={chartContainerRef}>
       <CardContent className="p-0">
         {/* Header Controls */}
-        <div className="p-3 sm:p-4 border-b border-gray-200 dark:border-gray-700 space-y-3 sm:space-y-4">
+        <div className="p-3 sm:p-4 border-b border-gray-200 dark:border-neutral-800 space-y-3 sm:space-y-4">
           {/* Data Series Legends */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {dataSeries.map((series) => {
@@ -1345,8 +1345,8 @@ export default function ConfigurableChart({
                     <Plus className="h-4 w-4" />
                   </button>
                 {showMetricFilter && (
-                  <div className="metric-filter-dropdown absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50">
-                    <div className="p-3 border-b border-gray-200 dark:border-gray-700">
+                  <div className="metric-filter-dropdown absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-neutral-800 rounded-lg shadow-lg z-50">
+                    <div className="p-3 border-b border-gray-200 dark:border-neutral-800">
                       <div className="relative">
                         <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                         <Input
@@ -1379,8 +1379,8 @@ export default function ConfigurableChart({
                   </div>
                 )}
                 {showChainSelector && selectedMetric && (
-                  <div className="chain-selector-dropdown absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50">
-                    <div className="p-3 border-b border-gray-200 dark:border-gray-700">
+                  <div className="chain-selector-dropdown absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-900 border border-gray-200 dark:border-neutral-800 rounded-lg shadow-lg z-50">
+                    <div className="p-3 border-b border-gray-200 dark:border-neutral-800">
                       <div className="flex items-center gap-2 mb-2">
                         <button
                           onClick={() => {
@@ -1454,7 +1454,7 @@ export default function ConfigurableChart({
                               )}
                             </button>
                             {isLastAllChains && (
-                              <hr className="border-t border-gray-200 dark:border-gray-700" />
+                              <hr className="border-t border-gray-200 dark:border-neutral-800" />
                             )}
                           </div>
                         );
@@ -1568,7 +1568,7 @@ export default function ConfigurableChart({
                             disabled={!tempEndTime}
                           />
                         </div>
-                        <div className="flex gap-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+                        <div className="flex gap-2 pt-2 border-t border-gray-200 dark:border-neutral-800">
                           {(tempStartTime || tempEndTime || startTime || endTime) && (
                             <Button
                               onClick={() => {
@@ -1646,7 +1646,7 @@ export default function ConfigurableChart({
 
 
         {/* Chart Header */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200 dark:border-neutral-800">
           <div className="flex items-center gap-2 group flex-1">
             <h3
               contentEditable={!disableControls}

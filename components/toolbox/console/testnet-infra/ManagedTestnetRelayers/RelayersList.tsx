@@ -68,7 +68,7 @@ export default function RelayersList({
                 <button
                     onClick={onRefresh}
                     disabled={isLoadingRelayers}
-                    className="p-1.5 rounded-md bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5 text-xs font-medium text-gray-700 dark:text-gray-300"
+                    className="p-1.5 rounded-md bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5 text-xs font-medium text-gray-700 dark:text-gray-300"
                     title="Refresh relayers"
                 >
                     <RefreshCw className={`w-3 h-3 ${isLoadingRelayers ? 'animate-spin' : ''}`} />

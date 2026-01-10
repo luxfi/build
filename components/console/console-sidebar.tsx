@@ -94,7 +94,7 @@ const data = {
         },
         {
           title: "Ethereum Bridge",
-          url: "https://core.app/bridge",
+          url: "https://bridge.lux.network",
           icon: ArrowUpDown,
         },
         {

@@ -323,7 +323,7 @@ function ICMRelayerInner({ onSuccess }: BaseConsoleToolProps) {
                         lang="bash"
                     />
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                        This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.icm-relayer/config.json</code>
+                        This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-neutral-900 rounded text-xs">~/.icm-relayer/config.json</code>
                     </p>
                 </Step>
 

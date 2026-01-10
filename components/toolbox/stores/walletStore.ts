@@ -9,7 +9,7 @@ import { useMemo } from 'react';
 
 // Types for better type safety
 interface WalletState {
-  // Core wallet state
+  // Lux Wallet state
   coreWalletClient: CoreWalletClientType | null;
   publicClient: ReturnType<typeof createPublicClient>;
 

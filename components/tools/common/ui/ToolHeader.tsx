@@ -26,7 +26,7 @@ const ToolHeader: React.FC<ToolHeaderProps> = ({
       <div className="space-y-2">
         <div className="flex flex-row flex-wrap items-center gap-4">
             <h1 className="text-5xl font-medium">{title}</h1>
-            <div className="flex items-center space-x-1 bg-gray-200 dark:bg-gray-800 text-secondary-foreground px-3 py-1 rounded-full text-md">
+            <div className="flex items-center space-x-1 bg-gray-200 dark:bg-neutral-900 text-secondary-foreground px-3 py-1 rounded-full text-md">
                 <Clock className="w-4 h-4" />
                 <span>{duration}</span>
             </div>
@@ -53,7 +53,7 @@ const ToolHeader: React.FC<ToolHeaderProps> = ({
         </div>
         <p className="text-muted-foreground">{description}</p>
       </div>
-      <hr className="border-t border-gray-200 dark:border-gray-700" />
+      <hr className="border-t border-gray-200 dark:border-neutral-800" />
     </div>
   )
 }

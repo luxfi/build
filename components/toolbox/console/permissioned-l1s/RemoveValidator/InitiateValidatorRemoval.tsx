@@ -90,7 +90,7 @@ const InitiateValidatorRemoval: React.FC<InitiateValidatorRemovalProps> = ({
     setTxSuccess(null);
 
     if (!coreWalletClient) {
-      setErrorState("Core wallet not found");
+      setErrorState("Lux Wallet not found");
       return;
     }
 

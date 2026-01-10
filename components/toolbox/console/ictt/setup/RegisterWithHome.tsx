@@ -140,7 +140,7 @@ function RegisterWithHome() {
     setLocalError("");
 
     if (!coreWalletClient || !coreWalletClient.account) {
-      setLocalError("Core wallet not found");
+      setLocalError("Lux Wallet not found");
       return;
     }
 

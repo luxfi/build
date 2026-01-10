@@ -93,7 +93,7 @@ export const CheckRequirements = ({
     if (state.isLoading) {
         return (
             <div className="flex items-center justify-center p-4 h-[100vh]">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-8 max-w-md w-full">
+                <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-gray-200 dark:border-neutral-800 p-8 max-w-md w-full">
                     <div className="text-center">
                         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white mx-auto" />
                         <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
@@ -108,7 +108,7 @@ export const CheckRequirements = ({
     if (state.error) {
         return (
             <div className="flex items-center justify-center p-4 h-[100vh]">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-8 max-w-md w-full">
+                <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-gray-200 dark:border-neutral-800 p-8 max-w-md w-full">
                     <div className="text-center">
                         <XCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
@@ -126,10 +126,10 @@ export const CheckRequirements = ({
     if (!state.isActive) {
         return (
             <div className="flex items-center justify-center p-4 h-[100vh] not-prose">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-8 max-w-md w-full">
+                <div className="bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-gray-200 dark:border-neutral-800 p-8 max-w-md w-full">
                     {/* Header */}
                     <div className="text-center mb-6">
-                        <div className="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="w-12 h-12 bg-gray-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mx-auto mb-4">
                             <Wallet className="h-6 w-6 text-gray-600 dark:text-gray-300" />
                         </div>
                         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -217,7 +217,7 @@ export const CheckRequirements = ({
                                         return (
                                             <>
                                                 {mainActions.map((actionGroup, index) => (
-                                                    <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                                                    <div key={index} className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-neutral-800">
                                                         <div className="flex-1">
                                                             <p className="text-sm font-medium text-gray-900 dark:text-white">
                                                                 {actionGroup.action.title}
@@ -253,7 +253,7 @@ export const CheckRequirements = ({
                                                                 <div className="w-full border-t border-gray-300 dark:border-gray-600" />
                                                             </div>
                                                             <div className="relative flex justify-center text-sm">
-                                                                <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+                                                                <span className="px-2 bg-white dark:bg-neutral-900 text-gray-500 dark:text-gray-400">
                                                                     OR
                                                                 </span>
                                                             </div>

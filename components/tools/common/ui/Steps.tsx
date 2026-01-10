@@ -23,14 +23,14 @@ export default function Steps({ stepGroups, stepList, currentStep, maxAdvancedSt
         <>
             <div className="relative text-gray-500 dark:text-gray-400">
                 {/* Main vertical line that spans entire height */}
-                <div className="absolute left-5 top-0 bottom-0 w-[1px] bg-gray-200 dark:bg-gray-700" />
+                <div className="absolute left-5 top-0 bottom-0 w-[1px] bg-gray-200 dark:bg-neutral-800" />
 
                 {Object.entries(stepGroups).map(([groupKey, group]) => {
                     return (
                         <div key={groupKey} className="">
                             {/* Group header */}
                             <div className="flex items-center mb-3 relative">
-                                <div className={`w-10 h-10 flex items-center justify-center rounded-full relative z-10 bg-gray-200 dark:bg-gray-800`}>
+                                <div className={`w-10 h-10 flex items-center justify-center rounded-full relative z-10 bg-gray-200 dark:bg-neutral-900`}>
                                     <div className={'text-gray-600 dark:text-gray-300'}>
                                         {React.createElement(group.icon)}
                                     </div>
@@ -59,7 +59,7 @@ export default function Steps({ stepGroups, stepList, currentStep, maxAdvancedSt
                                                 {isPassed ? (
                                                     <div className="w-2.5 h-2.5 rounded-full bg-blue-500 relative z-10" />
                                                 ) : (
-                                                    <div className={`w-2.5 h-2.5 rounded-full ${isActive ? 'ring-4 ring-blue-200 dark:ring-blue-900 bg-blue-500' : 'bg-gray-300 dark:bg-gray-700'
+                                                    <div className={`w-2.5 h-2.5 rounded-full ${isActive ? 'ring-4 ring-blue-200 dark:ring-blue-900 bg-blue-500' : 'bg-gray-300 dark:bg-neutral-800'
                                                         } relative z-10`} />
                                                 )}
                                             </div>

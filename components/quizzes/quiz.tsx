@@ -172,10 +172,10 @@ const Quiz: React.FC<QuizProps> = ({ quizId, onQuizCompleted }) => {
                     ? quizInfo.correctAnswers.includes(index)
                       ? 'border-lux-green bg-green-50 dark:bg-green-900/30 dark:border-green-700'
                       : 'border-lux-red bg-red-50 dark:bg-red-900/30 dark:border-red-700'
-                    : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-black'
+                    : 'border-gray-200 bg-white dark:border-neutral-800 dark:bg-black'
                   : selectedAnswers.includes(index)
                     ? 'border-[#3752ac] bg-[#3752ac] bg-opacity-10 dark:bg-opacity-30'
-                    : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900'
+                    : 'border-gray-200 dark:border-neutral-800 hover:bg-gray-50 dark:hover:bg-gray-900'
               }`}
               onClick={() => handleAnswerSelect(index)}
             >
@@ -185,10 +185,10 @@ const Quiz: React.FC<QuizProps> = ({ quizId, onQuizCompleted }) => {
                     ? quizInfo.correctAnswers.includes(index)
                       ? 'bg-lux-green text-white'
                       : 'bg-lux-red text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                    : 'bg-gray-200 dark:bg-neutral-800 text-gray-600 dark:text-gray-300'
                   : selectedAnswers.includes(index)
                     ? 'bg-[#3752ac] text-white'
-                    : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                    : 'bg-gray-200 dark:bg-neutral-800 text-gray-600 dark:text-gray-300'
               }`}>
                 {quizInfo.correctAnswers.length === 1 
                   ? String.fromCharCode(65 + index)

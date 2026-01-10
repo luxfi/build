@@ -52,7 +52,7 @@ export const CheckPrecompile = ({
 
             try {
                 // Create a dedicated publicClient using the chain's RPC URL
-                // This is necessary because Core wallet provider doesn't support eth_getActiveRulesAt
+                // This is necessary because Lux Wallet provider doesn't support eth_getActiveRulesAt
                 const rpcPublicClient = createPublicClient({
                     transport: http(viemChain.rpcUrls.default.http[0]),
                     chain: viemChain as any,

@@ -362,7 +362,7 @@ function LuxgoDockerInner() {
                                         <select
                                             value={nodeType}
                                             onChange={(e) => setNodeType(e.target.value as "validator" | "public-rpc" | "validator-rpc")}
-                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                         >
                                             <option value="validator">Validator Node</option>
                                             <option value="public-rpc">Public RPC Node</option>
@@ -387,7 +387,7 @@ function LuxgoDockerInner() {
                                             onChange={(e) => setLogLevel(e.target.value)}
                                             onFocus={() => setHighlightPath('logLevel')}
                                             onBlur={clearHighlight}
-                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                         >
                                             <option value="off">Off - No logs</option>
                                             <option value="fatal">Fatal - Only fatal errors</option>
@@ -418,7 +418,7 @@ function LuxgoDockerInner() {
                                                 onBlur={clearHighlight}
                                                 min="0"
                                                 max="2000"
-                                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                             />
                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                 The minimum delay between blocks (in milliseconds). Maximum: 2000ms. Default: 500ms.
@@ -482,7 +482,7 @@ function LuxgoDockerInner() {
                                                     <select
                                                         value={selectedRPCBlockchainId}
                                                         onChange={(e) => setSelectedRPCBlockchainId(e.target.value)}
-                                                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                                     >
                                                         {subnet.blockchains.map((blockchain: { blockchainId: string; blockchainName: string }) => (
                                                             <option key={blockchain.blockchainId} value={blockchain.blockchainId}>
@@ -554,7 +554,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setTrieCleanCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('trieCleanCache')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                         </div>
 
@@ -568,7 +568,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setTrieDirtyCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('trieDirtyCache')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                         </div>
 
@@ -582,7 +582,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setSnapshotCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('snapshotCache')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                         </div>
 
@@ -596,7 +596,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setAcceptedCacheSize(Math.max(1, parseInt(e.target.value) || 1))}
                                                                 onFocus={() => setHighlightPath('acceptedCacheSize')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Depth of accepted headers and logs cache
@@ -613,7 +613,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setTrieDirtyCommitTarget(Math.max(1, parseInt(e.target.value) || 1))}
                                                                 onFocus={() => setHighlightPath('trieDirtyCommitTarget')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Memory limit before commit
@@ -630,7 +630,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setTriePrefetcherParallelism(Math.max(1, parseInt(e.target.value) || 1))}
                                                                 onFocus={() => setHighlightPath('triePrefetcherParallelism')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Max concurrent disk reads
@@ -647,7 +647,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setStateSyncServerTrieCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('stateSyncServerTrieCache')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Trie cache for state sync server
@@ -670,7 +670,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setCommitInterval(Math.max(1, parseInt(e.target.value) || 1))}
                                                                 onFocus={() => setHighlightPath('commitInterval')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Interval to persist EVM and atomic tries
@@ -687,7 +687,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setRpcGasCap(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('rpcGasCap')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Maximum gas limit for RPC calls
@@ -704,7 +704,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setRpcTxFeeCap(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('rpcTxFeeCap')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Maximum transaction fee cap
@@ -727,7 +727,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setBatchRequestLimit(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('batchRequestLimit')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Max batched requests (0 = no limit)
@@ -744,7 +744,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setBatchResponseMaxSize(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('batchResponseMaxSize')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Max batch response size (default: 25MB)
@@ -767,7 +767,7 @@ function LuxgoDockerInner() {
                                                                 onChange={(e) => setTransactionHistory(Math.max(0, parseInt(e.target.value) || 0))}
                                                                 onFocus={() => setHighlightPath('transactionHistory')}
                                                                 onBlur={clearHighlight}
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Max blocks to keep tx indices. 0 = archive mode (all history)
@@ -867,7 +867,7 @@ function LuxgoDockerInner() {
                                                                     onChange={(e) => setPushGossipNumValidators(Math.max(0, parseInt(e.target.value) || 0))}
                                                                     onFocus={() => setHighlightPath('pushGossipNumValidators')}
                                                                     onBlur={clearHighlight}
-                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                                 />
                                                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                     Number of validators to push gossip to
@@ -887,7 +887,7 @@ function LuxgoDockerInner() {
                                                                     onChange={(e) => setPushGossipPercentStake(Math.min(1, Math.max(0, parseFloat(e.target.value) || 0)))}
                                                                     onFocus={() => setHighlightPath('pushGossipPercentStake')}
                                                                     onBlur={clearHighlight}
-                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                                 />
                                                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                     Percentage of total stake to gossip to (0-1)
@@ -912,7 +912,7 @@ function LuxgoDockerInner() {
                                                                     onChange={(e) => setApiMaxBlocksPerRequest(Math.max(0, parseInt(e.target.value) || 0))}
                                                                     onFocus={() => setHighlightPath('apiMaxBlocksPerRequest')}
                                                                     onBlur={clearHighlight}
-                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                                 />
                                                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                     0 = no limit. Limits blocks per getLogs request
@@ -956,7 +956,7 @@ function LuxgoDockerInner() {
                                                                 onFocus={() => setHighlightPath('continuousProfilerDir')}
                                                                 onBlur={clearHighlight}
                                                                 placeholder="./profiles (leave empty to disable)"
-                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                             />
                                                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                 Directory for continuous profiler output
@@ -975,7 +975,7 @@ function LuxgoDockerInner() {
                                                                     onFocus={() => setHighlightPath('continuousProfilerFrequency')}
                                                                     onBlur={clearHighlight}
                                                                     placeholder="15m"
-                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                                    className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                                 />
                                                                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                                     How often to create profiles (e.g., 15m, 1h)
@@ -1031,7 +1031,7 @@ function LuxgoDockerInner() {
                             />
 
                             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{chainId}/config.json</code>
+                                This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-neutral-900 rounded text-xs">~/.luxgo/configs/chains/{chainId}/config.json</code>
                             </p>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                                 Read the documentation for more information on the configuration options. {" "}
@@ -1082,7 +1082,7 @@ function LuxgoDockerInner() {
                             />
 
                             <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{chainId}/config.json</code> via the mounted volume.
+                                The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-neutral-900 rounded text-xs">~/.luxgo/configs/chains/{chainId}/config.json</code> via the mounted volume.
                             </p>
 
 

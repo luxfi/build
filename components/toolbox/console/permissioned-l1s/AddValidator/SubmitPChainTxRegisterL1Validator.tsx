@@ -142,7 +142,7 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
     setTxSuccess(null);
 
     if (!coreWalletClient) {
-      setErrorState("Core wallet not found");
+      setErrorState("Lux Wallet not found");
       return;
     }
 
@@ -181,8 +181,8 @@ const SubmitPChainTxRegisterL1Validator: React.FC<SubmitPChainTxRegisterL1Valida
       return;
     }
     if (typeof window === 'undefined' || !window.lux) {
-      setErrorState("Core wallet not found. Please ensure Core is installed and active.");
-      onError("Core wallet not found. Please ensure Core is installed and active.");
+      setErrorState("Lux Wallet not found. Please ensure Lux Wallet is installed and active.");
+      onError("Lux Wallet not found. Please ensure Lux Wallet is installed and active.");
       return;
     }
     if (!pChainAddress) {

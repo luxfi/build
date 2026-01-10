@@ -103,7 +103,7 @@ function Stake({ onSuccess }: BaseConsoleToolProps) {
 
   const validateForm = (): string | null => {
     if (!pChainAddress) {
-      return 'Connect Core Wallet to get your Platform-Chain address'
+      return 'Connect Lux Wallet to get your Platform-Chain address'
     }
 
     if (!validator) {

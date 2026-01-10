@@ -15,7 +15,7 @@ import { ChainLogo } from './components/ChainLogo'
 
 export function EvmNetworkWallet() {
   const [isEditMode, setIsEditMode] = useState(false)
-  const [isCoreWalletAvailable, setIsCoreWalletAvailable] = useState(false)
+  const [isLuxWalletAvailable, setIsCoreWalletAvailable] = useState(false)
 
   const l1ListStore = useL1ListStore()
   const removeL1 = l1ListStore((s: any) => s.removeL1)
@@ -47,12 +47,12 @@ export function EvmNetworkWallet() {
   }, [])
 
   const handlePrimaryButtonClick = (): void => {
-    if (isCoreWalletAvailable) {
+    if (isLuxWalletAvailable) {
       void connectWallet()
       return
     }
     if (typeof window !== 'undefined') {
-      window.open('https://core.app/download', '_blank', 'noopener,noreferrer')
+      window.open('https://wallet.lux.network', '_blank', 'noopener,noreferrer')
     }
   }
 
@@ -62,7 +62,7 @@ export function EvmNetworkWallet() {
 
   // Show connect wallet button if no wallet is connected
   if (!walletEVMAddress) {
-    const buttonLabel = isCoreWalletAvailable ? 'Connect Core Wallet' : 'Download Core Wallet'
+    const buttonLabel = isLuxWalletAvailable ? 'Connect Lux Wallet' : 'Download Lux Wallet'
     return (
       <Button
         onClick={handlePrimaryButtonClick}

@@ -181,7 +181,7 @@ export default function RequireWalletConnection({ children, chainConfig, require
                 return <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                     <h3 className="font-medium mb-2">No Wallet Detected</h3>
                     <p className="mb-4">
-                        You need a Web3 wallet to interact with your L1 chain. We recommend installing Core wallet:
+                        You need a Web3 wallet to interact with your L1 chain. We recommend installing Lux Wallet:
                     </p>
                     <a
                         href="https://chromewebstore.google.com/detail/core-crypto-wallet-nft-ex/agoakfejjabomempkjlepdflaleeobhb"
@@ -189,7 +189,7 @@ export default function RequireWalletConnection({ children, chainConfig, require
                         rel="noopener noreferrer"
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 inline-block"
                     >
-                        Install Core Wallet
+                        Install Lux Wallet
                     </a>
                 </div>;
             case 'wrong_chain':

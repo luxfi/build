@@ -238,7 +238,7 @@ function DeployPoAManager({ onSuccess }: BaseConsoleToolProps) {
                                     />
 
                                     {safeSelection.safeAddress && (
-                                        <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-2 rounded">
+                                        <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-neutral-900 p-2 rounded">
                                             <strong>Safe Details:</strong> {safeSelection.threshold}/{safeSelection.owners.length} multisig
                                             <br />
                                             <strong>Owners:</strong> {safeSelection.owners.length > 0 ? safeSelection.owners.join(', ') : 'Loading...'}

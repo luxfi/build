@@ -50,7 +50,7 @@ const l1ListInitialStateTestnet = {
             logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/lux-lux-logo.svg",
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
-            externalFaucetUrl: "https://core.app/tools/testnet-faucet",
+            externalFaucetUrl: "/console/primary-network/faucet",
             explorerUrl: "https://subnets-test.lux.network/c-chain",
             faucetThresholds: {
                 threshold: 0.2,
@@ -75,7 +75,7 @@ const l1ListInitialStateTestnet = {
             logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/7kyTY75fdtnO6mh7f0osix/4c92c93dd688082bfbb43d5d910cbfeb/Echo_Subnet_Logo.png",
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
-            externalFaucetUrl: "https://core.app/tools/testnet-faucet",
+            externalFaucetUrl: "/console/primary-network/faucet",
             explorerUrl: "https://subnets-test.lux.network/echo",
             faucetThresholds: {
                 threshold: 1.0,
@@ -100,7 +100,7 @@ const l1ListInitialStateTestnet = {
             logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/60XrKdf99PqQKrHiuYdwTE/908622f5204311dbb11be9c6008ead44/Dispatch_Subnet_Logo.png",
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
-            externalFaucetUrl: "https://core.app/tools/testnet-faucet",
+            externalFaucetUrl: "/console/primary-network/faucet",
             explorerUrl: "https://subnets-test.lux.network/dispatch",
             faucetThresholds: {
                 threshold: 1.0,
@@ -125,7 +125,7 @@ const l1ListInitialStateTestnet = {
             logoUrl: "https://images.ctfassets.net/gcj8jwzm6086/6tKCXL3AqxfxSUzXLGfN6r/be31715b87bc30c0e4d3da01a3d24e9a/dexalot-subnet.png",
             wellKnownTeleporterRegistryAddress: "0xF86Cb19Ad8405AEFa7d09C778215D2Cb6eBfB228",
             hasBuilderHubFaucet: true,
-            externalFaucetUrl: "https://core.app/tools/testnet-faucet",
+            externalFaucetUrl: "/console/primary-network/faucet",
             explorerUrl: "https://subnets-test.lux.network/dexalot",
             faucetThresholds: {
                 threshold: 1.0,

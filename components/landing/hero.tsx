@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Sponsors } from '@/components/landing/globe';
 import { GraduationCap } from 'lucide-react';
 import Chatbot from '@/components/ui/chatbot';
+import { LuxLogo } from '@/components/navigation/lux-logo';
 
 // Premium animation styles
 const premiumStyles = `
@@ -219,6 +220,11 @@ export default function Hero() {
           {/* Content Section */}
           <div className="space-y-8 text-center lg:text-left">
             
+            {/* Lux Logo */}
+            <div className="flex justify-center lg:justify-start mb-4">
+              <LuxLogo className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-slate-900 dark:text-white animate-gentle-float" />
+            </div>
+
             {/* Main Heading */}
             <div className="space-y-6">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] sm:leading-[0.95] lg:leading-[0.9] xl:leading-[0.85]">

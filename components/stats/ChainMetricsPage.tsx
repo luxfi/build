@@ -1418,7 +1418,7 @@ export default function ChainMetricsPage({
                         </div>
                         <div className="text-2xl font-bold text-gray-900 dark:text-white">
                           {loading ? (
-                            <div className="h-8 w-24 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                            <div className="h-8 w-24 bg-gray-200 dark:bg-neutral-800 rounded animate-pulse" />
                           ) : (
                             formatNumber(currentValue)
                           )}
@@ -2273,11 +2273,11 @@ function ChartCard({
 
   return (
     <Card
-      className="py-0 border-gray-200 rounded-md dark:border-gray-700"
+      className="py-0 border-gray-200 rounded-md dark:border-neutral-800"
       ref={chartContainerRef}
     >
       <CardContent className="p-0">
-        <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 border-b border-gray-200 dark:border-neutral-800">
           <div className="flex items-center gap-2 sm:gap-3">
             <div
               className="rounded-full p-2 sm:p-3 flex items-center justify-center"

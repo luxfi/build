@@ -318,7 +318,7 @@ export const MultisigOption: React.FC<MultisigOptionProps> = ({
 
   const executeDirectTransaction = async () => {
     if (!coreWalletClient) {
-      onError('Core wallet not found');
+      onError('Lux Wallet not found');
       return;
     }
 
@@ -436,7 +436,7 @@ export const MultisigOption: React.FC<MultisigOptionProps> = ({
           )}
 
           {showSuccessMessage ? (
-            <div className="p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div className="p-6 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-neutral-800 shadow-sm">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center">
                   <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />

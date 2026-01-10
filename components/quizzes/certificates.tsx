@@ -194,7 +194,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
 
       {allQuizzesCompleted && (
 
-        <div className="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+        <div className="mt-12 bg-white dark:bg-neutral-900 rounded-lg shadow-lg p-8">
           <AwardBadgeWrapper courseId={courseId} isCompleted={allQuizzesCompleted} />
           <div className="flex items-center justify-center mb-6">
             <Award className="w-16 h-16 text-green-500 mr-4" />
@@ -220,7 +220,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
               'Generate My Certificate'
             )}
           </button>
-          <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
+          <div className="border-t border-gray-200 dark:border-neutral-800 pt-6">
             <p className="text-center text-gray-600 dark:text-gray-300 mb-2">
               Share your achievement:
             </p>

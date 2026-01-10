@@ -59,7 +59,7 @@ export async function createCoreWalletClient(_account: `0x${string}`): Promise<C
 
     // Check if window.lux exists and is an object
     if (!window.lux || typeof window.lux !== 'object') {
-        return null; // Return null if Core wallet is not found
+        return null; // Return null if Lux Wallet is not found
     }
 
     // Get the Ethereum chain info to determine if we're on a testnet

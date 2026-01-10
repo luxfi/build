@@ -52,7 +52,7 @@ export function Tooltip({
     >
       {children}
       {active && (
-        <div className={`absolute z-50 px-2 py-1 text-xs font-medium text-white bg-gray-800 dark:bg-gray-700 rounded shadow-md whitespace-nowrap transition-opacity duration-200 ${positionStyles[position]}`}>
+        <div className={`absolute z-50 px-2 py-1 text-xs font-medium text-white bg-gray-800 dark:bg-neutral-800 rounded shadow-md whitespace-nowrap transition-opacity duration-200 ${positionStyles[position]}`}>
           {content}
           <span className={`absolute w-0 h-0 border-4 ${arrowStyles[position]}`}></span>
         </div>

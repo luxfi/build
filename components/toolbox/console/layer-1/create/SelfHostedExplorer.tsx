@@ -591,7 +591,7 @@ export default function BlockScout() {
                 <img
                   src="/images/blockscout-sample.png"
                   alt="Blockscout Sample Image"
-                  className="rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 w-full"
+                  className="rounded-lg shadow-lg border border-gray-200 dark:border-neutral-800 w-full"
                 />
                 <p className="text-sm mt-2 text-center">
                   Preview of your BlockScout Explorer interface

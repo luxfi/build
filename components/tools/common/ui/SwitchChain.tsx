@@ -122,11 +122,11 @@ export default function SwitchChain({ children, chainConfig }: Props) {
                 </div>
                 <div className="flex-1">
                     <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-1">
-                        {!isConnected ? 'Connect Core Wallet' : 'Switch Network Required'}
+                        {!isConnected ? 'Connect Lux Wallet' : 'Switch Network Required'}
                     </h3>
                     <p className="text-sm text-amber-700 dark:text-amber-300 mb-3">
                         {!isConnected 
-                            ? 'Connect your Core wallet to continue'
+                            ? 'Connect your Lux Wallet to continue'
                             : `Please switch to ${chainConfig.chainName} to continue`
                         }
                     </p>
@@ -136,7 +136,7 @@ export default function SwitchChain({ children, chainConfig }: Props) {
                             className="flex items-center gap-2 px-4 py-2 bg-amber-600 hover:bg-amber-700 dark:bg-amber-700 dark:hover:bg-amber-600 text-white rounded-lg transition-colors font-medium text-sm"
                         >
                             <img src="/core-logo-dark.svg" alt="Core logo" className="h-4 w-4 object-contain brightness-0 invert" />
-                            Connect Core Wallet
+                            Connect Lux Wallet
                         </button>
                     ) : (
                         <button

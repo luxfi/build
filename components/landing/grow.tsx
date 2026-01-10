@@ -31,7 +31,7 @@ const grow = [
     description:
       "Discover and try out different applications and L1s in the Lux ecosystem.",
     icon: Compass,
-    href: "https://core.app/discover/"
+    href: "https://explorer.lux.network"
   },
   {
     id: 4,

@@ -130,7 +130,7 @@ export default function RequireWalletConnection({ children, chain, onConnection,
                     <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
                         <h3 className="font-medium mb-2">No Wallet Detected</h3>
                         <p className="mb-4">
-                            You need an Core Wallet to launch your L1:
+                            You need an Lux Wallet to launch your L1:
                         </p>
                         <a
                             href="https://chromewebstore.google.com/detail/core-crypto-wallet-nft-ex/agoakfejjabomempkjlepdflaleeobhb"
@@ -138,7 +138,7 @@ export default function RequireWalletConnection({ children, chain, onConnection,
                             rel="noopener noreferrer"
                             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 inline-block"
                         >
-                            Install Core Wallet
+                            Install Lux Wallet
                         </a>
                     </div>
                 );

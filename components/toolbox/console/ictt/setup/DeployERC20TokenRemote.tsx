@@ -164,7 +164,7 @@ function DeployERC20TokenRemote() {
 
   async function handleDeploy() {
     if (!coreWalletClient) {
-      setCriticalError(new Error("Core wallet not found"));
+      setCriticalError(new Error("Lux Wallet not found"));
       return;
     }
 

@@ -289,7 +289,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                 <select
                                     value={selectedNetwork}
                                     onChange={(e) => setSelectedNetwork(e.target.value as "mainnet" | "testnet")}
-                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                 >
                                     <option value="mainnet">Mainnet</option>
                                     <option value="testnet">Testnet (Testnet)</option>
@@ -306,7 +306,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                 <select
                                     value={nodeType}
                                     onChange={(e) => setNodeType(e.target.value as "validator" | "public-rpc")}
-                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                 >
                                     <option value="validator">Validator Node</option>
                                     <option value="public-rpc">Public RPC Node</option>
@@ -322,7 +322,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                     onChange={(e) => setLogLevel(e.target.value)}
                                     onFocus={() => setHighlightPath('logLevel')}
                                     onBlur={clearHighlight}
-                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                 >
                                     <option value="off">Off - No logs</option>
                                     <option value="fatal">Fatal - Only fatal errors</option>
@@ -354,7 +354,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                         onBlur={clearHighlight}
                                                 min="0"
                                                 max="2000"
-                                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+                                                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-neutral-800 dark:text-white"
                                             />
                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                         The minimum delay between blocks (in milliseconds). Maximum: 2000ms. Default: 1200ms.
@@ -453,7 +453,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setTrieCleanCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('trieCleanCache')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                 </div>
 
@@ -467,7 +467,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setTrieDirtyCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('trieDirtyCache')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                 </div>
 
@@ -481,7 +481,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setSnapshotCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('snapshotCache')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                 </div>
 
@@ -495,7 +495,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setAcceptedCacheSize(Math.max(1, parseInt(e.target.value) || 1))}
                                                         onFocus={() => setHighlightPath('acceptedCacheSize')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Depth of accepted headers and logs cache
@@ -512,7 +512,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setTrieDirtyCommitTarget(Math.max(1, parseInt(e.target.value) || 1))}
                                                         onFocus={() => setHighlightPath('trieDirtyCommitTarget')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Memory limit before commit
@@ -529,7 +529,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setTriePrefetcherParallelism(Math.max(1, parseInt(e.target.value) || 1))}
                                                         onFocus={() => setHighlightPath('triePrefetcherParallelism')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Max concurrent disk reads
@@ -546,7 +546,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setStateSyncServerTrieCache(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('stateSyncServerTrieCache')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Trie cache for state sync server
@@ -569,7 +569,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setCommitInterval(Math.max(1, parseInt(e.target.value) || 1))}
                                                         onFocus={() => setHighlightPath('commitInterval')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Interval to persist EVM and atomic tries
@@ -586,7 +586,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setRpcGasCap(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('rpcGasCap')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Maximum gas limit for RPC calls
@@ -603,7 +603,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setRpcTxFeeCap(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('rpcTxFeeCap')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Maximum transaction fee cap
@@ -626,7 +626,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setBatchRequestLimit(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('batchRequestLimit')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Max batched requests (0 = no limit)
@@ -643,7 +643,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setBatchResponseMaxSize(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('batchResponseMaxSize')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Max batch response size (default: 25MB)
@@ -666,7 +666,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onChange={(e) => setTransactionHistory(Math.max(0, parseInt(e.target.value) || 0))}
                                                         onFocus={() => setHighlightPath('transactionHistory')}
                                                         onBlur={clearHighlight}
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Max blocks to keep tx indices. 0 = archive mode (all history)
@@ -766,7 +766,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                             onChange={(e) => setPushGossipNumValidators(Math.max(0, parseInt(e.target.value) || 0))}
                                                             onFocus={() => setHighlightPath('pushGossipNumValidators')}
                                                             onBlur={clearHighlight}
-                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                         />
                                                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                             Number of validators to push gossip to
@@ -786,7 +786,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                             onChange={(e) => setPushGossipPercentStake(Math.min(1, Math.max(0, parseFloat(e.target.value) || 0)))}
                                                             onFocus={() => setHighlightPath('pushGossipPercentStake')}
                                                             onBlur={clearHighlight}
-                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                         />
                                                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                             Percentage of total stake to gossip to (0-1)
@@ -811,7 +811,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                             onChange={(e) => setApiMaxBlocksPerRequest(Math.max(0, parseInt(e.target.value) || 0))}
                                                             onFocus={() => setHighlightPath('apiMaxBlocksPerRequest')}
                                                             onBlur={clearHighlight}
-                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                         />
                                                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                             0 = no limit. Limits blocks per getLogs request
@@ -855,7 +855,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                         onFocus={() => setHighlightPath('continuousProfilerDir')}
                                                         onBlur={clearHighlight}
                                                         placeholder="./profiles (leave empty to disable)"
-                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                        className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                     />
                                                     <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                         Directory for continuous profiler output
@@ -874,7 +874,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                                                             onFocus={() => setHighlightPath('continuousProfilerFrequency')}
                                                             onBlur={clearHighlight}
                                                             placeholder="15m"
-                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+                                                            className="w-full px-2 py-1.5 text-sm border border-gray-300 dark:border-gray-600 rounded-md dark:bg-neutral-800 dark:text-white"
                                                         />
                                                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                                                             How often to create profiles (e.g., 15m, 1h)
@@ -920,7 +920,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                         <DynamicCodeBlock lang="bash" code={getConfigFileCommand()} />
 
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                            This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{C_CHAIN_ID}/config.json</code>
+                            This creates the configuration file at <code className="px-1 py-0.5 bg-gray-100 dark:bg-neutral-900 rounded text-xs">~/.luxgo/configs/chains/{C_CHAIN_ID}/config.json</code>
                         </p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
                             Read the documentation for more information on the configuration options. {" "}
@@ -953,7 +953,7 @@ function LuxGoDockerPrimaryNetworkInner() {
                     <DynamicCodeBlock lang="bash" code={getDockerCommand()} />
 
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                        The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">~/.luxgo/configs/chains/{C_CHAIN_ID}/config.json</code> via the mounted volume.
+                        The container will read the config from <code className="px-1 py-0.5 bg-gray-100 dark:bg-neutral-900 rounded text-xs">~/.luxgo/configs/chains/{C_CHAIN_ID}/config.json</code> via the mounted volume.
                     </p>
 
                     <Accordions type="single" className="mt-4">

@@ -87,9 +87,9 @@ export default function NodeCard({
     }, [node.created_at]);
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-colors min-w-0">
+        <div className="bg-white dark:bg-neutral-900 rounded-lg border border-gray-200 dark:border-neutral-800 hover:border-gray-300 dark:hover:border-gray-600 transition-colors min-w-0">
             {/* Node Header */}
-            <div className="p-4 border-b border-gray-100 dark:border-gray-700">
+            <div className="p-4 border-b border-gray-100 dark:border-neutral-800">
                 <div className="flex items-start justify-between">
                     <div className="flex items-center gap-3">
                         <div>
@@ -164,7 +164,7 @@ export default function NodeCard({
                 </div>
 
                 {/* Primary Actions */}
-                <div className="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-gray-700 pt-3">
+                <div className="mt-2 flex items-center justify-end gap-2 border-t border-gray-200 dark:border-neutral-800 pt-3">
                     <Button
                         onClick={handleConnectWallet}
                         variant="secondary"

@@ -27,7 +27,7 @@ export const InvitationLinksMember = ({invitationResult}:{invitationResult:any})
                               });
                             }
                           }}
-                          className="flex items-center justify-between w-full p-3 text-left bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-lg transition-colors cursor-pointer border border-gray-200 dark:border-gray-700"
+                          className="flex items-center justify-between w-full p-3 text-left bg-gray-50 hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-gray-700 rounded-lg transition-colors cursor-pointer border border-gray-200 dark:border-neutral-800"
                           title="Click to copy invitation link"
                         >
                           <span className="font-medium text-gray-900 dark:text-gray-100">

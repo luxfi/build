@@ -202,7 +202,7 @@ function CreateManagedTestnetRelayerBase() {
                 },
             };
 
-            // Switch chain in Core wallet
+            // Switch chain in Lux Wallet
             await coreWalletClient.switchChain({ id: evmChainId });
 
             const publicClient = createPublicClient({

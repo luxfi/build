@@ -627,7 +627,7 @@ export default function TokenBridge() {
                 <Success label="Send Transaction ID" value={lastSendTxId} />
             )} */}
             {lastSendTxId && lastSendTxDetails && (
-                <div className="w-full border rounded-md bg-gray-50 dark:bg-gray-800">
+                <div className="w-full border rounded-md bg-gray-50 dark:bg-neutral-900">
                     <div className="flex w-full items-center justify-evenly p-6">
                         <div className="flex flex-col items-center gap-1 flex-1 min-w-0">
                             <span className="text-gray-500 text-sm">UI</span>

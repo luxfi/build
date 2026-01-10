@@ -365,7 +365,7 @@ export default function GrantApplicationForm({
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             {/* Project Overview */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Project Overview
@@ -891,7 +891,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select country" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           {countries.map((country) => (
                             <SelectItem
                               key={country}
@@ -927,7 +927,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select continent" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           {continents.map((continent) => (
                             <SelectItem
                               key={continent}
@@ -984,7 +984,7 @@ export default function GrantApplicationForm({
             </div>
 
             {/* Financial Overview */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Financial Overview
@@ -1173,7 +1173,7 @@ export default function GrantApplicationForm({
 
                 {/* Funding Details (conditional) */}
                 {showFundingDetails && (
-                  <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-gray-700">
+                  <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-neutral-800">
                     <FormField
                       control={form.control}
                       name="funding_details"
@@ -1562,7 +1562,7 @@ export default function GrantApplicationForm({
             </div>
 
             {/* Grant Budget Structure & Milestones */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Grant Budget Structure & Milestones
@@ -1639,7 +1639,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select funding range" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           <SelectItem
                             value="$1-$50K"
                             className="dark:text-gray-200"
@@ -1666,7 +1666,7 @@ export default function GrantApplicationForm({
                 />
 
                 {/* Milestone 1 */}
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div className="pt-6 border-t border-gray-200 dark:border-neutral-800">
                   <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
                     Milestone 1:
                   </h3>
@@ -1761,7 +1761,7 @@ export default function GrantApplicationForm({
                               </FormControl>
                             </PopoverTrigger>
                             <PopoverContent
-                              className="w-auto p-0 dark:bg-gray-800 dark:border-gray-700"
+                              className="w-auto p-0 dark:bg-neutral-900 dark:border-neutral-800"
                               align="start"
                             >
                               <Calendar
@@ -1810,7 +1810,7 @@ export default function GrantApplicationForm({
                 </div>
 
                 {/* Milestone 2 */}
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div className="pt-6 border-t border-gray-200 dark:border-neutral-800">
                   <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
                     Milestone 2:
                   </h3>
@@ -1905,7 +1905,7 @@ export default function GrantApplicationForm({
                               </FormControl>
                             </PopoverTrigger>
                             <PopoverContent
-                              className="w-auto p-0 dark:bg-gray-800 dark:border-gray-700"
+                              className="w-auto p-0 dark:bg-neutral-900 dark:border-neutral-800"
                               align="start"
                             >
                               <Calendar
@@ -1954,7 +1954,7 @@ export default function GrantApplicationForm({
                 </div>
 
                 {/* Milestone 3 (Optional) */}
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div className="pt-6 border-t border-gray-200 dark:border-neutral-800">
                   <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
                     Milestone 3 (Optional):
                   </h3>
@@ -2045,7 +2045,7 @@ export default function GrantApplicationForm({
                               </FormControl>
                             </PopoverTrigger>
                             <PopoverContent
-                              className="w-auto p-0 dark:bg-gray-800 dark:border-gray-700"
+                              className="w-auto p-0 dark:bg-neutral-900 dark:border-neutral-800"
                               align="start"
                             >
                               <Calendar
@@ -2093,7 +2093,7 @@ export default function GrantApplicationForm({
                 </div>
 
                 {/* Milestone 4 (Optional) */}
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div className="pt-6 border-t border-gray-200 dark:border-neutral-800">
                   <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
                     Milestone 4 (Optional):
                   </h3>
@@ -2184,7 +2184,7 @@ export default function GrantApplicationForm({
                               </FormControl>
                             </PopoverTrigger>
                             <PopoverContent
-                              className="w-auto p-0 dark:bg-gray-800 dark:border-gray-700"
+                              className="w-auto p-0 dark:bg-neutral-900 dark:border-neutral-800"
                               align="start"
                             >
                               <Calendar
@@ -2232,7 +2232,7 @@ export default function GrantApplicationForm({
                 </div>
 
                 {/* Additional Support Options */}
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700 space-y-6">
+                <div className="pt-6 border-t border-gray-200 dark:border-neutral-800 space-y-6">
                   <FormField
                     control={form.control}
                     name="vc_fundraising_support_check"
@@ -2255,7 +2255,7 @@ export default function GrantApplicationForm({
                               <SelectValue placeholder="Select an option" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                          <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                             <SelectItem
                               value="Yes"
                               className="dark:text-gray-200"
@@ -2307,7 +2307,7 @@ export default function GrantApplicationForm({
                               <SelectValue placeholder="Select an option" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                          <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                             <SelectItem
                               value="Yes"
                               className="dark:text-gray-200"
@@ -2331,7 +2331,7 @@ export default function GrantApplicationForm({
             </div>
 
             {/* Contribution to the Lux Ecosystem */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Contribution to the Lux Ecosystem
@@ -2681,7 +2681,7 @@ export default function GrantApplicationForm({
                 {/* Benefiting projects */}
                 {showBenefitDetails && (
                   <>
-                    <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-gray-700">
+                    <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-neutral-800">
                       <FormField
                         control={form.control}
                         name="lux_l1_project_benefited_1"
@@ -2809,7 +2809,7 @@ export default function GrantApplicationForm({
 
                 {/* Similar projects */}
                 {showSimilarProjects && (
-                  <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-gray-700">
+                  <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-neutral-800">
                     <FormField
                       control={form.control}
                       name="similar_project_name_1"
@@ -2934,7 +2934,7 @@ export default function GrantApplicationForm({
 
                 {/* Competitors */}
                 {showCompetitors && (
-                  <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-gray-700">
+                  <div className="space-y-6 border-l-2 border-gray-200 pl-4 dark:border-neutral-800">
                     <FormField
                       control={form.control}
                       name="direct_competitor_1"
@@ -3095,7 +3095,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select an option" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           <SelectItem
                             value="Yes"
                             className="dark:text-gray-200"
@@ -3121,7 +3121,7 @@ export default function GrantApplicationForm({
             </div>
 
             {/* Applicant Information */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Applicant Information
@@ -3215,7 +3215,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select your job role" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           {jobRoles.map((role) => (
                             <SelectItem
                               key={role}
@@ -3293,7 +3293,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select your country" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           {countries.map((country) => (
                             <SelectItem
                               key={country}
@@ -3467,7 +3467,7 @@ export default function GrantApplicationForm({
             </div>
 
             {/* Team Details */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Team Details
@@ -3534,7 +3534,7 @@ export default function GrantApplicationForm({
                     </div>
 
                     {/* Team Member 1 */}
-                    <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <div className="pt-4 border-t border-gray-200 dark:border-neutral-800">
                       <h3 className="text-md font-medium mb-4 text-gray-900 dark:text-gray-100">
                         Team Member 1:
                       </h3>
@@ -3620,7 +3620,7 @@ export default function GrantApplicationForm({
                                     <SelectValue placeholder="Select job role" />
                                   </SelectTrigger>
                                 </FormControl>
-                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                                <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                                   {jobRoles.map((role) => (
                                     <SelectItem
                                       key={role}
@@ -3754,7 +3754,7 @@ export default function GrantApplicationForm({
                                     <SelectValue placeholder="Select country" />
                                   </SelectTrigger>
                                 </FormControl>
-                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                                <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                                   {countries.map((country) => (
                                     <SelectItem
                                       key={country}
@@ -3801,7 +3801,7 @@ export default function GrantApplicationForm({
                     </div>
 
                     {/* Team Member 2 */}
-                    <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <div className="pt-4 border-t border-gray-200 dark:border-neutral-800">
                       <h3 className="text-md font-medium mb-4 text-gray-900 dark:text-gray-100">
                         Team Member 2:
                       </h3>
@@ -3887,7 +3887,7 @@ export default function GrantApplicationForm({
                                     <SelectValue placeholder="Select job role" />
                                   </SelectTrigger>
                                 </FormControl>
-                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                                <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                                   {jobRoles.map((role) => (
                                     <SelectItem
                                       key={role}
@@ -4023,7 +4023,7 @@ export default function GrantApplicationForm({
                                     <SelectValue placeholder="Select country" />
                                   </SelectTrigger>
                                 </FormControl>
-                                <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                                <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                                   {countries.map((country) => (
                                     <SelectItem
                                       key={country}
@@ -4074,7 +4074,7 @@ export default function GrantApplicationForm({
             </div>
 
             {/* Other */}
-            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-8 mb-8">
+            <div className="bg-white dark:bg-black rounded-xl border border-gray-200 dark:border-neutral-800 shadow-sm p-8 mb-8">
               <div className="space-y-1 mb-6">
                 <h2 className="text-2xl text-gray-900 dark:text-gray-100">
                   Other
@@ -4143,7 +4143,7 @@ export default function GrantApplicationForm({
                             <SelectValue placeholder="Select an option" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
+                        <SelectContent className="dark:bg-neutral-900 dark:border-neutral-800">
                           <SelectItem
                             value="Lux Website"
                             className="dark:text-gray-200"
@@ -4299,7 +4299,7 @@ export default function GrantApplicationForm({
                 )}
 
                 {/* Legal Compliance */}
-                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                <div className="pt-6 border-t border-gray-200 dark:border-neutral-800">
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
                     The Lux Foundation needs the contact information you
                     provide to us to contact you about our products and
@@ -4317,7 +4317,7 @@ export default function GrantApplicationForm({
                     control={form.control}
                     name="gdpr"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-gray-200 dark:border-gray-700 p-4">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-gray-200 dark:border-neutral-800 p-4">
                         <FormControl>
                           <Checkbox
                             checked={field.value}
@@ -4349,7 +4349,7 @@ export default function GrantApplicationForm({
                     control={form.control}
                     name="marketing_consent"
                     render={({ field }) => (
-                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-gray-200 dark:border-gray-700 p-4 mt-4">
+                      <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border border-gray-200 dark:border-neutral-800 p-4 mt-4">
                         <FormControl>
                           <Checkbox
                             checked={field.value}

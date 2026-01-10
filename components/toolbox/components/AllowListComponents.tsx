@@ -499,7 +499,7 @@ function ReadAllowListComponent({
         </Button>
 
         {readResult !== null && (
-          <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
+          <div className="p-4 bg-gray-100 dark:bg-neutral-900 rounded-md">
             <p className="text-sm text-gray-700 dark:text-gray-300">
               Current Role:{" "}
               {readResult === 0

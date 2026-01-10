@@ -90,7 +90,7 @@ const InitiateValidatorRegistration: React.FC<InitiateValidatorRegistrationProps
     setTxSuccess(null);
 
     if (!coreWalletClient) {
-      setErrorState("Core wallet not found");
+      setErrorState("Lux Wallet not found");
       return;
     }
 

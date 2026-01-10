@@ -27,16 +27,16 @@ const ACTIONS = {
     DOWNLOAD_CORE_WALLET: {
         type: 'redirect' as const,
         label: 'Download',
-        title: 'Download Core Wallet',
-        description: 'Download the Core wallet to continue',
-        link: 'https://core.app/download',
+        title: 'Download Lux Wallet',
+        description: 'Download the Lux Wallet to continue',
+        link: 'https://wallet.lux.network',
         target: '_blank'
     },
     CONNECT_WALLET: {
         type: 'connect' as const,
         label: 'Connect',
         title: 'Connect Wallet',
-        description: 'Connect your Core wallet to continue'
+        description: 'Connect your Lux Wallet to continue'
     },
     SWITCH_TO_TESTNET: {
         type: 'network' as const,
@@ -56,7 +56,7 @@ const ACTIONS = {
         label: 'Buy LUX',
         title: 'Buy LUX',
         description: 'Buy LUX from a supported on-ramp or exchange',
-        link: 'https://core.app/buy',
+        link: 'https://lux.network',
         target: '_blank'
     },
     TRANSFER_C_TO_P: {
@@ -100,19 +100,19 @@ interface WalletRequirementConfig {
 const WALLET_REQUIREMENTS: Record<WalletRequirementsConfigKey, WalletRequirementConfig> = {
     [WalletRequirementsConfigKey.HasCoreWallet]: {
         id: 'has-core-wallet',
-        title: 'Core wallet that is installed',
-        description: 'Download the Core wallet to continue',
+        title: 'Lux Wallet that is installed',
+        description: 'Download the Lux Wallet to continue',
         icon: Wallet,
         action: ACTIONS.DOWNLOAD_CORE_WALLET,
         getStatus: (walletState: WalletState) => ({
             met: walletState.bootstrapped,
-            waiting: false // Core wallet detection is immediate
+            waiting: false // Lux Wallet detection is immediate
         })
     },
     [WalletRequirementsConfigKey.CoreWalletConnected]: {
         id: 'core-wallet-connected',
-        title: 'Core wallet that is connected',
-        description: 'Connect your Core wallet to continue',
+        title: 'Lux Wallet that is connected',
+        description: 'Connect your Lux Wallet to continue',
         icon: Wallet,
         prerequisites: [WalletRequirementsConfigKey.HasCoreWallet],
         action: ACTIONS.CONNECT_WALLET,

@@ -86,7 +86,7 @@ export const ConfigureNodeType: React.FC<ConfigureNodeTypeProps> = ({
             
             {/* Port configuration for validator node */}
             {nodeType === 'validator' && (
-                <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div className="mt-6 p-4 bg-gray-50 dark:bg-neutral-900 rounded-lg">
                     <h4 className="font-medium mb-2">Required Ports</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                         Make sure the following port is open on your server:
@@ -99,7 +99,7 @@ export const ConfigureNodeType: React.FC<ConfigureNodeTypeProps> = ({
             
             {/* Port configuration for public RPC node */}
             {nodeType === 'public-rpc' && (
-                <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div className="mt-6 p-4 bg-gray-50 dark:bg-neutral-900 rounded-lg">
                     <h4 className="font-medium mb-2">Required Ports</h4>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                         Make sure the following ports are open on your server:

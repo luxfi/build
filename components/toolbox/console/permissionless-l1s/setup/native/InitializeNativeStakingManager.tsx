@@ -256,7 +256,7 @@ function InitializeNativeStakingManager() {
 
                     <div className="space-y-4">
                         {validatorManagerAddress && (
-                            <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-md">
+                            <div className="p-3 bg-gray-50 dark:bg-neutral-900 rounded-md">
                                 <p className="text-sm">
                                     <strong>Validator Manager Address:</strong> <code>{validatorManagerAddress}</code>
                                 </p>

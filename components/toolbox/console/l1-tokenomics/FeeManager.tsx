@@ -260,7 +260,7 @@ function FeeManager({ onSuccess }: BaseConsoleToolProps) {
             </Button>
 
             {currentConfig && (
-              <div className="mt-4 p-4 bg-gray-100 dark:bg-gray-800 rounded-md">
+              <div className="mt-4 p-4 bg-gray-100 dark:bg-neutral-900 rounded-md">
                 <pre className="text-sm">
                   {JSON.stringify(currentConfig, null, 2)}
                 </pre>

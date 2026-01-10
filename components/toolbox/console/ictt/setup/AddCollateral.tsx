@@ -550,7 +550,7 @@ function AddCollateral() {
             )}
 
             {tokenAddress && tokenSymbol && tokenDecimals !== null && (
-                <div className="p-3 border rounded-md text-sm space-y-1 bg-gray-100 dark:bg-gray-800">
+                <div className="p-3 border rounded-md text-sm space-y-1 bg-gray-100 dark:bg-neutral-900">
                     <div>Collateral Token: <code className="font-mono">{tokenSymbol}</code></div>
                     <div>Token Address: <code className="font-mono">{tokenAddress}</code></div>
                     <div>Token Decimals: <code className="font-mono">{tokenDecimals}</code></div>
