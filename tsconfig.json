@@ -63,6 +63,12 @@
       ],
       "@luxfi/core/models/components/subnet.js": [
         "./lib/luxfi-core.ts"
+      ],
+      "@luxfi/avacloud-sdk": [
+        "./lib/avacloud-sdk.ts"
+      ],
+      "@luxfi/avacloud-sdk/models/components": [
+        "./lib/avacloud-sdk.ts"
       ]
     },
     "plugins": [
