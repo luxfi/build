@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 import { getBlockchainInfo, getSubnetInfo } from "@/components/toolbox/coreViem/utils/glacier";
 import InputSubnetId from "@/components/toolbox/components/InputSubnetId";
 import BlockchainDetailsDisplay from "@/components/toolbox/components/BlockchainDetailsDisplay";

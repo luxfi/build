@@ -1,5 +1,5 @@
 import { useWalletStore } from "../stores/walletStore";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 
 export function useWalletSwitch() {
     const { coreWalletClient, setWalletChainId, setIsTestnet, setLuxNetworkID } = useWalletStore();

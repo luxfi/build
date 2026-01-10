@@ -4,7 +4,7 @@ import { parsers } from './remote-content/parsers/index.mts';
 import { getCrossChainConfigs } from './remote-content/cross-chain.mts';
 import { getApisConfigs } from './remote-content/apis.mts';
 import { getPrimaryNetworkConfigs } from './remote-content/primary-network.mts';
-import { getAvalancheL1sConfigs } from './remote-content/avalanche-l1s.mts';
+import { getLuxL1sConfigs } from './remote-content/lux-l1s.mts';
 import { getAcpsConfigs } from './remote-content/acps.mts';
 import { getToolingConfigs } from './remote-content/tooling.mts';
 import { getReleasesConfigs } from './remote-content/releases.mts';
@@ -32,7 +32,7 @@ async function main(): Promise<void> {
     { name: 'Cross-Chain', configs: getCrossChainConfigs() },
     { name: 'APIs', configs: getApisConfigs() },
     { name: 'Primary Network', configs: getPrimaryNetworkConfigs() },
-    { name: 'Avalanche L1s', configs: getAvalancheL1sConfigs() },
+    { name: 'Avalanche L1s', configs: getLuxL1sConfigs() },
     { name: 'Tooling', configs: getToolingConfigs() },
     { name: 'ACPs', configs: await getAcpsConfigs() },
     { name: 'Releases', configs: await getReleasesConfigs() },

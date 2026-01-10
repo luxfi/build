@@ -2,7 +2,7 @@
  * Account utilities for Lux addresses
  */
 import BinTools from 'luxfi/dist/utils/bintools'
-import { Buffer } from 'buffer/'
+import { Buffer } from 'buffer'
 import { createHash } from 'crypto'
 
 const bintools = BinTools.getInstance()

@@ -1,7 +1,7 @@
 'use client'
 
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
-import { lux, luxTestnet } from "viem/chains";
+import { lux, luxTestnet } from "@/lib/chains";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useWalletSwitch } from "../../hooks/useWalletSwitch";

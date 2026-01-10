@@ -19,7 +19,7 @@ Occasionally, a dashboard hints at something more interesting, like the game of 
 
 On a recent summer day, one of our monitoring dashboards showed an imbalance between the inbound and outbound volume of "app" messages—those used in Lux's transaction gossip layer. We were receiving significantly more requests than we were sending, and the responses we were sending back were consuming a suspiciously large portion of validator bandwidth.
 
-![graph bandwidth messages](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_1.png)
+
 
 At first glance, it wasn't clear exactly what was happening. Maybe our metrics were off. Maybe there was a bug in the networking logic. But the imbalance held over time, and the asymmetry was too big to ignore. **Something was wrong.**
 
@@ -45,23 +45,23 @@ When it comes to the rate of receiving a request from a specific validator, it d
 
 On the Testnet Testnet, these metrics behaved exactly as expected.
 
-![Graph C-chain Messages Received Testnet](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_2.png)
+
 
 What we observed on Mainnet wasn't even close.
 
-![Graph C-chain Messages Received Mainnet](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_3.png)
+
 
 Our Mainnet nodes were consistently handling 20x the expected number of Bloom filter requests. Additionally, the hit-rates of the Bloom filters were bimodal—an anomaly not seen on Testnet.
 
 While most requests had a high hit-rate (>75%), many requests had an abysmal 0% hit-rate. Almost no requests landed in-between.
 
-![Graph Hit-Rate](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_4.png)
+
 
 This led to the suspicion that certain nodes were **intentionally** sending Bloom filters that didn't match any transactions in our mempool. That's like saying: "I don't have any of your transactions—send me everything you've got."
 
 Intentional or not, they weren't sending bad Bloom filters once every 17 minutes (the rate at which a virtuous validator would). The worst offenders* were hammering the same validators with requests as quickly as **every 8 seconds** (0.125 bad Bloom filters per second).
 
-![Graph LUExchange-Chain Mempool Bad Blooms per Second](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_5.png)
+
 
 This meant that targeted validators were repeatedly sending **maximum sized responses—potentially** hundreds of transactions at a time—to the same small set of peers.
 
@@ -110,15 +110,15 @@ Rather than immediately dropping rate limited requests, these requests are inclu
 
 Immediately upon updating, our nodes reported a significant reduction in outbound bandwidth.
 
-![Graph Result Bandwidth Messages](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_6.png)
+
 
 By enabling the improved rate limiting, the total outbound bandwidth was reduced from 320 KiB/s to 200 KiB/s, almost a 40% reduction. These Bloom filter responses (blue) are now replaced with Rate limited responses (yellow), which utilize almost no bandwidth.
 
-![Graph Result Message Count % for Messages](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_7.png)
+
 
 Additionally, we observed that we are now rate-limiting the Bloom filters with a low hit-rate. We are now only responding to Bloom filters with a high hit-rate.
 
-![Graph Result Hit-Rate](https://qizat5l3bwvomkny.public.blob.vercel-storage.com/P2P_8.png)
+
 
 We expect MEV actors to adapt over time. Hopefully, they'll stop sending bad Bloom filters to maximize their limited queries. Regardless, the days of nearly unlimited pull gossip requests are over. DUN DUN DUUUUUUNNNNNNN 
 

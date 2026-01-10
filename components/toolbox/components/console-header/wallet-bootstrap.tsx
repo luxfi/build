@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useWalletStore } from '@/components/toolbox/stores/walletStore'
 import { createCoreWalletClient } from '@/components/toolbox/coreViem'
-import { networkIDs } from 'luxfi'
+import { networkIDs } from '@/lib/luxfi-networkIDs'
 
 export function WalletBootstrap() {
   const setCoreWalletClient = useWalletStore((s) => s.setCoreWalletClient)

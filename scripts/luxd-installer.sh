@@ -11,23 +11,23 @@ if ((EUID == 0)); then
     exit 1
 fi
 
-#helper function to create avalanchego.service file
+#helper function to create luxgo.service file
 create_service_file () {
-  rm -f avalanchego.service
-  echo "[Unit]">>avalanchego.service
-  echo "Description=AvalancheGo systemd service">>avalanchego.service
-  echo "StartLimitIntervalSec=0">>avalanchego.service
-  echo "[Service]">>avalanchego.service
-  echo "Type=simple">>avalanchego.service
-  echo "User=$(whoami)">>avalanchego.service
-  echo "WorkingDirectory=$HOME">>avalanchego.service
-  echo "ExecStart=$HOME/avalanche-node/avalanchego --config-file=$HOME/.avalanchego/configs/node.json">>avalanchego.service
-  echo "LimitNOFILE=32768">>avalanchego.service
-  echo "Restart=always">>avalanchego.service
-  echo "RestartSec=1">>avalanchego.service
-  echo "[Install]">>avalanchego.service
-  echo "WantedBy=multi-user.target">>avalanchego.service
-  echo "">>avalanchego.service
+  rm -f luxgo.service
+  echo "[Unit]">>luxgo.service
+  echo "Description=LuxGo systemd service">>luxgo.service
+  echo "StartLimitIntervalSec=0">>luxgo.service
+  echo "[Service]">>luxgo.service
+  echo "Type=simple">>luxgo.service
+  echo "User=$(whoami)">>luxgo.service
+  echo "WorkingDirectory=$HOME">>luxgo.service
+  echo "ExecStart=$HOME/lux-node/luxgo --config-file=$HOME/.luxgo/configs/node.json">>luxgo.service
+  echo "LimitNOFILE=32768">>luxgo.service
+  echo "Restart=always">>luxgo.service
+  echo "RestartSec=1">>luxgo.service
+  echo "[Install]">>luxgo.service
+  echo "WantedBy=multi-user.target">>luxgo.service
+  echo "">>luxgo.service
 }
 
 create_config_file () {
@@ -54,8 +54,8 @@ create_config_file () {
     echo "  \"public-ip\": \"$foundIP\"">>node.json
   fi
   echo "}" >>node.json
-  mkdir -p $HOME/.avalanchego/configs
-  cp -f node.json $HOME/.avalanchego/configs/node.json
+  mkdir -p $HOME/.luxgo/configs
+  cp -f node.json $HOME/.luxgo/configs/node.json
 
   rm -f config.json
   echo "{" >>config.json
@@ -74,15 +74,15 @@ create_config_file () {
     echo "  \"pruning-enabled\": false">>config.json
   fi
   echo "}" >>config.json
-  mkdir -p $HOME/.avalanchego/configs/chains/C
-  cp -f config.json $HOME/.avalanchego/configs/chains/C/config.json
+  mkdir -p $HOME/.luxgo/configs/chains/C
+  cp -f config.json $HOME/.luxgo/configs/chains/C/config.json
 }
 
 remove_service_file () {
-  if test -f "/etc/systemd/system/avalanchego.service"; then
-    sudo systemctl stop avalanchego
-    sudo systemctl disable avalanchego
-    sudo rm /etc/systemd/system/avalanchego.service
+  if test -f "/etc/systemd/system/luxgo.service"; then
+    sudo systemctl stop luxgo
+    sudo systemctl disable luxgo
+    sudo rm /etc/systemd/system/luxgo.service
   fi
 }
 
@@ -152,7 +152,7 @@ usage () {
   echo "   --help            Shows this message"
   echo "   --list            Lists 10 newest versions available to install"
   echo "   --reinstall       Run the installer from scratch, overwriting the old service file and node configuration"
-  echo "   --remove          Remove the system service and AvalancheGo binaries and exit"
+  echo "   --remove          Remove the system service and LuxGo binaries and exit"
   echo ""
   echo "   --version <tag>          Installs <tag> version, default is the latest"
   echo "   --ip dynamic|static|<IP> Uses dynamic, static (autodetect) or provided public IP, will ask if not provided"
@@ -160,11 +160,11 @@ usage () {
   echo "   --archival               If provided, will disable state pruning, defaults to pruning enabled"
   echo "   --state-sync on|off      If provided explicitly turns C-Chain state sync on or off"
   echo "   --index                  If provided, will enable indexer and Index API, defaults to disabled"
-  echo "   --db-dir <path>          Full path to the database directory, defaults to $HOME/.avalanchego/db"
+  echo "   --db-dir <path>          Full path to the database directory, defaults to $HOME/.luxgo/db"
   echo "   --fuji                   Connect to Fuji testnet, defaults to mainnet if omitted"
   echo "   --admin                  Enable Admin API, defaults to disabled if omitted"
   echo ""
-  echo "Run without any options, script will install or upgrade AvalancheGo to latest available version. Node config"
+  echo "Run without any options, script will install or upgrade LuxGo to latest available version. Node config"
   echo "options for version, ip and others will be ignored when upgrading the node, run with --reinstall to change config."
   echo "Reinstall will not modify the database or NodeID definition, it will overwrite node and chain configs."
   exit 0
@@ -172,7 +172,7 @@ usage () {
 
 list_versions () {
   echo "Available versions:"
-  wget -q -O - https://api.github.com/repos/ava-labs/avalanchego/releases \
+  wget -q -O - https://api.github.com/repos/ava-labs/luxgo/releases \
   | grep tag_name \
   | sed 's/.*: "\(.*\)".*/\1/' \
   | head
@@ -193,7 +193,7 @@ dbdirOpt="no"
 ipOpt="ask"
 stateOpt="?"
 
-echo "AvalancheGo installer"
+echo "LuxGo installer"
 echo "---------------------"
 
 # process command line arguments
@@ -213,9 +213,9 @@ if [ "$#" != 0 ]; then
         echo "Removing the service..."
         remove_service_file
         echo "Remove node binaries..."
-        rm -rf $HOME/avalanche-node
+        rm -rf $HOME/lux-node
         echo "Done."
-        echo "AvalancheGo removed. Working directory ($HOME/.avalanchego/) has been preserved."
+        echo "LuxGo removed. Working directory ($HOME/.luxgo/) has been preserved."
         exit 0
         ;;
       --help) usage ;;
@@ -267,25 +267,25 @@ else
   echo "Exiting."
   exit 1
 fi
-if test -f "/etc/systemd/system/avalanchego.service"; then
-  foundAvalancheGo=true
-  echo "Found AvalancheGo systemd service already installed, switching to upgrade mode."
+if test -f "/etc/systemd/system/luxgo.service"; then
+  foundLuxGo=true
+  echo "Found LuxGo systemd service already installed, switching to upgrade mode."
   echo "Stopping service..."
-  sudo systemctl stop avalanchego
+  sudo systemctl stop luxgo
 else
-  foundAvalancheGo=false
+  foundLuxGo=false
 fi
 # download and copy node files
-mkdir -p /tmp/avalanchego-install               #make a directory to work in
-rm -rf /tmp/avalanchego-install/*               #clean up in case previous install didn't
-cd /tmp/avalanchego-install
+mkdir -p /tmp/luxgo-install               #make a directory to work in
+rm -rf /tmp/luxgo-install/*               #clean up in case previous install didn't
+cd /tmp/luxgo-install
 
 version=${version:-latest}
 echo "Looking for $getArch version $version..."
 if [ "$version" = "latest" ]; then
-  fileName="$(curl -s https://api.github.com/repos/ava-labs/avalanchego/releases/latest | grep "avalanchego-linux-$getArch.*tar\(.gz\)*\"" | cut -d : -f 2,3 | tr -d \" | cut -d , -f 2)"
+  fileName="$(curl -s https://api.github.com/repos/ava-labs/luxgo/releases/latest | grep "luxgo-linux-$getArch.*tar\(.gz\)*\"" | cut -d : -f 2,3 | tr -d \" | cut -d , -f 2)"
 else
-  fileName="https://github.com/ava-labs/avalanchego/releases/download/$version/avalanchego-linux-$getArch-$version.tar.gz"
+  fileName="https://github.com/ava-labs/luxgo/releases/download/$version/luxgo-linux-$getArch-$version.tar.gz"
 fi
 if [[ `wget -S --spider $fileName  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
   echo "Node version found."
@@ -293,11 +293,11 @@ if [[ `wget -S --spider $fileName  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
   wget -nv --show-progress $fileName
 
   echo "Unpacking node files..."
-  mkdir -p $HOME/avalanche-node
-  tar xvf avalanchego-linux*.tar.gz -C $HOME/avalanche-node --strip-components=1;
-  mkdir -p $HOME/.avalanchego/plugins
-  rm avalanchego-linux-*.tar.gz
-  echo "Node files unpacked into $HOME/avalanche-node"
+  mkdir -p $HOME/lux-node
+  tar xvf luxgo-linux*.tar.gz -C $HOME/lux-node --strip-components=1;
+  mkdir -p $HOME/.luxgo/plugins
+  rm luxgo-linux-*.tar.gz
+  echo "Node files unpacked into $HOME/lux-node"
 else
   shouldBuild=true
   if ! command -v git >/dev/null 2>&1 ; then
@@ -314,56 +314,56 @@ else
   fi
   if [ "$shouldBuild" = "false" ]; then
     echo "One or more building tools are missing. Exiting."
-    if [ "$foundAvalancheGo" = "true" ]; then
+    if [ "$foundLuxGo" = "true" ]; then
       echo "Restarting service..."
-      sudo systemctl start avalanchego
+      sudo systemctl start luxgo
     fi
     exit 1
   fi
 
-  echo "Unable to find AvalancheGo release $version. Attempting to build $version from source."
-  mkdir -p avalanchego
-  cd avalanchego
+  echo "Unable to find LuxGo release $version. Attempting to build $version from source."
+  mkdir -p luxgo
+  cd luxgo
   git init
-  git remote add origin https://github.com/ava-labs/avalanchego
+  git remote add origin https://github.com/ava-labs/luxgo
   git fetch --depth 1 origin $version || {
-    echo "Unable to find AvalancheGo commit $version. Exiting."
-    if [ "$foundAvalancheGo" = "true" ]; then
+    echo "Unable to find LuxGo commit $version. Exiting."
+    if [ "$foundLuxGo" = "true" ]; then
       echo "Restarting service..."
-      sudo systemctl start avalanchego
+      sudo systemctl start luxgo
     fi
     exit 1
   }
   git checkout $version
   ./scripts/build.sh || {
-    echo "Unable to build AvalancheGo commit $version. Exiting."
-    if [ "$foundAvalancheGo" = "true" ]; then
+    echo "Unable to build LuxGo commit $version. Exiting."
+    if [ "$foundLuxGo" = "true" ]; then
       echo "Restarting service..."
-      sudo systemctl start avalanchego
+      sudo systemctl start luxgo
     fi
     exit 1
   }
 
   echo "Moving node binary..."
-  mkdir -p $HOME/avalanche-node
-  cp -r ./build/* $HOME/avalanche-node
-  mkdir -p $HOME/.avalanchego/plugins
+  mkdir -p $HOME/lux-node
+  cp -r ./build/* $HOME/lux-node
+  mkdir -p $HOME/.luxgo/plugins
   cd ..
-  rm -rf avalanchego
-  echo "Node binary move to $HOME/avalanche-node"
+  rm -rf luxgo
+  echo "Node binary move to $HOME/lux-node"
 fi
 echo
 # on RHEL based systems, selinux prevents systemd running execs from home-dir, lets change this
 if [ "$osType" = "RHEL" ]; then
   # only way to make idempotent
-  sudo semanage fcontext -a -t bin_t "$HOME/avalanche-node/avalanchego" || sudo semanage fcontext -m -t bin_t "$HOME/avalanche-node/avalanchego"
-  sudo restorecon -Fv "$HOME/avalanche-node/avalanchego"
+  sudo semanage fcontext -a -t bin_t "$HOME/lux-node/luxgo" || sudo semanage fcontext -m -t bin_t "$HOME/lux-node/luxgo"
+  sudo restorecon -Fv "$HOME/lux-node/luxgo"
 fi
-if [ "$foundAvalancheGo" = "true" ]; then
+if [ "$foundLuxGo" = "true" ]; then
   echo "Node upgraded, starting service..."
-  sudo systemctl start avalanchego
+  sudo systemctl start luxgo
   echo "New node version:"
-  $HOME/avalanche-node/avalanchego --version
+  $HOME/lux-node/luxgo --version
   echo "Done!"
   exit 0
 fi
@@ -490,21 +490,21 @@ if [ "$dbdirOpt" != "no" ]; then
 fi
 create_config_file
 create_service_file
-chmod 644 avalanchego.service
-sudo cp -f avalanchego.service /etc/systemd/system/avalanchego.service
+chmod 644 luxgo.service
+sudo cp -f luxgo.service /etc/systemd/system/luxgo.service
 sudo systemctl daemon-reload
-sudo systemctl start avalanchego
-sudo systemctl enable avalanchego
+sudo systemctl start luxgo
+sudo systemctl enable luxgo
 echo
 echo "Done!"
 echo
 echo "Your node should now be bootstrapping."
-echo "Node configuration file is $HOME/.avalanchego/configs/node.json"
-echo "C-Chain configuration file is $HOME/.avalanchego/configs/chains/C/config.json"
-echo "Plugin directory, for storing L1 VM binaries, is $HOME/.avalanchego/plugins"
+echo "Node configuration file is $HOME/.luxgo/configs/node.json"
+echo "C-Chain configuration file is $HOME/.luxgo/configs/chains/C/config.json"
+echo "Plugin directory, for storing L1 VM binaries, is $HOME/.luxgo/plugins"
 echo "To check that the service is running use the following command (q to exit):"
-echo "sudo systemctl status avalanchego"
+echo "sudo systemctl status luxgo"
 echo "To follow the log use (ctrl-c to stop):"
-echo "sudo journalctl -u avalanchego -f"
+echo "sudo journalctl -u luxgo -f"
 echo
-echo "Reach us over on https://discord.gg/avax if you're having problems."
+echo "Reach us over on https://discord.gg/lux if you're having problems."

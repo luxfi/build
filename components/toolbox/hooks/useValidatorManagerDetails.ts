@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 import { getTotalStake } from "../coreViem/hooks/getTotalStake";
 import { getSubnetInfoForNetwork, getBlockchainInfoForNetwork } from "../coreViem/utils/glacier";
 import { useWalletStore } from "../stores/walletStore";

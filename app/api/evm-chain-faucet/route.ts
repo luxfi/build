@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createWalletClient, http, parseEther, createPublicClient, defineChain, isAddress } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
-import { luxTestnet } from 'viem/chains';
+import { luxTestnet } from '@/lib/chains';
 import { getAuthSession } from '@/lib/auth/authSession';
 import { checkAndReserveFaucetClaim, completeFaucetClaim, cancelFaucetClaim } from '@/lib/faucet/rateLimit';
 import { withChainLock, getNextNonce, withNonceRetry } from '@/lib/faucet/nonceManager';

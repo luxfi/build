@@ -2,7 +2,7 @@ import { secp256k1, UnsignedTx, utils, pvm, Utxo, Context, evm } from 'luxfi';
 import { bytesToHex, hexToBytes } from '@noble/hashes/utils';
 import { Address } from 'micro-eth-signer';
 import { keccak256, toRlp, toBytes, createPublicClient, http, parseEther } from 'viem';
-import { luxTestnet } from 'viem/chains';
+import { luxTestnet } from '@/lib/chains';
 import { deduplicateEthRequestAccounts } from '@/components/tools/common/ui/deduplicateEthRequestAccounts';
 // Type definitions
 declare global {

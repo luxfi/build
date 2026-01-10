@@ -51,6 +51,18 @@
       ],
       "@luxfi/cloud/methods/wallet/pChain": [
         "./lib/lux-wallet/methods/wallet/pChain.ts"
+      ],
+      "@luxfi/core": [
+        "./lib/luxfi-core.ts"
+      ],
+      "@luxfi/core/models/components": [
+        "./lib/luxfi-core.ts"
+      ],
+      "@luxfi/core/models/components/activevalidatordetails.js": [
+        "./lib/luxfi-core.ts"
+      ],
+      "@luxfi/core/models/components/subnet.js": [
+        "./lib/luxfi-core.ts"
       ]
     },
     "plugins": [

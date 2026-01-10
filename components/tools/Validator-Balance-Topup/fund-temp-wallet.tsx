@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 import { ArrowUpRight, Loader2, Copy, CheckCircle2, ArrowRight } from "lucide-react"
 import { useState, useEffect } from "react"
 import { createPublicClient, http, formatEther } from 'viem';
-import { luxTestnet } from 'viem/chains';
+import { luxTestnet } from '@/lib/chains';
 import { newPrivateKey } from '../common/utils/wallet';
 import { transferCToP, getAddresses } from './helper';
 import { pvm, utils, Context, addTxSignatures } from "luxfi";

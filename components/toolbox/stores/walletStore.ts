@@ -1,8 +1,8 @@
 import { create } from 'zustand'
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 import { createCoreWalletClient, CoreWalletClientType } from '../coreViem';
 import { createPublicClient, custom, http } from 'viem';
-import { luxTestnet } from 'viem/chains';
+import { luxTestnet } from '@/lib/chains';
 import { zeroAddress } from 'viem';
 import { balanceService } from '../services/balanceService';
 import { useMemo } from 'react';

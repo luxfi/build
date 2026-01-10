@@ -2,7 +2,7 @@
 
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
 import { useState, useEffect } from "react";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 import { Container } from "../../components/Container";
 import { getBlockchainInfo, getSubnetInfo } from "../../coreViem/utils/glacier";
 import InputSubnetId from "../../components/InputSubnetId";

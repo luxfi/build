@@ -1,7 +1,7 @@
 //FIXME: Sooner or later we should use the SDK
 
 import { useWalletStore } from "@/components/toolbox/stores/walletStore";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 
 const endpoint = "https://glacier-api.lux.network"
 

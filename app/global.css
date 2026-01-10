@@ -194,61 +194,61 @@ svg.lucide.lucide-folder-open {
   color: #ffffff;
 }
 
-/* Lux red opacity variants */
+/* Lux accent opacity variants (white-based) */
 .bg-lux-red\/5 {
-  background-color: rgba(232, 65, 66, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .bg-lux-red\/10 {
-  background-color: rgba(232, 65, 66, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .bg-lux-red\/20 {
-  background-color: rgba(232, 65, 66, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .border-lux-red\/30 {
-  border-color: rgba(232, 65, 66, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .border-lux-red\/40 {
-  border-color: rgba(232, 65, 66, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .border-lux-red\/60 {
-  border-color: rgba(232, 65, 66, 0.6);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .shadow-lux-red\/25 {
-  --tw-shadow-color: rgba(232, 65, 66, 0.25);
+  --tw-shadow-color: rgba(255, 255, 255, 0.25);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
 .shadow-lux-red\/40 {
-  --tw-shadow-color: rgba(232, 65, 66, 0.4);
+  --tw-shadow-color: rgba(255, 255, 255, 0.4);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
 /* Additional hover background variants */
 .hover\:bg-lux-red\/5:hover {
-  background-color: rgba(232, 65, 66, 0.05) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 .hover\:bg-lux-red\/10:hover {
-  background-color: rgba(232, 65, 66, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .hover\:shadow-lux-red\/25:hover {
-  --tw-shadow-color: rgba(232, 65, 66, 0.25);
+  --tw-shadow-color: rgba(255, 255, 255, 0.25);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
 .group:hover .group-hover\:bg-lux-red\/10 {
-  background-color: rgba(232, 65, 66, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .group:hover .group-hover\:bg-lux-red\/20 {
-  background-color: rgba(232, 65, 66, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .border-lux-green {
@@ -379,7 +379,7 @@ svg.lucide.lucide-folder-open {
 }
 
 .tools-page svg.lucide {
-  color: #eb4c50 !important;
+  color: #ffffff !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

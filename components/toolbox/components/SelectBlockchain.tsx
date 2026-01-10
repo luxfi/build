@@ -3,7 +3,7 @@
 import SelectBlockchainId from "./SelectBlockchainId";
 import { useState, useCallback } from "react";
 import { useWalletStore } from "../stores/walletStore";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 
 // API Response type from AvaCloud - matches the official API response
 type BlockchainApiResponse = {

@@ -1,5 +1,4 @@
-import { type LinkItemType } from 'fumadocs-ui/layouts/docs';
-import { MainItemType, type BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { type LinkItemType, type BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { LuxLogo } from '@/components/navigation/lux-logo';
 import {
   Sprout,

@@ -1,5 +1,5 @@
 import { useWalletStore } from '@/components/toolbox/stores/walletStore'
-import { networkIDs } from 'luxfi'
+import { networkIDs } from '@/lib/luxfi-networkIDs'
 import { useChainTokenTracker } from '@/hooks/useChainTokenTracker'
 import { useL1List, type L1ListItem } from '@/components/toolbox/stores/l1ListStore'
 

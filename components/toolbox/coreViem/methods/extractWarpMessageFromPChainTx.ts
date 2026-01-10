@@ -2,7 +2,8 @@ import type { LuxWalletClient } from "@luxfi/cloud";
 import { getTx, PChainTransactionType } from "@luxfi/cloud/methods/pChain";
 import { packL1ConversionMessage, PackL1ConversionMessageArgs } from "../utils/convertWarp";
 import { isTestnet } from "./isTestnet";
-import { networkIDs, utils } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
+import { utils } from "luxfi";
 
 interface AddressObject {
     threshold: number;

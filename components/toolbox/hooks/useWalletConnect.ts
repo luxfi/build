@@ -1,5 +1,5 @@
 import { useWalletStore } from "../stores/walletStore";
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 import { createCoreWalletClient } from "../coreViem";
 
 export function useWalletConnect() {

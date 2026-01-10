@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { Calendar, Clock, Users, Coins, Info, Copy, Check, Search, ChevronDown } from "lucide-react"
 import { Container } from "@/components/toolbox/components/Container"
 import { Button } from "@/components/toolbox/components/Button"
-import { networkIDs } from "luxfi"
+import { networkIDs } from "@/lib/luxfi-networkIDs"
 
 import { GlobalParamNetwork } from "@luxfi/avacloud-sdk/models/components"
 import { AvaCloudSDK } from "@luxfi/avacloud-sdk"

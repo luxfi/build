@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { useWalletAddress, useBalances, useNetworkInfo, useWalletStore } from '@/components/toolbox/stores/walletStore'
 import { useL1List } from '@/components/toolbox/stores/l1ListStore'
-import { lux, luxTestnet } from 'viem/chains'
+import { lux, luxTestnet } from '@/lib/chains'
 import { balanceService } from '@/components/toolbox/services/balanceService'
 import { L1ListItem } from '@/components/toolbox/stores/l1ListStore'
 

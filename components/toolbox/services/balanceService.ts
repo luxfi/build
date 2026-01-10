@@ -1,5 +1,5 @@
 import { getPChainBalance, getNativeTokenBalance, getChains } from '../coreViem/utils/glacier';
-import { luxTestnet, lux } from 'viem/chains';
+import { luxTestnet, lux } from '@/lib/chains';
 
 // Local debounce function
 function debounce<T extends (...args: any[]) => any>(

@@ -1,4 +1,4 @@
-import { networkIDs } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
 import type { LuxWalletClient } from "@luxfi/cloud";
 import {
     utils,

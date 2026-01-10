@@ -1,7 +1,8 @@
 import type { LuxWalletClient } from "@luxfi/cloud";
 import { getTx } from "@luxfi/cloud/methods/pChain";
 import { isTestnet } from "./isTestnet";
-import { networkIDs, utils } from "luxfi";
+import { networkIDs } from "@/lib/luxfi-networkIDs";
+import { utils } from "luxfi";
 import { 
   unpackRegisterL1ValidatorPayload,
   extractPayloadFromWarpMessage,
