@@ -1,4 +1,4 @@
-import { lux, luxTestnet } from "viem/chains";
+import { lux, luxTestnet } from "@/lib/chains";
 
 //TODO: probably we should get rid of this
 export const getRPCEndpoint = (isTestnet: boolean) => {
