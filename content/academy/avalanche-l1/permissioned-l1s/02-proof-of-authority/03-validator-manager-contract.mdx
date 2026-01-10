@@ -15,7 +15,7 @@ For this section we have blurred out some of the contracts, as these are not rel
   <Mermaid
     chart="
 classDiagram
-class ACP99Manager {
+class LP99Manager {
     +initializeValidatorSet()
     +completeValidatorRegistration()
     +completeValidatorRemoval()
@@ -24,7 +24,7 @@ class ACP99Manager {
     -_initiateValidatorRemoval()
     -_initiateValidatorWeightUpdate()
 }
-<<Abstract>> ACP99Manager
+<<Abstract>> LP99Manager
 
 class ValidatorManager {
     +initializeValidatorSet()
@@ -36,7 +36,7 @@ class ValidatorManager {
     +initiateValidatorWeightUpdate() onlyOwner
 }
 
-ACP99Manager <|-- ValidatorManager
+LP99Manager <|-- ValidatorManager
 "
   />
 </div>
@@ -46,9 +46,9 @@ ACP99Manager <|-- ValidatorManager
 
 The validator management system follows a layered architecture, with each level adding specific functionality:
 
-### ACP99Manager (Abstract Foundation)
+### LP99Manager (Abstract Foundation)
 
-The `ACP99Manager` is the foundational abstract contract that standardizes validator management for EVM-based L1s, as defined in [ACP-99](/docs/acps/99-validatorsetmanager-contract). This standard emerged after [ACP-77](/docs/acps/77-reinventing-subnets) introduced the protocol-level capability for L1s to manage their own validators. ACP99Manager provides four essential functions that all validator managers must implement:
+The `LP99Manager` is the foundational abstract contract that standardizes validator management for EVM-based L1s, as defined in [LP-99](/docs/lps/99-validatorsetmanager-contract). This standard emerged after [LP-77](/docs/lps/77-reinventing-subnets) introduced the protocol-level capability for L1s to manage their own validators. LP99Manager provides four essential functions that all validator managers must implement:
 
 - **`initializeValidatorSet()`**: Establishes the initial validator set when converting an existing Subnet to an L1
 - **`completeValidatorRegistration()`**: Finalizes validator addition after Platform-Chain confirmation
@@ -59,7 +59,7 @@ These functions handle the critical interactions with the Platform-Chain through
 
 ### ValidatorManager (Concrete Implementation)
 
-The `ValidatorManager` extends `ACP99Manager` and adds the complete validator lifecycle management:
+The `ValidatorManager` extends `LP99Manager` and adds the complete validator lifecycle management:
 
 **Core Additions:**
 - **`initiateValidatorRegistration()`** (onlyOwner): Starts the process of adding a new validator

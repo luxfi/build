@@ -131,29 +131,29 @@ export const toolingOptions = [
 ];
 
 
-export const acpsOptions = [
+export const lpsOptions = [
   {
     title: 'Streaming Asynchronous Execution',
-    description: 'ACP-194',
+    description: 'LP-194',
     icon: <Book className="w-5 h-5" />,
-    url: '/docs/acps/194-streaming-asynchronous-execution',
+    url: '/docs/lps/194-streaming-asynchronous-execution',
   },
   {
     title: 'Continuous Staking',
-    description: 'ACP-236',
+    description: 'LP-236',
     icon: <Book className="w-5 h-5" />,
-    url: '/docs/acps/236-continuous-staking',
+    url: '/docs/lps/236-continuous-staking',
   },
   {
     title: 'ValidatorManager Contract',
-    description: 'ACP-99',
+    description: 'LP-99',
     icon: <Book className="w-5 h-5" />,
-    url: '/docs/acps/99-validatorsetmanager-contract',
+    url: '/docs/lps/99-validatorsetmanager-contract',
   },
   {
-    title: "View All ACPs",
+    title: "View All LPs",
     description: 'View all Lux Community Proposals',
     icon: <Eye className="w-5 h-5" />,
-    url: '/docs/acps',
+    url: '/docs/lps',
   }
 ];

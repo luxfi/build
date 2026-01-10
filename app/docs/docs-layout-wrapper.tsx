@@ -22,7 +22,7 @@ interface DocsLayoutWrapperProps {
   apiReferenceTree: any;
   rpcsTree: any;
   toolingTree: any;
-  acpsTree: any;
+  lpsTree: any;
 }
 
 export function DocsLayoutWrapper({
@@ -31,7 +31,7 @@ export function DocsLayoutWrapper({
   apiReferenceTree,
   rpcsTree,
   toolingTree,
-  acpsTree,
+  lpsTree,
 }: DocsLayoutWrapperProps) {
   const pathname = usePathname();
   const isMobile = useIsMobile();
@@ -47,8 +47,8 @@ export function DocsLayoutWrapper({
 
     if (pathname.startsWith('/docs/tooling')) {
       document.body.setAttribute('data-docs-section', 'tooling');
-    } else if (pathname.startsWith('/docs/acps')) {
-      document.body.setAttribute('data-docs-section', 'acps');
+    } else if (pathname.startsWith('/docs/lps')) {
+      document.body.setAttribute('data-docs-section', 'lps');
     } else if (pathname.startsWith('/docs/api-reference')) {
       document.body.setAttribute('data-docs-section', 'api-reference');
     } else if (pathname.startsWith('/docs/rpcs') || pathname.startsWith('/docs/nodes')) {
@@ -82,9 +82,9 @@ export function DocsLayoutWrapper({
     sidebarOptions = {
       tabs: toolingOptions,
     };
-  } else if (pathname.startsWith('/docs/acps')) {
-    pageTree = acpsTree;
-    // No hamburger menu for ACPs - explicitly disable tabs
+  } else if (pathname.startsWith('/docs/lps')) {
+    pageTree = lpsTree;
+    // No hamburger menu for LPs - explicitly disable tabs
     sidebarOptions = {
       tabs: false,
     };

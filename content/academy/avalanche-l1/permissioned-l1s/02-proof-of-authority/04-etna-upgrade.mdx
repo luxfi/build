@@ -1,6 +1,6 @@
 ---
 title: Etna Upgrade (optional)
-description: Understanding ACP77 & ACP99
+description: Understanding LP77 & LP99
 updated: 2025-07-28
 authors: [nicolasarnedo]
 icon: BookOpen
@@ -10,7 +10,7 @@ This section is **not necessary for understanding and running permissioned L1s**
 
 ## Etna Upgrade: Making L1s More Accessible
 
-The Etna upgrade, implemented through [ACP-77](/docs/acps/77-reinventing-subnets), represents a fundamental shift in how Lux approaches network creation and validation costs.
+The Etna upgrade, implemented through [LP-77](/docs/lps/77-reinventing-subnets), represents a fundamental shift in how Lux approaches network creation and validation costs.
 
 ### Why Etna Was Necessary
 
@@ -32,13 +32,13 @@ The upgrade introduced a continuous fee model that dramatically reduces costs:
 
 This transformation makes it feasible for startups, enterprises, and institutions to launch their own sovereign blockchains on Lux, opening the door to a new wave of innovation in permissioned and regulated blockchain applications.
 
-## Evolution: From ACP-77 to ACP-99
+## Evolution: From LP-77 to LP-99
 
-While [ACP-77](/docs/acps/77-reinventing-subnets) revolutionized how L1s work at the protocol level, it left one important question unanswered: How should smart contracts actually implement validator management? This is where [ACP-99](/docs/acps/99-validatorsetmanager-contract) comes in.
+While [LP-77](/docs/lps/77-reinventing-subnets) revolutionized how L1s work at the protocol level, it left one important question unanswered: How should smart contracts actually implement validator management? This is where [LP-99](/docs/lps/99-validatorsetmanager-contract) comes in.
 
-### The Gap ACP-77 Left
+### The Gap LP-77 Left
 
-[ACP-77](/docs/acps/77-reinventing-subnets) provided:
+[LP-77](/docs/lps/77-reinventing-subnets) provided:
 - **Protocol-level capabilities**: New Platform-Chain transactions and Warp message formats
 - **The mechanism**: How L1s can send messages to update their validator sets
 - **The foundation**: Basic rules for validator management
@@ -48,19 +48,19 @@ But it didn't specify:
 - What functions and events to expose
 - How to handle the complexity in a standardized way
 
-### ACP-99: The Standardization Layer
+### LP-99: The Standardization Layer
 
-[ACP-99](/docs/acps/99-validatorsetmanager-contract) fills this gap by defining a standard Solidity contract specification:
+[LP-99](/docs/lps/99-validatorsetmanager-contract) fills this gap by defining a standard Solidity contract specification:
 
 **Why Standardization Matters:**
 - **Reduced Development Time**: L1 creators don't need to design from scratch
 - **Security**: One audited implementation can benefit many L1s
-- **Interoperability**: Tools and services can work with any [ACP-99](/docs/acps/99-validatorsetmanager-contract) compliant L1
+- **Interoperability**: Tools and services can work with any [LP-99](/docs/lps/99-validatorsetmanager-contract) compliant L1
 - **Best Practices**: Encodes lessons learned into a reusable standard
 
 **The Three-Layer Architecture:**
-1. **ACP99Manager**: Abstract contract defining the standard interface
+1. **LP99Manager**: Abstract contract defining the standard interface
 2. **ValidatorManager**: Concrete implementation with owner controls
 3. **Access Control Layer** (like PoAManager): Defines who can manage validators
 
-This progression from [ACP-77](/docs/acps/77-reinventing-subnets) (protocol capability) to [ACP-99](/docs/acps/99-validatorsetmanager-contract) (standardized implementation) mirrors successful patterns in blockchain development.
+This progression from [LP-77](/docs/lps/77-reinventing-subnets) (protocol capability) to [LP-99](/docs/lps/99-validatorsetmanager-contract) (standardized implementation) mirrors successful patterns in blockchain development.

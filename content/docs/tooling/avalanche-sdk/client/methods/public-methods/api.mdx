@@ -801,29 +801,29 @@ interface AcpsReturnType {
 
 | Type             | Description |
 | ---------------- | ----------- |
-| `AcpsReturnType` | ACPs object |
+| `AcpsReturnType` | LPs object |
 
 **Return Object:**
 
 | Property | Type  | Description                              |
 | -------- | ----- | ---------------------------------------- |
-| `acps`   | `Map` | Map of ACP IDs to their peer preferences |
+| `acps`   | `Map` | Map of LP IDs to their peer preferences |
 
-**ACP Object:**
+**LP Object:**
 
 | Property        | Type          | Description                             |
 | --------------- | ------------- | --------------------------------------- |
-| `supportWeight` | `bigint`      | Weight of stake supporting the ACP      |
-| `supporters`    | `Set<string>` | Set of node IDs supporting the ACP      |
-| `objectWeight`  | `bigint`      | Weight of stake objecting to the ACP    |
-| `objectors`     | `Set<string>` | Set of node IDs objecting to the ACP    |
-| `abstainWeight` | `bigint`      | Weight of stake abstaining from the ACP |
+| `supportWeight` | `bigint`      | Weight of stake supporting the LP      |
+| `supporters`    | `Set<string>` | Set of node IDs supporting the LP      |
+| `objectWeight`  | `bigint`      | Weight of stake objecting to the LP    |
+| `objectors`     | `Set<string>` | Set of node IDs objecting to the LP    |
+| `abstainWeight` | `bigint`      | Weight of stake abstaining from the LP |
 
 **Example:**
 
 ```typescript
 const acps = await client.info.acps();
-console.log("ACP preferences:", acps.acps);
+console.log("LP preferences:", acps.acps);
 ```
 
 **Related:**

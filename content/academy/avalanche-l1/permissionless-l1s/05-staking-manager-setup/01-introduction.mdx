@@ -16,7 +16,7 @@ When discussing the [Validator Manager Contract structure](/academy/permissioned
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <div style={{ width: '60%', maxWidth: '800px' }}>
     <Mermaid chart={`classDiagram
-    class ACP99Manager {
+    class LP99Manager {
         <<abstract>>
         ...
     }
@@ -40,7 +40,7 @@ When discussing the [Validator Manager Contract structure](/academy/permissioned
         initializeDelegatorRegistration() payable
     }
 
-    ACP99Manager <|-- ValidatorManager
+    LP99Manager <|-- ValidatorManager
     ValidatorManager <|-- PoSValidatorManager
     PoSValidatorManager <|-- ERC20TokenStakingManager
     PoSValidatorManager <|-- NativeTokenStakingManager

@@ -1,12 +1,12 @@
 {
-  "title": "ACPs",
-  "description": "Official Lux Community Proposals (ACPs) for network improvements and best practices",
+  "title": "LPs",
+  "description": "Official Lux Proposals (LPs) for network improvements and best practices",
   "icon": "FileText",
   "root": true,
   "pages": [
     "---Overview---",
     "index",
-    "---Standards Track ACPs---",
+    "---Standards Track LPs---",
     "247-delegation-multiplier-increase-maximum-validator-weight-reduction",
     "236-continuous-staking",
     "226-dynamic-minimum-block-times",
@@ -35,10 +35,10 @@
     "23-p-chain-native-transfers",
     "20-ed25519-p2p",
     "13-subnet-only-validators",
-    "---Best Practices Track ACPs---",
+    "---Best Practices Track LPs---",
     "118-warp-signature-request",
     "108-evm-event-importing",
-    "---Meta Track ACPs---",
+    "---Meta Track LPs---",
     "84-table-preamble"
   ]
 }

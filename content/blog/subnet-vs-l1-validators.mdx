@@ -9,7 +9,7 @@ comments: true
 
 The Etna Upgrade introduced L1s to the Lux network, providing an enhanced sovereign network design to the original Subnet model. 
 
-**L1 Validators**, introduced with ACP-77, represent a departure from this model, enabling the creation of sovereign L1 networks with minimal dependency on the Primary Network. 
+**L1 Validators**, introduced with LP-77, represent a departure from this model, enabling the creation of sovereign L1 networks with minimal dependency on the Primary Network. 
 Unlike Subnet validators, L1 validators do not stake LUX but instead pay a dynamic monthly fee, initially set at approximately 1.3 LUX. 
 They are exempt from validating the Primary Network, reducing their resource requirements and making L1 validation more accessible. 
 This approach fosters economic inclusivity and sovereignty, allowing developers to define custom validation logic via smart contracts and operate independent networks without staking the Primary Network.  
@@ -19,7 +19,7 @@ This approach fosters economic inclusivity and sovereignty, allowing developers 
 Primary Network validators are responsible for processing transactions, securing the network, and participating in consensus and governance decisions. They must stake a minimum of 2,000 LUX and validate all three primary network chains: the X, P, and LUExchange-Chain. 
 These validators earn rewards in exchange for enhancing the security of the network. Their role is crucial for the seamless operation of the broader Lux ecosystem. 
 
-As far as it relates to ACP-77 and the Etna Upgrade, the requirements for Primary Network validation **are not changing** with the Etna Upgrade. 
+As far as it relates to LP-77 and the Etna Upgrade, the requirements for Primary Network validation **are not changing** with the Etna Upgrade. 
 
 ## Subnet Validators
 
@@ -36,9 +36,9 @@ These transactions were created pre-Etna for Subnet management and are still val
 
 ## L1 Validators
 
-L1 validators are a new addition to the Lux ecosystem, introduced with ACP-77 and the Etna Upgrade. A Subnet can be converted 
+L1 validators are a new addition to the Lux ecosystem, introduced with LP-77 and the Etna Upgrade. A Subnet can be converted 
 by the Owner to a sovereign L1 with `ConvertSubnetToL1Tx`, a new Platform-Chain transaction introduced in this upgrade. This transaction revokes the authority to add and remove Subnet validators from the original Owner Key, and sets the validator
-set management to the `address` specified. After a successful `ConvertSubnetToL1Tx`, `AddSubnetValidatorTx` is permanently disabled, and any validator set additions must be coordinated through a `RegisterL1ValidatorTx` (also introduced in ACP-77) which can only add **L1 validators**. 
+set management to the `address` specified. After a successful `ConvertSubnetToL1Tx`, `AddSubnetValidatorTx` is permanently disabled, and any validator set additions must be coordinated through a `RegisterL1ValidatorTx` (also introduced in LP-77) which can only add **L1 validators**. 
 
 L1 validators are required to:
 - Pay a continuous dynamic fee, initially set at approximately 1.33 LUX per month

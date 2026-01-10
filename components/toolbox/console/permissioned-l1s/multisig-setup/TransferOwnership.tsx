@@ -209,7 +209,7 @@ function TransferOwnership({ onSuccess, defaultNewOwnerAddress }: TransferOwners
                                         Contract Address Detected
                                     </h4>
                                     <p className="text-sm text-amber-700 dark:text-amber-300 mb-2">
-                                        The new owner address is a contract. Please ensure this contract is either a <strong>PoAManager</strong> or <strong>StakingManager</strong> that follows the ACP-99 standard.
+                                        The new owner address is a contract. Please ensure this contract is either a <strong>PoAManager</strong> or <strong>StakingManager</strong> that follows the LP-99 standard.
                                     </p>
                                     <p className="text-xs text-amber-600 dark:text-amber-400">
                                         This action is irreversible unless ValidatorManager is deployed behind proxy

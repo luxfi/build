@@ -3,7 +3,7 @@ title: Lux Granite Upgrade - Enhancing ICM, Unlocking Biometric Use Cases, and E
 description: The Lux Granite upgrade activates on Testnet Testnet on October 29th, 2025, bringing major improvements including Platform-Chain epoched views for ICM, secp256r1 support for biometric authentication, and dynamic minimum block times for faster transactions.
 date: 2025-11-05
 authors: [LuxDevelopers]
-topics: [Granite Upgrade, ICM, Biometric, Block Time, ACP, Performance]
+topics: [Granite Upgrade, ICM, Biometric, Block Time, LP, Performance]
 comments: true
 ---
 
@@ -17,9 +17,9 @@ The [pre-release](https://github.com/luxfi/luxgo/releases/tag/v1.14.0-testnet) w
 
 The Granite upgrade is driven by three Lux Community Proposals that significantly enhance the network's capabilities:
 
-- [ACP-181: Platform-Chain Epoched Views](/docs/acps/181-p-chain-epoched-views)
-- [ACP-204: Precompile for secp256r1 Curve Support](/docs/acps/204-precompile-secp256r1)
-- [ACP-226: Dynamic Minimum Block Times](/docs/acps/226-dynamic-minimum-block-times)
+- [LP-181: Platform-Chain Epoched Views](/docs/lps/181-p-chain-epoched-views)
+- [LP-204: Precompile for secp256r1 Curve Support](/docs/lps/204-precompile-secp256r1)
+- [LP-226: Dynamic Minimum Block Times](/docs/lps/226-dynamic-minimum-block-times)
 
 ---
 
@@ -46,7 +46,7 @@ The Granite upgrade successfully activated on the Testnet Testnet at **11 AM ET 
 
 ## Enhancing ICM Verification with Platform-Chain Epoched Views
 
-This upgrade activates **ACP-181**, which significantly improves the robustness and cost-effectiveness of Interchain Messaging (ICM) verification on Lux's L1 chains.
+This upgrade activates **LP-181**, which significantly improves the robustness and cost-effectiveness of Interchain Messaging (ICM) verification on Lux's L1 chains.
 
 ### The Challenge
 
@@ -54,23 +54,23 @@ Previously, the Platform-Chain pointers were updated with every block, leading t
 
 ### The Solution
 
-With ACP-181, the Platform-Chain height is fixed for an entire epoch period (approximately 5-10 minutes), providing a stable validator set view. This ensures ICM messages are verified against a consistent Platform-Chain height, reducing invalidation risk and lowering costs.
+With LP-181, the Platform-Chain height is fixed for an entire epoch period (approximately 5-10 minutes), providing a stable validator set view. This ensures ICM messages are verified against a consistent Platform-Chain height, reducing invalidation risk and lowering costs.
 
 ### Benefits for Developers
 
-By allowing L1 chains to maintain a consistent view of the Platform-Chain, ACP-181 enhances the efficiency and reliability of ICM message handling across the network. Developers building cross-chain applications can now rely on:
+By allowing L1 chains to maintain a consistent view of the Platform-Chain, LP-181 enhances the efficiency and reliability of ICM message handling across the network. Developers building cross-chain applications can now rely on:
 
 - **Cheaper message verification** - Reduced computational overhead
 - **More reliable cross-chain messaging** - Lower invalidation risk
 - **Predictable validator set views** - Stable reference points for verification
 
-[Watch the ACP-181 community call](https://youtu.be/1c6Qa1sobQg?si=eeTSG3pdPPNcAW_o) to learn more about the technical details.
+[Watch the LP-181 community call](https://youtu.be/1c6Qa1sobQg?si=eeTSG3pdPPNcAW_o) to learn more about the technical details.
 
 ---
 
 ## Unlocking New Biometric Use Cases with secp256r1
 
-This upgrade introduces support for signature verifications using the **secp256r1 elliptic curve** via **ACP-204**, enabling innovative biometric data signing on the Lux network.
+This upgrade introduces support for signature verifications using the **secp256r1 elliptic curve** via **LP-204**, enabling innovative biometric data signing on the Lux network.
 
 ### New Capabilities
 
@@ -90,17 +90,17 @@ The integration of biometric data signing facilitates the development of decentr
 - Healthcare applications with HIPAA compliance
 - Financial services with enhanced KYC/AML processes
 
-ACP-204 expands the possibilities for biometric implementations, positioning Lux at the forefront of blockchain innovation. Developers can now deliver stronger security and a smoother user experience by integrating modern biometric authentication methods into their applications.
+LP-204 expands the possibilities for biometric implementations, positioning Lux at the forefront of blockchain innovation. Developers can now deliver stronger security and a smoother user experience by integrating modern biometric authentication methods into their applications.
 
 ---
 
 ## Enabling Faster Transactions with Dynamic Minimum Block Times
 
-This upgrade activates **ACP-226**, introducing a dynamic adjustment mechanism for block times on the Lux network, which enhances user experience by reducing latency.
+This upgrade activates **LP-226**, introducing a dynamic adjustment mechanism for block times on the Lux network, which enhances user experience by reducing latency.
 
 ### How It Works
 
-ACP-226 allows validators to dynamically adjust block times in response to network improvements, such as the upcoming Streaming Asynchronous Execution (SAE) and Firewood features. This flexibility enables:
+LP-226 allows validators to dynamically adjust block times in response to network improvements, such as the upcoming Streaming Asynchronous Execution (SAE) and Firewood features. This flexibility enables:
 
 - **Sub-second block times** - Significantly faster than the previous fixed intervals
 - **Continuous optimization** - Validators can adjust block times without network upgrades
@@ -108,7 +108,7 @@ ACP-226 allows validators to dynamically adjust block times in response to netwo
 
 ### The Impact
 
-Previously, block rates could only be changed during network upgrades, creating rigid constraints on performance improvements. With ACP-226, validators can continuously optimize block times to match the network's evolving capabilities.
+Previously, block rates could only be changed during network upgrades, creating rigid constraints on performance improvements. With LP-226, validators can continuously optimize block times to match the network's evolving capabilities.
 
 This upgrade ensures that users benefit from:
 
@@ -117,7 +117,7 @@ This upgrade ensures that users benefit from:
 - **Improved network efficiency** - Better resource utilization
 - **Future-proof scalability** - Ready for upcoming performance enhancements
 
-[Watch the ACP-226 community call](https://youtu.be/v792NyX58sI?si=2TfJpRg1Ju0AePs6) to learn more about the technical implementation.
+[Watch the LP-226 community call](https://youtu.be/v792NyX58sI?si=2TfJpRg1Ju0AePs6) to learn more about the technical implementation.
 
 ---
 
@@ -133,9 +133,9 @@ As the network continues to evolve with upcoming features like Streaming Asynchr
 
 This section provides a technical overview of the changes introduced in the Granite upgrade for developers and node operators.
 
-### New Block Headers (ACP-226)
+### New Block Headers (LP-226)
 
-Two new headers have been introduced as part of ACP-226 for dynamic block time management:
+Two new headers have been introduced as part of LP-226 for dynamic block time management:
 
 1. **`timestampMilliseconds`** (uint64) - Timestamp in milliseconds for more precise block timing
 2. **`minDelayExcess`** (uint64) - Tracks the excess delay for dynamic block time adjustments
@@ -144,7 +144,7 @@ See the [full changelog](https://github.com/luxfi/luxgo/blob/master/graft/coreth
 
 #### For L1s
 
-For Subnet-EVM's [Fee Manager Precompile](https://build.lux.network/docs/lux-l1s/precompiles/fee-manager) these fields are deprecated by ACP-226 and no longer effective:
+For Subnet-EVM's [Fee Manager Precompile](https://build.lux.network/docs/lux-l1s/precompiles/fee-manager) these fields are deprecated by LP-226 and no longer effective:
 
 - `targetBlockRate`
 - `minBlockGasCost`
@@ -155,9 +155,9 @@ For existing L1s, there is no action required. These fields will be ignored by t
 
 For new L1s, these fields should continue to be populated with their defaults. These fields will be removed in a future upgrade.
 
-### New Data Structures (ACP-181)
+### New Data Structures (LP-181)
 
-A new struct has been added as part of ACP-181 to support epoched Platform-Chain views:
+A new struct has been added as part of LP-181 to support epoched Platform-Chain views:
 
 - **`Epoch`** struct - Provides stable Platform-Chain height references for ICM message verification
   - [View implementation](https://github.com/luxfi/luxgo/blob/master/vms/proposervm/block/block.go#L58)
@@ -205,11 +205,11 @@ _Note_: If the `--min-delay-target` parameter is not set, the validator abstains
 
 ## Resources
 
-- [ACP-181: Platform-Chain Epoched Views](/docs/acps/181-p-chain-epoched-views)
-- [ACP-204: secp256r1 Curve Support](/docs/acps/204-precompile-secp256r1)
-- [ACP-226: Dynamic Minimum Block Times](/docs/acps/226-dynamic-minimum-block-times)
+- [LP-181: Platform-Chain Epoched Views](/docs/lps/181-p-chain-epoched-views)
+- [LP-204: secp256r1 Curve Support](/docs/lps/204-precompile-secp256r1)
+- [LP-226: Dynamic Minimum Block Times](/docs/lps/226-dynamic-minimum-block-times)
 - [LuxGo Releases](https://github.com/luxfi/luxgo/releases)
-- [Join the discussion on GitHub](https://github.com/lux-foundation/ACPs/discussions)
+- [Join the discussion on GitHub](https://github.com/lux-foundation/LPs/discussions)
 
 ---
 

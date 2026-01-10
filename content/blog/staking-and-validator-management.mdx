@@ -9,7 +9,7 @@ comments: true
 
 ## What are L1 Validators?
 
-Introduced with ACP-77, [Lux L1 Validators](https://build.lux.network/guides/subnet-vs-l1-validators) 
+Introduced with LP-77, [Lux L1 Validators](https://build.lux.network/guides/subnet-vs-l1-validators) 
 enable the creation of sovereign L1 networks with minimal dependency on the Lux Primary Network. 
 Each L1 manages their own validators with a validator manager smart contract.
 
@@ -18,7 +18,7 @@ Each L1 manages their own validators with a validator manager smart contract.
 A Validator Manager smart contract (VMC) is one or many smart contracts that work together to define the logic for
 L1 validator addition and removal on an Lux L1.
 
-ACP-77 enables any Lux L1 to independently manage its own validators. When an L1 network is established, the
+LP-77 enables any Lux L1 to independently manage its own validators. When an L1 network is established, the
 Lux Platform-Chain requires each L1 to specify the address that controls the validator set. This address is
 responsible for using Inter-chain messaging (ICM) to correspond with the Platform-Chain, notifying the network whenever a
 validator is added or removed from the L1. This address should be set to the contract address of the chosen PoA or

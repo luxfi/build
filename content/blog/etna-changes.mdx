@@ -13,7 +13,7 @@ This guide outlines the operational impact on existing network participants expe
 
 - **L1**: An Lux Layer 1 Network. An L1 is a sovereign network that has its own dynamic set of validators, rules for network participation, and defines its own validator rewards incentives.
 - **L1-validator**: A validator that only validates an Lux layer 1 blockchain. These validators are not required to stake 2000 LUX, or validate the Lux Primary Network. They instead pay a continuous fee in order to participate in L1 validation.
-- **ACP-77**: The Lux Community Proposal that outlines a new framework for creating low-cost, independent blockchains that can _easily_ interoperate with each other. You can read the full proposal [here](/docs/acps/77-reinventing-subnets).
+- **LP-77**: The Lux Community Proposal that outlines a new framework for creating low-cost, independent blockchains that can _easily_ interoperate with each other. You can read the full proposal [here](/docs/lps/77-reinventing-subnets).
 - **The Primary Network**: The Lux X,P, and LUExchange-Chains, a.k.a. the 3 primary blockchains that most validators currently sync on Lux Mainnet.
 
 ## What is Changing?
@@ -46,7 +46,7 @@ If the L1 is permissionless, the validator earns staking rewards by staking the 
 
 ### For Existing L1s
 
-Existing Lux Subnets _that wish_ to remove the 2000 LUX per validator requirement will need to convert their Subnet’s control from a _Platform-Chain Owner Key_ to a _ValidatorManager_ smart contract via the workflow outlined in ACP-77.
+Existing Lux Subnets _that wish_ to remove the 2000 LUX per validator requirement will need to convert their Subnet’s control from a _Platform-Chain Owner Key_ to a _ValidatorManager_ smart contract via the workflow outlined in LP-77.
 
 - A detailed guide on how to convert existing L1s will be released prior to Testnet activation.
 
@@ -68,14 +68,14 @@ All L1s will still be able to interoperate using Lux Warp Messaging (Lux ICM) an
 
 ## What Technical Changes Will be Included?
 
-While driven by ACP-77, this upgrade will include many other feature additions outlined thoroughly in the following Lux Community Protocols:
+While driven by LP-77, this upgrade will include many other feature additions outlined thoroughly in the following Lux Community Protocols:
 
-**[ACP-77](/docs/acps/77-reinventing-subnets)**: Outlines a new validator management framework for Lux L1s, creating low-cost, natively-interoperable blockchains.
+**[LP-77](/docs/lps/77-reinventing-subnets)**: Outlines a new validator management framework for Lux L1s, creating low-cost, natively-interoperable blockchains.
 
-**[ACP-103](/docs/acps/103-dynamic-fees)**: Introduces a dynamic fee mechanism to the Exchange-Chain and the Platform-Chain, previewing a future transition to a multidimensional fee mechanism.
+**[LP-103](/docs/lps/103-dynamic-fees)**: Introduces a dynamic fee mechanism to the Exchange-Chain and the Platform-Chain, previewing a future transition to a multidimensional fee mechanism.
 
-**[ACP-118](/docs/acps/118-warp-signature-request)**: Proposes a standard `AppRequest` payload format type, simplifying potential AWM signature aggregation implementations.
+**[LP-118](/docs/lps/118-warp-signature-request)**: Proposes a standard `AppRequest` payload format type, simplifying potential AWM signature aggregation implementations.
 
-**[ACP-125](/docs/acps/125-basefee-reduction)**: Reduces the minimum base fee on the Lux LUExchange-Chain from 25 nLUX to 1 nLUX.
+**[LP-125](/docs/lps/125-basefee-reduction)**: Reduces the minimum base fee on the Lux LUExchange-Chain from 25 nLUX to 1 nLUX.
 
-**[ACP-131](/docs/acps/131-cancun-eips)**: Brings the EVM opcodes introduced by the Cancun Upgrade to the Lux LUExchange-Chain and Subnet-EVM.
+**[LP-131](/docs/lps/131-cancun-eips)**: Brings the EVM opcodes introduced by the Cancun Upgrade to the Lux LUExchange-Chain and Subnet-EVM.

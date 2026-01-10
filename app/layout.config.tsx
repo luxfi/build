@@ -244,10 +244,10 @@ export const docsMenu: LinkItemType = {
     },
     {
       icon: <GitBranch />,
-      text: 'ACPs',
+      text: 'LPs',
       description:
-        "Explore Lux's Community Proposals (ACPs) for network improvements and best practices.",
-      url: '/docs/acps',
+        "Explore Lux's Community Proposals (LPs) for network improvements and best practices.",
+      url: '/docs/lps',
       menu: {
         className: 'lg:col-start-3 lg:row-start-1',
       },

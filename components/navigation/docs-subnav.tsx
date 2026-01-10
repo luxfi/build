@@ -15,7 +15,7 @@ import {
   apiReferenceOptions,
   nodesOptions,
   toolingOptions,
-  acpsOptions,
+  lpsOptions,
 } from "./docs-nav-config";
 
 const tabs = [
@@ -31,7 +31,7 @@ const tabs = [
         !path.startsWith("/docs/rpcs") &&
         !path.startsWith("/docs/nodes") &&
         !path.startsWith("/docs/tooling") &&
-        !path.startsWith("/docs/acps")),
+        !path.startsWith("/docs/lps")),
   },
   {
     label: "Nodes",
@@ -52,10 +52,10 @@ const tabs = [
     pathMatch: (path: string) => path.startsWith("/docs/tooling"),
   },
   {
-    label: "ACPs",
-    href: "/docs/acps",
-    items: acpsOptions,
-    pathMatch: (path: string) => path.startsWith("/docs/acps"),
+    label: "LPs",
+    href: "/docs/lps",
+    items: lpsOptions,
+    pathMatch: (path: string) => path.startsWith("/docs/lps"),
   },
 ];
 

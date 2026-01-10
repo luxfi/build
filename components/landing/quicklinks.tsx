@@ -68,10 +68,10 @@ const quickLinks = [
   },
   {
     id: 8,
-    title: "ACPs",
-    description: "Explore Lux's Community Proposals (ACPs) for network improvements and best practices.",
+    title: "LPs",
+    description: "Explore Lux's Community Proposals (LPs) for network improvements and best practices.",
     icon: GitBranch,
-    href: "/docs/acps"
+    href: "/docs/lps"
   },
   {
     id: 9,

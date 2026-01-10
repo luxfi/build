@@ -9,7 +9,7 @@ comments: true
 
 ## What are L1 Validators?
 
-Introduced with ACP-77, [Lux L1 Validators](https://build.lux.network/guides/subnet-vs-l1-validators) enable the creation of sovereign L1
+Introduced with LP-77, [Lux L1 Validators](https://build.lux.network/guides/subnet-vs-l1-validators) enable the creation of sovereign L1
 networks with minimal dependency on the Lux Primary Network. Unlike Subnet validators, L1 validators do not stake LUX, but instead pay a
 continuous dynamic fee called the L1 Validator Fee.
 
@@ -58,14 +58,14 @@ The current validator fee rate can be retrieved with the Platform-Chain API endp
 An L1 validator's available remaining balance can be retrieved using the Platform-Chain API endpoint
 [`platform.getL1Validator`](https://build.lux.network/docs/api-reference/p-chain/api#platformgetl1validator).
 
-The validator fee configuration, with the current parameters set to calculate the L1 validator fee rate according to the formula in [ACP-77](/docs/acps/77-reinventing-subnets#parameters), can be
+The validator fee configuration, with the current parameters set to calculate the L1 validator fee rate according to the formula in [LP-77](/docs/lps/77-reinventing-subnets#parameters), can be
 retrieved with the Platform-Chain API endpoint
 [`platform.getValidatorFeeConfig`](https://build.lux.network/docs/api-reference/p-chain/api#platformgetvalidatorfeeconfig).
 
 ## How the Fee Changes
 
 The L1 Validator Fee is calculated each time the Platform-Chain adds a new block, according to the algorithm outlined in
-[ACP-77](/docs/acps/77-reinventing-subnets#fee-algorithm):
+[LP-77](/docs/lps/77-reinventing-subnets#fee-algorithm):
 
 $$ M \cdot \exp\left(\frac{x}{K}\right) $$
 
@@ -96,8 +96,8 @@ prolonged periods of time. Alternatively, if the network has 10,001 L1 validator
 ~27 years.
 
 In a nutshell, when the total number of L1 validators is greater than or equal to 10,000, the fee rate, a.k.a. the L1 validation fee per second, will
-increase in the next block according to the formula. These parameters can be changed with community input and the implementation of any future ACP.
+increase in the next block according to the formula. These parameters can be changed with community input and the implementation of any future LP.
 
 The validator fee configuration, with the current parameters set to calculate the L1 validator fee rate according to the formula in
-[ACP-77](/docs/acps/77-reinventing-subnets#parameters), can be retrieved with the Platform-Chain API
+[LP-77](/docs/lps/77-reinventing-subnets#parameters), can be retrieved with the Platform-Chain API
 endpoint [`platform.getValidatorFeeConfig`](https://build.lux.network/docs/api-reference/p-chain/api#platformgetvalidatorfeeconfig).

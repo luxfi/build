@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const apiReferenceTree = getApiReferenceTree();
   const rpcsTree = getRpcsTree();
   const toolingTree = getToolingTree();
-  const acpsTree = getAcpsTree();
+  const lpsTree = getAcpsTree();
 
   return (
     <LayoutWrapper baseOptions={baseOptions}>
@@ -28,7 +28,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         apiReferenceTree={apiReferenceTree}
         rpcsTree={rpcsTree}
         toolingTree={toolingTree}
-        acpsTree={acpsTree}
+        lpsTree={lpsTree}
       >
         {children}
       </DocsLayoutWrapper>
